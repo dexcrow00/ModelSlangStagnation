@@ -28,7 +28,7 @@ import re
 import sys
 from collections import Counter
 from pathlib import Path
-from typing import Iterator, List, Optional, Set
+from typing import Dict, Iterator, List, NamedTuple, Optional, Set, Tuple
 
 try:
     from warcio.archiveiterator import ArchiveIterator
@@ -69,48 +69,80 @@ log = logging.getLogger(__name__)
 _WORD_RE = re.compile(r"[a-zA-Z''\u2019\-]+")
 
 
-def tokenize(
-    text: str,
-    min_length: int = 1,
-    lowercase: bool = True,
-    target_words: Optional[Set[str]] = None,
-) -> List[str]:
-    """Extract words from a block of plain text.
-
-    If target_words is provided, only words present in that set are returned.
-    Filtering is applied after case normalisation so the set should be
-    pre-normalised to match (see load_target_words).
-    """
+def tokenize(text: str, min_length: int = 1, lowercase: bool = True) -> List[str]:
+    """Extract words from a block of plain text."""
     words = _WORD_RE.findall(text)
     if lowercase:
         words = [w.lower() for w in words]
     if min_length > 1:
         words = [w for w in words if len(w) >= min_length]
-    if target_words is not None:
-        words = [w for w in words if w in target_words]
     return words
 
 
 # ---------------------------------------------------------------------------
-# Target word list
+# Target words / phrases
 # ---------------------------------------------------------------------------
 
-def load_target_words(path: str, lowercase: bool = True) -> Set[str]:
-    """Load a plain-text file of target words (one per line).
+class Targets(NamedTuple):
+    """Compiled target list ready for matching against a token stream."""
+    # Single-token targets for O(1) membership checks.
+    single_words: Set[str]
+    # Maps the first token of each phrase to all phrases that start with it.
+    # Phrases are stored as tuples so they can be compared against token slices.
+    phrase_index: Dict[str, List[Tuple[str, ...]]]
 
+
+def load_target_words(path: str, lowercase: bool = True) -> "Targets":
+    """Load a plain-text file of target words and phrases (one per line).
+
+    Lines with a single token are treated as individual words.
+    Lines with multiple whitespace-separated tokens are treated as phrases.
     Blank lines and lines starting with '#' are ignored.
-    Words are normalised to match the tokeniser's case behaviour so that
-    lookups are always consistent.
+    All entries are normalised to match the tokeniser's case behaviour.
     """
-    words: Set[str] = set()
+    single_words: Set[str] = set()
+    phrases: List[Tuple[str, ...]] = []
+
     with open(path, encoding="utf-8") as fh:
         for line in fh:
-            word = line.strip()
-            if not word or word.startswith("#"):
+            raw = line.strip()
+            if not raw or raw.startswith("#"):
                 continue
-            words.add(word.lower() if lowercase else word)
-    log.info("Loaded %d target words from %s", len(words), path)
-    return words
+            parts = raw.lower().split() if lowercase else raw.split()
+            if len(parts) == 1:
+                single_words.add(parts[0])
+            else:
+                phrases.append(tuple(parts))
+
+    # Index phrases by their first token for efficient lookup.
+    phrase_index: Dict[str, List[Tuple[str, ...]]] = {}
+    for phrase in phrases:
+        phrase_index.setdefault(phrase[0], []).append(phrase)
+
+    log.info(
+        "Loaded %d single words and %d phrases from %s",
+        len(single_words), len(phrases), path,
+    )
+    return Targets(single_words=single_words, phrase_index=phrase_index)
+
+
+def count_matches(tokens: List[str], targets: Targets) -> Counter:
+    """Return a Counter of target hits found in a token list.
+
+    Each position is checked against single-word targets first, then against
+    any phrases whose first token matches. Phrase keys in the counter are the
+    original space-joined strings (e.g. 'oh my god').
+    """
+    matches: Counter = Counter()
+    for i, token in enumerate(tokens):
+        if token in targets.single_words:
+            matches[token] += 1
+        if token in targets.phrase_index:
+            for phrase in targets.phrase_index[token]:
+                n = len(phrase)
+                if tuple(tokens[i:i + n]) == phrase:
+                    matches[" ".join(phrase)] += 1
+    return matches
 
 
 # ---------------------------------------------------------------------------
@@ -259,11 +291,14 @@ def process_file(
     path: str,
     counter: Counter,
     args: argparse.Namespace,
-    target_words: Optional[Set[str]] = None,
+    targets: Optional[Targets] = None,
 ) -> int:
     """
     Process one WET or WARC file and update `counter` in-place.
     Returns the number of records processed.
+
+    When `targets` is provided, only matching words and phrases are counted
+    and --min-length is ignored (the targets file defines exactly what to count).
     """
     record_count = 0
     lowercase = not args.keep_case
@@ -285,13 +320,12 @@ def process_file(
                     text = extract_text_from_warc_record(record)
 
             if text:
-                words = tokenize(
-                    text,
-                    min_length=args.min_length,
-                    lowercase=lowercase,
-                    target_words=target_words,
-                )
-                counter.update(words)
+                if targets is not None:
+                    # Tokenize without min_length — phrase matching needs every token.
+                    tokens = tokenize(text, lowercase=lowercase)
+                    counter.update(count_matches(tokens, targets))
+                else:
+                    counter.update(tokenize(text, min_length=args.min_length, lowercase=lowercase))
                 record_count += 1
 
                 if record_count % 1000 == 0:
@@ -479,9 +513,9 @@ def main() -> None:
 
     log.info("Files to process: %d", len(file_list))
 
-    target_words: Optional[Set[str]] = None
+    targets: Optional[Targets] = None
     if args.words:
-        target_words = load_target_words(args.words, lowercase=not args.keep_case)
+        targets = load_target_words(args.words, lowercase=not args.keep_case)
 
     write = OUTPUT_WRITERS[fmt]
     counter: Counter = Counter()
@@ -489,7 +523,7 @@ def main() -> None:
 
     for i, path in enumerate(file_list, start=1):
         log.info("[%d/%d] Processing: %s", i, len(file_list), path)
-        n = process_file(path, counter, args, target_words=target_words)
+        n = process_file(path, counter, args, targets=targets)
         total_records += n
         log.info("[%d/%d] Done — %d records, running unique word count: %d",
                  i, len(file_list), n, len(counter))
