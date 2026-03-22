@@ -24,8 +24,10 @@ import gzip
 import io
 import json
 import logging
+import random
 import re
 import sys
+import time
 from collections import Counter
 from pathlib import Path
 from typing import Dict, Iterator, List, NamedTuple, Optional, Set, Tuple
@@ -39,6 +41,7 @@ except ImportError:
 # Optional: S3 support
 try:
     import boto3
+    from botocore.config import Config as BotocoreConfig
     from botocore.exceptions import BotoCoreError, ClientError
     HAS_BOTO3 = True
 except ImportError:
@@ -54,6 +57,10 @@ except ImportError:
 # ---------------------------------------------------------------------------
 # Logging
 # ---------------------------------------------------------------------------
+
+# Force line-buffering on stderr so log messages appear in real-time even
+# when output is piped or redirected (e.g. python ... 2>&1 | tee run.log).
+sys.stderr.reconfigure(line_buffering=True)
 
 logging.basicConfig(
     level=logging.INFO,
@@ -200,8 +207,26 @@ def open_local(path: str):
     return open(path, "rb")
 
 
+_S3_CLIENT_CONFIG = BotocoreConfig(
+    retries={
+        "mode": "adaptive",
+        "max_attempts": 11,  # 1 initial attempt + 10 retries
+    }
+) if HAS_BOTO3 else None
+
+# Application-level retry settings (on top of botocore's per-request retries).
+# Base and max are in seconds; full-jitter exponential backoff is used.
+_S3_RETRY_BASE_SECS = 10
+_S3_RETRY_MAX_SECS = 300   # cap at 5 minutes per attempt
+_S3_RETRY_MAX_ATTEMPTS = 10
+
+
 def open_s3(s3_uri: str):
-    """Stream an S3 object as a file-like binary object."""
+    """Stream an S3 object as a file-like binary object.
+
+    Retries up to _S3_RETRY_MAX_ATTEMPTS times with exponential backoff and
+    full jitter, in addition to botocore's own per-request adaptive retries.
+    """
     if not HAS_BOTO3:
         log.error("boto3 is required for S3 support. Install with: pip install boto3")
         sys.exit(1)
@@ -209,13 +234,20 @@ def open_s3(s3_uri: str):
     parsed = _parse_s3_uri(s3_uri)
     bucket, key = parsed["bucket"], parsed["key"]
     log.info("Streaming from S3: s3://%s/%s", bucket, key)
-    try:
-        s3 = boto3.client("s3")
-        response = s3.get_object(Bucket=bucket, Key=key)
-        return response["Body"]
-    except (BotoCoreError, ClientError) as exc:
-        log.error("Failed to open S3 object %s: %s", s3_uri, exc)
-        sys.exit(1)
+
+    s3 = boto3.client("s3", config=_S3_CLIENT_CONFIG)
+    for attempt in range(1, _S3_RETRY_MAX_ATTEMPTS + 2):
+        try:
+            return s3.get_object(Bucket=bucket, Key=key)["Body"]
+        except (BotoCoreError, ClientError) as exc:
+            if attempt > _S3_RETRY_MAX_ATTEMPTS:
+                log.error("Exhausted %d retries for %s: %s", _S3_RETRY_MAX_ATTEMPTS, s3_uri, exc)
+                sys.exit(1)
+            cap = min(_S3_RETRY_BASE_SECS * (2 ** (attempt - 1)), _S3_RETRY_MAX_SECS)
+            delay = random.uniform(0, cap)  # full jitter
+            log.warning("S3 error on attempt %d/%d for %s: %s — retrying in %.1fs",
+                        attempt, _S3_RETRY_MAX_ATTEMPTS, s3_uri, exc, delay)
+            time.sleep(delay)
 
 
 def _parse_s3_uri(uri: str) -> dict:
@@ -292,6 +324,8 @@ def process_file(
     counter: Counter,
     args: argparse.Namespace,
     targets: Optional[Targets] = None,
+    file_index: int = 0,
+    total_files: int = 0,
 ) -> int:
     """
     Process one WET or WARC file and update `counter` in-place.
@@ -302,6 +336,7 @@ def process_file(
     """
     record_count = 0
     lowercase = not args.keep_case
+    pct = 100.0 * file_index / total_files if total_files else 0.0
 
     stream = open_s3(path) if is_s3_uri(path) else open_local(path)
 
@@ -329,8 +364,8 @@ def process_file(
                 record_count += 1
 
                 if record_count % 1000 == 0:
-                    log.info("  %s — processed %d records, %d unique words so far",
-                             path, record_count, len(counter))
+                    log.info("  [%d/%d] (%.1f%%) %s — processed %d records, %d unique words so far",
+                             file_index, total_files, pct, path, record_count, len(counter))
     except Exception as exc:
         log.error("Error processing %s: %s", path, exc)
     finally:
@@ -338,6 +373,43 @@ def process_file(
             stream.close()
 
     return record_count
+
+
+# ---------------------------------------------------------------------------
+# Checkpoint helpers
+# ---------------------------------------------------------------------------
+
+def load_checkpoint(checkpoint_path: str) -> Tuple[Counter, Set[str]]:
+    """Load a checkpoint file and return (counter, set of completed file paths).
+
+    Returns empty defaults if the file does not exist or is unreadable.
+    """
+    try:
+        with open(checkpoint_path, encoding="utf-8") as fh:
+            data = json.load(fh)
+        counter = Counter(data.get("counter", {}))
+        completed = set(data.get("completed_files", []))
+        log.info(
+            "Checkpoint loaded from %s — %d files already done, %d unique words",
+            checkpoint_path, len(completed), len(counter),
+        )
+        return counter, completed
+    except FileNotFoundError:
+        return Counter(), set()
+    except Exception as exc:
+        log.warning("Could not read checkpoint %s: %s — starting fresh", checkpoint_path, exc)
+        return Counter(), set()
+
+
+def save_checkpoint(checkpoint_path: str, counter: Counter, completed: Set[str]) -> None:
+    """Atomically write the current counter and completed-file list to disk."""
+    tmp_path = checkpoint_path + ".tmp"
+    try:
+        with open(tmp_path, "w", encoding="utf-8") as fh:
+            json.dump({"completed_files": list(completed), "counter": dict(counter)}, fh)
+        Path(tmp_path).replace(checkpoint_path)
+    except Exception as exc:
+        log.warning("Failed to save checkpoint to %s: %s", checkpoint_path, exc)
 
 
 # ---------------------------------------------------------------------------
@@ -473,6 +545,13 @@ Examples:
              "Blank lines and lines starting with '#' are skipped.",
     )
     parser.add_argument(
+        "--checkpoint",
+        metavar="FILE",
+        default=None,
+        help="Path to checkpoint file for resuming interrupted runs "
+             "(default: <output>.checkpoint.json). Pass 'none' to disable checkpointing.",
+    )
+    parser.add_argument(
         "--verbose", "-v",
         action="store_true",
         help="Enable verbose/debug logging",
@@ -517,19 +596,49 @@ def main() -> None:
     if args.words:
         targets = load_target_words(args.words, lowercase=not args.keep_case)
 
+    # Resolve checkpoint path (None means disabled)
+    checkpoint_path: Optional[str] = None
+    if args.checkpoint and args.checkpoint.lower() != "none":
+        checkpoint_path = args.checkpoint
+    elif args.checkpoint is None:
+        checkpoint_path = args.output + ".checkpoint.json"
+
     write = OUTPUT_WRITERS[fmt]
-    counter: Counter = Counter()
+    counter: Counter
+    completed_files: Set[str]
+
+    if checkpoint_path:
+        counter, completed_files = load_checkpoint(checkpoint_path)
+        skipped = [p for p in file_list if p in completed_files]
+        if skipped:
+            log.info("Skipping %d already-completed file(s).", len(skipped))
+    else:
+        counter, completed_files = Counter(), set()
+
+    remaining = [p for p in file_list if p not in completed_files]
+    total_files = len(file_list)
     total_records = 0
 
-    for i, path in enumerate(file_list, start=1):
-        log.info("[%d/%d] Processing: %s", i, len(file_list), path)
-        n = process_file(path, counter, args, targets=targets)
+    for path in remaining:
+        file_index = len(completed_files) + 1
+        pct = 100.0 * (file_index - 1) / total_files if total_files else 0.0
+        log.info("[%d/%d] (%.1f%%) Processing: %s", file_index, total_files, pct, path)
+        n = process_file(path, counter, args, targets=targets,
+                         file_index=file_index, total_files=total_files)
         total_records += n
-        log.info("[%d/%d] Done — %d records, running unique word count: %d",
-                 i, len(file_list), n, len(counter))
+        completed_files.add(path)
+        pct_done = 100.0 * len(completed_files) / total_files if total_files else 0.0
+        log.info("[%d/%d] (%.1f%%) Done — %d records, running unique word count: %d",
+                 len(completed_files), total_files, pct_done, n, len(counter))
 
-        # Write after every file so partial results are always on disk
+        # Persist progress after every file
         write(counter, args.output, args.top)
+        if checkpoint_path:
+            save_checkpoint(checkpoint_path, counter, completed_files)
+
+    if checkpoint_path and Path(checkpoint_path).exists():
+        Path(checkpoint_path).unlink()
+        log.info("Checkpoint removed — all files processed.")
 
     log.info("Processing complete. Total records: %d | Unique words: %d | Total occurrences: %d",
              total_records, len(counter), sum(counter.values()))
