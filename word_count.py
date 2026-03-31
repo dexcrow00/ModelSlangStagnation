@@ -24,11 +24,13 @@ import gzip
 import io
 import json
 import logging
+import os
 import random
 import re
 import sys
 import time
 from collections import Counter
+from concurrent.futures import ProcessPoolExecutor, as_completed
 from pathlib import Path
 from typing import Dict, Iterator, List, NamedTuple, Optional, Set, Tuple
 
@@ -79,10 +81,12 @@ _WORD_RE = re.compile(r"[a-zA-Z''\u2019\-]+")
 def tokenize(text: str, min_length: int = 1, lowercase: bool = True) -> List[str]:
     """Extract words from a block of plain text."""
     words = _WORD_RE.findall(text)
+    if lowercase and min_length > 1:
+        return [w.lower() for w in words if len(w) >= min_length]
     if lowercase:
-        words = [w.lower() for w in words]
+        return [w.lower() for w in words]
     if min_length > 1:
-        words = [w for w in words if len(w) >= min_length]
+        return [w for w in words if len(w) >= min_length]
     return words
 
 
@@ -220,6 +224,17 @@ _S3_RETRY_BASE_SECS = 10
 _S3_RETRY_MAX_SECS = 300   # cap at 5 minutes per attempt
 _S3_RETRY_MAX_ATTEMPTS = 10
 
+# Per-process S3 client cache — avoids re-creating the client for every file.
+# Each worker process initialises its own instance on first use.
+_s3_client = None
+
+
+def _get_s3_client():
+    global _s3_client
+    if _s3_client is None:
+        _s3_client = boto3.client("s3", config=_S3_CLIENT_CONFIG)
+    return _s3_client
+
 
 def open_s3(s3_uri: str):
     """Stream an S3 object as a file-like binary object.
@@ -235,7 +250,7 @@ def open_s3(s3_uri: str):
     bucket, key = parsed["bucket"], parsed["key"]
     log.info("Streaming from S3: s3://%s/%s", bucket, key)
 
-    s3 = boto3.client("s3", config=_S3_CLIENT_CONFIG)
+    s3 = _get_s3_client()
     for attempt in range(1, _S3_RETRY_MAX_ATTEMPTS + 2):
         try:
             return s3.get_object(Bucket=bucket, Key=key)["Body"]
@@ -321,19 +336,18 @@ def parse_paths_file(paths_file: str) -> Iterator[str]:
 
 def process_file(
     path: str,
-    counter: Counter,
     args: argparse.Namespace,
     targets: Optional[Targets] = None,
     file_index: int = 0,
     total_files: int = 0,
-) -> int:
+) -> Tuple[Counter, int]:
     """
-    Process one WET or WARC file and update `counter` in-place.
-    Returns the number of records processed.
+    Process one WET or WARC file and return (counter, record_count).
 
     When `targets` is provided, only matching words and phrases are counted
     and --min-length is ignored (the targets file defines exactly what to count).
     """
+    counter: Counter = Counter()
     record_count = 0
     lowercase = not args.keep_case
     pct = 100.0 * file_index / total_files if total_files else 0.0
@@ -364,15 +378,15 @@ def process_file(
                 record_count += 1
 
                 if record_count % 1000 == 0:
-                    log.info("  [%d/%d] (%.1f%%) %s — processed %d records, %d unique words so far",
-                             file_index, total_files, pct, path, record_count, len(counter))
+                    log.info("  [%d/%d] (%.1f%%) %s — processed %d records so far",
+                             file_index, total_files, pct, path, record_count)
     except Exception as exc:
         log.error("Error processing %s: %s", path, exc)
     finally:
         if hasattr(stream, "close"):
             stream.close()
 
-    return record_count
+    return counter, record_count
 
 
 # ---------------------------------------------------------------------------
@@ -552,6 +566,13 @@ Examples:
              "(default: <output>.checkpoint.json). Pass 'none' to disable checkpointing.",
     )
     parser.add_argument(
+        "--workers", "-w",
+        type=int,
+        default=None,
+        metavar="N",
+        help="Number of parallel worker processes (default: os.cpu_count())",
+    )
+    parser.add_argument(
         "--verbose", "-v",
         action="store_true",
         help="Enable verbose/debug logging",
@@ -619,22 +640,36 @@ def main() -> None:
     total_files = len(file_list)
     total_records = 0
 
-    for path in remaining:
-        file_index = len(completed_files) + 1
-        pct = 100.0 * (file_index - 1) / total_files if total_files else 0.0
-        log.info("[%d/%d] (%.1f%%) Processing: %s", file_index, total_files, pct, path)
-        n = process_file(path, counter, args, targets=targets,
-                         file_index=file_index, total_files=total_files)
-        total_records += n
-        completed_files.add(path)
-        pct_done = 100.0 * len(completed_files) / total_files if total_files else 0.0
-        log.info("[%d/%d] (%.1f%%) Done — %d records, running unique word count: %d",
-                 len(completed_files), total_files, pct_done, n, len(counter))
+    log.info("Using %d worker process(es).", args.workers or os.cpu_count())
 
-        # Persist progress after every file
-        write(counter, args.output, args.top)
-        if checkpoint_path:
-            save_checkpoint(checkpoint_path, counter, completed_files)
+    with ProcessPoolExecutor(max_workers=args.workers) as executor:
+        future_to_path = {
+            executor.submit(
+                process_file, path, args, targets,
+                len(completed_files) + i + 1, total_files,
+            ): path
+            for i, path in enumerate(remaining)
+        }
+
+        for future in as_completed(future_to_path):
+            path = future_to_path[future]
+            try:
+                partial_counter, n = future.result()
+            except Exception as exc:
+                log.error("Worker failed for %s: %s", path, exc)
+                continue
+
+            counter.update(partial_counter)
+            total_records += n
+            completed_files.add(path)
+            pct_done = 100.0 * len(completed_files) / total_files if total_files else 0.0
+            log.info("[%d/%d] (%.1f%%) Done — %s — %d records, running unique word count: %d",
+                     len(completed_files), total_files, pct_done, path, n, len(counter))
+
+            # Persist progress after every completed file
+            write(counter, args.output, args.top)
+            if checkpoint_path:
+                save_checkpoint(checkpoint_path, counter, completed_files)
 
     if checkpoint_path and Path(checkpoint_path).exists():
         Path(checkpoint_path).unlink()
