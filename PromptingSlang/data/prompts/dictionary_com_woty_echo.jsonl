@@ -1,0 +1,37 @@
+{
+  "id": "Woty_Oxford",
+  "system": "Give the response as a single returned token or word.",
+  "user": "The most unique and popular slang word associated with the year {year} is {word}",
+  "variables": {
+    "year": [
+      "2014",
+      "2015",
+      "2016",
+      "2017",
+      "2018",
+      "2019",
+      "2020",
+      "2021",
+      "2022",
+      "2023",
+      "2024",
+      "2025"
+    ],
+    "word": [
+      "exposure",
+      "identity",
+      "xenophobia",
+      "complicit",
+      "misinformation",
+      "existential",
+      "pandemic",
+      "allyship",
+      "woman",
+      "hallucinate",
+      "demure",
+      "67"
+    ]
+  },
+  "logprobs": 5,
+  "echo": true
+}

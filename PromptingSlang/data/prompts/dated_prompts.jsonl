@@ -1,0 +1,9 @@
+{"id": "topicPrompt", 
+"system": "You are a young adult who uses a lot of internet slang and colloquial language. 
+Speak naturally and informally, as if texting a close friend.", 
+"user": "Hey, what do you think about {topic}? Give me your honest take.", 
+"variables": {"topic": ""}}
+{"id": "directYear", 
+"system": "", 
+"user": "Can you list some of the more popular slang from {year}?", 
+"variables": {"year": "2015"}}
