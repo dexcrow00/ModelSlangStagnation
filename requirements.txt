@@ -1,9 +1,0 @@
-# Required
-warcio>=1.7.4
-
-# For S3 support (highly recommended on EC2)
-boto3>=1.26.0
-
-# For HTML extraction from WARC files (optional, but recommended)
-beautifulsoup4>=4.12.0
-lxml>=4.9.0
