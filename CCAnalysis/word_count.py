@@ -30,6 +30,7 @@ import re
 import sys
 import time
 from collections import Counter
+from datetime import datetime
 from concurrent.futures import ProcessPoolExecutor, as_completed
 from pathlib import Path
 from typing import Dict, Iterator, List, NamedTuple, Optional, Set, Tuple
@@ -160,7 +161,7 @@ def count_matches(tokens: List[str], targets: Targets) -> Counter:
 # Text extraction from WARC records
 # ---------------------------------------------------------------------------
 
-def extract_text_from_wet_record(record) -> str:
+def extract_text_from_wet_record(record) -> str | None:
     """Extract plain text from a WET 'conversion' record."""
     if record.rec_type != "conversion":
         return None
@@ -171,17 +172,17 @@ def extract_text_from_wet_record(record) -> str:
         return None
 
 
-def extract_text_from_warc_record(record) -> str:
+def extract_text_from_warc_record(record) -> str | None:
     """
     Extract plain text from a WARC 'response' record.
     Uses BeautifulSoup if available, otherwise falls back to a simple regex strip.
     """
     if record.rec_type != "response":
-        return
+        return None
 
     content_type = record.http_headers.get_header("Content-Type", "") if record.http_headers else ""
     if "text/html" not in content_type and "text/plain" not in content_type:
-        return
+        return None
 
     try:
         raw = record.content_stream().read().decode("utf-8", errors="replace")
@@ -314,6 +315,8 @@ def parse_paths_file(paths_file: str) -> Iterator[str]:
     if is_s3_uri(paths_file):
         raw_stream = open_s3(paths_file)
         # boto3 body is not directly seekable; wrap in BytesIO for gzip
+        if not raw_stream:
+            raise ValueError("raw_stream of CC s3 paths is None") 
         raw_bytes = raw_stream.read()
         byte_stream = io.BytesIO(raw_bytes)
     else:
@@ -383,7 +386,7 @@ def process_file(
     except Exception as exc:
         log.error("Error processing %s: %s", path, exc)
     finally:
-        if hasattr(stream, "close"):
+        if stream and hasattr(stream, "close"):
             stream.close()
 
     return counter, record_count
@@ -592,6 +595,12 @@ def main() -> None:
 
     if args.verbose:
         log.setLevel(logging.DEBUG)
+
+    # Append a timestamp suffix to the output path so each run produces a
+    # unique file and previous outputs are not silently overwritten.
+    output_path = Path(args.output)
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    args.output = str(output_path.with_stem(f"{output_path.stem}_{timestamp}"))
 
     # Resolve output format
     fmt = args.output_format or infer_output_format(args.output)
