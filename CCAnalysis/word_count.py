@@ -35,24 +35,25 @@ from concurrent.futures import ProcessPoolExecutor, as_completed
 from pathlib import Path
 from typing import Dict, Iterator, List, NamedTuple, Optional, Set, Tuple
 
+# Suppress the missing import errors, since we run this on E2 the IDE is mad we don't have an environment here.
 try:
-    from warcio.archiveiterator import ArchiveIterator
+    from warcio.archiveiterator import ArchiveIterator # pyright: ignore[reportMissingImports]
 except ImportError:
     print("ERROR: warcio is required. Install with: pip install warcio", file=sys.stderr)
     sys.exit(1)
 
 # Optional: S3 support
 try:
-    import boto3
-    from botocore.config import Config as BotocoreConfig
-    from botocore.exceptions import BotoCoreError, ClientError
+    import boto3 # pyright: ignore[reportMissingImports]
+    from botocore.config import Config as BotocoreConfig # pyright: ignore[reportMissingImports]
+    from botocore.exceptions import BotoCoreError, ClientError # pyright: ignore[reportMissingImports]
     HAS_BOTO3 = True
 except ImportError:
     HAS_BOTO3 = False
 
 # Optional: HTML parsing for WARC files
 try:
-    from bs4 import BeautifulSoup
+    from bs4 import BeautifulSoup # pyright: ignore[reportMissingImports]
     HAS_BS4 = True
 except ImportError:
     HAS_BS4 = False
@@ -63,7 +64,8 @@ except ImportError:
 
 # Force line-buffering on stderr so log messages appear in real-time even
 # when output is piped or redirected (e.g. python ... 2>&1 | tee run.log).
-sys.stderr.reconfigure(line_buffering=True)
+if hasattr(sys.stderr, "reconfigure"):
+    sys.stderr.reconfigure(line_buffering=True) # pyright: ignore[reportAttributeAccessIssue]
 
 logging.basicConfig(
     level=logging.INFO,
@@ -343,15 +345,20 @@ def process_file(
     targets: Optional[Targets] = None,
     file_index: int = 0,
     total_files: int = 0,
-) -> Tuple[Counter, int]:
+) -> Tuple[Counter, int, int]:
     """
-    Process one WET or WARC file and return (counter, record_count).
+    Process one WET or WARC file and return (counter, record_count, total_tokens).
+
+    `total_tokens` is the raw token count across all records in this file,
+    regardless of --min-length or --words filters — useful for normalizing
+    target-word frequencies against corpus size.
 
     When `targets` is provided, only matching words and phrases are counted
-    and --min-length is ignored (the targets file defines exactly what to count).
+    in the returned counter; --min-length is ignored for matching purposes.
     """
     counter: Counter = Counter()
     record_count = 0
+    total_tokens = 0
     lowercase = not args.keep_case
     pct = 100.0 * file_index / total_files if total_files else 0.0
 
@@ -372,12 +379,18 @@ def process_file(
                     text = extract_text_from_warc_record(record)
 
             if text:
+                # Always tokenize without min_length so total_tokens reflects
+                # true corpus size; filtering happens below for non-target mode.
+                tokens = tokenize(text, lowercase=lowercase)
+                total_tokens += len(tokens)
+
                 if targets is not None:
-                    # Tokenize without min_length — phrase matching needs every token.
-                    tokens = tokenize(text, lowercase=lowercase)
                     counter.update(count_matches(tokens, targets))
                 else:
-                    counter.update(tokenize(text, min_length=args.min_length, lowercase=lowercase))
+                    if args.min_length > 1:
+                        counter.update(t for t in tokens if len(t) >= args.min_length)
+                    else:
+                        counter.update(tokens)
                 record_count += 1
 
                 if record_count % 1000 == 0:
@@ -389,15 +402,15 @@ def process_file(
         if stream and hasattr(stream, "close"):
             stream.close()
 
-    return counter, record_count
+    return counter, record_count, total_tokens
 
 
 # ---------------------------------------------------------------------------
 # Checkpoint helpers
 # ---------------------------------------------------------------------------
 
-def load_checkpoint(checkpoint_path: str) -> Tuple[Counter, Set[str]]:
-    """Load a checkpoint file and return (counter, set of completed file paths).
+def load_checkpoint(checkpoint_path: str) -> Tuple[Counter, Set[str], int]:
+    """Load a checkpoint file and return (counter, set of completed file paths, total_tokens).
 
     Returns empty defaults if the file does not exist or is unreadable.
     """
@@ -406,24 +419,28 @@ def load_checkpoint(checkpoint_path: str) -> Tuple[Counter, Set[str]]:
             data = json.load(fh)
         counter = Counter(data.get("counter", {}))
         completed = set(data.get("completed_files", []))
+        total_tokens = data.get("total_tokens", 0)
         log.info(
             "Checkpoint loaded from %s — %d files already done, %d unique words",
             checkpoint_path, len(completed), len(counter),
         )
-        return counter, completed
+        return counter, completed, total_tokens
     except FileNotFoundError:
-        return Counter(), set()
+        return Counter(), set(), 0
     except Exception as exc:
         log.warning("Could not read checkpoint %s: %s — starting fresh", checkpoint_path, exc)
-        return Counter(), set()
+        return Counter(), set(), 0
 
 
-def save_checkpoint(checkpoint_path: str, counter: Counter, completed: Set[str]) -> None:
-    """Atomically write the current counter and completed-file list to disk."""
+def save_checkpoint(checkpoint_path: str, counter: Counter, completed: Set[str], total_tokens: int) -> None:
+    """Atomically write the current counter, completed-file list, and token total to disk."""
     tmp_path = checkpoint_path + ".tmp"
     try:
         with open(tmp_path, "w", encoding="utf-8") as fh:
-            json.dump({"completed_files": list(completed), "counter": dict(counter)}, fh)
+            json.dump(
+                {"completed_files": list(completed), "counter": dict(counter), "total_tokens": total_tokens},
+                fh,
+            )
         Path(tmp_path).replace(checkpoint_path)
     except Exception as exc:
         log.warning("Failed to save checkpoint to %s: %s", checkpoint_path, exc)
@@ -433,9 +450,10 @@ def save_checkpoint(checkpoint_path: str, counter: Counter, completed: Set[str])
 # Output writers
 # ---------------------------------------------------------------------------
 
-def write_json(counter: Counter, path: str, top: Optional[int]) -> None:
+def write_json(counter: Counter, path: str, top: Optional[int], total_corpus_tokens: int = 0) -> None:
     data = counter.most_common(top) if top else counter.most_common()
     payload = {
+        "total_corpus_tokens": total_corpus_tokens,
         "total_unique_words": len(counter),
         "total_word_occurrences": sum(counter.values()),
         "words": [{"word": w, "count": c} for w, c in data],
@@ -636,14 +654,15 @@ def main() -> None:
     write = OUTPUT_WRITERS[fmt]
     counter: Counter
     completed_files: Set[str]
+    total_corpus_tokens: int
 
     if checkpoint_path:
-        counter, completed_files = load_checkpoint(checkpoint_path)
+        counter, completed_files, total_corpus_tokens = load_checkpoint(checkpoint_path)
         skipped = [p for p in file_list if p in completed_files]
         if skipped:
             log.info("Skipping %d already-completed file(s).", len(skipped))
     else:
-        counter, completed_files = Counter(), set()
+        counter, completed_files, total_corpus_tokens = Counter(), set(), 0
 
     remaining = [p for p in file_list if p not in completed_files]
     total_files = len(file_list)
@@ -663,29 +682,35 @@ def main() -> None:
         for future in as_completed(future_to_path):
             path = future_to_path[future]
             try:
-                partial_counter, n = future.result()
+                partial_counter, n, file_tokens = future.result()
             except Exception as exc:
                 log.error("Worker failed for %s: %s", path, exc)
                 continue
 
             counter.update(partial_counter)
             total_records += n
+            total_corpus_tokens += file_tokens
             completed_files.add(path)
             pct_done = 100.0 * len(completed_files) / total_files if total_files else 0.0
             log.info("[%d/%d] (%.1f%%) Done — %s — %d records, running unique word count: %d",
                      len(completed_files), total_files, pct_done, path, n, len(counter))
 
             # Persist progress after every completed file
-            write(counter, args.output, args.top)
+            if fmt == "json":
+                write(counter, args.output, args.top, total_corpus_tokens)
+            else:
+                write(counter, args.output, args.top)
             if checkpoint_path:
-                save_checkpoint(checkpoint_path, counter, completed_files)
+                save_checkpoint(checkpoint_path, counter, completed_files, total_corpus_tokens)
 
     if checkpoint_path and Path(checkpoint_path).exists():
         Path(checkpoint_path).unlink()
         log.info("Checkpoint removed — all files processed.")
 
-    log.info("Processing complete. Total records: %d | Unique words: %d | Total occurrences: %d",
-             total_records, len(counter), sum(counter.values()))
+    log.info(
+        "Processing complete. Total records: %d | Corpus tokens: %d | Unique words: %d | Total occurrences: %d",
+        total_records, total_corpus_tokens, len(counter), sum(counter.values()),
+    )
     log.info("Done. Download %s for local analysis.", args.output)
 
 
