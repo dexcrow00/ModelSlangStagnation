@@ -1,0 +1,41 @@
+{
+  "id": "exp2_adj_probe",
+  "system": "",
+  "user": "{prefix}{word}",
+  "variables": {
+    "prefix": [
+      "That was absolutely ",
+      "The new album is ",
+      "That outfit is honestly ",
+      "That performance was ",
+      "Bro that movie was "
+    ],
+    "word": [
+      "cool", "great", "amazing", "awesome", "incredible",
+      "sick", "dope", "rad", "wicked", "fresh",
+      "lit", "fire", "savage", "iconic", "legendary",
+      "bussin", "based", "goated", "mid", "valid"
+    ]
+  },
+  "logprobs": 5,
+  "echo": true
+}
+
+{
+  "id": "exp2_verb_probe",
+  "system": "",
+  "user": "{prefix}{word}",
+  "variables": {
+    "prefix": [
+      "That song ",
+      "This new track ",
+      "Their latest single "
+    ],
+    "word": [
+      "hits", "goes", "works", "sounds", "plays",
+      "slaps", "cooks", "rips", "bangs", "snaps"
+    ]
+  },
+  "logprobs": 5,
+  "echo": true
+}

@@ -1,0 +1,59 @@
+{
+  "id": "exp1_text_message",
+  "system": "Write informally, exactly the way people type in real text messages. Output only the message text — no labels, no quotation marks.",
+  "user": "Write a text message from a teenager to their friend about {event}.",
+  "variables": {
+    "event": [
+      "a party they went to last weekend",
+      "a concert they just got back from",
+      "something wild that happened at school today",
+      "seeing someone get dramatically rejected in front of everyone",
+      "a house party that got out of hand"
+    ]
+  }
+}
+
+{
+  "id": "exp1_reddit_comment",
+  "system": "Write exactly the way people comment on Reddit. Informal, direct — just the comment text, no formatting.",
+  "user": "Write a Reddit comment reacting to this hot take: \"{hot_take}\"",
+  "variables": {
+    "hot_take": [
+      "The Dark Knight is overrated",
+      "Pineapple on pizza is actually good",
+      "Video games are a waste of time",
+      "Pop music is better than it has ever been",
+      "Sequels are almost always worse than the original"
+    ]
+  }
+}
+
+{
+  "id": "exp1_group_chat",
+  "system": "Write the way people send messages in a group chat with close friends. Short, casual, reactive — just the messages, no context or labels.",
+  "user": "Someone in your group chat just said: \"{message}\" — write your reply.",
+  "variables": {
+    "message": [
+      "bro I just ran into my ex at the mall with someone new",
+      "okay so I might have accidentally texted my boss what I meant to send you",
+      "just found out we got the apartment",
+      "my cousin is performing at the festival next month",
+      "so apparently that rumor about the teacher is actually true"
+    ]
+  }
+}
+
+{
+  "id": "exp1_reaction_post",
+  "system": "Write the way people react on social media. Casual, punchy — just the reaction text, no hashtags or labels.",
+  "user": "Write a social media reaction post about: \"{situation}\"",
+  "variables": {
+    "situation": [
+      "your favorite show getting cancelled on a cliffhanger",
+      "a celebrity you like getting caught in a scandal",
+      "an underdog sports team winning the championship",
+      "a movie sequel that completely ruined the original",
+      "someone on video standing up to a bully in a really satisfying way"
+    ]
+  }
+}

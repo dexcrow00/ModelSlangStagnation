@@ -1,0 +1,89 @@
+{
+  "id": "exp3_cool_impressive",
+  "system": "Respond with a single word only. No explanation, no punctuation — just the word.",
+  "user": "{phrasing}",
+  "variables": {
+    "phrasing": [
+      "What's a single informal word someone might use to describe something they think is very impressive or cool?",
+      "Give me one slang word people use to say something is excellent or impressive.",
+      "What's an informal word for something that is really good and worth getting excited about?",
+      "Name a single casual word that means something is exceptionally cool or impressive."
+    ]
+  },
+  "logprobs": 20
+}
+
+{
+  "id": "exp3_mediocre",
+  "system": "Respond with a single word only. No explanation, no punctuation — just the word.",
+  "user": "{phrasing}",
+  "variables": {
+    "phrasing": [
+      "What's a single informal word for something that is average, unimpressive, or not worth your time?",
+      "Give me one slang word people use to say something is mediocre or disappointing.",
+      "What's a casual word that means something failed to meet expectations?",
+      "Name a single informal word that means something is just okay — not good, not terrible."
+    ]
+  },
+  "logprobs": 20
+}
+
+{
+  "id": "exp3_charisma",
+  "system": "Respond with a single word only. No explanation, no punctuation — just the word.",
+  "user": "{phrasing}",
+  "variables": {
+    "phrasing": [
+      "What's a single informal word for someone's natural ability to effortlessly attract others or come across as charming?",
+      "Give me one slang word that describes the quality of being naturally magnetic, charming, or romantically appealing.",
+      "What's a casual word for the thing that makes someone just naturally attractive or charismatic without trying?",
+      "Name a single informal word for the kind of confident, effortless charm that makes people drawn to someone."
+    ]
+  },
+  "logprobs": 20
+}
+
+{
+  "id": "exp3_agreement",
+  "system": "Respond with a single word only. No explanation, no punctuation — just the word.",
+  "user": "{phrasing}",
+  "variables": {
+    "phrasing": [
+      "What's a single informal word someone uses to express strong enthusiastic agreement or approval?",
+      "Give me one slang word people say to mean 'yes, absolutely, that's totally true.'",
+      "What's a casual word for when you hear something and you completely agree with it?",
+      "Name a single informal word used to affirm what someone just said — like a stronger, more casual 'exactly.'"
+    ]
+  },
+  "logprobs": 20
+}
+
+{
+  "id": "exp3_suspicious",
+  "system": "Respond with a single word only. No explanation, no punctuation — just the word.",
+  "user": "{phrasing}",
+  "variables": {
+    "phrasing": [
+      "What's a single informal word for when something about a person or situation feels off, untrustworthy, or not right?",
+      "Give me one slang word that means something seems shady or like it shouldn't be trusted.",
+      "What's a casual word for when you sense that someone is being deceptive or hiding something?",
+      "Name a single informal word for a feeling that something is sketchy or that a person can't be trusted."
+    ]
+  },
+  "logprobs": 20
+}
+
+{
+  "id": "exp3_excellent_sensory",
+  "system": "Respond with a single word only. No explanation, no punctuation — just the word.",
+  "user": "{phrasing}",
+  "variables": {
+    "phrasing": [
+      "What's a single informal word someone would use to say a song, food, or piece of art is exceptionally good — like it hits just right?",
+      "Give me one slang word people use when something sounds, tastes, or feels really, really good.",
+      "What's a casual word for when a song or meal is so good it gives you a visceral, satisfying reaction?",
+      "Name a single informal word meaning something is so good it almost overwhelms you in a great way."
+    ]
+  },
+  "logprobs": 20
+}
