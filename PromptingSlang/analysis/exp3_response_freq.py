@@ -1,16 +1,15 @@
 #!/usr/bin/env python3
 """Experiment 3 analysis: distribution of words the model produces for each semantic slot.
 
-Two complementary views are reported:
+Two complementary views per slot:
 
-  1. Top-logprob distribution (from logprobs.top_logprobs[0]):
-     The model's probability mass over first-token candidates at temperature=0.
-     This is the cleaner, statistically sound measure — no sampling needed.
+  1. Generated word (from logprobs.tokens, since response is None when logprobs
+     are requested): the model's top-1 word at temperature=0, plus its joint
+     log-probability.
 
-  2. Response frequency (from the 'response' field):
-     If you ran at temperature > 0 with multiple runs, this tallies the actual
-     sampled words. Useful for checking whether logprob rank predicts sampling
-     frequency.
+  2. First-token alternatives (top_logprobs[0]): the model's probability mass
+     over the top-5 candidates at the first position, giving a richer view of
+     the distribution even without sampling at higher temperature.
 
 Usage:
     python analysis/exp3_response_freq.py data/responses/<exp3_run>.jsonl
@@ -22,22 +21,72 @@ from __future__ import annotations
 import argparse
 import json
 import math
+import re
 import sys
 from collections import Counter, defaultdict
 from pathlib import Path
 
+SLOT_LABELS = {
+    "exp3_cool_impressive":   "Cool / impressive",
+    "exp3_mediocre":          "Mediocre / disappointing",
+    "exp3_charisma":          "Charisma / social magnetism",
+    "exp3_agreement":         "Enthusiastic agreement",
+    "exp3_suspicious":        "Suspicious / untrustworthy",
+    "exp3_excellent_sensory": "Excellent in music or food",
+}
+
+_STOP_TOK = re.compile(r"[.\s!?,\n]|^<")
+
+
+def _word_from_tokens(logprobs_obj: dict) -> tuple[str, float | None]:
+    """Reconstruct the generated word and its joint logprob from logprobs.tokens."""
+    if not isinstance(logprobs_obj, dict):
+        return "", None
+    tokens: list[str] = logprobs_obj.get("tokens") or []
+    lps: list[float | None] = logprobs_obj.get("token_logprobs") or []
+    parts, total = [], 0.0
+    for tok, lp in zip(tokens, lps):
+        if _STOP_TOK.search(tok):
+            break
+        parts.append(tok)
+        if lp is not None:
+            total += float(lp)
+    word = "".join(parts).strip().strip("\"'").lower()
+    return word, (total if parts else None)
+
+
+def _first_token_alts(logprobs_obj: dict) -> list[tuple[str, float]]:
+    """Return (token, probability) pairs from top_logprobs[0], normalised."""
+    if not isinstance(logprobs_obj, dict):
+        return []
+    top_lps = logprobs_obj.get("top_logprobs")
+    if not top_lps or not isinstance(top_lps, list):
+        return []
+    first = top_lps[0]
+    if not isinstance(first, dict):
+        return []
+    alts = [(tok.strip().lower(), math.exp(float(lp))) for tok, lp in first.items() if tok.strip()]
+    alts.sort(key=lambda x: -x[1])
+    total = sum(p for _, p in alts)
+    return [(tok, p / total) for tok, p in alts] if total else alts
+
 
 def load_records(paths: list[Path], slot_filter: str | None) -> list[dict]:
+    decoder = json.JSONDecoder()
     records = []
     for path in paths:
-        for line in path.read_text(encoding="utf-8").splitlines():
-            line = line.strip()
-            if not line:
-                continue
+        text = path.read_text(encoding="utf-8")
+        pos = 0
+        while pos < len(text):
+            while pos < len(text) and text[pos] in " \t\n\r":
+                pos += 1
+            if pos >= len(text):
+                break
             try:
-                rec = json.loads(line)
+                rec, end = decoder.raw_decode(text, pos)
             except json.JSONDecodeError:
-                continue
+                break
+            pos = end
             pid = rec.get("prompt_id", "")
             if not pid.startswith("exp3_"):
                 continue
@@ -47,83 +96,58 @@ def load_records(paths: list[Path], slot_filter: str | None) -> list[dict]:
     return records
 
 
-def _first_token_dist(logprobs_obj: dict) -> dict[str, float] | None:
-    """Extract probability distribution over first generated token.
-
-    Together returns top_logprobs as a list (one entry per position).
-    Each entry is a dict mapping token string → logprob.
-    We take position 0 — the first generated token.
-    """
-    if not isinstance(logprobs_obj, dict):
-        return None
-    top_lps = logprobs_obj.get("top_logprobs")
-    if not top_lps or not isinstance(top_lps, list) or len(top_lps) == 0:
-        return None
-    first = top_lps[0]
-    if not isinstance(first, dict):
-        return None
-    # Convert logprobs to probabilities; strip leading whitespace from tokens
-    dist = {tok.strip(): math.exp(lp) for tok, lp in first.items() if tok.strip()}
-    total = sum(dist.values())
-    # Normalise (top-K renormalisation)
-    return {tok: p / total for tok, p in sorted(dist.items(), key=lambda kv: -kv[1])}
-
-
-def _clean_response(text: str | None) -> str:
-    if not text:
-        return ""
-    # Take only the first word, lowercase
-    return text.strip().split()[0].lower().strip(".,!?\"'") if text.strip() else ""
+def _bar(p: float, max_p: float, width: int = 22) -> str:
+    filled = round(width * p / max_p) if max_p > 0 else 0
+    return "█" * filled + "░" * (width - filled)
 
 
 def report_slot(slot: str, records: list[dict]) -> None:
-    print(f"\n{'═' * 60}")
-    print(f"  Slot: {slot}  ({len(records)} record(s))")
-    print(f"{'═' * 60}")
+    label = SLOT_LABELS.get(slot, slot)
+    print(f"\n{'═' * 68}")
+    print(f"  Slot : {label}")
+    print(f"  ID   : {slot}  ({len(records)} record(s))")
+    print(f"{'═' * 68}")
 
-    # --- View 1: logprob-based distribution ---
-    aggregated: dict[str, list[float]] = defaultdict(list)
+    by_model: dict[str, list[dict]] = defaultdict(list)
     for rec in records:
-        lp_obj = rec.get("logprobs")
-        if lp_obj is None:
-            continue
-        dist = _first_token_dist(lp_obj)
-        if dist is None:
-            continue
-        for tok, prob in dist.items():
-            aggregated[tok].append(prob)
+        by_model[rec.get("model", "unknown")].append(rec)
 
-    if aggregated:
-        # Average probability across all phrasings (robustness check)
-        n_phrasings = len({rec.get("prompt_text") for rec in records})
-        avg_dist = {tok: sum(probs) / len(probs) for tok, probs in aggregated.items()}
-        print(f"\n  [Logprob distribution — avg over {n_phrasings} phrasing(s)]")
-        print(f"  {'Token':<22}  {'Avg P':>8}  {'# phrasings':>12}  Bar")
-        print(f"  {'─' * 22}  {'─' * 8}  {'─' * 12}  {'─' * 20}")
-        top = sorted(avg_dist.items(), key=lambda kv: -kv[1])[:25]
-        max_p = top[0][1] if top else 1
-        for tok, p in top:
-            bar = "█" * round(20 * p / max_p)
-            n_present = len(aggregated[tok])
-            print(f"  {tok:<22}  {p:>8.4f}  {n_present:>12}  {bar}")
+    for model, recs in sorted(by_model.items()):
+        short = model.split("/")[-1]
+        print(f"\n  ── {short} ──")
 
-    # --- View 2: sampled response frequency ---
-    response_counts: Counter = Counter()
-    for rec in records:
-        word = _clean_response(rec.get("response"))
-        if word:
-            response_counts[word] += 1
+        # Collect generated words and first-token alternatives across phrasings
+        generated: list[tuple[str, float | None, str]] = []  # (word, logprob, phrasing)
+        alt_agg: dict[str, list[float]] = defaultdict(list)
 
-    if response_counts:
-        total = sum(response_counts.values())
-        print(f"\n  [Response frequency — {total} sampled response(s)]")
-        print(f"  {'Word':<22}  {'Count':>6}  {'Freq':>8}")
-        print(f"  {'─' * 22}  {'─' * 6}  {'─' * 8}")
-        for word, count in response_counts.most_common(20):
-            print(f"  {word:<22}  {count:>6}  {count / total:>8.3f}")
+        for rec in recs:
+            lp_obj = rec.get("logprobs") or {}
+            word, jlp = _word_from_tokens(lp_obj)
+            phrasing = rec.get("prompt_text", "")[:60]
+            generated.append((word, jlp, phrasing))
+            for tok, p in _first_token_alts(lp_obj):
+                alt_agg[tok].append(p)
 
-    if not aggregated and not response_counts:
-        print("  (no usable data)")
+        # Generated words table
+        print(f"\n  Generated words (one per phrasing variant):")
+        print(f"  {'Word':<20}  {'LogP':>8}  Phrasing (truncated)")
+        print(f"  {'─' * 20}  {'─' * 8}  {'─' * 40}")
+        for word, jlp, phrasing in generated:
+            lp_str = f"{jlp:.3f}" if jlp is not None else "   ?"
+            print(f"  {word:<20}  {lp_str:>8}  {phrasing}")
+
+        # Aggregated first-token alternatives across all phrasings
+        if alt_agg:
+            avg_alts = sorted(
+                ((tok, sum(ps) / len(ps)) for tok, ps in alt_agg.items()),
+                key=lambda x: -x[1],
+            )
+            print(f"\n  Avg first-token probability across {len(recs)} phrasing(s):")
+            print(f"  {'Token':<20}  {'Avg P':>7}  Bar")
+            print(f"  {'─' * 20}  {'─' * 7}  {'─' * 22}")
+            max_p = avg_alts[0][1] if avg_alts else 1
+            for tok, avg_p in avg_alts[:10]:
+                print(f"  {tok:<20}  {avg_p:>7.4f}  {_bar(avg_p, max_p)}")
 
 
 def main() -> None:
@@ -140,16 +164,15 @@ def main() -> None:
 
     records = load_records(paths, args.slot)
     if not records:
-        print("No exp3 records found — check prompt_ids start with 'exp3_'.", file=sys.stderr)
+        print("No exp3 records found.", file=sys.stderr)
         sys.exit(1)
 
-    # Group by slot
     by_slot: dict[str, list[dict]] = defaultdict(list)
     for rec in records:
         by_slot[rec["prompt_id"]].append(rec)
 
     print(f"\nExperiment 3 — Semantic Neighbour Probing")
-    print(f"  {len(records)} records across {len(by_slot)} slot(s)\n")
+    print(f"  {len(records)} records  ·  {len(by_slot)} slot(s)\n")
 
     for slot in sorted(by_slot.keys()):
         report_slot(slot, by_slot[slot])

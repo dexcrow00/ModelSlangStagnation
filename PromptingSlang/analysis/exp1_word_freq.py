@@ -67,16 +67,21 @@ def count_in_text(text: str) -> Counter:
 
 
 def load_records(paths: list[Path], model_filter: str | None) -> list[dict]:
+    decoder = json.JSONDecoder()
     records = []
     for path in paths:
-        for line in path.read_text(encoding="utf-8").splitlines():
-            line = line.strip()
-            if not line:
-                continue
+        text = path.read_text(encoding="utf-8")
+        pos = 0
+        while pos < len(text):
+            while pos < len(text) and text[pos] in " \t\n\r":
+                pos += 1
+            if pos >= len(text):
+                break
             try:
-                rec = json.loads(line)
+                rec, end = decoder.raw_decode(text, pos)
             except json.JSONDecodeError:
-                continue
+                break
+            pos = end
             if model_filter and rec.get("model", "") != model_filter:
                 continue
             if rec.get("response"):

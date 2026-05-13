@@ -1,14 +1,18 @@
 #!/usr/bin/env python3
-"""Experiment 2 analysis: extract and compare logprobs for target words across fill-in-blank templates.
+"""Experiment 2 analysis: compare the model's predicted next-word distribution
+across fill-in-blank syntactic frames.
 
-Run Experiment 2 with: --max-tokens 1 --temperature 0.0
-The echo+logprobs combination returns the model's logprob for every prompt token.
-For each (template, word) pair we extract the logprob of the target word token(s)
-at the end of the echoed sentence, giving a direct measure of P(word | context).
+Each template is an incomplete sentence (e.g. "That was absolutely").
+With max-tokens > 1, the model generates a full word or short phrase. We report:
+  - The actual generated word (from response text) and its joint log-probability
+    (product of per-token logprobs up to the first stop character).
+  - Top-5 first-token alternatives (top_logprobs[0]), resolved to likely full
+    words where the generated sequence provides enough context.
 
 Usage:
-    python analysis/exp2_logprob_compare.py data/responses/<exp2_logprobs_run>.jsonl
-    python analysis/exp2_logprob_compare.py data/responses/<exp2_logprobs_run>.jsonl --family adj
+    python analysis/exp2_logprob_compare.py data/responses/<exp2_run>.jsonl
+    python analysis/exp2_logprob_compare.py data/responses/<exp2_run>.jsonl --family adj
+    python analysis/exp2_logprob_compare.py data/responses/<exp2_run>.jsonl --slang-only
 """
 
 from __future__ import annotations
@@ -16,21 +20,86 @@ from __future__ import annotations
 import argparse
 import json
 import math
+import re
 import sys
 from collections import defaultdict
 from pathlib import Path
 
+SLANG_ERAS: dict[str, str] = {
+    "sick": "pre-2012", "dope": "pre-2012", "rad": "pre-2012",
+    "wicked": "pre-2012", "fresh": "pre-2012", "gnarly": "pre-2012",
+    "epic": "pre-2012", "legit": "pre-2012", "stoked": "pre-2012",
+    "fleek": "2012–2015", "ratchet": "2012–2015", "basic": "2012–2015",
+    "savage": "2012–2015", "extra": "2012–2015", "salty": "2012–2015",
+    "lit": "2016–2019", "fire": "2016–2019", "slay": "2016–2019",
+    "iconic": "2016–2019", "lowkey": "2016–2019", "highkey": "2016–2019",
+    "slaps": "2016–2019", "vibes": "2016–2019", "vibe": "2016–2019",
+    "bussin": "2020–2022", "based": "2020–2022", "goated": "2020–2022",
+    "mid": "2020–2022", "valid": "2020–2022",
+    "hits": "2020–2022", "cooks": "2020–2022", "cooked": "2020–2022",
+    "rizz": "2023–2024", "snatched": "2023–2024", "ate": "2023–2024",
+    "delulu": "2023–2024", "brat": "2023–2024",
+}
+
+_STOP_TOK = re.compile(r"[.\s!?,\n]|^<")  # whitespace/punct or EOS token like <|eot_id|>
+
+
+def _word_and_logprob(logprobs_obj: dict) -> tuple[str, float | None]:
+    """Reconstruct the generated word and its joint logprob from logprobs.tokens.
+
+    response is always None when logprobs are requested, so we read directly
+    from the tokens array, joining until we hit a stop character or EOS token.
+    """
+    if not isinstance(logprobs_obj, dict):
+        return "", None
+    tokens: list[str] = logprobs_obj.get("tokens") or []
+    lps: list[float | None] = logprobs_obj.get("token_logprobs") or []
+    if not tokens:
+        return "", None
+
+    word_parts, total_lp = [], 0.0
+    for tok, lp in zip(tokens, lps):
+        if _STOP_TOK.search(tok):
+            break
+        word_parts.append(tok)
+        if lp is not None:
+            total_lp += float(lp)
+
+    word = "".join(word_parts).strip().strip("\"'").lower()
+    return word, total_lp if word_parts else None
+
+
+def _first_token_alts(logprobs_obj: dict) -> list[tuple[str, float]]:
+    """Return top alternatives at position 0 as (token, prob) pairs."""
+    if not isinstance(logprobs_obj, dict):
+        return []
+    top_lps = logprobs_obj.get("top_logprobs")
+    if not top_lps or not isinstance(top_lps, list) or len(top_lps) == 0:
+        return []
+    first = top_lps[0]
+    if not isinstance(first, dict):
+        return []
+    alts = [(tok.strip(), math.exp(float(lp))) for tok, lp in first.items() if tok.strip()]
+    alts.sort(key=lambda x: -x[1])
+    total = sum(p for _, p in alts)
+    return [(tok, p / total) for tok, p in alts]
+
 
 def load_records(path: Path, family: str | None) -> list[dict]:
+    decoder = json.JSONDecoder()
     records = []
-    for line in path.read_text(encoding="utf-8").splitlines():
-        line = line.strip()
-        if not line:
-            continue
+    text = path.read_text(encoding="utf-8")
+    pos = 0
+    while pos < len(text):
+        while pos < len(text) and text[pos] in " \t\n\r":
+            pos += 1
+        if pos >= len(text):
+            break
         try:
-            rec = json.loads(line)
+            rec, end = decoder.raw_decode(text, pos)
         except json.JSONDecodeError:
-            continue
+            break
+        pos = end
         if rec.get("logprobs") is None:
             continue
         pid = rec.get("prompt_id", "")
@@ -40,114 +109,86 @@ def load_records(path: Path, family: str | None) -> list[dict]:
     return records
 
 
-def _logprob_of_last_tokens(logprobs_obj: dict, target_word: str) -> float | None:
-    """Return the summed logprob of target_word at the END of the echoed token sequence.
-
-    Together's logprobs object has parallel arrays: tokens[] and token_logprobs[].
-    With echo=true, these span the full prompt + generated tokens.
-    We find the last occurrence of the target word (allowing a leading space token
-    like ' lit') and return its logprob. For multi-token words, we sum logprobs.
-    """
-    if not isinstance(logprobs_obj, dict):
-        return None
-
-    tokens: list[str] = logprobs_obj.get("tokens") or []
-    token_lps: list[float | None] = logprobs_obj.get("token_logprobs") or []
-
-    if not tokens or not token_lps or len(tokens) != len(token_lps):
-        return None
-
-    # Normalise: strip leading space from each token for matching
-    normalised = [t.lstrip() for t in tokens]
-    target_lower = target_word.lower()
-
-    # Walk backwards to find the last position where the word appears
-    # as a single token (most slang words are one token)
-    for i in range(len(normalised) - 1, -1, -1):
-        if normalised[i].lower() == target_lower:
-            lp = token_lps[i]
-            return float(lp) if lp is not None else None
-
-    # Multi-token fallback: try to match the word reconstructed from consecutive tokens
-    target_tokens = target_word.lower().split()
-    n = len(target_tokens)
-    for i in range(len(normalised) - n, -1, -1):
-        chunk = [normalised[j].lower() for j in range(i, i + n)]
-        if chunk == target_tokens:
-            lps = [token_lps[j] for j in range(i, i + n) if token_lps[j] is not None]
-            return float(sum(lps)) if len(lps) == n else None
-
-    return None
+def _era(word: str) -> str:
+    return SLANG_ERAS.get(word.lower().rstrip("s"), SLANG_ERAS.get(word.lower(), ""))
 
 
-def build_table(records: list[dict]) -> dict[str, dict[str, float]]:
-    """Return {prefix: {word: logprob}} for all records."""
-    table: dict[str, dict[str, float]] = defaultdict(dict)
-    for rec in records:
-        variables = rec.get("variables", {})
-        word = variables.get("word", "")
-        prefix = variables.get("prefix", "")
-        if not word or not prefix:
-            continue
-        lp = _logprob_of_last_tokens(rec["logprobs"], word)
-        if lp is not None:
-            table[prefix][word] = lp
-    return dict(table)
+def _bar(p: float, max_p: float, width: int = 20) -> str:
+    filled = round(width * p / max_p) if max_p > 0 else 0
+    return "█" * filled + "░" * (width - filled)
 
 
-def _prob_str(lp: float) -> str:
-    p = math.exp(lp)
-    return f"{p:.4f}"
-
-
-def report(table: dict[str, dict[str, float]]) -> None:
-    if not table:
-        print("No usable records found — check that logprobs and echo are present.", file=sys.stderr)
+def report(records: list[dict], slang_only: bool) -> None:
+    if not records:
+        print("No usable records.", file=sys.stderr)
         return
 
-    # Collect all words across all prefixes
-    all_words: list[str] = sorted({w for words in table.values() for w in words})
+    # Group by model → prefix
+    by_model: dict[str, dict[str, list[dict]]] = defaultdict(lambda: defaultdict(list))
+    for rec in records:
+        prefix = rec.get("variables", {}).get("prefix", rec.get("prompt_text", ""))
+        by_model[rec.get("model", "unknown")][prefix].append(rec)
 
-    print(f"\n{'─' * 60}")
-    print("  Experiment 2 — Logprob comparison (P(word | template context))")
-    print(f"  {len(table)} template(s)   {len(all_words)} target word(s)")
-    print(f"{'─' * 60}\n")
+    # Track generated words for cross-template summary
+    word_probs: dict[str, list[float]] = defaultdict(list)
 
-    for prefix, word_lps in sorted(table.items()):
-        print(f"\n  Template: \"{prefix.strip()}___\"")
-        print(f"  {'Word':<22} {'LogProb':>9}  {'Prob':>8}  Rank")
-        print(f"  {'─' * 22} {'─' * 9}  {'─' * 8}  {'─' * 4}")
-        ranked = sorted(word_lps.items(), key=lambda kv: -kv[1])
-        for rank, (word, lp) in enumerate(ranked, 1):
-            print(f"  {word:<22} {lp:>9.3f}  {_prob_str(lp):>8}  #{rank}")
+    for model, prefixes in sorted(by_model.items()):
+        short = model.split("/")[-1]
+        print(f"\n{'═' * 68}")
+        print(f"  Model: {short}")
+        print(f"{'═' * 68}")
 
-    # Cross-template: for each word, what is its average logprob?
-    print(f"\n\n  {'─' * 60}")
-    print("  Average logprob per word (across all templates)")
-    print(f"  {'─' * 60}")
-    print(f"  {'Word':<22} {'Avg LogProb':>11}  {'Avg Prob':>10}  {'Templates':>10}")
-    print(f"  {'─' * 22} {'─' * 11}  {'─' * 10}  {'─' * 10}")
+        for prefix, recs in sorted(prefixes.items()):
+            print(f"\n  Template: \"{prefix} ___\"")
 
-    word_lps_all: dict[str, list[float]] = defaultdict(list)
-    for word_lps in table.values():
-        for w, lp in word_lps.items():
-            word_lps_all[w].append(lp)
+            for rec in recs:
+                lp_obj = rec.get("logprobs", {})
+                word, jlp = _word_and_logprob(lp_obj)
+                alts = _first_token_alts(lp_obj)
 
-    avg_lps = {w: sum(lps) / len(lps) for w, lps in word_lps_all.items()}
-    for word, avg_lp in sorted(avg_lps.items(), key=lambda kv: -kv[1]):
-        n = len(word_lps_all[word])
-        avg_p = math.exp(avg_lp)
-        print(f"  {word:<22} {avg_lp:>11.3f}  {avg_p:>10.4f}  {n:>10}")
+                if not word and not alts:
+                    continue
+
+                era_tag = f"[{_era(word)}]" if word and _era(word) else ""
+                prob_str = f"P={math.exp(jlp):.4f}" if jlp is not None else "P=?"
+
+                print(f"    Generated: \"{word}\"  {prob_str}  {era_tag}")
+
+                if word:
+                    if jlp is not None:
+                        word_probs[word].append(math.exp(jlp))
+
+                if not slang_only and alts:
+                    max_p = alts[0][1] if alts else 1
+                    print(f"    {'Alt (tok)':<18}  {'P':>7}  {'Era':<12}  Bar")
+                    print(f"    {'─' * 18}  {'─' * 7}  {'─' * 12}  {'─' * 20}")
+                    for tok, p in alts:
+                        era_label = f"[{_era(tok)}]" if _era(tok) else ""
+                        print(f"    {tok:<18}  {p:>7.4f}  {era_label:<12}  {_bar(p, max_p)}")
+
+    # Cross-template summary
+    print(f"\n\n{'═' * 68}")
+    print("  Summary: generated words ranked by avg probability across templates")
+    print(f"{'═' * 68}")
+    print(f"  {'Word':<22}  {'Avg P':>8}  {'Era':<12}  {'N frames':>8}")
+    print(f"  {'─' * 22}  {'─' * 8}  {'─' * 12}  {'─' * 8}")
+
+    rows = sorted(word_probs.items(), key=lambda kv: -(sum(kv[1]) / len(kv[1])))
+    if slang_only:
+        rows = [(w, ps) for w, ps in rows if _era(w)]
+
+    for word, probs in rows:
+        avg = sum(probs) / len(probs)
+        print(f"  {word:<22}  {avg:>8.4f}  [{_era(word)}]  {len(probs):>8}")
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Compare logprobs across fill-in-blank templates (Experiment 2).")
+    parser = argparse.ArgumentParser(description="Analyse Experiment 2 full-word completions.")
     parser.add_argument("responses", help="Path to response JSONL file from an exp2 run.")
-    parser.add_argument(
-        "--family",
-        choices=["adj", "verb"],
-        help="Filter to a specific template family (adj=exp2_adj_probe, verb=exp2_verb_probe).",
-    )
+    parser.add_argument("--family", choices=["adj", "verb"],
+                        help="Filter to adj or verb template family.")
+    parser.add_argument("--slang-only", action="store_true",
+                        help="Summary shows only known slang terms; hides first-token alt table.")
     args = parser.parse_args()
 
     path = Path(args.responses)
@@ -160,8 +201,8 @@ def main() -> None:
         print("No records with logprobs found.", file=sys.stderr)
         sys.exit(1)
 
-    table = build_table(records)
-    report(table)
+    report(records, slang_only=args.slang_only)
+    print()
 
 
 if __name__ == "__main__":
