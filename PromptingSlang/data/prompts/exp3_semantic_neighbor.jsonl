@@ -10,7 +10,7 @@
       "Name a single casual word that means something is exceptionally cool or impressive."
     ]
   },
-  "logprobs": 20
+  "logprobs": 5
 }
 
 {
@@ -25,7 +25,7 @@
       "Name a single informal word that means something is just okay — not good, not terrible."
     ]
   },
-  "logprobs": 20
+  "logprobs": 5
 }
 
 {
@@ -40,7 +40,7 @@
       "Name a single informal word for the kind of confident, effortless charm that makes people drawn to someone."
     ]
   },
-  "logprobs": 20
+  "logprobs": 5
 }
 
 {
@@ -55,7 +55,7 @@
       "Name a single informal word used to affirm what someone just said — like a stronger, more casual 'exactly.'"
     ]
   },
-  "logprobs": 20
+  "logprobs": 5
 }
 
 {
@@ -70,7 +70,7 @@
       "Name a single informal word for a feeling that something is sketchy or that a person can't be trusted."
     ]
   },
-  "logprobs": 20
+  "logprobs": 5
 }
 
 {
@@ -85,5 +85,5 @@
       "Name a single informal word meaning something is so good it almost overwhelms you in a great way."
     ]
   },
-  "logprobs": 20
+  "logprobs": 5
 }

@@ -1,41 +1,35 @@
 {
   "id": "exp2_adj_probe",
-  "system": "",
-  "user": "{prefix}{word}",
+  "system": "Complete the sentence with a single informal word. Output only the word, nothing else.",
+  "user": "Complete: \"{prefix} ___.\"",
   "variables": {
     "prefix": [
-      "That was absolutely ",
-      "The new album is ",
-      "That outfit is honestly ",
-      "That performance was ",
-      "Bro that movie was "
-    ],
-    "word": [
-      "cool", "great", "amazing", "awesome", "incredible",
-      "sick", "dope", "rad", "wicked", "fresh",
-      "lit", "fire", "savage", "iconic", "legendary",
-      "bussin", "based", "goated", "mid", "valid"
+      "That was absolutely",
+      "Bro that movie was",
+      "The new album is",
+      "That outfit is honestly",
+      "That performance was",
+      "Her comeback was",
+      "The party last night was",
+      "That speech was genuinely",
+      "This new show is lowkey",
+      "Their chemistry is"
     ]
   },
-  "logprobs": 5,
-  "echo": true
+  "logprobs": 5
 }
 
 {
   "id": "exp2_verb_probe",
-  "system": "",
-  "user": "{prefix}{word}",
+  "system": "Complete the sentence with a single informal word. Output only the word, nothing else.",
+  "user": "Complete: \"{prefix} ___.\"",
   "variables": {
     "prefix": [
-      "That song ",
-      "This new track ",
-      "Their latest single "
-    ],
-    "word": [
-      "hits", "goes", "works", "sounds", "plays",
-      "slaps", "cooks", "rips", "bangs", "snaps"
+      "That song",
+      "This new track",
+      "Their latest single",
+      "The beat on that record"
     ]
   },
-  "logprobs": 5,
-  "echo": true
+  "logprobs": 5
 }
