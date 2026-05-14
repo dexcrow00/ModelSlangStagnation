@@ -65,9 +65,9 @@
   "variables": {
     "phrasing": [
       "What's a single informal word for when something about a person or situation feels off, untrustworthy, or not right?",
-      "Give me one slang word that means something seems shady or like it shouldn't be trusted.",
+      "Give me one slang word that means something seems off or like it shouldn't be trusted.",
       "What's a casual word for when you sense that someone is being deceptive or hiding something?",
-      "Name a single informal word for a feeling that something is sketchy or that a person can't be trusted."
+      "Name a single informal word for a feeling that something is unsafe or that a person can't be trusted."
     ]
   },
   "logprobs": 5
@@ -79,7 +79,7 @@
   "user": "{phrasing}",
   "variables": {
     "phrasing": [
-      "What's a single informal word someone would use to say a song, food, or piece of art is exceptionally good — like it hits just right?",
+      "What's a single informal word someone would use to say a song, food, or piece of art is exceptionally good?",
       "Give me one slang word people use when something sounds, tastes, or feels really, really good.",
       "What's a casual word for when a song or meal is so good it gives you a visceral, satisfying reaction?",
       "Name a single informal word meaning something is so good it almost overwhelms you in a great way."
