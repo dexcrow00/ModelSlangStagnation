@@ -59,9 +59,11 @@ log = logging.getLogger(__name__)
 # Constants
 # ---------------------------------------------------------------------------
 
-COLLINFO_URL  = "https://index.commoncrawl.org/collinfo.json"
-CC_BUCKET     = "commoncrawl"
-_CC_CRAWL_RE  = re.compile(r"^CC-MAIN-\d{4}-\d{2,4}$")
+COLLINFO_URL = "https://index.commoncrawl.org/collinfo.json"
+CC_BUCKET    = "commoncrawl"
+# WET files are only available from CC-MAIN-2013-20 onwards
+_WET_MIN_CRAWL = "CC-MAIN-2013"
+_CC_CRAWL_RE   = re.compile(r"^CC-MAIN-\d{4}-\d{2,4}$")
 
 # ---------------------------------------------------------------------------
 # Crawl discovery
@@ -180,6 +182,7 @@ Examples:
   python run_all_crawls.py --n 100000 --seed 42 --dry-run
         """,
     )
+    # TODO(): Add an argument that just passes total samples we want to collect and derives n from that.
     parser.add_argument(
         "--n", type=int, required=True, metavar="N",
         help="Words to sample per crawl (passed to word_sample --n).",
@@ -258,6 +261,9 @@ def main() -> None:
     else:
         crawl_ids = fetch_crawl_ids()
 
+        # Filter out pre-WET crawls (before CC-MAIN-2013)
+        crawl_ids = [c for c in crawl_ids if c >= _WET_MIN_CRAWL]
+
         if args.since:
             crawl_ids = [c for c in crawl_ids if int(c[8:12]) >= args.since]
 
@@ -268,9 +274,6 @@ def main() -> None:
             crawl_ids = [c for c in crawl_ids if c <= args.to_crawl]
 
         log.info("Crawls to process after filtering: %d", len(crawl_ids))
-
-    # Always filter to 2013+: WET files don't exist before CC-MAIN-2013
-    crawl_ids = [c for c in crawl_ids if c >= "CC-MAIN-2013"]
 
     if not crawl_ids:
         log.error("No crawls matched the specified filters.")

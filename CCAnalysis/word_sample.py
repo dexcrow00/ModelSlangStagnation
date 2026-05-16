@@ -37,16 +37,16 @@ import glob
 import gzip
 import io
 import logging
+import math
 import os
 import random
 import re
 import sys
 import time
-from collections import defaultdict
 from concurrent.futures import ProcessPoolExecutor, as_completed
 from datetime import datetime
 from pathlib import Path
-from typing import Dict, Iterator, List, Optional, Tuple
+from typing import Iterator, List, Optional, Tuple
 
 try:
     from warcio.archiveiterator import ArchiveIterator  # pyright: ignore[reportMissingImports]
@@ -247,6 +247,8 @@ def _sample_words_from_file(
     Uses reservoir sampling so a single streaming pass suffices.  Stops
     after ``max_records`` content records when set (early stopping for speed).
     Returns fewer than k words only if the file contains fewer than k tokens.
+    So we should chekc the 'max_records' first words in a file and sample k of them. 
+    In "run_all_crawls" k should be some random number, based on total N.
     """
     rng = random.Random(seed)
     reservoir: List[str] = []
@@ -307,19 +309,17 @@ def build_parser() -> argparse.ArgumentParser:
         description="Randomly sample N words from Common Crawl WET/WARC files.",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
-Runtime scales with N, not with corpus size: for each sample the script
-picks one random WET file and reads at most --max-records records from it.
+The script randomly selects M files (--sample-files, default min(N, total))
+without replacement, then reads ceil(N/M) words from each via reservoir
+sampling.  Combine with --max-records to bound per-file read time.
 
 Examples:
-  # 10 000 words from local files, stop after 50 records per file
-  python word_sample.py /data/*.wet.gz --n 10000 --seed 42 --max-records 50
+  # 10 000 words from 100 randomly chosen local files
+  python word_sample.py /data/*.wet.gz --n 10000 --seed 42 --sample-files 100
 
-  # 50 000 words from S3, full-file reservoir sampling (slower, unbiased)
-  python word_sample.py s3://commoncrawl/crawl-data/CC-MAIN-2024-10/.../file.wet.gz \\
-      --n 50000 --seed 0
-
-  # Using a CC paths index file
-  python word_sample.py --file-list wet.paths.gz --n 200000 --seed 42 --max-records 100
+  # 50 000 words from 500 files, stopping after 50 records each
+  python word_sample.py --file-list wet.paths.gz --n 50000 --seed 0 \\
+      --sample-files 500 --max-records 50
         """,
     )
     parser.add_argument(
@@ -332,7 +332,13 @@ Examples:
     )
     parser.add_argument(
         "--n", type=int, required=True, metavar="N",
-        help="Number of words to sample.",
+        help="Total words to sample.",
+    )
+    parser.add_argument(
+        "--sample-files", type=int, default=None, metavar="M",
+        dest="sample_files",
+        help="Number of WET files to randomly select (without replacement). "
+             "Words per file = ceil(N / M). Defaults to min(N, total_files).",
     )
     parser.add_argument(
         "--seed", type=int, default=None, metavar="SEED",
@@ -402,36 +408,29 @@ def main() -> None:
     log.info("CC crawl        : %s", cc_id)
     log.info("Output          : %s", output_path)
 
-    # ── Step 1: Select N file indices with seeded RNG ─────────────────────────
+    # ── Step 1: Randomly select M files without replacement ───────────────────
     master_rng = random.Random(args.seed)
-    selections = [master_rng.randrange(len(file_list)) for _ in range(args.n)]
-
-    # ── Step 2: Group selections by file (read each unique file once) ─────────
-    # file_path → number of words needed from it
-    counts: Dict[str, int] = defaultdict(int)
-    for idx in selections:
-        counts[file_list[idx]] += 1
-
-    unique_files = len(counts)
-    log.info(
-        "Unique files to read: %d  (%.1f%% of available, avg %.1f words/file)",
-        unique_files,
-        100.0 * unique_files / len(file_list),
-        args.n / unique_files,
+    n_files = min(
+        args.sample_files if args.sample_files is not None else args.n,
+        len(file_list),
     )
+    selected_files = master_rng.sample(file_list, n_files)
+    words_per_file = math.ceil(args.n / n_files)
 
-    # Per-file seeds derived deterministically from master seed + file path
-    def _file_seed(path: str) -> int:
-        return master_rng.randint(0, 2**31) ^ hash(path) & 0x7FFFFFFF
+    log.info(
+        "Files selected  : %d  (of %d available, %.1f%%)",
+        n_files, len(file_list), 100.0 * n_files / len(file_list),
+    )
+    log.info("Words per file  : %d  (total target: %d)", words_per_file, args.n)
 
     tasks = [
-        (path, k, _file_seed(path), args.format_hint, args.min_length, args.max_records)
-        for path, k in counts.items()
+        (path, words_per_file, master_rng.randint(0, 2**31 - 1),
+         args.format_hint, args.min_length, args.max_records)
+        for path in selected_files
     ]
 
-    # ── Step 3: Process files in parallel ─────────────────────────────────────
-    # words_by_file[path] = [word, word, ...]
-    words_by_file: Dict[str, List[str]] = {}
+    # ── Step 2: Process files in parallel ─────────────────────────────────────
+    rows: List[Tuple[str, str]] = []
     n_workers = args.workers or os.cpu_count()
     log.info("Using %d worker process(es).", n_workers)
 
@@ -446,39 +445,24 @@ def main() -> None:
             except Exception as exc:
                 log.error("Worker failed for %s: %s", path, exc)
                 words = []
-            words_by_file[path] = words
+            source = Path(path).name
+            rows.extend((w, source) for w in words)
             log.info(
                 "[%d/%d] %s — got %d/%d words",
-                completed, unique_files, Path(path).name,
-                len(words), counts[path],
+                completed, n_files, Path(path).name, len(words), words_per_file,
             )
 
-    # ── Step 4: Reconstruct sample in original selection order ────────────────
-    # Track how many words we've consumed from each file so far
-    consumed: Dict[str, int] = defaultdict(int)
-    rows: List[Tuple[str, str]] = []
-    missing = 0
+    # ── Step 3: Shuffle and trim to exactly N ─────────────────────────────────
+    master_rng.shuffle(rows)
+    rows = rows[:args.n]
 
-    for idx in selections:
-        path = file_list[idx]
-        source = Path(path).name
-        file_words = words_by_file.get(path, [])
-        pos = consumed[path]
-        if pos < len(file_words):
-            rows.append((file_words[pos], source))
-            consumed[path] += 1
-        else:
-            missing += 1
-
-    if missing:
+    missing = args.n - len(rows)
+    if missing > 0:
         log.warning(
-            "%d sample(s) could not be filled (file had too few tokens). "
-            "Try reducing --max-records or using larger files.",
+            "%d sample(s) short (files had too few tokens). "
+            "Try fewer --sample-files or a larger --max-records.",
             missing,
         )
-
-    # Shuffle the output so selection order (file grouping) isn't visible
-    master_rng.shuffle(rows)
 
     log.info(
         "Sampling complete. Requested: %d | Collected: %d | Missing: %d",
