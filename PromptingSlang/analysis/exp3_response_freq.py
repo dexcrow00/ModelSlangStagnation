@@ -38,19 +38,52 @@ SLOT_LABELS = {
 _STOP_TOK = re.compile(r"[.\s!?,\n]|^<")
 
 
+def _normalize_logprobs(lp: dict) -> tuple[list[str], list[float], list[dict]]:
+    """Handle Together-native and OpenAI-compatible logprob formats.
+
+    Returns (tokens, token_logprobs, top_logprobs_list) where each element of
+    top_logprobs_list is a dict mapping token_str → logprob_float.
+
+    Leading routing tokens of the form <|special|> [channel_name] <|special|> ...
+    (as produced by gpt-oss-120b) are stripped before returning.
+    """
+    content = lp.get("content")
+    if content and isinstance(content, list):
+        tokens = [item["token"] for item in content]
+        lps = [float(item["logprob"]) for item in content]
+        top_lps = [
+            {a["token"]: a["logprob"] for a in (item.get("top_logprobs") or [])}
+            for item in content
+        ]
+    else:
+        tokens = lp.get("tokens") or []
+        lps_raw = lp.get("token_logprobs") or []
+        lps = [float(x) if x is not None else 0.0 for x in lps_raw]
+        top_lps = lp.get("top_logprobs") or []
+
+    # Strip leading routing-token sequences: <|special|> [routing_arg] <|special|> ...
+    i = 0
+    while i < len(tokens):
+        if tokens[i].startswith("<|"):
+            i += 1
+            if i < len(tokens) and not tokens[i].startswith("<|"):
+                i += 1  # skip routing argument (e.g. "analysis")
+        else:
+            break
+    return tokens[i:], lps[i:], (top_lps[i:] if top_lps else [])
+
+
 def _word_from_tokens(logprobs_obj: dict) -> tuple[str, float | None]:
-    """Reconstruct the generated word and its joint logprob from logprobs.tokens."""
+    """Reconstruct the generated word and its joint logprob from logprobs tokens."""
     if not isinstance(logprobs_obj, dict):
         return "", None
-    tokens: list[str] = logprobs_obj.get("tokens") or []
-    lps: list[float | None] = logprobs_obj.get("token_logprobs") or []
+    tokens, lps, _ = _normalize_logprobs(logprobs_obj)
     parts, total = [], 0.0
     for tok, lp in zip(tokens, lps):
         if _STOP_TOK.search(tok):
             break
         parts.append(tok)
-        if lp is not None:
-            total += float(lp)
+        total += lp
     word = "".join(parts).strip().strip("\"'").lower()
     return word, (total if parts else None)
 
@@ -59,8 +92,8 @@ def _first_token_alts(logprobs_obj: dict) -> list[tuple[str, float]]:
     """Return (token, probability) pairs from top_logprobs[0], normalised."""
     if not isinstance(logprobs_obj, dict):
         return []
-    top_lps = logprobs_obj.get("top_logprobs")
-    if not top_lps or not isinstance(top_lps, list):
+    _, _, top_lps = _normalize_logprobs(logprobs_obj)
+    if not top_lps:
         return []
     first = top_lps[0]
     if not isinstance(first, dict):
