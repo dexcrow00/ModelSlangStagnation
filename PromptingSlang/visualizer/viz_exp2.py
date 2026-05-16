@@ -77,22 +77,52 @@ TEMPLATE_ORDER = [
 _STOP = re.compile(r"[.\s!?,\n]|^<")
 
 
+def _normalize_logprobs(lp: dict) -> tuple[list[str], list[float], list[dict]]:
+    """Handle Together-native and OpenAI-compatible logprob formats.
+
+    Strips leading routing-token sequences (<|special|> [routing_arg] ...) produced
+    by models like gpt-oss-120b before returning token data.
+    """
+    content = lp.get("content")
+    if content and isinstance(content, list):
+        tokens = [item["token"] for item in content]
+        lps = [float(item["logprob"]) for item in content]
+        top_lps = [
+            {a["token"]: a["logprob"] for a in (item.get("top_logprobs") or [])}
+            for item in content
+        ]
+    else:
+        tokens = lp.get("tokens") or []
+        lps_raw = lp.get("token_logprobs") or []
+        lps = [float(x) if x is not None else 0.0 for x in lps_raw]
+        top_lps = lp.get("top_logprobs") or []
+
+    # Strip leading routing-token sequences: <|special|> [routing_arg] <|special|> ...
+    i = 0
+    while i < len(tokens):
+        if tokens[i].startswith("<|"):
+            i += 1
+            if i < len(tokens) and not tokens[i].startswith("<|"):
+                i += 1  # skip routing argument (e.g. "analysis")
+        else:
+            break
+    return tokens[i:], lps[i:], (top_lps[i:] if top_lps else [])
+
+
 def _word_and_prob(logprobs_obj: dict) -> tuple[str, float]:
-    tokens: list[str] = logprobs_obj.get("tokens") or []
-    lps: list[float | None] = logprobs_obj.get("token_logprobs") or []
+    tokens, lps, _ = _normalize_logprobs(logprobs_obj)
     parts, total_lp = [], 0.0
     for tok, lp in zip(tokens, lps):
         if _STOP.search(tok):
             break
         parts.append(tok)
-        if lp is not None:
-            total_lp += float(lp)
+        total_lp += lp
     word = "".join(parts).strip().strip("\"'").lower()
     return word, math.exp(total_lp) if parts else 0.0
 
 
 def _first_token_alts(logprobs_obj: dict) -> list[tuple[str, float]]:
-    top_lps = logprobs_obj.get("top_logprobs") or []
+    _, _, top_lps = _normalize_logprobs(logprobs_obj)
     if not top_lps:
         return []
     first = top_lps[0]

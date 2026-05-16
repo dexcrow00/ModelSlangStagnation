@@ -70,29 +70,61 @@ SLOT_ORDER = list(SLOT_LABELS.keys())
 _STOP = re.compile(r"[.\s!?,\n]|^<")
 
 
+def _normalize_logprobs(lp: dict) -> tuple[list[str], list[float], list[dict]]:
+    """Handle Together-native and OpenAI-compatible logprob formats.
+
+    Strips leading routing-token sequences (<|special|> [routing_arg] ...) produced
+    by models like gpt-oss-120b before returning token data.
+    """
+    content = lp.get("content")
+    if content and isinstance(content, list):
+        tokens = [item["token"] for item in content]
+        lps = [float(item["logprob"]) for item in content]
+        top_lps = [
+            {a["token"]: a["logprob"] for a in (item.get("top_logprobs") or [])}
+            for item in content
+        ]
+    else:
+        tokens = lp.get("tokens") or []
+        lps_raw = lp.get("token_logprobs") or []
+        lps = [float(x) if x is not None else 0.0 for x in lps_raw]
+        top_lps = lp.get("top_logprobs") or []
+
+    # Strip leading routing-token sequences: <|special|> [routing_arg] <|special|> ...
+    i = 0
+    while i < len(tokens):
+        if tokens[i].startswith("<|"):
+            i += 1
+            if i < len(tokens) and not tokens[i].startswith("<|"):
+                i += 1  # skip routing argument (e.g. "analysis")
+        else:
+            break
+    return tokens[i:], lps[i:], (top_lps[i:] if top_lps else [])
+
+
 def _word_and_prob(lp: dict) -> tuple[str, float]:
-    tokens: list[str] = lp.get("tokens") or []
-    lps: list[float | None] = lp.get("token_logprobs") or []
+    tokens, lps, _ = _normalize_logprobs(lp)
     parts, total = [], 0.0
     for tok, lp_val in zip(tokens, lps):
         if _STOP.search(tok):
             break
         parts.append(tok)
-        if lp_val is not None:
-            total += float(lp_val)
+        total += lp_val
     word = "".join(parts).strip().strip("\"'").lower()
     return word, math.exp(total) if parts else 0.0
 
 
 def _era_prob_mass(lp: dict) -> dict[str, float]:
     """Aggregate first-token alternative probability into era buckets."""
-    top_lps = lp.get("top_logprobs") or []
+    _, _, top_lps = _normalize_logprobs(lp)
     if not top_lps:
         return {}
     era_mass: dict[str, float] = defaultdict(float)
     first = top_lps[0]
     total = sum(math.exp(float(v)) for v in first.values())
     for tok, lp_val in first.items():
+        if tok.startswith("<|"):
+            continue
         clean = tok.strip().lower()
         era = SLANG_ERAS.get(clean, "")
         era_mass[era] += math.exp(float(lp_val)) / max(total, 1e-9)
@@ -253,10 +285,9 @@ def render(records: list[dict], output: Path | None) -> None:
         fontsize=8.5,
     )
     ax_strip.set_ylabel("Avg first-token P\nmass on slang era", fontsize=8.5)
+    model_labels = " · ".join(m.replace("-Instruct-Turbo", "") for m in models)
     ax_strip.set_title(
-        "Era probability mass in first-token alternatives, by slot\n"
-        f"(left bar = {models[0].replace('-Instruct-Turbo','')},  "
-        f"right bar = {models[1].replace('-Instruct-Turbo','')})",
+        f"Era probability mass in first-token alternatives, by slot\n({model_labels})",
         fontsize=9, pad=6,
     )
     ax_strip.spines[["top", "right"]].set_visible(False)
