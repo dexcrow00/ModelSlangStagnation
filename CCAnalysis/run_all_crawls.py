@@ -120,6 +120,7 @@ def run_crawl(
     n: int,
     output_dir: Path,
     max_records: Optional[int],
+    sample_files: Optional[int],
     min_length: int,
     workers: Optional[int],
     dry_run: bool,
@@ -137,6 +138,8 @@ def run_crawl(
     ]
     if max_records is not None:
         cmd += ["--max-records", str(max_records)]
+    if sample_files is not None:
+        cmd += ["--sample-files", str(sample_files)]
     if min_length > 1:
         cmd += ["--min-length", str(min_length)]
     if workers is not None:
@@ -201,6 +204,12 @@ Examples:
         dest="max_records",
         help="Stop after K content records per WET file (passed to word_sample). "
              "Greatly reduces runtime. Omit for full-file unbiased sampling.",
+    )
+    parser.add_argument(
+        "--sample-files", type=int, default=None, metavar="M",
+        dest="sample_files",
+        help="WET files to randomly select per crawl (passed to word_sample --sample-files). "
+             "words-per-file = ceil(N / M). Defaults to min(N, total_files).",
     )
     parser.add_argument(
         "--min-length", type=int, default=1, metavar="N",
@@ -345,6 +354,7 @@ def main() -> None:
             n=args.n,
             output_dir=output_dir,
             max_records=args.max_records,
+            sample_files=args.sample_files,
             min_length=args.min_length,
             workers=args.workers,
             dry_run=args.dry_run,
