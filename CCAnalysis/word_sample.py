@@ -292,11 +292,11 @@ def _worker(args: tuple) -> Tuple[str, List[str]]:
 # Output
 # ---------------------------------------------------------------------------
 
-def write_sample_csv(rows: List[Tuple[str, str]], output_path: str) -> None:
+def write_sample_csv(rows: List[str], output_path: str) -> None:
     with open(output_path, "w", newline="", encoding="utf-8") as fh:
         writer = csv.writer(fh)
-        writer.writerow(["word", "source"])
-        writer.writerows(rows)
+        writer.writerow(["word"])
+        writer.writerows((w,) for w in rows)
     log.info("Wrote %d sampled words to %s", len(rows), output_path)
 
 
@@ -361,7 +361,7 @@ Examples:
              "(e.g. CC-MAIN-2024-10). Auto-detected from file paths if omitted.",
     )
     parser.add_argument(
-        "--min-length", type=int, default=1, metavar="N",
+        "--min-length", type=int, default=3, metavar="N",
         help="Minimum word length to include (default: 1).",
     )
     parser.add_argument(
@@ -430,7 +430,7 @@ def main() -> None:
     ]
 
     # ── Step 2: Process files in parallel ─────────────────────────────────────
-    rows: List[Tuple[str, str]] = []
+    rows: List[str] = []
     n_workers = args.workers or os.cpu_count()
     log.info("Using %d worker process(es).", n_workers)
 
@@ -445,8 +445,7 @@ def main() -> None:
             except Exception as exc:
                 log.error("Worker failed for %s: %s", path, exc)
                 words = []
-            source = Path(path).name
-            rows.extend((w, source) for w in words)
+            rows.extend(words)
             log.info(
                 "[%d/%d] %s — got %d/%d words",
                 completed, n_files, Path(path).name, len(words), words_per_file,
