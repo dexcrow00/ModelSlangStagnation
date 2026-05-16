@@ -30,7 +30,8 @@ DEFAULT_MODELS = [
     "meta-llama/Llama-3.2-3B-Instruct-Turbo",
     "Qwen/Qwen2.5-7B-Instruct-Turbo",
     "deepseek-ai/DeepSeek-V4-Pro",
-    "openai/gpt-oss-120b",
+    #"openai/gpt-oss-120b",
+    "google/gemma-4-31B-it",
 ]
 
 
