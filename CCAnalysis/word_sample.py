@@ -447,8 +447,8 @@ def main() -> None:
                 words = []
             rows.extend(words)
             log.info(
-                "[%d/%d] %s — got %d/%d words",
-                completed, n_files, Path(path).name, len(words), words_per_file,
+                "[%d/%d] %s:%s — got %d/%d words",
+                completed, n_files, cc_id, Path(path).name, len(words), words_per_file,
             )
 
     # ── Step 3: Shuffle and trim to exactly N ─────────────────────────────────
