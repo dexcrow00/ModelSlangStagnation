@@ -15,7 +15,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from dotenv import load_dotenv
 
-from src.client import TogetherClient
+from src.client import AnthropicClient, OpenAIClient, RouterClient, TogetherClient
 from src.collector import ResponseCollector
 from src.prompts import load_prompts
 from src.runner import Runner
@@ -37,7 +37,7 @@ DEFAULT_MODELS = [
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Prompt open-source LLMs via TogetherAI and collect responses."
+        description="Prompt LLMs via Together, OpenAI, or Anthropic and collect responses."
     )
     parser.add_argument(
         "--prompts",
@@ -48,7 +48,11 @@ def parse_args() -> argparse.Namespace:
         "--models",
         nargs="+",
         default=DEFAULT_MODELS,
-        help="Together model IDs to query (space-separated). Defaults to a curated list.",
+        help=(
+            "Model IDs to query (space-separated). Together models use 'org/model' format. "
+            "OpenAI models use 'gpt-*'/'o*' names. Anthropic models use 'claude-*' names. "
+            "The correct API is chosen automatically per model."
+        ),
     )
     parser.add_argument(
         "--output",
@@ -120,12 +124,30 @@ def main() -> None:
         sys.exit(0)
     print()
 
-    client = TogetherClient()
+    # Build whichever provider clients have keys configured.
+    def _try(cls, **kw):
+        try:
+            return cls(**kw)
+        except (ValueError, ImportError):
+            return None
+
+    router = RouterClient(
+        together=_try(TogetherClient),
+        openai=_try(OpenAIClient),
+        anthropic=_try(AnthropicClient),
+    )
+    if not router._clients:
+        print(
+            "No API keys found. Set TOGETHER_API_KEY, OPENAI_API_KEY, or ANTHROPIC_API_KEY.",
+            file=sys.stderr,
+        )
+        sys.exit(1)
+
     gen_kwargs = {"temperature": args.temperature, "max_tokens": args.max_tokens}
 
     with ResponseCollector(output_path) as collector:
         runner = Runner(
-            client=client,
+            client=router,
             collector=collector,
             models=args.models,
             gen_kwargs=gen_kwargs,

@@ -15,7 +15,7 @@ from tenacity import (
 )
 from tqdm import tqdm
 
-from .client import TogetherClient
+from .client import RouterClient, TogetherClient
 from .collector import ResponseCollector
 from .prompts import PromptTemplate
 
@@ -33,7 +33,7 @@ def _is_retryable(exc: BaseException) -> bool:
 class Runner:
     def __init__(
         self,
-        client: TogetherClient,
+        client: RouterClient | TogetherClient,
         collector: ResponseCollector,
         models: list[str],
         gen_kwargs: dict[str, Any] | None = None,
