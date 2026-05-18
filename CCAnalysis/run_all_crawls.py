@@ -104,6 +104,19 @@ def crawl_seed(base_seed: int, crawl_index: int) -> int:
 
 
 # ---------------------------------------------------------------------------
+# Utilities
+# ---------------------------------------------------------------------------
+
+def _fmt_duration(secs: float) -> str:
+    s = int(secs)
+    h, rem = divmod(s, 3600)
+    m, s = divmod(rem, 60)
+    if h:
+        return f"{h}h {m:02d}m"
+    return f"{m}m {s:02d}s"
+
+
+# ---------------------------------------------------------------------------
 # Running word_sample
 # ---------------------------------------------------------------------------
 
@@ -124,8 +137,8 @@ def run_crawl(
     min_length: int,
     workers: Optional[int],
     dry_run: bool,
-) -> bool:
-    """Invoke word_sample.py for one crawl. Returns True on success."""
+) -> tuple:
+    """Invoke word_sample.py for one crawl. Returns (success, elapsed_seconds)."""
     out = output_path_for(crawl_id, output_dir)
 
     cmd: List[str] = [
@@ -145,21 +158,19 @@ def run_crawl(
     if workers is not None:
         cmd += ["--workers", str(workers)]
 
-    log.info("CMD: %s", " ".join(cmd))
+    log.debug("CMD: %s", " ".join(cmd))
 
     if dry_run:
-        return True
+        return True, 0.0
 
     t0 = time.monotonic()
     result = subprocess.run(cmd)
     elapsed = time.monotonic() - t0
 
-    if result.returncode == 0:
-        log.info("✓  %s — done in %.1fs → %s", crawl_id, elapsed, out)
-        return True
-    else:
-        log.error("✗  %s — word_sample exited with code %d", crawl_id, result.returncode)
-        return False
+    ok = result.returncode == 0
+    if not ok:
+        log.error("word_sample exited %d for %s", result.returncode, crawl_id)
+    return ok, elapsed
 
 
 # ---------------------------------------------------------------------------
@@ -333,22 +344,21 @@ def main() -> None:
 
     # ── Process each crawl ───────────────────────────────────────────────────
     succeeded, skipped_existing, failed = [], [], []
+    elapsed_times: List[float] = []
+    n_total = len(crawl_ids)
 
     for i, crawl_id in enumerate(crawl_ids):
         out = output_path_for(crawl_id, output_dir)
         seed = crawl_seed(args.seed, i)
+        n_remaining = n_total - i - 1
 
         # Skip if output already exists (unless --force)
         if not args.force and out.exists() and not args.dry_run:
-            log.info("[%d/%d] Skipping %s — output exists (%s)",
-                     i + 1, len(crawl_ids), crawl_id, out)
+            log.info("[%d/%d] %s — skipped", i + 1, n_total, crawl_id)
             skipped_existing.append(crawl_id)
             continue
 
-        log.info("[%d/%d] Processing %s (seed=%d)",
-                 i + 1, len(crawl_ids), crawl_id, seed)
-
-        ok = run_crawl(
+        ok, elapsed = run_crawl(
             crawl_id=crawl_id,
             seed=seed,
             n=args.n,
@@ -361,6 +371,22 @@ def main() -> None:
         )
 
         (succeeded if ok else failed).append(crawl_id)
+        if ok and not args.dry_run:
+            elapsed_times.append(elapsed)
+
+        if elapsed_times and n_remaining > 0:
+            avg = sum(elapsed_times) / len(elapsed_times)
+            eta = f"ETA {_fmt_duration(avg * n_remaining)}"
+        elif n_remaining == 0:
+            eta = "done"
+        else:
+            eta = "ETA unknown"
+
+        status = "✓" if ok else "✗"
+        log.info(
+            "[%d/%d] %s  %s — %s  |  %s",
+            i + 1, n_total, status, crawl_id, _fmt_duration(elapsed), eta,
+        )
 
     # ── Final summary ─────────────────────────────────────────────────────────
     log.info("=" * 60)

@@ -187,8 +187,7 @@ def open_s3(s3_uri: str):
             return s3.get_object(Bucket=bucket, Key=key)["Body"]
         except (BotoCoreError, ClientError) as exc:
             if attempt > _S3_RETRY_MAX_ATTEMPTS:
-                log.error("Exhausted retries for %s: %s", s3_uri, exc)
-                sys.exit(1)
+                raise RuntimeError(f"Exhausted S3 retries for {s3_uri}") from exc
             cap = min(_S3_RETRY_BASE_SECS * (2 ** (attempt - 1)), _S3_RETRY_MAX_SECS)
             delay = random.uniform(0, cap)
             log.warning("S3 retry %d for %s in %.1fs: %s", attempt, s3_uri, delay, exc)
@@ -395,33 +394,38 @@ def main() -> None:
     if not file_list:
         parser.error("Provide at least one WET/WARC file or use --file-list.")
 
-    log.info("Files available : %d", len(file_list))
+    log.debug("Files available : %d", len(file_list))
 
     # Determine output path
     run_ts = datetime.now().strftime("%Y%m%d_%H%M%S")
     cc_id = args.cc_date or extract_cc_crawl_id(file_list)
     output_path = args.output or f"word_sample_{cc_id}_{run_ts}.csv"
 
-    log.info("Sample size     : %d", args.n)
-    log.info("Seed            : %s", args.seed if args.seed is not None else "random")
-    log.info("Max records/file: %s", args.max_records if args.max_records is not None else "unlimited")
-    log.info("CC crawl        : %s", cc_id)
-    log.info("Output          : %s", output_path)
+    log.debug("Sample size     : %d", args.n)
+    log.debug("Seed            : %s", args.seed if args.seed is not None else "random")
+    log.debug("Max records/file: %s", args.max_records if args.max_records is not None else "unlimited")
+    log.debug("CC crawl        : %s", cc_id)
+    log.debug("Output          : %s", output_path)
 
     # ── Step 1: Randomly select M files without replacement ───────────────────
     master_rng = random.Random(args.seed)
+    n_workers = args.workers or os.cpu_count() or 1
+    # Default: enough files to give each worker ~50 words/file, so connection
+    # overhead is amortized. Capped at total available files.
+    default_files = max(n_workers, math.ceil(args.n / 50))
     n_files = min(
-        args.sample_files if args.sample_files is not None else args.n,
+        args.sample_files if args.sample_files is not None else default_files,
         len(file_list),
     )
     selected_files = master_rng.sample(file_list, n_files)
     words_per_file = math.ceil(args.n / n_files)
 
-    log.info(
+    log.debug(
         "Files selected  : %d  (of %d available, %.1f%%)",
         n_files, len(file_list), 100.0 * n_files / len(file_list),
     )
-    log.info("Words per file  : %d  (total target: %d)", words_per_file, args.n)
+    log.debug("Words per file  : %d  (total target: %d)", words_per_file, args.n)
+    log.debug("Using %d worker process(es).", n_workers)
 
     tasks = [
         (path, words_per_file, master_rng.randint(0, 2**31 - 1),
@@ -431,25 +435,17 @@ def main() -> None:
 
     # ── Step 2: Process files in parallel ─────────────────────────────────────
     rows: List[str] = []
-    n_workers = args.workers or os.cpu_count()
-    log.info("Using %d worker process(es).", n_workers)
 
     with ProcessPoolExecutor(max_workers=n_workers) as executor:
         future_to_path = {executor.submit(_worker, t): t[0] for t in tasks}
-        completed = 0
         for future in as_completed(future_to_path):
             path = future_to_path[future]
-            completed += 1
             try:
                 _, words = future.result()
             except Exception as exc:
                 log.error("Worker failed for %s: %s", path, exc)
                 words = []
             rows.extend(words)
-            log.info(
-                "[%d/%d] %s:%s — got %d/%d words",
-                completed, n_files, cc_id, Path(path).name, len(words), words_per_file,
-            )
 
     # ── Step 3: Shuffle and trim to exactly N ─────────────────────────────────
     master_rng.shuffle(rows)
@@ -458,18 +454,13 @@ def main() -> None:
     missing = args.n - len(rows)
     if missing > 0:
         log.warning(
-            "%d sample(s) short (files had too few tokens). "
+            "%d/%d words collected — %d short. "
             "Try fewer --sample-files or a larger --max-records.",
-            missing,
+            len(rows), args.n, missing,
         )
 
-    log.info(
-        "Sampling complete. Requested: %d | Collected: %d | Missing: %d",
-        args.n, len(rows), missing,
-    )
-
     write_sample_csv(rows, output_path)
-    log.info("Done.")
+    log.info("%s — %d words → %s", cc_id, len(rows), output_path)
 
 
 if __name__ == "__main__":
