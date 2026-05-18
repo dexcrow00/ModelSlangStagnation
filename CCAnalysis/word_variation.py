@@ -26,8 +26,9 @@ from datetime import date
 from pathlib import Path
 
 import matplotlib.cm as cm
-import matplotlib.pyplot as plt
 import numpy as np
+import plotly.graph_objects as go
+from plotly.subplots import make_subplots
 
 
 # ---------------------------------------------------------------------------
@@ -156,6 +157,11 @@ def _bucket_by_year(
     return year_dates, bucketed
 
 
+def _to_hex(rgba) -> str:
+    r, g, b = (int(c * 255) for c in rgba[:3])
+    return f"#{r:02x}{g:02x}{b:02x}"
+
+
 def plot(
     dates: list[date],
     counts: dict[str, list[int]],
@@ -168,95 +174,119 @@ def plot(
 ) -> None:
     top_words = sorted(scores, key=lambda w: -scores[w])[:top]
     n = len(top_words)
-    colors = cm.tab20(np.linspace(0, 1, n)) if n <= 20 else cm.turbo(np.linspace(0.05, 0.95, n))
+    raw_colors = cm.tab20(np.linspace(0, 1, n)) if n <= 20 else cm.turbo(np.linspace(0.05, 0.95, n))
+    hex_colors = [_to_hex(c) for c in raw_colors]
 
-    fig, (ax_ts, ax_bar) = plt.subplots(
-        1, 2,
-        figsize=(max(14, n * 0.4 + 8), 7),
-        gridspec_kw={"width_ratios": [2.5, 1]},
-    )
-
-    # ── Choose values: rates (log) or raw counts (linear) ────────────────────
+    # ── Choose values ─────────────────────────────────────────────────────────
     if log_scale:
         values: dict[str, list[float]] = {
             w: [c / t for c, t in zip(cs, totals)]
             for w, cs in counts.items()
         }
-        ylabel = "Sampling rate (log scale)"
+        ylabel = "Sampling rate"
+        yaxis_type = "log"
+        hover_fmt = ".4g"
     else:
         values = {w: [float(c) for c in cs] for w, cs in counts.items()}
         ylabel = "Count per sample"
+        yaxis_type = "linear"
+        hover_fmt = ","
 
     # ── Bucket by year or keep per-crawl ─────────────────────────────────────
     if bucket_by_year:
         plot_dates, plot_values = _bucket_by_year(dates, values)
         xlabel = "Year"
         title_suffix = "yearly avg"
-        tick_labels: list[str] | None = [str(d.year) for d in plot_dates]
     else:
         plot_dates = dates
         plot_values = {w: [v if v else None for v in vs] for w, vs in values.items()}
         xlabel = "Crawl date"
         title_suffix = "per crawl"
-        tick_labels = None
+
+    fig = make_subplots(
+        rows=1, cols=2,
+        column_widths=[0.72, 0.28],
+        subplot_titles=[
+            f"Top {n} most variable words over time ({title_suffix})",
+            "Total occurrences",
+        ],
+        horizontal_spacing=0.06,
+    )
 
     # ── Time series ───────────────────────────────────────────────────────────
-    for word, color in zip(top_words, colors):
+    for word, color in zip(top_words, hex_colors):
         vs = plot_values[word]
         xs = [d for d, v in zip(plot_dates, vs) if v is not None]
         ys = [v for v in vs if v is not None]
         if len(xs) < 2:
             continue
-        ax_ts.plot(
-            xs, ys,
-            label=word,
-            color=color,
-            linewidth=1.4,
-            marker="o",
-            markersize=4 if bucket_by_year else 2.5,
-            alpha=0.85,
+        fig.add_trace(
+            go.Scatter(
+                x=xs, y=ys,
+                name=word,
+                mode="lines+markers",
+                line=dict(color=color, width=1.5),
+                marker=dict(size=6 if bucket_by_year else 4, color=color),
+                hovertemplate=(
+                    f"<b>{word}</b><br>"
+                    f"%{{x}}<br>"
+                    f"{ylabel}: %{{y:{hover_fmt}}}"
+                    "<extra></extra>"
+                ),
+            ),
+            row=1, col=1,
         )
 
-    if log_scale:
-        ax_ts.set_yscale("log")
-    ax_ts.set_xlabel(xlabel, fontsize=10)
-    ax_ts.set_ylabel(ylabel, fontsize=10)
-    ax_ts.set_title(f"Top {n} most variable words over time ({title_suffix})", fontsize=11)
-    if tick_labels is not None:
-        ax_ts.set_xticks(plot_dates)
-        ax_ts.set_xticklabels(tick_labels, fontsize=8)
-    ax_ts.legend(fontsize=7.5, ncol=max(1, n // 15), loc="upper left", framealpha=0.6)
-    ax_ts.spines[["top", "right"]].set_visible(False)
-    ax_ts.tick_params(axis="x", rotation=30)
-
     # ── Total count bar chart ─────────────────────────────────────────────────
-    bar_words = top_words[::-1]  # highest variation at top
+    bar_words = top_words[::-1]
     bar_totals = [sum(counts[w]) for w in bar_words]
-    ax_bar.barh(
-        range(n), bar_totals,
-        color=colors[::-1], edgecolor="white", linewidth=0.4,
+    fig.add_trace(
+        go.Bar(
+            y=bar_words,
+            x=bar_totals,
+            orientation="h",
+            marker_color=hex_colors[::-1],
+            hovertemplate="<b>%{y}</b><br>Total: %{x:,}<extra></extra>",
+            showlegend=False,
+        ),
+        row=1, col=2,
     )
-    ax_bar.set_yticks(range(n))
-    ax_bar.set_yticklabels(bar_words, fontsize=8.5)
-    ax_bar.set_xlabel("Total count across all crawls", fontsize=9)
-    ax_bar.set_title("Total occurrences", fontsize=11)
-    ax_bar.xaxis.set_major_formatter(plt.FuncFormatter(lambda x, _: f"{int(x):,}"))
-    ax_bar.spines[["top", "right"]].set_visible(False)
 
-    fig.suptitle(
-        "Word frequency variation across Common Crawl snapshots\n"
-        f"({len(dates)} crawls  ·  {len(scores):,} words)",
-        fontsize=12, y=1.01,
+    fig.update_layout(
+        title=dict(
+            text=(
+                "Word frequency variation across Common Crawl snapshots<br>"
+                f"<sup>{len(dates)} crawls · {len(scores):,} words passing filters</sup>"
+            ),
+            x=0.5,
+            font=dict(size=15),
+        ),
+        hovermode="closest",
+        legend=dict(title="Word", font=dict(size=10), itemsizing="constant"),
+        height=620,
+        width=1300,
     )
-    fig.tight_layout()
+    fig.update_xaxes(title_text=xlabel, row=1, col=1)
+    fig.update_yaxes(title_text=ylabel, type=yaxis_type, row=1, col=1)
+    fig.update_xaxes(title_text="Total count across all crawls", tickformat=",d", row=1, col=2)
 
     if output:
         output.parent.mkdir(parents=True, exist_ok=True)
-        fig.savefig(output, dpi=160, bbox_inches="tight")
-        print(f"Saved: {output}")
+        if output.suffix.lower() in (".png", ".pdf", ".svg"):
+            try:
+                fig.write_image(str(output))
+                print(f"Saved: {output}")
+            except Exception:
+                html_path = output.with_suffix(".html")
+                fig.write_html(str(html_path), include_plotlyjs="cdn")
+                print(f"Note: install kaleido for static image export (pip install kaleido).")
+                print(f"Saved interactive HTML to: {html_path}")
+        else:
+            out = output if output.suffix else output.with_suffix(".html")
+            fig.write_html(str(out), include_plotlyjs="cdn")
+            print(f"Saved: {out}")
     else:
-        plt.show()
-    plt.close(fig)
+        fig.show()
 
 
 # ---------------------------------------------------------------------------
