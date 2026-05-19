@@ -16,9 +16,10 @@ Three classifiers run on each target_context chunk:
      For each word defined in --slang-defs, extracts the word's contextual
      BERT embedding and compares it to prototype embeddings built from
      user-supplied slang and standard example sentences.
-     Score = cos_sim(context, slang_proto) - cos_sim(context, standard_proto).
+     Words with both senses: score = cos_sim(context, slang_proto) - cos_sim(context, standard_proto).
+     Words with slang examples only: score = cos_sim(context, slang_proto) (0–1 absolute).
      Drops rows where a defined slang word appears but scores below
-     --slang-threshold (default 0.0, i.e. standard sense is more likely).
+     --slang-threshold (default 0.0).
      Rows containing no defined slang word are not affected by this filter.
 
 All three filters can be disabled independently. Use --score-all to write every
@@ -177,16 +178,20 @@ def _find_word_positions(tokens: List[str], word_tokens: List[str]) -> List[int]
 class SlangClassifier:
     """Classify whether target words are used in their slang sense.
 
-    At construction, builds a prototype embedding for the slang and standard
-    sense of each defined word by encoding the supplied example sentences with
-    BERT and averaging the contextual embeddings of the target word across all
-    examples for each sense.
+    At construction, builds prototype embeddings for each defined word by
+    encoding example sentences with BERT and averaging the contextual
+    embeddings of the target word across all examples per sense.
 
-    At inference, the score for a word in a given context is:
-        cos_sim(word_embedding_in_context, slang_proto)
-      - cos_sim(word_embedding_in_context, standard_proto)
+    Two scoring modes depending on which senses are defined:
 
-    Positive score → slang sense more likely.
+      Both slang + standard examples present (normal mode):
+        score = cos_sim(context_emb, slang_proto) - cos_sim(context_emb, standard_proto)
+        Positive → slang sense; negative → standard sense.
+
+      Slang examples only (no standard sense defined):
+        score = cos_sim(context_emb, slang_proto)
+        Ranges 0–1; higher → embedding is closer to the slang prototype.
+        Use --slang-threshold to set a minimum absolute similarity.
     """
 
     def __init__(self, model_name: str, definitions: Dict, device: str) -> None:
@@ -194,7 +199,7 @@ class SlangClassifier:
         self.tokenizer = AutoTokenizer.from_pretrained(model_name)
         self.model = AutoModel.from_pretrained(model_name).to(device).eval()
         self.device = device
-        self.prototypes: Dict[str, Tuple[torch.Tensor, torch.Tensor]] = {}
+        self.prototypes: Dict[str, Tuple[torch.Tensor, Optional[torch.Tensor]]] = {}
         self._build_prototypes(definitions)
 
     # ── Prototype construction ────────────────────────────────────────────────
@@ -247,13 +252,22 @@ class SlangClassifier:
                         word, sentence,
                     )
 
-            if not slang_embeds or not standard_embeds:
+            if not slang_embeds:
                 log.warning(
-                    "Skipping '%s': need at least one usable example per sense.", word
+                    "Skipping '%s': need at least one usable slang example.", word
                 )
                 continue
 
-            slang_proto    = F.normalize(torch.stack(slang_embeds).mean(0), dim=0)
+            slang_proto = F.normalize(torch.stack(slang_embeds).mean(0), dim=0)
+
+            if not standard_embeds:
+                log.info(
+                    "  '%s' — %d slang examples, no standard sense (slang-only mode)",
+                    word_lc, len(slang_embeds),
+                )
+                self.prototypes[word_lc] = (slang_proto, None)
+                continue
+
             standard_proto = F.normalize(torch.stack(standard_embeds).mean(0), dim=0)
             self.prototypes[word_lc] = (slang_proto, standard_proto)
             log.info(
@@ -268,8 +282,10 @@ class SlangClassifier:
     ) -> List[Optional[float]]:
         """Score a list of texts for slang usage of word.
 
-        Returns a list of floats (slang_sim - standard_sim) or None where the
-        word's tokens could not be located in the context.
+        Returns a list of floats or None where the word's tokens could not be
+        located in the context. Score meaning depends on prototype mode:
+          - Both senses: slang_sim - standard_sim (positive = slang)
+          - Slang only:  cos_sim(emb, slang_proto) (0–1 absolute similarity)
         """
         slang_proto, standard_proto = self.prototypes[word]
         word_tokens = self.tokenizer.tokenize(word)
@@ -298,11 +314,12 @@ class SlangClassifier:
                 results.append(None)
                 continue
 
-            emb  = F.normalize(hidden[i, positions].mean(dim=0), dim=0)
-            score = (
-                torch.dot(emb, slang_proto).item()
-                - torch.dot(emb, standard_proto).item()
-            )
+            emb = F.normalize(hidden[i, positions].mean(dim=0), dim=0)
+            slang_sim = torch.dot(emb, slang_proto).item()
+            if standard_proto is not None:
+                score = slang_sim - torch.dot(emb, standard_proto).item()
+            else:
+                score = slang_sim
             results.append(score)
 
         return results
@@ -467,9 +484,12 @@ Examples:
                         help="Min linguistic-acceptability confidence to keep (default: 0.70).")
     parser.add_argument("--slang-threshold", type=float, default=0.0, metavar="F",
                         dest="slang_threshold",
-                        help="Min slang score (slang_sim - standard_sim) to keep a row "
-                             "when a defined slang word is present (default: 0.0). "
-                             "Rows with no defined slang word are unaffected.")
+                        help="Min slang score to keep a row when a defined slang word is "
+                             "present (default: 0.0). For words with both slang and standard "
+                             "examples the score is slang_sim - standard_sim (positive = slang). "
+                             "For slang-only words (no standard examples) it is an absolute "
+                             "cosine similarity (0–1); consider raising the threshold to ~0.5 "
+                             "for those. Rows with no defined slang word are unaffected.")
 
     # Filter toggles
     parser.add_argument("--no-lang-filter", action="store_true", dest="no_lang",
