@@ -2,8 +2,12 @@
 warcio>=1.7.4
 plotly>=5.0
 transformers>=4.30.0
-torch>=2.0.0
 pyyaml>=6.0
+
+# torch: install the CPU-only wheel first to avoid the 2 GB CUDA default on Linux:
+#   pip install torch --index-url https://download.pytorch.org/whl/cpu
+# Then run: pip install -r requirements.txt
+torch>=2.0.0
 
 # For S3 support (highly recommended on EC2)
 boto3>=1.26.0
