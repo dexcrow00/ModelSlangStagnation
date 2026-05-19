@@ -6,7 +6,7 @@ Reads CSVs with uri, target_context, lang_score, quality_score, slang_score
 columns and writes only rows that meet all specified thresholds. Use this to
 experiment with different cutoffs without re-running the BERT models.
 
-The crawl-date range flags (--since, --from-crawl, --to-crawl) select which
+The crawl-date range flags (--from-crawl, --to-crawl) select which
 input files to process by matching the CC-MAIN-YYYY-WW identifier in each
 filename. Files with no recognisable crawl ID in their name are always included.
 
@@ -16,10 +16,9 @@ filtered by --slang-threshold, matching bert_filter.py's behaviour.
 Usage:
     python run_filter.py scored/*.csv -o filtered.csv
     python run_filter.py scored/*.csv -o filtered.csv --lang-threshold 0.9 --quality-threshold 0.8
-    python run_filter.py scored/*.csv -o filtered.csv --since 2020
     python run_filter.py scored/*.csv -o filtered.csv \\
         --from-crawl CC-MAIN-2020-05 --to-crawl CC-MAIN-2022-49
-    python run_filter.py scored/ -o filtered.csv --since 2021 --keep-scores
+    python run_filter.py scored/ -o filtered.csv --keep-scores
 """
 
 from __future__ import annotations
@@ -55,7 +54,6 @@ def _crawl_id_from_path(path: Path) -> Optional[str]:
 
 def _in_range(
     crawl_id: str,
-    since: Optional[int],
     from_crawl: Optional[str],
     to_crawl: Optional[str],
 ) -> bool:
@@ -63,8 +61,6 @@ def _in_range(
         d = _crawl_date(crawl_id)
     except ValueError:
         return True
-    if since is not None and d.year < since:
-        return False
     if from_crawl is not None:
         try:
             if d < _crawl_date(from_crawl):
@@ -120,7 +116,6 @@ def build_parser() -> argparse.ArgumentParser:
 Examples:
   python run_filter.py scored/*.csv -o filtered.csv
   python run_filter.py scored/*.csv -o filtered.csv --lang-threshold 0.9
-  python run_filter.py scored/*.csv -o filtered.csv --since 2020
   python run_filter.py scored/*.csv -o filtered.csv \\
       --from-crawl CC-MAIN-2020-05 --to-crawl CC-MAIN-2022-49
         """,
@@ -143,9 +138,7 @@ Examples:
                         help="Min slang_score to keep when the score is present (default: 0.0). "
                              "Rows with an empty slang_score are unaffected.")
 
-    # Date range
-    parser.add_argument("--since", type=int, default=None, metavar="YEAR",
-                        help="Only process files from this year onward.")
+    # Date range so we can easily reupload dirs back to AWS for more samples
     parser.add_argument("--from-crawl", default=None, metavar="ID", dest="from_crawl",
                         help="Only process files at or after this crawl ID "
                              "(e.g. CC-MAIN-2020-05).")
@@ -185,7 +178,7 @@ def main() -> None:
     in_range: List[Tuple[Path, Optional[str]]] = []
     for path in input_paths:
         crawl_id = _crawl_id_from_path(path)
-        if crawl_id and not _in_range(crawl_id, args.since, args.from_crawl, args.to_crawl):
+        if crawl_id and not _in_range(crawl_id, args.from_crawl, args.to_crawl):
             print(f"Skipping {path.name} (outside date range)", file=sys.stderr)
             continue
         in_range.append((path, crawl_id))
