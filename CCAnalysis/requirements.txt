@@ -1,6 +1,8 @@
 # Required
 warcio>=1.7.4
 plotly>=5.0
+transformers>=4.30.0
+torch>=2.0.0
 
 # For S3 support (highly recommended on EC2)
 boto3>=1.26.0
