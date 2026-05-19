@@ -1,0 +1,985 @@
+# slang.yaml — Sense disambiguation examples for bert_filter.py
+#
+# Each entry provides example sentences for the slang usage and the
+# standard/literal usage of the word or phrase.  The BERT classifier
+# uses these to build prototype embeddings; more examples per sense
+# produce more stable prototypes.
+#
+# Note that in current experiments, to simplify sampling logic,
+# we do not use multi-word slang phrases, they are presented here for potenential future work and reference.
+
+alpha:
+  slang:
+    - "He walked into the party with total alpha energy, everyone turned to look"
+    - "Being alpha means owning the room without saying a word"
+    - "Stop being so beta and just ask her out already, be more alpha about it"
+    - "The alpha mentality is about being confident and dominant in every situation"
+    - "He posted another alpha male motivation video about never showing weakness"
+    - "She said he gives off serious alpha vibes, super self-assured and direct"
+  standard:
+    - "Alpha is the first letter of the Greek alphabet"
+    - "The software is currently in alpha testing and not ready for public release"
+    - "Alpha particles are emitted during certain types of radioactive decay"
+    - "The wolf pack's alpha is typically the breeding male who leads hunts"
+    - "Alpha Centauri is the closest star system to our solar system"
+    - "The pilot announced they were beginning their alpha approach to the runway"
+
+meh:
+  slang:
+    - "The sequel was just meh, nowhere near as good as the original"
+    - "I asked if she wanted to go and she just said meh, so I left it"
+    - "The food was meh at best, I would not go back to that restaurant"
+    - "Feeling pretty meh today, not sad but definitely not happy either"
+    - "The new album is honestly meh, a few good tracks but mostly filler"
+    - "He shrugged and said meh when they announced the new policy changes"
+
+bae:
+  slang:
+    - "Just spent the whole day with bae and it was perfect honestly"
+    - "My bae surprised me with flowers and I am literally crying"
+    - "She is totally bae material, funny, smart, and gorgeous all at once"
+    - "Tag your bae in this so they know you are thinking of them"
+    - "Bae and I are doing a matching costume this Halloween and it is so cute"
+    - "Woke up next to bae and life is genuinely good right now"
+
+basic bitch:
+  slang:
+    - "She called her a basic bitch for loving pumpkin spice lattes and UGG boots"
+    - "I know it is basic bitch behavior but I genuinely love that mainstream pop song"
+    - "The comment section was full of people calling her a basic bitch for her taste"
+    - "He said she was a total basic bitch because she only listens to top forty music"
+    - "There is nothing wrong with being a basic bitch, like your mainstream things"
+    - "She embraced the basic bitch label and posted a self-aware joke about it"
+
+bruh:
+  slang:
+    - "Bruh I cannot believe he actually said that in front of everyone"
+    - "She showed up two hours late and then got annoyed at us, bruh"
+    - "Bruh the plot twist at the end had me absolutely speechless"
+    - "I told him and he just went silent for like a minute, bruh moment for real"
+    - "Bruh why would you do that, that is literally the worst possible decision"
+    - "Walked in and saw the mess and just said bruh and walked right back out"
+
+bro:
+  slang:
+    - "Bro you are not going to believe what just happened at practice today"
+    - "He always calls everyone bro even people he just met five minutes ago"
+    - "Bro culture at that gym was so intense, everything was about gains and dominance"
+    - "Total bro move showing up with beer without being asked, love that guy"
+    - "Bro please just listen to me for once instead of immediately giving advice"
+    - "He did the full bro handshake and back slap thing when they saw each other"
+  standard:
+    - "Her brother asked her to pass the salt at the dinner table"
+    - "He drove his brother to the airport early on Saturday morning"
+    - "The older brother had always looked out for the younger one growing up"
+    - "She introduced her brother to her new colleagues at the company event"
+    - "His brother called from overseas to wish him a happy birthday"
+
+gaslight:
+  slang:
+    - "He tried to gaslight her into thinking she remembered the conversation wrong"
+    - "She was literally gaslighting him by denying things she had clearly said"
+    - "That whole relationship was toxic, he would gaslight her constantly about her feelings"
+    - "Stop trying to gaslight me, I know exactly what happened that night"
+    - "Her boss would gaslight employees into thinking they were underperforming unfairly"
+    - "The documentary showed how cult leaders gaslight their followers over years"
+  standard:
+    - "The old gaslight on the corner of the street flickered in the autumn fog"
+    - "Victorian streets were once illuminated by rows of gaslights that needed daily maintenance"
+    - "The gaslight era of London saw a transformation in how city streets were lit"
+    - "Workers were employed specifically to light and extinguish the gaslights each night"
+    - "The theatre used antique gaslights to recreate the atmosphere of nineteenth century drama"
+    - "The gaslight had a warm amber glow that lanterns and candles could not replicate"
+
+hella:
+  slang:
+    - "That hike was hella hard but the view at the top was absolutely worth it"
+    - "She is hella smart and finished the entire exam in half the time"
+    - "I am hella tired but I cannot stop watching this show right now"
+    - "The concert was hella loud, my ears were ringing for days afterward"
+    - "He was hella nervous before the presentation but completely crushed it"
+    - "There were hella people at the festival, I could barely move through the crowd"
+
+lol:
+  slang:
+    - "That video had me dying lol I must have watched it ten times already"
+    - "She texted back just lol and nothing else and I felt that in my soul"
+    - "He fell off his chair in the meeting lol I had to leave the room"
+    - "Imagine thinking that would work lol the audacity is genuinely impressive"
+    - "I tried to cook and set off the smoke alarm lol send help please"
+    - "Lol she actually showed up wearing the same dress, completely unplanned"
+
+red pill:
+  slang:
+    - "He got red pilled after falling down internet rabbit holes for months"
+    - "The forum was full of men who claimed to be red pilled about dating and society"
+    - "She said the documentary finally red pilled her about how the media operates"
+    - "Being red pilled in that community meant rejecting mainstream political views entirely"
+    - "He used red pill ideology to justify his increasingly extreme opinions online"
+    - "The podcast host spent every episode trying to red pill his audience on economics"
+
+savage:
+  slang:
+    - "That comeback was absolutely savage, she had no response to that at all"
+    - "He ghosted her after five years, that is genuinely savage behavior"
+    - "Her roast of her friend was so savage the whole group was cringing and laughing"
+    - "She walked out mid-meeting and quit on the spot, totally savage honestly"
+    - "The way she clapped back at the haters was savage and iconic at the same time"
+    - "He posted a savage reply to the critic and it immediately went viral"
+  standard:
+    - "The documentary explored the lives of savage predators in the African savanna"
+    - "Early explorers used the word savage to dehumanize indigenous populations they encountered"
+    - "The savage storm destroyed dozens of homes along the coastline overnight"
+    - "Colonial literature often portrayed non-European peoples as savage and uncivilized"
+    - "The athlete endured a savage beating but refused to be knocked down"
+    - "Historians examined how the term savage was weaponized to justify colonization"
+
+dank:
+  slang:
+    - "That meme is absolutely dank, sharing it to every group chat immediately"
+    - "We found the most dank little noodle shop, totally hidden off the main street"
+    - "His playlist is so dank, every track is a certified banger from start to finish"
+    - "Dank meme compilation videos were getting millions of views every single week"
+    - "She described the album as straight up dank and said it was her favorite of the year"
+    - "The game's level design was genuinely dank, creative and rewarding at every turn"
+  standard:
+    - "The dungeon had a dank smell from years of accumulated moisture and decay"
+    - "She descended into the dank basement where old boxes of papers were stored"
+    - "The cave was cold and dank, water dripping steadily from the low ceiling above"
+    - "They pressed through the dank undergrowth of the ancient forest in the rain"
+    - "The old prison cells were dank and dark, with moss growing up the stone walls"
+    - "The damp and dank conditions in the mine led to many respiratory illnesses"
+
+thirsty:
+  slang:
+    - "He is so thirsty for attention, liking every photo she posts within seconds"
+    - "She blocked him because he was being thirsty and texting constantly"
+    - "The comments were full of thirsty replies from people trying to get noticed"
+    - "Stop being thirsty and let them come to you for once in your life"
+    - "He posted twelve gym selfies in one day and the thirst was overwhelming"
+    - "She could tell he was thirsty from the way he laughed at everything she said"
+  standard:
+    - "After the long hike she was desperately thirsty and drank the entire water bottle"
+    - "The dog was thirsty after playing fetch and rushed to its water bowl"
+    - "Plants become thirsty during droughts and their leaves begin to wilt and curl"
+    - "He was so thirsty from working in the heat that he felt dizzy and lightheaded"
+    - "The children were thirsty after running around at the playground all afternoon"
+    - "She woke up thirsty in the night and went to the kitchen to get a glass of water"
+
+yas:
+  slang:
+    - "Yas queen that look is everything, you absolutely ate and left no crumbs"
+    - "Yas they finally announced a second season I have been waiting for months"
+    - "She walked out in that dress and all we could say was yas, absolutely stunning"
+    - "Yas finally someone said what everyone has been thinking this whole time"
+    - "He announced he was coming back to the sport and fans replied with yas across the board"
+    - "Yas this is the collab we have all been waiting for, two legends together"
+
+yolo:
+  slang:
+    - "Spent my entire paycheck on concert tickets but honestly yolo"
+    - "She jumped off the rope swing into the lake screaming yolo the whole way down"
+    - "He quit his job to travel the world with no plan, full yolo energy"
+    - "We ordered every dessert on the menu because it is Friday and yolo honestly"
+    - "Yolo I am messaging my crush even though I have zero idea how they feel"
+    - "She dyed her hair bright red on impulse, total yolo moment and she loved it"
+
+doggo:
+  slang:
+    - "Look at this absolute unit of a doggo, he is so fluffy I cannot handle it"
+    - "My doggo has been extra cuddly today and I am not complaining at all"
+    - "That rescue doggo found his forever home and the photos are making me cry"
+    - "She posted a video of her doggo doing zoomies around the living room"
+    - "This tiny doggo wearing a raincoat is the most important content on the internet"
+    - "My doggo stares at me while I eat and acts like he has not been fed in years"
+
+pog:
+  slang:
+    - "That play was absolutely pog, I rewatched the clip like fifteen times"
+    - "Pog he actually did it, nobody thought he would pull off that challenge"
+    - "The crowd went pog mode when the team scored the winning goal in overtime"
+    - "She pulled the rarest card from the pack and the whole stream went pog"
+    - "That ending was so pog, I was not expecting it to go down like that at all"
+    - "He carried the whole team and the chat was just non-stop pog reactions"
+  standard:
+    - "POG was a game played with cardboard milk caps that was popular in the early 1990s"
+    - "The POG craze swept elementary schools across America during the mid nineties"
+    - "Children collected POG slammers made from metal or plastic to win milk caps"
+    - "The milk cap game POG originated in Hawaii and was named after a juice brand"
+    - "PogChamp was a Twitch emote featuring a surprised face that became iconic in gaming"
+    - "The emote PogChamp was used to express hype or excitement in live chat streams"
+
+yeet:
+  slang:
+    - "He yeeted his phone across the room when his team lost the championship"
+    - "She yeeted her entire wardrobe and started fresh with a whole new style"
+    - "The kid yeeted his backpack into the corner as soon as he got home from school"
+    - "Yeet he just launched the ball into the stands trying to throw it back"
+    - "They yeeted out of the party early because the vibe was completely off"
+    - "She yeeted the alarm clock across the room at six in the morning"
+
+fam:
+  slang:
+    - "Fam you are not going to believe what she said to me at the meeting today"
+    - "My whole fam is coming over for the holidays and I am so excited honestly"
+    - "He calls everyone fam after knowing them for like five minutes and it is endearing"
+    - "Fam I am telling you this is the best food truck I have ever been to in my life"
+    - "She posted a group photo with the caption my fam loves you all"
+    - "Fam we need to talk about what happened last night because it was insane"
+  standard:
+    - "She spent the holidays with her family at her parents house in the countryside"
+    - "His family had lived in the same town for four generations"
+    - "The family gathered around the table for a meal on Sunday afternoon"
+    - "She called her family every week to catch up on what everyone was doing"
+    - "Family reunions were held every summer at the grandparents farm"
+
+ratchet:
+  slang:
+    - "That party was ratchet, someone broke a window and nobody even cared"
+    - "She is not ratchet she is just confident and does not care what people think"
+    - "The whole situation was ratchet from start to finish honestly"
+    - "He said the club was ratchet and refused to go back even with free entry"
+    - "Stop being ratchet in public, people are watching and judging"
+    - "The neighborhood kids were ratchet but they were also genuinely fun to be around"
+  standard:
+    - "He used a ratchet to tighten the bolts on the engine during the repair"
+    - "The ratchet mechanism allows the wheel to turn in only one direction"
+    - "A ratchet wrench is an essential tool in any well-stocked toolbox"
+    - "The engineer explained how a ratchet converts back-and-forth motion to rotation"
+    - "He reached for the ratchet strap to secure the cargo in the truck bed"
+    - "The ratchet clicked steadily as he worked through the pile of loose bolts"
+
+swag:
+  slang:
+    - "He walked in with so much swag that everyone in the room turned to stare"
+    - "That fit is giving major swag, the whole outfit is perfectly coordinated"
+    - "She has natural swag that cannot be taught or faked under any circumstances"
+    - "The way he carried himself with effortless swag was honestly magnetic"
+    - "Swag on point today, the fit check photos are going to be incredible"
+    - "He had so much swag even in a plain white shirt and jeans somehow"
+  standard:
+    - "The pirates divided the swag they had taken from the merchant vessel equally"
+    - "Swag bags filled with merchandise were handed out to conference attendees"
+    - "The thief stuffed his swag into a sack and fled before anyone noticed"
+    - "Convention goers eagerly collected company swag including pens and tote bags"
+    - "The heist film featured an elaborate scheme to hide the swag from the police"
+    - "Free swag was distributed at the trade show to attract visitors to the booth"
+    - "Justin Beiber's 2025 album Swag"
+
+sick:
+  slang:
+    - "That trick was absolutely sick, I have never seen anyone pull that off before"
+    - "The graphics in this new game are genuinely sick, way beyond what I expected"
+    - "She dropped a sick verse on that track and completely stole the whole song"
+    - "That comeback was sick, he completely shut down the argument in three words"
+    - "The view from the top of the mountain was sick, totally worth the climb"
+    - "He made a sick edit of the highlight reel and it went viral immediately"
+  standard:
+    - "She stayed home from school because she was sick with a bad cold"
+    - "The doctor told him he was sick and needed to rest for at least a week"
+    - "He felt sick after eating something questionable at the food stall"
+    - "The hospital was full of sick patients waiting to be seen by a physician"
+    - "She nursed her sick cat back to health over several weeks of careful care"
+    - "He woke up feeling sick and barely made it to the bathroom in time"
+
+stfu:
+  slang:
+    - "She texted back stfu you are lying there is no way that actually happened"
+    - "He literally would not stop talking and everyone in the group chat said stfu"
+    - "The comment just said stfu and nothing else and honestly it was deserved"
+    - "Stfu this song just came on and it is my absolute favorite please everyone be quiet"
+    - "Can everyone just stfu for five minutes so I can actually think straight"
+    - "She posted stfu followed by a series of shocked emojis when she heard the news"
+
+sus:
+  slang:
+    - "Something about his excuse is really sus, the whole story does not add up"
+    - "That new account following everyone is super sus, probably a bot or a scam"
+    - "It is a bit sus that he left right before the money went missing from the register"
+    - "The way she acted when we brought it up was honestly very sus"
+    - "Among Us made everyone use sus in real life and it never stopped being funny"
+    - "His behavior at the party was so sus that people started talking about it"
+
+stan:
+  slang:
+    - "She is a full-on stan, she has every limited edition piece of merchandise they ever made"
+    - "The BTS stans flooded the comment section with supportive messages for hours"
+    - "I stan this character so hard, she is the most well-written in the entire show"
+    - "He went full stan mode and flew across the country just to attend the concert"
+    - "Twitter stans can be intense but their dedication is honestly kind of admirable"
+    - "I do not just like that band I genuinely stan them with my whole heart"
+  standard:
+    - "Stan was a common nickname for Stanley in the early twentieth century"
+    - "The name Stan appeared frequently in mid-century American literature and film"
+    - "He introduced himself as Stan and shook hands firmly with everyone at the table"
+    - "Stan Eminem's song about an obsessive fan inspired the slang use of the word"
+    - "The song Stan by Eminem tells the story of a fan who becomes dangerously obsessed"
+
+snatched:
+  slang:
+    - "Her eyebrows are snatched to the gods, the precision is genuinely impressive"
+    - "She walked in looking absolutely snatched and everyone lost their minds"
+    - "That waist is snatched, the corset is doing incredible things for the silhouette"
+    - "The makeup artist left her completely snatched for the red carpet appearance"
+    - "He showed up to the event looking so snatched that he was unrecognizable honestly"
+    - "Snatched look for a night out, the outfit is perfectly put together from head to toe"
+  standard:
+    - "The thief snatched her bag right off her shoulder before running down the alley"
+    - "He snatched the document off the table before anyone else could read it"
+    - "She snatched the toy from her brother and immediately started an argument"
+    - "The eagle snatched a fish from the river with remarkable speed and precision"
+    - "He snatched defeat from the jaws of victory with a careless mistake at the end"
+    - "The opportunity was snatched away before she had a chance to properly consider it"
+
+troll:
+  slang:
+    - "He spent his evenings trolling sports forums just to make fans of rival teams upset"
+    - "Do not feed the troll, they just want attention and chaos in the comment section"
+    - "She posted something controversial just to troll people and it definitely worked"
+    - "The account was clearly a dedicated troll with no genuine opinions of its own"
+    - "He trolled his own followers for months before revealing it was all a bit"
+    - "The internet troll sent thousands of hateful messages before being banned"
+  standard:
+    - "In Norse mythology, trolls are large supernatural creatures that live in mountains"
+    - "Scandinavian folktales describe trolls as slow-witted giants afraid of sunlight"
+    - "The fantasy novel featured a troll that lived under the bridge and demanded payment"
+    - "She collected ceramic troll figurines with brightly colored hair as a child"
+    - "The fishermen went trolling along the river bank in the early morning hours"
+    - "Trolling for fish involves dragging a lure or bait through the water behind a boat"
+
+no cap:
+  slang:
+    - "That was the best concert I have ever been to no cap it was life-changing"
+    - "She is genuinely the most talented person in the whole department no cap"
+    - "No cap that movie made me cry three separate times and I am not ashamed"
+    - "He said no cap he would be there by eight and he actually showed up on time"
+    - "No cap this is the hardest level in the entire game by a significant margin"
+    - "I love you no cap, you are honestly one of the best friends I have ever had"
+  standard:
+    - "He put on his favorite baseball cap to keep the sun out of his eyes"
+    - "Make sure to twist the cap tightly back onto the water bottle"
+    - "The local government decided to place a cap on how much the city can spend this year"
+    - "The caps lock key had no cap physically covering the switch mechanism anymore"
+    - "He placed the bottle carefully with no cap on top to allow the liquid to breathe"
+
+huzz:
+  slang:
+    - "He pulled up with the huzz and everyone immediately knew tonight would be a good time"
+    - "She brought the huzz to the party and transformed the whole vibe instantly"
+    - "Where the huzz at?"
+
+mid:
+  slang:
+    - "The movie was honestly just mid, not bad enough to hate but not good enough to love"
+    - "His performance this season has been completely mid compared to last year"
+    - "She called the restaurant mid and said she would not be returning any time soon"
+    - "The new update is so mid they actually made the game worse in several ways"
+    - "People are overhyping this album, it is fine but genuinely mid at best"
+    - "That argument is so mid, try harder if you want anyone to take it seriously"
+  standard:
+    - "She pulled the card from the mid section of the deck rather than the top"
+    - "The mid point of the journey was marked by a small town with a gas station"
+    - "He paused mid sentence when he realized he had forgotten what he was saying"
+    - "The temperature in mid October was still surprisingly warm for the region"
+    - "She reached mid career and decided to take stock of where she wanted to go next"
+    - "The construction crew worked on the mid section of the bridge throughout winter"
+
+she ate:
+  slang:
+    - "She ate that whole performance and left absolutely nothing on the stage"
+    - "Did you see her verse? She ate and left no crumbs, completely unmatched"
+    - "She ate the red carpet look, everyone else went home after seeing that outfit"
+    - "The way she delivered that monologue, she completely ate and I am in awe"
+    - "She ate that challenge with ease while everyone else struggled through it"
+    - "She ate the whole interview, charming and funny and completely in control"
+  standard:
+    - "She ate a light breakfast before heading to the gym early in the morning"
+    - "After the long hike she ate a full meal and immediately felt her energy return"
+    - "She ate slowly and deliberately, savoring each bite of the carefully prepared dish"
+    - "She ate alone at the kitchen table while reading a book she had been enjoying"
+    - "She ate the leftovers cold straight from the container rather than reheating them"
+
+he ate:
+  slang:
+    - "He ate that set from beginning to end, the crowd was completely in his hands"
+    - "He ate the interview, gave the funniest and most charming answers of anyone"
+    - "He ate the whole challenge and still had energy left while others were exhausted"
+    - "He ate that verse, the bars were so hard that the room went completely silent"
+    - "He walked on stage and just ate, the performance was flawless from first to last"
+    - "He ate the role completely and I cannot imagine anyone else in that part now"
+  standard:
+    - "He ate a sandwich at his desk during the lunch break rather than going out"
+    - "He ate dinner early because he had an evening event to attend across town"
+    - "After the surgery he ate only soft foods for the first week of recovery"
+    - "He ate quickly without tasting much because he was already running late"
+    - "He ate the last slice of cake and then felt guilty about it immediately"
+
+lit:
+  slang:
+    - "The party was so lit last night, I did not want to leave at all honestly"
+    - "This track is absolutely lit, I have had it on repeat for the past three days"
+    - "The atmosphere at the stadium was completely lit before the match even started"
+    - "She got the promotion and the whole office was lit with excitement for her"
+    - "This weekend is going to be lit, we have so many things planned already"
+    - "The crowd was already lit by the time the headliner finally took the stage"
+  standard:
+    - "She lit the candles carefully before dimming the overhead lights in the room"
+    - "He lit the fireplace as the temperature outside dropped well below freezing"
+    - "The room was lit by a single lamp in the corner, casting long shadows on the wall"
+    - "She lit her way through the dark corridor with a small pocket flashlight"
+    - "The match flickered and he lit the gas stove to start cooking dinner"
+    - "The stadium was lit up with floodlights long after the last game had ended"
+
+delulu:
+  slang:
+    - "She is completely delulu if she thinks that situation is going to work out"
+    - "He is so delulu about his chances, they have not spoken in months"
+    - "I know I am delulu for thinking they noticed me but let me have this"
+    - "The delulu fans were convinced the two actors were secretly dating in real life"
+    - "Being a little delulu keeps hope alive honestly, reality is overrated sometimes"
+    - "She admitted she was being delulu about the job but applied anyway just in case"
+
+slop:
+  slang:
+    - "This movie is pure slop, AI-generated garbage with no story or soul whatsoever"
+    - "The algorithm just feeds you slop now, no real content worth watching anymore"
+    - "He said the corporate YouTube videos felt like algorithmic slop, soulless and bland"
+    - "The sequel was absolute slop compared to the original, a complete creative failure"
+    - "She refuses to consume slop and only follows creators who make genuine content"
+    - "The feed was nothing but slop and advertisements, completely impossible to enjoy"
+  standard:
+    - "The farmer carried two buckets of slop out to feed the pigs in the muddy pen"
+    - "She slopped the liquid across the counter when she set the glass down too hard"
+    - "The cafeteria served an unappetizing slop that nobody could identify with certainty"
+    - "He accidentally spilled slop from the mop bucket all over the kitchen floor"
+    - "The animal sanctuary used vegetable slop to supplement the rescued animals diets"
+    - "She wrinkled her nose at the gray slop sitting in the bottom of the cooking pot"
+
+giving:
+  slang:
+    - "That whole outfit is giving old Hollywood glamour in the best possible way"
+    - "The energy in that room was giving main character and I was completely there for it"
+    - "She walked in giving absolutely nothing and it somehow worked perfectly"
+    - "His whole presentation was giving unhinged professor and it was so entertaining"
+    - "The decor was giving cottagecore with a gothic twist which is exactly my aesthetic"
+    - "That performance was giving peak cinema, I was completely transported the whole time"
+  standard:
+    - "She spent the afternoon giving away old clothes she no longer wore to the shelter"
+    - "He was generous with his time, always giving help to whoever asked for it"
+    - "The charity focused on giving back to communities that had been underserved"
+    - "She made a habit of giving thoughtful gifts that showed she listened carefully"
+    - "Giving blood regularly is one of the simplest ways to help others in need"
+    - "The foundation was dedicated to giving scholarships to first-generation students"
+
+# This might actually be more of a vogue word! Notice the senses are more or less the same.
+aura:
+  slang:
+    - "He walks in the room and you can just feel his aura, completely magnetic presence"
+    - "She has the kind of aura that makes people stop and pay attention immediately"
+    - "His aura is so strong in that video, you can tell he is built different"
+    - "The aura on that man is immaculate, everything about him just commands respect"
+    - "She lost aura points when she showed up late to her own event without explanation"
+    - "His aura goes hard, the moment he enters any space it shifts completely"
+  standard:
+    - "The spiritual healer claimed she could see a golden aura surrounding her client"
+    - "In metaphysical traditions, the aura is an energy field believed to surround the body"
+    - "The northern lights create a spectacular aura of color across the Arctic sky"
+    - "The telescope captured images of the sun's corona, the aura of light around it"
+    - "Scientists measured the electromagnetic aura produced by the experimental device"
+    - "The painting depicted saints with glowing halos, symbols of a divine aura"
+
+# Double slang senses. Tricky! Coudl try moving slang to standard, and providing more current "bop" sense as slang.
+bop:
+  slang:
+    - "That song is a straight up bop, I cannot stop listening to it all day"
+    - "The new single is such a bop, she really delivered something catchy this time"
+    - "Bop of the year honestly, every single chorus hits harder than the last one"
+    - "She described the album as a collection of bops from beginning to end"
+    - "It is a certified bop, everyone at the party knew every word immediately"
+    - "The soundtrack was full of bops and I downloaded every track on the way home"
+  standard:
+    - "He gave the ball a light bop with his head and it sailed into the back of the net"
+    - "The toddler gave the balloon a bop and watched it float across the room"
+    - "She gave him a gentle bop on the shoulder to get his attention during the meeting"
+    - "The cat gave the toy mouse a bop with its paw before losing interest in it"
+    - "He bop-bopped his head along to the jazz playing softly in the background"
+    - "She gave the pinata a hard bop and candy rained down on the excited children"
+
+brainrot:
+  slang:
+    - "I have been watching short videos for four hours and the brainrot is setting in"
+    - "His whole personality is brainrot content and minecraft references at this point"
+    - "The comment section is pure brainrot, every reply is just a meme or a shitpost"
+    - "She said she needs a digital detox because the brainrot from TikTok is real"
+    - "Brainrot humor is when you have seen so much absurd content that normal jokes bore you"
+    - "The type of brainrot content dominating the algorithm keeps getting more abstract"
+
+bussin:
+  slang:
+    - "This jerk chicken is absolutely bussin, best I have ever had in my entire life"
+    - "She made her grandmother's recipe and everyone agreed it was straight up bussin"
+    - "Bro this spot is bussin every single time, never had a bad meal here once"
+    - "The food truck at the corner was bussin and had a line around the block daily"
+    - "That new restaurant downtown is bussin, you need to go there immediately"
+    - "She took one bite, looked up, and said bussin with complete conviction"
+
+chopped:
+  slang:
+    - "He came in looking chopped today, hair not done and outfit completely thrown together"
+    - "She said his whole demeanor was chopped and she was not interested at all"
+    - "The competition was chopped the moment he showed up looking like that honestly"
+    - "Bro got rejected and was looking completely chopped for the rest of the evening"
+    - "His selfie was chopped and his friends roasted him relentlessly in the comments"
+    - "She said the neighborhood was chopped and needed major investment to improve"
+  standard:
+    - "He chopped the vegetables finely before adding them to the simmering broth"
+    - "The wood was chopped into manageable pieces and stacked beside the cabin"
+    - "She chopped her hair short in a spontaneous decision and loved the result"
+    - "The chef chopped the herbs with a practiced rhythm on the worn wooden board"
+    - "He chopped down the dead tree before the winter storms could bring it down"
+    - "She chopped the onions quickly, blinking against the tears they brought on"
+
+cooked:
+  slang:
+    - "We are absolutely cooked if this deal does not go through by Friday"
+    - "He is cooked, the evidence against him is overwhelming and undeniable at this point"
+    - "She forgot to save her work before the computer crashed and now she is cooked"
+    - "The team is so cooked going into the second half down by three touchdowns"
+    - "I am completely cooked for this exam, I did not study nearly enough"
+    - "He got caught lying on his resume and now he is genuinely cooked professionally"
+  standard:
+    - "She cooked a full roast dinner for her family on Sunday afternoon"
+    - "The chicken needs to be cooked to an internal temperature to be safe to eat"
+    - "He cooked breakfast every morning before the rest of the household woke up"
+    - "The vegetables were perfectly cooked, still holding some bite without being raw"
+    - "She had cooked the stew for hours until the meat was fall-apart tender"
+    - "The chef explained that the fish should be cooked gently over a low heat"
+
+lowkey:
+  slang:
+    - "I lowkey love that embarrassing song even though I would never admit it publicly"
+    - "She is lowkey the most talented person in the office but never shows off"
+    - "He lowkey hates parties but goes to every single one because he hates missing out"
+    - "Lowkey obsessed with this show right now, I have watched the whole series twice"
+    - "I am lowkey scared about starting the new job but also really excited about it"
+    - "She lowkey wanted to cancel plans but ended up having a genuinely great time"
+  standard:
+    - "The piano was playing lowkey in the background of the intimate dinner party"
+    - "He kept the meeting low-key and informal without any presentation or fanfare"
+    - "She preferred a low-key celebration at home rather than a big party this year"
+    - "The security team operated in a low-key manner to avoid attracting attention"
+    - "They held a low-key ceremony with only close family members present"
+    - "The jazz musician was known for his lowkey style that favored restraint over flash"
+
+epic:
+  slang:
+    - "That comeback was absolutely epic, I have never seen anything like it in my life"
+    - "The birthday surprise was so epic she literally started crying from joy"
+    - "They pulled off the most epic prank on their teacher and documented every moment"
+    - "The final boss fight was genuinely epic, took us three hours and it was worth it"
+    - "She described the road trip as the most epic experience of her entire life"
+    - "The concert finale was pure epic, fireworks and confetti and the whole crowd singing"
+  standard:
+    - "The Odyssey is an epic poem attributed to Homer that describes a hero's journey"
+    - "Epic literature typically involves heroic deeds on a grand and expansive scale"
+    - "She studied the conventions of the epic genre in her classical literature course"
+    - "The film was described as an epic in the tradition of classic Hollywood spectacles"
+    - "The novel spans three generations in an epic that covers decades of family history"
+    - "Epic films often involve large casts, sweeping landscapes, and historical subjects"
+
+rad:
+  slang:
+    - "That trick on the half pipe was so rad, she made it look completely effortless"
+    - "The 80s aesthetic in that video is genuinely rad, I am obsessed with everything"
+    - "He showed up in a rad vintage jacket that everyone immediately complimented"
+    - "That idea is so rad, I cannot believe nobody has tried it before now"
+    - "She had the most rad collection of records including some incredibly rare pressings"
+    - "The whole event was rad from beginning to end, every detail was perfectly done"
+  standard:
+    - "Radiation exposure is measured in units called rads in some older measurement systems"
+    - "The rad is a unit of absorbed radiation dose equal to one hundred ergs per gram"
+    - "Medical workers monitor their accumulated rad exposure with dosimeter badges"
+    - "The nuclear facility tracked rad levels in all areas accessible to personnel"
+    - "The report measured the absorbed dose in rads over the course of the experiment"
+    - "Exposure above a certain number of rads causes acute radiation syndrome symptoms"
+
+brat:
+  slang:
+    - "The album cover is just green and the whole aesthetic is so brat it hurts"
+    - "She is giving full brat energy this era, carefree and a little chaotic"
+    - "Brat summer means not caring what anyone thinks and living completely on your terms"
+    - "The whole look is brat, slightly messy and cool without even trying to be cool"
+    - "She reclaimed the brat label and turned it into something genuinely empowering"
+    - "The brat aesthetic is about confidence without perfection and I am completely here for it"
+  standard:
+    - "The child was an absolute brat at the restaurant, refusing to sit still or behave"
+    - "She called her younger sibling a little brat for getting into her belongings again"
+    - "The spoiled brat threw a tantrum when his parents said no to the expensive toy"
+    - "Parents worried that giving in too often would turn their child into a brat"
+    - "He admitted he had been a brat as a child and caused his parents a lot of stress"
+    - "The babysitter described the kids as sweet but occasionally bratty on harder evenings"
+
+finna:
+  slang:
+    - "I am finna go get some food, does anyone else want anything from outside"
+    - "She finna drop that mixtape and it is going to break the internet for real"
+    - "He finna say something stupid again, I can already tell from the look on his face"
+    - "We finna go to the beach this weekend if the weather stays this good"
+    - "I am finna finish this project and then I am done working for the whole weekend"
+    - "She finna clap back at that comment and it is going to be so satisfying to watch"
+
+fire:
+  slang:
+    - "That new track is straight fire, I have had it on repeat since it dropped"
+    - "The way she styled that outfit is fire, every element works together perfectly"
+    - "His performance last night was fire, best show I have seen in years honestly"
+    - "This pizza spot is absolutely fire, the best in the whole city without question"
+    - "She dropped a fire verse on that remix and completely stole the whole song"
+    - "The whole album is fire from top to bottom, not a single skip on it at all"
+  standard:
+    - "The fire spread quickly through the dry forest before crews could contain it"
+    - "She warmed her hands by the fire after coming in from the cold winter evening"
+    - "Firefighters worked through the night to bring the warehouse blaze under control"
+    - "The campfire crackled softly as they sat telling stories under the clear night sky"
+    - "He was careful with fire after learning about the risks of uncontrolled burning"
+    - "The fireplace filled the living room with warmth and a comforting orange glow"
+
+glow up:
+  slang:
+    - "Her ten year glow up is unreal, she looks completely transformed and confident"
+    - "He had a serious glow up over the summer, working out and changing his whole style"
+    - "The character went through a major glow up between seasons one and three"
+    - "She documented her entire glow up journey on Instagram over the course of a year"
+    - "That city has had a massive glow up in the last decade, completely unrecognizable"
+    - "After moving away from home she went through a glow up both inside and out"
+
+goated:
+  slang:
+    - "That play was goated, nobody in history has ever done anything like that before"
+    - "She is genuinely goated at her craft and there is nobody even close to her level"
+    - "The way he handles pressure situations is goated, completely calm every single time"
+    - "That album is goated in the genre, it set the standard that everyone else follows"
+    - "He pulled off a goated move in the final round and the crowd went absolutely insane"
+    - "Her work ethic is goated, she puts in more hours than anyone else in the building"
+
+gyatt:
+  slang:
+    - "He walked past the gym and just muttered gyatt under his breath involuntarily"
+    - "The comments under her photo were just gyatt repeated three hundred times"
+    - "Gyatt became the default reaction whenever anyone was impressed by a physique online"
+    - "She posted the video and the chat immediately flooded with gyatt reactions"
+    - "He heard the word gyatt for the first time and had to ask his younger sibling to explain"
+    - "The streamer reacted with gyatt and the clip spread across every corner of the internet"
+
+goon:
+  slang:
+    - "He spent the whole Saturday just gooning out on the couch doing absolutely nothing"
+    - "They were all in full goon mode at the sleepover, sleep-deprived and unhinged"
+    - "She called herself a goon for staying up until four watching random videos again"
+    - "Total goon behavior, they built a pillow fort and ate cereal at midnight"
+    - "He went into full goon mode during finals week and started hallucinating from fatigue"
+    - "The whole group was gooning and nothing productive was getting done at all"
+  standard:
+    - "The crime boss sent two goons to deliver the message to the rival faction"
+    - "The film featured a pair of bumbling goons who worked for the main villain"
+    - "He hired a couple of goons to intimidate the witness into changing his story"
+    - "The goons cornered him in the alley and demanded he hand over the documents"
+    - "The detective identified the three goons from security footage at the warehouse"
+    - "She described the men as goons, hired muscle with no actual authority or intelligence"
+
+ick:
+  slang:
+    - "He chewed with his mouth open and she immediately got the ick, it was over"
+    - "The ick hit her hard when she saw him baby talk to his pet in public"
+    - "Once you get the ick from someone there is really no coming back from it"
+    - "She developed the ick after watching him act differently around his friends"
+    - "The ick is irrational but completely real, one moment and everything shifts"
+    - "He gave her the ick by mispronouncing a word confidently in front of everyone"
+  standard:
+    - "She made an ick sound when she found the mold growing in the back of the fridge"
+    - "The child said ick and refused to eat the vegetables even when they were hidden"
+    - "He recoiled with a loud ick when he stepped on something wet in his socks"
+    - "The word ick is an exclamation expressing disgust that dates back several decades"
+    - "She let out an ick when she found the spider in the bathroom corner"
+
+joever:
+  slang:
+    - "It is joever for that team, they are down four nil with five minutes left to play"
+    - "Joever for him after that fumble cost them the championship game entirely"
+    - "She watched the presentation go wrong in real time and knew it was joever"
+    - "Joever for the project after the lead developer quit without any notice"
+    - "He saw the look on the interviewer's face and knew instantly it was joever"
+    - "Joever for that pairing, they had one episode of tension and then nothing happened"
+
+karen:
+  slang:
+    - "She went full Karen on the manager about a coupon that had already expired"
+    - "The Karen at the coffee shop demanded to speak to corporate over extra foam"
+    - "He described the neighbor who calls code enforcement weekly as a total Karen"
+    - "The video of the Karen blocking the driveway went viral within hours of posting"
+    - "She pulled a Karen move by filming herself complaining to the store employee"
+    - "The Karen energy in that complaint letter was palpable from the very first line"
+  standard:
+    - "Karen is a common English given name of Scandinavian origin"
+    - "She introduced herself as Karen and took a seat at the conference table"
+    - "Karen from accounting sent the quarterly report to the whole team on Thursday"
+    - "Her mother's name is Karen and she has always found the meme uncomfortable"
+    - "The name Karen was among the most popular baby names in the 1960s in the US"
+    - "Karen thanked her colleagues for their support during the difficult project"
+
+mog:
+  slang:
+    - "He walked in and absolutely mogged every other guy in the room without trying"
+    - "She mogged the entire competition just by showing up with that presence"
+    - "Getting mogged by your little brother when he hits his growth spurt is humbling"
+    - "The new hire completely mogged the senior employees on the first client call"
+    - "He posted a photo and immediately mogged everyone else in the comment section"
+    - "She mogged the runway and none of the other models stood a chance after that"
+  standard:
+    - "The British slang term mog refers to a cat, especially a common domestic one"
+    - "She petted the old mog that lived in the corner shop and came to greet customers"
+    - "The neighbours mog kept getting into their garden and digging up the flowerbeds"
+    - "He fed the scruffy mog that had been hanging around the back door for weeks"
+    - "Mog as slang for an ordinary cat has been used in British English for generations"
+    - "The mog sat on the warm fence post and watched the birds with great interest"
+
+npc:
+  slang:
+    - "He just agreed with everything the boss said, total NPC behavior all meeting"
+    - "She described her coworker as an NPC who follows every rule without thinking"
+    - "The NPC trend had people walking robotically in public places to entertain strangers"
+    - "Stop being an NPC and form your own opinion about what is actually happening"
+    - "He goes through the same routine every single day, pure NPC energy honestly"
+    - "The comment section called him an NPC for repeating the exact same talking points"
+  standard:
+    - "The NPC in the game stood at the crossroads and gave the player directions"
+    - "Non-player characters or NPCs are controlled by artificial intelligence in games"
+    - "The developer explained that each NPC had a scripted dialogue tree with branching options"
+    - "He spent hours talking to every NPC in the village to find all the hidden lore"
+    - "The game's NPCs had daily routines that continued even when the player was not nearby"
+    - "She praised the game for giving each NPC a distinct personality and backstory"
+
+periodt:
+  slang:
+    - "She is the best artist of her generation periodt, there is no argument to be had"
+    - "We are not going back to that restaurant periodt, the service was genuinely terrible"
+    - "He deserved that award more than anyone else periodt and the industry knows it"
+    - "That was the wrong decision periodt, no nuance needed here at all"
+    - "She is that girl periodt, talented and hardworking and completely unstoppable"
+    - "The conversation is over periodt, I am not entertaining this argument any further"
+
+rizz:
+  slang:
+    - "He asked for her number with such rizz that she smiled before he finished the sentence"
+    - "She has natural rizz, effortlessly charming without even appearing to try at all"
+    - "The unspoken rizz on that man is almost supernatural, he barely says a word"
+    - "He rizzed her up in the elevator and they exchanged numbers before the doors opened"
+    - "No rizz whatsoever, he rehearsed his opening line for an hour and still fumbled it"
+    - "She walked over with pure rizz energy and left with a date by the end of the night"
+
+rage bait:
+  slang:
+    - "That headline is pure rage bait designed to get people angry and clicking"
+    - "She recognized the post as rage bait immediately and refused to engage with it"
+    - "He calls out rage bait content on his channel and breaks down why it works"
+    - "The account existed solely to post rage bait and harvest angry comment engagement"
+    - "Platforms profit from rage bait because angry users spend more time on the app"
+    - "She wrote an essay about how rage bait is rotting the quality of online discourse"
+
+salty:
+  slang:
+    - "He is so salty about losing the match that he has not spoken to anyone for hours"
+    - "She was clearly salty about not being invited even though she said she did not care"
+    - "The comments were full of salty fans upset about the referee's controversial call"
+    - "Stop being salty, you knew the risks when you made that decision last week"
+    - "He went all salty in the group chat when his suggestion got ignored by everyone"
+    - "She was low-key salty about the promotion even though she said congratulations"
+  standard:
+    - "The chef added a pinch of salt to bring out the natural flavors in the dish"
+    - "The seawater was extremely salty compared to the fresh mountain stream nearby"
+    - "She preferred salty snacks over sweet ones and always kept crackers on her desk"
+    - "The salty air near the ocean gives coastal towns a distinctive smell"
+    - "The pretzels were heavily salted and left her reaching for water after every handful"
+    - "He tasted the broth and found it far too salty, adding more water to balance it"
+
+shook:
+  slang:
+    - "She watched the ending and was completely shook, could not say a single word"
+    - "He revealed the plot twist and the entire room was just shook into silence"
+    - "I am genuinely shook by this news, had no idea any of this was happening"
+    - "She was so shook by the performance that she forgot to clap at the end"
+    - "We are all still shook from last night, nobody saw that coming at all"
+    - "He was visibly shook after the encounter, pale and unresponsive for several minutes"
+  standard:
+    - "She shook the bottle vigorously before opening it to mix the contents inside"
+    - "He shook her hand firmly when they were introduced at the business meeting"
+    - "The earthquake shook the building enough to rattle windows on every floor"
+    - "She shook her head slowly to indicate she did not agree with the suggestion"
+    - "He shook the wet umbrella outside before stepping into the dry lobby"
+    - "The dog shook water off its fur and soaked everyone standing nearby"
+
+shooketh:
+  slang:
+    - "She watched the ending and was completely shooketh, could not say a single word"
+
+sigma:
+  slang:
+    - "He operates completely alone, full sigma grindset with no need for anyone's approval"
+    - "The sigma male does not follow the hierarchy, he creates his own path entirely"
+    - "She jokingly called herself a sigma for preferring to work solo on every project"
+    - "His whole sigma energy is about not needing external validation from anyone"
+    - "Sigma male motivation content is a specific genre of ironic and sincere memes"
+    - "He unironically described himself as a sigma and the internet never let him forget it"
+  standard:
+    - "Sigma is the eighteenth letter of the Greek alphabet used in mathematics widely"
+    - "In statistics sigma denotes standard deviation and describes the spread of data"
+    - "The summation symbol in mathematics uses an uppercase sigma to indicate a sum"
+    - "She calculated three sigma confidence intervals for the experimental results"
+    - "The physics paper used lowercase sigma to represent electrical conductivity"
+    - "Students learning statistics often struggle with understanding what one sigma means"
+
+simp:
+  slang:
+    - "He is simping so hard, he bought her expensive gifts after two conversations"
+    - "Stop simping for someone who clearly does not notice you exist in any way"
+    - "The chat called him a simp for defending the streamer after every single criticism"
+    - "She said he was being a simp and told him to have some self-respect about it"
+    - "He simped for that influencer and spent hundreds on merchandise they promoted"
+    - "Do not simp too hard too fast, it comes across as desperate and pushes people away"
+
+skibidi:
+  slang:
+    - "That whole situation is just skibidi, absolutely unhinged and impossible to explain"
+    - "The skibidi toilet memes dominated middle school culture for an entire school year"
+    - "He started speaking entirely in skibidi references and lost most of his older friends"
+    - "She called the assignment skibidi when she meant it was both absurd and kind of fun"
+    - "The skibidi fandom built a whole lore out of what started as a completely surreal video"
+    - "Gen Alpha uses skibidi as a general intensifier that means almost anything depending on tone"
+
+slay:
+  slang:
+    - "She walked into the room and absolutely slayed, everyone immediately took notice"
+    - "That presentation slayed, she had the whole boardroom completely captivated"
+    - "Slay queen, that look is everything and you know it without needing to be told"
+    - "He slayed the audition and got a callback the very next morning"
+    - "She slayed every challenge they threw at her without breaking a sweat once"
+    - "The outfit is slaying, every single element is perfectly put together from head to toe"
+  standard:
+    - "The hero set out to slay the dragon that had terrorized the kingdom for decades"
+    - "The hunter tracked and slayed the wolf that had been attacking the livestock"
+    - "In the fairy tale the knight must slay the monster to rescue the captured princess"
+    - "He slayed the beast with a single well-aimed arrow after waiting for hours"
+    - "Historical epics often culminate in scenes where the protagonist must slay a villain"
+    - "The biblical story describes David slaying Goliath with a stone from a sling"
+
+slaps:
+  slang:
+    - "This song absolutely slaps, I have had it at full volume the entire morning"
+    - "Her cooking slaps every single time, never had a bad meal at her place"
+    - "The new update slaps, they fixed everything people had been complaining about"
+    - "That bassline slaps so hard the whole car was vibrating at the red light"
+    - "The new game slaps, way better than the last two entries in the series"
+    - "This sauce slaps, it goes with literally everything and I put it on every meal"
+  standard:
+    - "She slaps the dough firmly on the counter to prepare it for kneading"
+    - "He gave him a firm slap on the back to congratulate him on the achievement"
+    - "She slapped the fly swatter down on the counter to kill the insect"
+    - "The wave slapped against the hull of the small boat rhythmically all night"
+    - "He slapped his hand on the table to emphasize his point in the argument"
+    - "The fish slapped its tail against the deck as the fisherman hauled it aboard"
+
+tea:
+  slang:
+    - "Sit down because I have major tea about what happened at the office party"
+    - "She spilled all the tea on who has been talking behind whose back"
+    - "The tea is that they broke up months ago and have been pretending otherwise"
+    - "I have no tea to share today, a truly uneventful week by any measure"
+    - "She messaged her best friend saying girl I have so much tea you will not believe"
+    - "The tea on that celebrity couple has been circulating for weeks in every forum"
+  standard:
+    - "She poured herself a cup of tea and sat down with a good book for the afternoon"
+    - "He preferred green tea in the mornings over coffee because of the lower caffeine"
+    - "The teapot was filled with boiling water and left to steep for exactly four minutes"
+    - "She offered guests a choice of black tea or herbal blends from the kitchen cabinet"
+    - "The tea ceremony is an important cultural ritual in Japan with specific formal protocols"
+    - "He added milk and one sugar to his tea and stirred it slowly before drinking"
+
+twin:
+  slang:
+    - "Twin you really saved me today, I had no idea what to do before you called"
+    - "She texted twin to her best friend to let her know she had made it home safely"
+    - "What is up twin, you look like you have not slept in three days honestly"
+    - "Twin I swear this is the funniest thing that has happened to me in months"
+    - "She called all her close friends twin and made everyone feel immediately included"
+    - "Twin you need to see this video right now it is everything we have ever wanted"
+  standard:
+    - "She has a twin sister who is identical in appearance but very different in personality"
+    - "Twin births occur when two fetuses develop simultaneously in the same pregnancy"
+    - "The twins had always been close, spending nearly every moment of childhood together"
+    - "He was a twin and people often confused him with his brother throughout school"
+    - "Twin studies in psychology reveal how genetics and environment shape behavior"
+    - "The researchers used identical twin data to separate genetic from environmental factors"
+
+unalive:
+  slang:
+    - "He said the game was so hard it made him want to unalive his character immediately"
+    - "She posted that she wanted to unalive herself as a joke about her terrible Monday"
+    - "Content creators use unalive to avoid triggering platform censorship on dark humor"
+    - "He joked that the final exam would unalive him and that he had not slept in days"
+    - "The character was unalived in the most dramatic fashion possible in the finale"
+    - "She used unalive in the caption because the platform flags the more direct word"
+
+unc:
+  slang:
+    - "Unc at the barbershop always has the hottest takes on every topic under the sun"
+    - "That unc at the family barbecue was lecturing everyone about the economy again"
+    - "She called her friend's dad unc out of affection and he absolutely loved it"
+    - "He is giving total unc energy wearing that polo shirt tucked in at the party"
+    - "The unc at the gym always offers unsolicited advice to anyone he sees lifting"
+    - "Unc came through with all the holiday food and nobody was going home hungry"
+
+vibes:
+  slang:
+    - "The whole weekend had such good vibes, everyone was relaxed and happy"
+    - "Something about that place gave off strange vibes and we left quickly"
+    - "She walks into every room and immediately improves the vibes for everyone"
+    - "The party started slow but the vibes shifted completely after midnight"
+    - "He said the new office had really good vibes and made him more productive"
+    - "I am just here for the vibes, not trying to have any major conversations tonight"
+  standard:
+    - "The speaker vibrates rapidly to produce sound waves that travel through the air"
+    - "Engineers measured the vibrational frequency of the bridge under heavy load"
+    - "Seismic sensors recorded unusual vibrations beneath the surface of the earth"
+    - "The tuning fork produced clear vibrational patterns visible in the sand"
+
+washed:
+  slang:
+    - "He used to be elite but he is completely washed now, a shadow of his former self"
+    - "She called herself washed for not keeping up with any new music from this year"
+    - "The athlete is clearly washed, the reflexes and explosiveness just are not there"
+    - "That team is washed and everyone watching can see it except their fanbase"
+    - "He admitted he was washed when it came to technology and asked his kids for help"
+    - "She joked that she was washed for going to bed at nine on a Friday night"
+  standard:
+    - "She washed her hands carefully before preparing the ingredients for dinner"
+    - "He washed the car on a Saturday morning before the afternoon rain made it pointless"
+    - "The clothes were washed and hung out to dry in the warm afternoon breeze"
+    - "She washed the vegetables thoroughly before cutting them into the salad"
+    - "He washed away the paint from his hands with turpentine after finishing the work"
+    - "The floodwaters washed away the makeshift bridge that connected the two villages"
+
+yap:
+  slang:
+    - "He was yapping for an hour straight and nobody could get a word in at all"
+    - "She just yaps constantly during movies and it drives everyone absolutely crazy"
+    - "Stop yapping and let someone else speak for once, you have been talking forever"
+    - "He is the kind of person who yaps without really saying anything meaningful"
+    - "She yapped her way through the whole meeting and somehow got applauded for it"
+    - "He was yapping so loud in the library that people three tables away could hear him"
+  standard:
+    - "The small dog yapped continuously at the mail carrier until it moved on"
+    - "She could hear the neighbor's dog yapping in the yard all through the afternoon"
+    - "The puppy would yap whenever a stranger came near the property at any hour"
+    - "The little terrier yapped twice and then wagged its tail furiously when petted"
+    - "He trained his dog not to yap at every passing bicycle after months of practice"
+    - "The yapping of the dog in the apartment above woke her up early every morning"
