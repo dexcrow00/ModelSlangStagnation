@@ -255,8 +255,8 @@ def _sample_file_contexts(
         for record in ArchiveIterator(stream):
             if record.rec_type != "conversion":
                 continue
-            lang = record.rec_headers.get_header("WARC-Identified-Content-Language") or ""
-            if "eng" not in lang.lower().split(","):
+            lang = record.rec_headers.get_header("WARC-Identified-Content-Language")
+            if lang and "eng" not in lang.lower().split(","):
                 continue
             try:
                 text = record.content_stream().read().decode("utf-8", errors="replace")
@@ -306,6 +306,28 @@ def _infer_cc_id(file_list: List[str]) -> Optional[str]:
     return None
 
 
+_FIELDNAMES = ["uri", "target_context"]
+
+
+def _read_existing_rows(path: Path) -> Tuple[List[Dict[str, str]], Set[str]]:
+    """Read an existing output CSV. Returns (rows, set_of_unique_uris)."""
+    rows: List[Dict[str, str]] = []
+    uris: Set[str] = set()
+    with path.open(newline="", encoding="utf-8") as fh:
+        for row in csv.DictReader(fh):
+            rows.append(row)
+            uris.add(row["uri"])
+    return rows, uris
+
+
+def _write_rows(path: Path, rows: List[Dict[str, str]]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w", newline="", encoding="utf-8") as fh:
+        writer = csv.DictWriter(fh, fieldnames=_FIELDNAMES)
+        writer.writeheader()
+        writer.writerows(rows)
+
+
 def process_dump(
     file_list: List[str],
     n_uris: int,
@@ -315,9 +337,14 @@ def process_dump(
     seed: int,
     workers: Optional[int],
     max_records: Optional[int],
-    output_path: Path,
     cc_id: str,
-) -> None:
+    exclude_uris: Optional[Set[str]] = None,
+) -> List[Dict[str, str]]:
+    """Sample URIs from a dump and return context rows.
+
+    exclude_uris: rows whose URI is in this set are dropped from the result,
+    useful when topping up an existing file.
+    """
     rng = random.Random(seed)
     n_workers = workers or os.cpu_count() or 1
 
@@ -350,13 +377,10 @@ def process_dump(
             except Exception as exc:
                 log.error("Worker failed for %s: %s", path, exc)
 
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-    with output_path.open("w", newline="", encoding="utf-8") as fh:
-        writer = csv.DictWriter(fh, fieldnames=["uri", "target_context"])
-        writer.writeheader()
-        writer.writerows(all_rows)
+    if exclude_uris:
+        all_rows = [r for r in all_rows if r["uri"] not in exclude_uris]
 
-    log.info("%s — %d context rows → %s", cc_id, len(all_rows), output_path)
+    return all_rows
 
 
 # ---------------------------------------------------------------------------
@@ -520,27 +544,43 @@ def main() -> None:
             out = _output_path_for(crawl_id, output_dir)
             n_remaining = n_total - i - 1
 
+            existing_rows: List[Dict[str, str]] = []
+            existing_uris: Set[str] = set()
             if not args.force and out.exists():
-                log.info("[%d/%d] %s — skipped (exists)", i + 1, n_total, crawl_id)
-                continue
+                existing_rows, existing_uris = _read_existing_rows(out)
+                n_existing = len(existing_uris)
+                if n_existing >= args.n_uris:
+                    log.info("[%d/%d] %s — skipped (%d URIs already collected)",
+                             i + 1, n_total, crawl_id, n_existing)
+                    continue
+                log.info("[%d/%d] %s — topping up (%d/%d URIs, need %d more)",
+                         i + 1, n_total, crawl_id, n_existing, args.n_uris,
+                         args.n_uris - n_existing)
 
             seed = _crawl_seed(args.seed, i)
+            # Use a distinct seed for top-up passes so file/record selection differs.
+            effective_seed = seed if not existing_uris else seed ^ 0x5A5A5A5A
+            n_needed = args.n_uris - len(existing_uris)
             t0 = time.monotonic()
 
             try:
                 file_list = list(parse_paths_file(_wet_paths_uri(crawl_id)))
-                process_dump(
+                new_rows = process_dump(
                     file_list=file_list,
-                    n_uris=args.n_uris,
+                    n_uris=n_needed,
                     n_files=args.sample_files,
                     targets=targets,
                     context_window=args.context_window,
-                    seed=seed,
+                    seed=effective_seed,
                     workers=args.workers,
                     max_records=args.max_records,
-                    output_path=out,
                     cc_id=crawl_id,
+                    exclude_uris=existing_uris if existing_uris else None,
                 )
+                all_rows = existing_rows + new_rows
+                _write_rows(out, all_rows)
+                log.info("%s — %d context rows (%d new) → %s",
+                         crawl_id, len(all_rows), len(new_rows), out)
             except Exception as exc:
                 log.error("[%d/%d] ✗  %s — %s", i + 1, n_total, crawl_id, exc)
                 continue
@@ -575,7 +615,7 @@ def main() -> None:
     output_path = output_dir / f"word_context_{cc_id}_{timestamp}.csv"
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    process_dump(
+    rows = process_dump(
         file_list=file_list,
         n_uris=args.n_uris,
         n_files=args.sample_files,
@@ -584,9 +624,10 @@ def main() -> None:
         seed=args.seed,
         workers=args.workers,
         max_records=args.max_records,
-        output_path=output_path,
         cc_id=cc_id,
     )
+    _write_rows(output_path, rows)
+    log.info("%s — %d context rows → %s", cc_id, len(rows), output_path)
 
 
 if __name__ == "__main__":
