@@ -3,6 +3,7 @@ warcio>=1.7.4
 plotly>=5.0
 transformers>=4.30.0
 pyyaml>=6.0
+langdetect>=1.0.9
 
 # torch: install the CPU-only wheel first to avoid the 2 GB CUDA default on Linux:
 #   pip install torch --index-url https://download.pytorch.org/whl/cpu
