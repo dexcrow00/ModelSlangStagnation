@@ -10,8 +10,8 @@ The crawl-date range flags (--since, --from-crawl, --to-crawl) select which
 input files to process by matching the CC-MAIN-YYYY-WW identifier in each
 filename. Files with no recognisable crawl ID in their name are always included.
 
-Slang score rows with an empty slang_score (word not present in that context)
-are never filtered by --slang-threshold, matching bert_filter.py's behaviour.
+Rows with an empty slang_score (word not present in that context) are never
+filtered by --slang-threshold, matching bert_filter.py's behaviour.
 
 Usage:
     python run_filter.py scored/*.csv -o filtered.csv
@@ -213,29 +213,6 @@ def main() -> None:
 
             if not rows:
                 print(f"Skipping empty file: {path.name}", file=sys.stderr)
-                continue
-
-            kept = sum(
-                1 for row in rows
-                if _passes(row, args.lang_threshold, args.quality_threshold, args.slang_threshold)
-                and not writer.writerow(row) is False  # writerow returns None; side-effectful
-            )
-            # writerow above is called inside the sum — restructure for clarity
-            # (redo cleanly below)
-
-        # Redo properly
-        ...
-
-    # Redo the write loop cleanly
-    with out_path.open("w", newline="", encoding="utf-8") as out_fh:
-        writer = csv.DictWriter(out_fh, fieldnames=out_fields, extrasaction="ignore")
-        writer.writeheader()
-
-        for path, crawl_id in in_range:
-            with path.open(newline="", encoding="utf-8") as fh:
-                rows = list(csv.DictReader(fh))
-
-            if not rows:
                 continue
 
             kept = 0
