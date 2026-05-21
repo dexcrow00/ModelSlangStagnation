@@ -1,18 +1,36 @@
 #!/usr/bin/env python3
 """
 word_variation.py — Find and plot words with the largest frequency variation
-across Common Crawl crawls, using word-sample CSVs from word_sample.py.
+across Common Crawl crawls.
 
-Each CSV has a single "word" column.  The script:
-  1. Counts each word's frequency per crawl and normalises to a sampling rate.
-  2. Scores each word by log2(max_rate / min_rate) across crawls where it appears.
+Two input modes:
+
+  Default (word-sample) mode:
+    Reads word_sample_CC-MAIN-*.csv files (single "word" column from word_sample.py).
+    Each CSV is one crawl; counts how often each word appears across crawls.
+
+  Context mode (--context):
+    Reads *CC-MAIN-*.csv files with "uri" and "target_context" columns
+    (output of word_context.py or cleaned_contexts pipeline).
+    Searches each context chunk for words from --words and counts hits per crawl.
+    --words is required in this mode.
+
+In both modes the script:
+  1. Computes a per-crawl frequency (rate) for each word.
+  2. Scores each word by log2(max_rate / min_nonzero_rate) across crawls.
   3. Plots the top-N most variable words as a time series, plus a variation
      bar chart sorted by score.
 
 Usage:
+    # Word-sample mode
     python word_variation.py /path/to/Run0/
     python word_variation.py /path/to/Run0/ --top 25 --min-crawls 10 -o variation.png
-    python word_variation.py /path/to/Run0/ --min-avg-rate 5e-5 --top 30
+
+    # Context mode
+    python word_variation.py /path/to/cleaned_contexts/Run2/ --context \\
+        --words target_words.txt -o slang_trends.html
+    python word_variation.py /path/to/cleaned_contexts/Run2/ --context \\
+        --words target_words.txt --bucket-by-year --top 20 -o slang_yearly.html
 """
 
 from __future__ import annotations
@@ -49,7 +67,7 @@ def _crawl_date(crawl_id: str) -> date:
 
 
 # ---------------------------------------------------------------------------
-# Data loading
+# Data loading — word-sample mode
 # ---------------------------------------------------------------------------
 
 def load_directory(
@@ -101,6 +119,85 @@ def load_directory(
 
 
 # ---------------------------------------------------------------------------
+# Data loading — context mode
+# ---------------------------------------------------------------------------
+
+def _build_matchers(words: list[str]) -> dict[str, re.Pattern]:
+    """Build case-insensitive regex patterns for each target word.
+
+    Uses word boundaries for ASCII words/phrases; simple substring match for
+    emoji and other non-ASCII characters.
+    """
+    matchers: dict[str, re.Pattern] = {}
+    for word in words:
+        key = word.strip().lower()
+        if not key or key in matchers:
+            continue
+        escaped = re.escape(key)
+        if key.isascii():
+            pat = re.compile(rf'\b{escaped}\b', re.IGNORECASE)
+        else:
+            pat = re.compile(escaped)
+        matchers[key] = pat
+    return matchers
+
+
+def load_context_directory(
+    directory: Path,
+    target_words: list[str],
+) -> tuple[list[date], dict[str, list[int]], list[int]]:
+    """Load context CSVs (uri, target_context columns) and count target word hits per crawl.
+
+    Returns:
+        dates   — sorted list of crawl dates
+        counts  — {word: [n_contexts_containing_word per crawl]}
+        totals  — total context rows per crawl (denominator for rates)
+    """
+    matchers = _build_matchers(target_words)
+    if not matchers:
+        raise SystemExit("No valid target words found.")
+
+    crawl_entries: list[tuple[date, Counter, int]] = []
+
+    for csv_path in sorted(directory.glob("*CC-MAIN-*.csv")):
+        m = _CRAWL_RE.search(csv_path.name)
+        if not m:
+            continue
+        try:
+            d = _crawl_date(m.group(0))
+        except ValueError:
+            continue
+
+        counter: Counter = Counter()
+        n_rows = 0
+        with csv_path.open(encoding="utf-8") as fh:
+            reader = csv.DictReader(fh)
+            for row in reader:
+                text = row.get("target_context", "")
+                if not text:
+                    continue
+                n_rows += 1
+                for word, pat in matchers.items():
+                    if pat.search(text):
+                        counter[word] += 1
+
+        if n_rows > 0:
+            crawl_entries.append((d, counter, n_rows))
+
+    if not crawl_entries:
+        raise SystemExit(f"No *CC-MAIN-*.csv files with data found in {directory}")
+
+    crawl_entries.sort(key=lambda x: x[0])
+    dates  = [d for d, _, _ in crawl_entries]
+    counters = [c for _, c, _ in crawl_entries]
+    totals = [n for _, _, n in crawl_entries]
+
+    counts: dict[str, list[int]] = {w: [c[w] for c in counters] for w in matchers}
+
+    return dates, counts, totals
+
+
+# ---------------------------------------------------------------------------
 # Scoring
 # ---------------------------------------------------------------------------
 
@@ -137,13 +234,13 @@ def score_words(
 
 def _bucket_by_year(
     dates: list[date], values: dict[str, list[float]]
-) -> tuple[list[date], dict[str, list[float | None]]]:
-    """Return (year_midpoints, {word: [mean_value_or_None per year]}).
+) -> tuple[list[str], dict[str, list[float | None]]]:
+    """Return (year_midpoint_strings, {word: [mean_value_or_None per year]}).
 
     Works for both rates and raw counts; zero entries are treated as absent.
     """
     years = sorted({d.year for d in dates})
-    year_dates = [date(y, 7, 1) for y in years]
+    year_dates = [f"{y}-07-01" for y in years]
     bucketed: dict[str, list[float | None]] = {}
     for word, vs in values.items():
         by_year: dict[int, list[float]] = {y: [] for y in years}
@@ -171,6 +268,7 @@ def plot(
     output: Path | None,
     bucket_by_year: bool = False,
     log_scale: bool = False,
+    context_mode: bool = False,
 ) -> None:
     top_words = sorted(scores, key=lambda w: -scores[w])[:top]
     n = len(top_words)
@@ -183,12 +281,12 @@ def plot(
             w: [c / t for c, t in zip(cs, totals)]
             for w, cs in counts.items()
         }
-        ylabel = "Sampling rate"
+        ylabel = "Proportion of contexts" if context_mode else "Sampling rate"
         yaxis_type = "log"
         hover_fmt = ".4g"
     else:
         values = {w: [float(c) for c in cs] for w, cs in counts.items()}
-        ylabel = "Count per sample"
+        ylabel = "Contexts containing word" if context_mode else "Count per sample"
         yaxis_type = "linear"
         hover_fmt = ","
 
@@ -198,7 +296,7 @@ def plot(
         xlabel = "Year"
         title_suffix = "yearly avg"
     else:
-        plot_dates = dates
+        plot_dates = [d.isoformat() for d in dates]
         plot_values = {w: [v if v else None for v in vs] for w, vs in values.items()}
         xlabel = "Crawl date"
         title_suffix = "per crawl"
@@ -299,14 +397,31 @@ def build_parser() -> argparse.ArgumentParser:
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
+  # Word-sample mode (word_sample.py output)
   python word_variation.py Run0/
   python word_variation.py Run0/ --top 30 --min-crawls 10 -o variation.png
-  python word_variation.py Run0/ --min-avg-rate 1e-4 --top 40
+
+  # Context mode (word_context.py / cleaned_contexts output)
+  python word_variation.py cleaned_contexts/Run2/ --context \\
+      --words target_words.txt -o slang_trends.html
+  python word_variation.py cleaned_contexts/Run2/ --context \\
+      --words target_words.txt --bucket-by-year --top 20 -o slang_yearly.html
         """,
     )
     parser.add_argument(
         "directory",
-        help="Directory containing word_sample_CC-MAIN-*.csv files.",
+        help="Directory containing CC-MAIN-*.csv files.",
+    )
+    parser.add_argument(
+        "--context", action="store_true",
+        help="Context mode: read uri/target_context CSVs and search for --words "
+             "in each chunk. --words is required in this mode.",
+    )
+    parser.add_argument(
+        "--words", metavar="FILE", default=None,
+        help="Plain-text file of words to search for / plot (one per line, # for comments). "
+             "Required in --context mode. In word-sample mode, restricts the plot to "
+             "these words only.",
     )
     parser.add_argument(
         "--top", type=int, default=20, metavar="N",
@@ -314,47 +429,39 @@ Examples:
     )
     parser.add_argument(
         "--min-crawls", type=int, default=5, metavar="K", dest="min_crawls",
-        help="Minimum crawls a word must appear in to be scored (default: 5).",
+        help="Minimum crawls a word must appear in to be scored (default: 5; "
+             "use 1 in --context mode for sparse slang words).",
     )
     parser.add_argument(
         "--min-avg-rate", type=float, default=2e-5, metavar="F", dest="min_avg_rate",
-        help="Minimum average sampling rate across all crawls (default: 2e-5). "
-             "Filters out words too rare to distinguish from noise.",
+        help="Minimum average rate across all crawls (default: 2e-5). "
+             "Ignored in --context mode when --words is provided.",
     )
     parser.add_argument(
         "-o", "--output", default=None,
-        help="Output PNG path (displays interactively if omitted).",
-    )
-    parser.add_argument(
-        "--words", metavar="FILE", default=None,
-        help="Plain-text file of words to plot (one per line, # for comments). "
-             "When provided, only these words are shown and --top / --min-* filters "
-             "are ignored for selection (variation scores are still computed).",
+        help="Output file path (HTML or PNG). Displays interactively if omitted.",
     )
     parser.add_argument(
         "--bucket-by-year", action="store_true", dest="bucket_by_year",
-        help="Average values across all crawls within each year before plotting. "
-             "Default is one point per crawl sample file.",
+        help="Average values across all crawls within each year before plotting.",
     )
     parser.add_argument(
         "--log", action="store_true",
-        help="Show log-scale sampling rate on the y-axis. "
-             "Default is linear scale showing raw word counts.",
+        help="Log-scale y-axis showing rate rather than raw count.",
     )
     parser.add_argument(
         "--print-top", type=int, default=50, metavar="N", dest="print_top",
-        help="Number of top words to print to stdout (default: 50). "
-             "Ignored when --words is used.",
+        help="Top words to print to stdout (default: 50). Ignored with --words.",
     )
     return parser
 
 
 def _load_word_list(path: Path) -> list[str]:
-    """Load words from a plain-text file, one per line. Case-normalised to lowercase."""
+    """Load words from a plain-text file, one per line. Strips whitespace."""
     words = []
     with path.open(encoding="utf-8") as fh:
         for line in fh:
-            word = line.strip().lower()
+            word = line.strip()
             if word and not word.startswith("#"):
                 words.append(word)
     return words
@@ -364,22 +471,64 @@ def main() -> None:
     parser = build_parser()
     args = parser.parse_args()
 
+    if args.context and not args.words:
+        parser.error("--words is required in --context mode")
+
     directory = Path(args.directory)
     if not directory.is_dir():
         print(f"Not a directory: {directory}", file=sys.stderr)
         sys.exit(1)
 
-    print(f"Loading CSVs from {directory} …")
-    dates, counts, totals = load_directory(directory)
-    print(f"  {len(dates)} crawls  ·  {len(counts):,} unique words")
+    # ── Load data ─────────────────────────────────────────────────────────────
+    if args.context:
+        word_list = _load_word_list(Path(args.words))
+        print(f"Loading context CSVs from {directory} …")
+        print(f"  Searching for {len(word_list)} target word(s) …")
+        dates, counts, totals = load_context_directory(directory, word_list)
+        print(f"  {len(dates)} crawls  ·  {sum(totals):,} total context rows")
+    else:
+        print(f"Loading CSVs from {directory} …")
+        dates, counts, totals = load_directory(directory)
+        print(f"  {len(dates)} crawls  ·  {len(counts):,} unique words")
 
     rates = {w: [c / t for c, t in zip(cs, totals)] for w, cs in counts.items()}
 
-    # ── Word list mode ────────────────────────────────────────────────────────
+    # ── Context mode: always use the word list as the selected set ────────────
+    if args.context:
+        # Normalise to lowercase to match matcher keys
+        word_list_lc = [w.strip().lower() for w in word_list if w.strip()]
+        # Deduplicate while preserving order
+        seen: set[str] = set()
+        present = [w for w in word_list_lc if w in counts and not (w in seen or seen.add(w))]  # type: ignore[func-returns-value]
+        missing = [w for w in word_list_lc if w not in counts]
+        if missing:
+            print(f"  Warning: {len(missing)} word(s) not found in any crawl: {missing[:10]}"
+                  + (" …" if len(missing) > 10 else ""))
+        if not present:
+            print("None of the target words appear in the data.", file=sys.stderr)
+            sys.exit(1)
+
+        scores = {w: score_words({w: rates[w]}, min_crawls=1, min_avg_rate=0.0).get(w, 0.0)
+                  for w in present}
+
+        print(f"\n  {'word':<28}  {'total hits':>10}  {'crawls':>6}")
+        print(f"  {'-'*28}  {'-'*10}  {'-'*6}")
+        for w in sorted(present, key=lambda x: -sum(counts[x])):
+            total = sum(counts[w])
+            n_appear = sum(1 for c in counts[w] if c > 0)
+            print(f"  {w:<28}  {total:>10,}  {n_appear:>6}")
+
+        n_plot = min(args.top, len(present))
+        plot(dates, counts, totals, scores, n_plot,
+             Path(args.output) if args.output else None,
+             bucket_by_year=args.bucket_by_year, log_scale=args.log,
+             context_mode=True)
+        return
+
+    # ── Word-sample mode: word list restricts selection ───────────────────────
     if args.words:
-        # _load_word_list already lowercases; counts keys are also lowercase from
-        # load_directory, so lookup is case-insensitive end-to-end.
         word_list = _load_word_list(Path(args.words))
+        # _load_word_list preserves case; counts keys are lowercase
         missing = [w for w in word_list if w.lower() not in counts]
         if missing:
             print(f"  Warning: {len(missing)} word(s) not found in any crawl: {missing}")

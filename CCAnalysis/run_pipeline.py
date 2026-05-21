@@ -19,11 +19,11 @@ runs only rows not already present in the scored file are sent to bert_filter,
 so re-runs and interrupted jobs continue cheaply from where they left off.
 
 Usage:
-    python run_pipeline.py \\
+    python3 run_pipeline.py \\
         --output-dir contexts/ --n-uris 200 \\
         --words target_words.txt --slang-defs slang.yaml --since 2018
 
-    python run_pipeline.py \\
+    python3 run_pipeline.py \\
         --output-dir contexts/ --n-uris 200 --words target_words.txt \\
         --from-crawl CC-MAIN-2020-05 --to-crawl CC-MAIN-2022-49
 """
@@ -134,8 +134,7 @@ def step_collect(args: argparse.Namespace) -> None:
         "--seed",           str(args.seed),
         "--context-window", str(args.context_window),
     ]
-    if args.workers is not None:
-        cmd += ["--workers", str(args.workers)]
+    cmd += ["--workers", str(args.workers)]
     if args.sample_files is not None:
         cmd += ["--sample-files", str(args.sample_files)]
     if args.since is not None:
@@ -299,18 +298,18 @@ def main() -> None:
         log.info("Progress: %d / %d crawl files have >= %d passing rows",
                  n_done, n_total, args.n_uris)
 
-        if n_total > 0 and n_done == n_total:
-            log.info("All crawl files complete.")
+        if n_total > 0 and n_done >= 1:
+            done = [f for f in all_files if _count_rows(f) >= args.n_uris]
+            log.info("First crawl file complete: %s", done[0].name)
             break
 
         if iteration == args.max_iters:
-            short = [f for f in all_files if _count_rows(f) < args.n_uris]
+            best = max(all_files, key=_count_rows, default=None)
             log.warning(
-                "Reached max iterations (%d). %d file(s) still short:",
-                args.max_iters, len(short),
+                "Reached max iterations (%d). No file reached %d rows. Best: %s (%d rows)",
+                args.max_iters, args.n_uris,
+                best.name if best else "none", _count_rows(best) if best else 0,
             )
-            for f in short:
-                log.warning("  %s: %d / %d rows", f.name, _count_rows(f), args.n_uris)
 
     log.info("Pipeline done.")
 
@@ -378,8 +377,8 @@ Examples:
         help="Random seed passed to word_context.py (default: 42).",
     )
     parser.add_argument(
-        "--workers", type=int, default=None, metavar="N",
-        help="Parallel workers for word_context.py (default: auto).",
+        "--workers", type=int, default=16, metavar="N",
+        help="Parallel workers for word_context.py (default: 16).",
     )
     parser.add_argument(
         "--sample-files", type=int, default=None, metavar="M", dest="sample_files",
@@ -417,9 +416,9 @@ Examples:
         help="Min quality_score to keep (default: 0.70).",
     )
     parser.add_argument(
-        "--slang-threshold", type=float, default=0.0, metavar="F",
+        "--slang-threshold", type=float, default=0.5, metavar="F",
         dest="slang_threshold",
-        help="Min slang_score to keep (default: 0.0).",
+        help="Min slang_score to keep (default: 0.5).",
     )
 
     return parser
