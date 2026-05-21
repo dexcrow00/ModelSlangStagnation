@@ -21,7 +21,7 @@ so re-runs and interrupted jobs continue cheaply from where they left off.
 Usage:
     python3 run_pipeline.py \\
         --output-dir contexts/ --n-uris 200 \\
-        --words target_words.txt --slang-defs slang.yaml --since 2018
+        --words target_words.txt --since 2018
 
     python3 run_pipeline.py \\
         --output-dir contexts/ --n-uris 200 --words target_words.txt \\
@@ -61,7 +61,7 @@ log = logging.getLogger(__name__)
 # ---------------------------------------------------------------------------
 
 _CONTEXT_FIELDS = ["uri", "target_context"]
-_SCORED_FIELDS  = ["uri", "target_context", "lang_score", "quality_score", "slang_score"]
+_SCORED_FIELDS  = ["uri", "target_context", "lang_score", "quality_score"]
 
 
 def _count_rows(path: Path) -> int:
@@ -189,12 +189,7 @@ def step_score(args: argparse.Namespace) -> int:
             sys.executable, str(_HERE / "bert_filter.py"),
             str(tmp_in), "-o", str(tmp_out),
             "--score-all", "--keep-scores",
-            "--batch-size", str(args.batch_size),
         ]
-        if args.slang_defs:
-            cmd += ["--slang-defs", args.slang_defs]
-        if args.bert_model:
-            cmd += ["--bert-model", args.bert_model]
         _run(cmd, "score")
 
         # Distribute scored rows back to per-crawl files in the same order they
@@ -238,7 +233,6 @@ def step_filter(args: argparse.Namespace) -> Dict[str, int]:
                 str(scored_file), "-o", str(tmp_filtered),
                 "--lang-threshold",    str(args.lang_threshold),
                 "--quality-threshold", str(args.quality_threshold),
-                "--slang-threshold",   str(args.slang_threshold),
             ]
             _run(cmd, f"filter({scored_file.name})")
 
@@ -389,21 +383,6 @@ Examples:
         help="Token context window on each side of a match (default: 10).",
     )
 
-    # bert_filter.py passthrough
-    parser.add_argument(
-        "--slang-defs", default=None, metavar="YAML", dest="slang_defs",
-        help="Path to slang.yaml for slang-sense filtering. Slang filter is "
-             "skipped if omitted.",
-    )
-    parser.add_argument(
-        "--bert-model", default=None, metavar="ID", dest="bert_model",
-        help="Override the BERT checkpoint used by bert_filter.py.",
-    )
-    parser.add_argument(
-        "--batch-size", type=int, default=32, metavar="N", dest="batch_size",
-        help="Inference batch size for bert_filter.py (default: 32).",
-    )
-
     # run_filter.py thresholds
     parser.add_argument(
         "--lang-threshold", type=float, default=0.85, metavar="F",
@@ -414,11 +393,6 @@ Examples:
         "--quality-threshold", type=float, default=0.70, metavar="F",
         dest="quality_threshold",
         help="Min quality_score to keep (default: 0.70).",
-    )
-    parser.add_argument(
-        "--slang-threshold", type=float, default=0.5, metavar="F",
-        dest="slang_threshold",
-        help="Min slang_score to keep (default: 0.5).",
     )
 
     return parser

@@ -142,7 +142,6 @@ def score_rows(
     rows: List[Dict[str, str]],
     lang_enabled: bool,
     quality_enabled: bool,
-    batch_size: int,
     lang_threshold: float,
     quality_threshold: float,
 ) -> List[Tuple[Dict[str, str], float, float]]:
@@ -242,7 +241,7 @@ def main() -> None:
     if missing:
         parser.error(f"File(s) not found: {', '.join(str(p) for p in missing)}")
 
-    if args.no_lang and args.no_quality is None:
+    if args.no_lang and args.no_quality:
         parser.error("All filters are disabled — nothing to do.")
 
     # ── Output setup ──────────────────────────────────────────────────────────
@@ -271,7 +270,6 @@ def main() -> None:
                 rows=rows,
                 lang_enabled=not args.no_lang,
                 quality_enabled=not args.no_quality,
-                batch_size=args.batch_size,
                 lang_threshold=args.lang_threshold,
                 quality_threshold=args.quality_threshold,
             )

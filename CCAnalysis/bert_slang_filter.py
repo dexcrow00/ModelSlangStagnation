@@ -24,15 +24,19 @@ Requires: sentence-transformers, pyyaml  (see requirements_bert_slang_filter.txt
 
 Usage:
     # Compare both methods — write all rows with scores
-    python bert_slang_filter.py input.csv -o scored.csv \\
+    python3 bert_slang_filter.py input.csv -o scored.csv \\
+        --slang-defs slang.yaml --score-all
+
+    # Process a whole directory, one output file per input
+    python3 bert_slang_filter.py contexts/ --output-dir scored/ \\
         --slang-defs slang.yaml --score-all
 
     # Filter using both scores
-    python bert_slang_filter.py contexts/*.csv -o filtered.csv \\
+    python3 bert_slang_filter.py contexts/*.csv -o filtered.csv \\
         --slang-defs slang.yaml --sbert-threshold 0.1 --nli-threshold 0.1
 
     # SBERT only, lighter model
-    python bert_slang_filter.py input.csv -o out.csv \\
+    python3 bert_slang_filter.py input.csv -o out.csv \\
         --slang-defs slang.yaml --no-nli --sbert-model all-MiniLM-L6-v2
 """
 
@@ -247,6 +251,10 @@ Examples:
   python bert_slang_filter.py input.csv -o scored.csv \\
       --slang-defs slang.yaml --score-all
 
+  # Process a whole directory, one output file per input
+  python bert_slang_filter.py contexts/ --output-dir scored/ \\
+      --slang-defs slang.yaml --score-all
+
   # Filter using both scores
   python bert_slang_filter.py contexts/*.csv -o filtered.csv \\
       --slang-defs slang.yaml --sbert-threshold 0.1 --nli-threshold 0.1
@@ -262,10 +270,15 @@ Examples:
     )
 
     p.add_argument("inputs", nargs="+", metavar="CSV",
-                   help="Input CSV file(s) with uri and target_context columns. "
-                        "Glob patterns accepted.")
-    p.add_argument("-o", "--output", required=True, metavar="FILE",
-                   help="Output CSV path.")
+                   help="Input CSV file(s), glob patterns, or a directory of CSVs. "
+                        "When a directory is given, all *.csv files within it are processed.")
+
+    out_group = p.add_mutually_exclusive_group(required=True)
+    out_group.add_argument("-o", "--output", metavar="FILE",
+                           help="Output CSV path (single-file mode — all inputs merged).")
+    out_group.add_argument("--output-dir", metavar="DIR", dest="output_dir",
+                           help="Output directory (per-file mode — one output file per input, "
+                                "same filename). Created if it does not exist.")
     p.add_argument("--slang-defs", required=True, metavar="YAML", dest="slang_defs",
                    help="YAML file of slang word definitions (slang.yaml).")
     p.add_argument("--score-all", action="store_true", dest="score_all",
@@ -301,6 +314,65 @@ Examples:
     return p
 
 
+def _score_file(
+    path: Path,
+    sbert_clf: Optional[SBERTSlangClassifier],
+    nli_clf: Optional[NLISlangClassifier],
+    args: argparse.Namespace,
+    fieldnames: List[str],
+) -> Tuple[List[Dict], int]:
+    """Score a single CSV file. Returns (out_rows, n_input_rows)."""
+    rows = _read_rows(path)
+    if not rows:
+        log.info("Skipping empty file: %s", path.name)
+        return [], 0
+
+    log.info("Processing %s (%d rows) ...", path.name, len(rows))
+    n = len(rows)
+    sbert_scores = sbert_clf.score_rows(rows, args.batch_size) if sbert_clf else [None] * n
+    nli_scores   = nli_clf.score_rows(rows, args.batch_size)   if nli_clf   else [None] * n
+
+    out_rows: List[Dict] = []
+    for row, ss, ns in zip(rows, sbert_scores, nli_scores):
+        if not args.score_all:
+            if sbert_clf and ss is not None and ss < args.sbert_threshold:
+                continue
+            if nli_clf   and ns is not None and ns < args.nli_threshold:
+                continue
+
+        out_row: Dict = {"uri": row["uri"], "target_context": row["target_context"]}
+        if not args.no_sbert:
+            out_row["sbert_score"] = f"{ss:.4f}" if ss is not None else ""
+        if not args.no_nli:
+            out_row["nli_score"] = f"{ns:.4f}" if ns is not None else ""
+        out_rows.append(out_row)
+
+    log.info("  %s: %d/%d rows kept (%.1f%%)",
+             path.name, len(out_rows), n,
+             100.0 * len(out_rows) / n if n else 0.0)
+    return out_rows, n
+
+
+def _sort_rows(rows: List[Dict]) -> None:
+    """Sort rows in-place: descending sbert_score then nli_score; empty sorts last."""
+    _NEG_INF = float("-inf")
+
+    def _key(r: Dict) -> Tuple[float, float]:
+        ss = float(r["sbert_score"]) if r.get("sbert_score") else _NEG_INF
+        ns = float(r["nli_score"])   if r.get("nli_score")   else _NEG_INF
+        return (-ss, -ns)
+
+    rows.sort(key=_key)
+
+
+def _write_csv(path: Path, rows: List[Dict], fieldnames: List[str]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w", newline="", encoding="utf-8") as fh:
+        writer = csv.DictWriter(fh, fieldnames=fieldnames, extrasaction="ignore")
+        writer.writeheader()
+        writer.writerows(rows)
+
+
 def main() -> None:
     parser = build_parser()
     args   = parser.parse_args()
@@ -308,18 +380,25 @@ def main() -> None:
     if args.no_sbert and args.no_nli:
         parser.error("Both methods are disabled — nothing to do.")
 
-    # Expand glob patterns
+    # Expand inputs: directories → *.csv within; glob patterns; plain paths
     input_paths: List[Path] = []
     for pattern in args.inputs:
-        matched = sorted(glob.glob(pattern, recursive=True))
-        if matched:
-            input_paths.extend(Path(p) for p in matched)
+        p = Path(pattern)
+        if p.is_dir():
+            input_paths.extend(sorted(p.glob("*.csv")))
         else:
-            input_paths.append(Path(pattern))
+            matched = sorted(glob.glob(pattern, recursive=True))
+            if matched:
+                input_paths.extend(Path(m) for m in matched)
+            else:
+                input_paths.append(p)
 
     missing = [p for p in input_paths if not p.exists()]
     if missing:
         parser.error(f"File(s) not found: {', '.join(str(p) for p in missing)}")
+
+    if not input_paths:
+        parser.error("No input files found.")
 
     definitions = load_slang_definitions(Path(args.slang_defs))
 
@@ -339,71 +418,44 @@ def main() -> None:
             list(definitions.keys()),
         )
 
-    # ── Output setup ──────────────────────────────────────────────────────────
-    output_path = Path(args.output)
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-
     fieldnames = ["uri", "target_context"]
     if not args.no_sbert:
         fieldnames.append("sbert_score")
     if not args.no_nli:
         fieldnames.append("nli_score")
 
+    # ── Per-file mode (--output-dir) ──────────────────────────────────────────
+    if args.output_dir is not None:
+        out_dir = Path(args.output_dir)
+        out_dir.mkdir(parents=True, exist_ok=True)
+        grand_in = grand_out = 0
+        for path in input_paths:
+            file_rows, n_in = _score_file(path, sbert_clf, nli_clf, args, fieldnames)
+            _sort_rows(file_rows)
+            _write_csv(out_dir / path.name, file_rows, fieldnames)
+            grand_in  += n_in
+            grand_out += len(file_rows)
+        log.info("Done. %d/%d rows kept (%.1f%%) across %d file(s) -> %s",
+                 grand_out, grand_in,
+                 100.0 * grand_out / grand_in if grand_in else 0.0,
+                 len(input_paths), out_dir)
+        return
+
+    # ── Single-file mode (-o) ─────────────────────────────────────────────────
+    output_path = Path(args.output)
     grand_in  = 0
-    out_rows: List[Dict] = []
-
+    all_rows: List[Dict] = []
     for path in input_paths:
-        rows = _read_rows(path)
-        if not rows:
-            log.info("Skipping empty file: %s", path.name)
-            continue
+        file_rows, n_in = _score_file(path, sbert_clf, nli_clf, args, fieldnames)
+        all_rows.extend(file_rows)
+        grand_in += n_in
 
-        log.info("Processing %s (%d rows) ...", path.name, len(rows))
+    _sort_rows(all_rows)
+    _write_csv(output_path, all_rows, fieldnames)
 
-        n = len(rows)
-        sbert_scores = sbert_clf.score_rows(rows, args.batch_size) if sbert_clf else [None] * n
-        nli_scores   = nli_clf.score_rows(rows, args.batch_size)   if nli_clf   else [None] * n
-
-        kept = 0
-        for row, ss, ns in zip(rows, sbert_scores, nli_scores):
-            if not args.score_all:
-                if sbert_clf and ss is not None and ss < args.sbert_threshold:
-                    continue
-                if nli_clf   and ns is not None and ns < args.nli_threshold:
-                    continue
-
-            out_row: Dict = {"uri": row["uri"], "target_context": row["target_context"]}
-            if not args.no_sbert:
-                out_row["sbert_score"] = f"{ss:.4f}" if ss is not None else ""
-            if not args.no_nli:
-                out_row["nli_score"] = f"{ns:.4f}" if ns is not None else ""
-            out_rows.append(out_row)
-            kept += 1
-
-        grand_in += len(rows)
-        log.info("  %s: %d/%d rows kept (%.1f%%)",
-                 path.name, kept, len(rows),
-                 100.0 * kept / len(rows) if rows else 0.0)
-
-    # Sort descending by sbert_score then nli_score; empty scores sort last.
-    _NEG_INF = float("-inf")
-
-    def _sort_key(r: Dict) -> Tuple[float, float]:
-        ss = float(r["sbert_score"]) if r.get("sbert_score") else _NEG_INF
-        ns = float(r["nli_score"])   if r.get("nli_score")   else _NEG_INF
-        return (-ss, -ns)
-
-    out_rows.sort(key=_sort_key)
-
-    with output_path.open("w", newline="", encoding="utf-8") as out_fh:
-        writer = csv.DictWriter(out_fh, fieldnames=fieldnames, extrasaction="ignore")
-        writer.writeheader()
-        writer.writerows(out_rows)
-
-    grand_out = len(out_rows)
     log.info("Done. %d/%d rows kept (%.1f%%), sorted by score -> %s",
-             grand_out, grand_in,
-             100.0 * grand_out / grand_in if grand_in else 0.0,
+             len(all_rows), grand_in,
+             100.0 * len(all_rows) / grand_in if grand_in else 0.0,
              output_path)
 
 
