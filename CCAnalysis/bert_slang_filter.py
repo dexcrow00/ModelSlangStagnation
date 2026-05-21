@@ -349,47 +349,59 @@ def main() -> None:
     if not args.no_nli:
         fieldnames.append("nli_score")
 
-    grand_in = grand_out = 0
+    grand_in  = 0
+    out_rows: List[Dict] = []
+
+    for path in input_paths:
+        rows = _read_rows(path)
+        if not rows:
+            log.info("Skipping empty file: %s", path.name)
+            continue
+
+        log.info("Processing %s (%d rows) ...", path.name, len(rows))
+
+        n = len(rows)
+        sbert_scores = sbert_clf.score_rows(rows, args.batch_size) if sbert_clf else [None] * n
+        nli_scores   = nli_clf.score_rows(rows, args.batch_size)   if nli_clf   else [None] * n
+
+        kept = 0
+        for row, ss, ns in zip(rows, sbert_scores, nli_scores):
+            if not args.score_all:
+                if sbert_clf and ss is not None and ss < args.sbert_threshold:
+                    continue
+                if nli_clf   and ns is not None and ns < args.nli_threshold:
+                    continue
+
+            out_row: Dict = {"uri": row["uri"], "target_context": row["target_context"]}
+            if not args.no_sbert:
+                out_row["sbert_score"] = f"{ss:.4f}" if ss is not None else ""
+            if not args.no_nli:
+                out_row["nli_score"] = f"{ns:.4f}" if ns is not None else ""
+            out_rows.append(out_row)
+            kept += 1
+
+        grand_in += len(rows)
+        log.info("  %s: %d/%d rows kept (%.1f%%)",
+                 path.name, kept, len(rows),
+                 100.0 * kept / len(rows) if rows else 0.0)
+
+    # Sort descending by sbert_score then nli_score; empty scores sort last.
+    _NEG_INF = float("-inf")
+
+    def _sort_key(r: Dict) -> Tuple[float, float]:
+        ss = float(r["sbert_score"]) if r.get("sbert_score") else _NEG_INF
+        ns = float(r["nli_score"])   if r.get("nli_score")   else _NEG_INF
+        return (-ss, -ns)
+
+    out_rows.sort(key=_sort_key)
 
     with output_path.open("w", newline="", encoding="utf-8") as out_fh:
         writer = csv.DictWriter(out_fh, fieldnames=fieldnames, extrasaction="ignore")
         writer.writeheader()
+        writer.writerows(out_rows)
 
-        for path in input_paths:
-            rows = _read_rows(path)
-            if not rows:
-                log.info("Skipping empty file: %s", path.name)
-                continue
-
-            log.info("Processing %s (%d rows) ...", path.name, len(rows))
-
-            n = len(rows)
-            sbert_scores = sbert_clf.score_rows(rows, args.batch_size) if sbert_clf else [None] * n
-            nli_scores   = nli_clf.score_rows(rows, args.batch_size)   if nli_clf   else [None] * n
-
-            kept = 0
-            for row, ss, ns in zip(rows, sbert_scores, nli_scores):
-                if not args.score_all:
-                    if sbert_clf and ss is not None and ss < args.sbert_threshold:
-                        continue
-                    if nli_clf   and ns is not None and ns < args.nli_threshold:
-                        continue
-
-                out_row: Dict = {"uri": row["uri"], "target_context": row["target_context"]}
-                if not args.no_sbert:
-                    out_row["sbert_score"] = f"{ss:.4f}" if ss is not None else ""
-                if not args.no_nli:
-                    out_row["nli_score"] = f"{ns:.4f}" if ns is not None else ""
-                writer.writerow(out_row)
-                kept += 1
-
-            grand_in  += len(rows)
-            grand_out += kept
-            log.info("  %s: %d/%d rows kept (%.1f%%)",
-                     path.name, kept, len(rows),
-                     100.0 * kept / len(rows) if rows else 0.0)
-
-    log.info("Done. %d/%d rows kept (%.1f%%) -> %s",
+    grand_out = len(out_rows)
+    log.info("Done. %d/%d rows kept (%.1f%%), sorted by score -> %s",
              grand_out, grand_in,
              100.0 * grand_out / grand_in if grand_in else 0.0,
              output_path)
