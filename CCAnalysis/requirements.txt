@@ -3,18 +3,13 @@ warcio>=1.7.4        # WET/WARC file reading
 boto3>=1.26.0        # S3 access for Common Crawl
 langdetect>=1.0.9    # Language detection in bert_filter.py
 
-# ── Slang filtering only (bert_filter.py --slang-defs) ───────────────────────
-# Install torch CPU-only first to avoid the 2 GB CUDA default:
-#   pip install torch --index-url https://download.pytorch.org/whl/cpu
-#   pip install transformers pyyaml
-torch>=2.0.0
-transformers>=4.30.0
-pyyaml>=6.0
-
 # ── Frequency pipeline only (word_sample.py, word_variation.py) ───────────────
 beautifulsoup4>=4.12.0
 lxml>=4.9.0
 plotly>=5.0
 
 # ── Optional quality-of-life ──────────────────────────────────────────────────
-# tqdm                # progress bars in bert_filter.py (gracefully skipped if absent)
+tqdm                # progress bars in bert_filter.py (gracefully skipped if absent)
+
+# ── Slang sense filtering ─────────────────────────────────────────────────────
+# See requirements_bert_slang_filter.txt
