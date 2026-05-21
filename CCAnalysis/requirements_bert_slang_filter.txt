@@ -1,7 +1,7 @@
 # Dependencies for bert_slang_filter.py (slang sense classification).
+# sentence-transformers pulls in torch and transformers automatically.
 # Install torch CPU-only first to avoid the 2 GB CUDA default:
 #   pip install torch --index-url https://download.pytorch.org/whl/cpu
 #   pip install -r requirements_bert_slang_filter.txt
-torch>=2.0.0
-transformers>=4.30.0
+sentence-transformers>=2.7.0
 pyyaml>=6.0

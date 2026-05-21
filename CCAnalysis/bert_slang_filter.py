@@ -1,30 +1,39 @@
 #!/usr/bin/env python3
 """
-bert_slang_filter.py — BERT-based slang sense classifier.
+bert_slang_filter.py — Slang sense scorer with two independent methods.
 
-Reads word_context.py CSV output (uri, target_context columns) and scores each
-row by how likely the target word is being used in its slang sense.
+Scores each context row by how likely the target word is used in its slang
+sense, running two methods in parallel for comparison:
 
-Two scoring modes per word (configured via slang.yaml):
-  Both senses defined (slang + standard examples):
+  Method 1 — SBERT prototype matching (--sbert-model):
+    Encodes the full context sentence with a sentence-transformer model trained
+    for semantic similarity. Compares to per-word sense centroids built from
+    slang.yaml examples.
     score = cos_sim(context, slang_proto) - cos_sim(context, standard_proto)
-    Positive -> slang sense; negative -> standard sense.
-  Slang examples only:
-    score = cos_sim(context, slang_proto)  [0-1 absolute similarity]
+    For slang-only words (no standard examples): score = cos_sim(context, slang_proto)
 
-Rows containing no defined slang word are passed through unfiltered.
+  Method 2 — Zero-shot NLI (--nli-model):
+    Frames sense classification as natural language inference.
+    score = P(entailment | "X used as slang") - P(entailment | "X used literally")
+    Needs no prototype examples — sense disambiguation is handled by the NLI model.
 
-Requires: torch, transformers, pyyaml
-See requirements_bert_slang_filter.txt for installation instructions.
+Both scores are written as separate columns for side-by-side comparison.
+Rows containing no defined slang word get empty scores and are passed through.
+
+Requires: sentence-transformers, pyyaml  (see requirements_bert_slang_filter.txt)
 
 Usage:
-    python bert_slang_filter.py contexts/*.csv -o scored.csv --slang-defs slang.yaml
+    # Compare both methods — write all rows with scores
+    python bert_slang_filter.py input.csv -o scored.csv \\
+        --slang-defs slang.yaml --score-all
 
-    # Write all rows with scores attached (for threshold calibration)
-    python bert_slang_filter.py input.csv -o scored.csv --slang-defs slang.yaml --score-all
+    # Filter using both scores
+    python bert_slang_filter.py contexts/*.csv -o filtered.csv \\
+        --slang-defs slang.yaml --sbert-threshold 0.1 --nli-threshold 0.1
 
-    # Stricter gate
-    python bert_slang_filter.py input.csv -o out.csv --slang-defs slang.yaml --slang-threshold 0.05
+    # SBERT only, lighter model
+    python bert_slang_filter.py input.csv -o out.csv \\
+        --slang-defs slang.yaml --no-nli --sbert-model all-MiniLM-L6-v2
 """
 
 from __future__ import annotations
@@ -33,16 +42,14 @@ import argparse
 import csv
 import glob
 import logging
-import os
 import sys
 from pathlib import Path
 from typing import Dict, Iterator, List, Optional, Tuple
 
-os.environ.setdefault("TOKENIZERS_PARALLELISM", "false")
-
+import numpy as np
 import torch
 import torch.nn.functional as F
-from transformers import AutoModel, AutoTokenizer  # type: ignore
+from sentence_transformers import CrossEncoder, SentenceTransformer
 
 try:
     import yaml  # type: ignore
@@ -70,7 +77,8 @@ logging.basicConfig(
 )
 log = logging.getLogger(__name__)
 
-_BERT_MODEL = "bert-base-uncased"
+_SBERT_MODEL = "all-mpnet-base-v2"
+_NLI_MODEL   = "cross-encoder/nli-deberta-v3-large"
 
 # ---------------------------------------------------------------------------
 # Helpers
@@ -86,146 +94,9 @@ def _read_rows(path: Path) -> List[Dict[str, str]]:
         return list(csv.DictReader(fh))
 
 
-def _find_word_positions(tokens: List[str], word_tokens: List[str]) -> List[int]:
-    """Return token positions of the first full-word occurrence of word_tokens.
-
-    Checks that the token immediately after the match is not a WordPiece
-    continuation (## prefix), preventing 'fire' from matching inside 'fired'.
-    Returns [] if not found.
-    """
-    n = len(word_tokens)
-    for i in range(len(tokens) - n + 1):
-        if tokens[i : i + n] != word_tokens:
-            continue
-        next_pos = i + n
-        if next_pos < len(tokens) and tokens[next_pos].startswith("##"):
-            continue
-        return list(range(i, i + n))
-    return []
-
-# ---------------------------------------------------------------------------
-# Slang classifier
-# ---------------------------------------------------------------------------
-
-class SlangClassifier:
-    """Classify whether target words are used in their slang sense.
-
-    Builds prototype embeddings for each defined word from example sentences.
-    At inference, scores a context by comparing the word's contextual embedding
-    to the prototypes.
-    """
-
-    def __init__(self, tokenizer, model, definitions: Dict) -> None:
-        self.tokenizer = tokenizer
-        self.model = model
-        self.prototypes: Dict[str, Tuple[torch.Tensor, Optional[torch.Tensor]]] = {}
-        self._build_prototypes(definitions)
-
-    def _embed_word_in_sentence(self, sentence: str, word: str) -> Optional[torch.Tensor]:
-        word_tokens = self.tokenizer.tokenize(word)
-        if not word_tokens:
-            return None
-        enc = self.tokenizer(sentence, return_tensors="pt", truncation=True, max_length=512)
-        tokens = self.tokenizer.convert_ids_to_tokens(enc["input_ids"][0])
-        positions = _find_word_positions(tokens, word_tokens)
-        if not positions:
-            return None
-        with torch.no_grad():
-            hidden = self.model(**enc).last_hidden_state[0]  # (L, H)
-        return hidden[positions].mean(dim=0)
-
-    def _build_prototypes(self, definitions: Dict) -> None:
-        for word, senses in definitions.items():
-            word_lc = word.lower()
-            slang_embeds, standard_embeds = [], []
-
-            for sentence in senses.get("slang", []):
-                emb = self._embed_word_in_sentence(sentence, word_lc)
-                if emb is not None:
-                    slang_embeds.append(emb)
-                else:
-                    log.warning("Slang def for '%s': word not found in: %r", word, sentence)
-
-            for sentence in senses.get("standard", []):
-                emb = self._embed_word_in_sentence(sentence, word_lc)
-                if emb is not None:
-                    standard_embeds.append(emb)
-                else:
-                    log.warning("Standard def for '%s': word not found in: %r", word, sentence)
-
-            if not slang_embeds:
-                log.warning("Skipping '%s': no usable slang examples.", word)
-                continue
-
-            slang_proto = F.normalize(torch.stack(slang_embeds).mean(0), dim=0)
-
-            if not standard_embeds:
-                log.info("  '%s' — %d slang examples, slang-only mode", word_lc, len(slang_embeds))
-                self.prototypes[word_lc] = (slang_proto, None)
-                continue
-
-            standard_proto = F.normalize(torch.stack(standard_embeds).mean(0), dim=0)
-            self.prototypes[word_lc] = (slang_proto, standard_proto)
-            log.info("  '%s' — %d slang / %d standard examples",
-                     word_lc, len(slang_embeds), len(standard_embeds))
-
-    def score_batch(self, texts: List[str], word: str) -> List[Optional[float]]:
-        slang_proto, standard_proto = self.prototypes[word]
-        word_tokens = self.tokenizer.tokenize(word)
-
-        enc = self.tokenizer(
-            texts, return_tensors="pt", truncation=True, max_length=512, padding=True
-        )
-        with torch.no_grad():
-            hidden = self.model(**enc).last_hidden_state  # (B, L, H)
-
-        results: List[Optional[float]] = []
-        for i in range(len(texts)):
-            actual_len = int(enc["attention_mask"][i].sum().item())
-            tokens = self.tokenizer.convert_ids_to_tokens(enc["input_ids"][i, :actual_len])
-            positions = _find_word_positions(tokens, word_tokens)
-            if not positions:
-                results.append(None)
-                continue
-            emb = F.normalize(hidden[i, positions].mean(dim=0), dim=0)
-            slang_sim = torch.dot(emb, slang_proto).item()
-            score = (
-                slang_sim - torch.dot(emb, standard_proto).item()
-                if standard_proto is not None else slang_sim
-            )
-            results.append(score)
-
-        return results
-
-    def score_all_rows(self, rows: List[Dict[str, str]], batch_size: int) -> List[Optional[float]]:
-        """Score every row. Returns None for rows with no defined slang word present."""
-        n = len(rows)
-        texts = [r["target_context"] for r in rows]
-        scores: List[Optional[float]] = [None] * n
-
-        for word in self.prototypes:
-            relevant = [i for i, t in enumerate(texts) if word in t.lower()]
-            if not relevant:
-                continue
-            relevant_texts = [texts[i] for i in relevant]
-            batches = list(_batched(relevant_texts, batch_size))
-            it = tqdm(batches, desc=f"Slang ({word})", unit="batch", leave=False) if HAS_TQDM else batches
-            flat: List[Optional[float]] = []
-            for batch in it:
-                flat.extend(self.score_batch(batch, word))
-            for idx, s in zip(relevant, flat):
-                if s is not None and (scores[idx] is None or s > scores[idx]):
-                    scores[idx] = s
-
-        return scores
-
-# ---------------------------------------------------------------------------
-# YAML loader
-# ---------------------------------------------------------------------------
-
 def load_slang_definitions(path: Path) -> Dict:
     if not HAS_YAML:
-        log.error("PyYAML is required. Install with: pip install pyyaml")
+        log.error("PyYAML is required. pip install pyyaml")
         sys.exit(1)
     with path.open(encoding="utf-8") as fh:
         data = yaml.safe_load(fh)
@@ -235,81 +106,207 @@ def load_slang_definitions(path: Path) -> Dict:
     return data
 
 # ---------------------------------------------------------------------------
-# Factory
+# Method 1 — SBERT prototype matching
 # ---------------------------------------------------------------------------
 
-def build_classifier(
-    slang_defs_path: Path,
-    bert_model: str = _BERT_MODEL,
-    quantize: bool = True,
-) -> SlangClassifier:
-    """Load model, optionally quantize, build prototypes, return a ready classifier."""
-    log.info("Loading BERT model: %s", bert_model)
-    tokenizer = AutoTokenizer.from_pretrained(bert_model)
-    model = AutoModel.from_pretrained(bert_model).eval()
+class SBERTSlangClassifier:
+    """Sentence-BERT prototype-based slang sense scorer.
 
-    if quantize:
-        log.info("Applying int8 dynamic quantization ...")
-        model = torch.quantization.quantize_dynamic(
-            model, {torch.nn.Linear}, dtype=torch.qint8
+    Encodes full context sentences and compares to per-word sense centroids
+    built from slang.yaml example sentences.
+    """
+
+    def __init__(self, model: SentenceTransformer, definitions: Dict) -> None:
+        self.model = model
+        self.prototypes: Dict[str, Tuple[torch.Tensor, Optional[torch.Tensor]]] = {}
+        self._build_prototypes(definitions)
+
+    def _encode(self, sentences: List[str], batch_size: int = 32) -> torch.Tensor:
+        embs = self.model.encode(
+            sentences, batch_size=batch_size,
+            show_progress_bar=False, convert_to_numpy=True,
         )
+        return F.normalize(torch.tensor(embs), dim=1)
 
-    definitions = load_slang_definitions(slang_defs_path)
-    log.info("Building slang prototypes for %d word(s) ...", len(definitions))
-    classifier = SlangClassifier(tokenizer, model, definitions)
-    log.info("Slang classifier ready (%d word(s) with prototypes).", len(classifier.prototypes))
-    return classifier
+    def _build_prototypes(self, definitions: Dict) -> None:
+        for word, senses in definitions.items():
+            word_lc     = word.lower()
+            slang_sents = senses.get("slang", [])
+            std_sents   = senses.get("standard", [])
+
+            if not slang_sents:
+                log.warning("SBERT: skipping '%s' — no slang examples.", word)
+                continue
+
+            slang_proto = F.normalize(self._encode(slang_sents).mean(dim=0), dim=0)
+
+            if std_sents:
+                std_proto = F.normalize(self._encode(std_sents).mean(dim=0), dim=0)
+                self.prototypes[word_lc] = (slang_proto, std_proto)
+                log.info("  SBERT '%s' — %d slang / %d standard examples",
+                         word_lc, len(slang_sents), len(std_sents))
+            else:
+                self.prototypes[word_lc] = (slang_proto, None)
+                log.info("  SBERT '%s' — %d slang examples, slang-only mode",
+                         word_lc, len(slang_sents))
+
+    def score_rows(self, rows: List[Dict[str, str]], batch_size: int) -> List[Optional[float]]:
+        texts  = [r["target_context"] for r in rows]
+        scores: List[Optional[float]] = [None] * len(rows)
+
+        for word, (slang_proto, std_proto) in self.prototypes.items():
+            relevant = [i for i, t in enumerate(texts) if word in t.lower()]
+            if not relevant:
+                continue
+
+            embs = self._encode([texts[i] for i in relevant], batch_size)  # (N, D), L2-normed
+            slang_sims = (embs @ slang_proto).tolist()
+
+            if std_proto is not None:
+                std_sims    = (embs @ std_proto).tolist()
+                word_scores = [float(s - t) for s, t in zip(slang_sims, std_sims)]
+            else:
+                word_scores = [float(s) for s in slang_sims]
+
+            for idx, s in zip(relevant, word_scores):
+                if scores[idx] is None or s > scores[idx]:
+                    scores[idx] = s
+
+        return scores
+
+# ---------------------------------------------------------------------------
+# Method 2 — Zero-shot NLI
+# ---------------------------------------------------------------------------
+
+class NLISlangClassifier:
+    """Zero-shot NLI slang sense scorer.
+
+    Uses a cross-encoder NLI model to score entailment for slang vs. standard
+    sense hypotheses. No prototype examples needed.
+    """
+
+    _SLANG_TMPL = "In this text, the word '{word}' is used as internet slang or informal language."
+    _STD_TMPL   = "In this text, the word '{word}' is used with its literal, standard dictionary meaning."
+
+    def __init__(self, model: CrossEncoder, words: List[str]) -> None:
+        self.model = model
+        self.words = [w.lower() for w in words]
+        label2id   = getattr(model.model.config, "label2id", {})
+        label2id_lc = {k.lower(): v for k, v in label2id.items()}
+        self.entailment_idx = label2id_lc.get("entailment", 1)
+        log.info("  NLI entailment class index: %d  (label2id: %s)",
+                 self.entailment_idx, label2id)
+
+    def _entailment_probs(self, pairs: List[Tuple[str, str]], batch_size: int) -> np.ndarray:
+        logits = self.model.predict(pairs, batch_size=batch_size,
+                                    show_progress_bar=False)  # (N, 3)
+        if logits.ndim == 1:
+            logits = logits.reshape(1, -1)
+        exp_x = np.exp(logits - logits.max(axis=1, keepdims=True))
+        probs  = exp_x / exp_x.sum(axis=1, keepdims=True)
+        return probs[:, self.entailment_idx]
+
+    def score_rows(self, rows: List[Dict[str, str]], batch_size: int) -> List[Optional[float]]:
+        texts  = [r["target_context"] for r in rows]
+        scores: List[Optional[float]] = [None] * len(rows)
+
+        for word in self.words:
+            relevant = [i for i, t in enumerate(texts) if word in t.lower()]
+            if not relevant:
+                continue
+
+            rel_texts   = [texts[i] for i in relevant]
+            slang_pairs = [(t, self._SLANG_TMPL.format(word=word)) for t in rel_texts]
+            std_pairs   = [(t, self._STD_TMPL.format(word=word))   for t in rel_texts]
+
+            # Single predict call: slang pairs first, then standard
+            log.info("  NLI scoring '%s': %d rows ...", word, len(rel_texts))
+            all_probs   = self._entailment_probs(slang_pairs + std_pairs, batch_size)
+            n           = len(rel_texts)
+            slang_probs = all_probs[:n]
+            std_probs   = all_probs[n:]
+
+            for idx, sp, tp in zip(relevant, slang_probs, std_probs):
+                s = float(sp - tp)
+                if scores[idx] is None or s > scores[idx]:
+                    scores[idx] = s
+
+        return scores
 
 # ---------------------------------------------------------------------------
 # CLI
 # ---------------------------------------------------------------------------
 
 def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(
-        description="Score word_context.py CSV output for slang sense using BERT embeddings.",
+    p = argparse.ArgumentParser(
+        description="Score slang sense using SBERT prototype matching and zero-shot NLI.",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
-  python bert_slang_filter.py contexts/*.csv -o scored.csv --slang-defs slang.yaml
-  python bert_slang_filter.py input.csv -o scored.csv --slang-defs slang.yaml --score-all
-  python bert_slang_filter.py input.csv -o out.csv --slang-defs slang.yaml --slang-threshold 0.05
+  # Compare both methods on all rows (recommended starting point)
+  python bert_slang_filter.py input.csv -o scored.csv \\
+      --slang-defs slang.yaml --score-all
+
+  # Filter using both scores
+  python bert_slang_filter.py contexts/*.csv -o filtered.csv \\
+      --slang-defs slang.yaml --sbert-threshold 0.1 --nli-threshold 0.1
+
+  # SBERT only, lighter model
+  python bert_slang_filter.py input.csv -o out.csv \\
+      --slang-defs slang.yaml --no-nli --sbert-model all-MiniLM-L6-v2
+
+  # NLI only
+  python bert_slang_filter.py input.csv -o out.csv \\
+      --slang-defs slang.yaml --no-sbert
         """,
     )
 
-    parser.add_argument("inputs", nargs="+", metavar="CSV",
-                        help="Input CSV file(s) with uri and target_context columns. "
-                             "Glob patterns accepted.")
-    parser.add_argument("-o", "--output", required=True, metavar="FILE",
-                        help="Output CSV path.")
-    parser.add_argument("--slang-defs", required=True, metavar="YAML", dest="slang_defs",
-                        help="YAML file of slang word definitions (slang.yaml).")
-    parser.add_argument("--slang-threshold", type=float, default=0.0, metavar="F",
-                        dest="slang_threshold",
-                        help="Min slang score to keep a row (default: 0.0). "
-                             "For words with both senses: slang_sim - standard_sim. "
-                             "For slang-only words: absolute cosine similarity (0-1). "
-                             "Rows with no defined slang word are passed through.")
-    parser.add_argument("--score-all", action="store_true", dest="score_all",
-                        help="Write every row without filtering. Implies --keep-scores.")
-    parser.add_argument("--keep-scores", action="store_true", dest="keep_scores",
-                        help="Append a slang_score column to the output.")
-    parser.add_argument("--batch-size", type=int, default=32, metavar="N", dest="batch_size",
-                        help="BERT inference batch size (default: 32).")
-    parser.add_argument("--bert-model", default=_BERT_MODEL, metavar="ID", dest="bert_model",
-                        help=f"BERT checkpoint to use (default: {_BERT_MODEL}).")
-    parser.add_argument("--no-quantize", action="store_true", dest="no_quantize",
-                        help="Disable int8 dynamic quantization. "
-                             "Quantization is on by default and reduces RAM ~4x.")
+    p.add_argument("inputs", nargs="+", metavar="CSV",
+                   help="Input CSV file(s) with uri and target_context columns. "
+                        "Glob patterns accepted.")
+    p.add_argument("-o", "--output", required=True, metavar="FILE",
+                   help="Output CSV path.")
+    p.add_argument("--slang-defs", required=True, metavar="YAML", dest="slang_defs",
+                   help="YAML file of slang word definitions (slang.yaml).")
+    p.add_argument("--score-all", action="store_true", dest="score_all",
+                   help="Write every row with scores attached, without filtering. "
+                        "Recommended for comparing the two methods.")
 
-    return parser
+    # Thresholds
+    p.add_argument("--sbert-threshold", type=float, default=0.0, metavar="F",
+                   dest="sbert_threshold",
+                   help="Min SBERT score to keep a row (default: 0.0).")
+    p.add_argument("--nli-threshold", type=float, default=0.0, metavar="F",
+                   dest="nli_threshold",
+                   help="Min NLI score to keep a row (default: 0.0).")
+
+    # Method toggles
+    p.add_argument("--no-sbert", action="store_true", dest="no_sbert",
+                   help="Skip SBERT scoring.")
+    p.add_argument("--no-nli", action="store_true", dest="no_nli",
+                   help="Skip NLI scoring.")
+
+    # Models
+    p.add_argument("--sbert-model", default=_SBERT_MODEL, metavar="ID", dest="sbert_model",
+                   help=f"Sentence-transformer model for SBERT scoring "
+                        f"(default: {_SBERT_MODEL}). "
+                        f"Lighter alternative: all-MiniLM-L6-v2 (~80 MB).")
+    p.add_argument("--nli-model", default=_NLI_MODEL, metavar="ID", dest="nli_model",
+                   help=f"Cross-encoder NLI model "
+                        f"(default: {_NLI_MODEL}). "
+                        f"Lighter alternative: cross-encoder/nli-MiniLM2-L6-H768 (~100 MB).")
+    p.add_argument("--batch-size", type=int, default=32, metavar="N", dest="batch_size",
+                   help="Inference batch size for both methods (default: 32).")
+
+    return p
 
 
 def main() -> None:
     parser = build_parser()
-    args = parser.parse_args()
+    args   = parser.parse_args()
 
-    if args.score_all:
-        args.keep_scores = True
+    if args.no_sbert and args.no_nli:
+        parser.error("Both methods are disabled — nothing to do.")
 
     # Expand glob patterns
     input_paths: List[Path] = []
@@ -324,18 +321,33 @@ def main() -> None:
     if missing:
         parser.error(f"File(s) not found: {', '.join(str(p) for p in missing)}")
 
-    classifier = build_classifier(
-        Path(args.slang_defs),
-        bert_model=args.bert_model,
-        quantize=not args.no_quantize,
-    )
+    definitions = load_slang_definitions(Path(args.slang_defs))
 
+    # ── Load models ───────────────────────────────────────────────────────────
+    sbert_clf: Optional[SBERTSlangClassifier] = None
+    if not args.no_sbert:
+        log.info("Loading SBERT model: %s", args.sbert_model)
+        sbert_clf = SBERTSlangClassifier(
+            SentenceTransformer(args.sbert_model), definitions
+        )
+
+    nli_clf: Optional[NLISlangClassifier] = None
+    if not args.no_nli:
+        log.info("Loading NLI model: %s", args.nli_model)
+        nli_clf = NLISlangClassifier(
+            CrossEncoder(args.nli_model, num_labels=3),
+            list(definitions.keys()),
+        )
+
+    # ── Output setup ──────────────────────────────────────────────────────────
     output_path = Path(args.output)
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
     fieldnames = ["uri", "target_context"]
-    if args.keep_scores:
-        fieldnames.append("slang_score")
+    if not args.no_sbert:
+        fieldnames.append("sbert_score")
+    if not args.no_nli:
+        fieldnames.append("nli_score")
 
     grand_in = grand_out = 0
 
@@ -350,16 +362,24 @@ def main() -> None:
                 continue
 
             log.info("Processing %s (%d rows) ...", path.name, len(rows))
-            slang_scores = classifier.score_all_rows(rows, args.batch_size)
+
+            n = len(rows)
+            sbert_scores = sbert_clf.score_rows(rows, args.batch_size) if sbert_clf else [None] * n
+            nli_scores   = nli_clf.score_rows(rows, args.batch_size)   if nli_clf   else [None] * n
 
             kept = 0
-            for row, ss in zip(rows, slang_scores):
-                if not args.score_all and ss is not None and ss < args.slang_threshold:
-                    continue
+            for row, ss, ns in zip(rows, sbert_scores, nli_scores):
+                if not args.score_all:
+                    if sbert_clf and ss is not None and ss < args.sbert_threshold:
+                        continue
+                    if nli_clf   and ns is not None and ns < args.nli_threshold:
+                        continue
 
                 out_row: Dict = {"uri": row["uri"], "target_context": row["target_context"]}
-                if args.keep_scores:
-                    out_row["slang_score"] = f"{ss:.4f}" if ss is not None else ""
+                if not args.no_sbert:
+                    out_row["sbert_score"] = f"{ss:.4f}" if ss is not None else ""
+                if not args.no_nli:
+                    out_row["nli_score"] = f"{ns:.4f}" if ns is not None else ""
                 writer.writerow(out_row)
                 kept += 1
 
