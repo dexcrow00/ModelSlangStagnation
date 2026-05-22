@@ -128,7 +128,7 @@ class SBERTSlangClassifier:
     def _encode(self, sentences: List[str], batch_size: int = 32) -> torch.Tensor:
         embs = self.model.encode(
             sentences, batch_size=batch_size,
-            show_progress_bar=False, convert_to_numpy=True,
+            show_progress_bar=HAS_TQDM, convert_to_numpy=True,
         )
         return F.normalize(torch.tensor(embs), dim=1)
 
@@ -163,6 +163,7 @@ class SBERTSlangClassifier:
             if not relevant:
                 continue
 
+            log.info("  SBERT scoring '%s': %d rows ...", word, len(relevant))
             embs = self._encode([texts[i] for i in relevant], batch_size)  # (N, D), L2-normed
             slang_sims = (embs @ slang_proto).tolist()
 
@@ -203,7 +204,7 @@ class NLISlangClassifier:
 
     def _entailment_probs(self, pairs: List[Tuple[str, str]], batch_size: int) -> np.ndarray:
         logits = self.model.predict(pairs, batch_size=batch_size,
-                                    show_progress_bar=False)  # (N, 3)
+                                    show_progress_bar=HAS_TQDM)  # (N, 3)
         if logits.ndim == 1:
             logits = logits.reshape(1, -1)
         exp_x = np.exp(logits - logits.max(axis=1, keepdims=True))
@@ -399,6 +400,14 @@ def main() -> None:
 
     if not input_paths:
         parser.error("No input files found.")
+
+    if len(input_paths) > 1 and args.output_dir is None:
+        log.warning(
+            "%d input files detected but -o is set — all rows will be merged into one file "
+            "and nothing is written until the entire run finishes. "
+            "Use --output-dir to write one output file per input file.",
+            len(input_paths),
+        )
 
     definitions = load_slang_definitions(Path(args.slang_defs))
 
