@@ -437,17 +437,22 @@ def main() -> None:
     if args.output_dir is not None:
         out_dir = Path(args.output_dir)
         out_dir.mkdir(parents=True, exist_ok=True)
-        grand_in = grand_out = 0
+        grand_in = grand_out = grand_skipped = 0
         for path in input_paths:
+            out_path = out_dir / path.name
+            if out_path.exists():
+                log.info("Skipping %s — already exists in %s", path.name, out_dir)
+                grand_skipped += 1
+                continue
             file_rows, n_in = _score_file(path, sbert_clf, nli_clf, args, fieldnames)
             _sort_rows(file_rows)
-            _write_csv(out_dir / path.name, file_rows, fieldnames)
+            _write_csv(out_path, file_rows, fieldnames)
             grand_in  += n_in
             grand_out += len(file_rows)
-        log.info("Done. %d/%d rows kept (%.1f%%) across %d file(s) -> %s",
+        log.info("Done. %d/%d rows kept (%.1f%%) across %d file(s); %d skipped (already complete) -> %s",
                  grand_out, grand_in,
                  100.0 * grand_out / grand_in if grand_in else 0.0,
-                 len(input_paths), out_dir)
+                 len(input_paths) - grand_skipped, grand_skipped, out_dir)
         return
 
     # ── Single-file mode (-o) ─────────────────────────────────────────────────
