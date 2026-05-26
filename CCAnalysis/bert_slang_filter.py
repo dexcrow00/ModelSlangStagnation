@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
-bert_slang_filter.py — Slang sense scorer with two independent methods.
+bert_slang_filter.py — Slang sense scorer with three independent methods.
 
 Scores each context row by how likely the target word is used in its slang
-sense, running two methods in parallel for comparison:
+sense, running up to three methods for comparison:
 
   Method 1 — SBERT prototype matching (--sbert-model):
     Encodes the full context sentence with a sentence-transformer model trained
@@ -17,23 +17,40 @@ sense, running two methods in parallel for comparison:
     score = P(entailment | "X used as slang") - P(entailment | "X used literally")
     Needs no prototype examples — sense disambiguation is handled by the NLI model.
 
-Both scores are written as separate columns for side-by-side comparison.
+  Method 3 — Fine-tuned BERT classifier (--ft-model-dir / --ft-annotations):
+    Binary BERT sequence classifier fine-tuned on human-annotated CSV examples.
+    Learns directly from labeled (context, slang/not-slang) pairs.
+    score = 2 * P(slang) - 1  (mapped to [-1, 1] to match NLI score range)
+    Train once with --ft-annotations, then reuse with --ft-model-dir.
+
+All active scores are written as separate columns for side-by-side comparison.
 Rows containing no defined slang word get empty scores and are passed through.
 
 Requires: sentence-transformers, pyyaml  (see requirements_bert_slang_filter.txt)
+Fine-tuning also requires: scikit-learn (pip install scikit-learn)
 
 Usage:
-    # Compare both methods — write all rows with scores
+    # Compare both zero-shot methods — write all rows with scores
     python3 bert_slang_filter.py input.csv -o scored.csv \\
         --slang-defs slang.yaml --score-all
+
+    # Fine-tune on annotated CSVs, then score (saves model to ./ft_model/)
+    python3 bert_slang_filter.py input.csv -o scored.csv \\
+        --slang-defs slang.yaml --score-all \\
+        --ft-annotations lang_quality_filtered_contexts/ \\
+        --ft-model-dir ./ft_model/
+
+    # Reuse saved fine-tuned model (skip training)
+    python3 bert_slang_filter.py input.csv -o scored.csv \\
+        --slang-defs slang.yaml --score-all --ft-model-dir ./ft_model/
 
     # Process a whole directory, one output file per input
     python3 bert_slang_filter.py contexts/ --output-dir scored/ \\
         --slang-defs slang.yaml --score-all
 
-    # Filter using both scores
+    # Filter using all three scores
     python3 bert_slang_filter.py contexts/*.csv -o filtered.csv \\
-        --slang-defs slang.yaml --sbert-threshold 0.1 --nli-threshold 0.1
+        --slang-defs slang.yaml --sbert-threshold 0.1 --nli-threshold 0.1 --ft-threshold 0.1
 
     # SBERT only, lighter model
     python3 bert_slang_filter.py input.csv -o out.csv \\
@@ -53,6 +70,7 @@ from typing import Dict, Iterator, List, Optional, Tuple
 import numpy as np
 import torch
 import torch.nn.functional as F
+from torch.utils.data import DataLoader, Dataset
 from sentence_transformers import CrossEncoder, SentenceTransformer
 
 try:
@@ -239,6 +257,232 @@ class NLISlangClassifier:
         return scores
 
 # ---------------------------------------------------------------------------
+# Method 3 — Fine-tuned BERT classifier
+# ---------------------------------------------------------------------------
+
+class _SlangDataset(Dataset):
+    """Tokenised binary classification dataset stored in memory."""
+
+    def __init__(self, texts: List[str], labels: List[int], tokenizer, max_len: int = 256) -> None:
+        enc = tokenizer(texts, padding=True, truncation=True, max_length=max_len, return_tensors="pt")
+        self.input_ids = enc["input_ids"]
+        self.attention_mask = enc["attention_mask"]
+        self.labels = torch.tensor(labels, dtype=torch.long)
+
+    def __len__(self) -> int:
+        return len(self.labels)
+
+    def __getitem__(self, i: int) -> Dict:
+        return {
+            "input_ids": self.input_ids[i],
+            "attention_mask": self.attention_mask[i],
+            "labels": self.labels[i],
+        }
+
+
+def load_annotation_examples(annotation_dir: Path) -> List[Tuple[str, int]]:
+    """Recursively load (text, label) pairs from CSVs with an 'annotation' column.
+
+    Expects rows where annotation == 'True' (slang) or 'False' (not slang).
+    Rows with blank or missing annotations are silently skipped.
+    """
+    examples: List[Tuple[str, int]] = []
+    for csv_path in sorted(annotation_dir.rglob("*.csv")):
+        with csv_path.open(newline="", encoding="utf-8") as fh:
+            for row in csv.DictReader(fh):
+                a = (row.get("annotation") or "").strip()
+                if a == "True":
+                    examples.append((row["target_context"], 1))
+                elif a == "False":
+                    examples.append((row["target_context"], 0))
+    n_pos = sum(e[1] for e in examples)
+    log.info(
+        "Loaded %d annotated examples from %s (%d slang, %d not-slang)",
+        len(examples), annotation_dir, n_pos, len(examples) - n_pos,
+    )
+    return examples
+
+
+class FineTunedSlangClassifier:
+    """Binary BERT classifier fine-tuned on human-annotated slang context examples.
+
+    Scores are mapped from P(slang) ∈ [0, 1] → [-1, 1] via ``2p - 1`` so they
+    are on the same scale as the NLI scores and thresholds are interchangeable.
+    """
+
+    _DEFAULT_BASE = "bert-base-uncased"
+
+    def __init__(
+        self,
+        base_model: str = _DEFAULT_BASE,
+        words: Optional[List[str]] = None,
+        device: Optional[str] = None,
+    ) -> None:
+        self.base_model = base_model
+        self.words = [w.lower() for w in (words or [])]
+        if device:
+            self.device = device
+        elif torch.cuda.is_available():
+            self.device = "cuda"
+        elif hasattr(torch.backends, "mps") and torch.backends.mps.is_available():
+            self.device = "mps"
+        else:
+            self.device = "cpu"
+        self.tokenizer = None
+        self.model = None
+
+    def train(
+        self,
+        examples: List[Tuple[str, int]],
+        model_save_dir: Path,
+        epochs: int = 10,
+        lr: float = 2e-5,
+        batch_size: int = 16,
+    ) -> None:
+        """Fine-tune a BERT sequence classifier and save the best checkpoint."""
+        try:
+            from transformers import (  # type: ignore
+                AutoModelForSequenceClassification,
+                AutoTokenizer,
+                get_linear_schedule_with_warmup,
+            )
+            from sklearn.model_selection import train_test_split  # type: ignore
+        except ImportError as exc:
+            log.error("Fine-tuning requires transformers and scikit-learn: %s", exc)
+            sys.exit(1)
+
+        if len(examples) < 10:
+            log.error("Too few annotated examples (%d) for reliable fine-tuning.", len(examples))
+            sys.exit(1)
+
+        texts  = [e[0] for e in examples]
+        labels = [e[1] for e in examples]
+
+        train_texts, val_texts, train_labels, val_labels = train_test_split(
+            texts, labels, test_size=0.2, random_state=42, stratify=labels
+        )
+        log.info(
+            "Fine-tune split — Train: %d (%d pos / %d neg) | Val: %d (%d pos / %d neg)",
+            len(train_texts), sum(train_labels), len(train_labels) - sum(train_labels),
+            len(val_texts),  sum(val_labels),  len(val_labels)  - sum(val_labels),
+        )
+
+        log.info("Loading base model for fine-tuning: %s", self.base_model)
+        tokenizer = AutoTokenizer.from_pretrained(self.base_model)
+        model = AutoModelForSequenceClassification.from_pretrained(
+            self.base_model, num_labels=2
+        ).to(self.device)
+
+        n_pos = sum(labels)
+        n_neg = len(labels) - n_pos
+        class_weights = torch.tensor(
+            [1.0, n_neg / max(n_pos, 1)], dtype=torch.float, device=self.device
+        )
+        log.info("Class weights: not-slang=%.2f, slang=%.2f",
+                 class_weights[0].item(), class_weights[1].item())
+
+        train_ds  = _SlangDataset(train_texts, train_labels, tokenizer)
+        val_ds    = _SlangDataset(val_texts,   val_labels,   tokenizer)
+        train_loader = DataLoader(train_ds, batch_size=batch_size, shuffle=True)
+        val_loader   = DataLoader(val_ds,   batch_size=batch_size)
+
+        optimizer    = torch.optim.AdamW(model.parameters(), lr=lr, weight_decay=0.01)
+        total_steps  = len(train_loader) * epochs
+        scheduler    = get_linear_schedule_with_warmup(
+            optimizer,
+            num_warmup_steps=max(1, total_steps // 10),
+            num_training_steps=total_steps,
+        )
+
+        model_save_dir.mkdir(parents=True, exist_ok=True)
+        best_val_acc = -1.0
+        for epoch in range(1, epochs + 1):
+            model.train()
+            total_loss = 0.0
+            for batch in train_loader:
+                input_ids      = batch["input_ids"].to(self.device)
+                attention_mask = batch["attention_mask"].to(self.device)
+                batch_labels   = batch["labels"].to(self.device)
+                logits = model(input_ids=input_ids, attention_mask=attention_mask).logits
+                loss   = F.cross_entropy(logits, batch_labels, weight=class_weights)
+                loss.backward()
+                torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
+                optimizer.step()
+                scheduler.step()
+                optimizer.zero_grad()
+                total_loss += loss.item()
+
+            model.eval()
+            correct = total = 0
+            with torch.no_grad():
+                for batch in val_loader:
+                    input_ids      = batch["input_ids"].to(self.device)
+                    attention_mask = batch["attention_mask"].to(self.device)
+                    preds = model(input_ids=input_ids, attention_mask=attention_mask).logits.argmax(dim=1).cpu()
+                    correct += (preds == batch["labels"]).sum().item()
+                    total   += len(batch["labels"])
+
+            val_acc = correct / total if total else 0.0
+            avg_loss = total_loss / len(train_loader)
+            log.info("Epoch %d/%d — loss: %.4f, val_acc: %.3f", epoch, epochs, avg_loss, val_acc)
+
+            if val_acc >= best_val_acc:
+                best_val_acc = val_acc
+                model.save_pretrained(str(model_save_dir))
+                tokenizer.save_pretrained(str(model_save_dir))
+                log.info("  Saved best model (val_acc=%.3f) -> %s", val_acc, model_save_dir)
+
+        log.info("Fine-tuning complete. Best val_acc: %.3f", best_val_acc)
+        self.tokenizer = tokenizer
+        self.model     = model
+        self.model.eval()
+
+    def load(self, model_dir: Path) -> None:
+        """Load a previously saved fine-tuned model."""
+        try:
+            from transformers import AutoTokenizer, AutoModelForSequenceClassification  # type: ignore
+        except ImportError as exc:
+            log.error("transformers is required to load a fine-tuned model: %s", exc)
+            sys.exit(1)
+        log.info("Loading fine-tuned model from %s", model_dir)
+        self.tokenizer = AutoTokenizer.from_pretrained(str(model_dir))
+        self.model     = AutoModelForSequenceClassification.from_pretrained(str(model_dir)).to(self.device)
+        self.model.eval()
+
+    def score_rows(self, rows: List[Dict[str, str]], batch_size: int) -> List[Optional[float]]:
+        assert self.model is not None and self.tokenizer is not None, \
+            "Call train() or load() before score_rows()."
+        texts  = [r["target_context"] for r in rows]
+        scores: List[Optional[float]] = [None] * len(rows)
+
+        for word in self.words:
+            relevant = [i for i, t in enumerate(texts) if word in t.lower()]
+            if not relevant:
+                continue
+            log.info("  FT scoring '%s': %d rows ...", word, len(relevant))
+            rel_texts = [texts[i] for i in relevant]
+
+            all_probs: List[float] = []
+            for batch_texts in _batched(rel_texts, batch_size):
+                enc = self.tokenizer(
+                    batch_texts, padding=True, truncation=True,
+                    max_length=256, return_tensors="pt",
+                ).to(self.device)
+                with torch.no_grad():
+                    probs = torch.softmax(
+                        self.model(**enc).logits, dim=1
+                    )[:, 1].cpu().tolist()  # P(slang)
+                all_probs.extend(probs)
+
+            for idx, p in zip(relevant, all_probs):
+                s = float(2 * p - 1)  # [0,1] → [-1,1] to match NLI score range
+                if scores[idx] is None or s > scores[idx]:
+                    scores[idx] = s
+
+        return scores
+
+
+# ---------------------------------------------------------------------------
 # CLI
 # ---------------------------------------------------------------------------
 
@@ -316,6 +560,28 @@ Examples:
                    help="PyTorch device for inference, e.g. cpu, cuda, mps. "
                         "Defaults to auto-detect. Use --device cpu to avoid MPS OOM errors.")
 
+    # Fine-tuned classifier
+    ft = p.add_argument_group(
+        "Fine-tuned classifier",
+        "Trains a BERT sequence classifier on human-annotated CSVs and scores with it. "
+        "Supply --ft-annotations to (re-)train, or just --ft-model-dir to load a saved model.",
+    )
+    ft.add_argument("--ft-annotations", metavar="DIR", dest="ft_annotations",
+                    help="Directory of annotated CSVs (scanned recursively for *.csv files "
+                         "with an 'annotation' column containing 'True'/'False' labels).")
+    ft.add_argument("--ft-model-dir", metavar="DIR", dest="ft_model_dir",
+                    help="Where to save (training) or load (inference) the fine-tuned model.")
+    ft.add_argument("--ft-base-model", default=FineTunedSlangClassifier._DEFAULT_BASE,
+                    metavar="ID", dest="ft_base_model",
+                    help=f"Base HuggingFace model to fine-tune "
+                         f"(default: {FineTunedSlangClassifier._DEFAULT_BASE}).")
+    ft.add_argument("--ft-epochs", type=int, default=10, metavar="N", dest="ft_epochs",
+                    help="Number of fine-tuning epochs (default: 10).")
+    ft.add_argument("--ft-lr", type=float, default=2e-5, metavar="F", dest="ft_lr",
+                    help="Learning rate for fine-tuning (default: 2e-5).")
+    ft.add_argument("--ft-threshold", type=float, default=0.0, metavar="F", dest="ft_threshold",
+                    help="Min ft_score to keep a row when filtering (default: 0.0).")
+
     return p
 
 
@@ -323,6 +589,7 @@ def _score_file(
     path: Path,
     sbert_clf: Optional[SBERTSlangClassifier],
     nli_clf: Optional[NLISlangClassifier],
+    ft_clf: Optional[FineTunedSlangClassifier],
     args: argparse.Namespace,
     fieldnames: List[str],
 ) -> Tuple[List[Dict], int]:
@@ -336,13 +603,16 @@ def _score_file(
     n = len(rows)
     sbert_scores = sbert_clf.score_rows(rows, args.batch_size) if sbert_clf else [None] * n
     nli_scores   = nli_clf.score_rows(rows, args.batch_size)   if nli_clf   else [None] * n
+    ft_scores    = ft_clf.score_rows(rows, args.batch_size)    if ft_clf    else [None] * n
 
     out_rows: List[Dict] = []
-    for row, ss, ns in zip(rows, sbert_scores, nli_scores):
+    for row, ss, ns, fs in zip(rows, sbert_scores, nli_scores, ft_scores):
         if not args.score_all:
             if sbert_clf and ss is not None and ss < args.sbert_threshold:
                 continue
             if nli_clf   and ns is not None and ns < args.nli_threshold:
+                continue
+            if ft_clf    and fs is not None and fs < args.ft_threshold:
                 continue
 
         out_row: Dict = {"uri": row["uri"], "target_context": row["target_context"]}
@@ -350,6 +620,8 @@ def _score_file(
             out_row["sbert_score"] = f"{ss:.4f}" if ss is not None else ""
         if not args.no_nli:
             out_row["nli_score"] = f"{ns:.4f}" if ns is not None else ""
+        if ft_clf is not None:
+            out_row["ft_score"] = f"{fs:.4f}" if fs is not None else ""
         out_rows.append(out_row)
 
     log.info("  %s: %d/%d rows kept (%.1f%%)",
@@ -359,13 +631,14 @@ def _score_file(
 
 
 def _sort_rows(rows: List[Dict]) -> None:
-    """Sort rows in-place: descending sbert_score then nli_score; empty sorts last."""
+    """Sort rows in-place: descending sbert_score, nli_score, ft_score; empty sorts last."""
     _NEG_INF = float("-inf")
 
-    def _key(r: Dict) -> Tuple[float, float]:
+    def _key(r: Dict) -> Tuple[float, float, float]:
         ss = float(r["sbert_score"]) if r.get("sbert_score") else _NEG_INF
         ns = float(r["nli_score"])   if r.get("nli_score")   else _NEG_INF
-        return (-ss, -ns)
+        fs = float(r["ft_score"])    if r.get("ft_score")    else _NEG_INF
+        return (-ss, -ns, -fs)
 
     rows.sort(key=_key)
 
@@ -382,8 +655,9 @@ def main() -> None:
     parser = build_parser()
     args   = parser.parse_args()
 
-    if args.no_sbert and args.no_nli:
-        parser.error("Both methods are disabled — nothing to do.")
+    using_ft = bool(args.ft_model_dir or args.ft_annotations)
+    if args.no_sbert and args.no_nli and not using_ft:
+        parser.error("All methods are disabled — nothing to do.")
 
     # Expand inputs: directories → *.csv within; glob patterns; plain paths
     input_paths: List[Path] = []
@@ -435,11 +709,42 @@ def main() -> None:
             list(definitions.keys()),
         )
 
+    ft_clf: Optional[FineTunedSlangClassifier] = None
+    if using_ft:
+        if not args.ft_model_dir:
+            parser.error("--ft-annotations requires --ft-model-dir to specify where to save the model.")
+        ft_model_dir = Path(args.ft_model_dir)
+        ft_clf = FineTunedSlangClassifier(
+            base_model=args.ft_base_model,
+            words=list(definitions.keys()),
+            device=device,
+        )
+        if args.ft_annotations:
+            annotation_dir = Path(args.ft_annotations)
+            if not annotation_dir.exists():
+                parser.error(f"Annotation directory not found: {annotation_dir}")
+            examples = load_annotation_examples(annotation_dir)
+            if not examples:
+                parser.error("No annotated examples found — check that CSVs have an 'annotation' column.")
+            ft_clf.train(
+                examples, ft_model_dir,
+                epochs=args.ft_epochs, lr=args.ft_lr, batch_size=args.batch_size,
+            )
+        elif ft_model_dir.exists():
+            ft_clf.load(ft_model_dir)
+        else:
+            parser.error(
+                f"--ft-model-dir '{ft_model_dir}' does not exist. "
+                "Provide --ft-annotations to train a model first."
+            )
+
     fieldnames = ["uri", "target_context"]
     if not args.no_sbert:
         fieldnames.append("sbert_score")
     if not args.no_nli:
         fieldnames.append("nli_score")
+    if ft_clf is not None:
+        fieldnames.append("ft_score")
 
     # ── Per-file mode (--output-dir) ──────────────────────────────────────────
     if args.output_dir is not None:
@@ -452,7 +757,7 @@ def main() -> None:
                 log.info("Skipping %s — already exists in %s", path.name, out_dir)
                 grand_skipped += 1
                 continue
-            file_rows, n_in = _score_file(path, sbert_clf, nli_clf, args, fieldnames)
+            file_rows, n_in = _score_file(path, sbert_clf, nli_clf, ft_clf, args, fieldnames)
             _sort_rows(file_rows)
             _write_csv(out_path, file_rows, fieldnames)
             grand_in  += n_in
@@ -468,7 +773,7 @@ def main() -> None:
     grand_in  = 0
     all_rows: List[Dict] = []
     for path in input_paths:
-        file_rows, n_in = _score_file(path, sbert_clf, nli_clf, args, fieldnames)
+        file_rows, n_in = _score_file(path, sbert_clf, nli_clf, ft_clf, args, fieldnames)
         all_rows.extend(file_rows)
         grand_in += n_in
 
