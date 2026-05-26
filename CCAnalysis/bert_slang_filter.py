@@ -310,7 +310,11 @@ Examples:
                         f"(default: {_NLI_MODEL}). "
                         f"Lighter alternative: cross-encoder/nli-MiniLM2-L6-H768 (~100 MB).")
     p.add_argument("--batch-size", type=int, default=32, metavar="N", dest="batch_size",
-                   help="Inference batch size for both methods (default: 32).")
+                   help="Inference batch size for both methods (default: 32). "
+                        "Reduce if hitting GPU out-of-memory errors.")
+    p.add_argument("--device", default=None, metavar="DEV", dest="device",
+                   help="PyTorch device for inference, e.g. cpu, cuda, mps. "
+                        "Defaults to auto-detect. Use --device cpu to avoid MPS OOM errors.")
 
     return p
 
@@ -412,18 +416,22 @@ def main() -> None:
     definitions = load_slang_definitions(Path(args.slang_defs))
 
     # ── Load models ───────────────────────────────────────────────────────────
+    device = args.device  # None → auto-detect
+    if device:
+        log.info("Using device: %s", device)
+
     sbert_clf: Optional[SBERTSlangClassifier] = None
     if not args.no_sbert:
         log.info("Loading SBERT model: %s", args.sbert_model)
         sbert_clf = SBERTSlangClassifier(
-            SentenceTransformer(args.sbert_model), definitions
+            SentenceTransformer(args.sbert_model, device=device), definitions
         )
 
     nli_clf: Optional[NLISlangClassifier] = None
     if not args.no_nli:
         log.info("Loading NLI model: %s", args.nli_model)
         nli_clf = NLISlangClassifier(
-            CrossEncoder(args.nli_model, num_labels=3),
+            CrossEncoder(args.nli_model, num_labels=3, device=device),
             list(definitions.keys()),
         )
 

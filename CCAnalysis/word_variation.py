@@ -28,7 +28,7 @@ Usage:
 
     # Context mode
     python3 CCAnalysis/word_variation.py slang_cleaned/ --context --words CCAnalysis/target_words.txt  -o slang_cleaned_test.html   
-    python3 word_variation.py /path/to/cleaned_contexts/Run2/ --context \\
+    python3 word_variation.py path/to/cleaned_contexts/Run2/ --context \\
         --words target_words.txt --bucket-by-year --top 20 -o slang_yearly.html
 """
 
