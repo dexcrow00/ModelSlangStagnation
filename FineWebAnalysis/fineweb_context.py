@@ -1,32 +1,29 @@
 #!/usr/bin/env python3
 """
-fineweb_context.py — Extract target-word context windows from the FineWeb HuggingFace dataset.
+fineweb_context.py — Extract target-word context windows from a pre-sampled
+FineWeb HuggingFace dataset config.
 
-For each FineWeb dump (CC-MAIN-* config), streams records using shard-based random
-sampling, extracts ±K-token context windows around target words/phrases, and writes
-one CSV per dump to the output directory.
+Streams through the chosen pre-sampled config (sample-10BT by default) in a
+single pass, accumulates context rows per CC dump, and writes one CSV per dump
+to the output directory. Dumps that already have enough rows are skipped.
 
 Output CSV (one per dump):
   uri            — source URL of the document
   target_context — ±K-token window of text around the match (includes the match)
 
-Dumps are discovered automatically from the dataset's available configs and can be
-filtered by year or ID range. Already-complete output files are skipped unless
---force is given.
-
 Usage:
-    # All dumps
+    # All dumps in the default sample
     python fineweb_context.py --output-dir contexts/ --words target_words.txt
 
-    # From 2020 onwards, 500 context rows per dump
+    # Larger sample, from 2020 onwards, 500 context rows per dump
     python fineweb_context.py --output-dir contexts/ --words target_words.txt \\
-        --since 2020 --n-rows 500
+        --sample sample-100BT --since 2020 --n-rows 500
 
-    # Explicit range
+    # Explicit dump range
     python fineweb_context.py --output-dir contexts/ --words target_words.txt \\
         --from-dump CC-MAIN-2022-05 --to-dump CC-MAIN-2024-10
 
-Requires: datasets, torch (for HuggingFace), pandas
+Requires: datasets
 """
 
 from __future__ import annotations
@@ -34,12 +31,12 @@ from __future__ import annotations
 import argparse
 import csv
 import logging
-import random
 import re
 import sys
 import time
+from collections import defaultdict
 from pathlib import Path
-from typing import Dict, Iterator, List, NamedTuple, Optional, Set, Tuple
+from typing import Dict, List, NamedTuple, Optional, Set, Tuple
 
 # ---------------------------------------------------------------------------
 # Logging
@@ -159,88 +156,27 @@ def _write_rows(path: Path, rows: List[Dict[str, str]]) -> None:
 
 
 # ---------------------------------------------------------------------------
-# Dump discovery
+# Dump filter
 # ---------------------------------------------------------------------------
 
 _CC_MAIN_RE = re.compile(r"^CC-MAIN-\d{4}-\d{2,4}$")
 
 
-def _get_dump_configs() -> List[str]:
-    """Return all CC-MAIN-* config names available in HuggingFaceFW/fineweb."""
-    try:
-        from datasets import get_dataset_config_names  # type: ignore
-    except ImportError:
-        log.error("datasets package is required. pip install datasets")
-        sys.exit(1)
-
-    log.info("Fetching available FineWeb configs from HuggingFace ...")
-    configs = get_dataset_config_names("HuggingFaceFW/fineweb")
-    dumps = sorted(c for c in configs if _CC_MAIN_RE.match(c))
-    log.info("Found %d CC-MAIN dump configs.", len(dumps))
-    return dumps
-
-
-# ---------------------------------------------------------------------------
-# Per-dump processing
-# ---------------------------------------------------------------------------
-
-def _crawl_seed(base_seed: int, crawl_index: int) -> int:
-    return (base_seed * 1_000_003 + crawl_index) & 0x7FFF_FFFF
-
-
-def process_dump(
+def _dump_matches(
     dump_id: str,
-    targets: Targets,
-    context_window: int,
-    n_rows: int,
-    seed: int,
-    shards_per_dump: int,
-    records_per_shard: int,
-    total_shards: int,
-) -> List[Dict[str, str]]:
-    """Stream a random selection of shards from one FineWeb dump config and
-    extract context rows until n_rows is reached or all selected shards are
-    exhausted.
-
-    Returns a list of {"uri": ..., "target_context": ...} dicts.
-    """
-    try:
-        from datasets import load_dataset  # type: ignore
-    except ImportError:
-        log.error("datasets package is required. pip install datasets")
-        sys.exit(1)
-
-    rng = random.Random(seed)
-    n_shards = min(shards_per_dump, total_shards)
-    shard_indices = sorted(rng.sample(range(total_shards), n_shards))
-
-    log.info("  Loading dump config '%s' (sampling %d/%d shards, up to %d records each) ...",
-             dump_id, n_shards, total_shards, records_per_shard)
-
-    ds = load_dataset("HuggingFaceFW/fineweb", name=dump_id, streaming=True)["train"]
-
-    rows: List[Dict[str, str]] = []
-    for shard_idx in shard_indices:
-        if len(rows) >= n_rows:
-            break
-        shard_ds = ds.shard(num_shards=total_shards, index=shard_idx)
-        docs_seen = 0
-        for record in shard_ds:
-            if docs_seen >= records_per_shard or len(rows) >= n_rows:
-                break
-            text = record.get("text") or ""
-            url  = record.get("url")  or ""
-            if not text:
-                continue
-            tokens = tokenize(text)
-            for _, context in extract_contexts(tokens, targets, context_window):
-                rows.append({"uri": url, "target_context": context})
-            docs_seen += 1
-
-        log.info("    Shard %4d: %d docs scanned  |  %d context rows so far",
-                 shard_idx, docs_seen, len(rows))
-
-    return rows
+    since: Optional[int],
+    from_dump: Optional[str],
+    to_dump: Optional[str],
+) -> bool:
+    if not _CC_MAIN_RE.match(dump_id):
+        return False
+    if since and int(dump_id[8:12]) < since:
+        return False
+    if from_dump and dump_id < from_dump:
+        return False
+    if to_dump and dump_id > to_dump:
+        return False
+    return True
 
 
 # ---------------------------------------------------------------------------
@@ -260,18 +196,21 @@ def _fmt_duration(secs: float) -> str:
 # CLI
 # ---------------------------------------------------------------------------
 
+_SAMPLE_CONFIGS = ["sample-10BT", "sample-100BT", "sample-350BT"]
+
+
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(
-        description="Extract target-word context windows from the FineWeb HuggingFace dataset.",
+        description="Extract target-word context windows from a pre-sampled FineWeb config.",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
-  # All available dumps, default settings
+  # Default sample (sample-10BT), all dumps
   python fineweb_context.py --output-dir contexts/ --words target_words.txt
 
-  # Dumps from 2020 onwards, 500 context rows each
+  # Larger sample, from 2020 onwards, 500 context rows per dump
   python fineweb_context.py --output-dir contexts/ --words target_words.txt \\
-      --since 2020 --n-rows 500
+      --sample sample-100BT --since 2020 --n-rows 500
 
   # Explicit dump range
   python fineweb_context.py --output-dir contexts/ --words target_words.txt \\
@@ -289,6 +228,12 @@ Examples:
                    help="Plain-text target words/phrases file, one per line "
                         "(default: target_words.txt).")
 
+    # FineWeb config
+    p.add_argument("--sample", default="sample-10BT", metavar="CONFIG",
+                   choices=_SAMPLE_CONFIGS,
+                   help="Pre-sampled FineWeb config to stream "
+                        f"({', '.join(_SAMPLE_CONFIGS)}; default: sample-10BT).")
+
     # Context
     p.add_argument("--context-window", type=int, default=10, metavar="K",
                    dest="context_window",
@@ -297,37 +242,21 @@ Examples:
     # Row target
     p.add_argument("--n-rows", type=int, default=500, metavar="N", dest="n_rows",
                    help="Target number of context rows per dump (default: 500). "
-                        "Processing stops early for a dump once this is reached.")
-
-    # Sampling parameters
-    p.add_argument("--total-shards", type=int, default=200, metavar="N",
-                   dest="total_shards",
-                   help="Assumed total shard count per dump config (default: 200). "
-                        "Used for shard() calls — safe to set higher than actual count.")
-    p.add_argument("--shards-per-dump", type=int, default=50, metavar="N",
-                   dest="shards_per_dump",
-                   help="Number of randomly selected shards to visit per dump (default: 50). "
-                        "Increase for better coverage at the cost of speed.")
-    p.add_argument("--records-per-shard", type=int, default=200, metavar="N",
-                   dest="records_per_shard",
-                   help="Max documents to read from each shard (default: 200).")
-
-    # Reproducibility
-    p.add_argument("--seed", type=int, default=42,
-                   help="Base random seed (default: 42). Each dump gets a derived seed.")
+                        "A dump's output file is written and collection stops as "
+                        "soon as this many rows are accumulated.")
 
     # Dump range filters
     p.add_argument("--since", type=int, default=None, metavar="YEAR",
-                   help="Only process dumps from this year onwards (e.g. 2020).")
+                   help="Only collect rows for dumps from this year onwards (e.g. 2020).")
     p.add_argument("--from-dump", default=None, metavar="ID", dest="from_dump",
-                   help="Start from this dump ID inclusive (e.g. CC-MAIN-2020-05).")
+                   help="Only collect rows for dumps at or after this ID "
+                        "(e.g. CC-MAIN-2020-05).")
     p.add_argument("--to-dump", default=None, metavar="ID", dest="to_dump",
-                   help="Stop after this dump ID inclusive (e.g. CC-MAIN-2024-10).")
+                   help="Only collect rows for dumps up to and including this ID.")
 
     # Re-run
     p.add_argument("--force", action="store_true",
-                   help="Re-process dumps even if the output file already exists "
-                        "with enough rows.")
+                   help="Re-process dumps whose output files already have enough rows.")
 
     return p
 
@@ -339,78 +268,79 @@ def main() -> None:
     args.output_dir.mkdir(parents=True, exist_ok=True)
     targets = load_target_words(args.words)
 
-    # Discover and filter dumps
-    dump_ids = _get_dump_configs()
-
-    if args.since:
-        dump_ids = [d for d in dump_ids if int(d[8:12]) >= args.since]
-    if args.from_dump:
-        dump_ids = [d for d in dump_ids if d >= args.from_dump]
-    if args.to_dump:
-        dump_ids = [d for d in dump_ids if d <= args.to_dump]
-
-    if not dump_ids:
-        log.error("No dumps matched the specified filters.")
+    try:
+        from datasets import load_dataset  # type: ignore
+    except ImportError:
+        log.error("datasets package is required. pip install datasets")
         sys.exit(1)
 
-    log.info("Processing %d dump(s): %s → %s", len(dump_ids), dump_ids[0], dump_ids[-1])
-    log.info("  n-rows          : %d", args.n_rows)
-    log.info("  context-window  : %d", args.context_window)
-    log.info("  shards-per-dump : %d / %d", args.shards_per_dump, args.total_shards)
-    log.info("  records-per-shard: %d", args.records_per_shard)
+    log.info("Streaming FineWeb config '%s' ...", args.sample)
+    log.info("  output-dir     : %s", args.output_dir)
+    log.info("  n-rows         : %d per dump", args.n_rows)
+    log.info("  context-window : %d", args.context_window)
 
-    n_total = len(dump_ids)
-    elapsed_times: List[float] = []
+    ds = load_dataset("HuggingFaceFW/fineweb", name=args.sample, streaming=True)["train"]
 
-    for i, dump_id in enumerate(dump_ids):
-        out = args.output_dir / f"word_context_{dump_id}.csv"
-        n_remaining = n_total - i - 1
+    # Per-dump accumulators
+    dump_rows: Dict[str, List[Dict[str, str]]] = defaultdict(list)
+    dump_done: Set[str] = set()   # dumps written out or skipped
 
-        # Skip if already complete
-        if not args.force and out.exists():
-            n_existing = _count_rows(out)
-            if n_existing >= args.n_rows:
-                log.info("[%d/%d] %s — skipped (%d rows already collected)",
-                         i + 1, n_total, dump_id, n_existing)
-                continue
-            log.info("[%d/%d] %s — output exists but only %d/%d rows; reprocessing ...",
-                     i + 1, n_total, dump_id, n_existing, args.n_rows)
+    docs_seen   = 0
+    t0          = time.monotonic()
+    log_every   = 100_000         # log a progress line every N documents
 
-        seed = _crawl_seed(args.seed, i)
-        t0   = time.monotonic()
+    for record in ds:
+        dump_id = record.get("dump") or ""
 
-        try:
-            rows = process_dump(
-                dump_id=dump_id,
-                targets=targets,
-                context_window=args.context_window,
-                n_rows=args.n_rows,
-                seed=seed,
-                shards_per_dump=args.shards_per_dump,
-                records_per_shard=args.records_per_shard,
-                total_shards=args.total_shards,
-            )
-            _write_rows(out, rows)
-            log.info("%s — %d context rows → %s", dump_id, len(rows), out)
-        except Exception as exc:
-            log.error("[%d/%d] ✗  %s — %s", i + 1, n_total, dump_id, exc)
+        # Ignore records whose dump doesn't match the filter
+        if not _dump_matches(dump_id, args.since, args.from_dump, args.to_dump):
             continue
 
-        elapsed = time.monotonic() - t0
-        elapsed_times.append(elapsed)
+        # First time we encounter this dump: check for an existing output file
+        if dump_id not in dump_done and dump_id not in dump_rows:
+            out = args.output_dir / f"word_context_{dump_id}.csv"
+            if not args.force and _count_rows(out) >= args.n_rows:
+                log.info("Skipping %s — already complete (%d rows)", dump_id, _count_rows(out))
+                dump_done.add(dump_id)
 
-        if elapsed_times and n_remaining > 0:
-            avg = sum(elapsed_times) / len(elapsed_times)
-            eta = f"ETA {_fmt_duration(avg * n_remaining)}"
-        elif n_remaining == 0:
-            eta = "done"
-        else:
-            eta = "ETA unknown"
+        if dump_id in dump_done:
+            continue
 
-        log.info("[%d/%d] ✓  %s — %s  |  %s",
-                 i + 1, n_total, dump_id, _fmt_duration(elapsed), eta)
+        # Extract context rows from this document
+        text = record.get("text") or ""
+        url  = record.get("url")  or ""
+        if text:
+            tokens = tokenize(text)
+            for _, context in extract_contexts(tokens, targets, args.context_window):
+                dump_rows[dump_id].append({"uri": url, "target_context": context})
 
-    log.info("All done.")
+        docs_seen += 1
+
+        # If this dump has reached n_rows, write it out immediately and free memory
+        if len(dump_rows[dump_id]) >= args.n_rows:
+            out = args.output_dir / f"word_context_{dump_id}.csv"
+            _write_rows(out, dump_rows[dump_id])
+            elapsed = _fmt_duration(time.monotonic() - t0)
+            log.info("✓ %s — %d rows → %s  [%s, %d docs seen]",
+                     dump_id, len(dump_rows[dump_id]), out, elapsed, docs_seen)
+            dump_done.add(dump_id)
+            del dump_rows[dump_id]
+
+        if docs_seen % log_every == 0:
+            elapsed = _fmt_duration(time.monotonic() - t0)
+            log.info("  ... %d docs scanned | %d dumps complete | %d dumps in progress  [%s]",
+                     docs_seen, len(dump_done), len(dump_rows), elapsed)
+
+    # Write any dumps that never reached n_rows
+    for dump_id, rows in dump_rows.items():
+        if rows:
+            out = args.output_dir / f"word_context_{dump_id}.csv"
+            _write_rows(out, rows)
+            log.info("✓ %s — %d rows (below target) → %s", dump_id, len(rows), out)
+
+    log.info("All done. %d docs scanned | %d dump file(s) written  [%s]",
+             docs_seen, len(dump_done) + len(dump_rows),
+             _fmt_duration(time.monotonic() - t0))
 
 
 if __name__ == "__main__":
