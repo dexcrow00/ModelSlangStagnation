@@ -1,4 +1,0 @@
-This is the "raw" data colelcted on AWS from common crawl using just bert language and quality filtering.
-We randomly sample uris (15k) and save off instances of our target words that we find + 20 tokens on each side of context.
-We then run the filtering steps and rerun sampling until the first dump reaches 15k uris post filtering.
-It's done a pretty good job.
