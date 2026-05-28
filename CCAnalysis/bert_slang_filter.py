@@ -104,19 +104,19 @@ class _SlangDataset(Dataset):
 
 
 def load_annotation_examples(annotation_dir: Path) -> List[Tuple[str, int]]:
-    """Recursively load (text, label) pairs from CSVs with an 'annotation' column.
+    """Recursively load (text, label) pairs from CSVs with an 'is_slang' column.
 
-    Expects rows where annotation == 'True' (slang) or 'False' (not slang).
-    Rows with blank or missing annotations are silently skipped.
+    Expects rows where is_slang == '1' (slang) or '0' (not slang).
+    Rows with blank or missing values are silently skipped.
     """
     examples: List[Tuple[str, int]] = []
     for csv_path in sorted(annotation_dir.rglob("*.csv")):
         with csv_path.open(newline="", encoding="utf-8") as fh:
             for row in csv.DictReader(fh):
-                a = (row.get("annotation") or "").strip()
-                if a == "True":
+                a = (row.get("is_slang") or "").strip()
+                if a == "1":
                     examples.append((row["target_context"], 1))
-                elif a == "False":
+                elif a == "0":
                     examples.append((row["target_context"], 0))
     n_pos = sum(e[1] for e in examples)
     log.info(
