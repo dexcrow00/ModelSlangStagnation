@@ -1,60 +1,31 @@
 #!/usr/bin/env python3
 """
-bert_slang_filter.py — Slang sense scorer with three independent methods.
+bert_slang_filter.py — Fine-tuned BERT slang sense classifier.
 
 Scores each context row by how likely the target word is used in its slang
-sense, running up to three methods for comparison:
+sense using a BERT sequence classifier fine-tuned on human-annotated examples.
 
-  Method 1 — SBERT prototype matching (--sbert-model):
-    Encodes the full context sentence with a sentence-transformer model trained
-    for semantic similarity. Compares to per-word sense centroids built from
-    slang.yaml examples.
-    score = cos_sim(context, slang_proto) - cos_sim(context, standard_proto)
-    For slang-only words (no standard examples): score = cos_sim(context, slang_proto)
+  score = 2 * P(slang) - 1  (range [-1, 1]; positive = slang usage)
 
-  Method 2 — Zero-shot NLI (--nli-model):
-    Frames sense classification as natural language inference.
-    score = P(entailment | "X used as slang") - P(entailment | "X used literally")
-    Needs no prototype examples — sense disambiguation is handled by the NLI model.
+Train once with --ft-annotations, then reuse the saved model with --ft-model-dir.
 
-  Method 3 — Fine-tuned BERT classifier (--ft-model-dir / --ft-annotations):
-    Binary BERT sequence classifier fine-tuned on human-annotated CSV examples.
-    Learns directly from labeled (context, slang/not-slang) pairs.
-    score = 2 * P(slang) - 1  (mapped to [-1, 1] to match NLI score range)
-    Train once with --ft-annotations, then reuse with --ft-model-dir.
-
-All active scores are written as separate columns for side-by-side comparison.
-Rows containing no defined slang word get empty scores and are passed through.
-
-Requires: sentence-transformers, pyyaml  (see requirements_bert_slang_filter.txt)
-Fine-tuning also requires: scikit-learn (pip install scikit-learn)
+Requires: torch, transformers, pyyaml, scikit-learn
 
 Usage:
-    # Compare both zero-shot methods — write all rows with scores
-    python3 bert_slang_filter.py input.csv -o scored.csv \\
-        --slang-defs slang.yaml --score-all
-
-    # Fine-tune on annotated CSVs, then score (saves model to ./ft_model/)
-    python3 bert_slang_filter.py input.csv -o scored.csv \\
+    # Fine-tune on annotated CSVs, then score all contexts
+    python3 bert_slang_filter.py contexts/ --output-dir scored/ \\
         --slang-defs slang.yaml --score-all \\
         --ft-annotations lang_quality_filtered_contexts/ \\
         --ft-model-dir ./ft_model/
 
-    # Reuse saved fine-tuned model (skip training)
-    python3 bert_slang_filter.py input.csv -o scored.csv \\
-        --slang-defs slang.yaml --score-all --ft-model-dir ./ft_model/
-
-    # Process a whole directory, one output file per input
+    # Reuse a saved model (skip training)
     python3 bert_slang_filter.py contexts/ --output-dir scored/ \\
-        --slang-defs slang.yaml --score-all
+        --slang-defs slang.yaml --score-all \\
+        --ft-model-dir ./ft_model/
 
-    # Filter using all three scores
+    # Filter to rows scoring above threshold
     python3 bert_slang_filter.py contexts/*.csv -o filtered.csv \\
-        --slang-defs slang.yaml --sbert-threshold 0.1 --nli-threshold 0.1 --ft-threshold 0.1
-
-    # SBERT only, lighter model
-    python3 bert_slang_filter.py input.csv -o out.csv \\
-        --slang-defs slang.yaml --no-nli --sbert-model all-MiniLM-L6-v2
+        --slang-defs slang.yaml --ft-model-dir ./ft_model/ --ft-threshold 0.1
 """
 
 from __future__ import annotations
@@ -67,23 +38,15 @@ import sys
 from pathlib import Path
 from typing import Dict, Iterator, List, Optional, Tuple
 
-import numpy as np
 import torch
 import torch.nn.functional as F
 from torch.utils.data import DataLoader, Dataset
-from sentence_transformers import CrossEncoder, SentenceTransformer
 
 try:
     import yaml  # type: ignore
     HAS_YAML = True
 except ImportError:
     HAS_YAML = False
-
-try:
-    from tqdm import tqdm  # type: ignore
-    HAS_TQDM = True
-except ImportError:
-    HAS_TQDM = False
 
 # ---------------------------------------------------------------------------
 # Logging
@@ -98,9 +61,6 @@ logging.basicConfig(
     handlers=[logging.StreamHandler(sys.stderr)],
 )
 log = logging.getLogger(__name__)
-
-_SBERT_MODEL = "all-mpnet-base-v2"
-_NLI_MODEL   = "cross-encoder/nli-deberta-v3-large"
 
 # ---------------------------------------------------------------------------
 # Helpers
@@ -128,136 +88,7 @@ def load_slang_definitions(path: Path) -> Dict:
     return data
 
 # ---------------------------------------------------------------------------
-# Method 1 — SBERT prototype matching
-# ---------------------------------------------------------------------------
-
-class SBERTSlangClassifier:
-    """Sentence-BERT prototype-based slang sense scorer.
-
-    Encodes full context sentences and compares to per-word sense centroids
-    built from slang.yaml example sentences.
-    """
-
-    def __init__(self, model: SentenceTransformer, definitions: Dict) -> None:
-        self.model = model
-        self.prototypes: Dict[str, Tuple[torch.Tensor, Optional[torch.Tensor]]] = {}
-        self._build_prototypes(definitions)
-
-    def _encode(self, sentences: List[str], batch_size: int = 32) -> torch.Tensor:
-        embs = self.model.encode(
-            sentences, batch_size=batch_size,
-            show_progress_bar=HAS_TQDM, convert_to_numpy=True,
-        )
-        return F.normalize(torch.tensor(embs), dim=1)
-
-    def _build_prototypes(self, definitions: Dict) -> None:
-        for word, senses in definitions.items():
-            word_lc     = word.lower()
-            slang_sents = senses.get("slang", [])
-            std_sents   = senses.get("standard", [])
-
-            if not slang_sents:
-                log.warning("SBERT: skipping '%s' — no slang examples.", word)
-                continue
-
-            slang_proto = F.normalize(self._encode(slang_sents).mean(dim=0), dim=0)
-
-            if std_sents:
-                std_proto = F.normalize(self._encode(std_sents).mean(dim=0), dim=0)
-                self.prototypes[word_lc] = (slang_proto, std_proto)
-                log.info("  SBERT '%s' — %d slang / %d standard examples",
-                         word_lc, len(slang_sents), len(std_sents))
-            else:
-                self.prototypes[word_lc] = (slang_proto, None)
-                log.info("  SBERT '%s' — %d slang examples, slang-only mode",
-                         word_lc, len(slang_sents))
-
-    def score_rows(self, rows: List[Dict[str, str]], batch_size: int) -> List[Optional[float]]:
-        texts  = [r["target_context"] for r in rows]
-        scores: List[Optional[float]] = [None] * len(rows)
-
-        for word, (slang_proto, std_proto) in self.prototypes.items():
-            relevant = [i for i, t in enumerate(texts) if word in t.lower()]
-            if not relevant:
-                continue
-
-            log.info("  SBERT scoring '%s': %d rows ...", word, len(relevant))
-            embs = self._encode([texts[i] for i in relevant], batch_size)  # (N, D), L2-normed
-            slang_sims = (embs @ slang_proto).tolist()
-
-            if std_proto is not None:
-                std_sims    = (embs @ std_proto).tolist()
-                word_scores = [float(s - t) for s, t in zip(slang_sims, std_sims)]
-            else:
-                word_scores = [float(s) for s in slang_sims]
-
-            for idx, s in zip(relevant, word_scores):
-                if scores[idx] is None or s > scores[idx]:
-                    scores[idx] = s
-
-        return scores
-
-# ---------------------------------------------------------------------------
-# Method 2 — Zero-shot NLI
-# ---------------------------------------------------------------------------
-
-class NLISlangClassifier:
-    """Zero-shot NLI slang sense scorer.
-
-    Uses a cross-encoder NLI model to score entailment for slang vs. standard
-    sense hypotheses. No prototype examples needed.
-    """
-
-    _SLANG_TMPL = "In this text, the word '{word}' is used as internet slang or informal language."
-    _STD_TMPL   = "In this text, the word '{word}' is used with its literal, standard dictionary meaning."
-
-    def __init__(self, model: CrossEncoder, words: List[str]) -> None:
-        self.model = model
-        self.words = [w.lower() for w in words]
-        label2id   = getattr(model.model.config, "label2id", {})
-        label2id_lc = {k.lower(): v for k, v in label2id.items()}
-        self.entailment_idx = label2id_lc.get("entailment", 1)
-        log.info("  NLI entailment class index: %d  (label2id: %s)",
-                 self.entailment_idx, label2id)
-
-    def _entailment_probs(self, pairs: List[Tuple[str, str]], batch_size: int) -> np.ndarray:
-        logits = self.model.predict(pairs, batch_size=batch_size,
-                                    show_progress_bar=HAS_TQDM)  # (N, 3)
-        if logits.ndim == 1:
-            logits = logits.reshape(1, -1)
-        exp_x = np.exp(logits - logits.max(axis=1, keepdims=True))
-        probs  = exp_x / exp_x.sum(axis=1, keepdims=True)
-        return probs[:, self.entailment_idx]
-
-    def score_rows(self, rows: List[Dict[str, str]], batch_size: int) -> List[Optional[float]]:
-        texts  = [r["target_context"] for r in rows]
-        scores: List[Optional[float]] = [None] * len(rows)
-
-        for word in self.words:
-            relevant = [i for i, t in enumerate(texts) if word in t.lower()]
-            if not relevant:
-                continue
-
-            rel_texts   = [texts[i] for i in relevant]
-            slang_pairs = [(t, self._SLANG_TMPL.format(word=word)) for t in rel_texts]
-            std_pairs   = [(t, self._STD_TMPL.format(word=word))   for t in rel_texts]
-
-            # Single predict call: slang pairs first, then standard
-            log.info("  NLI scoring '%s': %d rows ...", word, len(rel_texts))
-            all_probs   = self._entailment_probs(slang_pairs + std_pairs, batch_size)
-            n           = len(rel_texts)
-            slang_probs = all_probs[:n]
-            std_probs   = all_probs[n:]
-
-            for idx, sp, tp in zip(relevant, slang_probs, std_probs):
-                s = float(sp - tp)
-                if scores[idx] is None or s > scores[idx]:
-                    scores[idx] = s
-
-        return scores
-
-# ---------------------------------------------------------------------------
-# Method 3 — Fine-tuned BERT classifier
+# Fine-tuned BERT classifier
 # ---------------------------------------------------------------------------
 
 class _SlangDataset(Dataset):
@@ -306,8 +137,7 @@ def load_annotation_examples(annotation_dir: Path) -> List[Tuple[str, int]]:
 class FineTunedSlangClassifier:
     """Binary BERT classifier fine-tuned on human-annotated slang context examples.
 
-    Scores are mapped from P(slang) ∈ [0, 1] → [-1, 1] via ``2p - 1`` so they
-    are on the same scale as the NLI scores and thresholds are interchangeable.
+    Scores are mapped from P(slang) ∈ [0, 1] → [-1, 1] via ``2p - 1``.
     """
 
     _DEFAULT_BASE = "bert-base-uncased"
@@ -381,14 +211,14 @@ class FineTunedSlangClassifier:
         log.info("Class weights: not-slang=%.2f, slang=%.2f",
                  class_weights[0].item(), class_weights[1].item())
 
-        train_ds  = _SlangDataset(train_texts, train_labels, tokenizer)
-        val_ds    = _SlangDataset(val_texts,   val_labels,   tokenizer)
+        train_ds     = _SlangDataset(train_texts, train_labels, tokenizer)
+        val_ds       = _SlangDataset(val_texts,   val_labels,   tokenizer)
         train_loader = DataLoader(train_ds, batch_size=batch_size, shuffle=True)
         val_loader   = DataLoader(val_ds,   batch_size=batch_size)
 
-        optimizer    = torch.optim.AdamW(model.parameters(), lr=lr, weight_decay=0.01)
-        total_steps  = len(train_loader) * epochs
-        scheduler    = get_linear_schedule_with_warmup(
+        optimizer   = torch.optim.AdamW(model.parameters(), lr=lr, weight_decay=0.01)
+        total_steps = len(train_loader) * epochs
+        scheduler   = get_linear_schedule_with_warmup(
             optimizer,
             num_warmup_steps=max(1, total_steps // 10),
             num_training_steps=total_steps,
@@ -422,7 +252,7 @@ class FineTunedSlangClassifier:
                     correct += (preds == batch["labels"]).sum().item()
                     total   += len(batch["labels"])
 
-            val_acc = correct / total if total else 0.0
+            val_acc  = correct / total if total else 0.0
             avg_loss = total_loss / len(train_loader)
             log.info("Epoch %d/%d — loss: %.4f, val_acc: %.3f", epoch, epochs, avg_loss, val_acc)
 
@@ -475,12 +305,11 @@ class FineTunedSlangClassifier:
                 all_probs.extend(probs)
 
             for idx, p in zip(relevant, all_probs):
-                s = float(2 * p - 1)  # [0,1] → [-1,1] to match NLI score range
+                s = float(2 * p - 1)  # [0,1] → [-1,1]
                 if scores[idx] is None or s > scores[idx]:
                     scores[idx] = s
 
         return scores
-
 
 # ---------------------------------------------------------------------------
 # CLI
@@ -488,29 +317,23 @@ class FineTunedSlangClassifier:
 
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(
-        description="Score slang sense using SBERT prototype matching and zero-shot NLI.",
+        description="Score slang sense using a fine-tuned BERT sequence classifier.",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
-  # Compare both methods on all rows (recommended starting point)
-  python bert_slang_filter.py input.csv -o scored.csv \\
-      --slang-defs slang.yaml --score-all
-
-  # Process a whole directory, one output file per input
+  # Fine-tune on annotated CSVs, then score (saves model to ./ft_model/)
   python bert_slang_filter.py contexts/ --output-dir scored/ \\
-      --slang-defs slang.yaml --score-all
+      --slang-defs slang.yaml --score-all \\
+      --ft-annotations lang_quality_filtered_contexts/ \\
+      --ft-model-dir ./ft_model/
 
-  # Filter using both scores
+  # Reuse a saved model (skip training)
+  python bert_slang_filter.py contexts/ --output-dir scored/ \\
+      --slang-defs slang.yaml --score-all --ft-model-dir ./ft_model/
+
+  # Filter to rows above a score threshold
   python bert_slang_filter.py contexts/*.csv -o filtered.csv \\
-      --slang-defs slang.yaml --sbert-threshold 0.1 --nli-threshold 0.1
-
-  # SBERT only, lighter model
-  python bert_slang_filter.py input.csv -o out.csv \\
-      --slang-defs slang.yaml --no-nli --sbert-model all-MiniLM-L6-v2
-
-  # NLI only
-  python bert_slang_filter.py input.csv -o out.csv \\
-      --slang-defs slang.yaml --no-sbert
+      --slang-defs slang.yaml --ft-model-dir ./ft_model/ --ft-threshold 0.1
         """,
     )
 
@@ -525,51 +348,25 @@ Examples:
                            help="Output directory (per-file mode — one output file per input, "
                                 "same filename). Created if it does not exist.")
     p.add_argument("--slang-defs", required=True, metavar="YAML", dest="slang_defs",
-                   help="YAML file of slang word definitions (slang.yaml).")
+                   help="YAML file of slang word definitions (slang.yaml). "
+                        "Word list is used to identify relevant rows for scoring.")
     p.add_argument("--score-all", action="store_true", dest="score_all",
-                   help="Write every row with scores attached, without filtering. "
-                        "Recommended for comparing the two methods.")
-
-    # Thresholds
-    p.add_argument("--sbert-threshold", type=float, default=0.0, metavar="F",
-                   dest="sbert_threshold",
-                   help="Min SBERT score to keep a row (default: 0.0).")
-    p.add_argument("--nli-threshold", type=float, default=0.0, metavar="F",
-                   dest="nli_threshold",
-                   help="Min NLI score to keep a row (default: 0.0).")
-
-    # Method toggles
-    p.add_argument("--no-sbert", action="store_true", dest="no_sbert",
-                   help="Skip SBERT scoring.")
-    p.add_argument("--no-nli", action="store_true", dest="no_nli",
-                   help="Skip NLI scoring.")
-
-    # Models
-    p.add_argument("--sbert-model", default=_SBERT_MODEL, metavar="ID", dest="sbert_model",
-                   help=f"Sentence-transformer model for SBERT scoring "
-                        f"(default: {_SBERT_MODEL}). "
-                        f"Lighter alternative: all-MiniLM-L6-v2 (~80 MB).")
-    p.add_argument("--nli-model", default=_NLI_MODEL, metavar="ID", dest="nli_model",
-                   help=f"Cross-encoder NLI model "
-                        f"(default: {_NLI_MODEL}). "
-                        f"Lighter alternative: cross-encoder/nli-MiniLM2-L6-H768 (~100 MB).")
+                   help="Write every row with scores attached, without filtering.")
+    p.add_argument("--ft-threshold", type=float, default=0.0, metavar="F", dest="ft_threshold",
+                   help="Min ft_score to keep a row when filtering (default: 0.0).")
     p.add_argument("--batch-size", type=int, default=32, metavar="N", dest="batch_size",
-                   help="Inference batch size for both methods (default: 32). "
-                        "Reduce if hitting GPU out-of-memory errors.")
+                   help="Inference batch size (default: 32). Reduce if hitting OOM errors.")
     p.add_argument("--device", default=None, metavar="DEV", dest="device",
-                   help="PyTorch device for inference, e.g. cpu, cuda, mps. "
-                        "Defaults to auto-detect. Use --device cpu to avoid MPS OOM errors.")
+                   help="PyTorch device, e.g. cpu, cuda, mps. Defaults to auto-detect.")
 
-    # Fine-tuned classifier
     ft = p.add_argument_group(
         "Fine-tuned classifier",
-        "Trains a BERT sequence classifier on human-annotated CSVs and scores with it. "
         "Supply --ft-annotations to (re-)train, or just --ft-model-dir to load a saved model.",
     )
     ft.add_argument("--ft-annotations", metavar="DIR", dest="ft_annotations",
                     help="Directory of annotated CSVs (scanned recursively for *.csv files "
                          "with an 'annotation' column containing 'True'/'False' labels).")
-    ft.add_argument("--ft-model-dir", metavar="DIR", dest="ft_model_dir",
+    ft.add_argument("--ft-model-dir", required=True, metavar="DIR", dest="ft_model_dir",
                     help="Where to save (training) or load (inference) the fine-tuned model.")
     ft.add_argument("--ft-base-model", default=FineTunedSlangClassifier._DEFAULT_BASE,
                     metavar="ID", dest="ft_base_model",
@@ -579,17 +376,13 @@ Examples:
                     help="Number of fine-tuning epochs (default: 10).")
     ft.add_argument("--ft-lr", type=float, default=2e-5, metavar="F", dest="ft_lr",
                     help="Learning rate for fine-tuning (default: 2e-5).")
-    ft.add_argument("--ft-threshold", type=float, default=0.0, metavar="F", dest="ft_threshold",
-                    help="Min ft_score to keep a row when filtering (default: 0.0).")
 
     return p
 
 
 def _score_file(
     path: Path,
-    sbert_clf: Optional[SBERTSlangClassifier],
-    nli_clf: Optional[NLISlangClassifier],
-    ft_clf: Optional[FineTunedSlangClassifier],
+    ft_clf: FineTunedSlangClassifier,
     args: argparse.Namespace,
     fieldnames: List[str],
 ) -> Tuple[List[Dict], int]:
@@ -600,28 +393,18 @@ def _score_file(
         return [], 0
 
     log.info("Processing %s (%d rows) ...", path.name, len(rows))
-    n = len(rows)
-    sbert_scores = sbert_clf.score_rows(rows, args.batch_size) if sbert_clf else [None] * n
-    nli_scores   = nli_clf.score_rows(rows, args.batch_size)   if nli_clf   else [None] * n
-    ft_scores    = ft_clf.score_rows(rows, args.batch_size)    if ft_clf    else [None] * n
+    n        = len(rows)
+    ft_scores = ft_clf.score_rows(rows, args.batch_size)
 
     out_rows: List[Dict] = []
-    for row, ss, ns, fs in zip(rows, sbert_scores, nli_scores, ft_scores):
-        if not args.score_all:
-            if sbert_clf and ss is not None and ss < args.sbert_threshold:
-                continue
-            if nli_clf   and ns is not None and ns < args.nli_threshold:
-                continue
-            if ft_clf    and fs is not None and fs < args.ft_threshold:
-                continue
-
-        out_row: Dict = {"uri": row["uri"], "target_context": row["target_context"]}
-        if not args.no_sbert:
-            out_row["sbert_score"] = f"{ss:.4f}" if ss is not None else ""
-        if not args.no_nli:
-            out_row["nli_score"] = f"{ns:.4f}" if ns is not None else ""
-        if ft_clf is not None:
-            out_row["ft_score"] = f"{fs:.4f}" if fs is not None else ""
+    for row, fs in zip(rows, ft_scores):
+        if not args.score_all and fs is not None and fs < args.ft_threshold:
+            continue
+        out_row: Dict = {
+            "uri":            row["uri"],
+            "target_context": row["target_context"],
+            "ft_score":       f"{fs:.4f}" if fs is not None else "",
+        }
         out_rows.append(out_row)
 
     log.info("  %s: %d/%d rows kept (%.1f%%)",
@@ -631,16 +414,9 @@ def _score_file(
 
 
 def _sort_rows(rows: List[Dict]) -> None:
-    """Sort rows in-place: descending sbert_score, nli_score, ft_score; empty sorts last."""
+    """Sort rows in-place by ft_score descending; empty scores sort last."""
     _NEG_INF = float("-inf")
-
-    def _key(r: Dict) -> Tuple[float, float, float]:
-        ss = float(r["sbert_score"]) if r.get("sbert_score") else _NEG_INF
-        ns = float(r["nli_score"])   if r.get("nli_score")   else _NEG_INF
-        fs = float(r["ft_score"])    if r.get("ft_score")    else _NEG_INF
-        return (-ss, -ns, -fs)
-
-    rows.sort(key=_key)
+    rows.sort(key=lambda r: -(float(r["ft_score"]) if r.get("ft_score") else _NEG_INF))
 
 
 def _write_csv(path: Path, rows: List[Dict], fieldnames: List[str]) -> None:
@@ -654,10 +430,6 @@ def _write_csv(path: Path, rows: List[Dict], fieldnames: List[str]) -> None:
 def main() -> None:
     parser = build_parser()
     args   = parser.parse_args()
-
-    using_ft = bool(args.ft_model_dir or args.ft_annotations)
-    if args.no_sbert and args.no_nli and not using_ft:
-        parser.error("All methods are disabled — nothing to do.")
 
     # Expand inputs: directories → *.csv within; glob patterns; plain paths
     input_paths: List[Path] = []
@@ -687,64 +459,38 @@ def main() -> None:
             len(input_paths),
         )
 
-    definitions = load_slang_definitions(Path(args.slang_defs))
+    definitions  = load_slang_definitions(Path(args.slang_defs))
+    device       = args.device
+    ft_model_dir = Path(args.ft_model_dir)
 
-    # ── Load models ───────────────────────────────────────────────────────────
-    device = args.device  # None → auto-detect
     if device:
         log.info("Using device: %s", device)
 
-    sbert_clf: Optional[SBERTSlangClassifier] = None
-    if not args.no_sbert:
-        log.info("Loading SBERT model: %s", args.sbert_model)
-        sbert_clf = SBERTSlangClassifier(
-            SentenceTransformer(args.sbert_model, device=device), definitions
+    ft_clf = FineTunedSlangClassifier(
+        base_model=args.ft_base_model,
+        words=list(definitions.keys()),
+        device=device,
+    )
+    if args.ft_annotations:
+        annotation_dir = Path(args.ft_annotations)
+        if not annotation_dir.exists():
+            parser.error(f"Annotation directory not found: {annotation_dir}")
+        examples = load_annotation_examples(annotation_dir)
+        if not examples:
+            parser.error("No annotated examples found — check that CSVs have an 'annotation' column.")
+        ft_clf.train(
+            examples, ft_model_dir,
+            epochs=args.ft_epochs, lr=args.ft_lr, batch_size=args.batch_size,
+        )
+    elif ft_model_dir.exists():
+        ft_clf.load(ft_model_dir)
+    else:
+        parser.error(
+            f"--ft-model-dir '{ft_model_dir}' does not exist. "
+            "Provide --ft-annotations to train a model first."
         )
 
-    nli_clf: Optional[NLISlangClassifier] = None
-    if not args.no_nli:
-        log.info("Loading NLI model: %s", args.nli_model)
-        nli_clf = NLISlangClassifier(
-            CrossEncoder(args.nli_model, num_labels=3, device=device),
-            list(definitions.keys()),
-        )
-
-    ft_clf: Optional[FineTunedSlangClassifier] = None
-    if using_ft:
-        if not args.ft_model_dir:
-            parser.error("--ft-annotations requires --ft-model-dir to specify where to save the model.")
-        ft_model_dir = Path(args.ft_model_dir)
-        ft_clf = FineTunedSlangClassifier(
-            base_model=args.ft_base_model,
-            words=list(definitions.keys()),
-            device=device,
-        )
-        if args.ft_annotations:
-            annotation_dir = Path(args.ft_annotations)
-            if not annotation_dir.exists():
-                parser.error(f"Annotation directory not found: {annotation_dir}")
-            examples = load_annotation_examples(annotation_dir)
-            if not examples:
-                parser.error("No annotated examples found — check that CSVs have an 'annotation' column.")
-            ft_clf.train(
-                examples, ft_model_dir,
-                epochs=args.ft_epochs, lr=args.ft_lr, batch_size=args.batch_size,
-            )
-        elif ft_model_dir.exists():
-            ft_clf.load(ft_model_dir)
-        else:
-            parser.error(
-                f"--ft-model-dir '{ft_model_dir}' does not exist. "
-                "Provide --ft-annotations to train a model first."
-            )
-
-    fieldnames = ["uri", "target_context"]
-    if not args.no_sbert:
-        fieldnames.append("sbert_score")
-    if not args.no_nli:
-        fieldnames.append("nli_score")
-    if ft_clf is not None:
-        fieldnames.append("ft_score")
+    fieldnames = ["uri", "target_context", "ft_score"]
 
     # ── Per-file mode (--output-dir) ──────────────────────────────────────────
     if args.output_dir is not None:
@@ -757,7 +503,7 @@ def main() -> None:
                 log.info("Skipping %s — already exists in %s", path.name, out_dir)
                 grand_skipped += 1
                 continue
-            file_rows, n_in = _score_file(path, sbert_clf, nli_clf, ft_clf, args, fieldnames)
+            file_rows, n_in = _score_file(path, ft_clf, args, fieldnames)
             _sort_rows(file_rows)
             _write_csv(out_path, file_rows, fieldnames)
             grand_in  += n_in
@@ -770,10 +516,10 @@ def main() -> None:
 
     # ── Single-file mode (-o) ─────────────────────────────────────────────────
     output_path = Path(args.output)
-    grand_in  = 0
+    grand_in    = 0
     all_rows: List[Dict] = []
     for path in input_paths:
-        file_rows, n_in = _score_file(path, sbert_clf, nli_clf, ft_clf, args, fieldnames)
+        file_rows, n_in = _score_file(path, ft_clf, args, fieldnames)
         all_rows.extend(file_rows)
         grand_in += n_in
 
