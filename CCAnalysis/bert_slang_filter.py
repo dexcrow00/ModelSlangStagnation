@@ -14,18 +14,18 @@ Requires: torch, transformers, pyyaml, scikit-learn
 Usage:
     # Fine-tune on annotated CSVs, then score all contexts
     python3 bert_slang_filter.py contexts/ --output-dir scored/ \\
-        --slang-defs slang.yaml --score-all \\
+        --target-words target_words.txt --score-all \\
         --ft-annotations lang_quality_filtered_contexts/ \\
         --ft-model-dir ./ft_model/
 
     # Reuse a saved model (skip training)
     python3 bert_slang_filter.py contexts/ --output-dir scored/ \\
-        --slang-defs slang.yaml --score-all \\
+        --target-words target_words.txt --score-all \\
         --ft-model-dir ./ft_model/
 
     # Filter to rows scoring above threshold
     python3 bert_slang_filter.py contexts/*.csv -o filtered.csv \\
-        --slang-defs slang.yaml --ft-model-dir ./ft_model/ --ft-threshold 0.1
+        --target-words target_words.txt --ft-model-dir ./ft_model/ --ft-threshold 0.1
 """
 
 from __future__ import annotations
@@ -41,12 +41,6 @@ from typing import Dict, Iterator, List, Optional, Tuple
 import torch
 import torch.nn.functional as F
 from torch.utils.data import DataLoader, Dataset
-
-try:
-    import yaml  # type: ignore
-    HAS_YAML = True
-except ImportError:
-    HAS_YAML = False
 
 # ---------------------------------------------------------------------------
 # Logging
@@ -76,16 +70,14 @@ def _read_rows(path: Path) -> List[Dict[str, str]]:
         return list(csv.DictReader(fh))
 
 
-def load_slang_definitions(path: Path) -> Dict:
-    if not HAS_YAML:
-        log.error("PyYAML is required. pip install pyyaml")
-        sys.exit(1)
+def load_target_words(path: Path) -> List[str]:
     with path.open(encoding="utf-8") as fh:
-        data = yaml.safe_load(fh)
-    if not isinstance(data, dict):
-        log.error("Slang definitions file must be a YAML mapping of word -> senses.")
+        words = [line.strip() for line in fh if line.strip() and not line.startswith("#")]
+    if not words:
+        log.error("No words found in %s", path)
         sys.exit(1)
-    return data
+    log.info("Loaded %d target words from %s", len(words), path)
+    return words
 
 # ---------------------------------------------------------------------------
 # Fine-tuned BERT classifier
@@ -323,17 +315,17 @@ def build_parser() -> argparse.ArgumentParser:
 Examples:
   # Fine-tune on annotated CSVs, then score (saves model to ./ft_model/)
   python bert_slang_filter.py contexts/ --output-dir scored/ \\
-      --slang-defs slang.yaml --score-all \\
+      --target-words target_words.txt --score-all \\
       --ft-annotations lang_quality_filtered_contexts/ \\
       --ft-model-dir ./ft_model/
 
   # Reuse a saved model (skip training)
   python bert_slang_filter.py contexts/ --output-dir scored/ \\
-      --slang-defs slang.yaml --score-all --ft-model-dir ./ft_model/
+      --target-words target_words.txt --score-all --ft-model-dir ./ft_model/
 
   # Filter to rows above a score threshold
   python bert_slang_filter.py contexts/*.csv -o filtered.csv \\
-      --slang-defs slang.yaml --ft-model-dir ./ft_model/ --ft-threshold 0.1
+      --target-words target_words.txt --ft-model-dir ./ft_model/ --ft-threshold 0.1
         """,
     )
 
@@ -347,9 +339,9 @@ Examples:
     out_group.add_argument("--output-dir", metavar="DIR", dest="output_dir",
                            help="Output directory (per-file mode — one output file per input, "
                                 "same filename). Created if it does not exist.")
-    p.add_argument("--slang-defs", required=True, metavar="YAML", dest="slang_defs",
-                   help="YAML file of slang word definitions (slang.yaml). "
-                        "Word list is used to identify relevant rows for scoring.")
+    p.add_argument("--target-words", default="target_words.txt", metavar="FILE", dest="target_words",
+                   help="Text file of target words, one per line (default: target_words.txt). "
+                        "Lines starting with # are treated as comments.")
     p.add_argument("--score-all", action="store_true", dest="score_all",
                    help="Write every row with scores attached, without filtering.")
     p.add_argument("--ft-threshold", type=float, default=0.0, metavar="F", dest="ft_threshold",
@@ -459,7 +451,7 @@ def main() -> None:
             len(input_paths),
         )
 
-    definitions  = load_slang_definitions(Path(args.slang_defs))
+    words        = load_target_words(Path(args.target_words))
     device       = args.device
     ft_model_dir = Path(args.ft_model_dir)
 
@@ -468,7 +460,7 @@ def main() -> None:
 
     ft_clf = FineTunedSlangClassifier(
         base_model=args.ft_base_model,
-        words=list(definitions.keys()),
+        words=words,
         device=device,
     )
     if args.ft_annotations:
