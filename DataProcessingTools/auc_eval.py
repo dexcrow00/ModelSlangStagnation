@@ -9,10 +9,8 @@ fine-tuned model, and reports:
   - Confusion matrix at the default threshold (ft_score > 0, i.e. P(slang) > 0.5)
   - ROC curve plot (saved to --plot or displayed interactively)
 
-NOTE: If the annotations were used to train the model being evaluated, the
-metrics will be in-sample and optimistically biased. For an unbiased estimate,
-evaluate on a held-out set (e.g. train on common_crawl annotations and evaluate
-on fine_web_10BT annotations, or vice versa).
+NOTE: For the small (10BT) FineWeb sample, the evaluation is a bit biased, 
+since we can't uniquely sample 50 lines for each word for both the training and validations sets.
 
 Usage:
     # Evaluate on the same annotations used for training (in-sample)
@@ -34,6 +32,7 @@ from __future__ import annotations
 import argparse
 import csv
 import logging
+import re
 import sys
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
@@ -65,7 +64,11 @@ def load_annotations(annotation_dir: Path) -> Tuple[List[str], List[int], List[s
     words: List[str]  = []
 
     for csv_path in sorted(annotation_dir.rglob("*.csv")):
-        word = csv_path.stem.replace("_annotated", "")
+        # Extract word from filenames like: alpha_validation, alpha_annotated,
+        # alpha_annotations, or "Annotations V1 - FineWeb - alpha_annotations"
+        m = re.search(r'(\b[a-zA-Z]+)(?:_validation|_annotated|_annotations)$',
+                      csv_path.stem, re.IGNORECASE)
+        word = m.group(1).lower() if m else csv_path.stem.lower()
         with csv_path.open(newline="", encoding="utf-8") as fh:
             for row in csv.DictReader(fh):
                 a = (row.get("is_slang") or "").strip()
@@ -223,7 +226,7 @@ def print_report(metrics: Dict) -> None:
     valid = {w: v for w, v in per_word.items() if v is not None}
     skipped = [w for w, v in per_word.items() if v is None]
     for w, auc in sorted(valid.items(), key=lambda x: -x[1]):
-        bar = "█" * int(auc * 30)
+        bar = "#" * int(auc * 30)
         print(f"    {w:<20} {auc:.4f}  {bar}")
     if skipped:
         print(f"    (skipped — single class only: {', '.join(skipped)})")
