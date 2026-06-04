@@ -3,9 +3,9 @@
 fineweb_context.py — Extract target-word context windows from a pre-sampled
 FineWeb HuggingFace dataset config.
 
-Streams through the chosen pre-sampled config (sample-10BT by default) in a
-single pass, accumulates context rows per CC dump, and writes one CSV per dump
-to the output directory. Dumps that already have enough rows are skipped.
+Processes each CC dump independently: only that dump's parquet files are
+streamed, and the stream is terminated as soon as n_rows context rows have
+been collected.  Dumps that already have a complete output file are skipped.
 
 Output CSV (one per dump):
   uri            — source URL of the document
@@ -23,7 +23,7 @@ Usage:
     python fineweb_context.py --output-dir contexts/ --words target_words.txt \\
         --from-dump CC-MAIN-2022-05 --to-dump CC-MAIN-2024-10
 
-Requires: datasets
+Requires: datasets, huggingface_hub
 """
 
 from __future__ import annotations
@@ -34,7 +34,6 @@ import logging
 import re
 import sys
 import time
-from collections import defaultdict
 from pathlib import Path
 from typing import Dict, List, NamedTuple, Optional, Set, Tuple
 
@@ -56,6 +55,7 @@ log = logging.getLogger(__name__)
 # Tokenizer  (identical to word_context.py)
 # ---------------------------------------------------------------------------
 
+# TODO(dexcrow): This might be unnecessary since the data is already clean, might be faster to skip the "word" check.
 _WORD_RE = re.compile(r"[a-zA-Z'''\-]+")
 
 
@@ -159,7 +159,8 @@ def _write_rows(path: Path, rows: List[Dict[str, str]]) -> None:
 # Dump filter
 # ---------------------------------------------------------------------------
 
-_CC_MAIN_RE = re.compile(r"^CC-MAIN-\d{4}-\d{2,4}$")
+_CC_MAIN_RE = re.compile(r"CC-MAIN-\d{4}-\d{2,4}")
+_CC_MAIN_FULL_RE = re.compile(r"^CC-MAIN-\d{4}-\d{2,4}$")
 
 
 def _dump_matches(
@@ -168,7 +169,7 @@ def _dump_matches(
     from_dump: Optional[str],
     to_dump: Optional[str],
 ) -> bool:
-    if not _CC_MAIN_RE.match(dump_id):
+    if not _CC_MAIN_FULL_RE.match(dump_id):
         return False
     if since and int(dump_id[8:12]) < since:
         return False
@@ -177,6 +178,68 @@ def _dump_matches(
     if to_dump and dump_id > to_dump:
         return False
     return True
+
+
+# ---------------------------------------------------------------------------
+# HuggingFace file enumeration
+# ---------------------------------------------------------------------------
+
+def _list_dump_files(sample: str) -> Dict[str, List[str]]:
+    """Return {dump_id: [repo-relative parquet path, ...]} for every CC dump
+    present in the given FineWeb sample config.
+
+    Uses HfFileSystem to enumerate the parquet files without downloading them.
+    Tries several common path layouts to be robust against dataset restructuring.
+    """
+    try:
+        from huggingface_hub import HfFileSystem  # type: ignore
+    except ImportError:
+        log.error("huggingface_hub is required.  pip install huggingface_hub")
+        sys.exit(1)
+
+    fs = HfFileSystem()
+    repo_prefix = "datasets/HuggingFaceFW/fineweb/"
+
+    # Patterns to try in order (FineWeb layout has changed over time)
+    patterns = [
+        f"{repo_prefix}{sample}/data/CC-MAIN-*/*.parquet",   # nested per-dump dirs
+        f"{repo_prefix}{sample}/data/CC-MAIN-*.parquet",     # flat per-dump files
+        f"{repo_prefix}data/CC-MAIN-*/*.parquet",            # root-level (full dataset)
+    ]
+
+    for pattern in patterns:
+        try:
+            files = fs.glob(pattern)
+        except Exception as exc:
+            log.debug("Pattern %s: %s", pattern, exc)
+            continue
+
+        if not files:
+            continue
+
+        dump_files: Dict[str, List[str]] = {}
+        for f in files:
+            m = _CC_MAIN_RE.search(f)
+            if not m:
+                continue
+            dump_id = m.group(0)
+            # Strip HfFileSystem prefix to get a path relative to the HF repo root
+            rel = f.removeprefix(repo_prefix)
+            dump_files.setdefault(dump_id, []).append(rel)
+
+        if dump_files:
+            log.info("Found %d dumps (%s parquet files) via pattern: .../%s",
+                     len(dump_files),
+                     sum(len(v) for v in dump_files.values()),
+                     pattern.removeprefix(repo_prefix))
+            return dump_files
+
+    log.error(
+        "Could not find any parquet files for sample '%s'. "
+        "Verify the dataset name and your network connection.",
+        sample,
+    )
+    sys.exit(1)
 
 
 # ---------------------------------------------------------------------------
@@ -201,20 +264,24 @@ _SAMPLE_CONFIGS = ["sample-10BT", "sample-100BT", "sample-350BT"]
 
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(
-        description="Extract target-word context windows from a pre-sampled FineWeb config.",
+        description=(
+            "Extract target-word context windows from a pre-sampled FineWeb config. "
+            "Each CC dump is streamed independently and the stream is terminated as "
+            "soon as --n-rows context rows have been collected."
+        ),
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
-  # Default sample (sample-10BT), all dumps
-  python fineweb_context.py --output-dir contexts/ --words target_words.txt
+  # Default sample (sample-10BT), all dumps, 500 rows each
+  python fineweb_context.py --output-dir contexts/ --words target_words.txt --n-rows 500
 
-  # Larger sample, from 2020 onwards, 500 context rows per dump
+  # Larger sample, from 2020 onwards
   python fineweb_context.py --output-dir contexts/ --words target_words.txt \\
       --sample sample-100BT --since 2020 --n-rows 500
 
   # Explicit dump range
   python fineweb_context.py --output-dir contexts/ --words target_words.txt \\
-      --from-dump CC-MAIN-2022-05 --to-dump CC-MAIN-2024-10
+      --from-dump CC-MAIN-2022-05 --to-dump CC-MAIN-2024-10 --n-rows 500
         """,
     )
 
@@ -231,7 +298,7 @@ Examples:
     # FineWeb config
     p.add_argument("--sample", default="sample-10BT", metavar="CONFIG",
                    choices=_SAMPLE_CONFIGS,
-                   help="Pre-sampled FineWeb config to stream "
+                   help="Pre-sampled FineWeb config to use "
                         f"({', '.join(_SAMPLE_CONFIGS)}; default: sample-10BT).")
 
     # Context
@@ -240,10 +307,10 @@ Examples:
                    help="Tokens on each side of a match to include (default: 10).")
 
     # Row target
-    p.add_argument("--n-rows", type=int, default=500, metavar="N", dest="n_rows",
-                   help="Target number of context rows per dump (default: 500). "
-                        "A dump's output file is written and collection stops as "
-                        "soon as this many rows are accumulated.")
+    p.add_argument("--n-rows", type=int, default=sys.maxsize, metavar="N", dest="n_rows",
+                   help="Target number of context rows per dump (default: sys.maxsize). "
+                        "Streaming for each dump stops as soon as this many rows "
+                        "are accumulated.")
 
     # Dump range filters
     p.add_argument("--since", type=int, default=None, metavar="YEAR",
@@ -261,6 +328,10 @@ Examples:
     return p
 
 
+# ---------------------------------------------------------------------------
+# Main
+# ---------------------------------------------------------------------------
+
 def main() -> None:
     parser = build_parser()
     args = parser.parse_args()
@@ -271,76 +342,91 @@ def main() -> None:
     try:
         from datasets import load_dataset  # type: ignore
     except ImportError:
-        log.error("datasets package is required. pip install datasets")
+        log.error("datasets package is required.  pip install datasets")
         sys.exit(1)
 
-    log.info("Streaming FineWeb config '%s' ...", args.sample)
+    # ── Step 1: enumerate dumps ───────────────────────────────────────────────
+    log.info("Enumerating dumps in FineWeb '%s' ...", args.sample)
+    all_dump_files = _list_dump_files(args.sample)
+
+    target_dumps = sorted(
+        dump_id for dump_id in all_dump_files
+        if _dump_matches(dump_id, args.since, args.from_dump, args.to_dump)
+    )
+
     log.info("  output-dir     : %s", args.output_dir)
     log.info("  n-rows         : %d per dump", args.n_rows)
     log.info("  context-window : %d", args.context_window)
+    log.info("  dumps to process: %d (of %d total in sample)",
+             len(target_dumps), len(all_dump_files))
 
-    ds = load_dataset("HuggingFaceFW/fineweb", name=args.sample, streaming=True)["train"]
+    if not target_dumps:
+        log.error("No dumps matched the requested filters.")
+        sys.exit(1)
 
-    # Per-dump accumulators
-    dump_rows: Dict[str, List[Dict[str, str]]] = defaultdict(list)
-    dump_done: Set[str] = set()   # dumps written out or skipped
+    t0 = time.monotonic()
+    dumps_written = dumps_skipped = 0
 
-    docs_seen   = 0
-    t0          = time.monotonic()
-    log_every   = 100_000         # log a progress line every N documents
+    # ── Step 2: process each dump independently ───────────────────────────────
+    for dump_idx, dump_id in enumerate(target_dumps, 1):
+        out = args.output_dir / f"word_context_{dump_id}.csv"
 
-    for record in ds:
-        dump_id = record.get("dump") or ""
-
-        # Ignore records whose dump doesn't match the filter
-        if not _dump_matches(dump_id, args.since, args.from_dump, args.to_dump):
+        if not args.force and _count_rows(out) >= args.n_rows:
+            log.info("[%d/%d] Skipping %s — already complete",
+                     dump_idx, len(target_dumps), dump_id)
+            dumps_skipped += 1
             continue
 
-        # First time we encounter this dump: check for an existing output file
-        if dump_id not in dump_done and dump_id not in dump_rows:
-            out = args.output_dir / f"word_context_{dump_id}.csv"
-            if not args.force and _count_rows(out) >= args.n_rows:
-                log.info("Skipping %s — already complete (%d rows)", dump_id, _count_rows(out))
-                dump_done.add(dump_id)
+        log.info("[%d/%d] Streaming %s ...", dump_idx, len(target_dumps), dump_id)
+        t_dump = time.monotonic()
 
-        if dump_id in dump_done:
-            continue
+        # Load only this dump's parquet files — stream terminates as soon as
+        # we break, so no unnecessary records are consumed.
+        ds_dump = load_dataset(
+            "HuggingFaceFW/fineweb",
+            data_files={"train": all_dump_files[dump_id]},
+            streaming=True,
+            split="train",
+        )
 
-        # Extract context rows from this document
-        text = record.get("text") or ""
-        url  = record.get("url")  or ""
-        if text:
-            tokens = tokenize(text)
-            for _, context in extract_contexts(tokens, targets, args.context_window):
-                dump_rows[dump_id].append({"uri": url, "target_context": context})
+        rows: List[Dict[str, str]] = []
+        docs_seen = 0
 
-        docs_seen += 1
+        for record in ds_dump:
+            text = record.get("text") or ""
+            url  = record.get("url")  or ""
+            if text:
+                tokens = tokenize(text)
+                for _, context in extract_contexts(tokens, targets, args.context_window):
+                    rows.append({"uri": url, "target_context": context})
+                    if len(rows) >= args.n_rows:
+                        break           # stop accumulating mid-document
+            docs_seen += 1
+            if len(rows) >= args.n_rows:
+                break                   # early-terminate the dump stream
 
-        # If this dump has reached n_rows, write it out immediately and free memory
-        if len(dump_rows[dump_id]) >= args.n_rows:
-            out = args.output_dir / f"word_context_{dump_id}.csv"
-            _write_rows(out, dump_rows[dump_id])
-            elapsed = _fmt_duration(time.monotonic() - t0)
-            log.info("✓ %s — %d rows → %s  [%s, %d docs seen]",
-                     dump_id, len(dump_rows[dump_id]), out, elapsed, docs_seen)
-            dump_done.add(dump_id)
-            del dump_rows[dump_id]
+        _write_rows(out, rows)
+        elapsed_dump  = _fmt_duration(time.monotonic() - t_dump)
+        elapsed_total = _fmt_duration(time.monotonic() - t0)
 
-        if docs_seen % log_every == 0:
-            elapsed = _fmt_duration(time.monotonic() - t0)
-            log.info("  ... %d docs scanned | %d dumps complete | %d dumps in progress  [%s]",
-                     docs_seen, len(dump_done), len(dump_rows), elapsed)
+        if len(rows) < args.n_rows:
+            log.info("  ✓ %s — %d/%d rows (dump exhausted) → %s  "
+                     "[dump %s | total %s | %d docs scanned]",
+                     dump_id, len(rows), args.n_rows, out.name,
+                     elapsed_dump, elapsed_total, docs_seen)
+        else:
+            log.info("  ✓ %s — %d rows → %s  "
+                     "[dump %s | total %s | %d docs scanned]",
+                     dump_id, len(rows), out.name,
+                     elapsed_dump, elapsed_total, docs_seen)
 
-    # Write any dumps that never reached n_rows
-    for dump_id, rows in dump_rows.items():
-        if rows:
-            out = args.output_dir / f"word_context_{dump_id}.csv"
-            _write_rows(out, rows)
-            log.info("✓ %s — %d rows (below target) → %s", dump_id, len(rows), out)
+        dumps_written += 1
 
-    log.info("All done. %d docs scanned | %d dump file(s) written  [%s]",
-             docs_seen, len(dump_done) + len(dump_rows),
-             _fmt_duration(time.monotonic() - t0))
+    log.info(
+        "All done. %d dump(s) written, %d skipped  [%s]",
+        dumps_written, dumps_skipped,
+        _fmt_duration(time.monotonic() - t0),
+    )
 
 
 if __name__ == "__main__":
