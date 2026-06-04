@@ -32,10 +32,11 @@ import argparse
 import csv
 import logging
 import re
+import string
 import sys
 import time
 from pathlib import Path
-from typing import Dict, List, NamedTuple, Optional, Set, Tuple
+from typing import Dict, List, Optional, Tuple
 
 # ---------------------------------------------------------------------------
 # Logging
@@ -52,82 +53,45 @@ logging.basicConfig(
 log = logging.getLogger(__name__)
 
 # ---------------------------------------------------------------------------
-# Tokenizer  (identical to word_context.py)
+# Target words / phrases
 # ---------------------------------------------------------------------------
 
-# TODO(dexcrow): This might be unnecessary since the data is already clean, might be faster to skip the "word" check.
-_WORD_RE = re.compile(r"[a-zA-Z'''\-]+")
-
-
-def tokenize(text: str) -> List[str]:
-    return [w.lower() for w in _WORD_RE.findall(text)]
-
-
-# ---------------------------------------------------------------------------
-# Target words / phrases  (identical to word_context.py)
-# ---------------------------------------------------------------------------
-
-class Targets(NamedTuple):
-    single_words: Set[str]
-    phrase_index: Dict[str, List[Tuple[str, ...]]]
-
-
-def load_target_words(path: str) -> Targets:
-    single_words: Set[str] = set()
-    phrases: List[Tuple[str, ...]] = []
+def load_target_words(path: str) -> List[str]:
+    """Load target words/phrases as lowercase strings, one per line."""
+    targets: List[str] = []
     with open(path, encoding="utf-8") as fh:
         for line in fh:
             raw = line.strip()
             if not raw or raw.startswith("#"):
                 continue
-            parts = raw.lower().split()
-            if len(parts) == 1:
-                single_words.add(parts[0])
-            else:
-                phrases.append(tuple(parts))
-    phrase_index: Dict[str, List[Tuple[str, ...]]] = {}
-    for phrase in phrases:
-        phrase_index.setdefault(phrase[0], []).append(phrase)
-    log.info("Loaded %d single words and %d phrases from %s",
-             len(single_words), len(phrases), path)
-    return Targets(single_words=single_words, phrase_index=phrase_index)
+            targets.append(raw.lower())
+    log.info("Loaded %d target words/phrases from %s", len(targets), path)
+    return targets
 
 
 # ---------------------------------------------------------------------------
 # Context extraction  (identical to word_context.py)
 # ---------------------------------------------------------------------------
 
-def extract_contexts(tokens: List[str], targets: Targets, k: int) -> List[Tuple[str, str]]:
-    """Find all target matches and return (matched_word, context_string) pairs.
+def extract_contexts(text: str, targets: List[str], k: int) -> List[Tuple[str, str]]:
+    """Find all target matches and return (matched_target, context_string) pairs.
 
-    Phrases take priority over single-word matches at the same position.
-    Advances past matched tokens to avoid double-counting overlapping matches.
+    Splits the text on whitespace and matches each target by checking the first
+    character as a fast pre-filter, then comparing the joined word slice against
+    the full target string. Advances past matched words to avoid double-counting.
     """
+    words = [w.strip(string.punctuation) for w in text.lower().split()]
     results: List[Tuple[str, str]] = []
     i = 0
-    while i < len(tokens):
-        token = tokens[i]
-        matched_key: Optional[str] = None
-        matched_len = 0
-
-        if token in targets.phrase_index:
-            for phrase in targets.phrase_index[token]:
-                n = len(phrase)
-                if tuple(tokens[i:i + n]) == phrase:
-                    matched_key = " ".join(phrase)
-                    matched_len = n
-                    break
-
-        if matched_key is None and token in targets.single_words:
-            matched_key = token
-            matched_len = 1
-
-        if matched_key:
-            start = max(0, i - k)
-            end   = min(len(tokens), i + matched_len + k)
-            context = " ".join(tokens[start:end])
-            results.append((matched_key, context))
-            i += matched_len
+    while i < len(words):
+        for target in targets:
+            n = len(target.split())
+            if words[i][0:1] == target[0] and " ".join(words[i:i + n]) == target:
+                start = max(0, i - k)
+                end   = min(len(words), i + n + k)
+                results.append((target, " ".join(words[start:end])))
+                i += n
+                break
         else:
             i += 1
     return results
@@ -146,13 +110,6 @@ def _count_rows(path: Path) -> int:
     with path.open(encoding="utf-8") as f:
         return max(0, sum(1 for _ in f) - 1)  # subtract header
 
-
-def _write_rows(path: Path, rows: List[Dict[str, str]]) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    with path.open("w", newline="", encoding="utf-8") as fh:
-        writer = csv.DictWriter(fh, fieldnames=_FIELDNAMES)
-        writer.writeheader()
-        writer.writerows(rows)
 
 
 # ---------------------------------------------------------------------------
@@ -200,6 +157,7 @@ def _list_dump_files(sample: str) -> Dict[str, List[str]]:
     fs = HfFileSystem()
     repo_prefix = "datasets/HuggingFaceFW/fineweb/"
 
+    # Overzealous Claude, but this should just run once.
     # Patterns to try in order (FineWeb layout has changed over time)
     patterns = [
         f"{repo_prefix}{sample}/data/CC-MAIN-*/*.parquet",   # nested per-dump dirs
@@ -365,7 +323,7 @@ def main() -> None:
         sys.exit(1)
 
     t0 = time.monotonic()
-    dumps_written = dumps_skipped = 0
+    dumps_written, dumps_skipped = 0, 0
 
     # ── Step 2: process each dump independently ───────────────────────────────
     for dump_idx, dump_id in enumerate(target_dumps, 1):
@@ -389,35 +347,39 @@ def main() -> None:
             split="train",
         )
 
-        rows: List[Dict[str, str]] = []
+        rows_written = 0
         docs_seen = 0
+        out.parent.mkdir(parents=True, exist_ok=True)
 
-        for record in ds_dump:
-            text = record.get("text") or ""
-            url  = record.get("url")  or ""
-            if text:
-                tokens = tokenize(text)
-                for _, context in extract_contexts(tokens, targets, args.context_window):
-                    rows.append({"uri": url, "target_context": context})
-                    if len(rows) >= args.n_rows:
-                        break           # stop accumulating mid-document
-            docs_seen += 1
-            if len(rows) >= args.n_rows:
-                break                   # early-terminate the dump stream
+        with out.open("w", newline="", encoding="utf-8") as fh:
+            writer = csv.DictWriter(fh, fieldnames=_FIELDNAMES)
+            writer.writeheader()
 
-        _write_rows(out, rows)
+            for record in ds_dump:
+                text = record.get("text") or ""
+                url  = record.get("url")  or ""
+                if text:
+                    for _, context in extract_contexts(text, targets, args.context_window):
+                        writer.writerow({"uri": url, "target_context": context})
+                        rows_written += 1
+                        if rows_written >= args.n_rows:
+                            break           # stop accumulating mid-document
+                docs_seen += 1
+                if rows_written >= args.n_rows:
+                    break                   # early-terminate the dump stream
+
         elapsed_dump  = _fmt_duration(time.monotonic() - t_dump)
         elapsed_total = _fmt_duration(time.monotonic() - t0)
 
-        if len(rows) < args.n_rows:
+        if rows_written < args.n_rows:
             log.info("  ✓ %s — %d/%d rows (dump exhausted) → %s  "
                      "[dump %s | total %s | %d docs scanned]",
-                     dump_id, len(rows), args.n_rows, out.name,
+                     dump_id, rows_written, args.n_rows, out.name,
                      elapsed_dump, elapsed_total, docs_seen)
         else:
             log.info("  ✓ %s — %d rows → %s  "
                      "[dump %s | total %s | %d docs scanned]",
-                     dump_id, len(rows), out.name,
+                     dump_id, rows_written, out.name,
                      elapsed_dump, elapsed_total, docs_seen)
 
         dumps_written += 1
