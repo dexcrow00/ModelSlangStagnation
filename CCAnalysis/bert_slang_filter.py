@@ -1,38 +1,23 @@
 #!/usr/bin/env python3
 """
-bert_slang_filter.py — Fine-tuned transformer slang sense classifier.
-
-Supports BERT, RoBERTa, or both models simultaneously. When both are loaded
-an ensemble score (average P(slang)) is also produced.
+bert_slang_filter.py — Fine-tuned RoBERTa slang sense classifier.
 
   score = 2 * P(slang) - 1  (range [-1, 1]; positive = slang usage)
-
-Threshold filtering uses: ensemble_score (both models) > bert_score > roberta_score.
 
 Requires: torch, transformers, scikit-learn
 
 Usage:
-    # Fine-tune BERT only, then score
-    python bert_slang_filter.py contexts/ --output-dir scored/ \\
-        --target-words target_words.txt --score-all \\
-        --ft-annotations annotations/ --ft-model-dir ./ft_model/
 
-    # Fine-tune RoBERTa only, then score
+    # Fine-tune RoBERTa, then score all rows
     python bert_slang_filter.py contexts/ --output-dir scored/ \\
         --target-words target_words.txt --score-all \\
         --roberta-annotations annotations/ --roberta-model-dir ./roberta_model/
 
-    # Fine-tune both models and produce ensemble scores
-    python bert_slang_filter.py contexts/ --output-dir scored/ \\
-        --target-words target_words.txt --score-all \\
-        --ft-annotations annotations/ --ft-model-dir ./ft_model/ \\
-        --roberta-annotations annotations/ --roberta-model-dir ./roberta_model/
-
-    # Load saved models (skip training) and filter above threshold
+    # Load a saved model (skip training) and filter above threshold
     python bert_slang_filter.py contexts/*.csv -o filtered.csv \\
         --target-words target_words.txt \\
-        --ft-model-dir ./ft_model/ --roberta-model-dir ./roberta_model/ \\
-        --ft-threshold 0.1
+        --roberta-model-dir ./roberta_model/ \\
+        --threshold 0.1
 """
 
 from __future__ import annotations
@@ -140,25 +125,23 @@ def load_annotation_examples(annotation_dir: Path) -> List[Tuple[str, int]]:
 
 
 # ---------------------------------------------------------------------------
-# Generic transformer classifier (works for BERT, RoBERTa, etc.)
+# Transformer classifier
 # ---------------------------------------------------------------------------
 
 class TransformerSlangClassifier:
     """Binary transformer classifier fine-tuned on human-annotated slang examples.
 
-    Works with any HuggingFace AutoModel (BERT, RoBERTa, DistilBERT, …).
+    Works with any HuggingFace AutoModel (RoBERTa, BERT, DistilBERT, …).
     Scores are mapped P(slang) ∈ [0, 1] → [-1, 1] via ``2p - 1``.
 
     Parameters
     ----------
-    base_model : HuggingFace model ID or local path (e.g. 'bert-base-uncased',
-                 'roberta-base').
-    label      : Short name used in log messages, e.g. 'BERT' or 'RoBERTa'.
+    base_model : HuggingFace model ID or local path (e.g. 'roberta-base').
+    label      : Short name used in log messages, e.g. 'RoBERTa'.
     words      : Target words used to select relevant rows during scoring.
     device     : PyTorch device string, or None for auto-detect.
     """
 
-    _DEFAULT_BERT_BASE    = "bert-base-uncased"
     _DEFAULT_ROBERTA_BASE = "roberta-base"
 
     def __init__(
@@ -363,47 +346,24 @@ class TransformerSlangClassifier:
         return scores
 
 
-# Backward-compatibility alias
-FineTunedSlangClassifier = TransformerSlangClassifier
-
-
 # ---------------------------------------------------------------------------
 # Scoring helpers
 # ---------------------------------------------------------------------------
 
-def _primary_score(row: Dict, bert_col: bool, roberta_col: bool, ensemble_col: bool) -> Optional[float]:
-    """Return the best available score for threshold/sort decisions."""
-    def _f(key: str) -> Optional[float]:
-        v = row.get(key, "")
-        return float(v) if v else None
-
-    if ensemble_col:
-        return _f("ensemble_score")
-    if bert_col:
-        return _f("bert_score")
-    return _f("roberta_score")
+_FIELDNAMES = ["uri", "target_context", "roberta_score"]
 
 
-def _sort_rows(rows: List[Dict], bert_col: bool, roberta_col: bool, ensemble_col: bool) -> None:
+def _sort_rows(rows: List[Dict]) -> None:
     _NEG_INF = float("-inf")
-    rows.sort(
-        key=lambda r: -(
-            _primary_score(r, bert_col, roberta_col, ensemble_col) or _NEG_INF
-        )
-    )
+    rows.sort(key=lambda r: -(float(r["roberta_score"]) if r.get("roberta_score") else _NEG_INF))
 
 
 def _score_file(
     path: Path,
-    bert_clf: Optional[TransformerSlangClassifier],
-    roberta_clf: Optional[TransformerSlangClassifier],
+    roberta_clf: TransformerSlangClassifier,
     args: argparse.Namespace,
-    fieldnames: List[str],
-    bert_col: bool,
-    roberta_col: bool,
-    ensemble_col: bool,
 ) -> Tuple[List[Dict], int]:
-    """Score a single CSV file with whichever models are loaded."""
+    """Score a single CSV file with the RoBERTa classifier."""
     rows = _read_rows(path)
     if not rows:
         log.info("Skipping empty file: %s", path.name)
@@ -411,32 +371,18 @@ def _score_file(
 
     log.info("Processing %s (%d rows) ...", path.name, len(rows))
     n = len(rows)
-
-    bert_scores    = bert_clf.score_rows(rows, args.batch_size)    if bert_clf    else [None] * n
-    roberta_scores = roberta_clf.score_rows(rows, args.batch_size) if roberta_clf else [None] * n
+    roberta_scores = roberta_clf.score_rows(rows, args.batch_size)
 
     out_rows: List[Dict] = []
-    for row, bs, rs in zip(rows, bert_scores, roberta_scores):
-        # Ensemble: average of available scores
-        available = [s for s in (bs, rs) if s is not None]
-        es: Optional[float] = sum(available) / len(available) if available else None
-
-        # Build the output row
-        out_row: Dict = {
+    for row, rs in zip(rows, roberta_scores):
+        out_row = {
             "uri":            row.get("uri", ""),
             "target_context": row.get("target_context", ""),
+            "roberta_score":  f"{rs:.4f}" if rs is not None else "",
         }
-        if bert_col:
-            out_row["bert_score"]     = f"{bs:.4f}" if bs is not None else ""
-        if roberta_col:
-            out_row["roberta_score"]  = f"{rs:.4f}" if rs is not None else ""
-        if ensemble_col:
-            out_row["ensemble_score"] = f"{es:.4f}" if es is not None else ""
 
-        # Threshold filtering (skip when not score_all)
         if not args.score_all:
-            primary = _primary_score(out_row, bert_col, roberta_col, ensemble_col)
-            if primary is not None and primary < args.ft_threshold:
+            if rs is None or rs < args.threshold:
                 continue
 
         out_rows.append(out_row)
@@ -447,10 +393,10 @@ def _score_file(
     return out_rows, n
 
 
-def _write_csv(path: Path, rows: List[Dict], fieldnames: List[str]) -> None:
+def _write_csv(path: Path, rows: List[Dict]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", newline="", encoding="utf-8") as fh:
-        writer = csv.DictWriter(fh, fieldnames=fieldnames, extrasaction="ignore")
+        writer = csv.DictWriter(fh, fieldnames=_FIELDNAMES, extrasaction="ignore")
         writer.writeheader()
         writer.writerows(rows)
 
@@ -461,34 +407,20 @@ def _write_csv(path: Path, rows: List[Dict], fieldnames: List[str]) -> None:
 
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(
-        description=(
-            "Score slang sense using fine-tuned BERT and/or RoBERTa classifiers. "
-            "When both models are loaded, an ensemble score is also produced."
-        ),
+        description="Score slang sense using a fine-tuned RoBERTa classifier.",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
-  # BERT only — fine-tune then score
-  python bert_slang_filter.py contexts/ --output-dir scored/ \\
-      --target-words target_words.txt --score-all \\
-      --ft-annotations annotations/ --ft-model-dir ./ft_model/
-
-  # RoBERTa only — fine-tune then score
+  # Fine-tune RoBERTa then score all rows
   python bert_slang_filter.py contexts/ --output-dir scored/ \\
       --target-words target_words.txt --score-all \\
       --roberta-annotations annotations/ --roberta-model-dir ./roberta_model/
 
-  # Both models — ensemble scoring
-  python bert_slang_filter.py contexts/ --output-dir scored/ \\
-      --target-words target_words.txt --score-all \\
-      --ft-annotations annotations/ --ft-model-dir ./ft_model/ \\
-      --roberta-annotations annotations/ --roberta-model-dir ./roberta_model/
-
-  # Load saved models (no training) and filter above threshold
+  # Load a saved model (no training) and filter above threshold
   python bert_slang_filter.py contexts/*.csv -o filtered.csv \\
       --target-words target_words.txt \\
-      --ft-model-dir ./ft_model/ --roberta-model-dir ./roberta_model/ \\
-      --ft-threshold 0.1
+      --roberta-model-dir ./roberta_model/ \\
+      --threshold 0.1
         """,
     )
 
@@ -507,64 +439,39 @@ Examples:
                    help="Text file of target words, one per line (default: target_words.txt).")
     p.add_argument("--score-all", action="store_true", dest="score_all",
                    help="Write every row with scores attached (no filtering).")
-    p.add_argument("--ft-threshold", type=float, default=0.0, metavar="F",
-                   dest="ft_threshold",
-                   help="Min score to keep a row when filtering (default: 0.0). "
-                        "Applied to: ensemble_score > bert_score > roberta_score.")
+    p.add_argument("--threshold", type=float, default=0.0, metavar="F",
+                   help="Min roberta_score to keep a row when filtering (default: 0.0).")
     p.add_argument("--batch-size", type=int, default=32, metavar="N", dest="batch_size",
-                   help="Inference batch size for both models (default: 32).")
+                   help="Inference batch size (default: 32).")
     p.add_argument("--device", default=None, metavar="DEV",
                    help="PyTorch device, e.g. cpu, cuda, mps (default: auto-detect).")
 
-    # BERT group
-    bert = p.add_argument_group(
-        "BERT model",
-        "Omit both --ft-annotations and --ft-model-dir to disable BERT entirely.",
-    )
-    bert.add_argument("--ft-annotations", metavar="DIR", dest="ft_annotations",
-                      help="Annotated CSVs to fine-tune BERT (recursive *.csv scan, "
-                           "requires 'is_slang' column).")
-    bert.add_argument("--ft-model-dir", metavar="DIR", dest="ft_model_dir",
-                      help="Directory to save (training) or load (inference) the BERT model.")
-    bert.add_argument("--ft-base-model", default=TransformerSlangClassifier._DEFAULT_BERT_BASE,
-                      metavar="ID", dest="ft_base_model",
-                      help=f"Base HuggingFace model ID for BERT fine-tuning "
-                           f"(default: {TransformerSlangClassifier._DEFAULT_BERT_BASE}).")
-    bert.add_argument("--ft-epochs", type=int, default=10, metavar="N", dest="ft_epochs",
-                      help="BERT fine-tuning epochs (default: 10).")
-    bert.add_argument("--ft-lr", type=float, default=2e-5, metavar="F", dest="ft_lr",
-                      help="BERT learning rate (default: 2e-5).")
-
-    # RoBERTa group
-    roberta = p.add_argument_group(
-        "RoBERTa model",
-        "Omit both --roberta-annotations and --roberta-model-dir to disable RoBERTa entirely.",
-    )
+    # RoBERTa options
+    roberta = p.add_argument_group("RoBERTa model")
     roberta.add_argument("--roberta-annotations", metavar="DIR", dest="roberta_annotations",
                          help="Annotated CSVs to fine-tune RoBERTa (recursive *.csv scan, "
-                              "requires 'is_slang' column). Defaults to --ft-annotations "
-                              "when --roberta-model-dir is given but this flag is omitted.")
-    roberta.add_argument("--roberta-model-dir", metavar="DIR", dest="roberta_model_dir",
+                              "requires 'is_slang' column). Omit to load a saved model.")
+    roberta.add_argument("--roberta-model-dir", required=True, metavar="DIR",
+                         dest="roberta_model_dir",
                          help="Directory to save (training) or load (inference) the RoBERTa model.")
     roberta.add_argument("--roberta-base-model",
                          default=TransformerSlangClassifier._DEFAULT_ROBERTA_BASE,
                          metavar="ID", dest="roberta_base_model",
-                         help=f"Base HuggingFace model ID for RoBERTa fine-tuning "
+                         help=f"Base HuggingFace model ID for fine-tuning "
                               f"(default: {TransformerSlangClassifier._DEFAULT_ROBERTA_BASE}).")
     roberta.add_argument("--roberta-epochs", type=int, default=10, metavar="N",
                          dest="roberta_epochs",
-                         help="RoBERTa fine-tuning epochs (default: 10).")
+                         help="Fine-tuning epochs (default: 10).")
     roberta.add_argument("--roberta-lr", type=float, default=2e-5, metavar="F",
                          dest="roberta_lr",
-                         help="RoBERTa learning rate (default: 2e-5).")
+                         help="Learning rate (default: 2e-5).")
 
     return p
 
 
 def _resolve_classifier(
-    model_dir_str: Optional[str],
+    model_dir_str: str,
     annotation_dir_str: Optional[str],
-    fallback_annotation_dir_str: Optional[str],
     base_model: str,
     label: str,
     words: List[str],
@@ -573,38 +480,25 @@ def _resolve_classifier(
     lr: float,
     batch_size: int,
     parser: argparse.ArgumentParser,
-) -> Optional[TransformerSlangClassifier]:
-    """
-    Build, train/load, and return a TransformerSlangClassifier, or None if
-    neither model_dir nor annotation_dir was supplied (model disabled).
-    """
-    if not model_dir_str and not annotation_dir_str:
-        return None   # model disabled
-
+) -> TransformerSlangClassifier:
+    """Build, then train or load, a TransformerSlangClassifier."""
     clf = TransformerSlangClassifier(base_model=base_model, label=label,
                                      words=words, device=device)
 
-    ann_dir_str = annotation_dir_str or fallback_annotation_dir_str
-
-    if ann_dir_str:
-        ann_dir = Path(ann_dir_str)
+    if annotation_dir_str:
+        ann_dir = Path(annotation_dir_str)
         if not ann_dir.exists():
             parser.error(f"[{label}] Annotation directory not found: {ann_dir}")
         examples = load_annotation_examples(ann_dir)
         if not examples:
             parser.error(f"[{label}] No annotated examples found in {ann_dir}.")
-        model_dir = Path(model_dir_str) if model_dir_str else None
-        if model_dir is None:
-            parser.error(f"[{label}] --{'ft' if label=='BERT' else 'roberta'}-model-dir "
-                         f"is required when supplying annotations.")
-        clf.train(examples, model_dir, epochs=epochs, lr=lr, batch_size=batch_size)
+        clf.train(examples, Path(model_dir_str), epochs=epochs, lr=lr, batch_size=batch_size)
     else:
-        # No annotations — load a pre-trained model
-        model_dir = Path(model_dir_str)  # type: ignore[arg-type]
+        model_dir = Path(model_dir_str)
         if not model_dir.exists():
             parser.error(
                 f"[{label}] Model directory '{model_dir}' not found. "
-                f"Provide annotations to train a model first."
+                f"Provide --roberta-annotations to train a model first."
             )
         clf.load(model_dir)
 
@@ -614,13 +508,6 @@ def _resolve_classifier(
 def main() -> None:
     parser = build_parser()
     args   = parser.parse_args()
-
-    # Require at least one model
-    if not args.ft_model_dir and not args.roberta_model_dir:
-        parser.error(
-            "At least one of --ft-model-dir (BERT) or --roberta-model-dir (RoBERTa) "
-            "must be supplied."
-        )
 
     # Expand inputs
     input_paths: List[Path] = []
@@ -649,59 +536,20 @@ def main() -> None:
     if device:
         log.info("Using device: %s", device)
 
-    # Build BERT classifier (optional)
-    bert_clf = _resolve_classifier(
-        model_dir_str            = args.ft_model_dir,
-        annotation_dir_str       = args.ft_annotations,
-        fallback_annotation_dir_str = None,
-        base_model               = args.ft_base_model,
-        label                    = "BERT",
-        words                    = words,
-        device                   = device,
-        epochs                   = args.ft_epochs,
-        lr                       = args.ft_lr,
-        batch_size               = args.batch_size,
-        parser                   = parser,
-    )
-
-    # Build RoBERTa classifier (optional)
-    # Falls back to --ft-annotations when --roberta-annotations is not given
     roberta_clf = _resolve_classifier(
-        model_dir_str            = args.roberta_model_dir,
-        annotation_dir_str       = args.roberta_annotations,
-        fallback_annotation_dir_str = args.ft_annotations,
-        base_model               = args.roberta_base_model,
-        label                    = "RoBERTa",
-        words                    = words,
-        device                   = device,
-        epochs                   = args.roberta_epochs,
-        lr                       = args.roberta_lr,
-        batch_size               = args.batch_size,
-        parser                   = parser,
+        model_dir_str      = args.roberta_model_dir,
+        annotation_dir_str = args.roberta_annotations,
+        base_model         = args.roberta_base_model,
+        label              = "RoBERTa",
+        words              = words,
+        device             = device,
+        epochs             = args.roberta_epochs,
+        lr                 = args.roberta_lr,
+        batch_size         = args.batch_size,
+        parser             = parser,
     )
 
-    # Determine which score columns to emit
-    bert_col     = bert_clf    is not None
-    roberta_col  = roberta_clf is not None
-    ensemble_col = bert_col and roberta_col
-
-    fieldnames = ["uri", "target_context"]
-    if bert_col:
-        fieldnames.append("bert_score")
-    if roberta_col:
-        fieldnames.append("roberta_score")
-    if ensemble_col:
-        fieldnames.append("ensemble_score")
-
-    score_kwargs = dict(
-        bert_clf     = bert_clf,
-        roberta_clf  = roberta_clf,
-        args         = args,
-        fieldnames   = fieldnames,
-        bert_col     = bert_col,
-        roberta_col  = roberta_col,
-        ensemble_col = ensemble_col,
-    )
+    score_kwargs = dict(roberta_clf=roberta_clf, args=args)
 
     # ── Per-file mode ──────────────────────────────────────────────────────────
     if args.output_dir is not None:
@@ -715,8 +563,8 @@ def main() -> None:
                 grand_skipped += 1
                 continue
             file_rows, n_in = _score_file(path, **score_kwargs)
-            _sort_rows(file_rows, bert_col, roberta_col, ensemble_col)
-            _write_csv(out_path, file_rows, fieldnames)
+            _sort_rows(file_rows)
+            _write_csv(out_path, file_rows)
             grand_in  += n_in
             grand_out += len(file_rows)
         log.info(
@@ -736,8 +584,8 @@ def main() -> None:
         all_rows.extend(file_rows)
         grand_in += n_in
 
-    _sort_rows(all_rows, bert_col, roberta_col, ensemble_col)
-    _write_csv(output_path, all_rows, fieldnames)
+    _sort_rows(all_rows)
+    _write_csv(output_path, all_rows)
     log.info(
         "Done. %d/%d rows kept (%.1f%%), sorted by score -> %s",
         len(all_rows), grand_in,
