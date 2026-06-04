@@ -30,6 +30,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+from datasets import load_dataset
 import logging
 import re
 import string
@@ -227,20 +228,7 @@ def build_parser() -> argparse.ArgumentParser:
             "Each CC dump is streamed independently and the stream is terminated as "
             "soon as --n-rows context rows have been collected."
         ),
-        formatter_class=argparse.RawDescriptionHelpFormatter,
-        epilog="""
-Examples:
-  # Default sample (sample-10BT), all dumps, 500 rows each
-  python fineweb_context.py --output-dir contexts/ --words target_words.txt --n-rows 500
-
-  # Larger sample, from 2020 onwards
-  python fineweb_context.py --output-dir contexts/ --words target_words.txt \\
-      --sample sample-100BT --since 2020 --n-rows 500
-
-  # Explicit dump range
-  python fineweb_context.py --output-dir contexts/ --words target_words.txt \\
-      --from-dump CC-MAIN-2022-05 --to-dump CC-MAIN-2024-10 --n-rows 500
-        """,
+        formatter_class=argparse.RawDescriptionHelpFormatter
     )
 
     # Output
@@ -296,12 +284,6 @@ def main() -> None:
 
     args.output_dir.mkdir(parents=True, exist_ok=True)
     targets = load_target_words(args.words)
-
-    try:
-        from datasets import load_dataset  # type: ignore
-    except ImportError:
-        log.error("datasets package is required.  pip install datasets")
-        sys.exit(1)
 
     # ── Step 1: enumerate dumps ───────────────────────────────────────────────
     log.info("Enumerating dumps in FineWeb '%s' ...", args.sample)
