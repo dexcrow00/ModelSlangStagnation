@@ -31,6 +31,7 @@ from __future__ import annotations
 import argparse
 import csv
 from datasets import load_dataset
+from huggingface_hub import HfFileSystem
 import logging
 import re
 import string
@@ -38,6 +39,7 @@ import sys
 import time
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
+from Keys import HF_TOKEN
 
 # ---------------------------------------------------------------------------
 # Logging
@@ -150,11 +152,6 @@ def _list_dump_files(sample: str) -> Dict[str, List[str]]:
     Uses HfFileSystem to enumerate the parquet files without downloading them.
     Tries several common path layouts to be robust against dataset restructuring.
     """
-    try:
-        from huggingface_hub import HfFileSystem  # type: ignore
-    except ImportError:
-        log.error("huggingface_hub is required.  pip install huggingface_hub")
-        sys.exit(1)
 
     fs = HfFileSystem()
     repo_prefix = "datasets/HuggingFaceFW/fineweb/"
@@ -328,6 +325,7 @@ def main() -> None:
             data_files={"train": all_dump_files[dump_id]},
             streaming=True,
             split="train",
+            token=HF_TOKEN,
         )
 
         rows_written = 0
