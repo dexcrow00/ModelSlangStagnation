@@ -52,6 +52,7 @@ logging.basicConfig(
     handlers=[logging.StreamHandler(sys.stderr)],
 )
 log = logging.getLogger(__name__)
+logging.getLogger("httpx").setLevel(logging.WARNING)
 
 # ---------------------------------------------------------------------------
 # Target words / phrases
@@ -237,7 +238,7 @@ def build_parser() -> argparse.ArgumentParser:
                    help="Directory for output CSV files (one per dump).")
 
     # Target words
-    p.add_argument("--words", default="target_words.txt", metavar="FILE",
+    p.add_argument("--words", default="FineWebAnalysis/target_words.txt", metavar="FILE",
                    help="Plain-text target words/phrases file, one per line "
                         "(default: target_words.txt).")
 
@@ -248,12 +249,12 @@ def build_parser() -> argparse.ArgumentParser:
                         f"({', '.join(_SAMPLE_CONFIGS)}; default: sample-10BT).")
 
     # Context
-    p.add_argument("--context-window", type=int, default=10, metavar="K",
+    p.add_argument("--context-window", type=int, default=20, metavar="K",
                    dest="context_window",
-                   help="Tokens on each side of a match to include (default: 10).")
+                   help="Tokens on each side of a match to include (default: 20).")
 
     # Row target
-    p.add_argument("--n-rows", type=int, default=sys.maxsize, metavar="N", dest="n_rows",
+    p.add_argument("--n-rows", type=int, default=None, metavar="N", dest="n_rows",
                    help="Target number of context rows per dump (default: sys.maxsize). "
                         "Streaming for each dump stops as soon as this many rows "
                         "are accumulated.")
@@ -311,7 +312,7 @@ def main() -> None:
     for dump_idx, dump_id in enumerate(target_dumps, 1):
         out = args.output_dir / f"word_context_{dump_id}.csv"
 
-        if not args.force and _count_rows(out) >= args.n_rows:
+        if not args.force and args.n_rows and _count_rows(out) >= args.n_rows:
             log.info("[%d/%d] Skipping %s — already complete",
                      dump_idx, len(target_dumps), dump_id)
             dumps_skipped += 1
@@ -344,16 +345,16 @@ def main() -> None:
                     for _, context in extract_contexts(text, targets, args.context_window):
                         writer.writerow({"uri": url, "target_context": context})
                         rows_written += 1
-                        if rows_written >= args.n_rows:
+                        if args.n_rows and rows_written >= args.n_rows:
                             break           # stop accumulating mid-document
                 docs_seen += 1
-                if rows_written >= args.n_rows:
+                if args.n_rows and rows_written >= args.n_rows:
                     break                   # early-terminate the dump stream
 
         elapsed_dump  = _fmt_duration(time.monotonic() - t_dump)
         elapsed_total = _fmt_duration(time.monotonic() - t0)
 
-        if rows_written < args.n_rows:
+        if args.n_rows and rows_written < args.n_rows:
             log.info("  ✓ %s — %d/%d rows (dump exhausted) → %s  "
                      "[dump %s | total %s | %d docs scanned]",
                      dump_id, rows_written, args.n_rows, out.name,
