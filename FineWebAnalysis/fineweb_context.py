@@ -293,7 +293,8 @@ def main() -> None:
     )
 
     log.info("  output-dir     : %s", args.output_dir)
-    log.info("  n-rows         : %d per dump", args.n_rows)
+    if args.n_rows:
+        log.info("  n-rows         : %d per dump", args.n_rows)
     log.info("  context-window : %d", args.context_window)
     log.info("  dumps to process: %d (of %d total in sample)",
              len(target_dumps), len(all_dump_files))
@@ -329,6 +330,7 @@ def main() -> None:
         )
 
         rows_written = 0
+        rows_seen = 0
         docs_seen = 0
         out.parent.mkdir(parents=True, exist_ok=True)
 
@@ -337,6 +339,9 @@ def main() -> None:
             writer.writeheader()
 
             for record in ds_dump:
+                rows_seen += 1
+                if rows_seen % 5000 == 0:
+                    log.info("Rows seen: %i", rows_seen)
                 text = record.get("text") or ""
                 url  = record.get("url")  or ""
                 if text:
@@ -345,6 +350,8 @@ def main() -> None:
                         rows_written += 1
                         if args.n_rows and rows_written >= args.n_rows:
                             break           # stop accumulating mid-document
+                        if rows_written % 5000 == 0:
+                            log.info("Written %i rows", rows_written)
                 docs_seen += 1
                 if args.n_rows and rows_written >= args.n_rows:
                     break                   # early-terminate the dump stream
