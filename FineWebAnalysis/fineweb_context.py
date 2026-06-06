@@ -5,13 +5,17 @@ FineWeb HuggingFace dataset config.
 
 Reads a FineWeb sample config (sample/10BT, sample/100BT, sample/350BT) in a
 single streaming pass. The sample parquet files are flat — rows from many CC
-dumps are interleaved — so each row is routed to a per-dump output CSV based on
-its `dump` column. Files are read in row-group batches (text/url/dump columns
-only). Every matching row is written.
+dumps are interleaved — so each match is routed to a per-dump output Parquet
+file based on its `dump` column. Files are read in row-group batches (text/url/
+dump columns only). A vectorised regex pre-filter skips documents containing no
+target before any Python tokenisation; every match in a surviving document is
+written.
 
-Output CSV (one per dump per target word, e.g. word_context_CC-MAIN-2024-10__lol.csv):
+Output Parquet (one per dump, e.g. word_context_CC-MAIN-2024-10.parquet):
+  target         — the matched target word/phrase (filter with WHERE target=...)
   uri            — source URL of the document
-  target_context — ±K-token window of text around the match (includes the match)
+  target_context — ±K-token window of the ORIGINAL text around the match
+                   (casing/punctuation preserved for the downstream classifier)
 
 Usage:
     # All dumps in the default sample
@@ -27,18 +31,19 @@ Usage:
 
     # Parallel workers (e.g. 4-way): run one process per worker-id, 0..3.
     # Parquet files are partitioned round-robin so each is processed once;
-    # each worker writes its own .partNNN.csv shard per dump.
+    # each worker writes its own .partNNN.parquet shard per dump.
     python fineweb_context.py --output-dir contexts/ --num-workers 4 --worker-id 0
     python fineweb_context.py --output-dir contexts/ --num-workers 4 --worker-id 1
     ...
 
-Requires: datasets, huggingface_hub
+Requires: pyarrow, huggingface_hub
 """
 
 from __future__ import annotations
 
 import argparse
-import csv
+import pyarrow as pa
+import pyarrow.compute as pc
 import pyarrow.parquet as pq
 from huggingface_hub import HfFileSystem
 import logging
@@ -46,7 +51,6 @@ import re
 import string
 import sys
 import time
-from collections import OrderedDict
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 from Keys import HF_TOKEN
@@ -109,12 +113,20 @@ def extract_contexts(
 ) -> List[Tuple[str, str]]:
     """Find all target matches and return (matched_target, context_string) pairs.
 
-    Splits the text on whitespace and, for each word, only compares against the
-    targets that share its first character (see compile_targets). Single-word
-    targets are matched directly; multiword targets compare the joined slice.
-    Advances past matched words to avoid double-counting.
+    Matching is done on normalised tokens (whitespace-split, lowercased, with
+    leading/trailing punctuation stripped); each token is only compared against
+    the targets sharing its first character (see compile_targets). Single-word
+    targets match directly; multiword targets compare the joined slice. Advances
+    past matched words to avoid double-counting.
+
+    The emitted context is sliced from the ORIGINAL ``text`` (not the normalised
+    tokens), so casing, punctuation and internal spacing are preserved for the
+    downstream classifier. Token character spans are tracked to map the matched
+    ±k-token window back onto the raw string.
     """
-    words = [w.strip(string.punctuation) for w in text.lower().split()]
+    # (char_start, char_end) of each whitespace-delimited token in the original.
+    spans = [(m.start(), m.end()) for m in re.finditer(r"\S+", text)]
+    words = [text[s:e].strip(string.punctuation).lower() for s, e in spans]
     results: List[Tuple[str, str]] = []
     n_words = len(words)
     i = 0
@@ -126,7 +138,7 @@ def extract_contexts(
                 if (w == target) if n == 1 else (" ".join(words[i:i + n]) == target):
                     start = max(0, i - k)
                     end   = min(n_words, i + n + k)
-                    results.append((target, " ".join(words[start:end])))
+                    results.append((target, text[spans[start][0]:spans[end - 1][1]]))
                     i += n
                     break
             else:
@@ -137,33 +149,50 @@ def extract_contexts(
 
 
 # ---------------------------------------------------------------------------
-# CSV helpers
+# Parquet output
 # ---------------------------------------------------------------------------
 
-_FIELDNAMES = ["uri", "target_context"]
+# Output schema: one row per match, files partitioned by dump. Downstream
+# filtering for a single word is just `WHERE target = '...'`.
+_SCHEMA = pa.schema([
+    ("target", pa.string()),
+    ("uri", pa.string()),
+    ("target_context", pa.string()),
+])
 
-# Cap on simultaneously-open CSV writers. With one file per (dump, target) the
-# total number of files is large, so we keep at most this many handles open at
-# once (LRU eviction) and reopen evicted files in append mode as needed. Stays
-# well under the typical 1024 open-file ulimit.
-_MAX_OPEN_WRITERS = 512
+# Rows buffered per dump before a row group is flushed to its ParquetWriter.
+_FLUSH_ROWS = 2000
 
 
-def _safe_target(target: str) -> str:
-    """Make a filesystem-safe filename component from a target word/phrase.
+# ---------------------------------------------------------------------------
+# Vectorised document pre-filter
+# ---------------------------------------------------------------------------
 
-    Targets are already lowercased; spaces/punctuation collapse to underscores
-    (e.g. "set fire" -> "set_fire").
+def build_prefilter(targets: List[str]) -> Optional[str]:
+    """Build one RE2 regex that matches any document containing a target.
+
+    Used with ``pyarrow.compute.match_substring_regex`` to compute a boolean
+    mask over a whole text column at once, so documents with zero targets are
+    discarded before any per-row Python tokenisation.
+
+    The pattern mirrors the tokeniser's semantics exactly, so it is a true
+    superset of ``extract_contexts`` (no false negatives):
+      * ``(?:^|\\s)`` + ``[[:punct:]]*`` allows the leading punctuation the
+        tokeniser strips (incl. ``_``, which ``\\b`` would treat as a word char);
+      * internal whitespace in multiword targets becomes ``\\s+``;
+      * ``[[:punct:]]*`` + ``(?:\\s|$)`` allows trailing punctuation/whitespace.
+    Case-insensitive via the inline ``(?i)`` flag.
     """
-    safe = re.sub(r"[^a-z0-9]+", "_", target).strip("_")
-    return safe or "x"
+    alts = [r"\s+".join(re.escape(w) for w in t.split()) for t in targets if t]
+    if not alts:
+        return None
+    return r"(?i)(?:^|\s)[[:punct:]]*(?:" + "|".join(alts) + r")[[:punct:]]*(?:\s|$)"
 
 
 # ---------------------------------------------------------------------------
 # Dump filter
 # ---------------------------------------------------------------------------
 
-_CC_MAIN_RE = re.compile(r"CC-MAIN-\d{4}-\d{2,4}")
 _CC_MAIN_FULL_RE = re.compile(r"^CC-MAIN-\d{4}-\d{2,4}$")
 
 
@@ -256,8 +285,8 @@ def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(
         description=(
             "Extract target-word context windows from a pre-sampled FineWeb config. "
-            "The sample is read in a single streaming pass and each matching row is "
-            "routed to a per-dump output CSV by its `dump` column."
+            "The sample is read in a single streaming pass and each match is routed "
+            "to a per-dump output Parquet file by its `dump` column."
         ),
         formatter_class=argparse.RawDescriptionHelpFormatter
     )
@@ -265,7 +294,7 @@ def build_parser() -> argparse.ArgumentParser:
     # Output
     p.add_argument("--output-dir", required=True, metavar="DIR", dest="output_dir",
                    type=Path,
-                   help="Directory for output CSV files (one per dump).")
+                   help="Directory for output Parquet files (one per dump).")
 
     # Target words
     p.add_argument("--words", default="FineWebAnalysis/target_words.txt", metavar="FILE",
@@ -325,19 +354,10 @@ def main() -> None:
     args.output_dir.mkdir(parents=True, exist_ok=True)
     targets = load_target_words(args.words)
     compiled = compile_targets(targets)
-
-    # Precompute a filesystem-safe filename component per target (output is one
-    # CSV per dump per target), warning on any name collisions.
-    target_files: Dict[str, str] = {}
-    safe_seen: Dict[str, str] = {}
-    for t in targets:
-        safe = _safe_target(t)
-        prev = safe_seen.get(safe)
-        if prev is not None and prev != t:
-            log.warning("Target filename collision: %r and %r both map to '%s' — "
-                        "their contexts will share one file.", prev, t, safe)
-        safe_seen.setdefault(safe, t)
-        target_files[t] = safe
+    prefilter = build_prefilter(targets)
+    if prefilter is None:
+        log.error("No usable target words in %s — nothing to do.", args.words)
+        return
 
     # ── Step 1: enumerate the sample's (flat) parquet files ───────────────────
     log.info("Enumerating parquet files in FineWeb '%s' ...", args.sample)
@@ -370,13 +390,13 @@ def main() -> None:
     started_at = time.strftime("%Y-%m-%d %H:%M:%S")
     fs = HfFileSystem(token=HF_TOKEN)
 
-    # One CSV per (dump, target). The sample is flat (rows from many dumps
-    # interleaved) so writers are created lazily and keyed by (dump, target).
-    # Open handles are bounded by an LRU: when the cap is hit the least-recently
-    # used writer is closed, and a reopened file is appended to (header already
-    # written), so we never exceed the OS open-file limit.
-    writers: "OrderedDict[Tuple[str, str], dict]" = OrderedDict()
-    created: set = set()               # output paths opened this run (header written)
+    # One Parquet file per dump (target is a column). The sample is flat (rows
+    # from many dumps interleaved) so writers are created lazily, keyed by dump.
+    # The number of distinct dumps is small (~100), so all handles stay open for
+    # the run. Rows are buffered per dump and flushed as parquet row groups.
+    writers: Dict[str, pq.ParquetWriter] = {}      # dump_id -> open ParquetWriter
+    buffers: Dict[str, Tuple[List[str], List[str], List[str]]] = {}  # dump -> cols
+    created: set = set()               # output paths created this run
     match_cache: Dict[str, bool] = {}  # dump_id -> passes filters (memoised)
 
     def _dump_ok(dump_id: str) -> bool:
@@ -386,33 +406,28 @@ def main() -> None:
             match_cache[dump_id] = ok
         return ok
 
-    def _writer_for(dump_id: str, target: str):
-        """Return (creating/reopening if needed) the writer for one (dump, target)."""
-        key = (dump_id, target)
-        st = writers.get(key)
-        if st is not None:
-            writers.move_to_end(key)
-            return st
-        if len(writers) >= _MAX_OPEN_WRITERS:
-            _, old = writers.popitem(last=False)   # evict least-recently-used
-            old["fh"].close()
-        out = args.output_dir / f"word_context_{dump_id}__{target_files[target]}{shard_suffix}.csv"
-        if out in created:
-            fh = out.open("a", newline="", encoding="utf-8")
-            w = csv.DictWriter(fh, fieldnames=_FIELDNAMES)
-        else:
-            fh = out.open("w", newline="", encoding="utf-8")
-            w = csv.DictWriter(fh, fieldnames=_FIELDNAMES)
-            w.writeheader()
+    def _flush_dump(dump_id: str) -> None:
+        """Write the buffered rows for one dump as a parquet row group."""
+        buf = buffers.get(dump_id)
+        if not buf or not buf[0]:
+            return
+        table = pa.table({"target": buf[0], "uri": buf[1], "target_context": buf[2]},
+                         schema=_SCHEMA)
+        w = writers.get(dump_id)
+        if w is None:
+            out = args.output_dir / f"word_context_{dump_id}{shard_suffix}.parquet"
+            w = pq.ParquetWriter(str(out), _SCHEMA, compression="zstd")
+            writers[dump_id] = w
             created.add(out)
-        st = {"fh": fh, "writer": w}
-        writers[key] = st
-        return st
+        w.write_table(table)
+        buf[0].clear(); buf[1].clear(); buf[2].clear()
 
-    docs_seen = 0
+    docs_seen = 0     # documents scanned (before pre-filter)
+    cand_docs = 0     # documents surviving the regex pre-filter
     rows_total = 0
+    last_log = 0
     read_secs = 0.0   # time producing/decoding parquet batches (I/O + decompress)
-    match_secs = 0.0  # time routing + extract_contexts + writerow (CPU)
+    match_secs = 0.0  # time pre-filtering + extract_contexts + buffering (CPU)
 
     # ── Step 2: single streaming pass over the sample ─────────────────────────
     try:
@@ -424,30 +439,43 @@ def main() -> None:
                 t_read = time.monotonic()
                 for batch in pf.iter_batches(batch_size=args.batch_size,
                                              columns=["text", "url", "dump"]):
-                    cols = batch.to_pydict()
                     read_secs += time.monotonic() - t_read
 
                     t_match = time.monotonic()
+                    docs_seen += batch.num_rows
+                    # Vectorised pre-filter: keep only docs that contain a target
+                    # (nulls in the text column → null mask → dropped by filter).
+                    mask = pc.match_substring_regex(batch.column("text"), prefilter)
+                    sub = batch.filter(mask)
+                    cand_docs += sub.num_rows
+                    cols = sub.to_pydict()
                     for text, url, dump in zip(cols["text"], cols["url"], cols["dump"]):
-                        docs_seen += 1
-                        if docs_seen % 10000 == 0:
-                            log.info("  docs scanned: %d | rows written: %d",
-                                     docs_seen, rows_total)
-                        if not text or not _dump_ok(dump):
+                        if not _dump_ok(dump):
                             continue
                         for target, context in extract_contexts(
                                 text, compiled, args.context_window):
-                            st = _writer_for(dump, target)
-                            st["writer"].writerow({"uri": url or "",
-                                                   "target_context": context})
+                            buf = buffers.get(dump)
+                            if buf is None:
+                                buf = ([], [], [])
+                                buffers[dump] = buf
+                            buf[0].append(target)
+                            buf[1].append(url or "")
+                            buf[2].append(context)
                             rows_total += 1
-                            if rows_total % 10000 == 0:
-                                st["fh"].flush()  # push buffered rows to disk
+                            if len(buf[0]) >= _FLUSH_ROWS:
+                                _flush_dump(dump)
                     match_secs += time.monotonic() - t_match
+
+                    if docs_seen - last_log >= 100000:
+                        log.info("  docs scanned: %d | candidates: %d | rows written: %d",
+                                 docs_seen, cand_docs, rows_total)
+                        last_log = docs_seen
                     t_read = time.monotonic()
     finally:
-        for st in writers.values():
-            st["fh"].close()
+        for dump_id in list(buffers):
+            _flush_dump(dump_id)
+        for w in writers.values():
+            w.close()
 
     elapsed = _fmt_duration(time.monotonic() - t0)
     log.info("  timing: read/decompress %.1fs | matching %.1fs",
@@ -480,6 +508,7 @@ def main() -> None:
         f"output files    : {len(created)}",
         f"rows written    : {rows_total}",
         f"docs scanned    : {docs_seen}",
+        f"candidate docs  : {cand_docs}",
         f"read/decompress : {read_secs:.1f}s",
         f"matching        : {match_secs:.1f}s",
     ]

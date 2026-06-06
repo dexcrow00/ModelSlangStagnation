@@ -8,13 +8,14 @@ Requires: torch, transformers, scikit-learn
 
 Usage:
 
-    # Fine-tune RoBERTa, then score all rows
+    # Fine-tune RoBERTa, then score all rows (Parquet context dir from
+    # fineweb_context.py, or a directory/glob of CSVs)
     python bert_slang_filter.py contexts/ --output-dir scored/ \\
         --target-words target_words.txt --score-all \\
         --roberta-annotations annotations/ --roberta-model-dir ./roberta_model/
 
     # Load a saved model (skip training) and filter above threshold
-    python bert_slang_filter.py contexts/*.csv -o filtered.csv \\
+    python bert_slang_filter.py contexts/*.parquet -o filtered.csv \\
         --target-words target_words.txt \\
         --roberta-model-dir ./roberta_model/ \\
         --threshold 0.1
@@ -29,6 +30,8 @@ import logging
 import sys
 from pathlib import Path
 from typing import Dict, Iterator, List, Optional, Tuple
+
+import pyarrow.parquet as pq
 
 import torch
 import torch.nn.functional as F
@@ -58,6 +61,16 @@ def _batched(items: list, size: int) -> Iterator[list]:
 
 
 def _read_rows(path: Path) -> List[Dict[str, str]]:
+    """Read context rows from a Parquet (fineweb_context.py) or CSV file.
+
+    Both yield dicts keyed by ``target`` / ``uri`` / ``target_context`` (the
+    ``target`` column is present only for the Parquet output).
+    """
+    if path.suffix.lower() == ".parquet":
+        table = pq.read_table(path)
+        return [{k: ("" if v is None else str(v)) for k, v in row.items()}
+                for row in table.to_pylist()]
+
     with path.open(newline="", encoding="utf-8-sig") as fh:
         rows = list(csv.DictReader(fh))
     # Normalise any quoted column names produced by Excel/PowerShell BOM exports
@@ -350,7 +363,7 @@ class TransformerSlangClassifier:
 # Scoring helpers
 # ---------------------------------------------------------------------------
 
-_FIELDNAMES = ["uri", "target_context", "roberta_score"]
+_FIELDNAMES = ["target", "uri", "target_context", "roberta_score"]
 
 
 def _sort_rows(rows: List[Dict]) -> None:
@@ -376,6 +389,7 @@ def _score_file(
     out_rows: List[Dict] = []
     for row, rs in zip(rows, roberta_scores):
         out_row = {
+            "target":         row.get("target", ""),
             "uri":            row.get("uri", ""),
             "target_context": row.get("target_context", ""),
             "roberta_score":  f"{rs:.4f}" if rs is not None else "",
@@ -425,8 +439,9 @@ Examples:
     )
 
     # Inputs / outputs
-    p.add_argument("inputs", nargs="+", metavar="CSV",
-                   help="Input CSV file(s), glob patterns, or a directory of CSVs.")
+    p.add_argument("inputs", nargs="+", metavar="FILE",
+                   help="Input context file(s) — Parquet (from fineweb_context.py) "
+                        "or CSV — glob patterns, or a directory of such files.")
     out_group = p.add_mutually_exclusive_group(required=True)
     out_group.add_argument("-o", "--output", metavar="FILE",
                            help="Output CSV path (all inputs merged into one file).")
@@ -514,7 +529,7 @@ def main() -> None:
     for pattern in args.inputs:
         p = Path(pattern)
         if p.is_dir():
-            input_paths.extend(sorted(p.glob("*.csv")))
+            input_paths.extend(sorted(list(p.glob("*.parquet")) + list(p.glob("*.csv"))))
         else:
             matched = sorted(glob.glob(pattern, recursive=True))
             input_paths.extend(Path(m) for m in matched) if matched else input_paths.append(p)
@@ -557,7 +572,7 @@ def main() -> None:
         out_dir.mkdir(parents=True, exist_ok=True)
         grand_in = grand_out = grand_skipped = 0
         for path in input_paths:
-            out_path = out_dir / path.name
+            out_path = out_dir / (path.stem + ".csv")
             if out_path.exists():
                 log.info("Skipping %s — already exists in %s", path.name, out_dir)
                 grand_skipped += 1
