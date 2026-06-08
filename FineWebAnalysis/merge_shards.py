@@ -20,13 +20,16 @@ Shards are streamed row-group by row-group, so memory stays bounded.
 
 Usage:
     # Merge all shards in ./contexts in place
-    python merge_shards.py --input-dir contexts/
+    python3 merge_shards.py --input-dir contexts/
 
     # Merge into a separate directory
-    python merge_shards.py --input-dir contexts/ --output-dir merged/
+    python3 merge_shards.py --input-dir contexts/ --output-dir merged/
 
     # Merge in place and delete the .partNNN shards afterwards
-    python merge_shards.py --input-dir contexts/ --delete-shards
+    python3 merge_shards.py --input-dir contexts/ --delete-shards
+
+    # Merge and write Parquet instead of the default CSV output
+    python3 merge_shards.py --input-dir contexts/ --to-parquet
 """
 
 from __future__ import annotations
@@ -39,6 +42,7 @@ from collections import defaultdict
 from pathlib import Path
 from typing import Dict, List
 
+import pyarrow.csv as pa_csv
 import pyarrow.parquet as pq
 
 # ---------------------------------------------------------------------------
@@ -89,24 +93,34 @@ def _is_shard(path: Path) -> bool:
 # Merge
 # ---------------------------------------------------------------------------
 
-def merge_group(base: str, files: List[Path], output_dir: Path) -> int:
-    """Concatenate `files` into `<output_dir>/<base>.parquet`. Returns row count.
+def merge_group(base: str, files: List[Path], output_dir: Path,
+                to_csv: bool = True) -> int:
+    """Concatenate `files` into a single merged file. Returns row count.
+
+    Without --to-csv writes `<base>.parquet`; with --to-csv writes `<base>.csv`
+    instead (no Parquet output).
 
     Writes to a temp file and atomically renames, so an in-place merge never
     truncates a source before it has been fully read. Sources are streamed
     row-group by row-group, so peak memory is one row group.
     """
-    out = output_dir / f"{base}.parquet"
+    if to_csv:
+        out = output_dir / f"{base}.csv"
+    else:
+        out = output_dir / f"{base}.parquet"
     tmp = out.with_name(out.name + ".tmp")
 
     rows = 0
-    writer: pq.ParquetWriter | None = None
+    writer: pq.ParquetWriter | pa_csv.CSVWriter | None = None
     try:
         for src in sorted(files):
             pf = pq.ParquetFile(src)
             if writer is None:
-                writer = pq.ParquetWriter(str(tmp), pf.schema_arrow,
-                                          compression="zstd")
+                if to_csv:
+                    writer = pa_csv.CSVWriter(str(tmp), pf.schema_arrow)
+                else:
+                    writer = pq.ParquetWriter(str(tmp), pf.schema_arrow,
+                                              compression="zstd")
             for batch in pf.iter_batches():
                 writer.write_batch(batch)
                 rows += batch.num_rows
@@ -143,6 +157,8 @@ def build_parser() -> argparse.ArgumentParser:
                    help="Glob for shard files (default: word_context_*.parquet).")
     p.add_argument("--delete-shards", action="store_true", dest="delete_shards",
                    help="Delete the .partNNN shard files after a successful merge.")
+    p.add_argument("--to-parquet", action="store_true", dest="to_parquet",
+                   help="Write merged output as Parquet instead of the default CSV.")
     return p
 
 
@@ -163,18 +179,20 @@ def main() -> None:
         sys.exit(1)
 
     n_inputs = sum(len(v) for v in groups.values())
-    log.info("Merging %d shard file(s) into %d output file(s) → %s",
-             n_inputs, len(groups), output_dir)
+    log.info("Merging %d shard file(s) into %d output file(s) → %s%s",
+             n_inputs, len(groups), output_dir,
+             " (Parquet)" if args.to_parquet else " (CSV)")
 
     files_written = 0
     rows_total = 0
     for i, (base, files) in enumerate(sorted(groups.items()), 1):
         # Skip a no-op: a lone, already-merged file written back to the same path.
-        if (len(files) == 1 and output_dir == input_dir
-                and files[0].name == f"{base}.parquet"):
+        to_csv = not args.to_parquet
+        expected = f"{base}.csv" if to_csv else f"{base}.parquet"
+        if len(files) == 1 and output_dir == input_dir and files[0].name == expected:
             continue
 
-        rows = merge_group(base, files, output_dir)
+        rows = merge_group(base, files, output_dir, to_csv=to_csv)
         files_written += 1
         rows_total += rows
         if i % 200 == 0:
