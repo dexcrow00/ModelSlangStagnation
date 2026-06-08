@@ -1,22 +1,24 @@
 #!/usr/bin/env python3
 """
-bert_slang_filter.py — Fine-tuned RoBERTa slang sense classifier.
+roberta_filter.py — Score/filter context rows with a fine-tuned RoBERTa slang
+classifier.
 
   score = 2 * P(slang) - 1  (range [-1, 1]; positive = slang usage)
 
-Requires: torch, transformers, scikit-learn
+This is the inference/filtering half of the pipeline; fine-tune the model first
+with finetune_roberta.py, which saves the model directory loaded here.
+
+Requires: torch, transformers
 
 Usage:
 
-    # Fine-tune RoBERTa, then score all rows (Parquet context dir from
-    # fineweb_context.py, or a directory/glob of CSVs)
-    python bert_slang_filter.py contexts/ --output-dir scored/ --score-all \\
-        --roberta-annotations annotations/ --roberta-model-dir ./roberta_model/
+    # Score every row in a directory of Parquet contexts (from fineweb_context.py)
+    python roberta_filter.py contexts/ --output-dir scored/ --score-all \\
+        --roberta-model-dir ./roberta_model/
 
-    # Load a saved model (skip training) and filter above threshold
-    python bert_slang_filter.py contexts/*.parquet -o filtered.csv \\
-        --roberta-model-dir ./roberta_model/ \\
-        --threshold 0.1
+    # Filter above a score threshold into a single CSV
+    python roberta_filter.py contexts/*.parquet -o filtered.csv \\
+        --roberta-model-dir ./roberta_model/ --threshold 0.1
 """
 
 from __future__ import annotations
@@ -32,8 +34,6 @@ from typing import Dict, Iterator, List, Optional, Tuple
 import pyarrow.parquet as pq
 
 import torch
-import torch.nn.functional as F
-from torch.utils.data import DataLoader, Dataset
 
 # ---------------------------------------------------------------------------
 # Logging
@@ -52,6 +52,17 @@ log = logging.getLogger(__name__)
 # ---------------------------------------------------------------------------
 # Helpers
 # ---------------------------------------------------------------------------
+
+def _pick_device(device: Optional[str]) -> str:
+    """Resolve an explicit device string, else auto-detect cuda/mps/cpu."""
+    if device:
+        return device
+    if torch.cuda.is_available():
+        return "cuda"
+    if hasattr(torch.backends, "mps") and torch.backends.mps.is_available():
+        return "mps"
+    return "cpu"
+
 
 def _batched(items: list, size: int) -> Iterator[list]:
     for i in range(0, len(items), size):
@@ -79,213 +90,27 @@ def _read_rows(path: Path) -> List[Dict[str, str]]:
 
 
 # ---------------------------------------------------------------------------
-# Shared dataset + annotation loader
-# ---------------------------------------------------------------------------
-
-class _SlangDataset(Dataset):
-    """Tokenised binary classification dataset stored in memory."""
-
-    def __init__(self, texts: List[str], labels: List[int], tokenizer, max_len: int = 256) -> None:
-        enc = tokenizer(texts, padding=True, truncation=True, max_length=max_len, return_tensors="pt")
-        self.input_ids      = enc["input_ids"]
-        self.attention_mask = enc["attention_mask"]
-        self.labels         = torch.tensor(labels, dtype=torch.long)
-
-    def __len__(self) -> int:
-        return len(self.labels)
-
-    def __getitem__(self, i: int) -> Dict:
-        return {
-            "input_ids":      self.input_ids[i],
-            "attention_mask": self.attention_mask[i],
-            "labels":         self.labels[i],
-        }
-
-
-def load_annotation_examples(annotation_dir: Path) -> List[Tuple[str, int]]:
-    """Recursively load (text, label) pairs from CSVs with an 'is_slang' column.
-
-    Expects rows where is_slang == '1' (slang) or '0' (not slang).
-    Rows with blank or missing values are silently skipped.
-    """
-    examples: List[Tuple[str, int]] = []
-    for csv_path in sorted(annotation_dir.rglob("*.csv")):
-        with csv_path.open(newline="", encoding="utf-8-sig") as fh:
-            for row in csv.DictReader(fh):
-                a = (row.get("is_slang") or "").strip()
-                if a == "1":
-                    examples.append((row["target_context"], 1))
-                elif a == "0":
-                    examples.append((row["target_context"], 0))
-    n_pos = sum(e[1] for e in examples)
-    log.info(
-        "Loaded %d annotated examples from %s (%d slang, %d not-slang)",
-        len(examples), annotation_dir, n_pos, len(examples) - n_pos,
-    )
-    return examples
-
-
-# ---------------------------------------------------------------------------
-# Transformer classifier
+# Transformer classifier (inference only)
 # ---------------------------------------------------------------------------
 
 class TransformerSlangClassifier:
-    """Binary transformer classifier fine-tuned on human-annotated slang examples.
+    """Binary transformer classifier for slang-sense scoring (inference only).
 
-    Works with any HuggingFace AutoModel (RoBERTa, BERT, DistilBERT, …).
-    Scores are mapped P(slang) ∈ [0, 1] → [-1, 1] via ``2p - 1``.
+    Loads a model fine-tuned by finetune_roberta.py and maps
+    P(slang) ∈ [0, 1] → [-1, 1] via ``2p - 1``. Works with any HuggingFace
+    AutoModelForSequenceClassification checkpoint (RoBERTa, BERT, …).
 
     Parameters
     ----------
-    base_model : HuggingFace model ID or local path (e.g. 'roberta-base').
-    label      : Short name used in log messages, e.g. 'RoBERTa'.
-    device     : PyTorch device string, or None for auto-detect.
+    label  : Short name used in log messages, e.g. 'RoBERTa'.
+    device : PyTorch device string, or None for auto-detect.
     """
 
-    _DEFAULT_ROBERTA_BASE = "roberta-base"
-
-    def __init__(
-        self,
-        base_model: str,
-        label: str = "model",
-        device: Optional[str] = None,
-    ) -> None:
-        self.base_model = base_model
-        self.label      = label
-
-        if device:
-            self.device = device
-        elif torch.cuda.is_available():
-            self.device = "cuda"
-        elif hasattr(torch.backends, "mps") and torch.backends.mps.is_available():
-            self.device = "mps"
-        else:
-            self.device = "cpu"
-
+    def __init__(self, label: str = "RoBERTa", device: Optional[str] = None) -> None:
+        self.label     = label
+        self.device    = _pick_device(device)
         self.tokenizer = None
         self.model     = None
-
-    # ------------------------------------------------------------------
-    # Training
-    # ------------------------------------------------------------------
-
-    def train(
-        self,
-        examples: List[Tuple[str, int]],
-        model_save_dir: Path,
-        epochs: int = 10,
-        lr: float = 2e-5,
-        batch_size: int = 16,
-    ) -> None:
-        """Fine-tune a sequence classifier and save the best val-acc checkpoint."""
-        try:
-            from transformers import (  # type: ignore
-                AutoModelForSequenceClassification,
-                AutoTokenizer,
-                get_linear_schedule_with_warmup,
-            )
-            from sklearn.model_selection import train_test_split  # type: ignore
-        except ImportError as exc:
-            log.error("Fine-tuning requires transformers and scikit-learn: %s", exc)
-            sys.exit(1)
-
-        if len(examples) < 10:
-            log.error("[%s] Too few annotated examples (%d) for reliable fine-tuning.",
-                      self.label, len(examples))
-            sys.exit(1)
-
-        texts  = [e[0] for e in examples]
-        labels = [e[1] for e in examples]
-
-        train_texts, val_texts, train_labels, val_labels = train_test_split(
-            texts, labels, test_size=0.2, random_state=42, stratify=labels
-        )
-        log.info(
-            "[%s] Fine-tune split — Train: %d (%d pos / %d neg) | Val: %d (%d pos / %d neg)",
-            self.label,
-            len(train_texts), sum(train_labels), len(train_labels) - sum(train_labels),
-            len(val_texts),   sum(val_labels),   len(val_labels)   - sum(val_labels),
-        )
-
-        log.info("[%s] Loading base model: %s", self.label, self.base_model)
-        tokenizer = AutoTokenizer.from_pretrained(self.base_model)
-        model     = AutoModelForSequenceClassification.from_pretrained(
-            self.base_model, num_labels=2
-        ).to(self.device)
-
-        n_pos = sum(labels)
-        n_neg = len(labels) - n_pos
-        class_weights = torch.tensor(
-            [1.0, n_neg / max(n_pos, 1)], dtype=torch.float, device=self.device
-        )
-        log.info("[%s] Class weights: not-slang=%.2f, slang=%.2f",
-                 self.label, class_weights[0].item(), class_weights[1].item())
-
-        train_ds     = _SlangDataset(train_texts, train_labels, tokenizer)
-        val_ds       = _SlangDataset(val_texts,   val_labels,   tokenizer)
-        train_loader = DataLoader(train_ds, batch_size=batch_size, shuffle=True)
-        val_loader   = DataLoader(val_ds,   batch_size=batch_size)
-
-        optimizer   = torch.optim.AdamW(model.parameters(), lr=lr, weight_decay=0.01)
-        total_steps = len(train_loader) * epochs
-        scheduler   = get_linear_schedule_with_warmup(
-            optimizer,
-            num_warmup_steps=max(1, total_steps // 10),
-            num_training_steps=total_steps,
-        )
-
-        model_save_dir.mkdir(parents=True, exist_ok=True)
-        best_val_acc = -1.0
-
-        for epoch in range(1, epochs + 1):
-            model.train()
-            total_loss = 0.0
-            for batch in train_loader:
-                input_ids      = batch["input_ids"].to(self.device)
-                attention_mask = batch["attention_mask"].to(self.device)
-                batch_labels   = batch["labels"].to(self.device)
-                logits = model(input_ids=input_ids, attention_mask=attention_mask).logits
-                loss   = F.cross_entropy(logits, batch_labels, weight=class_weights)
-                loss.backward()
-                torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
-                optimizer.step()
-                scheduler.step()
-                optimizer.zero_grad()
-                total_loss += loss.item()
-
-            model.eval()
-            correct = total = 0
-            with torch.no_grad():
-                for batch in val_loader:
-                    input_ids      = batch["input_ids"].to(self.device)
-                    attention_mask = batch["attention_mask"].to(self.device)
-                    preds = (
-                        model(input_ids=input_ids, attention_mask=attention_mask)
-                        .logits.argmax(dim=1).cpu()
-                    )
-                    correct += (preds == batch["labels"]).sum().item()
-                    total   += len(batch["labels"])
-
-            val_acc  = correct / total if total else 0.0
-            avg_loss = total_loss / len(train_loader)
-            log.info("[%s] Epoch %d/%d — loss: %.4f, val_acc: %.3f",
-                     self.label, epoch, epochs, avg_loss, val_acc)
-
-            if val_acc >= best_val_acc:
-                best_val_acc = val_acc
-                model.save_pretrained(str(model_save_dir))
-                tokenizer.save_pretrained(str(model_save_dir))
-                log.info("[%s]   Saved best model (val_acc=%.3f) -> %s",
-                         self.label, val_acc, model_save_dir)
-
-        log.info("[%s] Fine-tuning complete. Best val_acc: %.3f", self.label, best_val_acc)
-        self.tokenizer = tokenizer
-        self.model     = model
-        self.model.eval()
-
-    # ------------------------------------------------------------------
-    # Loading
-    # ------------------------------------------------------------------
 
     def load(self, model_dir: Path) -> None:
         """Load a previously saved fine-tuned model."""
@@ -301,10 +126,6 @@ class TransformerSlangClassifier:
         )
         self.model.eval()
 
-    # ------------------------------------------------------------------
-    # Scoring
-    # ------------------------------------------------------------------
-
     def score_rows(
         self,
         rows: List[Dict[str, str]],
@@ -317,7 +138,7 @@ class TransformerSlangClassifier:
         column), so there is no need to re-select rows by word.
         """
         assert self.model is not None and self.tokenizer is not None, \
-            f"[{self.label}] Call train() or load() before score_rows()."
+            f"[{self.label}] Call load() before score_rows()."
 
         texts = [r["target_context"] for r in rows]
         if not texts:
@@ -356,7 +177,7 @@ def _score_file(
     roberta_clf: TransformerSlangClassifier,
     args: argparse.Namespace,
 ) -> Tuple[List[Dict], int]:
-    """Score a single CSV file with the RoBERTa classifier."""
+    """Score a single context file with the RoBERTa classifier."""
     rows = _read_rows(path)
     if not rows:
         log.info("Skipping empty file: %s", path.name)
@@ -401,18 +222,19 @@ def _write_csv(path: Path, rows: List[Dict]) -> None:
 
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(
-        description="Score slang sense using a fine-tuned RoBERTa classifier.",
+        description="Score/filter slang sense using a fine-tuned RoBERTa classifier.",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
-  # Fine-tune RoBERTa then score all rows
-  python bert_slang_filter.py contexts/ --output-dir scored/ --score-all \\
-      --roberta-annotations annotations/ --roberta-model-dir ./roberta_model/
+  # Score every row in a directory of Parquet contexts
+  python roberta_filter.py contexts/ --output-dir scored/ --score-all \\
+      --roberta-model-dir ./roberta_model/
 
-  # Load a saved model (no training) and filter above threshold
-  python bert_slang_filter.py contexts/*.parquet -o filtered.csv \\
-      --roberta-model-dir ./roberta_model/ \\
-      --threshold 0.1
+  # Filter above a score threshold into a single CSV
+  python roberta_filter.py contexts/*.parquet -o filtered.csv \\
+      --roberta-model-dir ./roberta_model/ --threshold 0.1
+
+  (Fine-tune the model first with finetune_roberta.py.)
         """,
     )
 
@@ -436,60 +258,30 @@ Examples:
     p.add_argument("--device", default=None, metavar="DEV",
                    help="PyTorch device, e.g. cpu, cuda, mps (default: auto-detect).")
 
-    # RoBERTa options
-    roberta = p.add_argument_group("RoBERTa model")
-    roberta.add_argument("--roberta-annotations", metavar="DIR", dest="roberta_annotations",
-                         help="Annotated CSVs to fine-tune RoBERTa (recursive *.csv scan, "
-                              "requires 'is_slang' column). Omit to load a saved model.")
-    roberta.add_argument("--roberta-model-dir", required=True, metavar="DIR",
-                         dest="roberta_model_dir",
-                         help="Directory to save (training) or load (inference) the RoBERTa model.")
-    roberta.add_argument("--roberta-base-model",
-                         default=TransformerSlangClassifier._DEFAULT_ROBERTA_BASE,
-                         metavar="ID", dest="roberta_base_model",
-                         help=f"Base HuggingFace model ID for fine-tuning "
-                              f"(default: {TransformerSlangClassifier._DEFAULT_ROBERTA_BASE}).")
-    roberta.add_argument("--roberta-epochs", type=int, default=10, metavar="N",
-                         dest="roberta_epochs",
-                         help="Fine-tuning epochs (default: 10).")
-    roberta.add_argument("--roberta-lr", type=float, default=2e-5, metavar="F",
-                         dest="roberta_lr",
-                         help="Learning rate (default: 2e-5).")
+    # RoBERTa model
+    p.add_argument("--roberta-model-dir", required=True, metavar="DIR",
+                   dest="roberta_model_dir",
+                   help="Directory of the fine-tuned RoBERTa model to load "
+                        "(produced by finetune_roberta.py).")
 
     return p
 
 
-def _resolve_classifier(
+def _load_classifier(
     model_dir_str: str,
-    annotation_dir_str: Optional[str],
-    base_model: str,
-    label: str,
     device: Optional[str],
-    epochs: int,
-    lr: float,
-    batch_size: int,
     parser: argparse.ArgumentParser,
+    label: str = "RoBERTa",
 ) -> TransformerSlangClassifier:
-    """Build, then train or load, a TransformerSlangClassifier."""
-    clf = TransformerSlangClassifier(base_model=base_model, label=label, device=device)
-
-    if annotation_dir_str:
-        ann_dir = Path(annotation_dir_str)
-        if not ann_dir.exists():
-            parser.error(f"[{label}] Annotation directory not found: {ann_dir}")
-        examples = load_annotation_examples(ann_dir)
-        if not examples:
-            parser.error(f"[{label}] No annotated examples found in {ann_dir}.")
-        clf.train(examples, Path(model_dir_str), epochs=epochs, lr=lr, batch_size=batch_size)
-    else:
-        model_dir = Path(model_dir_str)
-        if not model_dir.exists():
-            parser.error(
-                f"[{label}] Model directory '{model_dir}' not found. "
-                f"Provide --roberta-annotations to train a model first."
-            )
-        clf.load(model_dir)
-
+    """Load a fine-tuned TransformerSlangClassifier for inference."""
+    model_dir = Path(model_dir_str)
+    if not model_dir.exists():
+        parser.error(
+            f"[{label}] Model directory '{model_dir}' not found. "
+            f"Fine-tune one first with finetune_roberta.py."
+        )
+    clf = TransformerSlangClassifier(label=label, device=device)
+    clf.load(model_dir)
     return clf
 
 
@@ -523,17 +315,7 @@ def main() -> None:
     if device:
         log.info("Using device: %s", device)
 
-    roberta_clf = _resolve_classifier(
-        model_dir_str      = args.roberta_model_dir,
-        annotation_dir_str = args.roberta_annotations,
-        base_model         = args.roberta_base_model,
-        label              = "RoBERTa",
-        device             = device,
-        epochs             = args.roberta_epochs,
-        lr                 = args.roberta_lr,
-        batch_size         = args.batch_size,
-        parser             = parser,
-    )
+    roberta_clf = _load_classifier(args.roberta_model_dir, device, parser)
 
     score_kwargs = dict(roberta_clf=roberta_clf, args=args)
 
