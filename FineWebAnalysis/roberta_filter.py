@@ -10,13 +10,11 @@ Usage:
 
     # Fine-tune RoBERTa, then score all rows (Parquet context dir from
     # fineweb_context.py, or a directory/glob of CSVs)
-    python bert_slang_filter.py contexts/ --output-dir scored/ \\
-        --target-words target_words.txt --score-all \\
+    python bert_slang_filter.py contexts/ --output-dir scored/ --score-all \\
         --roberta-annotations annotations/ --roberta-model-dir ./roberta_model/
 
     # Load a saved model (skip training) and filter above threshold
     python bert_slang_filter.py contexts/*.parquet -o filtered.csv \\
-        --target-words target_words.txt \\
         --roberta-model-dir ./roberta_model/ \\
         --threshold 0.1
 """
@@ -80,16 +78,6 @@ def _read_rows(path: Path) -> List[Dict[str, str]]:
     return normalised
 
 
-def load_target_words(path: Path) -> List[str]:
-    with path.open(encoding="utf-8") as fh:
-        words = [line.strip() for line in fh if line.strip() and not line.startswith("#")]
-    if not words:
-        log.error("No words found in %s", path)
-        sys.exit(1)
-    log.info("Loaded %d target words from %s", len(words), path)
-    return words
-
-
 # ---------------------------------------------------------------------------
 # Shared dataset + annotation loader
 # ---------------------------------------------------------------------------
@@ -151,7 +139,6 @@ class TransformerSlangClassifier:
     ----------
     base_model : HuggingFace model ID or local path (e.g. 'roberta-base').
     label      : Short name used in log messages, e.g. 'RoBERTa'.
-    words      : Target words used to select relevant rows during scoring.
     device     : PyTorch device string, or None for auto-detect.
     """
 
@@ -161,12 +148,10 @@ class TransformerSlangClassifier:
         self,
         base_model: str,
         label: str = "model",
-        words: Optional[List[str]] = None,
         device: Optional[str] = None,
     ) -> None:
         self.base_model = base_model
         self.label      = label
-        self.words      = [w.lower() for w in (words or [])]
 
         if device:
             self.device = device
@@ -325,36 +310,31 @@ class TransformerSlangClassifier:
         rows: List[Dict[str, str]],
         batch_size: int,
     ) -> List[Optional[float]]:
-        """Return a score ∈ [-1, 1] for each row (None if no target word matched)."""
+        """Return a score ∈ [-1, 1] for each row.
+
+        Every row is scored directly on its ``target_context``: the context was
+        already extracted around a specific target (carried in the ``target``
+        column), so there is no need to re-select rows by word.
+        """
         assert self.model is not None and self.tokenizer is not None, \
             f"[{self.label}] Call train() or load() before score_rows()."
 
-        texts  = [r["target_context"] for r in rows]
-        scores: List[Optional[float]] = [None] * len(rows)
+        texts = [r["target_context"] for r in rows]
+        if not texts:
+            return []
+        log.info("  [%s] scoring %d rows ...", self.label, len(texts))
 
-        for word in self.words:
-            relevant = [i for i, t in enumerate(texts) if word in t.lower()]
-            if not relevant:
-                continue
-            log.info("  [%s] scoring '%s': %d rows ...", self.label, word, len(relevant))
-            rel_texts = [texts[i] for i in relevant]
-
-            all_probs: List[float] = []
-            for batch_texts in _batched(rel_texts, batch_size):
-                enc = self.tokenizer(
-                    batch_texts, padding=True, truncation=True,
-                    max_length=256, return_tensors="pt",
-                ).to(self.device)
-                with torch.no_grad():
-                    probs = (
-                        torch.softmax(self.model(**enc).logits, dim=1)[:, 1].cpu().tolist()
-                    )
-                all_probs.extend(probs)
-
-            for idx, p in zip(relevant, all_probs):
-                s = float(2 * p - 1)          # [0,1] -> [-1,1]
-                if scores[idx] is None or s > scores[idx]:
-                    scores[idx] = s
+        scores: List[Optional[float]] = []
+        for batch_texts in _batched(texts, batch_size):
+            enc = self.tokenizer(
+                batch_texts, padding=True, truncation=True,
+                max_length=256, return_tensors="pt",
+            ).to(self.device)
+            with torch.no_grad():
+                probs = (
+                    torch.softmax(self.model(**enc).logits, dim=1)[:, 1].cpu().tolist()
+                )
+            scores.extend(float(2 * p - 1) for p in probs)  # [0,1] -> [-1,1]
 
         return scores
 
@@ -426,13 +406,11 @@ def build_parser() -> argparse.ArgumentParser:
         epilog="""
 Examples:
   # Fine-tune RoBERTa then score all rows
-  python bert_slang_filter.py contexts/ --output-dir scored/ \\
-      --target-words target_words.txt --score-all \\
+  python bert_slang_filter.py contexts/ --output-dir scored/ --score-all \\
       --roberta-annotations annotations/ --roberta-model-dir ./roberta_model/
 
   # Load a saved model (no training) and filter above threshold
-  python bert_slang_filter.py contexts/*.csv -o filtered.csv \\
-      --target-words target_words.txt \\
+  python bert_slang_filter.py contexts/*.parquet -o filtered.csv \\
       --roberta-model-dir ./roberta_model/ \\
       --threshold 0.1
         """,
@@ -449,9 +427,6 @@ Examples:
                            help="Output directory (one output file per input).")
 
     # Shared options
-    p.add_argument("--target-words", default="target_words.txt", metavar="FILE",
-                   dest="target_words",
-                   help="Text file of target words, one per line (default: target_words.txt).")
     p.add_argument("--score-all", action="store_true", dest="score_all",
                    help="Write every row with scores attached (no filtering).")
     p.add_argument("--threshold", type=float, default=0.0, metavar="F",
@@ -489,7 +464,6 @@ def _resolve_classifier(
     annotation_dir_str: Optional[str],
     base_model: str,
     label: str,
-    words: List[str],
     device: Optional[str],
     epochs: int,
     lr: float,
@@ -497,8 +471,7 @@ def _resolve_classifier(
     parser: argparse.ArgumentParser,
 ) -> TransformerSlangClassifier:
     """Build, then train or load, a TransformerSlangClassifier."""
-    clf = TransformerSlangClassifier(base_model=base_model, label=label,
-                                     words=words, device=device)
+    clf = TransformerSlangClassifier(base_model=base_model, label=label, device=device)
 
     if annotation_dir_str:
         ann_dir = Path(annotation_dir_str)
@@ -546,7 +519,6 @@ def main() -> None:
             len(input_paths),
         )
 
-    words  = load_target_words(Path(args.target_words))
     device = args.device
     if device:
         log.info("Using device: %s", device)
@@ -556,7 +528,6 @@ def main() -> None:
         annotation_dir_str = args.roberta_annotations,
         base_model         = args.roberta_base_model,
         label              = "RoBERTa",
-        words              = words,
         device             = device,
         epochs             = args.roberta_epochs,
         lr                 = args.roberta_lr,
