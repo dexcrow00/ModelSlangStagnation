@@ -56,7 +56,7 @@ DEFAULT_BASE_MODEL = "roberta-base"
 # Helpers
 # ---------------------------------------------------------------------------
 
-def pick_device(device: Optional[str]) -> str:
+def _pick_device(device: Optional[str]) -> str:
     """Resolve an explicit device string, else auto-detect cuda/mps/cpu."""
     if device:
         return device
@@ -87,7 +87,7 @@ class _SlangDataset(Dataset):
         }
 
 
-def load_annotation_examples(annotation_dir: Path) -> List[Tuple[str, int]]:
+def _load_annotation_examples(annotation_dir: Path) -> List[Tuple[str, int]]:
     """Recursively load (text, label) pairs from CSVs with an 'is_slang' column.
 
     Expects rows where is_slang == '1' (slang) or '0' (not slang).
@@ -145,7 +145,7 @@ def finetune(
                   label, len(examples))
         sys.exit(1)
 
-    device = pick_device(device)
+    device = _pick_device(device)
     log.info("[%s] Using device: %s", label, device)
 
     texts  = [e[0] for e in examples]
@@ -281,7 +281,7 @@ def main() -> None:
     if not ann_dir.exists():
         parser.error(f"Annotation directory not found: {ann_dir}")
 
-    examples = load_annotation_examples(ann_dir)
+    examples = _load_annotation_examples(ann_dir)
     if not examples:
         parser.error(f"No annotated examples found in {ann_dir}.")
 

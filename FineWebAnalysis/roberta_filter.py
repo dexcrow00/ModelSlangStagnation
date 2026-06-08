@@ -55,6 +55,7 @@ log = logging.getLogger(__name__)
 
 def _pick_device(device: Optional[str]) -> str:
     """Resolve an explicit device string, else auto-detect cuda/mps/cpu."""
+    
     if device:
         return device
     if torch.cuda.is_available():
@@ -109,6 +110,8 @@ class TransformerSlangClassifier:
     def __init__(self, label: str = "RoBERTa", device: Optional[str] = None) -> None:
         self.label     = label
         self.device    = _pick_device(device)
+        if self.device:
+            log.info("Using device: %s", self.device)
         self.tokenizer = None
         self.model     = None
 
@@ -259,7 +262,7 @@ Examples:
                    help="PyTorch device, e.g. cpu, cuda, mps (default: auto-detect).")
 
     # RoBERTa model
-    p.add_argument("--roberta-model-dir", required=True, metavar="DIR",
+    p.add_argument("--roberta-model-dir", default="FineWebAnalysis/ft_model_roberta", metavar="DIR",
                    dest="roberta_model_dir",
                    help="Directory of the fine-tuned RoBERTa model to load "
                         "(produced by finetune_roberta.py).")
@@ -312,8 +315,6 @@ def main() -> None:
         )
 
     device = args.device
-    if device:
-        log.info("Using device: %s", device)
 
     roberta_clf = _load_classifier(args.roberta_model_dir, device, parser)
 
