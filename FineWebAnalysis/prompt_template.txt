@@ -1,0 +1,1 @@
+'Is the word "{target}" used as slang here? {context}'

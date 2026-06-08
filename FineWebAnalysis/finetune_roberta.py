@@ -4,10 +4,13 @@ finetune_roberta.py — Fine-tune a RoBERTa (or any HuggingFace AutoModel)
 sequence classifier on human-annotated slang examples.
 
 Reads annotation CSVs (recursive scan; each must have an ``is_slang`` column
-with 1 = slang / 0 = not-slang and a ``target_context`` column), fine-tunes a
-binary classifier with a class-weighted loss, and saves the best val-accuracy
-checkpoint to a model directory. That directory is then consumed by
-roberta_filter.py for inference/scoring.
+with 1 = slang / 0 = not-slang, a ``target_context`` column, and a ``target``
+column naming the judged word), fine-tunes a binary classifier with a
+class-weighted loss, and saves the best val-accuracy checkpoint to a model
+directory. The target word is injected into a natural-language prompt
+so the judgement is conditioned on *which* word is in question;
+the exact prompt template is saved alongside the model and reused at inference.
+That directory is then consumed by roberta_filter.py for inference/scoring.
 
 Requires: torch, transformers, scikit-learn
 
@@ -51,6 +54,14 @@ log = logging.getLogger(__name__)
 
 DEFAULT_BASE_MODEL = "roberta-base"
 
+# Prompt template the target word is injected into the text so the
+# classifier's judgement is conditioned on *which* word we are asking about, not
+# just the surrounding context. The exact template used for training is saved
+# next to the model (PROMPT_TEMPLATE_FILE) so roberta_filter.py applies the
+# identical wording at inference time.
+PROMPT_TEMPLATE = 'Is the word "{target}" used as slang here? {context}'
+PROMPT_TEMPLATE_FILE = "prompt_template.txt"
+
 
 # ---------------------------------------------------------------------------
 # Helpers
@@ -65,6 +76,16 @@ def _pick_device(device: Optional[str]) -> str:
     if hasattr(torch.backends, "mps") and torch.backends.mps.is_available():
         return "mps"
     return "cpu"
+
+
+def build_prompt(target: str, context: str, template: str = PROMPT_TEMPLATE) -> str:
+    """Render the target+context prompt fed to the classifier.
+
+    Only the template string is parsed for ``{target}``/``{context}`` fields;
+    braces inside the (raw web) ``context`` or ``target`` values are inserted
+    literally and never re-interpreted.
+    """
+    return template.format(target=target, context=context)
 
 
 class _SlangDataset(Dataset):
@@ -87,22 +108,26 @@ class _SlangDataset(Dataset):
         }
 
 
-def _load_annotation_examples(annotation_dir: Path) -> List[Tuple[str, int]]:
-    """Recursively load (text, label) pairs from CSVs with an 'is_slang' column.
+def _load_annotation_examples(annotation_dir: Path) -> List[Tuple[str, str, int]]:
+    """Recursively load (target, context, label) triples from annotation CSVs.
 
-    Expects rows where is_slang == '1' (slang) or '0' (not slang).
-    Rows with blank or missing values are silently skipped.
+    Each CSV needs an 'is_slang' column (1 = slang / 0 = not slang), a
+    'target_context' column, and a 'target' column naming the word being judged.
+    Rows where is_slang is blank or not 0/1 are silently skipped. The target is
+    carried through so fine-tuning can condition on *which* word is in question;
+    rows missing a target fall back to an empty string.
     """
-    examples: List[Tuple[str, int]] = []
+    examples: List[Tuple[str, str, int]] = []
     for csv_path in sorted(annotation_dir.rglob("*.csv")):
         with csv_path.open(newline="", encoding="utf-8-sig") as fh:
             for row in csv.DictReader(fh):
                 a = (row.get("is_slang") or "").strip()
-                if a == "1":
-                    examples.append((row["target_context"], 1))
-                elif a == "0":
-                    examples.append((row["target_context"], 0))
-    n_pos = sum(e[1] for e in examples)
+                if a not in ("0", "1"):
+                    continue
+                target  = (row.get("target") or "").strip()
+                context = row["target_context"]
+                examples.append((target, context, int(a)))
+    n_pos = sum(e[2] for e in examples)
     log.info(
         "Loaded %d annotated examples from %s (%d slang, %d not-slang)",
         len(examples), annotation_dir, n_pos, len(examples) - n_pos,
@@ -115,19 +140,26 @@ def _load_annotation_examples(annotation_dir: Path) -> List[Tuple[str, int]]:
 # ---------------------------------------------------------------------------
 
 def finetune(
-    examples: List[Tuple[str, int]],
+    examples: List[Tuple[str, str, int]],
     model_save_dir: Path,
     base_model: str = DEFAULT_BASE_MODEL,
     device: Optional[str] = None,
     epochs: int = 10,
     lr: float = 2e-5,
     batch_size: int = 16,
+    prompt_template: str = PROMPT_TEMPLATE,
     label: str = "RoBERTa",
 ) -> float:
     """Fine-tune a sequence classifier and save the best val-acc checkpoint.
 
+    Each example is a (target, context, label) triple; the target word is
+    injected into ``prompt_template`` so the classifier's
+    judgement is conditioned on which word is in question. The exact template is
+    saved next to the model so roberta_filter.py applies identical wording at
+    inference time.
+
     Returns the best validation accuracy achieved. The saved directory (model +
-    tokenizer) is what roberta_filter.py loads for inference.
+    tokenizer + prompt template) is what roberta_filter.py loads for inference.
     """
     try:
         from transformers import (  # type: ignore
@@ -148,8 +180,11 @@ def finetune(
     device = _pick_device(device)
     log.info("[%s] Using device: %s", label, device)
 
-    texts  = [e[0] for e in examples]
-    labels = [e[1] for e in examples]
+    texts  = [build_prompt(t, c, prompt_template) for (t, c, _) in examples]
+    labels = [lbl for (*_, lbl) in examples]
+    log.info("[%s] Prompt template: %s", label, prompt_template)
+    if texts:
+        log.info("[%s] Example rendered prompt: %s", label, texts[0])
 
     train_texts, val_texts, train_labels, val_labels = train_test_split(
         texts, labels, test_size=0.2, random_state=42, stratify=labels
@@ -189,6 +224,7 @@ def finetune(
     )
 
     model_save_dir.mkdir(parents=True, exist_ok=True)
+    (model_save_dir / PROMPT_TEMPLATE_FILE).write_text(prompt_template, encoding="utf-8")
     best_val_acc = -1.0
 
     for epoch in range(1, epochs + 1):
@@ -256,7 +292,8 @@ Examples:
     )
     p.add_argument("--annotations", required=True, metavar="DIR",
                    help="Directory of annotated CSVs (recursive *.csv scan; each row "
-                        "needs an 'is_slang' column and a 'target_context' column).")
+                        "needs an 'is_slang' column, a 'target_context' column, and "
+                        "a 'target' column naming the judged word).")
     p.add_argument("--model-dir", required=True, metavar="DIR", dest="model_dir",
                    help="Directory to save the fine-tuned model + tokenizer.")
     p.add_argument("--base-model", default=DEFAULT_BASE_MODEL, metavar="ID",
@@ -268,6 +305,12 @@ Examples:
                    help="Learning rate (default: 2e-5).")
     p.add_argument("--batch-size", type=int, default=16, metavar="N", dest="batch_size",
                    help="Training batch size (default: 16).")
+    p.add_argument("--prompt-template", default=PROMPT_TEMPLATE, metavar="TMPL",
+                   dest="prompt_template",
+                   help="Template injecting the target word into the classifier "
+                        "input; must contain {target} and {context} fields "
+                        f"(default: {PROMPT_TEMPLATE!r}). Saved next to the model "
+                        "so roberta_filter.py reuses identical wording.")
     p.add_argument("--device", default=None, metavar="DEV",
                    help="PyTorch device, e.g. cpu, cuda, mps (default: auto-detect).")
     return p
@@ -287,12 +330,13 @@ def main() -> None:
 
     finetune(
         examples,
-        model_save_dir = Path(args.model_dir),
-        base_model     = args.base_model,
-        device         = args.device,
-        epochs         = args.epochs,
-        lr             = args.lr,
-        batch_size     = args.batch_size,
+        model_save_dir  = Path(args.model_dir),
+        base_model      = args.base_model,
+        device          = args.device,
+        epochs          = args.epochs,
+        lr              = args.lr,
+        batch_size      = args.batch_size,
+        prompt_template = args.prompt_template,
     )
 
 

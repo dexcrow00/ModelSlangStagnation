@@ -49,9 +49,27 @@ logging.basicConfig(
 )
 log = logging.getLogger(__name__)
 
+# Prompt template must match the wording used by
+# finetune_roberta.py at training time. The training script saves the exact
+# template it used into the model directory (PROMPT_TEMPLATE_FILE); load() reads
+# it back so inference conditions on the same target-word phrasing. The constant
+# below is only a fallback default and a reference for what shape to expect.
+DEFAULT_PROMPT_TEMPLATE = 'Is the word "{target}" used as slang here? {context}'
+PROMPT_TEMPLATE_FILE = "prompt_template.txt"
+
 # ---------------------------------------------------------------------------
 # Helpers
 # ---------------------------------------------------------------------------
+
+def build_prompt(target: str, context: str, template: str = DEFAULT_PROMPT_TEMPLATE) -> str:
+    """Render the target+context prompt fed to the classifier.
+
+    Only the template string is parsed for ``{target}``/``{context}`` fields;
+    braces inside the (raw web) ``context`` or ``target`` values are inserted
+    literally and never re-interpreted. Must mirror finetune_roberta.build_prompt.
+    """
+    return template.format(target=target, context=context)
+
 
 def _pick_device(device: Optional[str]) -> str:
     """Resolve an explicit device string, else auto-detect cuda/mps/cpu."""
@@ -112,8 +130,9 @@ class TransformerSlangClassifier:
         self.device    = _pick_device(device)
         if self.device:
             log.info("Using device: %s", self.device)
-        self.tokenizer = None
-        self.model     = None
+        self.tokenizer       = None
+        self.model           = None
+        self.prompt_template = None  # set by load() if the model dir saved one
 
     def load(self, model_dir: Path) -> None:
         """Load a previously saved fine-tuned model."""
@@ -129,6 +148,19 @@ class TransformerSlangClassifier:
         )
         self.model.eval()
 
+        # Reuse the exact prompt template the model was trained with.
+        # Older models have no template file → score the raw
+        # context, which is what those models actually learned on.
+        template_path = Path(model_dir) / PROMPT_TEMPLATE_FILE
+        if template_path.is_file():
+            self.prompt_template = template_path.read_text(encoding="utf-8")
+            log.info("[%s] Using saved prompt template: %s",
+                     self.label, self.prompt_template)
+        else:
+            self.prompt_template = None
+            log.info("[%s] No prompt template found in model dir; scoring raw "
+                     "context (legacy model).", self.label)
+
     def score_rows(
         self,
         rows: List[Dict[str, str]],
@@ -136,14 +168,21 @@ class TransformerSlangClassifier:
     ) -> List[Optional[float]]:
         """Return a score ∈ [-1, 1] for each row.
 
-        Every row is scored directly on its ``target_context``: the context was
-        already extracted around a specific target (carried in the ``target``
-        column), so there is no need to re-select rows by word.
+        Every row is scored on its ``target_context``: the context was already
+        extracted around a specific target (carried in the ``target`` column),
+        so there is no need to re-select rows by word. When the loaded model
+        carries a prompt template, the target word is injected via
+        ``build_prompt`` so the score is conditioned on which word is in
+        question; otherwise the raw context is scored (legacy models).
         """
         assert self.model is not None and self.tokenizer is not None, \
             f"[{self.label}] Call load() before score_rows()."
 
-        texts = [r["target_context"] for r in rows]
+        if self.prompt_template:
+            texts = [build_prompt(r.get("target", ""), r.get("target_context", ""),
+                                  self.prompt_template) for r in rows]
+        else:
+            texts = [r.get("target_context", "") for r in rows]
         if not texts:
             return []
         log.info("  [%s] scoring %d rows ...", self.label, len(texts))
