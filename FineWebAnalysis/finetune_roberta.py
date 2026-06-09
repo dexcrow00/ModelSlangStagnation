@@ -4,8 +4,9 @@ finetune_roberta.py — Fine-tune a RoBERTa (or any HuggingFace AutoModel)
 sequence classifier on human-annotated slang examples.
 
 Reads annotation CSVs (recursive scan; each must have an ``is_slang`` column
-with 1 = slang / 0 = not-slang, a ``target_context`` column, and a ``target``
-column naming the judged word), fine-tunes a binary classifier with a
+with 1 = slang / 0 = not-slang and a ``target_context`` column; the judged word
+comes from a ``target`` column when present, else is inferred from the
+filename), fine-tunes a binary classifier with a
 class-weighted loss, and saves the best val-accuracy checkpoint to a model
 directory. The target word is injected into a natural-language prompt
 so the judgement is conditioned on *which* word is in question;
@@ -30,6 +31,7 @@ from __future__ import annotations
 import argparse
 import csv
 import logging
+import re
 import sys
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
@@ -108,23 +110,39 @@ class _SlangDataset(Dataset):
         }
 
 
+def _target_from_filename(stem: str) -> str:
+    """Infer the judged word/phrase from an annotation CSV's filename stem.
+
+    Handles both the bare ``<word>_annotations`` style and the longer
+    ``Annotations V1 - FineWeb - fire_annotations`` style by taking the segment
+    after the last ' - ' separator and stripping a trailing
+    ``_annotations`` / ``_annotated`` / ``_validation`` suffix. Multi-word
+    targets (e.g. ``basic bitch_annotations`` -> ``basic bitch``) are preserved.
+    """
+    tail = stem.split(" - ")[-1]
+    target = re.sub(r"(?i)[ _]?(?:validation|annotated|annotations)$", "", tail)
+    return target.strip(" _").strip()
+
+
 def _load_annotation_examples(annotation_dir: Path) -> List[Tuple[str, str, int]]:
     """Recursively load (target, context, label) triples from annotation CSVs.
 
-    Each CSV needs an 'is_slang' column (1 = slang / 0 = not slang), a
-    'target_context' column, and a 'target' column naming the word being judged.
-    Rows where is_slang is blank or not 0/1 are silently skipped. The target is
-    carried through so fine-tuning can condition on *which* word is in question;
-    rows missing a target fall back to an empty string.
+    Each CSV needs an 'is_slang' column (1 = slang / 0 = not slang) and a
+    'target_context' column. The judged word comes from a 'target' column when
+    present; otherwise it is inferred from the filename (so style-matched files
+    that encode the word in the filename, like the fine_web_10BT and synthetic
+    annotations, work without a per-row target column). Rows where is_slang is
+    blank or not 0/1 are silently skipped.
     """
     examples: List[Tuple[str, str, int]] = []
     for csv_path in sorted(annotation_dir.rglob("*.csv")):
+        file_target = _target_from_filename(csv_path.stem)
         with csv_path.open(newline="", encoding="utf-8-sig") as fh:
             for row in csv.DictReader(fh):
                 a = (row.get("is_slang") or "").strip()
                 if a not in ("0", "1"):
                     continue
-                target  = (row.get("target") or "").strip()
+                target  = (row.get("target") or "").strip() or file_target
                 context = row["target_context"]
                 examples.append((target, context, int(a)))
     n_pos = sum(e[2] for e in examples)
@@ -292,8 +310,9 @@ Examples:
     )
     p.add_argument("--annotations", required=True, metavar="DIR",
                    help="Directory of annotated CSVs (recursive *.csv scan; each row "
-                        "needs an 'is_slang' column, a 'target_context' column, and "
-                        "a 'target' column naming the judged word).")
+                        "needs an 'is_slang' column and a 'target_context' column. "
+                        "The judged word comes from a 'target' column if present, "
+                        "otherwise it is inferred from the filename).")
     p.add_argument("--model-dir", required=True, metavar="DIR", dest="model_dir",
                    help="Directory to save the fine-tuned model + tokenizer.")
     p.add_argument("--base-model", default=DEFAULT_BASE_MODEL, metavar="ID",
