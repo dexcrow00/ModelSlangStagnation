@@ -6,18 +6,17 @@ classifier.
   score = 2 * P(slang) - 1  (range [-1, 1]; positive = slang usage)
 
 This is the inference/filtering half of the pipeline; fine-tune the model first
-with finetune_roberta.py, which saves the model directory loaded here.
-
-Requires: torch, transformers
+with finetune_roberta.py, which saves the model directory loaded here (model +
+tokenizer + the prompt template applied at training time).
 
 Usage:
 
-    # Score every row in a directory of Parquet contexts (from fineweb_context.py)
+    # Score every row in a directory of context CSVs
     python roberta_filter.py contexts/ --output-dir scored/ --score-all \\
         --roberta-model-dir ./roberta_model/
 
     # Filter above a score threshold into a single CSV
-    python roberta_filter.py contexts/*.parquet -o filtered.csv \\
+    python roberta_filter.py contexts/*.csv -o filtered.csv \\
         --roberta-model-dir ./roberta_model/ --threshold 0.1
 """
 
@@ -31,13 +30,8 @@ import sys
 from pathlib import Path
 from typing import Dict, Iterator, List, Optional, Tuple
 
-import pyarrow.parquet as pq
-
 import torch
-
-# ---------------------------------------------------------------------------
-# Logging
-# ---------------------------------------------------------------------------
+from transformers import AutoModelForSequenceClassification, AutoTokenizer
 
 if hasattr(sys.stderr, "reconfigure"):
     sys.stderr.reconfigure(line_buffering=True)  # type: ignore[attr-defined]
@@ -49,31 +43,17 @@ logging.basicConfig(
 )
 log = logging.getLogger(__name__)
 
-# Prompt template must match the wording used by
-# finetune_roberta.py at training time. The training script saves the exact
-# template it used into the model directory (PROMPT_TEMPLATE_FILE); load() reads
-# it back so inference conditions on the same target-word phrasing. The constant
-# below is only a fallback default and a reference for what shape to expect.
-DEFAULT_PROMPT_TEMPLATE = 'Is the word "{target}" used as slang here? {context}'
+# Saved next to the model by finetune_roberta.py; inference must condition on
+# the same target-word phrasing the model was trained with.
 PROMPT_TEMPLATE_FILE = "prompt_template.txt"
+
 
 # ---------------------------------------------------------------------------
 # Helpers
 # ---------------------------------------------------------------------------
 
-def build_prompt(target: str, context: str, template: str = DEFAULT_PROMPT_TEMPLATE) -> str:
-    """Render the target+context prompt fed to the classifier.
-
-    Only the template string is parsed for ``{target}``/``{context}`` fields;
-    braces inside the (raw web) ``context`` or ``target`` values are inserted
-    literally and never re-interpreted. Must mirror finetune_roberta.build_prompt.
-    """
-    return template.format(target=target, context=context)
-
-
 def _pick_device(device: Optional[str]) -> str:
     """Resolve an explicit device string, else auto-detect cuda/mps/cpu."""
-    
     if device:
         return device
     if torch.cuda.is_available():
@@ -89,23 +69,11 @@ def _batched(items: list, size: int) -> Iterator[list]:
 
 
 def _read_rows(path: Path) -> List[Dict[str, str]]:
-    """Read context rows from a Parquet (fineweb_context.py) or CSV file.
-
-    Both yield dicts keyed by ``target`` / ``uri`` / ``target_context`` (the
-    ``target`` column is present only for the Parquet output).
-    """
-    if path.suffix.lower() == ".parquet":
-        table = pq.read_table(path)
-        return [{k: ("" if v is None else str(v)) for k, v in row.items()}
-                for row in table.to_pylist()]
-
+    """Read context rows (target / uri / target_context) from a CSV file."""
     with path.open(newline="", encoding="utf-8-sig") as fh:
-        rows = list(csv.DictReader(fh))
-    # Normalise any quoted column names produced by Excel/PowerShell BOM exports
-    normalised = []
-    for row in rows:
-        normalised.append({k.strip('"').strip(): v for k, v in row.items()})
-    return normalised
+        # Normalise quoted column names produced by Excel/PowerShell BOM exports
+        return [{k.strip('"').strip(): v for k, v in row.items()}
+                for row in csv.DictReader(fh)]
 
 
 # ---------------------------------------------------------------------------
@@ -113,144 +81,100 @@ def _read_rows(path: Path) -> List[Dict[str, str]]:
 # ---------------------------------------------------------------------------
 
 class TransformerSlangClassifier:
-    """Binary transformer classifier for slang-sense scoring (inference only).
+    """Inference-only binary classifier for slang-sense scoring.
 
-    Loads a model fine-tuned by finetune_roberta.py and maps
-    P(slang) ∈ [0, 1] → [-1, 1] via ``2p - 1``. Works with any HuggingFace
-    AutoModelForSequenceClassification checkpoint (RoBERTa, BERT, …).
-
-    Parameters
-    ----------
-    label  : Short name used in log messages, e.g. 'RoBERTa'.
-    device : PyTorch device string, or None for auto-detect.
+    Loads a directory saved by finetune_roberta.py (model + tokenizer + prompt
+    template) and maps P(slang) ∈ [0, 1] → [-1, 1] via ``2p - 1``. Works with
+    any HuggingFace AutoModelForSequenceClassification checkpoint.
     """
 
-    def __init__(self, label: str = "RoBERTa", device: Optional[str] = None) -> None:
-        self.label     = label
-        self.device    = _pick_device(device)
-        if self.device:
-            log.info("Using device: %s", self.device)
-        self.tokenizer       = None
-        self.model           = None
-        self.prompt_template = None  # set by load() if the model dir saved one
+    def __init__(self, device: Optional[str] = None) -> None:
+        self.device = _pick_device(device)
+        log.info("Using device: %s", self.device)
+        self.tokenizer = None
+        self.model = None
+        self.prompt_template = ""
 
     def load(self, model_dir: Path) -> None:
-        """Load a previously saved fine-tuned model."""
-        try:
-            from transformers import AutoTokenizer, AutoModelForSequenceClassification  # type: ignore
-        except ImportError as exc:
-            log.error("transformers is required to load a fine-tuned model: %s", exc)
-            sys.exit(1)
-        log.info("[%s] Loading model from %s", self.label, model_dir)
+        """Load the fine-tuned model, tokenizer, and prompt template."""
+        log.info("Loading model from %s", model_dir)
         self.tokenizer = AutoTokenizer.from_pretrained(str(model_dir))
-        self.model     = (
-            AutoModelForSequenceClassification.from_pretrained(str(model_dir)).to(self.device)
+        self.model = (
+            AutoModelForSequenceClassification.from_pretrained(str(model_dir))
+            .to(self.device)
         )
         self.model.eval()
 
-        # Reuse the exact prompt template the model was trained with.
-        # Older models have no template file → score the raw
-        # context, which is what those models actually learned on.
         template_path = Path(model_dir) / PROMPT_TEMPLATE_FILE
-        if template_path.is_file():
-            self.prompt_template = template_path.read_text(encoding="utf-8")
-            log.info("[%s] Using saved prompt template: %s",
-                     self.label, self.prompt_template)
-        else:
-            self.prompt_template = None
-            log.info("[%s] No prompt template found in model dir; scoring raw "
-                     "context (legacy model).", self.label)
+        if not template_path.is_file():
+            log.error("%s not found in %s — retrain with finetune_roberta.py, "
+                      "which saves the prompt template used at training time.",
+                      PROMPT_TEMPLATE_FILE, model_dir)
+            sys.exit(1)
+        self.prompt_template = template_path.read_text(encoding="utf-8")
+        log.info("Using saved prompt template: %s", self.prompt_template)
 
-    def score_rows(
-        self,
-        rows: List[Dict[str, str]],
-        batch_size: int,
-    ) -> List[Optional[float]]:
-        """Return a score ∈ [-1, 1] for each row.
+    def score_rows(self, rows: List[Dict[str, str]], batch_size: int) -> List[float]:
+        """Return a score ∈ [-1, 1] per row, scoring its ``target_context``
+        conditioned on its ``target`` word via the saved prompt template."""
+        assert self.model is not None, "Call load() before score_rows()."
 
-        Every row is scored on its ``target_context``: the context was already
-        extracted around a specific target (carried in the ``target`` column),
-        so there is no need to re-select rows by word. When the loaded model
-        carries a prompt template, the target word is injected via
-        ``build_prompt`` so the score is conditioned on which word is in
-        question; otherwise the raw context is scored (legacy models).
-        """
-        assert self.model is not None and self.tokenizer is not None, \
-            f"[{self.label}] Call load() before score_rows()."
-
-        if self.prompt_template:
-            texts = [build_prompt(r.get("target", ""), r.get("target_context", ""),
-                                  self.prompt_template) for r in rows]
-        else:
-            texts = [r.get("target_context", "") for r in rows]
+        # Only the template is parsed for {target}/{context} fields; braces in
+        # the raw web text are inserted literally, never re-interpreted.
+        texts = [self.prompt_template.format(target=r.get("target", ""),
+                                             context=r.get("target_context", ""))
+                 for r in rows]
         if not texts:
             return []
-        log.info("  [%s] scoring %d rows ...", self.label, len(texts))
+        log.info("  Scoring %d rows ...", len(texts))
 
-        scores: List[Optional[float]] = []
-        for batch_texts in _batched(texts, batch_size):
+        scores: List[float] = []
+        for batch in _batched(texts, batch_size):
             enc = self.tokenizer(
-                batch_texts, padding=True, truncation=True,
+                batch, padding=True, truncation=True,
                 max_length=256, return_tensors="pt",
             ).to(self.device)
             with torch.no_grad():
-                probs = (
-                    torch.softmax(self.model(**enc).logits, dim=1)[:, 1].cpu().tolist()
-                )
+                probs = torch.softmax(self.model(**enc).logits, dim=1)[:, 1].cpu().tolist()
             scores.extend(float(2 * p - 1) for p in probs)  # [0,1] -> [-1,1]
-
         return scores
 
 
 # ---------------------------------------------------------------------------
-# Scoring helpers
+# Scoring / output
 # ---------------------------------------------------------------------------
 
 _FIELDNAMES = ["target", "uri", "target_context", "roberta_score"]
 
 
-def _sort_rows(rows: List[Dict]) -> None:
-    _NEG_INF = float("-inf")
-    rows.sort(key=lambda r: -(float(r["roberta_score"]) if r.get("roberta_score") else _NEG_INF))
-
-
 def _score_file(
     path: Path,
-    roberta_clf: TransformerSlangClassifier,
+    clf: TransformerSlangClassifier,
     args: argparse.Namespace,
 ) -> Tuple[List[Dict], int]:
-    """Score a single context file with the RoBERTa classifier."""
+    """Score one context file; returns (kept rows, total rows read)."""
     rows = _read_rows(path)
     if not rows:
         log.info("Skipping empty file: %s", path.name)
         return [], 0
 
     log.info("Processing %s (%d rows) ...", path.name, len(rows))
-    n = len(rows)
-    roberta_scores = roberta_clf.score_rows(rows, args.batch_size)
-
-    out_rows: List[Dict] = []
-    for row, rs in zip(rows, roberta_scores):
-        out_row = {
-            "target":         row.get("target", ""),
-            "uri":            row.get("uri", ""),
-            "target_context": row.get("target_context", ""),
-            "roberta_score":  f"{rs:.4f}" if rs is not None else "",
-        }
-
-        if not args.score_all:
-            if rs is None or rs < args.threshold:
-                continue
-
-        out_rows.append(out_row)
-
+    scores = clf.score_rows(rows, args.batch_size)
+    out_rows = [
+        {"target": row.get("target", ""),
+         "uri": row.get("uri", ""),
+         "target_context": row.get("target_context", ""),
+         "roberta_score": f"{score:.4f}"}
+        for row, score in zip(rows, scores)
+        if args.score_all or score >= args.threshold
+    ]
     log.info("  %s: %d/%d rows kept (%.1f%%)",
-             path.name, len(out_rows), n,
-             100.0 * len(out_rows) / n if n else 0.0)
-    return out_rows, n
+             path.name, len(out_rows), len(rows), 100.0 * len(out_rows) / len(rows))
+    return out_rows, len(rows)
 
 
 def _write_csv(path: Path, rows: List[Dict]) -> None:
+    rows.sort(key=lambda r: -float(r["roberta_score"]))
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", newline="", encoding="utf-8") as fh:
         writer = csv.DictWriter(fh, fieldnames=_FIELDNAMES, extrasaction="ignore")
@@ -264,33 +188,15 @@ def _write_csv(path: Path, rows: List[Dict]) -> None:
 
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(
-        description="Score/filter slang sense using a fine-tuned RoBERTa classifier.",
-        formatter_class=argparse.RawDescriptionHelpFormatter,
-        epilog="""
-Examples:
-  # Score every row in a directory of Parquet contexts
-  python roberta_filter.py contexts/ --output-dir scored/ --score-all \\
-      --roberta-model-dir ./roberta_model/
-
-  # Filter above a score threshold into a single CSV
-  python roberta_filter.py contexts/*.parquet -o filtered.csv \\
-      --roberta-model-dir ./roberta_model/ --threshold 0.1
-
-  (Fine-tune the model first with finetune_roberta.py.)
-        """,
-    )
-
-    # Inputs / outputs
+        description="Score/filter slang sense using a fine-tuned RoBERTa classifier.")
     p.add_argument("inputs", nargs="+", metavar="FILE",
-                   help="Input context file(s) — Parquet (from fineweb_context.py) "
-                        "or CSV — glob patterns, or a directory of such files.")
+                   help="Input context CSV file(s), glob patterns, or a directory "
+                        "of CSVs.")
     out_group = p.add_mutually_exclusive_group(required=True)
     out_group.add_argument("-o", "--output", metavar="FILE",
                            help="Output CSV path (all inputs merged into one file).")
     out_group.add_argument("--output-dir", metavar="DIR", dest="output_dir",
                            help="Output directory (one output file per input).")
-
-    # Shared options
     p.add_argument("--score-all", action="store_true", dest="score_all",
                    help="Write every row with scores attached (no filtering).")
     p.add_argument("--threshold", type=float, default=0.0, metavar="F",
@@ -299,47 +205,25 @@ Examples:
                    help="Inference batch size (default: 32).")
     p.add_argument("--device", default=None, metavar="DEV",
                    help="PyTorch device, e.g. cpu, cuda, mps (default: auto-detect).")
-
-    # RoBERTa model
-    p.add_argument("--roberta-model-dir", default="FineWebAnalysis/ft_model_roberta", metavar="DIR",
-                   dest="roberta_model_dir",
-                   help="Directory of the fine-tuned RoBERTa model to load "
+    p.add_argument("--roberta-model-dir", default="FineWebAnalysis/ft_model_roberta",
+                   metavar="DIR", dest="roberta_model_dir",
+                   help="Directory of the fine-tuned model to load "
                         "(produced by finetune_roberta.py).")
-
     return p
-
-
-def _load_classifier(
-    model_dir_str: str,
-    device: Optional[str],
-    parser: argparse.ArgumentParser,
-    label: str = "RoBERTa",
-) -> TransformerSlangClassifier:
-    """Load a fine-tuned TransformerSlangClassifier for inference."""
-    model_dir = Path(model_dir_str)
-    if not model_dir.exists():
-        parser.error(
-            f"[{label}] Model directory '{model_dir}' not found. "
-            f"Fine-tune one first with finetune_roberta.py."
-        )
-    clf = TransformerSlangClassifier(label=label, device=device)
-    clf.load(model_dir)
-    return clf
 
 
 def main() -> None:
     parser = build_parser()
-    args   = parser.parse_args()
+    args = parser.parse_args()
 
-    # Expand inputs
     input_paths: List[Path] = []
     for pattern in args.inputs:
-        p = Path(pattern)
-        if p.is_dir():
-            input_paths.extend(sorted(list(p.glob("*.parquet")) + list(p.glob("*.csv"))))
+        path = Path(pattern)
+        if path.is_dir():
+            input_paths.extend(sorted(path.glob("*.csv")))
         else:
             matched = sorted(glob.glob(pattern, recursive=True))
-            input_paths.extend(Path(m) for m in matched) if matched else input_paths.append(p)
+            input_paths.extend(Path(m) for m in matched or [pattern])
 
     missing = [p for p in input_paths if not p.exists()]
     if missing:
@@ -347,59 +231,47 @@ def main() -> None:
     if not input_paths:
         parser.error("No input files found.")
     if len(input_paths) > 1 and args.output_dir is None:
-        log.warning(
-            "%d input files with -o set — all rows merged into one file. "
-            "Use --output-dir for per-file output.",
-            len(input_paths),
-        )
+        log.warning("%d input files with -o set — all rows merged into one file. "
+                    "Use --output-dir for per-file output.", len(input_paths))
 
-    device = args.device
+    model_dir = Path(args.roberta_model_dir)
+    if not model_dir.exists():
+        parser.error(f"Model directory '{model_dir}' not found. "
+                     f"Fine-tune one first with finetune_roberta.py.")
+    clf = TransformerSlangClassifier(device=args.device)
+    clf.load(model_dir)
 
-    roberta_clf = _load_classifier(args.roberta_model_dir, device, parser)
-
-    score_kwargs = dict(roberta_clf=roberta_clf, args=args)
-
-    # ── Per-file mode ──────────────────────────────────────────────────────────
+    # Per-file mode: one output CSV per input, skipping existing outputs.
     if args.output_dir is not None:
         out_dir = Path(args.output_dir)
         out_dir.mkdir(parents=True, exist_ok=True)
-        grand_in = grand_out = grand_skipped = 0
+        grand_in = grand_out = skipped = 0
         for path in input_paths:
             out_path = out_dir / (path.stem + ".csv")
             if out_path.exists():
                 log.info("Skipping %s — already exists in %s", path.name, out_dir)
-                grand_skipped += 1
+                skipped += 1
                 continue
-            file_rows, n_in = _score_file(path, **score_kwargs)
-            _sort_rows(file_rows)
+            file_rows, n_in = _score_file(path, clf, args)
             _write_csv(out_path, file_rows)
-            grand_in  += n_in
+            grand_in += n_in
             grand_out += len(file_rows)
-        log.info(
-            "Done. %d/%d rows kept (%.1f%%) across %d file(s); %d skipped -> %s",
-            grand_out, grand_in,
-            100.0 * grand_out / grand_in if grand_in else 0.0,
-            len(input_paths) - grand_skipped, grand_skipped, out_dir,
-        )
+        log.info("Done. %d/%d rows kept (%.1f%%) across %d file(s); %d skipped -> %s",
+                 grand_out, grand_in, 100.0 * grand_out / grand_in if grand_in else 0.0,
+                 len(input_paths) - skipped, skipped, out_dir)
         return
 
-    # ── Single-file mode ───────────────────────────────────────────────────────
-    output_path = Path(args.output)
-    grand_in    = 0
+    # Single-file mode: all inputs merged, sorted by score.
     all_rows: List[Dict] = []
+    grand_in = 0
     for path in input_paths:
-        file_rows, n_in = _score_file(path, **score_kwargs)
+        file_rows, n_in = _score_file(path, clf, args)
         all_rows.extend(file_rows)
         grand_in += n_in
-
-    _sort_rows(all_rows)
-    _write_csv(output_path, all_rows)
-    log.info(
-        "Done. %d/%d rows kept (%.1f%%), sorted by score -> %s",
-        len(all_rows), grand_in,
-        100.0 * len(all_rows) / grand_in if grand_in else 0.0,
-        output_path,
-    )
+    _write_csv(Path(args.output), all_rows)
+    log.info("Done. %d/%d rows kept (%.1f%%), sorted by score -> %s",
+             len(all_rows), grand_in,
+             100.0 * len(all_rows) / grand_in if grand_in else 0.0, Path(args.output))
 
 
 if __name__ == "__main__":
