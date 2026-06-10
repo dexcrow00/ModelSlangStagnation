@@ -1,0 +1,248 @@
+2026-06-08 13:19:30,458 [INFO] Loaded 124 unique target words.
+2026-06-08 13:19:30,461 [INFO] 122 words to generate (2 already done).
+2026-06-08 13:19:32,852 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 13:20:24,514 [INFO] [1/122] alpha            ->  72 rows (36 slang / 36 not, non_slang_meaning=True)
+2026-06-08 13:20:25,205 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 13:21:08,568 [INFO] [2/122] aura             ->  66 rows (33 slang / 33 not, non_slang_meaning=True)
+2026-06-08 13:21:09,404 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 13:21:52,463 [INFO] [3/122] he ate           ->  67 rows (34 slang / 33 not, non_slang_meaning=True)
+2026-06-08 13:21:53,459 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 13:22:30,648 [INFO] [4/122] she ate          ->  70 rows (35 slang / 35 not, non_slang_meaning=True)
+2026-06-08 13:22:31,418 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 13:23:11,869 [INFO] [5/122] they ate         ->  70 rows (35 slang / 35 not, non_slang_meaning=True)
+2026-06-08 13:23:12,739 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 13:23:59,949 [INFO] [6/122] bae              ->  70 rows (35 slang / 35 not, non_slang_meaning=True)
+2026-06-08 13:24:00,681 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 13:24:39,817 [INFO] [7/122] basic            ->  68 rows (34 slang / 34 not, non_slang_meaning=True)
+2026-06-08 13:24:40,505 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 13:25:25,761 [INFO] [8/122] basic bitch      ->  65 rows (65 slang / 0 not, non_slang_meaning=False)
+2026-06-08 13:25:26,471 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 13:26:07,851 [INFO] [9/122] bop              ->  66 rows (33 slang / 33 not, non_slang_meaning=True)
+2026-06-08 13:26:08,659 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 13:26:54,579 [INFO] [10/122] brainrot         ->  70 rows (70 slang / 0 not, non_slang_meaning=False)
+2026-06-08 13:26:55,264 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 13:27:37,973 [INFO] [11/122] brat             ->  68 rows (34 slang / 34 not, non_slang_meaning=True)
+2026-06-08 13:27:38,641 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 13:28:18,705 [INFO] [12/122] bussin�          ->  70 rows (70 slang / 0 not, non_slang_meaning=False)
+2026-06-08 13:28:19,735 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 13:29:03,532 [INFO] [13/122] bussin           ->  72 rows (72 slang / 0 not, non_slang_meaning=False)
+2026-06-08 13:29:04,246 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 13:29:42,727 [INFO] [14/122] bruh             ->  66 rows (66 slang / 0 not, non_slang_meaning=False)
+2026-06-08 13:29:43,665 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 13:30:25,757 [INFO] [15/122] bro              ->  71 rows (35 slang / 36 not, non_slang_meaning=True)
+2026-06-08 13:30:26,773 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 13:31:11,381 [INFO] [16/122] catfish          ->  66 rows (33 slang / 33 not, non_slang_meaning=True)
+2026-06-08 13:31:12,334 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 13:31:58,688 [INFO] [17/122] catfished        ->  66 rows (33 slang / 33 not, non_slang_meaning=True)
+2026-06-08 13:31:59,467 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 13:32:41,852 [INFO] [18/122] cooked           ->  69 rows (34 slang / 35 not, non_slang_meaning=True)
+2026-06-08 13:32:42,542 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 13:33:34,443 [INFO] [19/122] clanker          ->  68 rows (34 slang / 34 not, non_slang_meaning=True)
+2026-06-08 13:33:35,180 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 13:34:20,706 [INFO] [20/122] clean girl       ->  66 rows (33 slang / 33 not, non_slang_meaning=True)
+2026-06-08 13:34:21,515 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 13:35:06,093 [INFO] [21/122] crash out        ->  70 rows (36 slang / 34 not, non_slang_meaning=True)
+2026-06-08 13:35:06,791 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 13:35:58,271 [INFO] [22/122] cuck             ->  65 rows (33 slang / 32 not, non_slang_meaning=True)
+2026-06-08 13:35:58,946 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 13:36:48,422 [INFO] [23/122] cucked           ->  66 rows (66 slang / 0 not, non_slang_meaning=False)
+2026-06-08 13:36:49,953 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 13:37:32,613 [INFO] [24/122] dank             ->  68 rows (34 slang / 34 not, non_slang_meaning=True)
+2026-06-08 13:37:33,374 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 13:38:18,691 [INFO] [25/122] delulu           ->  71 rows (71 slang / 0 not, non_slang_meaning=False)
+2026-06-08 13:38:19,413 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 13:39:06,420 [INFO] [26/122] degen            ->  66 rows (66 slang / 0 not, non_slang_meaning=False)
+2026-06-08 13:39:07,166 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 13:39:53,565 [INFO] [27/122] doggo            ->  70 rows (35 slang / 35 not, non_slang_meaning=True)
+2026-06-08 13:39:54,401 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 13:40:40,529 [INFO] [28/122] doomscroll       ->  69 rows (69 slang / 0 not, non_slang_meaning=False)
+2026-06-08 13:40:41,428 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 13:41:28,950 [INFO] [29/122] doomscrolled     ->  71 rows (71 slang / 0 not, non_slang_meaning=False)
+2026-06-08 13:41:29,692 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 13:42:13,076 [INFO] [30/122] doomscrolling    ->  69 rows (69 slang / 0 not, non_slang_meaning=False)
+2026-06-08 13:42:14,196 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 13:43:02,892 [INFO] [31/122] eye bleach       ->  68 rows (34 slang / 34 not, non_slang_meaning=True)
+2026-06-08 13:43:03,814 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 13:43:44,872 [INFO] [32/122] epic             ->  71 rows (36 slang / 35 not, non_slang_meaning=True)
+2026-06-08 13:43:45,617 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 13:44:32,166 [INFO] [33/122] fam              ->  70 rows (35 slang / 35 not, non_slang_meaning=True)
+2026-06-08 13:44:32,854 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 13:45:14,182 [INFO] [34/122] finna            ->  68 rows (68 slang / 0 not, non_slang_meaning=False)
+2026-06-08 13:45:14,869 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 13:45:54,585 [INFO] [35/122] fire             ->  70 rows (35 slang / 35 not, non_slang_meaning=True)
+2026-06-08 13:45:55,369 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 13:46:43,510 [INFO] [36/122] gaslight         ->  70 rows (35 slang / 35 not, non_slang_meaning=True)
+2026-06-08 13:46:44,321 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 13:47:32,576 [INFO] [37/122] glow-up          ->  67 rows (67 slang / 0 not, non_slang_meaning=False)
+2026-06-08 13:47:33,511 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 13:48:11,050 [INFO] [38/122] goated           ->  72 rows (72 slang / 0 not, non_slang_meaning=False)
+2026-06-08 13:48:12,117 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 13:48:54,694 [INFO] [39/122] girlypop         ->  66 rows (66 slang / 0 not, non_slang_meaning=False)
+2026-06-08 13:48:55,377 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 13:49:46,386 [INFO] [40/122] gyatt            ->  71 rows (71 slang / 0 not, non_slang_meaning=False)
+2026-06-08 13:49:47,180 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 13:50:32,992 [INFO] [41/122] glazing          ->  70 rows (35 slang / 35 not, non_slang_meaning=True)
+2026-06-08 13:50:34,946 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 13:51:17,453 [INFO] [42/122] goon             ->  66 rows (33 slang / 33 not, non_slang_meaning=True)
+2026-06-08 13:51:18,209 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 13:52:16,088 [INFO] [43/122] gooner           ->  70 rows (35 slang / 35 not, non_slang_meaning=True)
+2026-06-08 13:52:16,812 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 13:53:10,741 [INFO] [44/122] gooning          ->  72 rows (36 slang / 36 not, non_slang_meaning=True)
+2026-06-08 13:53:11,413 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 13:53:50,376 [INFO] [45/122] griefing         ->  70 rows (35 slang / 35 not, non_slang_meaning=True)
+2026-06-08 13:53:51,582 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 13:54:35,199 [INFO] [46/122] grindset         ->  69 rows (69 slang / 0 not, non_slang_meaning=False)
+2026-06-08 13:54:36,098 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 13:55:16,518 [INFO] [47/122] hard mode        ->  70 rows (35 slang / 35 not, non_slang_meaning=True)
+2026-06-08 13:55:19,615 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 13:56:02,119 [INFO] [48/122] hella            ->  68 rows (68 slang / 0 not, non_slang_meaning=False)
+2026-06-08 13:56:03,459 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 13:56:48,162 [INFO] [49/122] hooman           ->  66 rows (66 slang / 0 not, non_slang_meaning=False)
+2026-06-08 13:56:49,044 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 13:57:29,824 [INFO] [50/122] huzz             ->  66 rows (66 slang / 0 not, non_slang_meaning=False)
+2026-06-08 13:57:30,511 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 13:58:14,917 [INFO] [51/122] ick              ->  72 rows (37 slang / 35 not, non_slang_meaning=True)
+2026-06-08 13:58:15,602 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 13:58:55,194 [INFO] [52/122] idgaf            ->  68 rows (68 slang / 0 not, non_slang_meaning=False)
+2026-06-08 13:58:55,865 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 13:59:38,621 [INFO] [53/122] joever           ->  69 rows (69 slang / 0 not, non_slang_meaning=False)
+2026-06-08 13:59:39,547 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 14:00:29,847 [INFO] [54/122] karen            ->  71 rows (36 slang / 35 not, non_slang_meaning=True)
+2026-06-08 14:00:30,726 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 14:01:10,472 [INFO] [55/122] lol              ->  69 rows (69 slang / 0 not, non_slang_meaning=False)
+2026-06-08 14:01:11,380 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 14:01:50,950 [INFO] [56/122] lmao             ->  67 rows (67 slang / 0 not, non_slang_meaning=False)
+2026-06-08 14:01:51,619 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 14:02:31,295 [INFO] [57/122] lit              ->  66 rows (33 slang / 33 not, non_slang_meaning=True)
+2026-06-08 14:02:32,205 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 14:03:10,404 [INFO] [58/122] lowkey           ->  70 rows (70 slang / 0 not, non_slang_meaning=False)
+2026-06-08 14:03:11,729 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 14:03:49,624 [INFO] [59/122] meh              ->  71 rows (71 slang / 0 not, non_slang_meaning=False)
+2026-06-08 14:03:50,490 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 14:04:40,072 [INFO] [60/122] methinks         ->  67 rows (33 slang / 34 not, non_slang_meaning=True)
+2026-06-08 14:04:41,010 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 14:05:19,916 [INFO] [61/122] mewing           ->  67 rows (34 slang / 33 not, non_slang_meaning=True)
+2026-06-08 14:05:20,635 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 14:06:07,409 [INFO] [62/122] mid              ->  76 rows (38 slang / 38 not, non_slang_meaning=True)
+2026-06-08 14:06:08,507 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 14:06:58,701 [INFO] [63/122] mog              ->  68 rows (34 slang / 34 not, non_slang_meaning=True)
+2026-06-08 14:06:59,435 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 14:07:49,855 [INFO] [64/122] mogged           ->  67 rows (67 slang / 0 not, non_slang_meaning=False)
+2026-06-08 14:07:50,588 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 14:08:24,215 [INFO] [65/122] no cap           ->  70 rows (70 slang / 0 not, non_slang_meaning=False)
+2026-06-08 14:08:27,481 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 14:09:09,025 [INFO] [66/122] nolife           ->  69 rows (69 slang / 0 not, non_slang_meaning=False)
+2026-06-08 14:09:09,685 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 14:10:03,322 [INFO] [67/122] npc              ->  68 rows (34 slang / 34 not, non_slang_meaning=True)
+2026-06-08 14:10:03,991 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 14:10:44,504 [INFO] [68/122] on god           ->  69 rows (35 slang / 34 not, non_slang_meaning=True)
+2026-06-08 14:10:45,215 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 14:11:25,139 [INFO] [69/122] periodt          ->  70 rows (70 slang / 0 not, non_slang_meaning=False)
+2026-06-08 14:11:25,886 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 14:12:11,984 [INFO] [70/122] phonk            ->  65 rows (65 slang / 0 not, non_slang_meaning=False)
+2026-06-08 14:12:14,106 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 14:13:00,688 [INFO] [71/122] pog              ->  68 rows (34 slang / 34 not, non_slang_meaning=True)
+2026-06-08 14:13:01,460 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 14:13:43,002 [INFO] [72/122] poggers          ->  69 rows (69 slang / 0 not, non_slang_meaning=False)
+2026-06-08 14:13:43,663 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 14:14:24,212 [INFO] [73/122] rad              ->  70 rows (35 slang / 35 not, non_slang_meaning=True)
+2026-06-08 14:14:25,265 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 14:15:07,971 [INFO] [74/122] ratchet          ->  68 rows (34 slang / 34 not, non_slang_meaning=True)
+2026-06-08 14:15:08,696 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 14:15:53,070 [INFO] [75/122] red pill         ->  67 rows (33 slang / 34 not, non_slang_meaning=True)
+2026-06-08 14:15:53,693 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 14:16:37,683 [INFO] [76/122] rizz             ->  69 rows (69 slang / 0 not, non_slang_meaning=False)
+2026-06-08 14:16:38,381 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 14:17:21,048 [INFO] [77/122] rage-bait        ->  69 rows (69 slang / 0 not, non_slang_meaning=False)
+2026-06-08 14:17:22,272 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 14:18:00,757 [INFO] [78/122] rage bait        ->  67 rows (67 slang / 0 not, non_slang_meaning=False)
+2026-06-08 14:18:01,540 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 14:18:45,340 [INFO] [79/122] savage           ->  69 rows (35 slang / 34 not, non_slang_meaning=True)
+2026-06-08 14:18:46,587 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 14:19:21,180 [INFO] [80/122] sick             ->  68 rows (34 slang / 34 not, non_slang_meaning=True)
+2026-06-08 14:19:21,839 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 14:20:03,345 [INFO] [81/122] stfu             ->  70 rows (70 slang / 0 not, non_slang_meaning=False)
+2026-06-08 14:20:04,183 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 14:20:51,357 [INFO] [82/122] soyboy           ->  66 rows (66 slang / 0 not, non_slang_meaning=False)
+2026-06-08 14:20:52,514 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 14:21:39,361 [INFO] [83/122] sus              ->  70 rows (35 slang / 35 not, non_slang_meaning=True)
+2026-06-08 14:21:40,044 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 14:22:23,055 [INFO] [84/122] stan             ->  69 rows (35 slang / 34 not, non_slang_meaning=True)
+2026-06-08 14:22:23,762 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 14:23:06,724 [INFO] [85/122] snatched         ->  66 rows (33 slang / 33 not, non_slang_meaning=True)
+2026-06-08 14:23:08,789 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 14:23:54,728 [INFO] [86/122] swag             ->  70 rows (35 slang / 35 not, non_slang_meaning=True)
+2026-06-08 14:23:55,444 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 14:24:37,090 [INFO] [87/122] salty            ->  68 rows (34 slang / 34 not, non_slang_meaning=True)
+2026-06-08 14:24:37,731 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 14:25:19,906 [INFO] [88/122] shitpost         ->  68 rows (68 slang / 0 not, non_slang_meaning=False)
+2026-06-08 14:25:20,595 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 14:26:02,185 [INFO] [89/122] shitposting      ->  64 rows (64 slang / 0 not, non_slang_meaning=False)
+2026-06-08 14:26:02,868 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 14:26:39,888 [INFO] [90/122] shook            ->  66 rows (33 slang / 33 not, non_slang_meaning=True)
+2026-06-08 14:26:40,742 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 14:27:24,587 [INFO] [91/122] shooketh         ->  71 rows (71 slang / 0 not, non_slang_meaning=False)
+2026-06-08 14:27:25,276 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 14:28:10,297 [INFO] [92/122] sigma            ->  70 rows (35 slang / 35 not, non_slang_meaning=True)
+2026-06-08 14:28:11,500 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 14:29:01,580 [INFO] [93/122] simp             ->  65 rows (35 slang / 30 not, non_slang_meaning=True)
+2026-06-08 14:29:02,237 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 14:29:43,679 [INFO] [94/122] skibidi          ->  68 rows (68 slang / 0 not, non_slang_meaning=False)
+2026-06-08 14:29:44,471 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 14:30:28,925 [INFO] [95/122] slay             ->  68 rows (34 slang / 34 not, non_slang_meaning=True)
+2026-06-08 14:30:29,598 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 14:31:10,330 [INFO] [96/122] slaps            ->  72 rows (36 slang / 36 not, non_slang_meaning=True)
+2026-06-08 14:31:14,623 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 14:31:59,552 [INFO] [97/122] slop             ->  70 rows (35 slang / 35 not, non_slang_meaning=True)
+2026-06-08 14:32:00,568 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 14:32:41,091 [INFO] [98/122] struggle bus     ->  68 rows (68 slang / 0 not, non_slang_meaning=False)
+2026-06-08 14:32:41,806 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 14:33:21,689 [INFO] [99/122] solo dolo        ->  67 rows (67 slang / 0 not, non_slang_meaning=False)
+2026-06-08 14:33:22,554 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 14:34:06,638 [INFO] [100/122] sussy baka       ->  68 rows (68 slang / 0 not, non_slang_meaning=False)
+2026-06-08 14:34:07,354 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 14:34:46,603 [INFO] [101/122] sybau            ->  67 rows (67 slang / 0 not, non_slang_meaning=False)
+2026-06-08 14:34:47,543 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 14:35:27,777 [INFO] [102/122] tea              ->  68 rows (34 slang / 34 not, non_slang_meaning=True)
+2026-06-08 14:35:31,064 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 14:36:14,133 [INFO] [103/122] thirsty          ->  70 rows (35 slang / 35 not, non_slang_meaning=True)
+2026-06-08 14:36:14,791 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 14:36:57,318 [INFO] [104/122] thirst trap      ->  67 rows (67 slang / 0 not, non_slang_meaning=False)
+2026-06-08 14:36:58,231 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 14:37:52,463 [INFO] [105/122] thot             ->  71 rows (71 slang / 0 not, non_slang_meaning=False)
+2026-06-08 14:37:53,151 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 14:38:38,741 [INFO] [106/122] troll            ->  72 rows (36 slang / 36 not, non_slang_meaning=True)
+2026-06-08 14:38:39,425 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 14:39:24,065 [INFO] [107/122] twinning         ->  68 rows (34 slang / 34 not, non_slang_meaning=True)
+2026-06-08 14:39:24,762 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 14:40:11,876 [INFO] [108/122] unalive          ->  69 rows (69 slang / 0 not, non_slang_meaning=False)
+2026-06-08 14:40:12,564 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 14:41:01,543 [INFO] [109/122] unc              ->  70 rows (35 slang / 35 not, non_slang_meaning=True)
+2026-06-08 14:41:02,410 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 14:41:42,499 [INFO] [110/122] unbox            ->  66 rows (33 slang / 33 not, non_slang_meaning=True)
+2026-06-08 14:41:43,439 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 15:08:42,685 [ERROR] [111/122] FAILED for 'unboxing': [WinError 10054] An existing connection was forcibly closed by the remote host
+# Rerun - 70 rows generated.
+2026-06-08 15:08:43,453 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 15:09:38,909 [INFO] [112/122] vibe             ->  63 rows (33 slang / 30 not, non_slang_meaning=True)
+2026-06-08 15:09:39,549 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 15:10:21,465 [INFO] [113/122] vibes            ->  72 rows (37 slang / 35 not, non_slang_meaning=True)
+2026-06-08 15:10:22,305 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 15:11:11,757 [INFO] [114/122] winter arc       ->  70 rows (35 slang / 35 not, non_slang_meaning=True)
+2026-06-08 15:11:12,429 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 15:11:54,454 [INFO] [115/122] queen shit       ->  66 rows (66 slang / 0 not, non_slang_meaning=False)
+2026-06-08 15:11:55,074 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 15:12:35,684 [INFO] [116/122] yap              ->  70 rows (36 slang / 34 not, non_slang_meaning=True)
+2026-06-08 15:12:36,449 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 15:13:19,880 [INFO] [117/122] yapping          ->  66 rows (33 slang / 33 not, non_slang_meaning=True)
+2026-06-08 15:13:20,829 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 15:14:00,081 [INFO] [118/122] yas              ->  68 rows (68 slang / 0 not, non_slang_meaning=False)
+2026-06-08 15:14:00,838 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 15:14:36,948 [INFO] [119/122] yolo             ->  66 rows (66 slang / 0 not, non_slang_meaning=False)
+2026-06-08 15:14:37,643 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 15:15:24,187 [INFO] [120/122] yeet             ->  71 rows (71 slang / 0 not, non_slang_meaning=False)
+2026-06-08 15:15:24,923 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 15:16:07,754 [INFO] [121/122] yeeted           ->  71 rows (71 slang / 0 not, non_slang_meaning=False)
+2026-06-08 15:16:08,492 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-06-08 15:16:52,680 [INFO] [122/122] yeeting          ->  68 rows (68 slang / 0 not, non_slang_meaning=False)
+2026-06-08 15:16:52,680 [INFO] Done. 121 succeeded, 1 failed. Output in C:\Projects\CommonCrawlAnalysis\DataProcessingTools\completed_annotations\synthetic_annotations
