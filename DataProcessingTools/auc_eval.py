@@ -1,30 +1,20 @@
 #!/usr/bin/env python3
 """
-auc_eval.py — Evaluate a fine-tuned BERT slang classifier using ROC AUC.
+Scores annotated examples with a model saved by finetune_roberta.py (the
+prompt template stored next to the model is applied automatically) and
+reports overall ROC AUC, a confusion matrix at the chosen threshold, a
+per-word breakdown, and an optional ROC plot. With --train-dir, rows whose
+target_context appears in the training annotations are counted and the
+metrics are repeated for the unseen subset only.
 
-Loads annotated examples (is_slang = 1/0), runs inference with a saved
-fine-tuned model, and reports:
-  - Overall ROC AUC
-  - Per-word AUC breakdown
-  - Confusion matrix at the default threshold (ft_score > 0, i.e. P(slang) > 0.5)
-  - ROC curve plot (saved to --plot or displayed interactively)
-
-NOTE: For the small (10BT) FineWeb sample, the evaluation is a bit biased, 
-since we can't uniquely sample 50 lines for each word for both the training and validations sets.
+The judged word comes from a per-row 'target' column when present, else from
+the filename (same rule as finetune_roberta.py, so multi-word targets work).
 
 Usage:
-    # Evaluate on the same annotations used for training (in-sample)
-    python auc_eval.py \\
-        --model-dir CommonCrawlDiff/ft_model \\
-        --annotations DataProcessingTools/completed_annotations/common_crawl
+    python auc_eval.py --model-dir FineWebAnalysis/ft_model_roberta \\
+        --annotations DataProcessingTools/fine_tuning_validation/fine_web_small_validation_set \\
+        [--truth-col is_slang] [--train-dir DIR] [--plot roc.png]
 
-    # Cross-dataset evaluation (out-of-sample)
-    python auc_eval.py \\
-        --model-dir FineWebAnalysis/ft_model \\
-        --annotations DataProcessingTools/completed_annotations/common_crawl \\
-        --plot roc_curve.png
-
-Requires: torch, transformers, scikit-learn, matplotlib
 """
 
 from __future__ import annotations
@@ -32,13 +22,14 @@ from __future__ import annotations
 import argparse
 import csv
 import logging
-import re
 import sys
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
-import torch
-import torch.nn.functional as F
+from sklearn.metrics import (
+    confusion_matrix, f1_score, precision_score, recall_score,
+    roc_auc_score, roc_curve,
+)
 
 logging.basicConfig(
     level=logging.INFO,
@@ -47,151 +38,82 @@ logging.basicConfig(
 )
 log = logging.getLogger(__name__)
 
-# ---------------------------------------------------------------------------
-# Load annotations
-# ---------------------------------------------------------------------------
+# Model/inference helpers live in FineWebAnalysis (no packaging in this repo).
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "FineWebAnalysis"))
+from finetune_roberta import _target_from_filename  # noqa: E402
+from roberta_filter import TransformerSlangClassifier  # noqa: E402
 
-def load_annotations(annotation_dir: Path) -> Tuple[List[str], List[int], List[str]]:
-    """Load (text, label, word) triples from all *_annotated.csv files.
 
-    Returns three parallel lists:
-      texts  — target_context strings
-      labels — 1 (slang) or 0 (not slang)
-      words  — source word inferred from the filename stem
+def load_annotations(
+    path: Path, truth_col: str = "is_slang",
+) -> Tuple[List[Dict[str, str]], List[int], List[str]]:
+    """Load rows from a CSV file or a directory of CSVs (recursive).
+
+    Returns parallel lists: classifier-input rows ('target'/'target_context'),
+    0/1 labels from ``truth_col``, and the judged word per row.
     """
-    texts: List[str]  = []
+    rows: List[Dict[str, str]] = []
     labels: List[int] = []
-    words: List[str]  = []
-
-    for csv_path in sorted(annotation_dir.rglob("*.csv")):
-        # Extract word from filenames like: alpha_validation, alpha_annotated,
-        # alpha_annotations, or "Annotations V1 - FineWeb - alpha_annotations"
-        m = re.search(r'(\b[a-zA-Z]+)(?:_validation|_annotated|_annotations)$',
-                      csv_path.stem, re.IGNORECASE)
-        word = m.group(1).lower() if m else csv_path.stem.lower()
-        with csv_path.open(newline="", encoding="utf-8") as fh:
+    words: List[str] = []
+    for csv_path in sorted(path.rglob("*.csv")) if path.is_dir() else [path]:
+        file_target = _target_from_filename(csv_path.stem)
+        with csv_path.open(newline="", encoding="utf-8-sig") as fh:
             for row in csv.DictReader(fh):
-                a = (row.get("is_slang") or "").strip()
-                if a == "1":
-                    texts.append(row["target_context"])
-                    labels.append(1)
-                    words.append(word)
-                elif a == "0":
-                    texts.append(row["target_context"])
-                    labels.append(0)
-                    words.append(word)
-
-    n_pos = sum(labels)
+                a = (row.get(truth_col) or "").strip()
+                if a not in ("0", "1"):
+                    continue
+                target = (row.get("target") or "").strip() or file_target
+                rows.append({"target": target,
+                             "target_context": row.get("target_context", "")})
+                labels.append(int(a))
+                words.append(target)
     log.info("Loaded %d examples from %s  (%d slang, %d not-slang)",
-             len(texts), annotation_dir, n_pos, len(texts) - n_pos)
-    return texts, labels, words
+             len(rows), path, sum(labels), len(rows) - sum(labels))
+    return rows, labels, words
 
 
-# ---------------------------------------------------------------------------
-# Inference
-# ---------------------------------------------------------------------------
-
-def score_texts(
-    texts: List[str],
-    model_dir: Path,
-    batch_size: int,
-    device: Optional[str],
-) -> List[float]:
-    """Return P(slang) for each text using the saved fine-tuned model."""
-    try:
-        from transformers import AutoTokenizer, AutoModelForSequenceClassification  # type: ignore
-    except ImportError:
-        log.error("transformers is required. pip install transformers")
-        sys.exit(1)
-
-    if device is None:
-        if torch.cuda.is_available():
-            device = "cuda"
-        elif hasattr(torch.backends, "mps") and torch.backends.mps.is_available():
-            device = "mps"
-        else:
-            device = "cpu"
-
-    log.info("Loading model from %s (device=%s) ...", model_dir, device)
-    tokenizer = AutoTokenizer.from_pretrained(str(model_dir))
-    model = AutoModelForSequenceClassification.from_pretrained(str(model_dir)).to(device)
-    model.eval()
-
-    probs: List[float] = []
-    for i in range(0, len(texts), batch_size):
-        batch = texts[i : i + batch_size]
-        enc = tokenizer(
-            batch, padding=True, truncation=True,
-            max_length=256, return_tensors="pt",
-        ).to(device)
-        with torch.no_grad():
-            p = torch.softmax(model(**enc).logits, dim=1)[:, 1].cpu().tolist()
-        probs.extend(p)
-        if (i // batch_size) % 10 == 0:
-            log.info("  Scored %d / %d examples ...", min(i + batch_size, len(texts)), len(texts))
-
-    return probs
-
-
-# ---------------------------------------------------------------------------
-# Metrics
-# ---------------------------------------------------------------------------
-
-def _batched(items: list, size: int):
-    for i in range(0, len(items), size):
-        yield items[i : i + size]
+def load_train_contexts(train_dir: Path) -> set:
+    """Every target_context appearing in the training annotation CSVs."""
+    contexts: set = set()
+    for csv_path in train_dir.rglob("*.csv"):
+        with csv_path.open(newline="", encoding="utf-8-sig") as fh:
+            contexts.update((row.get("target_context") or "").strip()
+                            for row in csv.DictReader(fh))
+    contexts.discard("")
+    return contexts
 
 
 def compute_metrics(
-    labels: List[int],
-    probs: List[float],
-    words: List[str],
-    threshold: float,
+    labels: List[int], probs: List[float], words: List[str], threshold: float,
 ) -> Dict:
-    """Compute overall AUC, per-word AUC, and confusion matrix."""
-    try:
-        from sklearn.metrics import (  # type: ignore
-            roc_auc_score, roc_curve, confusion_matrix,
-            precision_score, recall_score, f1_score,
-        )
-        import numpy as np
-    except ImportError:
-        log.error("scikit-learn is required. pip install scikit-learn")
-        sys.exit(1)
+    """Overall AUC, per-word breakdown, and confusion matrix at the threshold."""
+    # threshold is on ft_score = 2p - 1 in [-1, 1], as used elsewhere
+    preds = [1 if 2 * p - 1 >= threshold else 0 for p in probs]
 
-    scores = [2 * p - 1 for p in probs]   # map to [-1, 1] as used elsewhere
-    preds  = [1 if s >= threshold else 0 for s in scores]
-
-    overall_auc = roc_auc_score(labels, probs)
-    fpr, tpr, thresholds = roc_curve(labels, probs)
-
-    cm = confusion_matrix(labels, preds)
-    prec = precision_score(labels, preds, zero_division=0)
-    rec  = recall_score(labels, preds, zero_division=0)
-    f1   = f1_score(labels, preds, zero_division=0)
-
-    # Per-word AUC
-    unique_words = sorted(set(words))
-    per_word: Dict[str, Optional[float]] = {}
-    for w in unique_words:
+    per_word: Dict[str, Dict] = {}
+    for w in sorted(set(words)):
         idx = [i for i, word in enumerate(words) if word == w]
         w_labels = [labels[i] for i in idx]
-        w_probs  = [probs[i]  for i in idx]
-        if len(set(w_labels)) < 2:
-            per_word[w] = None   # can't compute AUC with only one class
-        else:
-            per_word[w] = roc_auc_score(w_labels, w_probs)
+        w_preds = [preds[i] for i in idx]
+        per_word[w] = {
+            "auc": (roc_auc_score(w_labels, [probs[i] for i in idx])
+                    if len(set(w_labels)) == 2 else None),
+            "acc": sum(t == p for t, p in zip(w_labels, w_preds)) / len(idx),
+            "fp": sum(1 for t, p in zip(w_labels, w_preds) if (t, p) == (0, 1)),
+            "fn": sum(1 for t, p in zip(w_labels, w_preds) if (t, p) == (1, 0)),
+            "n": len(idx),
+        }
 
+    fpr, tpr, _ = roc_curve(labels, probs)
     return {
-        "overall_auc": overall_auc,
+        "overall_auc": roc_auc_score(labels, probs),
         "fpr": fpr,
         "tpr": tpr,
-        "thresholds": thresholds,
-        "confusion_matrix": cm,
-        "precision": prec,
-        "recall": rec,
-        "f1": f1,
-        "per_word_auc": per_word,
+        "confusion_matrix": confusion_matrix(labels, preds),
+        "precision": precision_score(labels, preds, zero_division=0),
+        "recall": recall_score(labels, preds, zero_division=0),
+        "f1": f1_score(labels, preds, zero_division=0),
+        "per_word": per_word,
         "threshold": threshold,
         "n_pos": sum(labels),
         "n_neg": len(labels) - sum(labels),
@@ -199,62 +121,53 @@ def compute_metrics(
     }
 
 
-# ---------------------------------------------------------------------------
-# Reporting
-# ---------------------------------------------------------------------------
-
-def print_report(metrics: Dict) -> None:
-    cm = metrics["confusion_matrix"]
-    tn, fp, fn, tp = cm.ravel() if cm.size == 4 else (0, 0, 0, 0)
-
+def print_report(m: Dict, title: str = "all rows") -> None:
+    tn, fp, fn, tp = m["confusion_matrix"].ravel()
     print()
     print("=" * 55)
-    print(f"  Overall ROC AUC : {metrics['overall_auc']:.4f}")
-    print(f"  Precision       : {metrics['precision']:.4f}")
-    print(f"  Recall          : {metrics['recall']:.4f}")
-    print(f"  F1              : {metrics['f1']:.4f}")
-    print(f"  Threshold       : ft_score >= {metrics['threshold']:.2f}  (P(slang) >= {(metrics['threshold']+1)/2:.2f})")
-    print(f"  Examples        : {metrics['n_total']}  ({metrics['n_pos']} slang / {metrics['n_neg']} not-slang)")
+    print(f"  Subset          : {title}")
+    print(f"  Overall ROC AUC : {m['overall_auc']:.4f}")
+    print(f"  Precision       : {m['precision']:.4f}")
+    print(f"  Recall          : {m['recall']:.4f}")
+    print(f"  F1              : {m['f1']:.4f}")
+    print(f"  Threshold       : ft_score >= {m['threshold']:.2f}  "
+          f"(P(slang) >= {(m['threshold'] + 1) / 2:.2f})")
+    print(f"  Examples        : {m['n_total']}  "
+          f"({m['n_pos']} slang / {m['n_neg']} not-slang)")
     print()
     print("  Confusion Matrix  (rows=actual, cols=predicted)")
-    print(f"               not-slang   slang")
+    print("               not-slang   slang")
     print(f"  not-slang    {tn:>9}   {fp:>5}")
     print(f"  slang        {fn:>9}   {tp:>5}")
     print()
-    print("  Per-word AUC:")
-    per_word = metrics["per_word_auc"]
-    valid = {w: v for w, v in per_word.items() if v is not None}
-    skipped = [w for w, v in per_word.items() if v is None]
-    for w, auc in sorted(valid.items(), key=lambda x: -x[1]):
-        bar = "#" * int(auc * 30)
-        print(f"    {w:<20} {auc:.4f}  {bar}")
-    if skipped:
-        print(f"    (skipped — single class only: {', '.join(skipped)})")
+    print("  Per-word breakdown (AUC | acc | FP | FN | n):")
+    by_auc = sorted(m["per_word"].items(),
+                    key=lambda x: -1 if x[1]["auc"] is None else x[1]["auc"],
+                    reverse=True)
+    for w, pw in by_auc:
+        auc = f"{pw['auc']:.4f}" if pw["auc"] is not None else "(single class)"
+        bar = "#" * int(pw["auc"] * 30) if pw["auc"] is not None else ""
+        print(f"    {w:<20} {auc:>14} | {pw['acc']:6.1%} | {pw['fp']:>3} | "
+              f"{pw['fn']:>3} | {pw['n']:>4}  {bar}")
     print("=" * 55)
     print()
 
 
-def plot_roc(metrics: Dict, model_dir: Path, annotation_dir: Path, save_path: Optional[Path]) -> None:
+def plot_roc(m: Dict, model_dir: Path, annotations: Path, save_path: Optional[Path]) -> None:
     try:
         import matplotlib.pyplot as plt  # type: ignore
     except ImportError:
         log.warning("matplotlib not available — skipping plot.")
         return
 
-    fpr = metrics["fpr"]
-    tpr = metrics["tpr"]
-    auc = metrics["overall_auc"]
-
     fig, ax = plt.subplots(figsize=(7, 6))
-    ax.plot(fpr, tpr, color="steelblue", lw=2,
-            label=f"ROC curve  (AUC = {auc:.4f})")
+    ax.plot(m["fpr"], m["tpr"], color="steelblue", lw=2,
+            label=f"ROC curve  (AUC = {m['overall_auc']:.4f})")
     ax.plot([0, 1], [0, 1], color="grey", lw=1, linestyle="--", label="Random")
     ax.set_xlabel("False Positive Rate")
     ax.set_ylabel("True Positive Rate")
-    ax.set_title(
-        f"ROC Curve — Fine-tuned BERT Slang Classifier\n"
-        f"Model: {model_dir.name}   Annotations: {annotation_dir.name}"
-    )
+    ax.set_title(f"ROC Curve — Fine-tuned Slang Classifier\n"
+                 f"Model: {model_dir.name}   Annotations: {annotations.name}")
     ax.legend(loc="lower right")
     ax.set_xlim([0, 1])
     ax.set_ylim([0, 1.02])
@@ -267,46 +180,28 @@ def plot_roc(metrics: Dict, model_dir: Path, annotation_dir: Path, save_path: Op
         plt.show()
 
 
-# ---------------------------------------------------------------------------
-# CLI
-# ---------------------------------------------------------------------------
-
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(
-        description="Compute ROC AUC for a fine-tuned BERT slang classifier.",
-        formatter_class=argparse.RawDescriptionHelpFormatter,
-        epilog="""
-Examples:
-  # In-sample evaluation (same annotations used for training)
-  python auc_eval.py \\
-      --model-dir CommonCrawlDiff/ft_model \\
-      --annotations DataProcessingTools/completed_annotations/common_crawl
-
-  # Cross-dataset evaluation (out-of-sample)
-  python auc_eval.py \\
-      --model-dir FineWebAnalysis/ft_model \\
-      --annotations DataProcessingTools/completed_annotations/common_crawl \\
-      --plot roc_fineweb_model_on_cc_data.png
-        """,
-    )
-
-    p.add_argument("--model-dir", required=True, metavar="DIR", dest="model_dir",
-                   type=Path,
+        description="Compute ROC AUC for a fine-tuned slang classifier.")
+    p.add_argument("--model-dir", required=True, type=Path, metavar="DIR",
+                   dest="model_dir",
                    help="Directory containing the saved fine-tuned model.")
-    p.add_argument("--annotations", required=True, metavar="DIR",
-                   type=Path,
-                   help="Directory of *_annotated.csv files with an 'is_slang' column.")
+    p.add_argument("--annotations", required=True, type=Path, metavar="PATH",
+                   help="Annotation CSV file or directory of CSVs (recursive).")
+    p.add_argument("--truth-col", default="is_slang", metavar="COL", dest="truth_col",
+                   help="Ground-truth column name (default: is_slang).")
+    p.add_argument("--train-dir", type=Path, metavar="DIR", dest="train_dir",
+                   help="Training annotation dir; if set, report training-data "
+                        "overlap and metrics on the unseen subset only.")
     p.add_argument("--threshold", type=float, default=0.0, metavar="F",
-                   help="ft_score threshold for binary predictions in the confusion "
-                        "matrix (default: 0.0, i.e. P(slang) > 0.5).")
+                   help="ft_score threshold for binary predictions "
+                        "(default: 0.0, i.e. P(slang) > 0.5).")
     p.add_argument("--batch-size", type=int, default=32, metavar="N", dest="batch_size",
                    help="Inference batch size (default: 32).")
     p.add_argument("--device", default=None, metavar="DEV",
                    help="PyTorch device, e.g. cpu, cuda, mps (default: auto-detect).")
-    p.add_argument("--plot", default=None, metavar="FILE", type=Path,
-                   help="Save the ROC curve to this file instead of displaying it. "
-                        "Omit to show interactively; pass /dev/null to suppress.")
-
+    p.add_argument("--plot", type=Path, metavar="FILE",
+                   help="Save the ROC curve here instead of displaying it.")
     return p
 
 
@@ -317,16 +212,37 @@ def main() -> None:
     if not args.model_dir.exists():
         parser.error(f"Model directory not found: {args.model_dir}")
     if not args.annotations.exists():
-        parser.error(f"Annotations directory not found: {args.annotations}")
+        parser.error(f"Annotations path not found: {args.annotations}")
+    if args.train_dir and not args.train_dir.exists():
+        parser.error(f"Training annotation directory not found: {args.train_dir}")
 
-    texts, labels, words = load_annotations(args.annotations)
-    if not texts:
-        parser.error("No annotated examples found.")
+    rows, labels, words = load_annotations(args.annotations, args.truth_col)
+    if not rows:
+        parser.error(f"No annotated examples found (truth column: {args.truth_col!r}).")
 
-    probs = score_texts(texts, args.model_dir, args.batch_size, args.device)
+    clf = TransformerSlangClassifier(device=args.device)
+    clf.load(args.model_dir)
+    probs = [(s + 1) / 2 for s in clf.score_rows(rows, args.batch_size)]
+
     metrics = compute_metrics(labels, probs, words, args.threshold)
-
     print_report(metrics)
+
+    if args.train_dir:
+        train_contexts = load_train_contexts(args.train_dir)
+        unseen = [i for i, r in enumerate(rows)
+                  if r["target_context"].strip() not in train_contexts]
+        print(f"  Overlap with training data: {len(rows) - len(unseen)}/{len(rows)} "
+              f"rows have a target_context present in {args.train_dir}")
+        if unseen and len({labels[i] for i in unseen}) == 2:
+            print_report(
+                compute_metrics([labels[i] for i in unseen],
+                                [probs[i] for i in unseen],
+                                [words[i] for i in unseen], args.threshold),
+                title="unseen rows only (not in training data)",
+            )
+        elif unseen:
+            log.warning("Unseen subset has a single class — skipping its report.")
+
     plot_roc(metrics, args.model_dir, args.annotations, args.plot)
 
 
