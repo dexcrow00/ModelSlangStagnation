@@ -35,13 +35,12 @@ import sys
 from pathlib import Path
 from typing import List, Tuple
 
-# --- locate project + API key ------------------------------------------------
-REPO_ROOT = Path(__file__).resolve().parents[1]
+REPO_ROOT = Path(__file__).resolve().parents[2]
 WORDS_FILE = REPO_ROOT / "FineWebAnalysis" / "target_words.txt"
 OUT_DIR = REPO_ROOT / "DataProcessingTools" / "completed_annotations" / "synthetic_annotations"
 
 sys.path.insert(0, str(REPO_ROOT / "FineWebAnalysis"))
-from Keys import ANTHROPIC_API_KEY  # noqa: E402  (never modify HF_TOKEN handling)
+from Keys import ANTHROPIC_API_KEY # pyright: ignore[reportMissingImports]
 
 logging.basicConfig(
     level=logging.INFO,
