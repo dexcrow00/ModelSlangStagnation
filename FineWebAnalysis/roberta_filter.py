@@ -12,11 +12,11 @@ tokenizer + the prompt template applied at training time).
 Usage:
 
     # Score every row in a directory of context CSVs
-    python roberta_filter.py contexts/ --output-dir scored/ --score-all \\
+    python3 roberta_filter.py contexts/ --output-dir scored/ --score-all \\
         --roberta-model-dir ./roberta_model/
 
     # Filter above a score threshold into a single CSV
-    python roberta_filter.py contexts/*.csv -o filtered.csv \\
+    python3 roberta_filter.py contexts/*.csv -o filtered.csv \\
         --roberta-model-dir ./roberta_model/ --threshold 0.1
 """
 
@@ -259,19 +259,18 @@ def main() -> None:
         log.info("Done. %d/%d rows kept (%.1f%%) across %d file(s); %d skipped -> %s",
                  grand_out, grand_in, 100.0 * grand_out / grand_in if grand_in else 0.0,
                  len(input_paths) - skipped, skipped, out_dir)
-        return
-
-    # Single-file mode: all inputs merged, sorted by score.
-    all_rows: List[Dict] = []
-    grand_in = 0
-    for path in input_paths:
-        file_rows, n_in = _score_file(path, clf, args)
-        all_rows.extend(file_rows)
-        grand_in += n_in
-    _write_csv(Path(args.output), all_rows)
-    log.info("Done. %d/%d rows kept (%.1f%%), sorted by score -> %s",
-             len(all_rows), grand_in,
-             100.0 * len(all_rows) / grand_in if grand_in else 0.0, Path(args.output))
+    else:
+        # Single-file mode: all inputs merged, sorted by score.
+        all_rows: List[Dict] = []
+        grand_in = 0
+        for path in input_paths:
+            file_rows, n_in = _score_file(path, clf, args)
+            all_rows.extend(file_rows)
+            grand_in += n_in
+        _write_csv(Path(args.output), all_rows)
+        log.info("Done. %d/%d rows kept (%.1f%%), sorted by score -> %s",
+                len(all_rows), grand_in,
+                100.0 * len(all_rows) / grand_in if grand_in else 0.0, Path(args.output))
 
 
 if __name__ == "__main__":

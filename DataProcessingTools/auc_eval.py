@@ -40,8 +40,8 @@ log = logging.getLogger(__name__)
 
 # Model/inference helpers live in FineWebAnalysis (no packaging in this repo).
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "FineWebAnalysis"))
-from finetune_roberta import _target_from_filename  # noqa: E402
-from roberta_filter import TransformerSlangClassifier  # noqa: E402
+from finetune_roberta import _target_from_filename  # pyright: ignore[reportMissingImports]
+from roberta_filter import TransformerSlangClassifier  # pyright: ignore[reportMissingImports]
 
 
 def load_annotations(
