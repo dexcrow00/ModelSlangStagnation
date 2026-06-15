@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Experiment 1 analysis: count target slang word frequencies in free-generated responses.
 
-Usage:
-    python analysis/exp1_word_freq.py data/responses/<exp1_run>.jsonl
-    python analysis/exp1_word_freq.py data/responses/*.jsonl --model meta-llama/...
+Usage (run from the PromptingSlang root):
+    python experiments/1_scenario_based_prompting/analysis/exp1_word_freq.py data/responses/<exp1_run>.jsonl
+    python experiments/1_scenario_based_prompting/analysis/exp1_word_freq.py data/responses/*.jsonl --model meta-llama/...
 """
 
 from __future__ import annotations

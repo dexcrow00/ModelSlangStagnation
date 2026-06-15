@@ -194,20 +194,35 @@ PNG, PDF, and SVG are all supported — the format is inferred from the file ext
 
 ## Project structure
 
+Shared infrastructure lives at the top level; experiment-specific prompts,
+analysis, and visualizers are grouped under `experiments/`, one directory per
+experiment.
+
 ```
 PromptingSlang/
-├── src/
-│   ├── client.py      # TogetherAI API wrapper
-│   ├── prompts.py     # PromptTemplate dataclass + JSONL loader
-│   ├── collector.py   # Writes responses to JSONL
-│   └── runner.py      # Orchestrates model × prompt loop with retries
-├── data/
-│   ├── prompts/       # Input prompt JSONL files
-│   └── responses/     # Output — one file per run
+├── src/                       # shared collection framework
+│   ├── client.py              # API wrappers (Together / OpenAI / Anthropic)
+│   ├── prompts.py             # PromptTemplate dataclass + JSONL loader
+│   ├── collector.py           # Writes responses to JSONL
+│   └── runner.py              # Orchestrates model × prompt loop with retries
 ├── scripts/
-│   └── run.py         # CLI entry point
+│   └── run.py                 # CLI entry point (run from this root)
 ├── visualizer/
-│   └── visualize.py   # Logprob heatmap renderer
+│   └── visualize.py           # Generic logprob heatmap renderer
+├── data/
+│   ├── prompts/               # Shared/generic prompt JSONL files (example, single_word,
+│   │                          #   woty_echo, dated_prompts, …)
+│   └── responses/             # Output — one file per run (shared across experiments)
+├── experiments/
+│   ├── 1_scenario_based_prompting/   # colloquial free-generation; slang in responses
+│   ├── 2_logprob_with_masking/       # masked-slot logprob of the slang word (open models)
+│   ├── 3_semantic_slot_queries/      # evoke a specific slang word; measure reluctance / OOV
+│   └── 4_direct_year_association/    # (bonus, placeholder) does the model know when a
+│       │                             #   word peaked? meta-level awareness
+│       ├── analysis/                 # each experiment dir holds its own:
+│       ├── visualizer/               #   analysis/ + visualizer/ + prompts/
+│       ├── prompts/                  #   (plus a README describing the experiment)
+│       └── README.md
 ├── requirements.txt
 └── .env.example
 ```

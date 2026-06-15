@@ -13,9 +13,9 @@ Figure layout (single PNG):
   as a small heatmap (template × alternative token), giving a sense of how
   much probability mass the model spread across candidates.
 
-Usage:
-    python visualizer/viz_exp2.py data/responses/exp2_logprob_probing_<id>.jsonl
-    python visualizer/viz_exp2.py data/responses/exp2_logprob_probing_<id>.jsonl -o figures/exp2.png
+Usage (run from the PromptingSlang root):
+    python experiments/2_logprob_with_masking/visualizer/viz_exp2.py data/responses/exp2_logprob_probing_<id>.jsonl
+    python experiments/2_logprob_with_masking/visualizer/viz_exp2.py data/responses/exp2_logprob_probing_<id>.jsonl -o figures/exp2.png
 """
 
 from __future__ import annotations

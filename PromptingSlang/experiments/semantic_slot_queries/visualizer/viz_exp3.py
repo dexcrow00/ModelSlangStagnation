@@ -12,9 +12,9 @@ Figure layout (single PNG):
   first-token probability mass landing on each known era — a compact way to
   compare where each model's probability is concentrated.
 
-Usage:
-    python visualizer/viz_exp3.py data/responses/exp3_semantic_neighbor_<id>.jsonl
-    python visualizer/viz_exp3.py data/responses/exp3_semantic_neighbor_<id>.jsonl -o figures/exp3.png
+Usage (run from the PromptingSlang root):
+    python experiments/3_semantic_slot_queries/visualizer/viz_exp3.py data/responses/exp3_semantic_neighbor_<id>.jsonl
+    python experiments/3_semantic_slot_queries/visualizer/viz_exp3.py data/responses/exp3_semantic_neighbor_<id>.jsonl -o figures/exp3.png
 """
 
 from __future__ import annotations

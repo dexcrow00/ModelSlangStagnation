@@ -9,10 +9,10 @@ With max-tokens > 1, the model generates a full word or short phrase. We report:
   - Top-5 first-token alternatives (top_logprobs[0]), resolved to likely full
     words where the generated sequence provides enough context.
 
-Usage:
-    python analysis/exp2_logprob_compare.py data/responses/<exp2_run>.jsonl
-    python analysis/exp2_logprob_compare.py data/responses/<exp2_run>.jsonl --family adj
-    python analysis/exp2_logprob_compare.py data/responses/<exp2_run>.jsonl --slang-only
+Usage (run from the PromptingSlang root):
+    python experiments/2_logprob_with_masking/analysis/exp2_logprob_compare.py data/responses/<exp2_run>.jsonl
+    python experiments/2_logprob_with_masking/analysis/exp2_logprob_compare.py data/responses/<exp2_run>.jsonl --family adj
+    python experiments/2_logprob_with_masking/analysis/exp2_logprob_compare.py data/responses/<exp2_run>.jsonl --slang-only
 """
 
 from __future__ import annotations

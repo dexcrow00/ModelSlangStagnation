@@ -9,9 +9,9 @@ Figure layout (single PNG):
   Right panel — Prompt-type breakdown: how many slang hits each scenario
                 type produced, with per-word stacked colour.
 
-Usage:
-    python visualizer/viz_exp1.py data/responses/exp1_scenario_generation_<id>.jsonl
-    python visualizer/viz_exp1.py data/responses/exp1_*.jsonl -o figures/exp1.png
+Usage (run from the PromptingSlang root):
+    python experiments/1_scenario_based_prompting/visualizer/viz_exp1.py data/responses/exp1_scenario_generation_<id>.jsonl
+    python experiments/1_scenario_based_prompting/visualizer/viz_exp1.py data/responses/exp1_*.jsonl -o figures/exp1.png
 """
 
 from __future__ import annotations

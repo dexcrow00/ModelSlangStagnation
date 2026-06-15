@@ -11,9 +11,9 @@ Two complementary views per slot:
      over the top-5 candidates at the first position, giving a richer view of
      the distribution even without sampling at higher temperature.
 
-Usage:
-    python analysis/exp3_response_freq.py data/responses/<exp3_run>.jsonl
-    python analysis/exp3_response_freq.py data/responses/*.jsonl --slot exp3_charisma
+Usage (run from the PromptingSlang root):
+    python experiments/3_semantic_slot_queries/analysis/exp3_response_freq.py data/responses/<exp3_run>.jsonl
+    python experiments/3_semantic_slot_queries/analysis/exp3_response_freq.py data/responses/*.jsonl --slot exp3_charisma
 """
 
 from __future__ import annotations
