@@ -16,10 +16,15 @@ their sizes don't reflect dump sizes. The per-dump token totals are fetched
 once from HuggingFace (dump + token_count columns of the sample parquets) and
 cached next to this script; --raw-counts skips normalisation entirely.
 
+With --confidence P, each line gets a shaded Poisson sampling-uncertainty band:
+the 10BT sample is a random draw from FineWeb, so a per-dump occurrence count k
+is k ~ Poisson(rate * tokens); the exact Poisson interval on the (window-pooled)
+count bounds the true rate. Bands are wide for rare words, tight for common ones.
+
 Usage:
     python word_rate_plotter.py --threshold 0.5
     python word_rate_plotter.py --threshold 0.8 --top 20 --log -o rates.png
-    python word_rate_plotter.py --threshold 0.5 --words epic fire sus
+    python word_rate_plotter.py --threshold 0.5 --words epic fire sus --confidence 0.95
 """
 
 from __future__ import annotations
@@ -38,6 +43,7 @@ from typing import Dict, List, Optional
 
 import matplotlib.dates as mdates
 import matplotlib.pyplot as plt
+from scipy.stats import chi2
 
 logging.basicConfig(
     level=logging.INFO,
@@ -161,6 +167,53 @@ def _fetch_to_cache(cache_path: Path) -> None:
     partial_path.unlink()
 
 
+def _poisson_ci(k: int, confidence: float) -> tuple[float, float]:
+    """Exact (Garwood) Poisson confidence interval for an observed count ``k``.
+
+    The 10BT sample is a random draw from FineWeb, so an observed count k in T
+    tokens is k ~ Poisson(rate * T); this interval on k therefore bounds the
+    true rate given the sample.
+    """
+    alpha = 1.0 - confidence
+    lower = chi2.ppf(alpha / 2, 2 * k) / 2 if k > 0 else 0.0
+    upper = chi2.ppf(1.0 - alpha / 2, 2 * k + 2) / 2
+    return lower, upper
+
+
+def _word_series_ci(
+    counts: Dict[date, Counter],
+    dump_tokens: Optional[Dict[date, int]],
+    dumps: List[date],
+    target: str,
+    smooth: int,
+    confidence: Optional[float],
+) -> tuple[List[float], List[float], List[float]]:
+    """Central line and, if ``confidence`` is set, Poisson CI band for one word.
+
+    Counts are pooled over the centered smoothing window, then scaled to the
+    plotted unit (per the pooled token total when normalised, else averaged over
+    the window's dumps for raw counts). The CI is the exact Poisson interval on
+    the pooled count scaled the same way, so it is centered on the line and
+    tightens as a wider window aggregates more of the sample. For ``smooth=1``
+    the central line is identical to the unsmoothed per-dump value.
+    """
+    half = smooth // 2
+    central: List[float] = []
+    lower: List[float] = []
+    upper: List[float] = []
+    for i in range(len(dumps)):
+        window = dumps[max(0, i - half):i + half + 1]
+        k = sum(counts[d][target] for d in window)
+        scale = (1_000_000 / sum(dump_tokens[d] for d in window)
+                 if dump_tokens is not None else 1.0 / len(window))
+        central.append(k * scale)
+        if confidence is not None:
+            lo, hi = _poisson_ci(k, confidence)
+            lower.append(lo * scale)
+            upper.append(hi * scale)
+    return central, lower, upper
+
+
 def _word_series(
     counts: Dict[date, Counter],
     dump_tokens: Optional[Dict[date, int]],
@@ -169,13 +222,7 @@ def _word_series(
     smooth: int,
 ) -> List[float]:
     """Per-dump value series for one word (token-normalised unless raw), smoothed."""
-    ys = [counts[d][target] if dump_tokens is None
-          else counts[d][target] / dump_tokens[d] * 1_000_000
-          for d in dumps]
-    if smooth > 1:  # centered moving average over neighbouring dumps
-        ys = [sum(w := ys[max(0, i - smooth // 2):i + smooth // 2 + 1]) / len(w)
-              for i in range(len(ys))]
-    return ys
+    return _word_series_ci(counts, dump_tokens, dumps, target, smooth, None)[0]
 
 
 def _render_chart(
@@ -185,11 +232,16 @@ def _render_chart(
     log_scale: bool,
     title: str,
     output: Optional[Path],
+    bands: Optional[Dict[str, tuple]] = None,
 ) -> None:
-    """Draw one chart from precomputed per-word series."""
+    """Draw one chart from precomputed per-word series (with optional CI bands)."""
     fig, ax = plt.subplots(figsize=(12, 6))
     for target, ys in series.items():
-        ax.plot(dumps, ys, marker="o", markersize=3, linewidth=1, label=target)
+        line, = ax.plot(dumps, ys, marker="o", markersize=3, linewidth=1, label=target)
+        if bands and target in bands:
+            lo, hi = bands[target]
+            ax.fill_between(dumps, lo, hi, color=line.get_color(),
+                            alpha=0.18, linewidth=0)
 
     unit = ("Occurrences in dump" if dump_tokens is None
             else "Occurrences per million sample tokens")
@@ -206,6 +258,7 @@ def _render_chart(
     plt.tight_layout()
 
     if output:
+        output.parent.mkdir(parents=True, exist_ok=True)
         plt.savefig(output, dpi=150)
         log.info("Plot saved to %s", output)
     else:
@@ -235,6 +288,7 @@ def plot_rates(
     smooth: int,
     log_scale: bool,
     output: Optional[Path],
+    confidence: Optional[float] = None,
 ) -> None:
     dumps = sorted(counts)
     totals: Counter = Counter()
@@ -242,10 +296,17 @@ def plot_rates(
         totals.update(dump_counts)
 
     targets = _select_targets(totals, words, top)
-    series = {t: _word_series(counts, dump_tokens, dumps, t, smooth) for t in targets}
+    series: Dict[str, List[float]] = {}
+    bands: Optional[Dict[str, tuple]] = {} if confidence else None
+    for t in targets:
+        central, lo, hi = _word_series_ci(counts, dump_tokens, dumps, t, smooth, confidence)
+        series[t] = central
+        if bands is not None:
+            bands[t] = (lo, hi)
     title = (f"Slang usage per crawl dump ({len(targets)} words, "
-             f"roberta_score >= {threshold:g})")
-    _render_chart(dumps, series, dump_tokens, log_scale, title, output)
+             f"roberta_score >= {threshold:g}"
+             f"{f', {confidence:.0%} CI' if confidence else ''})")
+    _render_chart(dumps, series, dump_tokens, log_scale, title, output, bands)
 
 
 def plot_segmented_by_peak(
@@ -257,6 +318,7 @@ def plot_segmented_by_peak(
     per_chart: int,
     min_count: int,
     output: Path,
+    confidence: Optional[float] = None,
 ) -> None:
     """One chart per cohort of words sharing a peak-popularity era (<= per_chart each).
 
@@ -277,7 +339,13 @@ def plot_segmented_by_peak(
         sys.exit(f"No words with >= {min_count} above-threshold occurrences.")
 
     # Peak dump = argmax of each word's smoothed normalised series.
-    series = {w: _word_series(counts, dump_tokens, dumps, w, smooth) for w in kept}
+    series: Dict[str, List[float]] = {}
+    bands: Optional[Dict[str, tuple]] = {} if confidence else None
+    for w in kept:
+        central, lo, hi = _word_series_ci(counts, dump_tokens, dumps, w, smooth, confidence)
+        series[w] = central
+        if bands is not None:
+            bands[w] = (lo, hi)
     peak = {w: dumps[max(range(len(dumps)), key=lambda i: ys[i])]
             for w, ys in series.items()}
     ordered = sorted(kept, key=lambda w: (peak[w], -totals[w]))
@@ -293,9 +361,11 @@ def plot_segmented_by_peak(
         out = output.with_name(
             f"{output.stem}_peak{n:02d}_{lo:%Y-%m}_{hi:%Y-%m}{output.suffix}")
         title = (f"Slang peaking {lo:%Y-%m} to {hi:%Y-%m} "
-                 f"({len(group)} words, roberta_score >= {threshold:g})")
+                 f"({len(group)} words, roberta_score >= {threshold:g}"
+                 f"{f', {confidence:.0%} CI' if confidence else ''})")
         _render_chart(dumps, {w: series[w] for w in group},
-                      dump_tokens, log_scale, title, out)
+                      dump_tokens, log_scale, title, out,
+                      {w: bands[w] for w in group} if bands else None)
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -322,6 +392,11 @@ def build_parser() -> argparse.ArgumentParser:
                         "noise (default: 1 = off).")
     p.add_argument("--log", action="store_true", dest="log_scale",
                    help="Log-scale the y axis.")
+    p.add_argument("--confidence", type=float, default=None, metavar="P",
+                   help="Shade a Poisson sampling-uncertainty band at confidence "
+                        "level P (e.g. 0.95). Each per-dump count is treated as a "
+                        "Poisson draw from the 10BT sample, so bands are wide for "
+                        "rare words and tight for common ones, and tighten with --smooth.")
     p.add_argument("--segment-by-peak", action="store_true", dest="segment_by_peak",
                    help="Emit one chart per cohort of words sharing a peak era "
                         "(sorted by peak dump, <= --per-chart words each). "
@@ -342,6 +417,8 @@ def main() -> None:
 
     if not args.scored_dir.is_dir():
         parser.error(f"Scored directory not found: {args.scored_dir}")
+    if args.confidence is not None and not 0 < args.confidence < 1:
+        parser.error("--confidence must be between 0 and 1 (e.g. 0.95).")
 
     counts = load_dump_counts(args.scored_dir, args.threshold)
     if not counts:
@@ -362,10 +439,10 @@ def main() -> None:
             parser.error("--segment-by-peak writes multiple files; -o is required.")
         plot_segmented_by_peak(counts, dump_tokens, args.threshold, args.smooth,
                                args.log_scale, args.per_chart, args.min_count,
-                               args.output)
+                               args.output, args.confidence)
     else:
         plot_rates(counts, dump_tokens, args.threshold, args.words, args.top,
-                   args.smooth, args.log_scale, args.output)
+                   args.smooth, args.log_scale, args.output, args.confidence)
 
 
 if __name__ == "__main__":
