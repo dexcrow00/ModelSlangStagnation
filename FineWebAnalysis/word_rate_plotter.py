@@ -161,6 +161,71 @@ def _fetch_to_cache(cache_path: Path) -> None:
     partial_path.unlink()
 
 
+def _word_series(
+    counts: Dict[date, Counter],
+    dump_tokens: Optional[Dict[date, int]],
+    dumps: List[date],
+    target: str,
+    smooth: int,
+) -> List[float]:
+    """Per-dump value series for one word (token-normalised unless raw), smoothed."""
+    ys = [counts[d][target] if dump_tokens is None
+          else counts[d][target] / dump_tokens[d] * 1_000_000
+          for d in dumps]
+    if smooth > 1:  # centered moving average over neighbouring dumps
+        ys = [sum(w := ys[max(0, i - smooth // 2):i + smooth // 2 + 1]) / len(w)
+              for i in range(len(ys))]
+    return ys
+
+
+def _render_chart(
+    dumps: List[date],
+    series: Dict[str, List[float]],
+    dump_tokens: Optional[Dict[date, int]],
+    log_scale: bool,
+    title: str,
+    output: Optional[Path],
+) -> None:
+    """Draw one chart from precomputed per-word series."""
+    fig, ax = plt.subplots(figsize=(12, 6))
+    for target, ys in series.items():
+        ax.plot(dumps, ys, marker="o", markersize=3, linewidth=1, label=target)
+
+    unit = ("Occurrences in dump" if dump_tokens is None
+            else "Occurrences per million sample tokens")
+    ax.set_title(title)
+    ax.set_xlabel("Crawl dump date")
+    ax.set_ylabel(f"{unit}{' (log scale)' if log_scale else ''}")
+    if log_scale:
+        ax.set_yscale("log")
+    ax.xaxis.set_major_formatter(mdates.DateFormatter("%Y-%m"))
+    fig.autofmt_xdate()
+    ax.legend(bbox_to_anchor=(1.01, 1), loc="upper left", fontsize="small",
+              ncols=1 + len(series) // 30)
+    ax.grid(True, linestyle="--", alpha=0.5)
+    plt.tight_layout()
+
+    if output:
+        plt.savefig(output, dpi=150)
+        log.info("Plot saved to %s", output)
+    else:
+        plt.show()
+    plt.close(fig)
+
+
+def _select_targets(totals: Counter, words: Optional[List[str]], top: Optional[int]) -> List[str]:
+    if words:
+        missing = [w for w in words if w not in totals]
+        if missing:
+            log.warning("No above-threshold occurrences for: %s", ", ".join(missing))
+        targets = [w for w in words if w in totals]
+    else:
+        targets = [w for w, _ in totals.most_common(top)]
+    if not targets:
+        sys.exit("Nothing to plot — no target words above the threshold.")
+    return targets
+
+
 def plot_rates(
     counts: Dict[date, Counter],
     dump_tokens: Optional[Dict[date, int]],
@@ -176,46 +241,61 @@ def plot_rates(
     for dump_counts in counts.values():
         totals.update(dump_counts)
 
-    if words:
-        missing = [w for w in words if w not in totals]
-        if missing:
-            log.warning("No above-threshold occurrences for: %s", ", ".join(missing))
-        targets = [w for w in words if w in totals]
-    else:
-        targets = [w for w, _ in totals.most_common(top)]
-    if not targets:
-        sys.exit("Nothing to plot — no target words above the threshold.")
+    targets = _select_targets(totals, words, top)
+    series = {t: _word_series(counts, dump_tokens, dumps, t, smooth) for t in targets}
+    title = (f"Slang usage per crawl dump ({len(targets)} words, "
+             f"roberta_score >= {threshold:g})")
+    _render_chart(dumps, series, dump_tokens, log_scale, title, output)
 
-    fig, ax = plt.subplots(figsize=(12, 6))
-    for target in targets:
-        ys = [counts[d][target] if dump_tokens is None
-              else counts[d][target] / dump_tokens[d] * 1_000_000
-              for d in dumps]
-        if smooth > 1:  # centered moving average over neighbouring dumps
-            ys = [sum(w := ys[max(0, i - smooth // 2):i + smooth // 2 + 1]) / len(w)
-                  for i in range(len(ys))]
-        ax.plot(dumps, ys, marker="o", markersize=3, linewidth=1, label=target)
 
-    unit = ("Occurrences in dump" if dump_tokens is None
-            else "Occurrences per million sample tokens")
-    ax.set_title(f"Slang usage per crawl dump ({len(targets)} words, "
-                 f"roberta_score >= {threshold:g})")
-    ax.set_xlabel("Crawl dump date")
-    ax.set_ylabel(f"{unit}{' (log scale)' if log_scale else ''}")
-    if log_scale:
-        ax.set_yscale("log")
-    ax.xaxis.set_major_formatter(mdates.DateFormatter("%Y-%m"))
-    fig.autofmt_xdate()
-    ax.legend(bbox_to_anchor=(1.01, 1), loc="upper left", fontsize="small",
-              ncols=1 + len(targets) // 30)
-    ax.grid(True, linestyle="--", alpha=0.5)
-    plt.tight_layout()
+def plot_segmented_by_peak(
+    counts: Dict[date, Counter],
+    dump_tokens: Optional[Dict[date, int]],
+    threshold: float,
+    smooth: int,
+    log_scale: bool,
+    per_chart: int,
+    min_count: int,
+    output: Path,
+) -> None:
+    """One chart per cohort of words sharing a peak-popularity era (<= per_chart each).
 
-    if output:
-        plt.savefig(output, dpi=150)
-        log.info("Plot saved to %s", output)
-    else:
-        plt.show()
+    Each word's peak dump is the argmax of its smoothed, token-normalised series;
+    words are sorted by peak date and chunked into consecutive groups, so each
+    chart shows a contiguous cohort of words that crested around the same time.
+    Words with fewer than ``min_count`` total above-threshold hits are dropped as
+    noise. Output files are named ``<stem>_peakNN_<lo>_<hi><ext>``.
+    """
+    dumps = sorted(counts)
+    totals: Counter = Counter()
+    for dump_counts in counts.values():
+        totals.update(dump_counts)
+
+    kept = [w for w, c in totals.items() if c >= min_count]
+    dropped = len(totals) - len(kept)
+    if not kept:
+        sys.exit(f"No words with >= {min_count} above-threshold occurrences.")
+
+    # Peak dump = argmax of each word's smoothed normalised series.
+    series = {w: _word_series(counts, dump_tokens, dumps, w, smooth) for w in kept}
+    peak = {w: dumps[max(range(len(dumps)), key=lambda i: ys[i])]
+            for w, ys in series.items()}
+    ordered = sorted(kept, key=lambda w: (peak[w], -totals[w]))
+    log.info("Segmenting %d words by peak era (%d dropped: < %d hits); "
+             "<= %d per chart -> %d chart(s).",
+             len(kept), dropped, min_count, per_chart,
+             -(-len(ordered) // per_chart))
+
+    for idx in range(0, len(ordered), per_chart):
+        group = ordered[idx:idx + per_chart]
+        lo, hi = peak[group[0]], peak[group[-1]]
+        n = idx // per_chart + 1
+        out = output.with_name(
+            f"{output.stem}_peak{n:02d}_{lo:%Y-%m}_{hi:%Y-%m}{output.suffix}")
+        title = (f"Slang peaking {lo:%Y-%m} to {hi:%Y-%m} "
+                 f"({len(group)} words, roberta_score >= {threshold:g})")
+        _render_chart(dumps, {w: series[w] for w in group},
+                      dump_tokens, log_scale, title, out)
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -242,6 +322,15 @@ def build_parser() -> argparse.ArgumentParser:
                         "noise (default: 1 = off).")
     p.add_argument("--log", action="store_true", dest="log_scale",
                    help="Log-scale the y axis.")
+    p.add_argument("--segment-by-peak", action="store_true", dest="segment_by_peak",
+                   help="Emit one chart per cohort of words sharing a peak era "
+                        "(sorted by peak dump, <= --per-chart words each). "
+                        "Requires -o; writes <stem>_peakNN_<lo>_<hi><ext> files.")
+    p.add_argument("--per-chart", type=int, default=10, metavar="N", dest="per_chart",
+                   help="Max words per chart in --segment-by-peak mode (default: 10).")
+    p.add_argument("--min-count", type=int, default=50, metavar="N", dest="min_count",
+                   help="In --segment-by-peak mode, drop words with fewer than N "
+                        "total above-threshold hits as noise (default: 50).")
     p.add_argument("-o", "--output", type=Path, metavar="FILE",
                    help="Save the plot here instead of displaying it.")
     return p
@@ -268,8 +357,15 @@ def main() -> None:
                      f"delete {args.sizes_cache} to re-fetch, or use --raw-counts.")
 
     _use_emoji_font()
-    plot_rates(counts, dump_tokens, args.threshold, args.words, args.top,
-               args.smooth, args.log_scale, args.output)
+    if args.segment_by_peak:
+        if args.output is None:
+            parser.error("--segment-by-peak writes multiple files; -o is required.")
+        plot_segmented_by_peak(counts, dump_tokens, args.threshold, args.smooth,
+                               args.log_scale, args.per_chart, args.min_count,
+                               args.output)
+    else:
+        plot_rates(counts, dump_tokens, args.threshold, args.words, args.top,
+                   args.smooth, args.log_scale, args.output)
 
 
 if __name__ == "__main__":
