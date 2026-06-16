@@ -1,8 +1,10 @@
-"""Writes model responses to a JSONL file."""
+"""Writes model responses to per-model JSONL files in an output directory."""
 
 from __future__ import annotations
 
 import json
+import re
+from datetime import datetime, timezone
 from pathlib import Path
 from types import TracebackType
 from typing import IO
@@ -18,16 +20,31 @@ class _ModelEncoder(json.JSONEncoder):
         return super().default(obj)
 
 
-class ResponseCollector:
-    """Context manager that appends one JSON record per line to *output_path*."""
+def _safe_filename(model: str) -> str:
+    """Turn a model id (may contain '/', ':', etc.) into a safe filename stem."""
+    return re.sub(r"[^A-Za-z0-9._-]+", "_", model).strip("_") or "model"
 
-    def __init__(self, output_path: str | Path):
-        self.output_path = Path(output_path)
-        self.output_path.parent.mkdir(parents=True, exist_ok=True)
-        self._fh: IO[str] | None = None
+
+class ResponseCollector:
+    """Context manager that appends response records to per-model JSONL files.
+
+    Each record is routed by its ``model`` field to
+    ``<output_dir>/<model>_<timestamp>.jsonl`` (the model id sanitised into a safe
+    filename); file handles are opened lazily on first write per model. The
+    timestamp is fixed for the lifetime of the collector (one per run), so each
+    run writes a fresh set of files rather than appending to or overwriting prior
+    runs.
+    """
+
+    def __init__(self, output_dir: str | Path, timestamp: str | None = None):
+        self.output_dir = Path(output_dir)
+        self.output_dir.mkdir(parents=True, exist_ok=True)
+        self.timestamp = timestamp or datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
+        self._handles: dict[str, IO[str]] = {}
+        self._active = False
 
     def __enter__(self) -> "ResponseCollector":
-        self._fh = open(self.output_path, "a", encoding="utf-8")
+        self._active = True
         return self
 
     def __exit__(
@@ -36,13 +53,23 @@ class ResponseCollector:
         exc_val: BaseException | None,
         exc_tb: TracebackType | None,
     ) -> None:
-        if self._fh is not None:
-            self._fh.close()
-            self._fh = None
+        for fh in self._handles.values():
+            fh.close()
+        self._handles.clear()
+        self._active = False
+
+    def path_for(self, model: str) -> Path:
+        """Output file path for *model* (includes the collector's run timestamp)."""
+        return self.output_dir / f"{_safe_filename(model)}_{self.timestamp}.jsonl"
 
     def save(self, record: dict) -> None:
-        """Append *record* as a pretty-printed JSON block and flush immediately."""
-        if self._fh is None:
+        """Append *record* as a pretty-printed JSON block to its model's file."""
+        if not self._active:
             raise RuntimeError("ResponseCollector must be used as a context manager.")
-        self._fh.write(json.dumps(record, ensure_ascii=False, indent=2, cls=_ModelEncoder) + "\n\n")
-        self._fh.flush()
+        model = record.get("model") or "unknown"
+        fh = self._handles.get(model)
+        if fh is None:
+            fh = open(self.path_for(model), "a", encoding="utf-8")
+            self._handles[model] = fh
+        fh.write(json.dumps(record, ensure_ascii=False, indent=2, cls=_ModelEncoder) + "\n\n")
+        fh.flush()

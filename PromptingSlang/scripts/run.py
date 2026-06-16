@@ -26,12 +26,18 @@ logging.basicConfig(
     datefmt="%H:%M:%S",
 )
 
+# Default models span three providers; RouterClient picks the API per model ID
+# ('org/model' -> Together, 'claude-*' -> Anthropic, 'gpt-*'/'o#-*' -> OpenAI).
 DEFAULT_MODELS = [
+    # Together (org/model format)
     "meta-llama/Llama-3.2-3B-Instruct-Turbo",
     "Qwen/Qwen2.5-7B-Instruct-Turbo",
     "deepseek-ai/DeepSeek-V4-Pro",
-    #"openai/gpt-oss-120b",
     "google/gemma-4-31B-it",
+    # Anthropic (Claude)
+    "claude-sonnet-4-6",
+    # OpenAI (GPT)
+    "gpt-4o",
 ]
 
 
@@ -55,10 +61,11 @@ def parse_args() -> argparse.Namespace:
         ),
     )
     parser.add_argument(
-        "--output",
+        "--output-dir",
+        dest="output_dir",
         help=(
-            "Output JSONL path. Defaults to data/responses/<run_id>.jsonl "
-            "relative to repo root."
+            "Directory for the per-model response files (one <model>.jsonl each). "
+            "Defaults to a 'responses' directory next to the prompt file's directory."
         ),
     )
     parser.add_argument(
@@ -88,21 +95,19 @@ def main() -> None:
     args = parse_args()
 
     run_id = args.run_id or uuid.uuid4().hex
-    prompt_stem = Path(args.prompts).stem
-    repo_root = Path(__file__).resolve().parents[1]
 
     prompts = load_prompts(args.prompts)
     if not prompts:
         print("No prompts found — check your JSONL file.", file=sys.stderr)
         sys.exit(1)
 
-    using_logprobs = any(logprobs is not None for _, logprobs, _echo in prompts)
-    if args.output:
-        output_path = Path(args.output)
-    elif using_logprobs:
-        output_path = repo_root / "data" / "responses" / f"{prompt_stem}_logprobs_{run_id}.jsonl"
+    # Per-model response files land in a 'responses' directory next to the
+    # directory holding the prompt file (e.g. <experiment>/prompts/foo.jsonl ->
+    # <experiment>/responses/), unless overridden with --output-dir.
+    if args.output_dir:
+        output_dir = Path(args.output_dir)
     else:
-        output_path = repo_root / "data" / "responses" / f"{prompt_stem}_{run_id}.jsonl"
+        output_dir = Path(args.prompts).resolve().parent.parent / "responses"
 
     n_variants = sum(len(template.expand()) for template, _lp, _echo in prompts)
     n_models = len(args.models)
@@ -112,7 +117,7 @@ def main() -> None:
     print(f"  Models      : {n_models}")
     print(f"  Variants    : {n_variants}  ({len(prompts)} template(s), expanded across variables)")
     print(f"  Total calls : {n_requests}")
-    print(f"  Output      : {output_path}")
+    print(f"  Output dir  : {output_dir}  (one <model>_<timestamp>.jsonl per model)")
     print()
     try:
         confirm = input("Proceed? [y/N] ").strip().lower()
@@ -145,7 +150,7 @@ def main() -> None:
 
     gen_kwargs = {"temperature": args.temperature, "max_tokens": args.max_tokens}
 
-    with ResponseCollector(output_path) as collector:
+    with ResponseCollector(output_dir) as collector:
         runner = Runner(
             client=router,
             collector=collector,
@@ -155,7 +160,7 @@ def main() -> None:
         )
         runner.run(prompts)
 
-    print(f"\nDone. Responses written to: {output_path}")
+    print(f"\nDone. Responses written to: {output_dir}  (one timestamped file per model)")
 
 
 if __name__ == "__main__":
