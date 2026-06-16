@@ -15,7 +15,7 @@ from tenacity import (
 )
 from tqdm import tqdm
 
-from .client import RouterClient, TogetherClient
+from .client import RouterClient, TogetherClient, _infer_provider
 from .collector import ResponseCollector
 from .prompts import PromptTemplate
 
@@ -28,6 +28,16 @@ _RETRYABLE_STATUS = {429, 500, 502, 503, 504}
 def _is_retryable(exc: BaseException) -> bool:
     status = getattr(exc, "status_code", None) or getattr(exc, "status", None)
     return status in _RETRYABLE_STATUS
+
+
+def model_class(model: str) -> str:
+    """Classify a model as 'open' (Together-hosted) or 'closed' (OpenAI/Anthropic).
+
+    A prompt's 'model_type' field is matched against this so open prompts (which
+    request logprobs) run only on open models, and closed prompts run on the
+    closed APIs where logprobs aren't available.
+    """
+    return "open" if _infer_provider(model) == "together" else "closed"
 
 
 class Runner:
@@ -53,21 +63,33 @@ class Runner:
         """
         # Expand prompts first so tqdm shows the true total request count.
         expanded = [
-            (template.id, logprobs, echo, variables, system_text, user_text)
+            (template.id, template.model_type, template.temperature,
+             logprobs, echo, variables, system_text, user_text)
             for template, logprobs, echo in prompts
             for variables, system_text, user_text in template.expand()
         ]
-        combos = [(model, *exp) for model in self.models for exp in expanded]
+        # Route by model_type: a prompt tagged 'open'/'closed' runs only on models
+        # of that class; an untagged prompt (model_type=None) runs on every model.
+        combos = []
+        skipped = 0
+        for model in self.models:
+            mclass = model_class(model)
+            for exp in expanded:
+                prompt_model_type = exp[1]
+                if prompt_model_type is not None and prompt_model_type != mclass:
+                    skipped += 1
+                    continue
+                combos.append((model, *exp))
         logger.info(
-            "Starting run %s — %d model(s) × %d prompt variant(s) = %d requests",
-            self.run_id,
-            len(self.models),
-            len(expanded),
-            len(combos),
+            "Starting run %s — %d model(s), %d prompt variant(s) -> %d requests "
+            "(%d skipped by model_type)",
+            self.run_id, len(self.models), len(expanded), len(combos), skipped,
         )
 
-        for model, prompt_id, logprobs, echo, variables, system_text, user_text in tqdm(combos, desc="Prompting", unit="req"):
-            self._process(model, prompt_id, logprobs, echo, variables, system_text, user_text)
+        for (model, prompt_id, _model_type, temperature, logprobs, echo,
+             variables, system_text, user_text) in tqdm(combos, desc="Prompting", unit="req"):
+            self._process(model, prompt_id, logprobs, echo, variables,
+                          system_text, user_text, temperature)
 
     @retry(
         retry=retry_if_exception(_is_retryable),
@@ -76,7 +98,8 @@ class Runner:
         reraise=True,
     )
     def _call(self, model: str, messages: list[dict], **extra_kwargs) -> dict:
-        return self.client.complete(model, messages, **self.gen_kwargs, **extra_kwargs)
+        # extra_kwargs (e.g. a per-prompt temperature) override the run defaults.
+        return self.client.complete(model, messages, **{**self.gen_kwargs, **extra_kwargs})
 
     def _process(
         self,
@@ -87,6 +110,7 @@ class Runner:
         variables: dict,
         system_text: str,
         user_text: str,
+        temperature: float | None = None,
     ) -> None:
         messages = [
             {"role": "system", "content": system_text},
@@ -97,6 +121,8 @@ class Runner:
             extra["logprobs"] = logprobs
         if echo is not None:
             extra["echo"] = echo
+        if temperature is not None:
+            extra["temperature"] = temperature
         try:
             result = self._call(model, messages, **extra)
         except Exception as exc:

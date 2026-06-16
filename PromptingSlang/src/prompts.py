@@ -14,6 +14,8 @@ class PromptTemplate:
     system: str
     user: str
     variables: dict = field(default_factory=dict)
+    model_type: str | None = None   # "open" / "closed" — routes to provider class
+    temperature: float | None = None  # per-record override of the run temperature
 
     def expand(self) -> list[tuple[dict, str, str]]:
         """Return one (variables_used, system, user) tuple per variable combination.
@@ -47,7 +49,8 @@ def load_prompts(path: str | Path) -> list[tuple[PromptTemplate, int | None, boo
     formats. Each record must have at least 'id', 'system', 'user'.
 
     Returns a list of (template, logprobs, echo) tuples. logprobs and echo are
-    read from the corresponding JSON fields, or None if not specified.
+    read from the corresponding JSON fields, or None if not specified;
+    'model_type' and 'temperature' are carried on the PromptTemplate.
     """
     results: list[tuple[PromptTemplate, int | None, bool | None]] = []
     decoder = json.JSONDecoder()
@@ -68,6 +71,8 @@ def load_prompts(path: str | Path) -> list[tuple[PromptTemplate, int | None, boo
             system=obj["system"],
             user=obj["user"],
             variables=obj.get("variables", {}),
+            model_type=obj.get("model_type"),
+            temperature=obj.get("temperature"),
         )
         results.append((template, obj.get("logprobs"), obj.get("echo")))
         pos = end

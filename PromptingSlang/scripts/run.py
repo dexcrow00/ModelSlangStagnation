@@ -18,7 +18,7 @@ from dotenv import load_dotenv
 from src.client import AnthropicClient, OpenAIClient, RouterClient, TogetherClient
 from src.collector import ResponseCollector
 from src.prompts import load_prompts
-from src.runner import Runner
+from src.runner import Runner, model_class
 
 logging.basicConfig(
     level=logging.INFO,
@@ -111,7 +111,13 @@ def main() -> None:
 
     n_variants = sum(len(template.expand()) for template, _lp, _echo in prompts)
     n_models = len(args.models)
-    n_requests = n_models * n_variants
+    # Requests honor model_type routing: a tagged prompt only runs on its model class.
+    n_requests = sum(
+        len(template.expand())
+        for model in args.models
+        for template, _lp, _echo in prompts
+        if template.model_type is None or template.model_type == model_class(model)
+    )
 
     print(f"  Prompt file : {args.prompts}")
     print(f"  Models      : {n_models}")
