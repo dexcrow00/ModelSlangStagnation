@@ -95,7 +95,6 @@
 }
 
 
-# Prompts for closed models, can't use logprobs.
 {
   "id": "exp3_cool_impressive",
   "model_type": "closed",
