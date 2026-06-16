@@ -65,7 +65,7 @@ def parse_args() -> argparse.Namespace:
         "--temperature",
         type=float,
         default=0.0,
-        help="Sampling temperature (default: 0.8).",
+        help="Sampling temperature (default: 0.0).",
     )
     parser.add_argument(
         "--max-tokens",

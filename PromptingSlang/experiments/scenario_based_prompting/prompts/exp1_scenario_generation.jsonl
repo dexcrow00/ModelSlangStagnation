@@ -29,21 +29,6 @@
 }
 
 {
-  "id": "exp1_group_chat",
-  "system": "Write the way people send messages in a group chat with close friends. Short, casual, reactive — just the messages, no context or labels.",
-  "user": "Someone in your group chat just said: \"{message}\" — write your reply.",
-  "variables": {
-    "message": [
-      "bro I just ran into my ex at the mall with someone new",
-      "okay so I might have accidentally texted my boss what I meant to send you",
-      "just found out we got the apartment",
-      "my cousin is performing at the festival next month",
-      "so apparently that rumor about the teacher is actually true"
-    ]
-  }
-}
-
-{
   "id": "exp1_reaction_post",
   "system": "Write the way people react on social media. Casual, punchy — just the reaction text, no hashtags or labels.",
   "user": "Write a social media reaction post about: \"{situation}\"",
@@ -54,6 +39,111 @@
       "an underdog sports team winning the championship",
       "a movie sequel that completely ruined the original",
       "someone on video standing up to a bully in a really satisfying way"
+    ]
+  }
+}
+
+{
+  "id": "exp1_livestream_chat",
+  "system": "Write the way viewers spam messages in a live gaming stream chat — extremely casual and quick. Output only the chat message, nothing else.",
+  "user": "Write a live stream chat message reacting to {moment}.",
+  "variables": {
+    "moment": [
+      "the streamer pulling off an insane last-second clutch",
+      "the streamer choking and throwing the game when they had it won",
+      "a hilarious fail that nobody saw coming",
+      "the streamer hitting a massive subscriber milestone",
+      "a new player showing up and completely dominating the lobby"
+    ]
+  }
+}
+
+{
+  "id": "exp1_tiktok_comment",
+  "system": "Write the way people comment on TikTok videos — short, reactive, very online. Output only the comment text, no hashtags or labels.",
+  "user": "Write a TikTok comment on a video of {video}.",
+  "variables": {
+    "video": [
+      "someone nailing a really hard dance on the first try",
+      "a person showing off an outfit that goes incredibly hard",
+      "a cooking attempt that spirals completely out of control",
+      "someone giving an unhinged but weirdly correct life take",
+      "a cat doing something that looks oddly intentional"
+    ]
+  }
+}
+
+{
+  "id": "exp1_instagram_caption",
+  "system": "Write the way people caption their own photos on Instagram — short, casual, a little playful. Output only the caption text, no hashtags or labels.",
+  "user": "Write an Instagram caption for a photo of {photo}.",
+  "variables": {
+    "photo": [
+      "you looking your absolute best before a night out",
+      "a spontaneous trip with your closest friends",
+      "a meal that turned out way better than expected",
+      "you celebrating a personal win",
+      "a chaotic but fun moment with friends"
+    ]
+  }
+}
+
+{
+  "id": "exp1_discord_message",
+  "system": "Write the way people message in a Discord server with friends — casual, quick, lowercase energy. Output only the message text, no names or labels.",
+  "user": "Write a Discord message reacting to {topic}.",
+  "variables": {
+    "topic": [
+      "a clip of someone pulling off something ridiculous in a game",
+      "your friend finally beating a boss everyone was stuck on",
+      "a meme someone just dropped in the chat",
+      "plans falling apart at the last minute",
+      "someone in the server confidently saying something wildly wrong"
+    ]
+  }
+}
+
+{
+  "id": "exp1_forum_post",
+  "system": "Write the way people post on an online message board — informal, opinionated, conversational. Output only the post text, no titles or formatting.",
+  "user": "Write a message board post sharing your take on {topic}.",
+  "variables": {
+    "topic": [
+      "whether the new sequel actually lived up to the hype",
+      "a game that everyone massively overrates",
+      "the best cheap food you can actually get",
+      "an unpopular opinion about a show everyone loves",
+      "why a recent trend is already completely played out"
+    ]
+  }
+}
+
+{
+  "id": "exp1_gaming_voice_call",
+  "system": "Write the way someone talks out loud on a voice call while gaming with friends — fast, reactive, spoken. Output only what they say, no labels or quotation marks.",
+  "user": "Write what someone would shout into voice chat when {moment}.",
+  "variables": {
+    "moment": [
+      "their teammate makes a clutch play to win the round",
+      "they get eliminated by something completely unfair",
+      "they spot the enemy team about to walk right into their trap",
+      "a teammate keeps messing up the same easy thing",
+      "they pull off a play they can't believe actually worked"
+    ]
+  }
+}
+
+{
+  "id": "exp1_casual_story",
+  "system": "Write the way someone tells a friend a story out loud — casual spoken language, like you're just hanging out. Output only what they say, no labels or quotation marks.",
+  "user": "Write how someone would tell their friend about {event}.",
+  "variables": {
+    "event": [
+      "the chaotic thing that happened on their way to work",
+      "running into their ex in the worst possible situation",
+      "a night out that went completely sideways",
+      "the most awkward interaction they had all week",
+      "winning something they never expected to win"
     ]
   }
 }
