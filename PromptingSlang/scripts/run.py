@@ -31,9 +31,10 @@ logging.basicConfig(
 DEFAULT_MODELS = [
     # Together (org/model format)
     "meta-llama/Llama-3.2-3B-Instruct-Turbo",
-    "Qwen/Qwen2.5-7B-Instruct-Turbo",
+    "Qwen/Qwen3.7-Max",
     "deepseek-ai/DeepSeek-V4-Pro",
     "google/gemma-4-31B-it",
+    "moonshotai/Kimi-K2.6",
     # Anthropic (Claude)
     "claude-sonnet-4-6",
     # OpenAI (GPT)
