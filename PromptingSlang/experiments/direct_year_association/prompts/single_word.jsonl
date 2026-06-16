@@ -16,3 +16,12 @@
   "logprobs": 5,
   "echo": true
 }
+{
+  "id": "GiveYear",
+  "system": "Give the response as a single returned token or word.",
+  "user": "The slang word \"{word}\" is most associated with what year? Respond using only the year.",
+  "variables": {
+    "word": ["lol","sick","troll","bro","swag","vibe","vibes","alpha","red pill","slay","gaslight","glow-up","aura"] 
+  },
+  "echo": true
+}
