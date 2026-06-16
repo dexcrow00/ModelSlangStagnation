@@ -194,7 +194,6 @@
 }
 
 
-# Prompts for closed models, does not use logprobs.
 {
   "id": "exp3_lol",
   "model_type": "closed",
@@ -207,7 +206,7 @@
       "Give me the short informal acronym someone adds to a message to indicate they're laughing.",
       "What three-letter shorthand do people use online to react to something funny?"
     ]
-  },
+  }
 }
 
 {
@@ -222,7 +221,7 @@
       "Give me one slang word — normally meaning ill or nauseated — that people use to say something is really cool.",
       "What informal word means both 'unwell' and, in slang, 'excellent'?"
     ]
-  },
+  }
 }
 
 {
@@ -237,7 +236,7 @@
       "Give me one informal word for a person who stirs up arguments on the internet to get a reaction.",
       "What word — also the name of a mythical cave creature — describes someone who provokes others online?"
     ]
-  },
+  }
 }
 
 {
@@ -252,7 +251,7 @@
       "Give me one informal word for a buddy, especially between young men.",
       "What short slang term, shortened from 'brother,' do people use to greet a male friend?"
     ]
-  },
+  }
 }
 
 {
@@ -267,7 +266,7 @@
       "Give me one slang word for a cool, self-assured sense of style and swagger.",
       "What informal word describes someone's flashy confidence and cool personal style?"
     ]
-  },
+  }
 }
 
 {
@@ -282,7 +281,7 @@
       "Give me one casual word for the overall mood or energy you sense from something.",
       "What informal word describes the emotional feel of a moment?"
     ]
-  },
+  }
 }
 
 {
@@ -297,7 +296,7 @@
       "Give me one casual plural word for the general mood and energy of a situation.",
       "What informal word do people use for the collective good or bad feelings something radiates?"
     ]
-  },
+  }
 }
 
 {
@@ -312,7 +311,7 @@
       "Give me one slang word for the most socially dominant, confident male in a social hierarchy.",
       "What word — borrowed from animal-pack hierarchy — describes a dominant, take-charge man?"
     ]
-  },
+  }
 }
 
 {
@@ -327,7 +326,7 @@
       "Give me the two-word phrase, popularized by a sci-fi film, for rejecting comfortable illusions to see reality.",
       "What phrase describes the moment someone adopts a cynical 'awakened' worldview, often about gender or society?"
     ]
-  },
+  }
 }
 
 {
@@ -342,7 +341,7 @@
       "Give me one slang word people use to praise someone for absolutely nailing it or looking incredible.",
       "What casual word — literally meaning to kill — is used to say someone did something fantastically?"
     ]
-  },
+  }
 }
 
 {
@@ -357,7 +356,7 @@
       "Give me one word for psychologically making a person question whether what they experienced was real.",
       "What term — from an old play and film about a deceptive husband — means to manipulate someone into doubting their sanity?"
     ]
-  },
+  }
 }
 
 {
@@ -372,7 +371,7 @@
       "Give me one casual term for when someone goes from awkward-looking to strikingly attractive.",
       "What hyphenated slang word describes a major improvement in how good someone looks?"
     ]
-  },
+  }
 }
 
 {
@@ -387,5 +386,5 @@
       "Give me one word young people use for the invisible 'points' you gain or lose by acting cool or cringe.",
       "What word for an invisible energy field around a person is now slang for their coolness or charisma?"
     ]
-  },
+  }
 }
