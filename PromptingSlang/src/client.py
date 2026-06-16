@@ -1,18 +1,31 @@
 """LLM API clients for Together, OpenAI, and Anthropic."""
 
+import importlib.util
 import os
 import re
+from pathlib import Path
 from typing import Any
 
-try:
-    import Keys as _Keys
-except ImportError:
-    _Keys = None
+
+def _load_keys():
+    """Load the project's Keys.py (it lives at the repo root, two levels up)."""
+    for base in (Path(__file__).resolve().parents[2], Path.cwd()):
+        candidate = base / "Keys.py"
+        if candidate.is_file():
+            spec = importlib.util.spec_from_file_location("Keys", candidate)
+            module = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(module)
+            return module
+    return None
 
 
-def _get_key(env_var: str) -> str | None:
-    from_keys = getattr(_Keys, env_var, None) if _Keys else None
-    return from_keys or os.environ.get(env_var)
+_Keys = _load_keys()
+
+
+def _get_key(name: str) -> str | None:
+    """Value of *name* from Keys.py, falling back to the environment."""
+    from_keys = getattr(_Keys, name, None) if _Keys else None
+    return from_keys or os.environ.get(name)
 
 
 # ---------------------------------------------------------------------------
