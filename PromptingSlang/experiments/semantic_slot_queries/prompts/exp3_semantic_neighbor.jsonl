@@ -99,6 +99,7 @@
 {
   "id": "exp3_cool_impressive",
   "model_type": "closed",
+  "temperature": 1.0,
   "system": "Respond with a single word only. No explanation, no punctuation — just the word.",
   "user": "{phrasing}",
   "variables": {
@@ -114,6 +115,7 @@
 {
   "id": "exp3_mediocre",
   "model_type": "closed",
+  "temperature": 1.0,
   "system": "Respond with a single word only. No explanation, no punctuation — just the word.",
   "user": "{phrasing}",
   "variables": {
@@ -129,6 +131,7 @@
 {
   "id": "exp3_charisma",
   "model_type": "closed",
+  "temperature": 1.0,
   "system": "Respond with a single word only. No explanation, no punctuation — just the word.",
   "user": "{phrasing}",
   "variables": {
@@ -144,6 +147,7 @@
 {
   "id": "exp3_agreement",
   "model_type": "closed",
+  "temperature": 1.0,
   "system": "Respond with a single word only. No explanation, no punctuation — just the word.",
   "user": "{phrasing}",
   "variables": {
@@ -159,6 +163,7 @@
 {
   "id": "exp3_suspicious",
   "model_type": "closed",
+  "temperature": 1.0,
   "system": "Respond with a single word only. No explanation, no punctuation — just the word.",
   "user": "{phrasing}",
   "variables": {
@@ -174,6 +179,7 @@
 {
   "id": "exp3_excellent_sensory",
   "model_type": "closed",
+  "temperature": 1.0,
   "system": "Respond with a single word only. No explanation, no punctuation — just the word.",
   "user": "{phrasing}",
   "variables": {

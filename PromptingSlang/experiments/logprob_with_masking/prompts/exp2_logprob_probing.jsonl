@@ -40,6 +40,7 @@
 {
   "id": "exp2_adj_probe_non_logprob",
   "model_access": "closed",
+  "temperature": 1.0,
   "system": "Complete the sentence with a single informal word. Output only the word, nothing else.",
   "user": "Complete: \"{prefix} ___.\"",
   "variables": {
@@ -61,6 +62,7 @@
 {
   "id": "exp2_verb_probe_non_logprob",
   "model_access": "closed",
+  "temperature": 1.0,
   "system": "Complete the sentence with a single informal word. Output only the word, nothing else.",
   "user": "Complete: \"{prefix} ___.\"",
   "variables": {

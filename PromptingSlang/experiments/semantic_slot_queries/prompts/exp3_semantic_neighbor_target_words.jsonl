@@ -198,6 +198,7 @@
 {
   "id": "exp3_lol",
   "model_type": "closed",
+  "temperature": 1.0,
   "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
   "user": "{phrasing}",
   "variables": {
@@ -212,6 +213,7 @@
 {
   "id": "exp3_sick",
   "model_type": "closed",
+  "temperature": 1.0,
   "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
   "user": "{phrasing}",
   "variables": {
@@ -226,6 +228,7 @@
 {
   "id": "exp3_troll",
   "model_type": "closed",
+  "temperature": 1.0,
   "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
   "user": "{phrasing}",
   "variables": {
@@ -240,6 +243,7 @@
 {
   "id": "exp3_bro",
   "model_type": "closed",
+  "temperature": 1.0,
   "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
   "user": "{phrasing}",
   "variables": {
@@ -254,6 +258,7 @@
 {
   "id": "exp3_swag",
   "model_type": "closed",
+  "temperature": 1.0,
   "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
   "user": "{phrasing}",
   "variables": {
@@ -268,6 +273,7 @@
 {
   "id": "exp3_vibe",
   "model_type": "closed",
+  "temperature": 1.0,
   "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
   "user": "{phrasing}",
   "variables": {
@@ -282,6 +288,7 @@
 {
   "id": "exp3_vibes",
   "model_type": "closed",
+  "temperature": 1.0,
   "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
   "user": "{phrasing}",
   "variables": {
@@ -296,6 +303,7 @@
 {
   "id": "exp3_alpha",
   "model_type": "closed",
+  "temperature": 1.0,
   "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
   "user": "{phrasing}",
   "variables": {
@@ -310,6 +318,7 @@
 {
   "id": "exp3_red_pill",
   "model_type": "closed",
+  "temperature": 1.0,
   "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
   "user": "{phrasing}",
   "variables": {
@@ -324,6 +333,7 @@
 {
   "id": "exp3_slay",
   "model_type": "closed",
+  "temperature": 1.0,
   "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
   "user": "{phrasing}",
   "variables": {
@@ -338,6 +348,7 @@
 {
   "id": "exp3_gaslight",
   "model_type": "closed",
+  "temperature": 1.0,
   "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
   "user": "{phrasing}",
   "variables": {
@@ -352,6 +363,7 @@
 {
   "id": "exp3_glow_up",
   "model_type": "closed",
+  "temperature": 1.0,
   "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
   "user": "{phrasing}",
   "variables": {
@@ -366,6 +378,7 @@
 {
   "id": "exp3_aura",
   "model_type": "closed",
+  "temperature": 1.0,
   "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
   "user": "{phrasing}",
   "variables": {
