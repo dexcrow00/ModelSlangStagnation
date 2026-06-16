@@ -1,5 +1,6 @@
 {
   "id": "exp3_lol",
+  "model_type": "open",
   "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
   "user": "{phrasing}",
   "variables": {
@@ -14,6 +15,7 @@
 
 {
   "id": "exp3_sick",
+  "model_type": "open",
   "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
   "user": "{phrasing}",
   "variables": {
@@ -28,6 +30,7 @@
 
 {
   "id": "exp3_troll",
+  "model_type": "open",
   "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
   "user": "{phrasing}",
   "variables": {
@@ -42,6 +45,7 @@
 
 {
   "id": "exp3_bro",
+  "model_type": "open",
   "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
   "user": "{phrasing}",
   "variables": {
@@ -56,6 +60,7 @@
 
 {
   "id": "exp3_swag",
+  "model_type": "open",
   "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
   "user": "{phrasing}",
   "variables": {
@@ -70,6 +75,7 @@
 
 {
   "id": "exp3_vibe",
+  "model_type": "open",
   "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
   "user": "{phrasing}",
   "variables": {
@@ -84,6 +90,7 @@
 
 {
   "id": "exp3_vibes",
+  "model_type": "open",
   "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
   "user": "{phrasing}",
   "variables": {
@@ -98,6 +105,7 @@
 
 {
   "id": "exp3_alpha",
+  "model_type": "open",
   "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
   "user": "{phrasing}",
   "variables": {
@@ -112,6 +120,7 @@
 
 {
   "id": "exp3_red_pill",
+  "model_type": "open",
   "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
   "user": "{phrasing}",
   "variables": {
@@ -126,6 +135,7 @@
 
 {
   "id": "exp3_slay",
+  "model_type": "open",
   "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
   "user": "{phrasing}",
   "variables": {
@@ -140,6 +150,7 @@
 
 {
   "id": "exp3_gaslight",
+  "model_type": "open",
   "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
   "user": "{phrasing}",
   "variables": {
@@ -154,6 +165,7 @@
 
 {
   "id": "exp3_glow_up",
+  "model_type": "open",
   "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
   "user": "{phrasing}",
   "variables": {
@@ -168,6 +180,7 @@
 
 {
   "id": "exp3_aura",
+  "model_type": "open",
   "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
   "user": "{phrasing}",
   "variables": {
@@ -178,4 +191,188 @@
     ]
   },
   "logprobs": 5
+}
+
+
+# Prompts for closed models, does not use logprobs.
+{
+  "id": "exp3_lol",
+  "model_type": "closed",
+  "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
+  "user": "{phrasing}",
+  "variables": {
+    "phrasing": [
+      "What's the single most common abbreviation people type to show that something made them laugh?",
+      "Give me the short informal acronym someone adds to a message to indicate they're laughing.",
+      "What three-letter shorthand do people use online to react to something funny?"
+    ]
+  },
+}
+
+{
+  "id": "exp3_sick",
+  "model_type": "closed",
+  "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
+  "user": "{phrasing}",
+  "variables": {
+    "phrasing": [
+      "What everyday word for being physically unwell is also used as slang to mean something is awesome?",
+      "Give me one slang word — normally meaning ill or nauseated — that people use to say something is really cool.",
+      "What informal word means both 'unwell' and, in slang, 'excellent'?"
+    ]
+  },
+}
+
+{
+  "id": "exp3_troll",
+  "model_type": "closed",
+  "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
+  "user": "{phrasing}",
+  "variables": {
+    "phrasing": [
+      "What's a single word for someone who deliberately posts inflammatory things online just to upset people?",
+      "Give me one informal word for a person who stirs up arguments on the internet to get a reaction.",
+      "What word — also the name of a mythical cave creature — describes someone who provokes others online?"
+    ]
+  },
+}
+
+{
+  "id": "exp3_bro",
+  "model_type": "closed",
+  "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
+  "user": "{phrasing}",
+  "variables": {
+    "phrasing": [
+      "What's a casual word guys use to address a close male friend?",
+      "Give me one informal word for a buddy, especially between young men.",
+      "What short slang term, shortened from 'brother,' do people use to greet a male friend?"
+    ]
+  },
+}
+
+{
+  "id": "exp3_swag",
+  "model_type": "closed",
+  "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
+  "user": "{phrasing}",
+  "variables": {
+    "phrasing": [
+      "What's a single informal word for effortless stylish confidence in how someone carries themselves?",
+      "Give me one slang word for a cool, self-assured sense of style and swagger.",
+      "What informal word describes someone's flashy confidence and cool personal style?"
+    ]
+  },
+}
+
+{
+  "id": "exp3_vibe",
+  "model_type": "closed",
+  "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
+  "user": "{phrasing}",
+  "variables": {
+    "phrasing": [
+      "What's a single informal word for the general feeling or atmosphere that a place or situation gives off?",
+      "Give me one casual word for the overall mood or energy you sense from something.",
+      "What informal word describes the emotional feel of a moment?"
+    ]
+  },
+}
+
+{
+  "id": "exp3_vibes",
+  "model_type": "closed",
+  "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
+  "user": "{phrasing}",
+  "variables": {
+    "phrasing": [
+      "What's a single informal plural word for the overall feelings or atmosphere a place gives off?",
+      "Give me one casual plural word for the general mood and energy of a situation.",
+      "What informal word do people use for the collective good or bad feelings something radiates?"
+    ]
+  },
+}
+
+{
+  "id": "exp3_alpha",
+  "model_type": "closed",
+  "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
+  "user": "{phrasing}",
+  "variables": {
+    "phrasing": [
+      "What's a single informal word for a dominant, assertive man seen as the leader of the group?",
+      "Give me one slang word for the most socially dominant, confident male in a social hierarchy.",
+      "What word — borrowed from animal-pack hierarchy — describes a dominant, take-charge man?"
+    ]
+  },
+}
+
+{
+  "id": "exp3_red_pill",
+  "model_type": "closed",
+  "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
+  "user": "{phrasing}",
+  "variables": {
+    "phrasing": [
+      "What's a short informal phrase for suddenly waking up to a supposedly hidden truth about society?",
+      "Give me the two-word phrase, popularized by a sci-fi film, for rejecting comfortable illusions to see reality.",
+      "What phrase describes the moment someone adopts a cynical 'awakened' worldview, often about gender or society?"
+    ]
+  },
+}
+
+{
+  "id": "exp3_slay",
+  "model_type": "closed",
+  "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
+  "user": "{phrasing}",
+  "variables": {
+    "phrasing": [
+      "What's a single informal word meaning to do something impressively well or to look amazing?",
+      "Give me one slang word people use to praise someone for absolutely nailing it or looking incredible.",
+      "What casual word — literally meaning to kill — is used to say someone did something fantastically?"
+    ]
+  },
+}
+
+{
+  "id": "exp3_gaslight",
+  "model_type": "closed",
+  "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
+  "user": "{phrasing}",
+  "variables": {
+    "phrasing": [
+      "What's a single informal word for manipulating someone into doubting their own memory or perception of reality?",
+      "Give me one word for psychologically making a person question whether what they experienced was real.",
+      "What term — from an old play and film about a deceptive husband — means to manipulate someone into doubting their sanity?"
+    ]
+  },
+}
+
+{
+  "id": "exp3_glow_up",
+  "model_type": "closed",
+  "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
+  "user": "{phrasing}",
+  "variables": {
+    "phrasing": [
+      "What's a single informal word for a dramatic positive transformation in someone's appearance or style over time?",
+      "Give me one casual term for when someone goes from awkward-looking to strikingly attractive.",
+      "What hyphenated slang word describes a major improvement in how good someone looks?"
+    ]
+  },
+}
+
+{
+  "id": "exp3_aura",
+  "model_type": "closed",
+  "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
+  "user": "{phrasing}",
+  "variables": {
+    "phrasing": [
+      "What's a single informal word for the intangible coolness or presence someone radiates?",
+      "Give me one word young people use for the invisible 'points' you gain or lose by acting cool or cringe.",
+      "What word for an invisible energy field around a person is now slang for their coolness or charisma?"
+    ]
+  },
 }
