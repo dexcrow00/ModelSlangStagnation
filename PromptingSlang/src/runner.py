@@ -48,12 +48,16 @@ class Runner:
         models: list[str],
         gen_kwargs: dict[str, Any] | None = None,
         run_id: str | None = None,
+        closed_samples: int = 1,
     ):
         self.client = client
         self.collector = collector
         self.models = models
         self.gen_kwargs = gen_kwargs or {}
         self.run_id = run_id or uuid.uuid4().hex
+        # Closed (non-logprob) prompts have no token distribution, so sample them
+        # repeatedly to approximate one from response frequencies.
+        self.closed_samples = max(1, closed_samples)
 
     def run(self, prompts: list[tuple[PromptTemplate, int | None, bool | None]]) -> None:
         """Iterate over every model × prompt expansion and collect responses.
@@ -79,17 +83,22 @@ class Runner:
                 if prompt_model_type is not None and prompt_model_type != mclass:
                     skipped += 1
                     continue
-                combos.append((model, *exp))
+                # Closed prompts are sampled closed_samples times to approximate
+                # a distribution; everything else is a single request.
+                n = self.closed_samples if prompt_model_type == "closed" else 1
+                for sample_idx in range(n):
+                    combos.append((model, sample_idx, *exp))
         logger.info(
             "Starting run %s — %d model(s), %d prompt variant(s) -> %d requests "
-            "(%d skipped by model_type)",
+            "(%d skipped by model_type; closed prompts sampled x%d)",
             self.run_id, len(self.models), len(expanded), len(combos), skipped,
+            self.closed_samples,
         )
 
-        for (model, prompt_id, _model_type, temperature, logprobs, echo,
+        for (model, sample_idx, prompt_id, _model_type, temperature, logprobs, echo,
              variables, system_text, user_text) in tqdm(combos, desc="Prompting", unit="req"):
             self._process(model, prompt_id, logprobs, echo, variables,
-                          system_text, user_text, temperature)
+                          system_text, user_text, temperature, sample_idx)
 
     @retry(
         retry=retry_if_exception(_is_retryable),
@@ -111,6 +120,7 @@ class Runner:
         system_text: str,
         user_text: str,
         temperature: float | None = None,
+        sample: int = 0,
     ) -> None:
         messages = [
             {"role": "system", "content": system_text},
@@ -133,6 +143,7 @@ class Runner:
             "run_id": self.run_id,
             "model": model,
             "prompt_id": prompt_id,
+            "sample": sample,
             "variables": variables,
             "prompt_text": user_text,
             "system_text": system_text,

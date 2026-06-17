@@ -31,10 +31,7 @@ logging.basicConfig(
 DEFAULT_MODELS = [
     # Together (org/model format)
     "meta-llama/Llama-3.3-70B-Instruct-Turbo",
-    "Qwen/Qwen3.7-Max",
     "deepseek-ai/DeepSeek-V4-Pro",
-    "google/gemma-4-31B-it",
-    "moonshotai/Kimi-K2.6",
     # Anthropic (Claude)
     "claude-sonnet-4-6",
     # OpenAI (GPT)
@@ -88,6 +85,17 @@ def parse_args() -> argparse.Namespace:
         dest="run_id",
         help="Explicit run identifier; auto-generated if omitted.",
     )
+    parser.add_argument(
+        "--closed-samples",
+        type=int,
+        default=1,
+        dest="closed_samples",
+        help=(
+            "Samples per closed (non-logprob) prompt, to approximate a token "
+            "distribution from response frequencies (default: 1). Open prompts "
+            "return logprobs directly and are always queried once."
+        ),
+    )
     return parser.parse_args()
 
 
@@ -112,19 +120,21 @@ def main() -> None:
 
     n_variants = sum(len(template.expand()) for template, _lp, _echo in prompts)
     n_models = len(args.models)
-    # Requests honor model_type routing: a tagged prompt only runs on its model class.
+    # Requests honor model_type routing (a tagged prompt only runs on its model
+    # class) and closed-prompt sampling (closed prompts are queried N times).
     n_requests = sum(
-        len(template.expand())
+        len(template.expand()) * (args.closed_samples if template.model_type == "closed" else 1)
         for model in args.models
         for template, _lp, _echo in prompts
         if template.model_type is None or template.model_type == model_class(model)
     )
 
-    print(f"  Prompt file : {args.prompts}")
-    print(f"  Models      : {n_models}")
-    print(f"  Variants    : {n_variants}  ({len(prompts)} template(s), expanded across variables)")
-    print(f"  Total calls : {n_requests}")
-    print(f"  Output dir  : {output_dir}  (one <model>_<timestamp>.jsonl per model)")
+    print(f"  Prompt file    : {args.prompts}")
+    print(f"  Models         : {n_models}")
+    print(f"  Variants       : {n_variants}  ({len(prompts)} template(s), expanded across variables)")
+    print(f"  Closed samples : {args.closed_samples}")
+    print(f"  Total calls    : {n_requests}")
+    print(f"  Output dir     : {output_dir}  (one <model>_<timestamp>.jsonl per model)")
     print()
     try:
         confirm = input("Proceed? [y/N] ").strip().lower()
@@ -164,6 +174,7 @@ def main() -> None:
             models=args.models,
             gen_kwargs=gen_kwargs,
             run_id=run_id,
+            closed_samples=args.closed_samples,
         )
         runner.run(prompts)
 
