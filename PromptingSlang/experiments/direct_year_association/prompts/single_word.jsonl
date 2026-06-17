@@ -38,3 +38,12 @@
   },
   "echo": true
 }
+{
+  "id": "DatePhrase",
+  "system": "Give the response as a single returned token or word.",
+  "user": "You hear someone saying \"{word}\" in conversation, which year are they most likely saying this in?",
+  "variables": {
+    "word": ["lol","sick","troll","bro","swag","vibe","vibes","alpha","red pill","slay","gaslight","glow-up","aura"] 
+  },
+  "echo": true
+}
