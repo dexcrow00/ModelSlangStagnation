@@ -49,6 +49,7 @@ class Runner:
         gen_kwargs: dict[str, Any] | None = None,
         run_id: str | None = None,
         closed_samples: int = 1,
+        samples: int = 1,
     ):
         self.client = client
         self.collector = collector
@@ -58,6 +59,9 @@ class Runner:
         # Closed (non-logprob) prompts have no token distribution, so sample them
         # repeatedly to approximate one from response frequencies.
         self.closed_samples = max(1, closed_samples)
+        # Global multiplier applied to every prompt's sample count (closed prompts
+        # therefore get samples * closed_samples).
+        self.samples = max(1, samples)
 
     def run(self, prompts: list[tuple[PromptTemplate, int | None, bool | None]]) -> None:
         """Iterate over every model × prompt expansion and collect responses.
@@ -83,16 +87,16 @@ class Runner:
                 if prompt_model_type is not None and prompt_model_type != mclass:
                     skipped += 1
                     continue
-                # Closed prompts are sampled closed_samples times to approximate
-                # a distribution; everything else is a single request.
-                n = self.closed_samples if prompt_model_type == "closed" else 1
+                # Every prompt is sampled `samples` times; closed prompts get an
+                # extra closed_samples factor (no logprobs -> approximate by counts).
+                n = self.samples * (self.closed_samples if prompt_model_type == "closed" else 1)
                 for sample_idx in range(n):
                     combos.append((model, sample_idx, *exp))
         logger.info(
             "Starting run %s — %d model(s), %d prompt variant(s) -> %d requests "
-            "(%d skipped by model_type; closed prompts sampled x%d)",
+            "(%d skipped by model_type; samples x%d, closed prompts x%d more)",
             self.run_id, len(self.models), len(expanded), len(combos), skipped,
-            self.closed_samples,
+            self.samples, self.closed_samples,
         )
 
         for (model, sample_idx, prompt_id, _model_type, temperature, logprobs, echo,

@@ -91,10 +91,17 @@ def parse_args() -> argparse.Namespace:
         default=1,
         dest="closed_samples",
         help=(
-            "Samples per closed (non-logprob) prompt, to approximate a token "
-            "distribution from response frequencies (default: 1). Open prompts "
-            "return logprobs directly and are always queried once."
+            "Extra sample factor for closed (non-logprob) prompts, to approximate a "
+            "token distribution from response frequencies (default: 1). Applied on "
+            "top of --samples, so a closed prompt gets samples * closed-samples calls."
         ),
+    )
+    parser.add_argument(
+        "--samples",
+        type=int,
+        default=1,
+        dest="samples",
+        help="Global samples per prompt, applied to every request (default: 1).",
     )
     return parser.parse_args()
 
@@ -123,7 +130,8 @@ def main() -> None:
     # Requests honor model_type routing (a tagged prompt only runs on its model
     # class) and closed-prompt sampling (closed prompts are queried N times).
     n_requests = sum(
-        len(template.expand()) * (args.closed_samples if template.model_type == "closed" else 1)
+        len(template.expand()) * args.samples
+        * (args.closed_samples if template.model_type == "closed" else 1)
         for model in args.models
         for template, _lp, _echo in prompts
         if template.model_type is None or template.model_type == model_class(model)
@@ -132,7 +140,7 @@ def main() -> None:
     print(f"  Prompt file    : {args.prompts}")
     print(f"  Models         : {n_models}")
     print(f"  Variants       : {n_variants}  ({len(prompts)} template(s), expanded across variables)")
-    print(f"  Closed samples : {args.closed_samples}")
+    print(f"  Samples        : {args.samples}  (closed prompts x{args.closed_samples} more)")
     print(f"  Total calls    : {n_requests}")
     print(f"  Output dir     : {output_dir}  (one <model>_<timestamp>.jsonl per model)")
     print()
@@ -175,6 +183,7 @@ def main() -> None:
             gen_kwargs=gen_kwargs,
             run_id=run_id,
             closed_samples=args.closed_samples,
+            samples=args.samples,
         )
         runner.run(prompts)
 
