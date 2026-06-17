@@ -1,6 +1,6 @@
 {
   "id": "AssociateSlangLogprobs",
-  "model_access": "open",
+  "model_type": "open",
   "system": "Give the response as a single returned token or word.",
   "user": "A standout word in term of popularity incrase in {year} was {word}",
   "variables": {
@@ -20,7 +20,7 @@
 }
 {
   "id": "GiveTopSlangLogprobs",
-  "model_access": "open",
+  "model_type": "open",
   "system": "Give the response as a single returned token or word.",
   "user": "What is the most unique and popular slang word associated with the year {year}? Respond using only a single word.",
   "variables": {
