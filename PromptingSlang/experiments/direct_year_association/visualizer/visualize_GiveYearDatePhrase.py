@@ -2,16 +2,18 @@
 """GiveYear / DatePhrase visualizer.
 
 Charts the two "what year is this slang from?" probes — ``GiveYear``
-("The slang word {word} is most associated with what year?") and
-``DatePhrase`` ("You hear someone saying {word}..., which year are they most
-likely saying this in?"). Both take a *word* and the model answers with a
-*year*, so unlike AssociateSlangLogprobs the year is the response, not a
-variable.
+("The slang word {word} is most associated with what year?") and ``DatePhrase``
+("You hear someone saying {word}..., which year are they most likely saying this
+in?"). Both take a *word* and the model answers with a *year*.
 
-For a **single** model it draws one strip-plot panel per prompt with the
-**responded year on the y-axis and the word on the x-axis**: every sample is a
-jittered point and the per-word mean is marked, so you can read both the
-central guess and its spread.
+For a **single** model it draws one timeline per word: words sit on the y-axis
+**ordered by their true corpus peak year** (read from the FineWeb
+``peak_years.json``), and the x-axis is calendar year (2010--2024). On each
+word's horizontal lane we mark the **true peak year** (corpus ground truth)
+against the **model's responded years**, aggregating the GiveYear and DatePhrase
+samples together, with a connector showing the gap between the two. Responses
+(or peaks) outside the year window are clamped to the axis edge and drawn with an
+arrow marker.
 
 Usage (run from the PromptingSlang root):
     python experiments/direct_year_association/visualizer/visualize_GiveYearDatePhrase.py
@@ -22,6 +24,7 @@ Usage (run from the PromptingSlang root):
 from __future__ import annotations
 
 import argparse
+import json
 import re
 import sys
 from collections import defaultdict
@@ -36,8 +39,10 @@ from src.response_utils import model_short, read_responses  # noqa: E402
 
 DEFAULT_RESPONSES = Path(__file__).resolve().parents[1] / "responses"
 DEFAULT_OUTPUT = Path(__file__).resolve().parents[1] / "figures" / "give_year_date_phrase.png"
+# peak_years.json lives in the sibling FineWebAnalysis project (repo root = parents[4]).
+DEFAULT_PEAK_YEARS = Path(__file__).resolve().parents[4] / "FineWebAnalysis" / "peak_years.json"
 PROMPT_IDS = ("GiveYear", "DatePhrase")
-WORDS_CHRONO_ORDER = ["lol","sick","troll","bro","swag","vibe","vibes","alpha","red pill","slay","gaslight","glow-up","aura"] 
+XMIN, XMAX = 2010, 2024  # x-axis (calendar year) window
 
 _YEAR_RE = re.compile(r"(1[89]\d{2}|20\d{2})")
 
@@ -48,18 +53,24 @@ def responded_year(rec: dict) -> int | None:
     return int(m.group(1)) if m else None
 
 
-def collect(records: list[dict]) -> dict[str, dict[str, dict[str, list[int]]]]:
-    """{model: {prompt_id: {word: [responded year, ...]}}}."""
-    data: dict[str, dict[str, dict[str, list[int]]]] = defaultdict(
-        lambda: defaultdict(lambda: defaultdict(list)))
+def load_peak_years(path: Path) -> dict[str, int]:
+    """{word: true peak year} from a peak_years.json produced by FineWebAnalysis/peak_year.py."""
+    if not path.is_file():
+        return {}
+    records = json.loads(path.read_text(encoding="utf-8"))
+    return {r["word"]: int(r["peak_year"]) for r in records if "word" in r and "peak_year" in r}
+
+
+def collect(records: list[dict]) -> dict[str, dict[str, list[int]]]:
+    """{model: {word: [responded year, ...]}} pooling GiveYear + DatePhrase together."""
+    data: dict[str, dict[str, list[int]]] = defaultdict(lambda: defaultdict(list))
     for rec in records:
-        pid = rec.get("prompt_id")
-        if pid not in PROMPT_IDS:
+        if rec.get("prompt_id") not in PROMPT_IDS:
             continue
         word = (rec.get("variables") or {}).get("word")
         year = responded_year(rec)
         if word and year is not None:
-            data[rec.get("model", "unknown")][pid][str(word)].append(year)
+            data[rec.get("model", "unknown")][str(word)].append(year)
     return data
 
 
@@ -81,53 +92,83 @@ def pick_model(data: dict, requested: str | None) -> str:
     return matches[0]
 
 
-def render(data: dict, model: str, output: Path | None) -> None:
-    per_prompt = data[model]
-    prompts = [p for p in PROMPT_IDS if per_prompt.get(p)]
-    # X-axis follows WORDS_CHRONO_ORDER, then any stragglers not in that list.
-    present = {w for p in prompts for w in per_prompt[p]}
-    words = [w for w in WORDS_CHRONO_ORDER if w in present] + sorted(present - set(WORDS_CHRONO_ORDER))
+def _clamp(year: float) -> float:
+    return min(max(year, XMIN), XMAX)
 
-    all_years = [y for p in prompts for ys in per_prompt[p].values() for y in ys]
-    ymin, ymax = (min(all_years) - 1, max(all_years) + 1) if all_years else (2000, 2025)
 
-    fig, axes = plt.subplots(1, len(prompts), figsize=(max(6.0, len(words) * 0.55) * len(prompts),
-                                                       5.0), squeeze=False, sharey=True)
+def _marker(year: float, in_range: str) -> str:
+    """Arrow marker when the value falls outside the axis window, else *in_range*."""
+    if year > XMAX:
+        return ">"
+    if year < XMIN:
+        return "<"
+    return in_range
+
+
+def render(data: dict, model: str, peaks: dict[str, int], output: Path | None) -> None:
+    per_word = data[model]
+    # Words ordered by true peak year (earliest at the bottom); words with no
+    # known peak are sorted last, alphabetically.
+    words = sorted(per_word, key=lambda w: (peaks.get(w, 9999), w))
+    if not words:
+        sys.exit(f"No responses to chart for model '{model}'.")
+
+    fig, ax = plt.subplots(figsize=(11, max(4.5, len(words) * 0.5)))
     rng = np.random.default_rng(0)
-    for col, pid in enumerate(prompts):
-        ax = axes[0][col]
-        for xi, word in enumerate(words):
-            ys = per_prompt[pid].get(word, [])
-            if not ys:
-                continue
-            jitter = rng.uniform(-0.18, 0.18, size=len(ys))
-            ax.scatter(xi + jitter, ys, s=28, alpha=0.55, color="#3b6ea5",
-                       edgecolors="none", zorder=2)
-            mean = sum(ys) / len(ys)
-            ax.scatter(xi, mean, marker="_", s=520, color="#d1495b", linewidths=2.2, zorder=3)
-        ax.set_xticks(range(len(words)))
-        ax.set_xticklabels(words, rotation=45, ha="right", fontsize=8)
-        ax.set_xlim(-0.6, len(words) - 0.4)
-        ax.set_ylim(ymin, ymax)
-        ax.set_xlabel("word", fontsize=9)
-        if col == 0:
-            ax.set_ylabel("responded year", fontsize=9)
-        ax.set_title(pid, fontsize=10)
-        ax.grid(axis="y", linestyle=":", alpha=0.4, zorder=0)
+    abs_errors: list[float] = []
+    for i, word in enumerate(words):
+        ys = per_word[word]
+        ax.plot([XMIN, XMAX], [i, i], color="#dddddd", lw=0.8, zorder=0)
+
+        # Model responded years: faint jittered cloud + a solid mean marker.
+        jitter = rng.uniform(-0.16, 0.16, size=len(ys))
+        ax.scatter([_clamp(y) for y in ys], i + jitter, s=16, color="#3b6ea5",
+                   alpha=0.30, edgecolors="none", zorder=2)
+        mean = sum(ys) / len(ys)
+
+        pk = peaks.get(word)
+        if pk is not None:
+            abs_errors.append(abs(mean - pk))
+            # Connector showing the gap between true peak and model mean.
+            ax.plot([_clamp(pk), _clamp(mean)], [i, i], color="#999999", lw=1.3,
+                    alpha=0.7, zorder=1)
+        ax.scatter(_clamp(mean), i, marker=_marker(mean, "D"), s=60, color="#1f3b57",
+                   edgecolors="white", linewidths=0.6, zorder=4)
+        if pk is not None:
+            ax.scatter(_clamp(pk), i, marker=_marker(pk, "*"), s=170, color="#d1495b",
+                       edgecolors="black", linewidths=0.4, zorder=5)
+
+    ax.set_yticks(range(len(words)))
+    ax.set_yticklabels([f"{w} ({peaks[w]})" if w in peaks else w for w in words], fontsize=8)
+    ax.set_ylim(-0.6, len(words) - 0.4)
+    ax.set_xticks(range(XMIN, XMAX + 1))
+    ax.set_xticklabels([str(y) for y in range(XMIN, XMAX + 1)], rotation=45, ha="right", fontsize=8)
+    ax.set_xlim(XMIN - 0.6, XMAX + 0.6)
+    ax.set_xlabel("year", fontsize=9)
+    ax.set_ylabel("word (true corpus peak year)", fontsize=9)
+    ax.grid(axis="x", linestyle=":", alpha=0.4, zorder=0)
 
     handles = [
-        plt.Line2D([], [], marker="o", linestyle="", color="#3b6ea5", alpha=0.6, label="sample"),
-        plt.Line2D([], [], marker="_", linestyle="", color="#d1495b", markersize=12,
-                   markeredgewidth=2.2, label="per-word mean"),
+        plt.Line2D([], [], marker="*", linestyle="", color="#d1495b", markersize=13,
+                   markeredgecolor="black", markeredgewidth=0.4, label="true corpus peak"),
+        plt.Line2D([], [], marker="D", linestyle="", color="#1f3b57", markersize=7,
+                   markeredgecolor="white", label="model mean response"),
+        plt.Line2D([], [], marker="o", linestyle="", color="#3b6ea5", alpha=0.5,
+                   markersize=6, label="individual response"),
+        plt.Line2D([], [], marker=">", linestyle="", color="#555555", markersize=7,
+                   label=f"beyond {XMIN}–{XMAX}"),
     ]
-    fig.legend(handles=handles, loc="upper right", fontsize=8, frameon=False)
-    fig.suptitle(f"Slang → year association — {model_short(model)}\n"
-                 "responded year × word", fontsize=11)
-    fig.tight_layout(rect=(0, 0, 1, 0.94))
+    ax.legend(handles=handles, loc="lower right", fontsize=8, framealpha=0.9)
+
+    mae = f"{sum(abs_errors) / len(abs_errors):.1f}" if abs_errors else "n/a"
+    ax.set_title(f"Slang → year association — {model_short(model)}\n"
+                 f"GiveYear + DatePhrase aggregated; model response vs true corpus peak "
+                 f"(mean abs. error {mae} yr)", fontsize=11)
+    fig.tight_layout()
     if output:
         output.parent.mkdir(parents=True, exist_ok=True)
         fig.savefig(output, dpi=110, bbox_inches="tight")
-        print(f"Saved: {output}")
+        print(f"Saved: {output}  (mean abs. error vs corpus peak: {mae} yr)")
     else:
         plt.show()
     plt.close(fig)
@@ -135,11 +176,13 @@ def render(data: dict, model: str, output: Path | None) -> None:
 
 def main() -> None:
     p = argparse.ArgumentParser(
-        description="Strip plot of GiveYear/DatePhrase responded-year x word for a single model.")
+        description="Per-word timeline of GiveYear/DatePhrase responses vs true corpus peak, single model.")
     p.add_argument("responses", nargs="?", default=str(DEFAULT_RESPONSES),
                    help=f"Response JSONL file or directory (default: {DEFAULT_RESPONSES}).")
     p.add_argument("-m", "--model", default=None,
                    help="Substring of the model id to chart (default: first available).")
+    p.add_argument("--peak-years", type=Path, default=DEFAULT_PEAK_YEARS, dest="peak_years",
+                   help=f"peak_years.json with true corpus peaks (default: {DEFAULT_PEAK_YEARS}).")
     p.add_argument("-o", "--output", type=Path, default=DEFAULT_OUTPUT,
                    help=f"Output path (default: {DEFAULT_OUTPUT}). Pass '-' to display interactively.")
     args = p.parse_args()
@@ -147,9 +190,13 @@ def main() -> None:
     records = read_responses(args.responses)
     if not records:
         sys.exit(f"No response records found in {args.responses}.")
+    peaks = load_peak_years(args.peak_years)
+    if not peaks:
+        print(f"Warning: no peak years loaded from {args.peak_years}; "
+              "words will be ordered alphabetically and true-peak markers omitted.", file=sys.stderr)
     data = collect(records)
     model = pick_model(data, args.model)
-    render(data, model, None if str(args.output) == "-" else args.output)
+    render(data, model, peaks, None if str(args.output) == "-" else args.output)
 
 
 if __name__ == "__main__":
