@@ -247,9 +247,9 @@ def _render_chart(
             else "Occurrences per million sample tokens")
     ax.set_title(title)
     ax.set_xlabel("Crawl dump date")
-    ax.set_ylabel(f"{unit}{' (log scale)' if log_scale else ''}")
+    ax.set_ylabel(f"{unit}{' (log2 scale)' if log_scale else ''}")
     if log_scale:
-        ax.set_yscale("log")
+        ax.set_yscale("log", base=2)
     ax.xaxis.set_major_formatter(mdates.DateFormatter("%Y-%m"))
     fig.autofmt_xdate()
     ax.legend(bbox_to_anchor=(1.01, 1), loc="upper left", fontsize="small",
