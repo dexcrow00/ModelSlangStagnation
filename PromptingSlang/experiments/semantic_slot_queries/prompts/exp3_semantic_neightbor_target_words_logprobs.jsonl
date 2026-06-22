@@ -1,0 +1,194 @@
+{
+  "id": "exp3_lol",
+  "model_type": "open",
+  "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
+  "user": "{phrasing}",
+  "variables": {
+    "phrasing": [
+      "What's a way, using text, people might show that something made them laugh?",
+      "Give me the short response someone adds to a message to indicate they're laughing.",
+      "What phrase do people use online to react to something funny?"
+    ]
+  },
+  "logprobs": 5
+}
+
+{
+  "id": "exp3_sick",
+  "model_type": "open",
+  "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
+  "user": "{phrasing}",
+  "variables": {
+    "phrasing": [
+      "What is a word to mean something is awesome?",
+      "Give me one word that people use to say something is really cool.",
+      "What's one informal word meaning 'excellent'?"
+    ]
+  },
+  "logprobs": 5
+}
+
+{
+  "id": "exp3_troll",
+  "model_type": "open",
+  "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
+  "user": "{phrasing}",
+  "variables": {
+    "phrasing": [
+      "What's a single word for someone who posts inflammatory things online just to upset people?",
+      "Give me one word for a person who stirs up arguments on the internet to get a reaction.",
+      "What word describes someone who provokes others online?"
+    ]
+  },
+  "logprobs": 5
+}
+
+{
+  "id": "exp3_bro",
+  "model_type": "open",
+  "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
+  "user": "{phrasing}",
+  "variables": {
+    "phrasing": [
+      "What's a casual word guys use to address a close male friend?",
+      "Give me one word for a buddy, especially between young men.",
+      "What short slang term do people use to greet a male friend?"
+    ]
+  },
+  "logprobs": 5
+}
+
+{
+  "id": "exp3_swag",
+  "model_type": "open",
+  "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
+  "user": "{phrasing}",
+  "variables": {
+    "phrasing": [
+      "What's a single word for effortless stylish confidence in how someone carries themselves?",
+      "Give me one word for a cool, self-assured sense of style.",
+      "What word describes someone's flashy confidence and cool personal style?"
+    ]
+  },
+  "logprobs": 5
+}
+
+{
+  "id": "exp3_vibe",
+  "model_type": "open",
+  "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
+  "user": "{phrasing}",
+  "variables": {
+    "phrasing": [
+      "What's a single word for the general feeling or atmosphere that a place or situation gives off?",
+      "Give me one casual word for the overall mood or energy you sense from something.",
+      "What word describes the emotional feel of a moment?"
+    ]
+  },
+  "logprobs": 5
+}
+
+{
+  "id": "exp3_vibes",
+  "model_type": "open",
+  "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
+  "user": "{phrasing}",
+  "variables": {
+    "phrasing": [
+      "What's a single plural word for the overall feelings or atmosphere a place gives off?",
+      "Give me one casual plural word for the general mood and energy of a situation.",
+      "What word do people use for the collective good or bad feelings something radiates?"
+    ]
+  },
+  "logprobs": 5
+}
+
+{
+  "id": "exp3_alpha",
+  "model_type": "open",
+  "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
+  "user": "{phrasing}",
+  "variables": {
+    "phrasing": [
+      "What's a single word for a dominant, assertive man seen as the leader of the group?",
+      "Give me one word for the most socially dominant, confident male in a social hierarchy.",
+      "What word describes a dominant, take-charge man?"
+    ]
+  },
+  "logprobs": 5
+}
+
+{
+  "id": "exp3_red_pill",
+  "model_type": "open",
+  "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
+  "user": "{phrasing}",
+  "variables": {
+    "phrasing": [
+      "What's a short phrase for suddenly waking up to a supposedly hidden truth about society?",
+      "Give me a phrase for rejecting comfortable illusions to see reality.",
+      "What phrase describes the moment someone adopts a cynical worldview, often about gender or society?"
+    ]
+  },
+  "logprobs": 5
+}
+
+{
+  "id": "exp3_slay",
+  "model_type": "open",
+  "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
+  "user": "{phrasing}",
+  "variables": {
+    "phrasing": [
+      "What's a single word meaning to do something impressively well or to look amazing?",
+      "Give me one slang word people use to praise someone for absolutely nailing it or looking incredible.",
+      "What casual word is used to say someone did something fantastically?"
+    ]
+  },
+  "logprobs": 5
+}
+
+{
+  "id": "exp3_gaslight",
+  "model_type": "open",
+  "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
+  "user": "{phrasing}",
+  "variables": {
+    "phrasing": [
+      "What's a single word for manipulating someone into doubting their own memory or perception of reality?",
+      "Give me one word for psychologically making a person question whether what they experienced was real.",
+      "What term means to manipulate someone into doubting their sanity?"
+    ]
+  },
+  "logprobs": 5
+}
+
+{
+  "id": "exp3_glow_up",
+  "model_type": "open",
+  "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
+  "user": "{phrasing}",
+  "variables": {
+    "phrasing": [
+      "What's a single word for a dramatic positive transformation in someone's appearance or style over time?",
+      "Give me one casual term for when someone goes from awkward-looking to strikingly attractive.",
+      "What word describes a major improvement in how good someone looks?"
+    ]
+  },
+  "logprobs": 5
+}
+
+{
+  "id": "exp3_aura",
+  "model_type": "open",
+  "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
+  "user": "{phrasing}",
+  "variables": {
+    "phrasing": [
+      "What's a single word for the intangible coolness or presence someone radiates?",
+      "Give me one word used to describe the quality by which someone acts cool or cringe.",
+      "What word can be used to describe someone's coolness or charisma?"
+    ]
+  },
+  "logprobs": 5
+}
