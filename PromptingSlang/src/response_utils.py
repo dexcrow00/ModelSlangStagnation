@@ -11,34 +11,65 @@ import glob
 import json
 import math
 import os
+import re
 from pathlib import Path
 
 _DECODER = json.JSONDecoder()
+_TS_RE = re.compile(r"_(\d{8})_(\d{6})\.jsonl$")
 
 
-def read_responses(path: str | Path) -> list[dict]:
+def _file_timestamp(path: str) -> str:
+    """Sort key from a ``<model>_<YYYYMMDD>_<HHMMSS>.jsonl`` filename.
+
+    Falls back to mtime so undated filenames still order sensibly.
+    """
+    m = _TS_RE.search(os.path.basename(path))
+    return f"{m.group(1)}{m.group(2)}" if m else f"mtime:{os.path.getmtime(path):020.0f}"
+
+
+def _read_file(path: str) -> list[dict]:
+    text = Path(path).read_text(encoding="utf-8")
+    out: list[dict] = []
+    i = 0
+    while i < len(text):
+        while i < len(text) and text[i] in " \t\r\n":
+            i += 1
+        if i >= len(text):
+            break
+        try:
+            obj, i = _DECODER.raw_decode(text, i)
+        except json.JSONDecodeError:
+            break  # incomplete trailing record — stop on this file
+        out.append(obj)
+    return out
+
+
+def read_responses(path: str | Path, latest_only: bool = True) -> list[dict]:
     """Read response records from a JSONL file, or every ``*.jsonl`` in a dir.
 
-    Tolerates the pretty-printed (whitespace-separated) record format and a
-    trailing partial record (e.g. a file still being written by a live run).
+    Tolerates the pretty-printed record format and a trailing partial record
+    (e.g. a file still being written). When *path* is a directory and
+    ``latest_only`` is set (default), records are de-duplicated by
+    ``(model, prompt_id, variables, sample)`` keeping the one from the
+    newest-timestamped file — so re-runs in the same directory don't double
+    count; only the most recent run's data survives for each prompt sample.
     """
     path = str(path)
-    files = sorted(glob.glob(os.path.join(path, "*.jsonl"))) if os.path.isdir(path) else [path]
-    records: list[dict] = []
+    if not os.path.isdir(path):
+        return _read_file(path)
+
+    files = sorted(glob.glob(os.path.join(path, "*.jsonl")), key=_file_timestamp)
+    if not latest_only:
+        return [r for f in files for r in _read_file(f)]
+
+    # Process oldest -> newest so later (newer) files overwrite duplicate keys.
+    by_key: dict[tuple, dict] = {}
     for f in files:
-        text = Path(f).read_text(encoding="utf-8")
-        i = 0
-        while i < len(text):
-            while i < len(text) and text[i] in " \t\r\n":
-                i += 1
-            if i >= len(text):
-                break
-            try:
-                obj, i = _DECODER.raw_decode(text, i)
-            except json.JSONDecodeError:
-                break  # incomplete trailing record — stop on this file
-            records.append(obj)
-    return records
+        for rec in _read_file(f):
+            key = (rec.get("model"), rec.get("prompt_id"),
+                   json.dumps(rec.get("variables"), sort_keys=True), rec.get("sample"))
+            by_key[key] = rec
+    return list(by_key.values())
 
 
 def model_short(model: str) -> str:
@@ -104,6 +135,23 @@ def responded_word(rec: dict) -> str:
             break
         parts.append(tok)
     return "".join(parts).strip().strip('"\'.').lower()
+
+
+def joint_logprob(rec: dict) -> float | None:
+    """Sum of token logprobs of the generated response (up to the first stop/EOS).
+
+    None when the record carries no usable logprobs.
+    """
+    tokens, lps, _tops = normalize_logprobs(rec.get("logprobs"))
+    total, got = 0.0, False
+    for tok, lp in zip(tokens, lps):
+        if not isinstance(tok, str) or tok.startswith("<"):
+            break
+        if any(ch in tok for ch in ".!?,\n") or (tok.strip() == "" and got):
+            break
+        total += lp
+        got = True
+    return total if got else None
 
 
 def first_token_distribution(rec: dict) -> dict[str, float]:
