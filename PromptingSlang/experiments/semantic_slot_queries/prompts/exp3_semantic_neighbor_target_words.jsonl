@@ -2,8 +2,9 @@
   "id": "exp3_lol",
   "temperature": 1.0,
   "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
-  "user": "{phrasing}",
+  "user": "The year is {year}. {phrasing}",
   "variables": {
+    "year": ["2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"], 
     "phrasing": [
       "What's a way, using text, people might show that something made them laugh?",
       "Give me the short response someone adds to a message to indicate they're laughing.",
@@ -16,8 +17,9 @@
   "id": "exp3_sick",
   "temperature": 1.0,
   "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
-  "user": "{phrasing}",
+  "user": "The year is {year}. {phrasing}",
   "variables": {
+    "year": ["2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"], 
     "phrasing": [
       "What is a word to mean something is awesome?",
       "Give me one word that people use to say something is really cool.",
@@ -30,8 +32,9 @@
   "id": "exp3_troll",
   "temperature": 1.0,
   "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
-  "user": "{phrasing}",
+  "user": "The year is {year}. {phrasing}",
   "variables": {
+    "year": ["2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"], 
     "phrasing": [
       "What's a single word for someone who posts inflammatory things online just to upset people?",
       "Give me one word for a person who stirs up arguments on the internet to get a reaction.",
@@ -44,8 +47,9 @@
   "id": "exp3_bro",
   "temperature": 1.0,
   "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
-  "user": "{phrasing}",
+  "user": "The year is {year}. {phrasing}",
   "variables": {
+    "year": ["2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"], 
     "phrasing": [
       "What's a casual word guys use to address a close male friend?",
       "Give me one word for a buddy, especially between young men.",
@@ -58,8 +62,9 @@
   "id": "exp3_swag",
   "temperature": 1.0,
   "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
-  "user": "{phrasing}",
+  "user": "The year is {year}. {phrasing}",
   "variables": {
+    "year": ["2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"], 
     "phrasing": [
       "What's a single word for effortless stylish confidence in how someone carries themselves?",
       "Give me one word for a cool, self-assured sense of style.",
@@ -72,8 +77,9 @@
   "id": "exp3_vibe",
   "temperature": 1.0,
   "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
-  "user": "{phrasing}",
+  "user": "The year is {year}. {phrasing}",
   "variables": {
+    "year": ["2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"], 
     "phrasing": [
       "What's a single word for the general feeling or atmosphere that a place or situation gives off?",
       "Give me one casual word for the overall mood or energy you sense from something.",
@@ -86,8 +92,9 @@
   "id": "exp3_vibes",
   "temperature": 1.0,
   "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
-  "user": "{phrasing}",
+  "user": "The year is {year}. {phrasing}",
   "variables": {
+    "year": ["2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"], 
     "phrasing": [
       "What's a single plural word for the overall feelings or atmosphere a place gives off?",
       "Give me one casual plural word for the general mood and energy of a situation.",
@@ -100,8 +107,9 @@
   "id": "exp3_alpha",
   "temperature": 1.0,
   "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
-  "user": "{phrasing}",
+  "user": "The year is {year}. {phrasing}",
   "variables": {
+    "year": ["2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"], 
     "phrasing": [
       "What's a single word for a dominant, assertive man seen as the leader of the group?",
       "Give me one word for the most socially dominant, confident male in a social hierarchy.",
@@ -114,8 +122,9 @@
   "id": "exp3_red_pill",
   "temperature": 1.0,
   "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
-  "user": "{phrasing}",
+  "user": "The year is {year}. {phrasing}",
   "variables": {
+    "year": ["2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"], 
     "phrasing": [
       "What's a short phrase for suddenly waking up to a supposedly hidden truth about society?",
       "Give me a phrase for rejecting comfortable illusions to see reality.",
@@ -128,8 +137,9 @@
   "id": "exp3_slay",
   "temperature": 1.0,
   "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
-  "user": "{phrasing}",
+  "user": "The year is {year}. {phrasing}",
   "variables": {
+    "year": ["2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"], 
     "phrasing": [
       "What's a single word meaning to do something impressively well or to look amazing?",
       "Give me one slang word people use to praise someone for absolutely nailing it or looking incredible.",
@@ -142,8 +152,9 @@
   "id": "exp3_gaslight",
   "temperature": 1.0,
   "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
-  "user": "{phrasing}",
+  "user": "The year is {year}. {phrasing}",
   "variables": {
+    "year": ["2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"], 
     "phrasing": [
       "What's a single word for manipulating someone into doubting their own memory or perception of reality?",
       "Give me one word for psychologically making a person question whether what they experienced was real.",
@@ -156,8 +167,9 @@
   "id": "exp3_glow_up",
   "temperature": 1.0,
   "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
-  "user": "{phrasing}",
+  "user": "The year is {year}. {phrasing}",
   "variables": {
+    "year": ["2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"], 
     "phrasing": [
       "What's a single word for a dramatic positive transformation in someone's appearance or style over time?",
       "Give me one casual term for when someone goes from awkward-looking to strikingly attractive.",
@@ -170,8 +182,9 @@
   "id": "exp3_aura",
   "temperature": 1.0,
   "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
-  "user": "{phrasing}",
+  "user": "The year is {year}. {phrasing}",
   "variables": {
+    "year": ["2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"], 
     "phrasing": [
       "What's a single word for the intangible coolness or presence someone radiates?",
       "Give me one word used to describe the quality by which someone acts cool or cringe.",
