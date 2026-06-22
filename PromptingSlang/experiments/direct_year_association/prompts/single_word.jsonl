@@ -4,7 +4,7 @@
   "system": "Give the response as a single returned token or word.",
   "user": "A standout word in term of popularity incrase in {year} was {word}",
   "variables": {
-    "year": ["2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"],
+    "year": ["2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"],
     "word": ["lol", "sick", "troll", "bro", "swag", "vibe", "vibes", "alpha", "red pill", "slay", "gaslight", "glow-up", "aura"]
   },
   "logprobs": 5,
@@ -15,7 +15,7 @@
   "system": "Give the response as a single returned token or word.",
   "user": "What is the most unique and popular slang word associated with the year {year}? Respond using only a single word.",
   "variables": {
-    "year": ["2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] 
+    "year": ["2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] 
   }
 }
 {
@@ -24,7 +24,7 @@
   "system": "Give the response as a single returned token or word.",
   "user": "What is the most unique and popular slang word associated with the year {year}? Respond using only a single word.",
   "variables": {
-    "year": ["2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] 
+    "year": ["2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"] 
   },
   "logprobs": 5,
   "echo": true
