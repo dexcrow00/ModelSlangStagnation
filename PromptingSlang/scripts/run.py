@@ -103,6 +103,15 @@ def parse_args() -> argparse.Namespace:
         dest="samples",
         help="Global samples per prompt, applied to every request (default: 1).",
     )
+    parser.add_argument(
+        "--resume",
+        action="store_true",
+        help=(
+            "Skip (model, prompt, variables, sample) combos already saved in the "
+            "output directory, so an interrupted run continues where it left off "
+            "instead of re-querying everything. Point it at the same --output-dir."
+        ),
+    )
     return parser.parse_args()
 
 
@@ -184,6 +193,7 @@ def main() -> None:
             run_id=run_id,
             closed_samples=args.closed_samples,
             samples=args.samples,
+            resume=args.resume,
         )
         runner.run(prompts)
 

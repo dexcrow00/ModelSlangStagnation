@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 import logging
 import uuid
 from datetime import datetime, timezone
@@ -50,6 +51,7 @@ class Runner:
         run_id: str | None = None,
         closed_samples: int = 1,
         samples: int = 1,
+        resume: bool = False,
     ):
         self.client = client
         self.collector = collector
@@ -62,6 +64,23 @@ class Runner:
         # Global multiplier applied to every prompt's sample count (closed prompts
         # therefore get samples * closed_samples).
         self.samples = max(1, samples)
+        # When set, skip (model, prompt, variables, sample) combos already present
+        # in the output directory so an interrupted run can be resumed in place.
+        self.resume = resume
+
+    @staticmethod
+    def _combo_key(model: str, prompt_id: str, variables: dict, sample: int) -> tuple:
+        """Identity of one request, matching ResponseCollector/read_responses dedup."""
+        return (model, prompt_id, json.dumps(variables, sort_keys=True), sample)
+
+    def _completed_keys(self) -> set[tuple]:
+        """Combo keys already saved in the output dir (any prior/partial run)."""
+        from .response_utils import read_responses
+        keys: set[tuple] = set()
+        for rec in read_responses(self.collector.output_dir, latest_only=False):
+            keys.add(self._combo_key(rec.get("model"), rec.get("prompt_id"),
+                                     rec.get("variables"), rec.get("sample")))
+        return keys
 
     def run(self, prompts: list[tuple[PromptTemplate, int | None, bool | None]]) -> None:
         """Iterate over every model × prompt expansion and collect responses.
@@ -76,27 +95,36 @@ class Runner:
             for template, logprobs, echo in prompts
             for variables, system_text, user_text in template.expand()
         ]
+        # On resume, load the combos already saved so we skip them below.
+        done = self._completed_keys() if self.resume else set()
+
         # Route by model_type: a prompt tagged 'open'/'closed' runs only on models
         # of that class; an untagged prompt (model_type=None) runs on every model.
         combos = []
         skipped = 0
+        resumed = 0
         for model in self.models:
             mclass = model_class(model)
             for exp in expanded:
-                prompt_model_type = exp[1]
+                prompt_id, prompt_model_type = exp[0], exp[1]
                 if prompt_model_type is not None and prompt_model_type != mclass:
                     skipped += 1
                     continue
                 # Every prompt is sampled `samples` times; closed prompts get an
                 # extra closed_samples factor (no logprobs -> approximate by counts).
                 n = self.samples * (self.closed_samples if prompt_model_type == "closed" else 1)
+                variables = exp[5]
                 for sample_idx in range(n):
+                    if done and self._combo_key(model, prompt_id, variables, sample_idx) in done:
+                        resumed += 1
+                        continue
                     combos.append((model, sample_idx, *exp))
         logger.info(
             "Starting run %s — %d model(s), %d prompt variant(s) -> %d requests "
-            "(%d skipped by model_type; samples x%d, closed prompts x%d more)",
+            "(%d skipped by model_type; %d already done, resumed; samples x%d, "
+            "closed prompts x%d more)",
             self.run_id, len(self.models), len(expanded), len(combos), skipped,
-            self.samples, self.closed_samples,
+            resumed, self.samples, self.closed_samples,
         )
 
         for (model, sample_idx, prompt_id, _model_type, temperature, logprobs, echo,

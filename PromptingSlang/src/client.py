@@ -32,6 +32,12 @@ def _get_key(name: str) -> str | None:
 # Provider clients
 # ---------------------------------------------------------------------------
 
+# Per-request timeout (seconds). Without it a stalled connection hangs the whole
+# run indefinitely; with it a hung request raises after this long, the SDK
+# retries a couple of times, and the runner then logs+skips it and moves on.
+REQUEST_TIMEOUT = 90.0
+
+
 class TogetherClient:
     def __init__(self, api_key: str | None = None):
         try:
@@ -41,7 +47,7 @@ class TogetherClient:
         key = api_key or _get_key("TOGETHER_API_KEY")
         if not key:
             raise ValueError("TOGETHER_API_KEY not set.")
-        self._client = Together(api_key=key)
+        self._client = Together(api_key=key, timeout=REQUEST_TIMEOUT)
 
     def complete(self, model: str, messages: list[dict], **gen_kwargs) -> dict:
         response = self._client.chat.completions.create(
@@ -71,7 +77,7 @@ class OpenAIClient:
         key = api_key or _get_key("OPENAI_API_KEY")
         if not key:
             raise ValueError("OPENAI_API_KEY not set.")
-        self._client = _openai.OpenAI(api_key=key)
+        self._client = _openai.OpenAI(api_key=key, timeout=REQUEST_TIMEOUT)
 
     def complete(self, model: str, messages: list[dict], **gen_kwargs) -> dict:
         # OpenAI uses logprobs=True + top_logprobs=N rather than a bare integer.
@@ -108,7 +114,7 @@ class AnthropicClient:
         key = api_key or _get_key("ANTHROPIC_API_KEY")
         if not key:
             raise ValueError("ANTHROPIC_API_KEY not set.")
-        self._client = _anthropic.Anthropic(api_key=key)
+        self._client = _anthropic.Anthropic(api_key=key, timeout=REQUEST_TIMEOUT)
 
     def complete(self, model: str, messages: list[dict], **gen_kwargs) -> dict:
         # Anthropic takes the system prompt as a top-level parameter.
