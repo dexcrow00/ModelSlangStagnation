@@ -234,14 +234,27 @@ def _render_chart(
     output: Optional[Path],
     bands: Optional[Dict[str, tuple]] = None,
 ) -> None:
-    """Draw one chart from precomputed per-word series (with optional CI bands)."""
+    """Draw one chart from precomputed per-word series (with optional CI bands).
+
+    Dumps where a word has zero occurrences are dropped rather than plotted at 0:
+    a 0 is invalid on a log axis (and a misleading dive to the floor on a linear
+    one), so we skip those points and let the line connect the neighboring dumps.
+    """
     fig, ax = plt.subplots(figsize=(12, 6))
     for target, ys in series.items():
-        line, = ax.plot(dumps, ys, marker="o", markersize=3, linewidth=1, label=target)
+        kept = [(d, y) for d, y in zip(dumps, ys) if y > 0]
+        if not kept:
+            continue  # word has no non-zero dumps to draw
+        xs_t, ys_t = zip(*kept)
+        line, = ax.plot(xs_t, ys_t, marker="o", markersize=3, linewidth=1, label=target)
         if bands and target in bands:
             lo, hi = bands[target]
-            ax.fill_between(dumps, lo, hi, color=line.get_color(),
-                            alpha=0.18, linewidth=0)
+            # Mask the band to the same non-zero dumps so it tracks the line.
+            band = [(d, l, h) for d, y, l, h in zip(dumps, ys, lo, hi) if y > 0]
+            if band:
+                bx, bl, bh = zip(*band)
+                ax.fill_between(bx, bl, bh, color=line.get_color(),
+                                alpha=0.18, linewidth=0)
 
     unit = ("Occurrences in dump" if dump_tokens is None
             else "Occurrences per million sample tokens")

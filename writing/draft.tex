@@ -262,7 +262,7 @@ where \textit{w} is a target word and \textit{d} is a crawl dump. Per-dump token
 
 \textbf{Uncertainty.} The 10BT sample is a random draw from FineWeb, so a per-dump occurrence count $k$ is modeled as $k \sim \text{Poisson}(r_{w,d}\cdot \text{tokens}(d))$. We report the exact Poisson interval (95\% by default) as a shaded band around each word's rate curve; bands are wide for rare words and tight for common ones.
 
-\textbf{Output.} For each target word we plot $r_{w,d}$ against dump date on a log scale, producing the temporal frequency curves in Section~\ref{sec:exp1}. These curves are the corpus ground truth against which the LLM probing distributions are compared.
+\textbf{Output.} For each target word we plot $r_{w,d}$ against dump date on a $\log_2$ scale, producing the temporal frequency curves in Section~\ref{sec:exp1}. These curves are the corpus ground truth against which the LLM probing distributions are compared.
 
 \todo{Document the RoBERTa sense-classifier training data and held-out accuracy (\texttt{FineWebAnalysis/finetune\_roberta.py}). Report the FineWeb sample token totals per dump used as denominators.}
 
@@ -348,7 +348,7 @@ The corpus curves confirm that the target words exhibit the ephemeral lifecycles
 \begin{figure}
     \centering
     \includegraphics[width=1.0\linewidth]{highlight_pre2018.png}
-    \caption{Slang-sense occurrences per million tokens by FineWeb crawl dump (log scale, RoBERTa score $\geq 0.99$, 95\% Poisson CI) for the pre-2018 band (\textit{lol, sick, troll, bro, swag}). \textit{lol} is the most frequent term throughout but declines steadily after $\sim$2018; \textit{swag} drifts downward, while \textit{sick}, \textit{troll}, and \textit{bro} are comparatively stable.}
+    \caption{Slang-sense occurrences per million tokens by FineWeb crawl dump ($\log_2$ scale, RoBERTa score $\geq 0.99$, 95\% Poisson CI) for the pre-2018 band (\textit{lol, sick, troll, bro, swag}). \textit{lol} is the most frequent term throughout but declines steadily after $\sim$2018; \textit{swag} drifts downward, while \textit{sick}, \textit{troll}, and \textit{bro} are comparatively stable.}
     \label{fig:cc-pre2018}
 \end{figure}
 
