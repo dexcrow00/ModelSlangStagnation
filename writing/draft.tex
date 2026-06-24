@@ -62,10 +62,7 @@
 
 % ============================================================
 \begin{abstract}
-Large language models trained on internet-sourced corpora inherit not just the knowledge but the temporal language patterns of their training data. Because training data timestamping is not a factor at model training time, LLMs likely reflect an undifferentiated blend of language from across their entire corpus window rather than prioritizing recently popular language. This paper investigates whether LLMs demonstrate temporal awareness of slang and informal vocabulary, and whether their language usage is frozen relative to the pace of real-world linguistic change. We propose and execute
-experiments combining a temporal frequency analysis of slang in FineWeb (a filtered, dated derivative of Common Crawl) with three forms of LLM output probing, and discuss implications for the future of training data and potential mitigations. We find that model slang usage is anchored to older, well-attested terms regardless of recency, that an explicit year cue does not shift models toward era-appropriate vocabulary, and that models' declarative sense of when slang was popular is directionally correct but shifted years into the past.
-
-\todo{Tighten the abstract once the remaining figures (concept-slot, logprob association surface) land.}
+Large language models inherit not only the knowledge but the temporal texture of their training data. Because web-scale corpora carry no uniform date weighting, a model trained on a decade of internet text may treat decade-old slang as equivalent to current usage. We ask whether LLMs track the temporal lifecycle of informal vocabulary or whether their slang usage is frozen relative to the pace of real-world linguistic change. Combining a sense-disambiguated frequency analysis of thirteen slang terms in FineWeb---a dated, filtered derivative of Common Crawl---with three complementary probes of four contemporary LLMs, we find that (i)~model slang usage is anchored to older, well-attested terms irrespective of recency; (ii)~explicitly stating a year in the prompt does not move models toward era-appropriate vocabulary; and (iii)~models' declarative knowledge of when a term was popular is directionally correct but systematically shifted years into the past. We argue these effects compound as human-authored text is increasingly displaced by model output, and discuss implications for training-data curation.
 \end{abstract}
 
 % ============================================================
@@ -73,87 +70,39 @@ experiments combining a temporal frequency analysis of slang in FineWeb (a filte
 
 \subsection{Motivation: Training Data Growth and Its Limits}
 
-Large language models have scaled rapidly on the back of ever-growing
-internet text corpora. The relationship between data volume and model
-capability is well-established: \citet{hoffmann2022chinchilla}
-demonstrate that compute-optimal training requires scaling training
-tokens proportionally with model parameters (\textit{Chinchilla}), and
-subsequent work has confirmed that data scale remains a primary lever
-for capability improvements. Historically, the added volume of available
-training data has grown year-over-year, making recency a less pressing
-concern. However, this dynamic is beginning to shift.
+Large language models have scaled rapidly on ever-growing internet text corpora, and data scale remains a primary lever on capability: compute-optimal training scales tokens in proportion to parameters \citep{hoffmann2022chinchilla}. Historically the volume of available training data has grown year over year, making recency a secondary concern. Two trends are shifting this picture. First, LLM-generated text constitutes a growing share of the web, threatening to contaminate future training pools with model output rather than authentic human language; \citet{shumailov2023curse} show that training on model-generated content induces irreversible \textit{model collapse}, in which the tails of the original distribution vanish. Second, if the supply of genuinely human-authored data decelerates, the median age of training data will rise---eventually the bulk of available text may be years or decades old. Both trends point to the same risk: models that anchor their vocabulary to an earlier linguistic era and fail to track how language actually evolves.
 
-LLM-generated text is increasingly prevalent online, threatening
-  to contaminate future training pools with model outputs rather than
-  authentic human language. \citet{shumailov2023curse} show that
-  training on model-generated content causes irreversible defects in the
-  resulting models, where tails of the original content distribution
-  disappear --- a phenomenon they term \textit{model collapse}.
-
-If data volume growth decelerates or plateaus, the median age
-  of training data will increase --- eventually, the bulk of available
-  data may be years or decades old. This creates a risk: models trained on such corpora may anchor
-  their vocabulary to older language patterns, failing to reflect how
-  human language actually evolves.
-
-\todo{Add citations for training data scaling being a primary driver of
-LLM capability improvements (e.g., Chinchilla, GPT-4 technical report,
-Common Crawl scale papers).}
-\todo{Add comments on how model collapse + anchoring could lead to models no longer using slang.}
+\todo{Add a citation quantifying the rising prevalence of LLM-generated text on the web to support the first trend.}
 
 \subsection{The Temporal Language Problem}
 
-Language changes continuously. Slang and informal vocabulary in
-particular tend to have sharp rise-and-fall cycles, often on the order
-of months to a few years. Because internet training corpora lack uniform
-date-based weighting, a model trained on a 10-year web crawl may treat
-decade-old slang equivalently to contemporary language.
+Language changes continuously, and slang and informal vocabulary change fastest, often rising and falling within months to a few years. Because internet training corpora carry no uniform date weighting, a model trained on a decade of web text may treat decade-old slang as interchangeable with contemporary usage. The problem is most acute for slang of the $\sim$2010--2020 era: it is abundant in training data yet not clearly marked as dated, so its representation is governed by total corpus frequency rather than current relevance (Section~\ref{sec:exp1}). This is compounded by misalignment in the underlying corpora: \citet{cheng2024dated} show that effective training cutoffs often differ substantially from reported ones, and that Common Crawl dumps exhibit non-trivial temporal leakage, with old data persisting in newer dumps and being de facto upsampled.
 
-  % \item Mid-century English appears online primarily in historical
-  % contexts, so models likely have some implicit signal that this language
-  % is archaic.
-
-  We see that in current training corpora, slang from $\sim$2010--2020 is more prevalent and ambiguous: it exists in large
-  quantities in training data without being clearly marked as dated. See figure 1 (fineweb analysis charts).
-  \citet{cheng2024dated} demonstrate that effective training cutoffs
-  often differ substantially from reported ones and include even less recent data than expected. Additionally, they show that CommonCrawl
-  dumps exhibit non-trivial temporal misalignment --- with old data
-  persisting in newer dumps, leading to potential de facto upsampling of older data.
-
-    In this paper we find that \textbf{LLM slang usage is temporally flat} ---
-  the model does not differentiate by era when producing informal language, leading to models sounding outdated, a problem which we expect to grow worse as the bulk of quality (human generated) pre-training data continues to age.
+In this paper we find that \textbf{LLM slang usage is temporally flat}: models do not differentiate by era when producing informal language, leaving their output sounding dated. We expect this effect to worsen as the bulk of high-quality, human-authored pretraining data continues to age.
 
 \subsection{Linguistic Framing}
 
-In order to demonstrate that there is a temporal linguistic effect, we first need to identify a set of words that has fallen out of popular use in the timeframe of the data used for LLM training. We focus on a specific class of words, "slang", distinct from other kinds of similar language change:
+To demonstrate a temporal linguistic effect we require a set of words whose popularity has measurably risen and fallen within the span of LLM training data. We focus on \textit{slang}, which we situate against two adjacent classes of lexical change:
 
 \begin{itemize}
-  \item \textbf{Neologisms:} words that rise in use and plateau as they
-  enter formal language. From our hypothesis, we would expect neologisms to potentially lag in uptake buy models, but this is a more difficult phenomenon to identify on the time scale of existing data. \todo{Find citation for neologism definition}
+  \item \textbf{Neologisms:} words that rise in use and plateau as they enter the standard lexicon. Our hypothesis predicts that models should also lag in adopting neologisms, but their slower, monotonic trajectories are harder to resolve on the time scale of available data. \todo{Add a citation defining neologisms.}
 
-  \item \textbf{``Meme words'' / ephemeral slang:} words that spike
-  quickly and fade within months to a few years --- the primary focus of
-  this study. The use of slang is both creative and ephemeral
-  \citep{eble1989slang}, as noted in \citet{wu2025slang}. by targeting words that were most popular in the time range of 2010-2020 and have reduced popularity between 2020 and the end of 2023 (our test models' cutoff date), we can see how lack of usage in more recent model training data does not impact model usage of the words. \todo{Again, add experimental support here.}
-  \todo{This could be a place to mention that model use does scale with frequency of word in the training data independent of temporal factors.}
+  \item \textbf{``Meme words'' / ephemeral slang:} words that spike quickly and fade within months to a few years---the primary focus of this study. Slang use is both creative and ephemeral \citep{eble1989slang, wu2025slang}. By selecting words that peaked in 2010--2020 and declined before our models' reported cutoffs, we can test whether reduced recent representation in training data translates into reduced model usage.
 
-  \item \textbf{``Vogue words'':} standard English words with a usage spike (e.g., \textit{awesome}, \textit{iconic}, \textit{epic}) --- these words share characteristics with neologisms in terms of temporal use.
-  \todo{Find citation (fill from that one one) defining vogue words.}
+  \item \textbf{``Vogue words'':} standard-English words that undergo a transient usage spike (e.g.\ \textit{awesome}, \textit{iconic}, \textit{epic}); temporally they behave much like neologisms. \todo{Add a citation defining vogue words.}
 \end{itemize}
 
-Slang is generally defined in linguistics by register rather than purely by novelty; the definition is somewhat contentious and there is a long history on frustration with defining slang \cite{lighter1978slang}, \cite{chapman2010slang}. For our purposes the quality we care about is the \textit{ephemerality} of the words, to demonstrate that models are not keeping up to date with which words are no longer in popular use. As such, the uses of "slang" in this paper refer to a word that has demonstrated an ephemeral lifecycle per the definition in \cite{eble1989slang}. 
-Further, slang's definition also often contains it's use as part of a group identity identifier \citep{eble1989slang}, \citep{earl1972}. 
-It's also worth acknowledging here that a significant portion of American slang is appropriated AAVE (idk where to stick this).
+In linguistics, slang is defined by register rather than novelty, and the definition is famously contested \citep{lighter1978slang, chapman2010slang}. The property we rely on is \textit{ephemerality}: throughout this paper, ``slang'' denotes a word with a demonstrably ephemeral usage lifecycle in the sense of \citet{eble1989slang}, whose definition also ties slang to in-group identity \citep{eble1989slang, earl1972}. We further note that a substantial portion of American internet slang is appropriated African American Vernacular English; we return to this in our discussion of limitations (Section~\ref{sec:limitations}).
 
 
 \subsection{Contributions}
 
 This paper makes the following contributions:
 \begin{itemize}
-  \item Empirical analysis of slang frequency across dated FineWeb samples, a dataset derived from Common Crawl. This is used to find a representation of slang prevalence in large model training data.
-  \item Prompting experiments designed to assess popular large model's meta level awareness of slang age.
-  \item Examination of LLM responses to estimate usage frequency of slang words from 2010-2020 vs more recent slang (2021-2023) \footnote{The cutoff date for most tested model was late 2023, for some models ****** we were able to see trends for slang occurring beyond 2023.}, within the training corpora.
-  \item Preliminary investigation of recency-weighted fine-tuning as a potential mitigation. \todo{Can I just like float this as an idea? Sounds expensive to actually try...}
+  \item A sense-disambiguated, time-resolved frequency analysis of thirteen slang terms in FineWeb, establishing an empirical ground truth for slang prevalence in LLM training data (Experiment~1).
+  \item A semantic-slot probe showing that models reliably produce older, well-attested slang but fail on the most recent terms, and that conditioning the prompt on an explicit year does not recover era-appropriate vocabulary (Experiment~2).
+  \item A direct year-association probe showing that models' declarative knowledge of slang timing is directionally correct but systematically shifted into the past, dissociating what models \textit{know} about slang age from what they \textit{use} (Experiment~3).
+  \item A discussion of mitigations, including recency-weighted fine-tuning, framed against the compounding risk of model-generated text in future corpora.
 \end{itemize}
 
 % ============================================================
@@ -161,12 +110,9 @@ This paper makes the following contributions:
 
 \subsection{Training Data Sources and Temporal Coverage}
 
-Common Crawl constitutes a major component of most large-scale training corpora. It includes sources such as Reddit, which captures a large amount of informal language via scraped posts and comments \todo{cite I think}. Other large sources of training data, such as BookCorpus, are less likely to contain modern colloquial language due to the nature of the text in the corpus (usually published books vs online discourse in the case of Reddit).
-Due to Common Crawl's size, many pretraining datasets exists on HuggingFace that attempt to clean up this valuable data source through methods like more advacned deduplication and quality filtering. One such data source is FineWeb, which has been extensively cleaned to provide a high quality source of internet text data dervied from Common Crawl \citep{penedo2024the}.
-The FineWeb HuggingFace repo further provides several levels of pre-samples data from across the dated dumps that make up Common Crawl, our analysis here is based on the 10 billion token sampling of FineWeb as a representative data source.
+Common Crawl is a major component of most large-scale training corpora and a rich source of informal language: it includes web text from platforms such as Reddit, whose posts and comments are heavily colloquial, in contrast to sources like BookCorpus that are dominated by edited, formal prose. Owing to Common Crawl's size and noise, a number of cleaned derivatives are distributed on HuggingFace using aggressive deduplication and quality filtering. We build on one such derivative, FineWeb \citep{penedo2024the}, which provides high-quality internet text alongside per-document provenance.
 
-Common Crawl dumps date back as far as 2013, and have generally been collected every several months since then \cite{commoncrawl2007}. FineWeb contains data from each Common Crawl dump available, though notably, our 10BT sample used was generated in 2024 and so only contains samples from dumps up until 20204-10 (the 10th week of 2024).
-This allows us to easily analyze the content of different dumps based on a date range, and find the word count for a set of target slang words across a set of date ranges. We will use this to provide a "baseline" estimating the frequency of different slang words used on the internet at a given time. This can also be used to validate that certain words maintain the "ephemeral" property and occur with high frequency in a given date range (e.g. 2015-2015) and low frequency in a later range, (e.g. 2020-).
+Common Crawl dumps date back to 2013 and have been collected every few months since \citep{commoncrawl2007}; FineWeb retains a \texttt{dump} field linking each document to its originating crawl. The repository releases pre-sampled subsets at several scales, and our analysis uses the 10-billion-token (10BT) sample as a representative slice. This sample was generated in 2024 and therefore spans dumps up to \texttt{CC-MAIN-2024-10} (the tenth week of 2024). The \texttt{dump} field lets us bin documents by date and measure how the frequency of each target slang term varies over time---a corpus-level baseline for slang prevalence on the web, and a means of verifying that each target word is genuinely ephemeral (frequent in one date range and scarce in a later one).
 
   % \item \textbf{Dolma} \citep{soldaini2024dolma}, used by AI2 for OLMo:
   % uses Common Crawl as 8.14T of 9.31T total tokens; contains
@@ -178,7 +124,7 @@ This allows us to easily analyze the content of different dumps based on a date 
 
 \subsection{Related Work on Emergent Behavior in Large Models}
 
-Larger models exhibit emergent capabilities not present in smaller ones, which motivates using SOTA models for experiments rather than only simple or small models \cite{wei2022emergent}. Results from small models may not generalize, and it's conceivable that meta level awareness of slang relevance could filter down to observed model vocabulary in larger models.
+Larger models exhibit emergent capabilities absent in smaller ones \citep{wei2022emergent}, motivating our use of recent, capable models rather than small ones alone: results from small models may not generalize, and any meta-level awareness of slang recency is both more likely to be present and more likely to surface in generated vocabulary at scale.
 
 \subsection{Related Work on Knowledge Cutoffs and Temporal Bias}
 
@@ -209,8 +155,7 @@ tails of the original distribution disappear. \citet{drayson2025mgtext}
 investigate model collapse under realistic conditions where data origin is unknown, and propose importance sampling as a mitigation.
 \citet{feng2024collapse} argue that verification of synthesized data can prevent model collapse.
 
-This body of work motivates our central concern: if models' outputs are temporally frozen, and those outputs increasingly populate the web, future corpora will contain an ever-growing proportion of linguistically
-dated text. Alternatively, if the mitigation from \citet{feng2024collapse} is leveraged at a wide scale, we may still see ever decreasing amounts of human generated data online, leading to a bias towards older data that is still providing the bulk of 'quality' training data for models.
+This body of work motivates our central concern: if model outputs are temporally frozen and increasingly populate the web, future corpora will contain an ever-growing proportion of linguistically dated text. Even where collapse is averted---e.g.\ by verifying synthesized data \citep{feng2024collapse}---the supply of fresh human-authored text may shrink, leaving older data to dominate the high-quality fraction of training corpora. Either path biases future models toward the language of the past.
 
 % ============================================================
 \section{Methodology}
@@ -283,13 +228,11 @@ We use three prompt forms, each rendered once per target word and sampled across
   \item \textbf{AssociateSlangLogprobs:} an echo+logprob probe over open models that scores the joint completion logprob of each \textit{(year, word)} pairing, giving a continuous association surface rather than a single point estimate.
 \end{itemize}
 
-Each prompt is sampled multiple times per model and we parse a four-digit year from each response. Comparing the model's stated peak year against the corpus peak from Experiment~1 tells us whether the model's \textit{declarative} knowledge of slang timing is accurate even where its \textit{generative} usage is temporally flat.
+GiveYear and DatePhrase are sampled five times per word per model, and AssociateSlangLogprobs is restricted to the open-weight models; we parse a four-digit year from each free-text response. Comparing the model's stated peak year against the corpus peak from Experiment~1 tells us whether a model's \textit{declarative} knowledge of slang timing is accurate even where its \textit{generative} usage is temporally flat.
 
 \subsection{Model Selection}
 
-Experiments are run on four instruction-tuned models spanning three providers: \texttt{meta-llama/Llama-3.3-70B-Instruct-Turbo} and \texttt{deepseek-ai/DeepSeek-V4-Pro} (open weights, served via Together AI, with token-logprob access), \texttt{gpt-4o} (OpenAI), and \texttt{claude-sonnet-4-6} (Anthropic). We use recent, capable models in order to capture the most up-to-date behavior related to model vocabulary, and the mix of open and closed models lets us cross-check logprob-based probes against sampled-frequency estimates.
-
-One of the reasons we've selected target slang words spanning the pre-2018 through 2022--2024 range is to ensure that, for each model, some target slang predates the bulk of its training data while other target slang rose near or after its effective cutoff. This lets us separate a genuine recency bias (older slang overrepresented relative to current usage) from simple absence of recent slang in the training data.
+All probes are run on the four instruction-tuned models introduced in Section~\ref{sec:exp2-method}, spanning three providers and a mix of open- and closed-weight systems; the open models additionally expose token logprobs, letting us cross-check sampled-frequency estimates against direct probabilities. We deliberately span target words from the pre-2018 band through 2022--2024 so that, for every model, some target slang predates the bulk of its training data while other terms rose near or after its effective cutoff. This separation distinguishes a genuine recency bias---older slang overrepresented relative to current usage---from the trivial case of recent slang being absent from training data altogether.
 
 
 % ============================================================
@@ -298,9 +241,7 @@ One of the reasons we've selected target slang words spanning the pre-2018 throu
 \subsection{Experiment 1: Corpus Frequency Over Time}
 \label{sec:exp1}
 
-\textbf{Input:} FineWeb 10BT sample sliced by crawl dump, target slang word list, RoBERTa sense filter. \textbf{Output:} per-word curves of slang-sense occurrences per million tokens against dump date (2014--2024), with Poisson 95\% confidence bands.
-
-The corpus curves confirm that the target words exhibit the ephemeral lifecycles the probing experiments rely on, and they cleanly separate into the three temporal bands introduced in Section~\ref{sec:exp1-method}. We present them in three figures grouped by band.
+Slicing the FineWeb 10BT sample by crawl dump and applying the RoBERTa sense filter yields, for each target word, a curve of slang-sense occurrences per million tokens against dump date (2014--2024) with 95\% Poisson confidence bands. These curves confirm that the target words exhibit the ephemeral lifecycles the probing experiments rely on, and they separate cleanly into the three temporal bands of Section~\ref{sec:exp1-method}, which we present in turn (Figures~\ref{fig:cc-pre2018}--\ref{fig:cc-2022-24}).
 
 \begin{figure}
     \centering
@@ -341,15 +282,15 @@ We first report aggregate target-word recovery --- how often each intended slang
 \begin{figure}
     \centering
     \includegraphics[width=1.0\linewidth]{target_word_accuracy.png}
-    \caption{Semantic-slot target-word recovery accuracy. For each target word (x-axis, in rough chronological order of peak usage) the bars give the percentage of responses, per model, that returned the intended word (stem/inflection matches counted). Older, unambiguous terms are recovered reliably; polysemous (\textit{sick}, \textit{swag}) and very recent (\textit{aura}) terms are recovered poorly.}
+    \caption{Semantic-slot target-word recovery accuracy. For each target word (x-axis, in rough chronological order of peak usage) the bars give the percentage of responses, per model, that returned the intended word (stem and inflection matches counted). Older, unambiguous terms are recovered reliably; polysemous (\textit{sick}, \textit{swag}) and very recent (\textit{aura}) terms are recovered poorly.}
     \label{fig:slotaccuracy}
 \end{figure}
 
-\subsubsection{Does telling the model the year change anything?}
+\subsubsection{Conditioning on a stated year}
 
 The year-conditioned variant prepends ``The year is \{year\}.'' to each recovery prompt and sweeps the year over 2013--2025. If a model tracked its own data distribution, recovery for a word should be highest at that word's true corpus peak year. Figure~\ref{fig:slotyear} shows the result as a word\,$\times$\,prompt-year accuracy heatmap for \texttt{claude-sonnet-4-6}, with rows ordered by true corpus peak and each word's peak year outlined.
 
-\textbf{The stated year mostly does not move the needle.} For the majority of words --- \textit{troll}, \textit{bro}, \textit{lol}, \textit{gaslight}, \textit{vibe}, \textit{vibes} --- accuracy is essentially flat (near 100\%) across all thirteen prompt years: changing ``2013'' to ``2024'' changes nothing. The model is not conditioning its vocabulary on the stated time.
+\textbf{The stated year has little effect.} For the majority of words---\textit{troll}, \textit{bro}, \textit{lol}, \textit{gaslight}, \textit{vibe}, \textit{vibes}---accuracy is essentially flat (near 100\%) across all thirteen prompt years: changing ``2013'' to ``2024'' leaves the output unchanged. The model is not conditioning its vocabulary on the stated time.
 
 \textbf{Where accuracy does vary, it does not track the true peak --- and sometimes anti-tracks it.} Among the words with genuine year-to-year variation, the high-accuracy cells do not line up with the outlined true-peak cell. The starkest case is \texttt{gpt-4o}'s \textit{red pill} (true corpus peak 2024): recovery is \emph{highest} in the earliest prompt years ($\sim$80\% at 2013) and \emph{lowest} at the true peak (23\% at 2024). Claude's \textit{alpha} (peak 2020) is recovered at 100\% through 2013--2017 but dips to $\sim$67\% around its actual peak. If anything, models recover a word slightly better when told an \emph{earlier} year --- the same backward-shifted sense of timing quantified in Experiment~3.
 
@@ -408,63 +349,44 @@ Findings from the corpus analysis and the probing experiments converge on a cons
 
 \subsection{Interpretation}
 
-Results suggest the models do not display temporal sensitivity in their spontaneous slang usage --- when asked to produce current slang on demand they reliably return older, well-attested terms and struggle most with the newest ones (Experiment~2), and an explicit year cue does not move them toward era-appropriate vocabulary --- even while they retain \emph{directionally} correct declarative knowledge of when those terms were popular (Experiment~3). This is consistent with the hypothesis that model slang \textit{usage} reflects total frequency in the training corpus rather than a temporally calibrated view of what is current. \todo{Add some more comments and citations here about the importance of slang and language evolution. AKA why does this isolated effect matter, even if you don't agree with my downstream implications section.}
+Results suggest the models do not display temporal sensitivity in their spontaneous slang usage --- when asked to produce current slang on demand they reliably return older, well-attested terms and struggle most with the newest ones (Experiment~2), and an explicit year cue does not move them toward era-appropriate vocabulary --- even while they retain \emph{directionally} correct declarative knowledge of when those terms were popular (Experiment~3). This is consistent with the hypothesis that model slang \textit{usage} reflects total frequency in the training corpus rather than a temporally calibrated view of what is current. \todo{Strengthen the framing with linguistics citations on the social and identity-signaling function of slang, motivating why temporally miscalibrated informal vocabulary matters independently of the downstream training-data argument.}
 
 The difficulty models have producing the most recent term \textit{aura} --- still sharply rising in the corpus at the end of the window --- is striking precisely because the same models date it to roughly the right era (2023--2024) when asked directly (Figure~\ref{fig:yearassoc}). \textit{aura} is the cleanest illustration of usage-bias-without-a-knowledge-gap: the model knows when the word belongs yet will not produce it on demand. For most other recent terms the model additionally shifts its stated date years too early, so the two effects --- backward-shifted belief and a usage bias on top of it --- compound. The reliability gap between recovering older versus newer slang may reflect that the older terms have saturated the training data with strong, redundant signal, whereas the newest terms appear in quantities too small (and too close to the data-collection horizon) to anchor confident generation, despite being the dominant form in current human usage.
 
 \subsection{Implications for Training Data}
 
-If LLMs cannot naturally update their vocabulary with the pace of language change, this creates a compounding problem as internet text becomes increasingly LLM-generated \citep{shumailov2023curse}. LLM-generated text will continue to reflect frozen, older vocabulary, potentially poisoning future corpora and further reducing models' capacity to reflect current human language. This also provides a similar critique to the broader ``stochastic parrots'' concept \citep{bender2021parrots}: models learn structure from language but may not generalize to dynamic linguistic change. \todo{Claude said this and idk if it makes sense or not... do we want to say that this provides further evidence for concerns raised in parrots? Or do we also want to say that these results demonstrate lack of reasoning? What?} Currently, this may have a small effect on model responses, especially due to preferences against slang use (see Llama's RLHF effect).
-However, these results indicate that generational language shift may be similarly effected, which may have a larger and more problematic impact. If language models persist for the next 100 years, what will the language they generate look like? Will it be rooted in the average of what human-generated data we have from 125 years of collection? In that case, these results indicate that we may have models producing language many decades out of date from real-world usage. In order to maintain relevant and reflective vocabulary in models, this problem will need to be addressed through model training interventions (recency sampling) and continual availability of up-to-date human generated language for training.
+If models cannot keep pace with linguistic change, the effect compounds as web text becomes increasingly model-generated \citep{shumailov2023curse}: output reflecting frozen, older vocabulary re-enters future training corpora, further entrenching dated language and eroding models' capacity to represent current human usage. This connects to the ``stochastic parrots'' critique \citep{bender2021parrots}---models capture the statistical structure of language but need not track its dynamics.
 
-This provides a strong argument in favor of verifiably human-generated text as a premium training resource.
+The practical effect today is modest, and is partly masked by instruction-tuned models' general reluctance to produce slang at all (Section~\ref{sec:exp2}). The longer-term concern is both larger and more general than slang: the same mechanism applies to any generational language shift. As models are retrained on the accumulated text of past decades---increasingly including their own outputs---the language they produce may drift steadily further from contemporary usage. Mitigating this will require explicit training interventions, such as recency-weighted sampling, together with a sustained supply of fresh, verifiably human-authored text. Our results thus add weight to the case for treating human-generated text as a premium training resource.
 
 % ============================================================
 \section{Limitations}
+\label{sec:limitations}
 
-\subsection{Does Prompt Language Condition the Response?}
+\paragraph{Prompt register as a confound.} Our probes ask for slang in a neutral register. A user who prompts in contemporary, slang-laden English might condition the model toward more current vocabulary, in which case the practical impact of the temporal drift we measure would be smaller than the probes suggest. We do not vary prompt register and cannot rule this out. \todo{Add an experiment that systematically varies prompt register (formal vs.\ contemporary-casual) to measure how much input language conditions the recency of output slang.}
 
-One limitation to acknowledge: if a user prompts in contemporary 2025 English, does that effectively condition the model's output toward more current vocabulary? If so, the practical impact of temporal vocabulary drift may be lower than the probing experiments suggest.
-
-\todo{Literature review to assess whether prompt register effectively conditions output register/vocabulary. Presumably it does.}
-
+\paragraph{Further limitations.}
 \begin{itemize}
-  \item Model comparison across cutoff dates is confounded by architectural differences. E.g. RLHF
-  \item Logprob access may be limited to top-$k$ tokens, constraining probing methodology.
-  \item Much internet slang is appropriated AAVE; this linguistic and cultural dimension is not fully addressed here. But bias in models against non-standard English has been observed \cite{barnhart2025rlhf}.
-  \item Common Crawl upsampling (seen in Dolma model, and maybe others that we don't have access to) may distort raw frequency analysis.
-  \item All four probed models (Llama-3.3-70B-Instruct-Turbo, DeepSeek-V4-Pro, gpt-4o, claude-sonnet-4-6) are instruction-tuned. RLHF and instruction tuning may suppress slang relative to base models, potentially amplifying the apparent temporal freeze; replicating on base models would isolate this.
-  \item Logprob-based probes (Approach~2; \textit{AssociateSlangLogprobs}) run only on the two open-weight models, since the closed APIs do not expose token logprobs; closed-model distributions are approximated by repeated sampling, which is noisier.
+  \item Cross-model comparisons confound knowledge cutoff with architecture, training data, and alignment procedure (e.g.\ RLHF); we therefore emphasize within-model temporal patterns over cross-model magnitudes.
+  \item All four probed models are instruction-tuned. RLHF and instruction tuning are known to suppress non-standard English \citep{barnhart2025rlhf} and may amplify the apparent temporal freeze; replicating on base models would isolate this effect.
+  \item Much American internet slang is appropriated African American Vernacular English. We do not analyze this dimension, though documented model bias against non-standard English \citep{barnhart2025rlhf} likely interacts with the effects we report.
+  \item Quality filtering and deduplication in Common Crawl derivatives can distort raw term frequencies; our FineWeb-based rates inherit any such distortion, and the de-facto upsampling of older dumps \citep{cheng2024dated} biases the corpus baseline toward earlier usage.
+  \item The logprob-based probe (\textit{AssociateSlangLogprobs}) runs only on the two open-weight models, since the closed APIs do not expose token logprobs; closed-model distributions are approximated by repeated sampling, which is noisier.
 \end{itemize}
-
-\todo{Revisit this section after experiments to add any additional limitations surfaced during.}
 
 % ============================================================
 \section{Future Work}
 
-\subsection{Stretch Experiment: Fine-tuning as Mitigation}
+\paragraph{Fine-tuning as mitigation.} The most direct test of our framing is interventional: fine-tune a model on a recency-weighted subset of the data---upsampling recent dumps, or downsampling older ones---and re-run the probes. If the temporal freeze is driven by aggregate corpus frequency, recency weighting should shift recovery toward newer slang, whereas no change would point to a deeper architectural or alignment cause. \todo{Review the literature on recency-weighted and continual-learning training for LLMs before designing this experiment.}
 
-We plan to investigate whether fine-tuning on a recent-only data subset can shift the model's vocabulary toward more contemporary usage.
+\paragraph{Naturalistic generation.} Our recovery probe forces a single-word answer. A complementary experiment would measure the rate at which target slang appears in free, in-context generation (e.g.\ a casual message or social-media reply), giving an ecologically valid estimate of usage to set against the forced-choice recovery rates. \todo{Run a controlled free-generation probe and report per-era slang production rates with matched register prompts.}
 
+\paragraph{Further directions.}
 \begin{itemize}
-  \item \textbf{Approach:} fine-tune on a subset of the most recent
-  Common Crawl dumps only; re-run probing experiments.
-  \item \textbf{Sub-question:} does fine-tuning on a duplicate subset of data change usage patterns at all? (Essentially try upsampling based on recency.)
-\end{itemize}
-
-\todo{Could also try "downsampling" old data.}
-
-Additional ideas for future expansion of this work are:
-\todo{ Review literature on recency-weighted training / continual
-learning for LLMs.}
-\begin{itemize}
-  \item Expanded fine-tuning experiments with recency-weighted corpora.
-  \item Longitudinal study: retrain models on successive Common Crawl
-  snapshots and track vocabulary drift over time. Way too expensive for the scope of this project, since it would involve pretraining models.
-  \item Investigating sub-year temporal resolution --- can models distinguish slang peaks within a single year (e.g., the ``Ohio'' meme)?
-  \item Replicating probing experiments on base (non-instruction-tuned) models to isolate RLHF effects on slang suppression. This also might already exist in the literature.
-\item Multilingual analysis of temporal vocabulary drift.
-  \item The implications in multi-lingual settings could be very different. It would be interesting to find our how low resource (low training data) languages are affected by this. Is it more, because model generated language could quickly overtake human generated examples for less resourced languages? Or less because languages with less training data are more easily influenced by more recent data?
+  \item Sub-year temporal resolution: can models distinguish slang peaks within a single year (e.g.\ fast-moving meme words)?
+  \item Replicating the probes on base (non-instruction-tuned) checkpoints to isolate the contribution of RLHF to slang suppression.
+  \item A longitudinal study tracking vocabulary drift as models are retrained on successive crawl snapshots (resource-intensive, as it requires repeated pretraining).
+  \item Multilingual analysis: low-resource languages may be affected more strongly (model output can quickly dominate scarce human data) or less (smaller corpora may be more easily refreshed by recent text).
 \end{itemize}
 
 % ============================================================
