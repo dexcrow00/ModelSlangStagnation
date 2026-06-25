@@ -19,6 +19,7 @@ from pathlib import Path
 # Target words grouped by approximate era of peak usage.
 # Single-word and hyphenated/compound forms are included; phrase detection
 # uses a simple regex boundary check.
+# TODO(dexcrow): Update this with actual experimental buckets.
 ERA_WORDS: dict[str, list[str]] = {
     "pre-2012 (older)": [
         "sick", "dope", "rad", "gnarly", "fresh", "wicked", "banging", "epic",
@@ -26,7 +27,7 @@ ERA_WORDS: dict[str, list[str]] = {
     ],
     "2012–2015": [
         "yolo", "swag", "bae", "basic", "goals", "squad", "fleek", "on fleek",
-        "turnt", "ratchet", "thirsty", "salty", "savage", "extra",
+        "turnt", "ratchet", "thirsty", "salty", "savage", "extra", "omg",
     ],
     "2016–2019": [
         "lit", "fire", "slay", "vibe", "lowkey", "highkey", "yeet", "fam",
@@ -36,12 +37,12 @@ ERA_WORDS: dict[str, list[str]] = {
     "2020–2022": [
         "bussin", "based", "mid", "sus", "hits different", "understood the assignment",
         "main character", "rent free", "gatekeep", "gaslight", "girlboss",
-        "situationship", "cheugy", "vibing",
+        "situationship", "cheugy", "vibing", "lmao", "lmaooo"
     ],
     "2023–2024": [
         "rizz", "delulu", "it's giving", "snatched", "ate", "left no crumbs",
         "brat", "demure", "very demure", "NPC", "roman empire", "era",
-        "in my era",
+        "in my era", "💀",
     ],
 }
 
