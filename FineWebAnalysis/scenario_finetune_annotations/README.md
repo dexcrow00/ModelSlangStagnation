@@ -13,7 +13,9 @@ target word; columns: `target, is_slang, target_context, uri`.
    `python finetune_roberta.py --annotations scenario_finetune_annotations \
        --model-dir ./ft_model_roberta_scenario/`
 
-## Contents (26 words, 2640 contexts, up to 120 each)
+Words with no standard sense (`slang_constants.ALWAYS_SLANG`: legit, lmaooo, lmaoooo, lmaooooo, lmfao, omg, omgggg, situationship, 💀) are **excluded** --- `roberta_filter.py` always passes them, so they need no classifier training.
+
+## Contents (17 words, 1874 contexts, up to 120 each)
 
 | word | contexts |
 | --- | --- |
@@ -25,21 +27,12 @@ target word; columns: `target, is_slang, target_context, uri`.
 | era | 120 |
 | squad | 120 |
 | pumped | 120 |
-| legit | 120 |
 | tight | 120 |
 | woke | 120 |
 | shaking | 120 |
 | clout | 120 |
-| omg | 120 |
 | dude | 120 |
 | rent free | 120 |
-| lmfao | 120 |
 | vibing | 120 |
-| 💀 | 120 |
-| situationship | 120 |
 | hits different | 72 |
-| lmaooo | 62 |
-| omgggg | 48 |
-| lmaooooo | 28 |
-| lmaoooo | 28 |
 | left no crumbs | 2 |

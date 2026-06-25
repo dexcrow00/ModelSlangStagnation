@@ -33,6 +33,11 @@ from typing import Dict, Iterator, List, Optional, Tuple
 import torch
 from transformers import AutoModelForSequenceClassification, AutoTokenizer
 
+# Single source of truth for the always-slang allowlist (sibling module); works
+# whether this file is run as a script or imported from another directory.
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from slang_constants import ALWAYS_SLANG  # noqa: E402
+
 if hasattr(sys.stderr, "reconfigure"):
     sys.stderr.reconfigure(line_buffering=True)  # type: ignore[attr-defined]
 
@@ -116,28 +121,48 @@ class TransformerSlangClassifier:
 
     def score_rows(self, rows: List[Dict[str, str]], batch_size: int) -> List[float]:
         """Return a score ∈ [-1, 1] per row, scoring its ``target_context``
-        conditioned on its ``target`` word via the saved prompt template."""
+        conditioned on its ``target`` word via the saved prompt template.
+
+        Rows whose target is in ``ALWAYS_SLANG`` are assigned the maximum score
+        (1.0) without invoking the model, since those words have no standard
+        sense and should always pass the filter.
+        """
         assert self.model is not None, "Call load() before score_rows()."
-
-        # Only the template is parsed for {target}/{context} fields; braces in
-        # the raw web text are inserted literally, never re-interpreted.
-        texts = [self.prompt_template.format(target=r.get("target", ""),
-                                             context=r.get("target_context", ""))
-                 for r in rows]
-        if not texts:
+        if not rows:
             return []
-        log.info("  Scoring %d rows ...", len(texts))
 
-        scores: List[float] = []
-        for batch in _batched(texts, batch_size):
-            enc = self.tokenizer(
-                batch, padding=True, truncation=True,
-                max_length=256, return_tensors="pt",
-            ).to(self.device)
-            with torch.no_grad():
-                probs = torch.softmax(self.model(**enc).logits, dim=1)[:, 1].cpu().tolist()
-            scores.extend(float(2 * p - 1) for p in probs)  # [0,1] -> [-1,1]
-        return scores
+        scores: List[Optional[float]] = [None] * len(rows)
+        texts: List[str] = []
+        model_idx: List[int] = []
+        for i, r in enumerate(rows):
+            target = (r.get("target") or "").strip()
+            if target.casefold() in ALWAYS_SLANG:
+                scores[i] = 1.0
+                continue
+            # Only the template is parsed for {target}/{context} fields; braces in
+            # the raw web text are inserted literally, never re-interpreted.
+            texts.append(self.prompt_template.format(target=target,
+                                                     context=r.get("target_context", "")))
+            model_idx.append(i)
+
+        n_bypass = len(rows) - len(texts)
+        if texts:
+            log.info("  Scoring %d rows%s ...", len(texts),
+                     f" ({n_bypass} always-slang bypassed)" if n_bypass else "")
+            model_scores: List[float] = []
+            for batch in _batched(texts, batch_size):
+                enc = self.tokenizer(
+                    batch, padding=True, truncation=True,
+                    max_length=256, return_tensors="pt",
+                ).to(self.device)
+                with torch.no_grad():
+                    probs = torch.softmax(self.model(**enc).logits, dim=1)[:, 1].cpu().tolist()
+                model_scores.extend(float(2 * p - 1) for p in probs)  # [0,1] -> [-1,1]
+            for idx, s in zip(model_idx, model_scores):
+                scores[idx] = s
+        elif n_bypass:
+            log.info("  %d rows all always-slang; model not invoked.", n_bypass)
+        return [s if s is not None else 0.0 for s in scores]
 
 
 # ---------------------------------------------------------------------------
