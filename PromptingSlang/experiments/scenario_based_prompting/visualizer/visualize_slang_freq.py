@@ -6,7 +6,7 @@ scenario responses and draws two stacked bar charts of response frequency, each
 with its own x-axis. The **top panel colours each bar by the word's corpus peak
 year** (recency, ordered oldest -> newest) and the **bottom panel by its total
 corpus occurrence** (overall frequency, ordered most -> least), both from the
-FineWeb ``peak_years.json``. Each panel's title reports the Pearson correlation
+FineWeb ``peak_years.json``. Each panel's title reports the Spearman correlation
 between its corpus statistic and response frequency, quantifying the experiment's
 central question: does a model's naturalistic slang usage track recency, or
 simply overall corpus frequency?
@@ -42,15 +42,23 @@ from src.response_utils import model_short, read_responses  # noqa: E402
 
 DEFAULT_RESPONSES = Path(__file__).resolve().parents[1] / "responses"
 DEFAULT_OUTPUT = Path(__file__).resolve().parents[1] / "figures" / "slang_freq.png"
-# target_words.txt and peak_years.json live in the sibling FineWebAnalysis project.
+# Word lists and peak_years.json live in the sibling FineWebAnalysis project.
 FINEWEB = REPO_ROOT.parent / "FineWebAnalysis"
-DEFAULT_WORDS = FINEWEB / "target_words.txt"
+DEFAULT_WORDS = [FINEWEB / "target_words.txt", FINEWEB / "scenario_words.txt"]
 DEFAULT_PEAKS = FINEWEB / "peak_years.json"
 
 
-def load_target_words(path: Path) -> list[str]:
-    return [w.strip().lower() for w in path.read_text(encoding="utf-8").splitlines()
-            if w.strip() and not w.strip().startswith("#")]
+def load_target_words(paths: list[Path]) -> list[str]:
+    """Union of words/phrases across the given files, lowercased, order-stable."""
+    seen: set[str] = set()
+    words: list[str] = []
+    for p in paths:
+        for line in p.read_text(encoding="utf-8").splitlines():
+            w = line.strip().lower()
+            if w and not w.startswith("#") and w not in seen:
+                seen.add(w)
+                words.append(w)
+    return words
 
 
 def load_peak_years(path: Path) -> dict[str, tuple[int, int]]:
@@ -114,6 +122,27 @@ def _pearson(xs: list[float], ys: list[float]) -> float:
     return sxy / math.sqrt(sxx * syy)
 
 
+def _rank(xs: list[float]) -> list[float]:
+    """Fractional ranks of *xs* (ties get the average of their positions)."""
+    order = sorted(range(len(xs)), key=lambda i: xs[i])
+    ranks = [0.0] * len(xs)
+    i = 0
+    while i < len(order):
+        j = i
+        while j + 1 < len(order) and xs[order[j + 1]] == xs[order[i]]:
+            j += 1
+        avg = (i + j) / 2.0 + 1.0  # 1-based average rank for the tie block
+        for k in range(i, j + 1):
+            ranks[order[k]] = avg
+        i = j + 1
+    return ranks
+
+
+def _spearman(xs: list[float], ys: list[float]) -> float:
+    """Spearman rank correlation = Pearson correlation of the ranks (tie-corrected)."""
+    return _pearson(_rank(xs), _rank(ys))
+
+
 def _draw_panel(fig, ax, words, values, colors, cmap, norm, cbar_label,
                 ylabel, xlabel, int_ticks: bool = False) -> None:
     """Response-frequency bars (one per word, in the given order) with own x-axis."""
@@ -150,19 +179,20 @@ def render(totals: Counter, n_responses: int, peaks: dict[str, tuple[int, int]],
     scale = (1.0 / max(n_responses, 1)) if as_rate else 1.0
     val = {w: totals[w] * scale for w in appeared}
 
-    # --- Pearson correlations over the reliable (coloured) words --------------
+    # --- Spearman rank correlations over the reliable (coloured) words --------
     # Order-independent: the same data points, only plotted in different orders.
+    # Rank-based, so robust to the heavy outliers (bro/omg/u) in response usage.
     rel_year = [peaks[w][0] for w in reliable_words]
     rel_occ = [peaks[w][1] for w in reliable_words]
     rel_freq = [totals[w] for w in reliable_words]  # response counts (rate is a constant scale)
-    r_year = _pearson(rel_year, rel_freq)
-    r_occ = _pearson(rel_occ, rel_freq)
+    r_year = _spearman(rel_year, rel_freq)
+    r_occ = _spearman(rel_occ, rel_freq)
     n_corr = len(reliable_words)
 
-    print(f"\nPearson correlations over {n_corr} reliable words (>= {min_hits} corpus hits), "
+    print(f"\nSpearman rank correlations over {n_corr} reliable words (>= {min_hits} corpus hits), "
           "response frequency vs:")
-    print(f"  corpus peak year        r = {r_year:+.3f}")
-    print(f"  corpus total occurrence r = {r_occ:+.3f}")
+    print(f"  corpus peak year        rho = {r_year:+.3f}")
+    print(f"  corpus total occurrence rho = {r_occ:+.3f}")
     print(f"\n  {'word':<12}{'peak_yr':>8}{'corpus_occ':>12}{'resp_freq':>11}")
     for w in sorted(reliable_words, key=lambda w: -totals[w]):
         print(f"  {w:<12}{peaks[w][0]:>8}{peaks[w][1]:>12}{totals[w]:>11}")
@@ -194,14 +224,14 @@ def render(totals: Counter, n_responses: int, peaks: dict[str, tuple[int, int]],
                 f"slang word (ordered by corpus peak year; grey = <{min_hits} corpus hits)",
                 int_ticks=True)
     ax_top.set_title(f"coloured by corpus peak year (recency)  ---  "
-                     f"Pearson $r$(peak year, response freq) $= {r_year:+.2f}$  ($n={n_corr}$)",
+                     f"Spearman $\\rho$(peak year, response freq) $= {r_year:+.2f}$  ($n={n_corr}$)",
                      fontsize=10)
     _draw_panel(fig, ax_bot, order2, [val[w] for w in order2], colors2,
                 viridis, occ_norm, "corpus total occurrences (log)", ylabel,
                 f"slang word (ordered by corpus total occurrence, most $\\to$ least; "
                 f"grey = <{min_hits} corpus hits)")
     ax_bot.set_title(f"coloured by total corpus occurrence (overall frequency)  ---  "
-                     f"Pearson $r$(corpus count, response freq) $= {r_occ:+.2f}$  ($n={n_corr}$)",
+                     f"Spearman $\\rho$(corpus count, response freq) $= {r_occ:+.2f}$  ($n={n_corr}$)",
                      fontsize=10)
 
     total_hits = sum(totals.values())
@@ -227,8 +257,9 @@ def main() -> None:
                    help=f"Response JSONL file or directory (default: {DEFAULT_RESPONSES}).")
     p.add_argument("-m", "--model", default=None,
                    help="Restrict to one model (substring match); default aggregates all.")
-    p.add_argument("--words", type=Path, default=DEFAULT_WORDS,
-                   help=f"Target words file (default: {DEFAULT_WORDS}).")
+    p.add_argument("--words", type=Path, nargs="+", default=DEFAULT_WORDS,
+                   help="One or more word-list files; their union is the slang vocabulary "
+                        f"(default: {', '.join(p.name for p in DEFAULT_WORDS)}).")
     p.add_argument("--peaks", type=Path, default=DEFAULT_PEAKS,
                    help=f"peak_years.json with corpus peaks (default: {DEFAULT_PEAKS}).")
     p.add_argument("--rate", action="store_true",
