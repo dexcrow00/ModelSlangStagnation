@@ -6,10 +6,10 @@ scenario responses and draws two stacked bar charts of response frequency, each
 with its own x-axis. The **top panel colours each bar by the word's corpus peak
 year** (recency, ordered oldest -> newest) and the **bottom panel by its total
 corpus occurrence** (overall frequency, ordered most -> least), both from the
-FineWeb ``peak_years.json``. Each panel's title reports the Spearman correlation
-between its corpus statistic and response frequency, quantifying the experiment's
-central question: does a model's naturalistic slang usage track recency, or
-simply overall corpus frequency?
+FineWeb ``peak_years.json``. The top panel (year) reports Spearman correlation and the bottom panel (total
+corpus frequency) reports Pearson correlation, each with a two-tailed p-value,
+quantifying the experiment's central question: does a model's naturalistic slang
+usage track recency, or simply overall corpus frequency?
 
 Words whose corpus statistics rest on fewer than ``--min-peak-hits`` (default
 100) sense-filtered occurrences are unreliable and excluded from the
@@ -35,12 +35,14 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 from matplotlib import cm
 from matplotlib.colors import LogNorm, Normalize
+from scipy.stats import t as t_dist
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(REPO_ROOT))
 from src.response_utils import model_short, read_responses  # noqa: E402
 
 DEFAULT_RESPONSES = Path(__file__).resolve().parents[1] / "responses"
+DEFAULT_COUNTS_JSON = Path(__file__).resolve().parents[1] / "slang_counts_by_model.json"
 DEFAULT_OUTPUT = Path(__file__).resolve().parents[1] / "figures" / "slang_freq.png"
 # Word lists and peak_years.json live in the sibling FineWebAnalysis project.
 FINEWEB = REPO_ROOT.parent / "FineWebAnalysis"
@@ -86,6 +88,30 @@ def pick_model(records: list[dict], requested: str | None) -> tuple[list[dict], 
     if len(matches) > 1:
         sys.exit(f"'{requested}' matches several models: {', '.join(matches)}. Be more specific.")
     return [r for r in records if r.get("model") == matches[0]], matches[0]
+
+
+def load_from_counts_json(path: Path, model: str | None) -> tuple[Counter, int]:
+    """Build (totals Counter, n_responses) from a pre-aggregated slang_counts_by_model.json.
+
+    When ``model`` is given (substring match), sums only that model's counts;
+    otherwise sums across all models.
+    """
+    data = json.loads(path.read_text(encoding="utf-8"))
+    models_data = data.get("models", {})
+    if model:
+        matches = [m for m in models_data if model.lower() in m.lower()]
+        if not matches:
+            sys.exit(f"No model matching '{model}'. Available: {', '.join(models_data)}")
+        if len(matches) > 1:
+            sys.exit(f"'{model}' matches several models: {', '.join(matches)}. Be more specific.")
+        models_data = {matches[0]: models_data[matches[0]]}
+    totals: Counter = Counter()
+    n_responses = 0
+    for info in models_data.values():
+        n_responses += info.get("responses", 0)
+        for w, c in info.get("words", {}).items():
+            totals[w] += c
+    return totals, n_responses
 
 
 def collect(records: list[dict], words: list[str]) -> tuple[Counter, int]:
@@ -143,6 +169,22 @@ def _spearman(xs: list[float], ys: list[float]) -> float:
     return _pearson(_rank(xs), _rank(ys))
 
 
+def _pvalue(r: float, n: int) -> float:
+    """Two-tailed p-value for a correlation coefficient r with sample size n."""
+    if n < 3 or math.isnan(r) or abs(r) >= 1.0:
+        return float("nan")
+    t_stat = r * math.sqrt(n - 2) / math.sqrt(1.0 - r * r)
+    return float(2 * t_dist.sf(abs(t_stat), df=n - 2))
+
+
+def _fmt_p(p: float) -> str:
+    if math.isnan(p):
+        return "n/a"
+    if p < 0.001:
+        return "p < 0.001"
+    return f"p = {p:.3f}"
+
+
 def _draw_panel(fig, ax, words, values, colors, cmap, norm, cbar_label,
                 ylabel, xlabel, int_ticks: bool = False) -> None:
     """Response-frequency bars (one per word, in the given order) with own x-axis."""
@@ -186,13 +228,15 @@ def render(totals: Counter, n_responses: int, peaks: dict[str, tuple[int, int]],
     rel_occ = [peaks[w][1] for w in reliable_words]
     rel_freq = [totals[w] for w in reliable_words]  # response counts (rate is a constant scale)
     r_year = _spearman(rel_year, rel_freq)
-    r_occ = _spearman(rel_occ, rel_freq)
+    r_occ = _pearson(rel_occ, rel_freq)
     n_corr = len(reliable_words)
+    p_year = _pvalue(r_year, n_corr)
+    p_occ = _pvalue(r_occ, n_corr)
 
-    print(f"\nSpearman rank correlations over {n_corr} reliable words (>= {min_hits} corpus hits), "
+    print(f"\nCorrelations over {n_corr} reliable words (>= {min_hits} corpus hits), "
           "response frequency vs:")
-    print(f"  corpus peak year        rho = {r_year:+.3f}")
-    print(f"  corpus total occurrence rho = {r_occ:+.3f}")
+    print(f"  corpus peak year        Spearman rho = {r_year:+.3f}  {_fmt_p(p_year)}")
+    print(f"  corpus total occurrence Pearson  r   = {r_occ:+.3f}  {_fmt_p(p_occ)}")
     print(f"\n  {'word':<12}{'peak_yr':>8}{'corpus_occ':>12}{'resp_freq':>11}")
     for w in sorted(reliable_words, key=lambda w: -totals[w]):
         print(f"  {w:<12}{peaks[w][0]:>8}{peaks[w][1]:>12}{totals[w]:>11}")
@@ -224,14 +268,16 @@ def render(totals: Counter, n_responses: int, peaks: dict[str, tuple[int, int]],
                 f"slang word (ordered by corpus peak year; grey = <{min_hits} corpus hits)",
                 int_ticks=True)
     ax_top.set_title(f"coloured by corpus peak year (recency)  ---  "
-                     f"Spearman $\\rho$(peak year, response freq) $= {r_year:+.2f}$  ($n={n_corr}$)",
+                     f"Spearman $\\rho$(peak year, response freq) $= {r_year:+.2f}$  "
+                     f"($n={n_corr}$, {_fmt_p(p_year)})",
                      fontsize=10)
     _draw_panel(fig, ax_bot, order2, [val[w] for w in order2], colors2,
                 viridis, occ_norm, "corpus total occurrences (log)", ylabel,
                 f"slang word (ordered by corpus total occurrence, most $\\to$ least; "
                 f"grey = <{min_hits} corpus hits)")
     ax_bot.set_title(f"coloured by total corpus occurrence (overall frequency)  ---  "
-                     f"Spearman $\\rho$(corpus count, response freq) $= {r_occ:+.2f}$  ($n={n_corr}$)",
+                     f"Pearson $r$(corpus count, response freq) $= {r_occ:+.2f}$  "
+                     f"($n={n_corr}$, {_fmt_p(p_occ)})",
                      fontsize=10)
 
     total_hits = sum(totals.values())
@@ -267,19 +313,35 @@ def main() -> None:
     p.add_argument("--min-peak-hits", type=int, default=100, dest="min_peak_hits", metavar="N",
                    help="Grey out (treat peak year as unreliable) words backed by fewer than N "
                         "sense-filtered corpus hits (default: 100).")
+    p.add_argument("--counts-json", type=Path, default=None, dest="counts_json",
+                   metavar="FILE",
+                   help="Use a pre-aggregated slang_counts_by_model.json instead of raw "
+                        "response files. Used automatically when the responses path does not "
+                        f"exist (default: {DEFAULT_COUNTS_JSON}).")
     p.add_argument("-o", "--output", type=Path, default=DEFAULT_OUTPUT,
                    help=f"Output path (default: {DEFAULT_OUTPUT}). Pass '-' to display interactively.")
     args = p.parse_args()
 
-    records = read_responses(args.responses)
-    if not records:
-        sys.exit(f"No response records found in {args.responses}.")
-    words = load_target_words(args.words)
     peaks = load_peak_years(args.peaks)
     if not peaks:
         print(f"Warning: no peak years from {args.peaks}; bars will be uncoloured grey.", file=sys.stderr)
-    records, model_label = pick_model(records, args.model)
-    totals, n = collect(records, words)
+    words = load_target_words(args.words)
+
+    use_json = args.counts_json or (not Path(args.responses).exists())
+    if use_json:
+        counts_path = args.counts_json or DEFAULT_COUNTS_JSON
+        if not counts_path.is_file():
+            sys.exit(f"Counts JSON not found: {counts_path}")
+        totals, n = load_from_counts_json(counts_path, args.model)
+        model_label = args.model
+        print(f"Loaded from {counts_path.name}: {n} responses, {sum(totals.values())} hits")
+    else:
+        records = read_responses(args.responses)
+        if not records:
+            sys.exit(f"No response records found in {args.responses}.")
+        records, model_label = pick_model(records, args.model)
+        totals, n = collect(records, words)
+
     render(totals, n, peaks, model_label, args.rate, args.min_peak_hits,
            None if str(args.output) == "-" else args.output)
 
