@@ -1,0 +1,60 @@
+Comment: The corpus and model vintage being close, and located around 2015 is actually a great support for the thesis.
+The model matches closely the corpus characteristics, we can mathematically show that the corpus vintage will continue
+to age, thereby aging the model as well.
+
+
+Effective-vintage analysis
+  Vocabulary : 89 words with ≥ 100 corpus hits
+               (39 appear in responses, 824 total hits across 1000 responses)
+
+──────────────────────────────────────────────────────────────
+  Model vintage  : 2015.4  [2013.7, 2014.6]  95% CI
+  Corpus vintage : 2015.8
+  Lag            : -0.4 years  (model skews older than corpus)
+──────────────────────────────────────────────────────────────
+  Bootstrap      : B=5000, seed=42
+  Method         : response-level bootstrap  (N=200 responses resampled)
+
+──────────────────────────────────────────────────────────────
+  Per-word contributions to model vintage  (sorted by response weight)
+──────────────────────────────────────────────────────────────
+  word                     yr   resp  weight%  contrib
+  omg                    2013    173   21.0%   422.63
+  bro                    2014    151   18.3%   369.07
+  💀                      2022    118   14.3%   289.56
+  dude                   2013     97   11.8%   236.97
+  u                      2013     85   10.3%   207.65
+  lol                    2014     68    8.3%   166.20
+  lmao                   2016     18    2.2%    44.04
+  epic                   2017     12    1.5%    29.37
+  fire                   2013     10    1.2%    24.43
+  sick                   2014      8    1.0%    19.55
+  legit                  2024      8    1.0%    19.65
+  cooked                 2017      7    0.8%    17.13
+  salty                  2018      6    0.7%    14.69
+  vibe                   2024      6    0.7%    14.74
+  lit                    2019      5    0.6%    12.25
+  bruh                   2021      5    0.6%    12.26
+  era                    2024      5    0.6%    12.28
+  vibes                  2024      5    0.6%    12.28
+  extra                  2013      4    0.5%     9.77
+  meh                    2014      4    0.5%     9.78
+  tight                  2013      3    0.4%     7.33
+  squad                  2017      3    0.4%     7.34
+  slay                   2024      3    0.4%     7.37
+  fresh                  2014      2    0.2%     4.89
+  mid                    2018      2    0.2%     4.90
+  lowkey                 2022      2    0.2%     4.91
+  woke                   2024      2    0.2%     4.91
+  pumped                 2013      1    0.1%     2.44
+  slaps                  2013      1    0.1%     2.44
+  tea                    2013      1    0.1%     2.44
+  swag                   2015      1    0.1%     2.45
+  slop                   2016      1    0.1%     2.45
+  basic                  2018      1    0.1%     2.45
+  goals                  2020      1    0.1%     2.45
+  cancelled              2022      1    0.1%     2.45
+  fam                    2022      1    0.1%     2.45
+  clout                  2023      1    0.1%     2.46
+  vibing                 2023      1    0.1%     2.46
+  situationship          2024      1    0.1%     2.46
