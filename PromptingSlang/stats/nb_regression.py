@@ -140,6 +140,9 @@ def main() -> None:
     ap.add_argument("--min-corpus-hits", type=int, default=100, dest="min_hits",
                     help="Exclude words with fewer than N sense-filtered corpus hits "
                          "(default: 100).")
+    ap.add_argument("--exclude", nargs="*", default=[], metavar="WORD",
+                    help="Words to drop from the analysis (case-insensitive). "
+                         "E.g. --exclude 💀 lol")
     ap.add_argument("-o", "--output", type=Path, default=DEFAULT_OUTPUT,
                     help=f"Write results to this file in addition to stdout "
                          f"(default: {DEFAULT_OUTPUT.relative_to(REPO_ROOT)}).")
@@ -149,6 +152,10 @@ def main() -> None:
     sys.stdout = tee
 
     df = load_data(args.peaks, args.counts, args.min_hits)
+    if args.exclude:
+        exclude = {w.lower() for w in args.exclude}
+        df = df[~df["word"].isin(exclude)].reset_index(drop=True)
+        print(f"\n  Excluded: {', '.join(sorted(exclude))}")
     n = len(df)
     if n < 5:
         tee.close()

@@ -207,6 +207,9 @@ def main() -> None:
                     help="Word-list files whose union defines the slang vocabulary.")
     ap.add_argument("--min-corpus-hits", type=int, default=100, dest="min_hits",
                     help="Exclude words with fewer than N corpus hits (default: 100).")
+    ap.add_argument("--exclude", nargs="*", default=[], metavar="WORD",
+                    help="Words to drop from the analysis (case-insensitive). "
+                         "E.g. --exclude 💀 lol")
     ap.add_argument("--bootstrap", type=int, default=5000, metavar="B",
                     help="Number of bootstrap iterations (default: 5000).")
     ap.add_argument("--ci", type=float, default=0.95,
@@ -222,8 +225,36 @@ def main() -> None:
     sys.stdout = tee
 
     peak_data = _load_peak_data(args.peaks, args.min_hits)
+    exclude = {w.lower() for w in args.exclude}
+    for w in exclude:
+        peak_data.pop(w, None)
+    if exclude:
+        print(f"  Excluded       : {', '.join(sorted(exclude))}")
     response_counts, n_responses = _load_response_counts(args.counts)
     rng = np.random.default_rng(args.seed)
+
+    # ── bootstrap / point-estimate source ────────────────────────────────────
+    # When --responses is given, derive both the point estimate AND the CI from
+    # the same individual response records so they are consistent with each other.
+    # Without this, the point estimate comes from slang_counts_by_model.json
+    # (potentially different models / response set) while the CI reflects the
+    # given file, causing the point estimate to fall outside the CI.
+    if args.responses is not None and args.responses.exists():
+        vocab = _load_vocab(args.words)
+        vocab_pats = {w: _pattern(w) for w in vocab if w in peak_data}
+        response_texts = _load_individual_responses(args.responses)
+        n_responses = len(response_texts)
+        agg: Counter = Counter()
+        for text in response_texts:
+            agg.update(_count_in_text(text, vocab_pats))
+        response_counts = agg
+        boot_samples = _bootstrap_responses(
+            response_texts, vocab_pats, peak_data, args.bootstrap, rng)
+        boot_method = f"response-level bootstrap  (N={n_responses} responses resampled)"
+    else:
+        boot_samples = _bootstrap_poisson(
+            response_counts, peak_data, args.bootstrap, rng)
+        boot_method = "parametric Poisson bootstrap  (use --responses for response-level)"
 
     # ── point estimates ───────────────────────────────────────────────────────
     model_vintage = _vintage(dict(response_counts), peak_data)
@@ -239,20 +270,6 @@ def main() -> None:
     print(f"  Vocabulary : {n_vocab} words with ≥ {args.min_hits} corpus hits")
     print(f"               ({n_used} appear in responses, {total_hits} total hits "
           f"across {n_responses} responses)")
-
-    # ── bootstrap ─────────────────────────────────────────────────────────────
-    if args.responses is not None and args.responses.exists():
-        vocab = _load_vocab(args.words)
-        vocab_pats = {w: _pattern(w) for w in vocab if w in peak_data}
-        response_texts = _load_individual_responses(args.responses)
-        n_boot_resp = len(response_texts)
-        boot_samples = _bootstrap_responses(
-            response_texts, vocab_pats, peak_data, args.bootstrap, rng)
-        boot_method = f"response-level bootstrap  (N={n_boot_resp} responses resampled)"
-    else:
-        boot_samples = _bootstrap_poisson(
-            response_counts, peak_data, args.bootstrap, rng)
-        boot_method = "parametric Poisson bootstrap  (use --responses for response-level)"
 
     alpha = (1.0 - args.ci) / 2.0
     ci_lo, ci_hi = np.nanpercentile(boot_samples, [100 * alpha, 100 * (1 - alpha)])

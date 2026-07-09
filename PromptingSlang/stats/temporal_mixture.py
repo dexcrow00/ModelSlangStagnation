@@ -284,6 +284,9 @@ def main() -> None:
     ap.add_argument("--min-corpus-hits", type=int, default=100, dest="min_hits",
                     help="Min sense-filtered corpus hits for a word to be included "
                          "(default: 100).")
+    ap.add_argument("--exclude", nargs="*", default=[], metavar="WORD",
+                    help="Words to drop from the analysis (case-insensitive). "
+                         "E.g. --exclude 💀 lol")
     ap.add_argument("--smooth", type=float, default=0.5, metavar="EPS",
                     help="Laplace pseudo-count added to each (year, word) cell "
                          "(default: 0.5).  Prevents zero-probability years for "
@@ -304,6 +307,11 @@ def main() -> None:
 
     # ── load data ─────────────────────────────────────────────────────────────
     peak_data = load_peak_data(args.peaks, args.min_hits)
+    exclude = {w.lower() for w in args.exclude}
+    for w in exclude:
+        peak_data.pop(w, None)
+    if exclude:
+        print(f"\n  Excluded: {', '.join(sorted(exclude))}")
     response_counts, n_responses = load_response_counts(args.counts)
     year_counts = load_year_counts(args.scored_dirs)
 
