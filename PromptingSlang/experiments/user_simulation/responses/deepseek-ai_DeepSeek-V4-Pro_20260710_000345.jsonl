@@ -1,0 +1,1900 @@
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 0,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "yo dude u see that vid i sent u? 😂\n\nnah not yet, my phone’s lagging hard. is it the one with the cat?\n\nyesss omg the cat just stares into the camera like 👁️👄👁️ i’m cryinggg\n\nlmaoo bet, i’ll watch it rn. brb gonna grab snacks first\n\nhurry up don’t leave me on read 😤",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 159,
+    "total_tokens": 197
+  },
+  "timestamp": "2026-07-10T00:10:01.002837+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 1,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**alex:** yo did u see the group chat??\n\n**jamie:** nah my phone was dead 💀 what happened\n\n**alex:** broooo ryan got caught sneaking out last night lmaooo\n\n**jamie:** NO WAY 💀💀 how??\n\n**alex:** his mom saw the ring camera footage of him climbing out the window 💀💀💀 he’s grounded for a month\n\n**jamie:** rip ryan 😭😭 mans is never seeing daylight again\n\n**alex:** fr he’s already spamming the chat with sad playlists 🎻🎻\n\n**jamie:** lmaooo not the sad boy hours already 😂 we gotta sneak him out again for the party saturday\n\n**alex:** bet. operation free ryan part 2 😈",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 238,
+    "total_tokens": 276
+  },
+  "timestamp": "2026-07-10T00:10:07.217761+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 2,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "yo u free this weekend??\n\nnah gotta finish that history project 💀\n\nbro same it’s so boring i haven’t even started\n\nlmaoo we’re doomed. wanna suffer together at my place sat? mom’s ordering pizza\n\nomg yes pls save me from this hell 😭 i’ll bring snacks\n\nbettt see u at 2 then. don’t forget ur notes i literally have nothing\n\ndw i gotchu. also can we watch that new horror movie after? i need trauma to forget the project exists\n\nLMAOOO ur insane but yes. kk see ya ✌️",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 229,
+    "total_tokens": 267
+  },
+  "timestamp": "2026-07-10T00:10:18.173772+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 3,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**alex:** yo u done w the hw? 😩\n\n**jordan:** lol barely started tbh\n\n**alex:** sameee i’m just staring at the doc like 👁️👄👁️\n\n**jordan:** fr it’s giving brain rot. wanna just split the answers?\n\n**alex:** bet. i got 1-3, u do 4-6?\n\n**jordan:** deal. send urs when ur done, i’ll send mine\n\n**alex:** kk. also did u see what mia posted 💀\n\n**jordan:** STOP i was gonna say something but i didn’t wanna be messy\n\n**alex:** she’s wild for that lmao. anyway back to this boring ahh work 😔\n\n**jordan:** fr rip us. aight i’ll text u in a bit",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 249,
+    "total_tokens": 287
+  },
+  "timestamp": "2026-07-10T00:10:21.040682+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 4,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "alex: yo did u see the new ep of that show\njamie: nah which one?? \nalex: the one w the zombies lol its so unhinged \njamie: omg wait i gotta finish hw first 😩\nalex: bruh same i have like 3 assignments due tmrw \njamie: rip we should just drop out tbh \nalex: fr fr 😂 anyway lmk when ur done we can watch together \njamie: bettt i’ll text u \nalex: kk don’t forget",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 294,
+    "total_tokens": 332
+  },
+  "timestamp": "2026-07-10T00:10:28.003705+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 5,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**alex:** yo u awake?  \n**jordan:** barely lol what's up  \n**alex:** did u see the group chat?? 💀  \n**jordan:** nah my phone was on dnd. why what happened  \n**alex:** brooo maya just posted the worst take i've ever seen  \n**jordan:** oh god. spill  \n**alex:** she said pineapple on pizza is elite  \n**jordan:** SHE DID NOT  \n**alex:** i swear. i almost left the chat  \n**jordan:** pls tell me someone ratio'd her  \n**alex:** sam replied with just the skull emoji and she doubled down  \n**jordan:** i'm logging on. this i gotta see.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 217,
+    "total_tokens": 255
+  },
+  "timestamp": "2026-07-10T00:10:33.840635+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 6,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**alex:** yo u see the new episode??  \n**jordan:** nah still at practice 😩  \n**alex:** bro it’s wild rn  \n**jordan:** no spoilers!!  \n**alex:** i’m just sayin u might wanna hurry up  \n**jordan:** kk gimme 20  \n**alex:** bet. i’ll be on vc",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 144,
+    "total_tokens": 182
+  },
+  "timestamp": "2026-07-10T00:10:37.592753+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 7,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "alex: yo u free this weekend?\njordan: maybe, what’s up?\nalex: wanna hit the mall? they got new drops at the sneaker spot\njordan: ooh fr? i’m down. saturday?\nalex: yeah, like 2?\njordan: bet. meet at the food court?\nalex: cool. don’t be late lol\njordan: me? never 😂",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 290,
+    "total_tokens": 328
+  },
+  "timestamp": "2026-07-10T00:10:45.694684+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 8,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "yo u there?\n\nyea what’s up\n\ndid u see what jake posted 💀\n\nno omg what\n\nhe’s talking abt the party saturday and literally said “no cap best night ever” with a pic of us all looking a mess\n\nSTOP i look so bad in that pic fr\n\nright?? i told him to take it down but he left me on read 😭\n\nclassic jake. bet i’ll spam his comments with clown emojis 🤡🤡\n\ndo ittt. also u still coming over later?\n\nyea for sure, just gotta finish this stupid essay first. save me some snacks lol\n\nbet, i got u. don’t take foreverrr\n\ni won’t, ttyl ✌️\n\nttyl 💕",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 288,
+    "total_tokens": 326
+  },
+  "timestamp": "2026-07-10T00:10:50.824304+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 9,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**alex:** yo u see the group chat?? 💀\n\n**jordan:** nah i muted it lmao what happened\n\n**alex:** bro literally everyone is arguing abt the math hw 😭\n\n**jordan:** not mr. davis acting like 20 problems is normal\n\n**alex:** fr like we don't have lives outside of school 🤡\n\n**jordan:** wait slide me the answers if u finished\n\n**alex:** bold of u to assume i did it 💀 i'm on problem 3 and it's 11pm\n\n**jordan:** we're so cooked lmfaooo\n\n**alex:** ong. wanna just copy from chen tomorrow before class?\n\n**jordan:** bet. don't snitch tho\n\n**alex:** who do u think i am 😭😭\n\n**jordan:** a menace but ily anyway\n\n**alex:** aww shut up. night loser\n\n**jordan:** gn don't let the bed bugs bite fr",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 300,
+    "total_tokens": 338
+  },
+  "timestamp": "2026-07-10T00:10:56.100219+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 10,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**alex:** yo did u see the group chat 💀\n\n**jordan:** nah i muted it, what happened\n\n**alex:** lmaooo ms. thompson accidentally sent a voice message instead of a text and u can hear her yelling at her cat in the background\n\n**jordan:** NO WAY send it to me rn\n\n**alex:** bet hold on\n\n**alex:** [voice message forwarded]\n\n**jordan:** I'M SCREAMING she went full \"MR. WHISKERS GET OFF THE COUNTER\" 💀💀💀\n\n**alex:** i can’t look at her the same anymore\n\n**jordan:** we gotta act normal tomorrow but i already know i’m gonna lose it in 3rd period\n\n**alex:** fr just don’t make eye contact w me or we’re both done for 😭",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 273,
+    "total_tokens": 311
+  },
+  "timestamp": "2026-07-10T00:11:00.159278+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 11,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Liam:** yo u see the group chat? 💀\n**Maya:** nooo i muted it hours ago it was blowing up\n**Liam:** bro u gotta look\n**Maya:** just tell me i’m not scrolling through 200 msgs\n**Liam:** jake got caught skipping practice to get boba with emma\n**Maya:** NO WAY 😭 coach is gonna lose it\n**Liam:** already did lmaoo. mandatory 6am sprints tomorrow\n**Maya:** i’m literally gonna be sick. tell jake i hate him\n**Liam:** he said “it was worth it” and sent a pic of them holding hands\n**Maya:** STOPPP that’s so cringe but also kinda cute ig\n**Liam:** nah it’s cringe. i’m going back to bed\n**Maya:** same gn 😴",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 264,
+    "total_tokens": 302
+  },
+  "timestamp": "2026-07-10T00:11:04.720526+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 12,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**alex:** yo u up for the mall later??\n\n**jordan:** lol its 10am 💀\n\n**jordan:** but yeah im down, need new sneakers bad\n\n**alex:** betttt mine are literally falling apart. meet at 2?\n\n**jordan:** works for me. bring ur charger tho my phone's on 12% 😭\n\n**alex:** classic. always prepared while u struggle lmaoo\n\n**jordan:** stfu see u there 😂",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 191,
+    "total_tokens": 229
+  },
+  "timestamp": "2026-07-10T00:11:10.388218+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 13,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Liam:** yo u see the group chat?? 💀  \n**Maya:** nooo i muted it like 2 weeks ago lol what happened  \n**Liam:** jake sent a voice note of him trying to sing that new taylor song  \n**Maya:** STOP  \n**Liam:** i wish i was joking  \n**Maya:** is it at least funny or just painful  \n**Liam:** both. i think my ears are bleeding but i can’t stop replaying it  \n**Maya:** send it to me rn i need a laugh  \n**Liam:** bet. prepare to suffer 😭  \n**Maya:** worth it tbh",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 224,
+    "total_tokens": 262
+  },
+  "timestamp": "2026-07-10T00:11:14.905109+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 14,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "yo u see the game last night? 💀\n\nnah i was grinding on valo wbu\n\nbro it was insane, we clutched a 1v4 i’m still shaking 😭\n\nno shot send clip\n\nbet one sec... *attached video*\n\nLMAOOO that flick was filthy how’d u even hit that\n\npure luck i swear i closed my eyes 🤣\n\nsure sure, mr. “i’m not smurfing” headass\n\nstfu 😂 u just mad u stuck iron\n\nIRON?? i’m bronze 2 now put some respect on my name\n\nbronze 2 is basically iron with extra steps bffr\n\nu wanna 1v1 rn? i’ll fry u\n\nsay less, i’m logging on. prepare to get diffed 🥱",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 239,
+    "total_tokens": 277
+  },
+  "timestamp": "2026-07-10T00:11:20.380205+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 15,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "alex: yo u up for the party sat?\n\njordan: idk maybe, who’s going??\n\nalex: literally everyone lmao. jake said he’d bring his switch too\n\njordan: omg say less i’m in 😂\n\nalex: betttt. can u grab snacks on the way?\n\njordan: yeah sure, doritos cool?\n\nalex: duhh. also bring ur hoodie i left at urs\n\njordan: the grey one? it’s mine now sorry not sorry 💀\n\nalex: BRUH\n\njordan: jk jk i’ll bring it 🙄 see u sat",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 248,
+    "total_tokens": 286
+  },
+  "timestamp": "2026-07-10T00:11:23.096815+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 16,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**alex:** yo u see the game last night??  \n**jordan:** bro i missed it 😭 had to study for that stupid chem test  \n**alex:** nooo rip. it was insane, we won in OT  \n**jordan:** wait fr?? who scored  \n**alex:** marcus with like 2 secs left lmao  \n**jordan:** NO WAY i’m so mad i missed that  \n**alex:** it’s ok i got u, highlights are on youtube  \n**jordan:** send the linkkk  \n**alex:** bet one sec",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 194,
+    "total_tokens": 232
+  },
+  "timestamp": "2026-07-10T00:11:25.246689+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 17,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "alex: yo u up?  \njordan: barely lol what’s good  \nalex: u tryna hit the mall tmrw? i need new kicks  \njordan: bet, i’m broke af tho 😂  \nalex: sameee we can just window shop and get boba or smth  \njordan: say less. 1ish?  \nalex: ya i’ll slide thru  \njordan: bet, don’t be late this time 💀  \nalex: no promises 😭",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 220,
+    "total_tokens": 258
+  },
+  "timestamp": "2026-07-10T00:11:27.854094+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 18,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**alex:** yo did u see the chem grade?? 💀  \n**jordan:** NO DONT REMIND ME i literally tanked it  \n**alex:** same lmaooo mr. harris really said “y’all thought”  \n**jordan:** frrr he curved the whole class into the ground  \n**alex:** anyway u still coming thru later?  \n**jordan:** yeah i’ll be there at like 7. bringing my switch  \n**alex:** bet. im ordering pizza  \n**jordan:** say less 🍕  \n**alex:** don’t forget ur charger this time smh  \n**jordan:** OKAY MOM i got it 😂",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 240,
+    "total_tokens": 278
+  },
+  "timestamp": "2026-07-10T00:11:30.899464+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 19,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "yo u goin 2 jake's party tn?  \nidk maybe lol, u?  \nyuhh, shud be lit 🔥  \nbet, i'll come if u pick me up?  \nsay less, be ready at 8  \nkk see ya then",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 248,
+    "total_tokens": 286
+  },
+  "timestamp": "2026-07-10T00:11:35.486425+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 20,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "yo u free tn? 👀\n\nya just chillin, hbu\n\nsameee, wanna hop on val?\n\nbet, gimme 5 gotta grab snacks\n\nlmaoo hurry, I’m tryna rank up\n\ndw I’ll carry 😌\n\nsure u will 🙄💀",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 136,
+    "total_tokens": 174
+  },
+  "timestamp": "2026-07-10T00:11:37.227130+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 21,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "yo dude u see the new ep of that show last night? 🔥\n\nnah i was grinding on that game, was it good? 👀\n\nbro it was insane, the plot twist at the end had me screaming 😭 no spoilers but u gotta watch it asap\n\naight bet, i'll pull it up after i finish this match. u on later for some rounds?\n\nyeah for sure, just hmu when ur ready. btw did u do the math hw? i'm so lost lol\n\nlmao same, i just put random stuff. mr. j is gonna roast me again 💀\n\nhe's so strict fr. anyway gtg, mom's yelling about dinner. ttyl ✌️\n\nlol kk, catch u later g ✌️",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 230,
+    "total_tokens": 268
+  },
+  "timestamp": "2026-07-10T00:11:49.823581+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 22,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Jake:** yo u see the group chat?? 💀\n\n**Mia:** nooo i muted it lmao what happened\n\n**Jake:** bro tyler sent a voice note of him singing that new song and it’s so bad i can’t breathe\n\n**Mia:** STOP i’m unmuting rn\n\n**Mia:** WAIT WHY IS IT 2 MINUTES LONG\n\n**Jake:** I TOLD YOU 💀💀 he’s so serious about it too\n\n**Mia:** im crying he really said “here’s my cover” like it’s a gift\n\n**Jake:** gift of pain maybe\n\n**Mia:** we still on for boba later? i need to recover from this\n\n**Jake:** yeah i’ll pick u up at 5. don’t let me forget my wallet again\n\n**Mia:** no promises, ur so useless sometimes 😭",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 309,
+    "total_tokens": 347
+  },
+  "timestamp": "2026-07-10T00:11:54.991281+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 23,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**alex:** yo u up for the party tmrw?\n\n**jamie:** lol it’s 2am but yeah 💀\n\n**alex:** bet. bring snacks??\n\n**jamie:** obviously. chips & that weird dip u like\n\n**alex:** not weird ur just uncultured 🙄\n\n**jamie:** k whatever see u at 8\n\n**alex:** 7:30 don’t be late\n\n**jamie:** no promises 😂",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 171,
+    "total_tokens": 209
+  },
+  "timestamp": "2026-07-10T00:12:04.670927+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 24,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**alex:** yo u up for the mall later?  \n**jamie:** maybe, i’m broke af rn 💀  \n**alex:** same lol we can just window shop n grab boba  \n**jamie:** bet, but only if u don’t drag me into hot topic again  \n**alex:** no promises 😂 meet at 3?  \n**jamie:** kk, i’ll be the one in the hoodie with 3 days of dry shampoo  \n**alex:** iconic. see u there ✌️",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 192,
+    "total_tokens": 230
+  },
+  "timestamp": "2026-07-10T00:12:08.254915+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 25,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "alex: yo wyd rn?  \njordan: nm just chillin, hbu?  \nalex: same, bored af. u hear about sarah’s party sat?  \njordan: yuhhh, u going?  \nalex: idk tbh, might just stay home lol  \njordan: cmon it’ll be lit 🔥  \nalex: aight bet, pick me up?  \njordan: ya fs, 8 cool?  \nalex: bet see u then ✌️",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 401,
+    "total_tokens": 439
+  },
+  "timestamp": "2026-07-10T00:12:15.086383+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 26,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "yo u up for the mall later?\n\nnah i’m broke af 💀\n\nsame lmaoo but we can just walk around n grab like a cheap drink or smth\n\ntru tru, i’m down. what time?\n\nlike 3? i’ll swing by urs\n\nbet, c u then 🤙",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 138,
+    "total_tokens": 176
+  },
+  "timestamp": "2026-07-10T00:12:17.880408+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 27,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**alex:** yo u free after school?  \n**jordan:** ya maybe, what’s up  \n**alex:** wanna hit the mall? need new sneakers  \n**jordan:** bruh i’m broke af 😭  \n**alex:** lmaoo same but window shopping tho  \n**jordan:** bet, meet at the usual spot?  \n**alex:** yea by the fountain, 3:30 cool?  \n**jordan:** kk see u there  \n**alex:** don’t flake this time 🤨  \n**jordan:** stfu i won’t 💀",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 251,
+    "total_tokens": 289
+  },
+  "timestamp": "2026-07-10T00:12:36.928922+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 28,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "alex: yo u up?\njordan: barely lol what’s up\nalex: did u see the gc? 💀\njordan: no i muted it why\nalex: jake sent the most unhinged meme i’m crying\njordan: omg send it\nalex: [image]\njordan: WTF HAHAHA i’m dead 💀💀\nalex: right?? anyway u coming tmrw?\njordan: to the mall? yeah i think so\nalex: bet see u there",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 372,
+    "total_tokens": 410
+  },
+  "timestamp": "2026-07-10T00:12:43.085596+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 29,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "yo u see the new marvel movie yet?\n\nnah not yet, is it good?\n\nbro it's so fire 🔥 u gotta come w us friday\n\nbet, what time?\n\n7pm, but we pregaming at my place first. bring snacks lol\n\nsay less, i'll bring the takis and sour patch 😂\n\nyesss ur a real one. don't be late this time istg\n\nlmaoo chill i was only 10 mins late last time\n\n10 mins = an hour in my book 🙄 see u friday loser\n\nwhateverrr see ya ✌️",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 244,
+    "total_tokens": 282
+  },
+  "timestamp": "2026-07-10T00:13:07.136927+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 30,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Liam:** yo u up?  \n**Maya:** barely lol what's good  \n**Liam:** u tryna hit the mall tmrw? need new kicks  \n**Maya:** say less 👟 what time  \n**Liam:** like 1? we can grab boba too  \n**Maya:** bet. i'm dragging jay too he's been ghosting us  \n**Liam:** lmaoo fr that dude lives in his gaming chair  \n**Maya:** 💀 ikr. aight i'm knocking out see u tmrw  \n**Liam:** night night don't let the bed bugs yeet u  \n**Maya:** stoppp 😭 gn",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 245,
+    "total_tokens": 283
+  },
+  "timestamp": "2026-07-10T00:13:21.147136+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 31,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Jake:** yo u done with the math hw? 😩  \n**Mia:** nah bruh i’m so lost lol  \n**Jake:** same. wanna just copy off someone tmrw?  \n**Mia:** fr fr. who tho?  \n**Jake:** idk maybe emma? she always finishes early  \n**Mia:** bet. i’ll text her. u owe me one tho 😂  \n**Jake:** lmao deal",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 354,
+    "total_tokens": 392
+  },
+  "timestamp": "2026-07-10T00:13:25.014965+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 32,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**emma:** yo u up??\n\n**sophia:** ya barely lol what’s good\n\n**emma:** did u see what jess posted on her story 💀\n\n**sophia:** no omg what did i miss\n\n**emma:** she literally subtweeted the whole group chat i can’t\n\n**sophia:** WAIT FR?? send ss rn\n\n**emma:** *[screenshot attached]*\n\n**sophia:** bruh that’s so messy 😭 i’m dead\n\n**emma:** ikr she’s wild for that lmaoo\n\n**sophia:** we gotta talk abt this tmrw at lunch istg",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 386,
+    "total_tokens": 424
+  },
+  "timestamp": "2026-07-10T00:13:28.876719+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 33,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**alex**: yo u see the new ep?  \n**jordan**: nahhh i was grinding ranked 😭  \n**alex**: bro it’s so cooked i’m screaming  \n**jordan**: wait fr?? no spoilers  \n**alex**: i’m jus sayin the twist at the end... 💀  \n**jordan**: stoppp i’m literally watching it tn  \n**alex**: bet lmk when ur done i need to rant  \n**jordan**: say less lmaooo",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 197,
+    "total_tokens": 235
+  },
+  "timestamp": "2026-07-10T00:13:31.864103+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 34,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**alex:** yo u see the new episode?  \n**jordan:** nah still at practice 🙄 was it good?  \n**alex:** BRUH. insane. no spoilers but i literally screamed  \n**jordan:** omg don’t hype me up like that i can’t watch til tonight  \n**alex:** hurry uppp we need to debrief  \n**jordan:** lol i’ll text u when i’m done. u better be awake  \n**alex:** i’ll sacrifice sleep for this. it’s that deep 😤  \n**jordan:** bet. gotta go coach is yelling at me 🫠",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 208,
+    "total_tokens": 246
+  },
+  "timestamp": "2026-07-10T00:13:34.990329+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 35,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "emma: yo r u coming 2 the mall later??\nsophia: idk im broke af 😭\nemma: same but we can just walk around n get boba or smth\nsophia: tru tru ok fine what time\nemma: 4? i’ll come get u\nsophia: bettt see u then ✌️",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 298,
+    "total_tokens": 336
+  },
+  "timestamp": "2026-07-10T00:13:42.054556+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 36,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**alex:** yo u see the homework for math?? 😩\n\n**jordan:** nah i’m pretending it doesn’t exist lol\n\n**alex:** same but it’s due tmrw 😭\n\n**jordan:** wait fr?? i thought we had till friday\n\n**alex:** nope ms. chen said wednesday\n\n**jordan:** bruh 💀 i’m done for\n\n**alex:** wanna just split it and share answers later?\n\n**jordan:** bet, you do odds i’ll do evens\n\n**alex:** kk send me ur part by 9?\n\n**jordan:** yeah i gotchu 👍",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 254,
+    "total_tokens": 292
+  },
+  "timestamp": "2026-07-10T00:13:44.925183+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 37,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Liam:** yo u see the drop for the new sneakers? 🔥  \n**Maya:** bruh i was literally just gonna text u that. they sold out in like 2 mins  \n**Liam:** no wayyy i had them in my cart and the site crashed 💀  \n**Maya:** rip. resellers r already asking double  \n**Liam:** i’m not paying that lol. catch me in last year’s beaters idc  \n**Maya:** lmao same. u still coming thru later tho?  \n**Liam:** ya for sure. bring snacks i’m broke  \n**Maya:** bet. don’t be late this time 😂",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 233,
+    "total_tokens": 271
+  },
+  "timestamp": "2026-07-10T00:13:48.405515+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 38,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "alex: yo u see what ms. davis posted on the class group?? 😭\njordan: nooo what happened\nalex: she literally assigned a 5 page essay due monday\njordan: BRO WHAT\njordan: it’s friday night i can’t even think rn\nalex: fr i was abt to hop on val too\njordan: rip our weekend ig\nalex: tbh i might just use chatgpt and rewrite it or smth\njordan: LMAOO lowkey smart\njordan: just change the words so she doesn’t catch u\nalex: bet u know i will 😭😭",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 317,
+    "total_tokens": 355
+  },
+  "timestamp": "2026-07-10T00:13:52.909851+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 39,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "alex: yo u see the group chat?? 💀\n\njordan: nah i muted it hours ago lol what happened\n\nalex: kai sent a voice memo of mr. thompson trying to dab\n\njordan: STOPPP no way 😭😭\n\nalex: I’m so serious rn. he thought the wifi was down so he just started doing it in the middle of class 💀💀\n\njordan: i’m cryinggg i gotta unmute that\n\nalex: do it for the plot\n\njordan: wait is that why half the school has “dab on them haters” in their story rn\n\nalex: LMAOOO exactly\n\njordan: i’m done. i can’t go back to that class monday\n\nalex: fr like how do we look him in the eye\n\njordan: we don’t. we simply pass away ✌️😗",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 307,
+    "total_tokens": 345
+  },
+  "timestamp": "2026-07-10T00:13:56.124358+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 40,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Jake: yo u free after school? \nLily: maybe, what’s up? \nJake: wanna hit the mall? heard they got those new sneakers \nLily: omg yes the ones I showed u?? 👀 \nJake: yesss they’re finally in stock \nLily: bet, I’m so down. meet at the usual spot? \nJake: yeah, 4ish. don’t be late this time lol \nLily: pls I’m literally always on time 🙄 \nJake: suuure. anyway gotta dip, see ya \nLily: kk bye ✌️",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 250,
+    "total_tokens": 288
+  },
+  "timestamp": "2026-07-10T00:14:14.209221+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 41,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "alex: yo u see the new ep of that show?  \njordan: nah which one  \nalex: the one with the dragons lol  \njordan: ohhhh no not yet no spoilers!!  \nalex: lol ok but it’s fire 🔥  \njordan: bet I’ll watch tonight u tryna come over?  \nalex: can’t got hw 😭  \njordan: lameeee  \nalex: ikr 😩 maybe tmrw?  \njordan: aight hmu",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 346,
+    "total_tokens": 384
+  },
+  "timestamp": "2026-07-10T00:14:18.817452+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 42,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "yo u free tmrw?\n\nnah gotta babysit my lil bro 😩\n\nbruh again?? ur parents owe u big time\n\nikr 😭 but they paying me at least\n\noh fr? how much\n\nlike 20 bucks\n\nnot bad tbh. we can hang after?\n\nya i’ll be done by 4. wanna hit the mall?\n\nyesss i need new jeans. mine ripped 💀\n\nLMAOO how??\n\ndon’t ask 💀💀💀\n\nok bet see u at 4 then\n\nkk laterrr ✌️",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 194,
+    "total_tokens": 232
+  },
+  "timestamp": "2026-07-10T00:14:22.708538+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 43,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "alex: yo u done w the math hw? 😩\n\njordan: lol no i’m literally on problem 3 and i wanna cry\n\nalex: sameee mr. davis is trippin with this one 💀\n\njordan: fr like who even uses factoring irl\n\nalex: not me bestie 🤝\n\njordan: wait lowkey wanna just copy urs if u finish first\n\nalex: bet i’ll send pics but u owe me a boba\n\njordan: deal 🧋 ur a lifesaver\n\nalex: ik ik 😌 aight brb gonna grind this out",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 259,
+    "total_tokens": 297
+  },
+  "timestamp": "2026-07-10T00:14:27.520836+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 44,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Liam:** yo u see the chem hw? i’m so lost 💀\n\n**Maya:** bruh same lmao i just put “idk” for half of it\n\n**Liam:** 😭 mr. davis is gonna roast me tmrw i stg\n\n**Maya:** nahhh just say ur dog ate ur laptop or sum\n\n**Liam:** lmaoo he’d be like “again??” 💀\n\n**Maya:** fr fr. wanna just copy off each other at lunch?\n\n**Liam:** bet. bring ur notes i’ll bring chips\n\n**Maya:** deal 🤝 see u then",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 235,
+    "total_tokens": 273
+  },
+  "timestamp": "2026-07-10T00:14:31.106824+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 45,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "u up?\n\nnah can't sleep lol\n\nsame. did u finish the math hw?\n\nwait that was due today?? 💀\n\nnooo tmrw but i'm stuck on #5\n\noh thank god. send me a pic i'll try to help\n\nbet 📸\n\n*image sent*\n\nbro that's easy it's just factoring\n\neasy for u 🙄 i was literally falling asleep in class\n\nlmaoo skill issue. aight so u gotta pull out the x first\n\nohhh i see it now. tysm ur a lifesaver\n\nnp. wanna play val later?\n\ncan't, grounded 😭 my mom saw my grades\n\nrip. next time don't fail history lol\n\nstoppp 💀 anyways gn i'm gonna try to finish this\n\ngn don't let the bed bugs bite 🦟",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 317,
+    "total_tokens": 355
+  },
+  "timestamp": "2026-07-10T00:14:39.701062+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 46,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "yo u up?\n\nnahhh cant sleep lol\n\nsameee 😩 what u doin?\n\njust scrollin tiktok, saw this dumb vid of a cat falling off a couch 💀\n\nlmaooo send it\n\n*link* watch w sound on\n\nIM CRYING the meow at the end 💀💀\n\nfrrr i replayed it like 10 times\n\nu got school tmrw?\n\nyea unfortunately 😭 gotta wake up at 7\n\nrip, i’m skipping first period tbh\n\nbold move lmk if u get caught\n\nwill do 😂 night dude\n\nnighttt ✌️",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 193,
+    "total_tokens": 231
+  },
+  "timestamp": "2026-07-10T00:14:44.212614+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 47,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**alex:** yo did u see the group chat?? 💀\n\n**jordan:** nah i muted it lmao what happened\n\n**alex:** bradley tried to rizz up ms. thompson during zoom 💀💀\n\n**jordan:** NO HE DIDNT\n\n**jordan:** wait how??\n\n**alex:** he typed “ur mic is so clear rn it’s giving main character” in the chat but forgot it was the PUBLIC one\n\n**jordan:** NOOOOOO 😭😭\n\n**alex:** whole class went silent. she just said “thank you bradley, please stay after class”\n\n**jordan:** i’m literally deleting the app. rip bozo\n\n**alex:** fr he’s gonna get ratio’d by the principal 💀",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 286,
+    "total_tokens": 324
+  },
+  "timestamp": "2026-07-10T00:14:47.386261+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 48,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**alex:** yo u free later?  \n**jordan:** maybe, what’s up?  \n**alex:** wanna hit the mall? i need new kicks 👟  \n**jordan:** lol u always need new kicks. i’m down tho. what time?  \n**alex:** like 4? my mom can drop us  \n**jordan:** bet. i’ll ask my mom too. don’t flake this time 😂  \n**alex:** i won’t i swear 😭 see u then",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 334,
+    "total_tokens": 372
+  },
+  "timestamp": "2026-07-10T00:14:53.910553+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 49,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "yo u done with the history essay? 😩\n\nlmao not even close i’m still on the intro 💀\n\nsameee. due at midnight and i’m here watching tiktoks 🤡\n\nrip us. lowkey thinking of just using chatgpt at this point\n\nbruh don’t get caught 💀 my teacher has a sixth sense for that\n\ntrue true. fine i’ll suffer legit. wanna hop on discord and cry together while we write?\n\nbet. send inv rn",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 304,
+    "total_tokens": 342
+  },
+  "timestamp": "2026-07-10T00:14:57.729935+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 50,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**alex:** yo u see the new ep?  \n**jordan:** no spoilers pls 😭 i’m still on s2  \n**alex:** bro it’s been out for 3 days catch up  \n**jordan:** i have bio homework due at midnight 💀  \n**alex:** rip. wanna hop on val after?  \n**jordan:** bet, i’ll be on in 20  \n**alex:** kk i’ll carry u  \n**jordan:** LMAO sure u will 🙄  \n**alex:** i’m literally cracked now  \n**jordan:** u said that last time and went 2-17  \n**alex:** that was a fluke i swear  \n**jordan:** mhm. brb gotta ask my mom something  \n**alex:** hurry up slowpoke  \n**jordan:** stfu 😂",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 311,
+    "total_tokens": 349
+  },
+  "timestamp": "2026-07-10T00:15:04.019120+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 51,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "alex: yo u up for the mall later??\n\njordan: yesss finally someone to save me from this homework hell 😩\n\nalex: lmaoo same i’ve been staring at this math for an hour and i still don’t get it\n\njordan: forget math, we need boba asap. 3pm??\n\nalex: bet. don’t be late this time 🙄\n\njordan: i’ll try 😂 see ya",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 231,
+    "total_tokens": 269
+  },
+  "timestamp": "2026-07-10T00:15:07.892760+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 52,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "alex: yo u up for the mall later?  \njordan: lol it’s 11am ofc i’m up 😂  \nalex: lmaoo fair. meet at 2?  \njordan: bet. bring ur switch, we can chill at the food court  \nalex: yesss i’m tryna beat u in mario kart again  \njordan: in ur dreams 🙄 see u there  \nalex: kk don’t be late this time  \njordan: no promises 😜",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 214,
+    "total_tokens": 252
+  },
+  "timestamp": "2026-07-10T00:15:16.572151+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 53,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Lila:** yo u still down for tmrw??\n\n**Jake:** yea obvi lol. what time we meeting?\n\n**Lila:** like 2? my mom’s being so annoying rn she wants me to clean my room first 😩\n\n**Jake:** bruh same i haven’t even started my laundry 💀 let’s just say 3 to be safe\n\n**Lila:** bet. we still going to the mall or what?\n\n**Jake:** yuhhh i need new kicks. and maybe boba after?\n\n**Lila:** omg yes pls. i’m craving taro rn\n\n**Jake:** say less. see u tmrw 🤙\n\n**Lila:** kk byeee ✌️",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 242,
+    "total_tokens": 280
+  },
+  "timestamp": "2026-07-10T00:15:21.960735+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 54,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "alex: yo u going to jake’s thing sat?\njordan: bro idek my mom is on one rn 🙄\nalex: just dip out the window lol\njordan: lmaooo she hears EVERYTHING i swear she’s got superpowers\nalex: 💀💀 say ur crashing at mine. she never checks\njordan: wait ur a genius 👀\nalex: obviously. bring chips tho\njordan: bet 🤝 what time\nalex: 9. don’t be late or we’re leaving w/out u\njordan: chill i’ll be there. don’t even play me like that 🙃",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 461,
+    "total_tokens": 499
+  },
+  "timestamp": "2026-07-10T00:15:35.825905+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 55,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "yo alex u there? 😴\n\nyeah whats up\n\nu going 2 the party 2nite??\n\nidk maybe, who’s throwing it?\n\njake’s, his parents r out of town 👀\n\nlmao say less, i’m in. u got a ride?\n\nmy brother said he’d drop us, just chip in for gas\n\nbet. what time?\n\nlike 8, but we’re pregaming at mine first. bring snacks or sumn\n\nomw with doritos and chaos 😈🔥\n\nyesss see u soon gang",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 233,
+    "total_tokens": 271
+  },
+  "timestamp": "2026-07-10T00:15:38.894995+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 56,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**alex:** yo u see what mr johnson posted on the class group?? 💀\n\n**jordan:** NO WHAT\n\n**alex:** bro literally said \"dont forget the quiz tomorrow, it will be fun! 😊\"\n**alex:** FUN.\n**alex:** a quiz. fun.\n\n**jordan:** IM CRYING he's so unhinged\n**jordan:** i didn't even study i thought it was next week\n\n**alex:** same i'm gonna fail so hard\n**alex:** wanna cram at my place later? my mom bought snacks\n\n**jordan:** omw 🏃‍♂️💨 save the cool ranch doritos or we riot\n\n**alex:** bet. bring ur notes i lost mine like a week ago lmaoo",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 282,
+    "total_tokens": 320
+  },
+  "timestamp": "2026-07-10T00:15:46.609063+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 57,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**alex:** yo u up for the movie tonight? 🍿\n\n**jordan:** idk man i got so much hw 😩\n\n**alex:** bruh it’s friday, hw can wait. we’re grabbing food after too\n\n**jordan:** ugh fine but u owe me a soda. what time?\n\n**alex:** 7:30, don’t be late 🙄\n\n**jordan:** lol no promises. see ya\n\n**alex:** bet",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 180,
+    "total_tokens": 218
+  },
+  "timestamp": "2026-07-10T00:15:54.417823+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 58,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "hey u up?\n\nyea what’s good\n\nwanna hang tmrw? we could hit the mall or smth\n\nomg yesss i need new fits fr\n\nbet, meet at 2?\n\nsounds good, but can we get boba first lol\n\nlmao obviously, what’s a mall trip without boba\n\nfacts 😂 see u then\n\ncya ✌️",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 373,
+    "total_tokens": 411
+  },
+  "timestamp": "2026-07-10T00:16:02.038851+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 59,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**alex**: yo u up?  \n**jordan**: barely lol what’s good  \n**alex**: wanna hop on val? i’m bored af  \n**jordan**: can’t rn, got history hw due at midnight 💀  \n**alex**: bruh just bs it, ms. k doesn’t even read the stuff  \n**jordan**: lmaoo true but i already got caught once  \n**alex**: skill issue tbh  \n**jordan**: stfu 😭 maybe after? like 11ish  \n**alex**: bet, i’ll be on. don’t flake  \n**jordan**: i won’t 🙄 see ya",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 227,
+    "total_tokens": 265
+  },
+  "timestamp": "2026-07-10T00:16:05.826648+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 60,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "alex: yo u free this weekend?  \njordan: maybe lol what’s up  \nalex: party at mia’s sat night 🔥 u in?  \njordan: omg yes i need to get out of this house  \nalex: fr same i’ve been so bored 😩  \njordan: what time??  \nalex: like 8 but u know no one shows up till 9  \njordan: lol true. should i bring anything?  \nalex: just urself tbh… maybe some snacks if u want  \njordan: bet. i’ll grab chips or smth  \nalex: say less 💯 see u there  \njordan: yesss can’t wait 🎉",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 306,
+    "total_tokens": 344
+  },
+  "timestamp": "2026-07-10T00:16:14.533113+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 61,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "hey u up?\n\nyeah what's up\n\ncan't sleep lol\n\nsame 🙃\n\nwanna play some games?\n\nsure, which one\n\nvalorant?\n\nbet, give me 5 mins\n\nkk, I'll inv u",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 253,
+    "total_tokens": 291
+  },
+  "timestamp": "2026-07-10T00:16:20.061173+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 62,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "jess: yo did u see what maddie posted 💀\n\nlucas: no what happened\n\njess: she literally subtweeted the whole squad like we wouldn’t notice\n\nlucas: wait fr?? what’d she say\n\njess: “some ppl rlly be fake asf and it shows” with that passive aggressive emoji 🥴\n\nlucas: nahhh she’s been weird ever since the party\n\njess: ikr?? i didn’t even do anything she’s just mad cuz i talked to her ex\n\nlucas: lmaoo she needs to chill it’s not that deep\n\njess: exactly like get over it 💅\n\nlucas: anyway u coming to the skatepark later?\n\njess: yeah bet what time\n\nlucas: 4ish, bring snacks\n\njess: say less 🫡",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 325,
+    "total_tokens": 363
+  },
+  "timestamp": "2026-07-10T00:16:23.339650+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 63,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Jake:** yo u see the game last night?  \n**Liam:** bruh i passed out before halftime 💀  \n**Jake:** nooo u missed the comeback it was insane  \n**Liam:** fr? lemme guess, kai scored again  \n**Jake:** hat trick 😮‍💨 crowd went wild  \n**Liam:** ofc he did. dude’s not human  \n**Jake:** we’re going to the diner later, u in?  \n**Liam:** say less, i’m starving. pick me up at 7?  \n**Jake:** bet. don’t be late this time  \n**Liam:** lol no promises 😂",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 311,
+    "total_tokens": 349
+  },
+  "timestamp": "2026-07-10T00:16:29.867681+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 64,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "yo u see that vid i sent? 😂\n\nbro i’m dyinggg the cat just went flying\n\nlmaooo i can’t breathe rn\nwhy is it so dramatic over nothing 💀\n\nfr the sound effect killed me\nalso wyd later? wanna hop on the game?\n\nyeah i’m down, lemme just finish this one thing\nbe on in like 20\n\nbet, i’ll inv the others",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 208,
+    "total_tokens": 246
+  },
+  "timestamp": "2026-07-10T00:16:32.656427+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 65,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex:** yo u up for the party sat?  \n**Jordan:** lol which one  \n**Alex:** the one at jake’s 😂 his parents r out  \n**Jordan:** ohhh right. idk man i got that history paper due monday  \n**Alex:** bruh same but it’s not even hard. just bs it  \n**Jordan:** u say that but u haven’t started have u  \n**Alex:** …no comment 💀  \n**Jordan:** lmaoo exactly. aight fine i’ll go but only if u help me with it sunday  \n**Alex:** deal. bring snacks  \n**Jordan:** obviously 🍕🍕",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 236,
+    "total_tokens": 274
+  },
+  "timestamp": "2026-07-10T00:16:37.695807+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 66,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**alex:** yo u up?\n\n**jordan:** barely lol what’s good\n\n**alex:** wanna hit the mall tmrw? i need new kicks\n\n**jordan:** ugh i’m broke af 😭\n\n**alex:** same but window shopping exists 💅\n\n**jordan:** tru tru ok bet what time\n\n**alex:** like 1? i’ll drag my brother for a ride\n\n**jordan:** slay, i’ll be ready. don’t flake this time 🙄\n\n**alex:** no promises 💀 jk jk see u then",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 202,
+    "total_tokens": 240
+  },
+  "timestamp": "2026-07-10T00:16:41.768202+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 67,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "alex: yo u up for the mall later?  \njordan: lol it’s 11am i just woke up 😭  \nalex: mood. wanna grab boba first?  \njordan: bet. the new place by the arcade??  \nalex: yesss they have that brown sugar one 🔥  \njordan: omg i’m literally obsessed. meet at 1?  \nalex: works for me. don’t flake this time 🙄  \njordan: i won’t i swear 😂 see u there",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 224,
+    "total_tokens": 262
+  },
+  "timestamp": "2026-07-10T00:16:47.623539+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 68,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**alex:** yo u done with the math hw? 😩\n\n**jordan:** nahhh i’m only on #3 lmao\n**jordan:** mr. davis is actually trying to destroy us\n\n**alex:** fr fr 💀 i just copied half from the group chat tbh\n\n**jordan:** wait there’s a gc?? add me rn\n\n**alex:** bet check ur dms\n**alex:** also u down to hit the skatepark after school tmrw?\n\n**jordan:** yuhhh i’m so there 🛹\n**jordan:** just gotta survive this hw first lmaooo",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 233,
+    "total_tokens": 271
+  },
+  "timestamp": "2026-07-10T00:16:50.594602+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 69,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "yo did u finish the math hw? 😩\n\nnah bro i’m so lost lol\n\nsame, mr. johnson really said “it’s easy” 🙄\n\nfr 💀 wanna work on it together later?\n\nbet, come over at 5?\n\nkk see u then 👌",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 288,
+    "total_tokens": 326
+  },
+  "timestamp": "2026-07-10T00:16:56.794200+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 70,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "yo u free tn? 😴\n\nnahh i got mad hw rn 😭\n\nbruh same. ms. johnson really said \"weekend? what weekend\" 💀\n\nLMAOO fr she's evil for that. wait what u working on?\n\nthat stupid history essay. i haven't even started the outline 🤡\n\noh rip. i did mine last night, it's not too bad tbh. want me to send u my notes?\n\nOMG yes pls ur a lifesaver 🙏🙏\n\ngotchu. also jake's throwing a thing saturday, u down?\n\nmaybe, if i survive this essay first lol. who's all going?\n\nidk everyone i think. he said byob but his parents are gone sooo 👀\n\nsay less. i'm in. now send those notes before i lose all motivation 😩\n\nlmaoo bet, one sec",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 291,
+    "total_tokens": 329
+  },
+  "timestamp": "2026-07-10T00:17:03.075668+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 71,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "alex: yo u tryna hop on val later?\njordan: bet what time\nalex: like 8? i got hw till then 😭\njordan: same lmao i got a whole essay due tmrw\nalex: rip 💀 just grind it out then we run some comp\njordan: say less imma be on at 8\nalex: bet see u then",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 344,
+    "total_tokens": 382
+  },
+  "timestamp": "2026-07-10T00:17:07.417944+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 72,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**alex:** yo u done w the hw? i’m so lost on #4 😩\n\n**jordan:** lmaoo nope i gave up an hour ago 💀 just gonna copy off someone tmrw\n\n**alex:** big mood 😂 ms. davis rlly said “suffer”\n\n**jordan:** frrr 😤 anyway u coming to the game later? jake said he’d buy us snacks\n\n**alex:** BET omw after i finish this stupid show 🏃‍♂️💨 see u in 20",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 205,
+    "total_tokens": 243
+  },
+  "timestamp": "2026-07-10T00:17:11.006847+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 73,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "alex: yo did u see what mrs. thompson posted on the class group 💀\njordan: NO LMAO what now\nalex: she literally typed “the mitochondria is the powerhouse of the cell” with a minion meme\njordan: STOP i’m crying she’s so chronically online 😭\nalex: fr fr like ma’am u are 47 please log off\njordan: anyway u still coming over to study for the bio test or are we just gonna scroll tiktok for 3 hours\nalex: bold of u to assume i even opened the textbook\njordan: bet see u in 10 then bring snacks\nalex: say less 🫡",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 407,
+    "total_tokens": 445
+  },
+  "timestamp": "2026-07-10T00:17:18.193612+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 74,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**alex:** yo u see the new episode yet??  \n**jordan:** nahh i’m still on last week’s lol don’t spoil  \n**alex:** bruh hurry up it’s insane  \n**jordan:** i’m tryinggg but my mom made me clean the garage 💀  \n**alex:** rip. just skip to the new one tbh  \n**jordan:** nooo i gotta see the buildup  \n**jordan:** wait is it true that [redacted] shows up??  \n**alex:** 👀  \n**jordan:** ALEX  \n**alex:** 🤐 watch it and find out  \n**jordan:** i hate u sm rn  \n**alex:** love u too lmao",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 250,
+    "total_tokens": 288
+  },
+  "timestamp": "2026-07-10T00:17:21.685349+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 75,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**alex:** yo did u see the new ep of that show  \n**jordan:** nah i was grinding valorant all night lol  \n**alex:** bruh u gotta watch it the ending was crazy  \n**jordan:** bet ill peep it after school. no spoilers tho 🔫  \n**alex:** lmaoo chill i won’t say anything  \n**jordan:** better not or im throwing next time we queue  \n**alex:** smh so dramatic 🙄 anyway wyd rn  \n**jordan:** pretending to do hw but actually just scrolling tiktok  \n**alex:** same 💀 we’re so productive  \n**jordan:** fr fr",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 213,
+    "total_tokens": 251
+  },
+  "timestamp": "2026-07-10T00:17:25.086972+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 76,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "yo u see the new ep of that show?  \nnah which one  \nthe one with the zombies lol  \nohhh shit no spoilers!! im watching tonight  \n😂 ok ok lmk when u done we gotta talk about it  \nbet. u going to jake's thing sat?  \nidk maybe. u?  \nyeah if I finish this stupid essay  \nbruh same. we can suffer together 💀  \nlmao fr. aight gtg ttyl  \nkk bye",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 383,
+    "total_tokens": 421
+  },
+  "timestamp": "2026-07-10T00:17:31.493751+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 77,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "alex: yo u up?  \njordan: barely lmao what's good  \nalex: wanna hit the mall tmrw? i need new kicks  \njordan: bet, i’m broke tho so i’ll just be ur hype man 💀  \nalex: lmaooo fair enough. 1pm?  \njordan: make it 2, i’m sleeping in hard  \nalex: ugh fine. don’t flake this time  \njordan: i won’t i swear 😭 see u there  \nalex: bet, night loser  \njordan: night 🔥",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 269,
+    "total_tokens": 307
+  },
+  "timestamp": "2026-07-10T00:17:36.146754+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 78,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**alex:** yo u up?  \n**jordan:** barely lol what’s good  \n**alex:** wanna hit the mall later? need new kicks 👟  \n**jordan:** u read my mind. but im broke af til friday 😩  \n**alex:** same tbh. window shopping it is 💀  \n**jordan:** bet. pick me up at 3?  \n**alex:** ya i got u. don’t be late this time istg  \n**jordan:** no promises 😂 see ya",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 191,
+    "total_tokens": 229
+  },
+  "timestamp": "2026-07-10T00:17:38.881937+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 79,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**lila:** yo did u see the math hw 😭\n\n**jake:** bruh no i was gonna ask u lol\n\n**lila:** it’s literally 20 questions and they’re all proofs 💀\n\n**jake:** nahhh mr. davis is evil for that\n\n**lila:** fr like who hurt him\n\n**jake:** LMAOOO wanna just split it on a google doc\n\n**lila:** bet i’ll do odds u do evens?\n\n**jake:** say less. also did u hear abt the party sat\n\n**lila:** YEAH mia told me, r u going??\n\n**jake:** obvi, i need a break from this school hell\n\n**lila:** real 😩 i’m so ready for the weekend\n\n**jake:** sameee, aight lemme start these proofs before i crash out\n\n**lila:** lmao gl 😭",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 262,
+    "total_tokens": 300
+  },
+  "timestamp": "2026-07-10T00:17:43.312655+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 80,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**alex:** yo u see that vid i sent?  \n**jordan:** lmao yeah the cat falling off the counter??  \n**alex:** YES 😭😭 i’ve watched it like 10 times  \n**jordan:** bro it’s the delayed reaction that gets me  \n**alex:** frrr and the sound it makes 💀  \n**jordan:** anyway u still down for tmrw?  \n**alex:** yeah but my mom’s being annoying about it  \n**jordan:** ugh same, gotta be back by 10  \n**alex:** bet, we’ll just speedrun fun  \n**jordan:** lmaooo say less",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 246,
+    "total_tokens": 284
+  },
+  "timestamp": "2026-07-10T00:17:46.667123+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 81,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "yo u done w the math hw? 😩\n\nnah lmao still on #4, it’s actually killing me 💀\n\nsameee mr. davis is so extra for assigning this on a friday\n\nFR like read the room 😭\n\nwait group ft later to suffer together?\n\nbet, i’ll bring snacks in spirit 🍕\n\nlmfaooo say less, i’ll be there with my unfinished answers and zero dignity",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 275,
+    "total_tokens": 313
+  },
+  "timestamp": "2026-07-10T00:17:53.300752+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 82,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "alex: yo did u see the chem grade 💀  \njordan: NO omg is it bad  \nalex: i got a 62 lmaooo  \njordan: rip 😭 i haven’t checked yet i’m scared  \nalex: just look it’s not that deep  \njordan: …i got a 58  \nalex: LMAOOO we’re failing together  \njordan: solidarity ig 🙃 anyway u still down for boba later  \nalex: yeah i need sugar to cope  \njordan: bet see u at 4",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 421,
+    "total_tokens": 459
+  },
+  "timestamp": "2026-07-10T00:18:01.545327+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 83,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**alex**: yo did u see the meme i sent u\n\n**jordan**: lmaoo yeah i just saw it 💀 why is that literally us\n\n**alex**: RIGHT like we’re so done for tmrw\n\n**jordan**: wait what’s tmrw\n\n**alex**: bro… the math test?? pls tell me u studied\n\n**jordan**: ohhh nah i’m failing for sure 😭\n\n**alex**: same we’re gonna be guessing every answer\n\n**jordan**: fr let’s just copy off each other lmaoo\n\n**alex**: bet but if we both get a 0 i’m blaming u\n\n**jordan**: deal 💀 see u in 1st period don’t be late\n\n**alex**: i’m always late but ok bye ✌️",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 260,
+    "total_tokens": 298
+  },
+  "timestamp": "2026-07-10T00:18:05.638455+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 84,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "alex: yo u tryna hit the skatepark later?\njordan: can’t got grounded lmaoo\nalex: bruh what u do\njordan: failed math test 💀\nalex: RIP u need a tutor or smth?\njordan: nah just gotta retake it. but im bored af rn\nalex: wanna ft?\njordan: yea gimme 5 mins",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 255,
+    "total_tokens": 293
+  },
+  "timestamp": "2026-07-10T00:18:12.910674+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 85,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "yo dude u see the new spider-verse trailer?\n\nomg yes it looks insane 🤯 miles is gonna be so sick in this one\n\nfr fr the animation is next level. we gotta go opening night\n\nbet. im dragging my brother too he's been obsessed since the last one\n\nlmao same my little cousin won't stop talking about it. lowkey annoying but also cute\n\nhaha i feel that. aight i gotta go my mom's yelling at me to do dishes 🙄 ttyl\n\nlol rip. later ✌️",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 198,
+    "total_tokens": 236
+  },
+  "timestamp": "2026-07-10T00:18:16.389296+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 86,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "alex: yo u guys on for tonight?  \njordan: yea i’m down. what time?  \nalex: 8? sam said he can bring snacks  \njordan: bet. i’ll bring my controller  \nalex: lol don’t forget it this time  \njordan: 😂 i won’t. see u then  \nsam: wait i just woke up lol. 8 works for me too",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 331,
+    "total_tokens": 369
+  },
+  "timestamp": "2026-07-10T00:18:20.895432+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 87,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "alex: yo u free this weekend?\n\njordan: yuhh maybe, why what’s up\n\nalex: tryna hit the mall sat? i need new kicks\n\njordan: bettt i’m down. can we also get boba im craving\n\nalex: omg yes pls. the one with the popping boba >>>\n\njordan: frrr. ok say 2pm?\n\nalex: works for me. don’t be late this time 🙄\n\njordan: LMAOO no promises 😂 see ya then\n\nalex: aight bet, laterrr ✌️",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 233,
+    "total_tokens": 271
+  },
+  "timestamp": "2026-07-10T00:18:24.581316+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 88,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**alex:** yo u see the new ep of that show last night? 🔥\n\n**jordan:** nah i passed out early lol was it good?\n\n**alex:** brooo it was insane 😭 i won’t spoil but the ending had me screaming\n\n**jordan:** stoppp now i gotta watch it tonight. no spoilers pls 🙏\n\n**alex:** i gotchu. text me when ur done so we can freak out together lmaooo\n\n**jordan:** bettt, i’ll hit u up later ✌️",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 184,
+    "total_tokens": 222
+  },
+  "timestamp": "2026-07-10T00:18:27.244452+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 89,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex:** yo u up?  \n\n**Jamie:** barely lol, hw is killing me 😩  \n\n**Alex:** sameee, math is a literal nightmare rn  \n\n**Jamie:** fr fr, why did i take calc 💀  \n\n**Alex:** bc we’re clowns 🤡  \n\n**Jamie:** LMAOOO true  \n\n**Alex:** wanna hop on val later? need a break  \n\n**Jamie:** bet, gimme like 30 mins  \n\n**Alex:** say less, i’ll be on",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 201,
+    "total_tokens": 239
+  },
+  "timestamp": "2026-07-10T00:18:33.592324+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 90,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "yo dude u see the new ep of stranger things yet? 🔥\n\nnah not yet no spoilers!! 😤\n\nlmaoo chill i won't. but u gotta watch it asap. the ending is WILD\n\nbet, i'll start it tonight. u tryna hop on val later tho?\n\nyeah i'm down. but only if u promise not to throw again 💀\n\nbro i was lagging okay 😭 i swear my wifi is trash\n\nsuuure blame the wifi. fine, 8pm? i'll carry u again\n\nlmaooo shut up. 8 works, see u then loser\n\nbet bet, don't be late ✌️",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 218,
+    "total_tokens": 256
+  },
+  "timestamp": "2026-07-10T00:18:38.200897+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 91,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**alex:** yo did u see the meme i sent\n**jordan:** lmaoo yeah that was so unhinged 💀\n**alex:** fr i can't stop thinking about it\n**maya:** wait what meme i need to see it\n**jordan:** alex send it to her it's too good\n**alex:** bet check dms\n**maya:** omg i'm crying why is that so accurate 😭\n**jordan:** told u\n**alex:** anyway u guys still on for tmrw?\n**maya:** yeah i'm free after 3\n**jordan:** same let's just not go to that sketchy park again\n**alex:** no promises 🤪",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 240,
+    "total_tokens": 278
+  },
+  "timestamp": "2026-07-10T00:18:47.380838+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 92,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "yo u see the new tiktok trend?? 😂\n\nlmao no which one\n\nthe one where ppl try to balance random stuff on their pets heads 💀\n\nomg stop my cat would murder me\n\ndo it do it do it\n\nfine but if i die its ur fault\n\nbet send pics 😭\n\nk gotta go dinner brb\n\naight ttyl ✌️",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 215,
+    "total_tokens": 253
+  },
+  "timestamp": "2026-07-10T00:18:52.388787+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 93,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Liam:** yo u see the new episode??\n\n**Maya:** nah i was grinding ranked 💀 any good?\n\n**Liam:** bro it was insane, no spoilers but i literally screamed\n\n**Maya:** stoppp don't hype it like that i can't watch til tonight 😭\n\n**Liam:** just sayin, ur not ready\n\n**Maya:** 🙄 bet. i'll text u when i'm done so we can freak out together\n\n**Liam:** say less, i'll be up",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 190,
+    "total_tokens": 228
+  },
+  "timestamp": "2026-07-10T00:18:56.739107+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 94,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Jake:** yo u going to sarah's thing tonight?  \n**Mia:** idk maybe. who's all gonna be there?  \n**Jake:** pretty much everyone. even alex is coming lol  \n**Mia:** omg really? i thought he was grounded  \n**Jake:** nah his mom let him off. so u coming?  \n**Mia:** fineeee but only if u promise not to ditch me for emma again 🙄  \n**Jake:** lmao i won't, chill. pick u up at 8?  \n**Mia:** kk see u then ✌️",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 443,
+    "total_tokens": 481
+  },
+  "timestamp": "2026-07-10T00:19:02.380235+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 95,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Liam:** yo u free tmrw?  \n**Maya:** ya why  \n**Liam:** wanna hit the mall? need new kicks  \n**Maya:** bet 👟 what time  \n**Liam:** like 2? my brother can drop us  \n**Maya:** lit, i’m in. bring money for food too i’m broke lol  \n**Liam:** lmao same, we’ll split a pretzel or smth  \n**Maya:** deal 😂 c u there",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 184,
+    "total_tokens": 222
+  },
+  "timestamp": "2026-07-10T00:19:05.951746+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 96,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "alex: yo u free this weekend??\n\njordan: maybe, what’s up?\n\nalex: party at mia’s sat night 🔥 u down?\n\njordan: omg yes i heard about that!! who’s all going?\n\nalex: basically everyone lol. jake, emma, tyler.. even sam might show\n\njordan: no way sam?? bet. i’m in. what time?\n\nalex: 8ish. bring snacks if u can\n\njordan: kk i’ll grab chips or smth. u need a ride?\n\nalex: nah i’m good, my brother’s dropping me. meet u there?\n\njordan: yesss can’t wait 🙌\n\nalex: sameee it’s gonna be lit. don’t flake lol\n\njordan: i won’t i won’t 😂 see ya",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 299,
+    "total_tokens": 337
+  },
+  "timestamp": "2026-07-10T00:19:12.633008+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 97,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**alex_irl:** yo u done with the math hw? 😩\n\n**jordy_b:** lmao nooo i’m on question 3 and already wanna cry\n\n**alex_irl:** bruh same mr. harris is actually evil for this\n\n**jordy_b:** fr fr like who hurt him 💀\n\n**alex_irl:** anyway wanna just copy off each other before class tmrw?\n\n**jordy_b:** omg yes pls ur a lifesaver 😭🙏 meet at the benches?\n\n**alex_irl:** bet see u there",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 227,
+    "total_tokens": 265
+  },
+  "timestamp": "2026-07-10T00:19:16.386351+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 98,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Jade:** yo u up?  \n**Liam:** barely lol what’s good  \n**Jade:** wanna hit the skatepark later?  \n**Liam:** ugh i’m broke rn  \n**Jade:** same but we can just chill no $ needed  \n**Liam:** tru, aight bet. 3ish?  \n**Jade:** yee, bring ur board  \n**Liam:** always do 😂 c u there  \n**Jade:** betttt",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 179,
+    "total_tokens": 217
+  },
+  "timestamp": "2026-07-10T00:19:19.414269+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "deepseek-ai/DeepSeek-V4-Pro",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 99,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**alex:** yo u see the homework for mr. thompson's class? 😩\n\n**jordan:** nahh i was gonna ask u lol. what is it even due tomorrow??\n\n**alex:** bro idk i zoned out the whole time. something about a 2 page essay 💀\n\n**jordan:** NOOOO are u fr rn 😭\n\n**alex:** deadass. we could just split it or sumn\n\n**jordan:** bet, i'll do the intro if u do the conclusion. just send me the prompt\n\n**alex:** lmaoo i don't even have it. lemme text mia rq\n\n**jordan:** hurryyy my mom's already on my ass about screen time 🙄\n\n**alex:** k she said it's on google classroom. \"analyze the symbolism in chapter 5\" 🤓\n\n**jordan:** omg that's so boring. fine just send me a doc and i'll start\n\n**alex:** kk gimme 5 mins. also u tryna hit the mall this weekend?\n\n**jordan:** yuhh i need new fits. saturday?\n\n**alex:** say less. aight let me write this bs before i fall asleep 😴\n\n**jordan:** fr night bro ✌️",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 38,
+    "completion_tokens": 400,
+    "total_tokens": 438
+  },
+  "timestamp": "2026-07-10T00:19:27.450560+00:00"
+}
+

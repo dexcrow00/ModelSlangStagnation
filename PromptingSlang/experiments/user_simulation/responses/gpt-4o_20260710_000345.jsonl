@@ -1,0 +1,1900 @@
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 0,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex**: Yo, you catch that new episode of *The Mandalorian* last night? 🤯\n\n**Jordan**: Nah, not yet! No spoilers, dude! 😅\n\n**Alex**: All good, all good. Just saying, it's wild. You gotta watch it ASAP.\n\n**Jordan**: Bet, I'll probs watch it tonight. You busy this weekend?\n\n**Alex**: Nah, not really. I was thinking about hitting the mall or something. You down?\n\n**Jordan**: For sure! I need to snag some new kicks. Maybe grab some boba after?\n\n**Alex**: Yesss, boba sounds perfect. Meet at the mall around 2 on Saturday?\n\n**Jordan**: Cool, see you then! Don't forget to bring the memes 😂\n\n**Alex**: Haha, always got the memes on deck. Later!\n\n**Jordan**: Later!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 186,
+    "total_tokens": 231
+  },
+  "timestamp": "2026-07-10T00:34:24.202262+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 1,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex:** Yo, did you see the new episode of that show last night?\n\n**Jordan:** Nah, I was stuck doing homework all night. Was it any good?\n\n**Alex:** Dude, it was wild! You gotta catch up. The ending had me shook.\n\n**Jordan:** Ugh, now I'm gonna have to avoid spoilers all day 😂\n\n**Sam:** Wait, are you guys talking about that show with the crazy plot twists every episode?\n\n**Alex:** Yup, the one and only! You still watching, Sam?\n\n**Sam:** Of course! I watched it live. Literally screamed at my screen 😂\n\n**Jordan:** All right, y'all are making me wanna ditch homework and binge it tonight.\n\n**Alex:** Do it! Homework can wait, but this episode is fire.\n\n**Jordan:** You guys are such bad influences 😅 But I'm in. Let’s talk about it later?\n\n**Sam:** For sure! Group chat analysis coming soon 😂\n\n**Alex:** Can’t wait! Lemme know when you're done, Jordan. It's gonna blow your mind.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 218,
+    "total_tokens": 263
+  },
+  "timestamp": "2026-07-10T00:34:35.554932+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 2,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex**: Yo, did you see the new episode of that show last night? 🙌\n\n**Jess**: Omg yes! I can't believe what happened at the end 😱\n\n**Sam**: Hold up, I haven't watched it yet! No spoilers plz!\n\n**Alex**: Haha, no worries, we'll keep it spoiler-free 😅\n\n**Jess**: But seriously, you gotta catch up, it's getting intense 🔥\n\n**Sam**: I know, I know. I've been busy with that math homework tho 🤦‍♂️\n\n**Alex**: Ugh, tell me about it. Mr. Thompson is wild with those assignments.\n\n**Jess**: For real! But hey, we're all hitting up the mall this weekend, right?\n\n**Sam**: Yasss, I need some new kicks. Plus, bubble tea!\n\n**Alex**: Bubble tea is life 😍 Let's plan for Saturday afternoon?\n\n**Jess**: Perfect! Can't wait to hang out 🎉\n\n**Sam**: Same here! Catch you guys later, gotta go grind through this homework ✌️\n\n**Alex**: Alright, good luck! 📚\n\n**Jess**: You got this! 💪",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 253,
+    "total_tokens": 298
+  },
+  "timestamp": "2026-07-10T00:34:39.240695+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 3,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex**: Yo, did you catch the new episode of that show last night? 😱\n\n**Jordan**: Nah, I was stuck doing homework. Was it any good?\n\n**Alex**: Bro, it was wild! I can't even. You gotta watch it ASAP.\n\n**Jordan**: Dang, now I'm hyped. I'll binge it this weekend. \n\n**Alex**: For sure! And did you hear about the new game dropping next month?\n\n**Jordan**: Yesss! Already saving up for it. We gotta squad up when it's out.\n\n**Alex**: 100%! Gonna be epic. Btw, you coming to the party on Friday?\n\n**Jordan**: Yeah, for sure! Who else is going?\n\n**Alex**: Pretty much everyone. It’s gonna be lit. 😎\n\n**Jordan**: Bet. I'll see you there!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 182,
+    "total_tokens": 227
+  },
+  "timestamp": "2026-07-10T00:34:59.822970+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 4,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex:** Yo, did you finish that history project yet? 😩\n\n**Jordan:** Nah, still working on it. Procrastination is my middle name lol. You?\n\n**Alex:** Ugh, same. I got distracted by TikTok for like two hours 😂\n\n**Sam:** LOL, TikTok is the ultimate black hole. I started watching one video and suddenly it's 3 AM.\n\n**Jordan:** Right?! I swear I learn more random stuff on there than in school sometimes. 😅\n\n**Alex:** For real tho! But we should probably get on that project... due tomorrow, remember? 😬\n\n**Sam:** Yeah, yeah, I'm on it... kinda. But first, anyone up for a quick gaming session? 🎮\n\n**Jordan:** I'm down! Just a quick one, though. Then we hit the books... for real this time.\n\n**Alex:** Bet, see you guys online in 5!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 192,
+    "total_tokens": 237
+  },
+  "timestamp": "2026-07-10T00:35:17.344843+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 5,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex**: Yo! Did you see the new episode of that show we’ve been binging?\n\n**Jamie**: Yasss! I watched it last night! Can we talk about that plot twist though? 🤯\n\n**Alex**: I was NOT ready for that! Like, how are they gonna leave us hanging like that till next week?\n\n**Jamie**: I know, right? I stayed up late just thinking about it. Also, that new character is kinda sus, don’t you think?\n\n**Alex**: Totally sus! I feel like they’re hiding something big. Maybe they’re secretly a villain? 🤔\n\n**Jamie**: Omg, if that’s true, my mind will be blown. 😂 You free to chat later? I wanna hear your wild theories.\n\n**Alex**: For sure! I’ll be online after dinner. Can’t wait to dive deep into this, lol.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 188,
+    "total_tokens": 233
+  },
+  "timestamp": "2026-07-10T00:35:36.593747+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 6,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Emma:** Yo, did you check out the new game that dropped yesterday?\n\n**Alex:** Not yet! Which one?\n\n**Emma:** The sequel to that RPG we were obsessed with last year. It looks insane!\n\n**Alex:** No way! I didn't even know it was out already. Is it on console or just PC?\n\n**Emma:** Both! I started on it last night and lost track of time, lol. The graphics are next-level.\n\n**Alex:** Haha, classic! I gotta download it tonight then. What’s the storyline like?\n\n**Emma:** Kinda hard to explain without spoilers, but it picks up right where the last one left off. Total plot twists already!\n\n**Alex:** Ah, can’t wait to dive in! Maybe we can do a co-op session this weekend?\n\n**Emma:** For sure! Let’s plan for Saturday. I’ll bring snacks, you bring the energy drinks?\n\n**Alex:** Deal! I’m hyped. 😎",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 198,
+    "total_tokens": 243
+  },
+  "timestamp": "2026-07-10T00:35:51.010642+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 7,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex**: Yo, did you finish the history project yet?\n\n**Sam**: Nah, not even close. I totally forgot it was due tomorrow 😅\n\n**Alex**: Bruh, I barely started too. Procrastination squad, lol.\n\n**Sam**: For real! I might pull an all-nighter. What was it even about again?\n\n**Alex**: Something about ancient civilizations. I think we gotta do a slideshow or something.\n\n**Sam**: Ugh, why did they have to have so many wars and stuff? Makes it so confusing.\n\n**Alex**: Honestly! Like, chill out with the invasions already. 😂\n\n**Sam**: Haha, right? Anyway, you wanna collab on it? Two brains are better than one.\n\n**Alex**: Bet! Let's hop on a call later. I'll make the memes if you do the research. 😜\n\n**Sam**: Deal! See ya in a bit.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 198,
+    "total_tokens": 243
+  },
+  "timestamp": "2026-07-10T00:35:55.833616+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 8,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex:** Yo, did you finish that history project yet?\n\n**Sam:** Bruh, I haven't even started. 😅 I got sucked into a YouTube rabbit hole last night.\n\n**Alex:** Same here, lol. I was watching those \"unnecessary inventions\" videos for hours. 😂\n\n**Jamie:** Guys, focus! It's due tomorrow. I pulled an all-nighter and finished it at like 3 am.\n\n**Sam:** You're a legend, Jamie. Can you send me some of your notes? 🙏\n\n**Jamie:** Sure, but you owe me a Starbucks run next week. 😉\n\n**Alex:** Deal! Also, anyone down for gaming after? Need a break from all this school stuff.\n\n**Sam:** Bet, I'm in! Let's destroy some zombies. 🧟‍♂️\n\n**Jamie:** Count me in too! But only if you promise not to leave me behind again, Alex. 😒\n\n**Alex:** My bad, my bad! I'll stick with the squad this time. 😅",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 210,
+    "total_tokens": 255
+  },
+  "timestamp": "2026-07-10T00:36:01.462790+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 9,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex:** Yo, did you finish that history project yet?\n\n**Sam:** Nah, not even close 😂 I got stuck watching TikToks last night. You?\n\n**Alex:** Same, but I made some progress! Did you see that video about the guy who built a pool in his backyard?\n\n**Sam:** Omg yes! That was insane. Makes me wanna do something cool like that too, but I can barely build a sandwich lol.\n\n**Alex:** 😂 Mood. Anyway, you wanna collab on the project later? We can power through it together.\n\n**Sam:** Bet! Let’s do it after dinner. I’ll bring snacks.\n\n**Alex:** Perfect. I’ll set up a call and we can just vibe and get it done. 🎧\n\n**Sam:** Sounds good. Catch ya later!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 166,
+    "total_tokens": 211
+  },
+  "timestamp": "2026-07-10T00:36:03.666408+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 10,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Friend 1: yooo did u see the new episode last night??\n\nFriend 2: nah man, my wifi was acting up 😭 was it good?\n\nFriend 1: bruh it was crazyyy, I was literally screaming at my screen 😂\n\nFriend 3: omg are y'all talking about the show? I watched it during lunch today. That plot twist tho 😱\n\nFriend 2: ugh now I wanna watch it even more!! no spoilers plz 😅\n\nFriend 1: don't worry, but seriously, fix ur wifi asap. u can't miss this one!\n\nFriend 2: fr, I'm on it. gonna binge it tomorrow if I can 💪\n\nFriend 3: let's do a watch party this weekend? we can rewatch and react together 😎\n\nFriend 1: bet! I'll bring the snacks 🍿\n\nFriend 2: yesss count me in! can't wait 🔥",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 192,
+    "total_tokens": 237
+  },
+  "timestamp": "2026-07-10T00:36:06.157821+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 11,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex**: Yo, did you catch the new episode of that show last night?\n\n**Sam**: Nah, I had to finish that history project. Any good?\n\n**Alex**: Man, it was wild! I won’t spoil it, but you gotta watch it ASAP.\n\n**Sam**: For sure! I’ll binge it this weekend. How was the game? Did we win?\n\n**Alex**: Oh yeah, we totally crushed them! Jake scored like three times.\n\n**Sam**: No way! Jake’s on fire lately. \n\n**Alex**: Seriously, he's like a scoring machine. We’re gonna be unstoppable if he keeps this up.\n\n**Sam**: Can’t wait for next week’s match. We’re gonna be lit!\n\n**Alex**: For real! You bringing snacks for the team again?\n\n**Sam**: Obviously! Gotta keep our energy up, right? 😂\n\n**Alex**: You’re the real MVP, Sam. Catch you later!\n\n**Sam**: Later, dude!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 211,
+    "total_tokens": 256
+  },
+  "timestamp": "2026-07-10T00:36:10.973308+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 12,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex**: Yo, did you see the new episode of that show last night?\n\n**Jordan**: Nah, man, I missed it. Was it good?\n\n**Alex**: Bruh, it was insane! You gotta watch it ASAP. So many plot twists.\n\n**Jordan**: Dang, now I’m hyped. Gonna binge it this weekend for sure.\n\n**Alex**: For real. Also, did you finish the history project yet?\n\n**Jordan**: Ugh, don't remind me. I’m like halfway through. What about you?\n\n**Alex**: Same. Procrastination is hitting hard lol.\n\n**Jordan**: Story of my life 😂. We should just start a club for last-minute workers.\n\n**Alex**: Haha, facts. We’d be the presidents.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 164,
+    "total_tokens": 209
+  },
+  "timestamp": "2026-07-10T00:36:13.348827+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 13,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex**: Yo, did you see the new episode of that show last night?\n\n**Sam**: Yesss! OMG, I was screaming at that plot twist 🤯\n\n**Alex**: Right?! I legit didn't see that coming. How do they keep doing that every week??\n\n**Sam**: Ikr, it's like they know exactly how to mess with our minds 😂\n\n**Alex**: For real. Btw, are we still on for the game night this Friday?\n\n**Sam**: Totally! I’ve been practicing, so prepare to get owned 😎\n\n**Alex**: Haha, bring it on! I’ve got some new moves up my sleeve too 😏\n\n**Sam**: Can't wait! Also, did you finish that history assignment yet?\n\n**Alex**: Ugh, don’t remind me. I'm like halfway through it. Procrastination is my middle name lol\n\n**Sam**: Same here, but we got this. We can suffer together 😂\n\n**Alex**: Deal! Let’s chat later. Gotta go pretend to be productive for a bit 😅\n\n**Sam**: Lol, same. Catch ya later!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 241,
+    "total_tokens": 286
+  },
+  "timestamp": "2026-07-10T00:36:16.830204+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 14,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Emma**: Yo, did you finish the math homework yet?\n\n**Aiden**: Nah, I’m still stuck on the last question. It makes zero sense to me 😂\n\n**Sophia**: Same here! I swear Mr. Thompson makes these questions just to mess with us.\n\n**Emma**: Haha, for real! I was thinking of just winging it and hoping for the best.\n\n**Aiden**: That’s my plan too 😂. But hey, anyone up for a gaming sesh later?\n\n**Sophia**: I’m down! Need to chill after all this math stress.\n\n**Emma**: Count me in! Let’s meet up around 8?\n\n**Aiden**: Perfect! See you guys online later 😎",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 155,
+    "total_tokens": 200
+  },
+  "timestamp": "2026-07-10T00:36:18.880373+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 15,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex**: Yo, did you see that new movie everyone's talking about?\n\n**Sam**: Nah, not yet. Is it really that good?\n\n**Alex**: Bro, it's wild. Like, mind-blowing scenes and stuff. You gotta watch it.\n\n**Jamie**: Which one y'all talking about?\n\n**Alex**: \"Galactic Heist\" or something. The one with the space pirates.\n\n**Sam**: Ohhh, I've seen the trailer. It looked kinda epic.\n\n**Jamie**: For real, though? Everyone's been hyping it up. I was worried it’d be overrated.\n\n**Alex**: Nah, trust me. It's legit. We should all watch it together this weekend.\n\n**Sam**: Bet. I'm down. Need some popcorn and snacks, though.\n\n**Jamie**: Got it covered! I'll bring the snacks. 🍿\n\n**Alex**: Awesome! Let's make it a movie night then. Who's hosting?\n\n**Jamie**: I can. My place is free. Just don't spill anything on my mom's new couch, lol.\n\n**Sam**: 😂 No promises!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 233,
+    "total_tokens": 278
+  },
+  "timestamp": "2026-07-10T00:36:22.563889+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 16,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex:** Yo, did you finish that history project yet?\n\n**Jordan:** Nah, not yet. I’m like halfway through. Procrastination is winning this battle 😂\n\n**Alex:** Haha, same here. I keep getting distracted by TikTok. I swear, I was just gonna watch one video.\n\n**Jordan:** TikTok is a black hole, I swear. One minute you’re watching a cute dog, next thing you know it's 3 AM and you’re deep in conspiracy theories 😂\n\n**Alex:** Exactly! Btw, did you see that new meme going around? The one with the cat in the tiny hat? It's everywhere!\n\n**Jordan:** Omg, yes! It's so random but I can't stop laughing every time I see it. The internet never disappoints.\n\n**Alex:** 😂 For real tho. Anyway, we should probably finish this project or we're gonna be pulling an all-nighter.\n\n**Jordan:** Ugh, true. Alright, history grind it is. Let’s suffer together lol\n\n**Alex:** Solidarity in suffering, my friend. Let’s get this bread... or at least a passing grade.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 232,
+    "total_tokens": 277
+  },
+  "timestamp": "2026-07-10T00:36:26.378073+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 17,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex**: Yo, you catch that new episode of \"Mystic Quest\" last night?\n\n**Sam**: Yesss, finally! It was wild. Can’t believe they revealed that plot twist with Riley. 😱\n\n**Alex**: Right?! I legit screamed. I knew something was up with her, but like, not THAT.\n\n**Sam**: I had a feeling! I mean, she was acting kinda sus the whole time. 😂\n\n**Alex**: Trueee. But I thought she was just, like, misunderstood. Classic vibe shift.\n\n**Sam**: Haha, for real. Also, can we talk about that cliffhanger? What even...\n\n**Alex**: Ugh, the wait for the next episode is gonna be torture. 😩\n\n**Sam**: Same, I’m already counting down the days. Btw, you free for some gaming later?\n\n**Alex**: For sure! Let's wreck some noobs. 🎮\n\n**Sam**: Bet, see ya online!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 210,
+    "total_tokens": 255
+  },
+  "timestamp": "2026-07-10T00:36:30.503652+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 18,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex**: Yo, did you finish the math homework yet? I'm stuck on question 5 😩\n\n**Sam**: Haha, same here! I swear Mr. Johnson makes these questions just to mess with us 😂\n\n**Jamie**: Guys, I just gave up and watched a tutorial on YouTube. It helped a bit, but I'm still confused 😅\n\n**Alex**: Oh, good idea! Drop the link if you still have it?\n\n**Jamie**: Sure, one sec... *[sends link]*\n\n**Sam**: Thanks! Also, did you all see that new series on Netflix? We should totally binge it this weekend!\n\n**Alex**: Yesss, I've been hearing so many good things about it! Let's do it after we survive this math crisis 🤣\n\n**Jamie**: Deal! Snacks and series, our brains deserve it after this torture! 🍕🍿\n\n**Sam**: For real! Alright, back to pretending I understand algebra 🤓",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 208,
+    "total_tokens": 253
+  },
+  "timestamp": "2026-07-10T00:36:34.544629+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 19,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex**: Yo, did you see the new episode of that show last night?\n\n**Jordan**: Nah, I was stuck doing homework. Was it good?\n\n**Alex**: Bro, it was wild! I don’t wanna spoil anything, but there’s this crazy twist.\n\n**Jordan**: Man, now I’m curious. I shouldn’t have procrastinated so much 😂\n\n**Alex**: Haha, for real. But hey, we can binge it together this weekend if you’re down.\n\n**Jordan**: Bet! I’ll bring snacks, you bring the excuses for why we’re not studying 😅\n\n**Alex**: Deal! I’ll come up with the best ones 😂",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 142,
+    "total_tokens": 187
+  },
+  "timestamp": "2026-07-10T00:36:36.798002+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 20,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex**: yo, did u finish that history paper yet?\n\n**Jordan**: nah, not even close lol. I got distracted by TikTok 😅\n\n**Alex**: haha same. i keep getting those dance videos in my feed\n\n**Jordan**: omg yes! and then i end up trying them and look like a total idiot 😂\n\n**Alex**: haha mood. but seriously, i need to start that paper or i’m doomed\n\n**Jordan**: same. let's get on a call later and suffer together? 📚\n\n**Alex**: deal. we can reward ourselves with some gaming after 👾\n\n**Jordan**: yesss, now that’s motivation! see ya at 7?\n\n**Alex**: cool, see ya then! ✌️",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 162,
+    "total_tokens": 207
+  },
+  "timestamp": "2026-07-10T00:36:39.920671+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 21,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Ava:** Yo, did you finish the history homework yet? 🙄\n\n**Jaden:** Nah, not yet. I got distracted by TikTok, lol. What's it about again?\n\n**Ava:** It's that essay on the Industrial Revolution. Mr. Thompson was like super detailed about it in class today.\n\n**Jaden:** Ohhh, right. I legit zoned out during his lecture. 😅\n\n**Ava:** Same! But I took some notes. Want me to send them over?\n\n**Jaden:** Yes, please! You're a lifesaver. 🙏\n\n**Ava:** No prob! 📚 Also, did you see the group chat? Everyone's talking about meeting up this weekend.\n\n**Jaden:** I did! Where are we thinking? I’m down for anything as long as there’s food involved. 😂\n\n**Ava:** Haha, mood. Someone suggested Jake’s place, but we gotta confirm with him first.\n\n**Jaden:** Cool, I'll text him. Hopefully, he's cool with it. 🤞\n\n**Ava:** Awesome! Let me know what he says. And I'll send those notes now.\n\n**Jaden:** Thanks, Ava! You're the best. Catch ya later. 😊\n\n**Ava:** Anytime! Ttyl! 👋",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 267,
+    "total_tokens": 312
+  },
+  "timestamp": "2026-07-10T00:36:44.075689+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 22,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Jay:** Yo, did you check out the new episode of that show we were watching?\n\n**Sam:** Not yet! No spoilers plz 🤞\n\n**Jay:** Haha, don’t worry. Just saying, it’s a rollercoaster! 🎢\n\n**Sam:** Omg, now I gotta watch it tonight. 😅\n\n**Alex:** What are you guys talking about?\n\n**Jay:** That show we started last week. You gotta catch up, Alex!\n\n**Alex:** I will, I will. I got sidetracked with that new game tho. 🎮\n\n**Sam:** Oh, same! Which one?\n\n**Alex:** The one with the crazy graphics. You know the one.\n\n**Sam:** Ahh, got it! I’ve been seeing clips everywhere.\n\n**Jay:** Y'all are gonna end up gaming all night again, huh?\n\n**Sam:** Guilty as charged 😂\n\n**Alex:** Priorities, my dude. 📚➡️🎮\n\n**Jay:** Just make sure you get some sleep before school tmrw!\n\n**Sam:** I’ll try... no promises tho 😜\n\n**Alex:** We’ve got this! Night, guys.\n\n**Jay:** Night! 🌙\n\n**Sam:** Later! 😴",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 258,
+    "total_tokens": 303
+  },
+  "timestamp": "2026-07-10T00:36:47.652931+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 23,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex:** Yo, did you see the new episode of that show last night?\n\n**Jamie:** Nah, I totally forgot! Was it good?\n\n**Alex:** Bruh, it was wild! The plot twist was insane. I legit didn’t see it coming.\n\n**Jamie:** Dang, now I gotta catch up. No spoilers tho!\n\n**Alex:** Haha, no worries, I got you. But seriously, watch it ASAP!\n\n**Jamie:** For sure. Btw, did you finish that project for history class?\n\n**Alex:** Ugh, don’t remind me. I’m like halfway done. Procrastination is real.\n\n**Jamie:** Same! Let’s start a support group for it 😂\n\n**Alex:** Haha, for real. Let’s just get some snacks and power through it after school tomorrow?\n\n**Jamie:** Sounds like a plan! Snacks are the real MVP.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 180,
+    "total_tokens": 225
+  },
+  "timestamp": "2026-07-10T00:36:50.928029+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 24,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Jordan**: Yo, did you finish that history project yet? 🤔\n\n**Alex**: Ugh, I'm like halfway done. Can't believe it’s due tomorrow. 😩 What about you?\n\n**Jordan**: Lol, same. I got distracted watching TikToks. I swear, time just disappears! 😂\n\n**Alex**: Seriously! I was on there for \"5 minutes\" and suddenly it's an hour later. 😅\n\n**Jordan**: Haha, exactly! Oh, by the way, did you see that new episode of *Stranger Things*?\n\n**Alex**: Yesss! It was so wild! I can't believe what happened to Max. 😳\n\n**Jordan**: Right?! I was legit screaming at my screen. Can't wait for the next season.\n\n**Alex**: Same! Anyway, I guess we should get back to that project before we fail. 😬\n\n**Jordan**: True, true. Let's do this. Good luck! 💪\n\n**Alex**: You too! We got this. 🙌",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 219,
+    "total_tokens": 264
+  },
+  "timestamp": "2026-07-10T00:36:54.820100+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 25,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex**: Yo, did you finish that history project yet?\n\n**Jordan**: Nah, man. Still procrastinating like crazy. 😂 How about you?\n\n**Alex**: Same here, lol. I got distracted watching TikToks. Did you see that new trend?\n\n**Jordan**: Which one? There’s like a million, haha.\n\n**Alex**: The one where people are doing that weird dance to the song with the catchy beat. It's everywhere!\n\n**Jordan**: Ohhh, yeah! I tried doing it, but I looked like a total noob. 😂\n\n**Alex**: Same! But it’s fun trying, haha. We should totally make one when we hang out this weekend.\n\n**Jordan**: For sure! Let’s make it epic. But first, we gotta get this project done. 😩\n\n**Alex**: Ugh, true. Let’s just power through it tonight. We got this!\n\n**Jordan**: Deal! Let’s motivate each other with memes, lol.\n\n**Alex**: Best study plan ever. 🙌",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 221,
+    "total_tokens": 266
+  },
+  "timestamp": "2026-07-10T00:36:57.894080+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 26,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex**: Yo, did you finish the math homework yet?\n\n**Sam**: Nah, not yet. I'm lowkey procrastinating. 😂 You?\n\n**Alex**: Same, I've been watching TikToks for like an hour instead. 😅\n\n**Sam**: Haha, relatable! That new trend is hilarious tho.\n\n**Alex**: Right? I tried to do the dance, but I almost broke my lamp. 😂\n\n**Sam**: LMAO! I need to see that. You should post it!\n\n**Alex**: Maybe... if I don’t look too cringy. 🤔\n\n**Sam**: Cringe is part of the fun! Anyway, wanna FaceTime later and tackle this math together?\n\n**Alex**: Yeah, for sure. Let's do it around 8?\n\n**Sam**: Sounds good. Catch you then! ✌️",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 182,
+    "total_tokens": 227
+  },
+  "timestamp": "2026-07-10T00:37:02.192725+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 27,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex**: Yo, did you catch the new episode of \"Mystery High\" last night? 🔍\n\n**Sam**: Nah, I was stuck doing homework. 😩 Was it any good?\n\n**Alex**: Dude, it was insane! Total plot twist at the end. 🤯\n\n**Sam**: Ugh, now I gotta watch it tonight. No spoilers!\n\n**Jamie**: What are you guys talking about? Is this another show I need to binge?\n\n**Alex**: Haha, yup! You gotta catch up, Jamie. It’s so worth it!\n\n**Sam**: Yeah, but beware the cliffhangers. They’re brutal. 😂\n\n**Jamie**: Alright, I’m adding it to my never-ending list. Anything else crazy happen?\n\n**Alex**: Not really, but I did see the funniest cat video. Sending it now. 🐱💥\n\n**Sam**: I’m always up for a good cat video. 😂\n\n**Jamie**: Same! Cats over homework any day. 🐾",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 219,
+    "total_tokens": 264
+  },
+  "timestamp": "2026-07-10T00:37:05.266212+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 28,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex**: Yo, did you see the new episode of that show last night?\n\n**Sam**: Nah, I missed it! Was it any good?\n\n**Alex**: Dude, it was wild! So much drama. You gotta catch up.\n\n**Sam**: Ugh, I’m so behind. I’ve been drowning in homework. 😩\n\n**Alex**: I feel you. School’s been brutal lately. We should have a binge session this weekend.\n\n**Sam**: Yesss, I’m down! Snacks and no responsibilities, please. 😂\n\n**Alex**: Haha, exactly! I’ll bring the chips, you get the drinks?\n\n**Sam**: Deal! Can’t wait to chill and finally see what everyone’s talking about.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 157,
+    "total_tokens": 202
+  },
+  "timestamp": "2026-07-10T00:37:08.029485+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 29,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex**: Yo, did you see the new episode of that show last night?\n\n**Jamie**: Nah, I crashed early. Was it good?\n\n**Alex**: Bro, it was wild! Like, plot twist after plot twist. You gotta catch up!\n\n**Jamie**: Dang, now I’m curious. No spoilers tho!\n\n**Alex**: Promise, no spoilers. Just saying, you’re in for a ride. 😂\n\n**Jamie**: Alright, I’ll binge it tonight. Oh, btw, did you finish the history project?\n\n**Alex**: Ugh, barely. That thing took forever. Did you?\n\n**Jamie**: Same here, but I think I nailed it. Let’s hope Mr. Jensen thinks so too. 🤞\n\n**Alex**: Fingers crossed! Anyway, wanna game later?\n\n**Jamie**: For sure! After I catch up on that episode, I’ll be online. 🎮\n\n**Alex**: Cool, see ya later!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 205,
+    "total_tokens": 250
+  },
+  "timestamp": "2026-07-10T00:37:10.836946+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 30,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Jake**: Yo, did you see the new game trailer that dropped last night?\n\n**Mia**: Yesss, it looks so sick! I’m already hyped to play it. 🤩\n\n**Jake**: Same here! I’m saving up for it. Gonna be broke but worth it 😂\n\n**Liam**: Wait, which game are y’all talking about?\n\n**Mia**: The new \"Shadow Quest\"! It looks insane!\n\n**Liam**: Oh man, I gotta check it out. I’ve been so out of the loop with games lately.\n\n**Jake**: Bro, you’re missing out. Let’s all get it and squad up when it drops.\n\n**Mia**: Down! We’ll totally crush it together. 💪\n\n**Liam**: For sure, I’ll start saving up too. Let’s do this, squad goals! 🙌\n\n**Jake**: Haha, we got this! 🎮",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 201,
+    "total_tokens": 246
+  },
+  "timestamp": "2026-07-10T00:37:13.865571+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 31,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex**: yo, u finished that bio project yet? 😩\n\n**Jordan**: nahhh, still procrastinating lol. u?\n\n**Alex**: same 😂 was gonna start but got sucked into tiktok for like 2 hours\n\n**Jordan**: omg same, those dance challenges are addictive af 😂\n\n**Alex**: fr. we should just collab and get it done tmrw after school. two brains are better than one, right? 🤔\n\n**Jordan**: bet! let's do it. also, bring snacks 😋\n\n**Alex**: obvi. chips and energy drinks coming right up! 🚀\n\n**Jordan**: yesss, lifesaver 🙌 see ya tmrw!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 152,
+    "total_tokens": 197
+  },
+  "timestamp": "2026-07-10T00:37:17.041620+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 32,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex**: yo, did u see that new movie that dropped on netflix?\n\n**Sam**: yesss, watched it last night. it was fire! 🔥\n\n**Alex**: fr? i was worried it might be all hype\n\n**Sam**: nah, totally worth it. the plot twists had me shook 😲\n\n**Alex**: okay, sold. gonna binge it this weekend. any snacks u recommend? lol\n\n**Sam**: def get some popcorn and sour patch kids. perfect combo 😋\n\n**Alex**: sounds awesome. btw, u down for gaming later?\n\n**Sam**: yup, lmk when u hop on. i’ll prob be on around 8\n\n**Alex**: bet, see ya then! 🎮",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 159,
+    "total_tokens": 204
+  },
+  "timestamp": "2026-07-10T00:37:19.137704+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 33,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex:** Yo, did you finish the history project yet?\n\n**Jordan:** Nah, not even close 😅. I've been binge-watching that new show instead. It's so good!\n\n**Alex:** Lol, priorities! What's it called?\n\n**Jordan:** It's \"Mystic Falls\" or something. It's like vampires and drama, super addictive.\n\n**Alex:** Sounds dope. I might check it out after I finish this project. Mrs. K is gonna flip if I don't turn it in.\n\n**Jordan:** True, she's been on us all week. Guess I should start mine soon...\n\n**Alex:** Haha, yeah, probably a good idea. We can suffer through it together. 😂\n\n**Jordan:** Deal! Maybe we can meet up later and try to knock it out?\n\n**Alex:** For sure! I'll bring snacks. 😁\n\n**Jordan:** Sweet, see ya later!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 181,
+    "total_tokens": 226
+  },
+  "timestamp": "2026-07-10T00:37:21.240008+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 34,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex**: Yo, did you watch the new episode of that show we were talking about?\n\n**Sam**: Nah, not yet! I had to finish that history project. Was it good?\n\n**Alex**: Bro, it was wild! I won't spoil it, but let's just say the ending had me like 😱. \n\n**Sam**: Dang, now I have to watch it tonight! Is it just me, or is everyone talking about this show lately?\n\n**Alex**: For real! It's like all over TikTok. I'm seeing memes everywhere. \n\n**Sam**: Haha, same! Also, did you see Jamie's post about that concert?\n\n**Alex**: Yeah, I did! I can't believe they got to meet the band. Lucky!\n\n**Sam**: I know, right? We gotta go to their next gig. \n\n**Alex**: 100%! Let's make it happen. But first, go watch that episode so we can freak out together 😂.\n\n**Sam**: On it, fam! Catch you later.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 216,
+    "total_tokens": 261
+  },
+  "timestamp": "2026-07-10T00:37:24.107267+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 35,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex:** Yo, did you see the new episode of that show last night? \n\n**Jordan:** Nah, I missed it! Was it good?\n\n**Alex:** Bruh, it was insane. Plot twist after plot twist. You gotta catch up ASAP.\n\n**Jordan:** For real? I’ll def watch it tonight. No spoilers, though!\n\n**Alex:** Haha, don’t worry, I won’t spoil anything. But trust me, you’re gonna lose it at the end.\n\n**Jordan:** Now I'm hyped! Oh, btw, did you finish the history project?\n\n**Alex:** Ugh, not yet. I’m like halfway through, but I keep getting sidetracked.\n\n**Jordan:** Same here. TikTok is my kryptonite. 😂\n\n**Alex:** Mood. Let’s try to finish it tonight so we can chill this weekend.\n\n**Jordan:** Bet, I'll text you if I need help. We got this!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 192,
+    "total_tokens": 237
+  },
+  "timestamp": "2026-07-10T00:37:26.406387+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 36,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex**: Yo, did you watch that new episode of \"Mystic Quest\" yet? 🔥\n\n**Jordan**: Yesss! I was up way too late watching it. 😅 What did you think?\n\n**Alex**: Bro, that plot twist at the end tho! I did NOT see that coming. 😲\n\n**Jordan**: Right?! I was literally screaming at my screen. 😂 They always keep us guessing.\n\n**Alex**: For real. I heard there's gonna be a crossover with \"Shadow World\" next season. 🤯\n\n**Jordan**: No way! That's gonna be epic. I love when shows do crossovers. It's like the worlds collide. 🌌\n\n**Alex**: Totally! We should binge-watch \"Shadow World\" before it starts. I've only seen random episodes. 🙈\n\n**Jordan**: I'm down! Let's plan a marathon this weekend, snacks on me. 🍿\n\n**Alex**: Bet! I'll bring the energy drinks. We're gonna need 'em. 😂",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 213,
+    "total_tokens": 258
+  },
+  "timestamp": "2026-07-10T00:37:28.920369+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 37,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex**: Yo, did you finish that history project yet?\n\n**Jamie**: Ugh, barely started tbh. Procrastination is my superpower 😂 How about you?\n\n**Alex**: Same here, lol. I got distracted watching that new series on Netflix. So good!\n\n**Jamie**: Oh, which one? I need something new to binge.\n\n**Alex**: It's called \"Mystic High.\" It's like a mix of drama and mystery with a bit of supernatural stuff. Totally addicting!\n\n**Jamie**: Sounds dope! I might start it tonight... after I, you know, actually work on the project a bit 😅\n\n**Alex**: Haha, good luck with that! We should just collab on this thing tomorrow. Two brains are better than one, right?\n\n**Jamie**: For sure! Let's meet up after school. We got this 💪\n\n**Alex**: Bet! See ya then!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 195,
+    "total_tokens": 240
+  },
+  "timestamp": "2026-07-10T00:37:32.039496+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 38,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex**: Yo, did you finish the new season of that show yet?\n\n**Sam**: Not yet, dude! I’m on episode 5. It’s so intense 😱\n\n**Alex**: OMG, just wait. Episode 7 is gonna blow your mind 🤯\n\n**Sam**: Ugh, now I wanna skip ahead so bad 😂\n\n**Jordan**: What are you guys talking about?\n\n**Alex**: That new show we all started last week! You gotta catch up, Jordan!\n\n**Jordan**: I know, I know. I've been busy with homework and stuff 😩\n\n**Sam**: Homework can wait. This show is life-changing lol\n\n**Jordan**: Fine, I’ll binge it tonight. But if I fail my math test, I’m blaming y’all 😂\n\n**Alex**: Worth it! 🙌 Let us know when you catch up. We gotta talk about it!\n\n**Sam**: Yeah, group chat discussion tomorrow? 👀\n\n**Jordan**: Deal! Now, back to pretending I’m doing my homework 😂",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 223,
+    "total_tokens": 268
+  },
+  "timestamp": "2026-07-10T00:37:34.960790+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 39,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex:** Yo, did you finish that history project yet?\n\n**Sam:** Nah, not even close. I got sidetracked watching TikToks 😂\n\n**Alex:** Classic. I got like half of it done, but then I fell into a YouTube rabbit hole.\n\n**Sam:** What were you watching? More conspiracy theories? 😂\n\n**Alex:** Nah, this time it was all about deep sea creatures. Did you know there are fish that glow in the dark??\n\n**Sam:** That's wild. Maybe I should do my project on that instead of the industrial revolution lol\n\n**Alex:** Honestly, that sounds way more interesting. Who cares about old factories when there are glow-in-the-dark fish?\n\n**Sam:** True! But I think Mr. Johnson might care 😅\n\n**Alex:** Yeah, you're right. I guess I'll finish my project...eventually. Wanna hit up the group chat later for some Among Us?\n\n**Sam:** For sure! After my “productive” study session, of course 😏\n\n**Alex:** Haha, good luck with that. Catch you later!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 223,
+    "total_tokens": 268
+  },
+  "timestamp": "2026-07-10T00:37:37.624860+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 40,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex**: Yo, did you finish the math homework?\n\n**Sam**: Nah, I got stuck on that last question. It's like they want us to be mini Einsteins or something 😂\n\n**Alex**: Right?! I legit stared at it for like an hour. You think Mr. Clark's trying to mess with us?\n\n**Sam**: Totally. But hey, did you see the new episode of that show we were talking about?\n\n**Alex**: OMG, yes! That plot twist though! I did NOT see that coming 😱\n\n**Sam**: I know, right? I was like, “Whaaat?!” I almost dropped my phone lol\n\n**Alex**: Same! We gotta talk more about it tomorrow. But first, I gotta pretend to finish this homework or my mom’s gonna flip.\n\n**Sam**: Haha, good luck with that. Catch ya later! ✌️\n\n**Alex**: Peace!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 197,
+    "total_tokens": 242
+  },
+  "timestamp": "2026-07-10T00:37:40.493155+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 41,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex**: Yo, you seen the new episode of that show we were watching?\n\n**Jordan**: Not yet! I was gonna watch it tonight. Is it good?\n\n**Alex**: OMG, it's wild. You won't believe what happens. 😱\n\n**Jordan**: Dang, now I'm hyped. No spoilers tho! \n\n**Alex**: No worries, I got you. Just saying, keep your snacks ready 😂\n\n**Jordan**: Haha, okay bet. Hey, you down to game later?\n\n**Alex**: For sure! Around 8?\n\n**Jordan**: Perfect. Let’s wreck some noobs. 🎮\n\n**Alex**: Yesss, let’s gooo!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 147,
+    "total_tokens": 192
+  },
+  "timestamp": "2026-07-10T00:37:43.152668+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 42,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex:** Yo, did you see the new episode of that show last night?\n\n**Jamie:** Nah, I missed it! Was it good?\n\n**Alex:** Bro, it was insane. You need to catch up ASAP. 😱\n\n**Sam:** Wait, what are y’all talking about? \n\n**Alex:** The one with the time-traveling cats! 🐱⏰\n\n**Jamie:** LOL, I've been meaning to start that. Sounds wild.\n\n**Sam:** Oh, I heard about that! It's all over TikTok right now.\n\n**Alex:** Yeah, everyone's freaking out about the twist at the end. No spoilers, but... mind-blowing. 💥\n\n**Jamie:** Ugh, I need to binge-watch this weekend. \n\n**Sam:** Same, let's have a watch party or something!\n\n**Alex:** I'm down, snacks on me! 🍿\n\n**Jamie:** Yesss, let's do it! 🎉",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 196,
+    "total_tokens": 241
+  },
+  "timestamp": "2026-07-10T00:37:45.404273+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 43,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex**: Yo, did you finish the history project yet?\n\n**Sam**: Nah, not even close 😅. I got stuck on that section about the French Revolution. You?\n\n**Alex**: Same! It’s like a whole different language. I might just binge some crash course videos later. \n\n**Jordan**: Guys, same here! We should just make a study group or something lol.\n\n**Sam**: Yesss, that'd be lit. We can meet up on Discord later?\n\n**Alex**: Bet. I’ll bring the memes to keep us sane 😂\n\n**Jordan**: Haha, I’m down for that. Let’s aim for 7?\n\n**Sam**: Perfect, I’ll be there. And someone bring snacks, virtually or otherwise 😜\n\n**Alex**: I'll bring the virtual chips, no worries. See ya at 7!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 182,
+    "total_tokens": 227
+  },
+  "timestamp": "2026-07-10T00:37:47.970757+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 44,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex**: yo, did u see the new episode of that show last night?\n\n**Jordan**: nah, I was too busy with hw. was it good?\n\n**Alex**: omg it was insane! like plot twist after plot twist lol\n\n**Taylor**: ugh now I gotta catch up, everyone’s talking about it\n\n**Jordan**: fr tho, spoilers are everywhere. i gotta dodge them like a ninja 😂\n\n**Alex**: haha for real. we should binge it together this weekend!\n\n**Taylor**: yesss, let’s do it! snacks on me 🍿\n\n**Jordan**: sounds like a plan! let’s make it a marathon 🎉\n\n**Alex**: lit 🔥 can’t wait!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 154,
+    "total_tokens": 199
+  },
+  "timestamp": "2026-07-10T00:37:50.526084+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 45,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex:** Yo, did you finish the math homework? That stuff was wild. 😵\n\n**Jordan:** Haha, nah, I barely even started. Was too busy leveling up in that new game. 😂\n\n**Sam:** Same here! I swear, it's like Mr. Thompson got a new book of impossible problems or something. 🙄\n\n**Alex:** For real! Like, who even needs to know how to find the area under a curve in real life?\n\n**Jordan:** Right? I mean, maybe if you're like, a professional curve-finder or something. 🤣\n\n**Sam:** LOL, professional curve-finder. That sounds like the world's weirdest job.\n\n**Alex:** But seriously, we should probably try and get it done. Maybe a study sesh tomorrow?\n\n**Jordan:** I'm down. But only if we can squeeze in some game time too. 🎮\n\n**Sam:** Deal. We can make it a homework and game marathon. Let's crush both! 💪\n\n**Alex:** Bet. See y'all tomorrow then. 🙌\n\n**Jordan:** Later! ✌️\n\n**Sam:** Peace out! 🎉",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 235,
+    "total_tokens": 280
+  },
+  "timestamp": "2026-07-10T00:37:53.597657+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 46,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Jamie:** yo, did you see the new episode of Stranger Things yet?\n\n**Alex:** nah, not yet! tryna avoid spoilers like it's the plague 🤣\n\n**Jamie:** lol good luck with that! it was sooo good tho, totally worth the wait\n\n**Alex:** ugh, now I gotta watch it tonight. how's the soundtrack this season?\n\n**Jamie:** fire as always 🔥 they really know how to pick those retro bangers\n\n**Alex:** niceee, i'm hyped now. also, are we still meeting up this weekend?\n\n**Jamie:** yeah for sure! wanna hit up the new skate park?\n\n**Alex:** yesss, finally! been dying to try it out\n\n**Jamie:** sweet, it's gonna be lit! i'll bring my new board\n\n**Alex:** can't wait! see ya then 🤙",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 173,
+    "total_tokens": 218
+  },
+  "timestamp": "2026-07-10T00:37:55.952789+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 47,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex**: Yo, did you see the new episode of that show last night? 😱\n\n**Jamie**: Yesss! I stayed up just to watch it. That plot twist tho! 🤯\n\n**Alex**: I know, right? I did not see that coming at all. I was shook!\n\n**Jamie**: Same! I was literally yelling at my screen 😂\n\n**Alex**: Haha, I bet! So, what do you think's gonna happen next?\n\n**Jamie**: Honestly, I have no clue. But if they mess with my favorite character, I'm rioting 😂\n\n**Alex**: Haha, facts. You coming to the party this weekend?\n\n**Jamie**: Yeah, for sure! You bringing snacks or nah?\n\n**Alex**: You know it! Gotta keep the snack game strong. What about you?\n\n**Jamie**: I'll bring some drinks. We got this party covered! 🥳\n\n**Alex**: Let's gooo! It's gonna be lit 🔥",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 211,
+    "total_tokens": 256
+  },
+  "timestamp": "2026-07-10T00:37:58.314424+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 48,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex**: Yo, did you see what Emma posted last night? 😂\n\n**Jordan**: Lol yeah, that was wild. I can’t believe she actually went through with that dare.\n\n**Sam**: Wait, what did she do? I missed it!\n\n**Alex**: She posted a pic of her doing the chicken dance in front of the library. Full costume and everything. 🐔\n\n**Sam**: No way! I gotta see this. Is it still up?\n\n**Jordan**: Yup, check her story. It's pure gold.\n\n**Sam**: Omg, I’m on it. I love how she just doesn’t care what people think.\n\n**Alex**: Seriously, she's the best. We should totally do something like that next weekend.\n\n**Jordan**: I'm down! As long as I don’t have to wear a chicken suit. 😂\n\n**Sam**: Same here. Let’s brainstorm some epic ideas. 😎",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 197,
+    "total_tokens": 242
+  },
+  "timestamp": "2026-07-10T00:38:01.279986+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 49,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex**: Yo, did you finish the math homework yet?\n\n**Jamie**: Nah, not even close. I got stuck on question 5. It's like impossible! 😩\n\n**Alex**: Right? I spent like an hour on it and still don't get it. Maybe we can ask Mr. Thompson tomorrow.\n\n**Jamie**: Good plan. Also, did you see the new episode of that show we were watching?\n\n**Alex**: Yessss! It was wild. I can't believe what happened at the end. 🤯\n\n**Jamie**: I know, right? I legit screamed at my screen. Can't wait for next week!\n\n**Alex**: Same! Anyway, I should probably at least pretend to do some more homework. 😂\n\n**Jamie**: Lol, good luck with that! Catch you later!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 172,
+    "total_tokens": 217
+  },
+  "timestamp": "2026-07-10T00:38:03.737675+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 50,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex**: Yo, did you see that new movie that just dropped on Netflix?  \n**Jordan**: Not yet, but I’ve heard everyone talking about it. Is it any good?  \n**Alex**: Yeah, it’s actually fire 🔥. I was hooked the whole time.  \n**Taylor**: What movie are you guys talking about?  \n**Alex**: The one with the crazy plot twist. You gotta watch it!  \n**Taylor**: Ohhh, I think I know which one. I’ll check it out tonight.  \n**Jordan**: Let me know when you do. We should all chat about it after.  \n**Taylor**: For sure! We can have a mini movie night breakdown 😂.  \n**Alex**: Bet! I’m down.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 163,
+    "total_tokens": 208
+  },
+  "timestamp": "2026-07-10T00:38:05.887327+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 51,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex**: Yo, you finished the homework for Mr. Clark’s class yet?\n\n**Taylor**: Nah, not yet 😅. Still trying to figure out that last math problem. It’s killing me!\n\n**Jordan**: Same here. Like, what is even going on with that question? Feels like they made it harder on purpose.\n\n**Alex**: Right?? I legit stared at it for like 10 minutes, hoping it’d solve itself 😂\n\n**Taylor**: Haha, if only! Might try asking Ash for help later. They’re like a math wizard or something.\n\n**Jordan**: Good idea! Ash is always saving us with this stuff. Btw, anyone up for some gaming after we're done?\n\n**Alex**: Definitely! Need a break after all this brain-melting math.\n\n**Taylor**: Count me in! But only if I survive this homework first. 😆\n\n**Jordan**: We got this, squad. Let’s crush it and then game it out! 🎮",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 209,
+    "total_tokens": 254
+  },
+  "timestamp": "2026-07-10T00:38:08.547988+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 52,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex**: Yo, did you see the new Spider-Man movie yet?\n\n**Jordan**: Nah, not yet. Is it good?\n\n**Alex**: Bruh, it's so good! The action scenes are insane, and the plot twist at the end? Mind-blowing!\n\n**Jordan**: No spoilers, please! I've been avoiding Twitter all week because of that.\n\n**Alex**: Haha, no worries, I won't spoil it. Just make sure you watch it soon so we can talk about it!\n\n**Jordan**: For sure, maybe this weekend? We could do a movie night or something.\n\n**Alex**: Sounds like a plan! I'll bring the popcorn if you bring the snacks.\n\n**Jordan**: Deal! Let's make it happen. 😄",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 157,
+    "total_tokens": 202
+  },
+  "timestamp": "2026-07-10T00:38:10.900657+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 53,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex**: Yo, did you check out that new game everyone’s talking about?\n\n**Jamie**: Which one? There’s like a million games out now 😂\n\n**Alex**: Haha, true. But I’m talking about that RPG, \"Mystic Realms\". The graphics are insane!\n\n**Jamie**: Ohhh yeah, I’ve heard it’s dope. Haven't downloaded it yet tho. My WiFi’s been acting like it’s from the Stone Age 🙄\n\n**Alex**: RIP your internet. Maybe try rebooting the router? Or sacrifice a pizza to the WiFi gods 😂\n\n**Jamie**: If only it were that easy. But I’m down for pizza anyway 🍕👌\n\n**Alex**: Always a good idea. We should have a game night soon. My place?\n\n**Jamie**: Bet! I’ll bring snacks. You get the controller ready. 🎮\n\n**Alex**: You know it! Let’s aim for this weekend?\n\n**Jamie**: Sounds perfect. Can’t wait!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 215,
+    "total_tokens": 260
+  },
+  "timestamp": "2026-07-10T00:38:13.977400+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 54,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex**: Yo, did you see the new Spider-Man movie yet? 🍿\n\n**Jordan**: Yesss! Saw it last night. It was epic! What about you?\n\n**Alex**: Not yet, but I’m planning to go this weekend. Heard the post-credit scene is wild. 😲\n\n**Jordan**: Oh, for sure! You gotta stay till the end. Worth it, trust me!\n\n**Alex**: Sweet, can’t wait! Also, did you finish the math homework? I’m struggling with question 5. 🤯\n\n**Jordan**: Ugh, don’t remind me. I barely got through it. Want me to send you my notes?\n\n**Alex**: Yes, please! You’re a lifesaver. 🙌\n\n**Jordan**: No worries, just sent them. Let me know if you need more help.\n\n**Alex**: Got it! Thanks! Wanna meet up for some gaming later?\n\n**Jordan**: Definitely! Let’s crush some levels tonight. 🎮\n\n**Alex**: Sounds like a plan! See ya online!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 228,
+    "total_tokens": 273
+  },
+  "timestamp": "2026-07-10T00:38:16.535381+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 55,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex:** yo, did you finish the math homework yet?\n\n**Sam:** nah, not yet 😅 I'm so stuck on that last problem\n\n**Alex:** same here, I swear Mr. Thompson makes it harder every week\n\n**Sam:** fr, I might just Google the answers at this point 😂\n\n**Alex:** lol good idea, but I’m scared he’s gonna catch us\n\n**Sam:** true, he's got those teacher senses or something 😂\n\n**Alex:** haha right? hey btw, you gonna watch the new episode of that show tonight?\n\n**Sam:** yesss! I can't wait to see what happens next. You watching too?\n\n**Alex:** for sure! let's chat after it airs, I need someone to freak out with\n\n**Sam:** deal! gotta go now tho, my mom's calling me for dinner\n\n**Alex:** okay, catch you later! ✌️",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 184,
+    "total_tokens": 229
+  },
+  "timestamp": "2026-07-10T00:38:19.099987+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 56,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex:** yo, did u see that new episode of \"The Quest\"?\n\n**Jamie:** yesss! I watched it last night. 😱 Can’t believe what happened to Maya!\n\n**Alex:** right?! I was like, no way they just did that to her. 😩\n\n**Jordan:** wait, wait, no spoilers! I haven’t watched it yet. 🙈\n\n**Jamie:** oops, my bad! 😅 but seriously, it’s such a wild ride. u need to catch up asap, Jordan.\n\n**Jordan:** i know, i know. I’ll binge it when I get home. just been drowning in homework lately. 📚\n\n**Alex:** ugh, same. school is like a full-time job. I’m tryna balance it all but it’s tough.\n\n**Jamie:** for real. but at least we got the weekend soon! 🎉 any plans?\n\n**Jordan:** thinking of hitting up the mall. anyone down?\n\n**Alex:** i’m in! gotta look for some new kicks.\n\n**Jamie:** sounds fun! let’s meet up. i'll bring snacks. 🙌\n\n**Jordan:** sweet, see u guys there! 🎈",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 243,
+    "total_tokens": 288
+  },
+  "timestamp": "2026-07-10T00:38:22.986042+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 57,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex**: Yo, did you see the new episode of that show last night?\n\n**Taylor**: Yesss! It was so good! I can't believe what happened at the end.\n\n**Alex**: Right?! I did not see that plot twist coming at all.\n\n**Jordan**: Wait, what show are you guys talking about?\n\n**Taylor**: The one we started watching last week. You gotta catch up, Jordan!\n\n**Jordan**: I know, I know! I’ve been busy with homework, but I’m definitely watching it tonight.\n\n**Alex**: Do it! We need to discuss those theories ASAP.\n\n**Taylor**: For real, tho. We should have a watch party soon.\n\n**Jordan**: Yesss, snacks and drama – I'm down. Let’s plan it for this weekend?\n\n**Alex**: Bet. I'll bring popcorn!\n\n**Taylor**: I'll bring the drinks. It's a plan!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 193,
+    "total_tokens": 238
+  },
+  "timestamp": "2026-07-10T00:38:25.753502+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 58,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex:** Yo, did you finish the math homework yet?\n\n**Jamie:** Ugh, nah, I'm still stuck on question 5. It makes zero sense.\n\n**Alex:** Same! I swear it's like they want us to become math geniuses overnight or something lol.\n\n**Riley:** Wait, which homework? The one due tomorrow or the one for next week?\n\n**Alex:** The one due tomorrow! 😅\n\n**Riley:** Ohhh, okay. I was about to panic. I haven't even started the next week's stuff. 😂\n\n**Jamie:** Seriously, I'm just trying to survive today. 😩\n\n**Alex:** Right? I might just copy some of the answers from the back of the book and hope for the best.\n\n**Riley:** Lmao, classic move. Just don’t get caught!\n\n**Jamie:** For real, I think the teacher knows we do that but is too tired to care.\n\n**Alex:** True. Anyway, who's down for a game after this torture is done?\n\n**Riley:** I’m in! Need something fun to look forward to. 🎮\n\n**Jamie:** Count me in, I need a break from all this brain drain. 😅\n\n**Alex:** Alright, I'm gonna finish this math madness, and I'll hit you guys up later.\n\n**Riley:** Sounds good, see ya later!\n\n**Jamie:** Later peeps! Good luck with the homework. ✌️",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 295,
+    "total_tokens": 340
+  },
+  "timestamp": "2026-07-10T00:38:29.425884+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 59,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex**: Yo, did you finish that history assignment yet? 🤔\n\n**Jordan**: Nah, still procrastinating hard 😂 I got stuck watching TikToks\n\n**Alex**: Haha, same here! Those rabbit holes are dangerous. What’s it about again? I totally forgot.\n\n**Jordan**: It's about the Industrial Revolution. Something about steam engines and factories or whatever 🤷‍♂️\n\n**Alex**: Ugh, sounds boring. Why can't history be like a Netflix series or something? 🙄\n\n**Jordan**: Right?! Imagine binge-watching wars and revolutions. I'd be an A+ student for sure 😆\n\n**Alex**: LOL, true! Hey, if you find any good notes or vids, send them my way?\n\n**Jordan**: For sure! I'll look for some YouTube vids that break it down. We got this! 💪\n\n**Alex**: Cool, cool. Let me know when you're ready to brainstorm some answers.\n\n**Jordan**: Will do! But first, a quick snack break. Gotta fuel the brain, ya know? 🍕",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 230,
+    "total_tokens": 275
+  },
+  "timestamp": "2026-07-10T00:38:33.536252+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 60,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex**: Yo, did you see the new episode of that show we like?\n\n**Jordan**: Nah, not yet! I had so much homework 😩. Was it any good?\n\n**Alex**: Bro, it was wild! You gotta watch it ASAP. Plot twists everywhere.\n\n**Jordan**: Dang, now I'm hyped. I'll catch it tonight after dinner. \n\n**Alex**: For sure! Also, did you hear about the new concert in town?\n\n**Jordan**: Omg, yesss! I really wanna go. You down?\n\n**Alex**: Totally! We should get the squad together and make it a thing.\n\n**Jordan**: Bet! I'll hit up Sam and Jamie, see if they're in.\n\n**Alex**: Awesome. This weekend's about to be lit! 🔥\n\n**Jordan**: Can't wait! Let's make it happen. 😊",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 183,
+    "total_tokens": 228
+  },
+  "timestamp": "2026-07-10T00:38:35.787817+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 61,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex**: Yo, did you finish the math homework?\n\n**Sam**: Nah, I've been procrastinating hard 😂. You?\n\n**Alex**: Same, I tried but got distracted by TikTok. I'll probably do it in the morning.\n\n**Sam**: Lol, classic. Did you see that new game everyone's talking about tho?\n\n**Alex**: Oh yeah, the one with the crazy graphics? Looks sick! I wanna try it out this weekend.\n\n**Sam**: Same! Let’s do a gaming sesh. Also, did you hear about the concert next month?\n\n**Alex**: Yesss! I’m so hyped. We gotta get tickets asap.\n\n**Sam**: For real. Let’s plan it out tomorrow. We can hit up the others too.\n\n**Alex**: Sounds good. Alright, I’m gonna crash now. Later!\n\n**Sam**: Night! Don’t forget about the math 😅.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 195,
+    "total_tokens": 240
+  },
+  "timestamp": "2026-07-10T00:38:38.453464+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 62,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Sam:** Yo, did you finish that history project yet?\n\n**Jules:** Ugh, not even close. I got sucked into this new show on Netflix. 😅\n\n**Sam:** Lol, which one?\n\n**Jules:** It's called \"Outer Banks.\" I'm obsessed! Have you watched it?\n\n**Sam:** Yesss, it’s so good! Team John B all the way. 😂\n\n**Jules:** Same! But I gotta focus or I'm gonna fail history. 😩\n\n**Sam:** For real. Wanna FaceTime later and work on it together?\n\n**Jules:** Yeah, def! Let's aim for like 7?\n\n**Sam:** Sounds good. Bring snacks tho. 😜\n\n**Jules:** Haha, you know I will. See ya!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 161,
+    "total_tokens": 206
+  },
+  "timestamp": "2026-07-10T00:38:40.639559+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 63,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex**: Yo, did you watch the new episode of that show last night?\n\n**Sam**: Nah, I missed it! Was it lit?\n\n**Alex**: Bro, it was insane! You gotta catch up ASAP. The plot twist was wild.\n\n**Sam**: Dang, now I really gotta binge it tonight. No spoilers!\n\n**Alex**: Haha, no worries. Just lemme know when you watch it. We gotta talk about it.\n\n**Sam**: For sure, I'll hit you up. Also, are we still gaming later?\n\n**Alex**: Yeah, I'm down. What time you thinking?\n\n**Sam**: Maybe around 8? I gotta finish some homework first. 😩\n\n**Alex**: Same here. 8 works. Let’s crush it tonight!\n\n**Sam**: Bet! See you online. ✌️",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 178,
+    "total_tokens": 223
+  },
+  "timestamp": "2026-07-10T00:38:43.030408+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 64,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex:** Yo, did you finish the new season of that show we talked about?\n\n**Sam:** Not yet, lol. I’m only on episode 4. No spoilers!\n\n**Alex:** Haha, I won't, but OMG, it gets so crazy! You're gonna freak out.\n\n**Sam:** Now I'm hyped! I stayed up too late gaming last night, so I'm behind on everything.\n\n**Alex:** Haha, classic Sam. What were you playing?\n\n**Sam:** The new update on that battle royale game. It's insane! They added this sick map with, like, lava everywhere.\n\n**Alex:** Sounds lit! We should squad up later. I'm down to check it out.\n\n**Sam:** For sure! Let's do it around 8? I gotta finish some homework first.\n\n**Alex:** Ugh, same. Algebra is killing me, dude. But yeah, 8 works. Catch you then!\n\n**Sam:** Cool, see ya later!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 195,
+    "total_tokens": 240
+  },
+  "timestamp": "2026-07-10T00:38:45.925272+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 65,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex**: Yo, did you check out the new game that dropped yesterday?\n\n**Sam**: Nah, not yet. I got swamped with homework. Is it any good?\n\n**Alex**: Bro, it’s lit! The graphics are insane, and the storyline is wild. You gotta hop on.\n\n**Sam**: Bet! I’ll download it tonight. You think it'll run on my laptop, though?\n\n**Alex**: For sure! The specs aren’t too crazy. What you working on now?\n\n**Sam**: Ugh, math. I swear this stuff is like a foreign language to me.\n\n**Alex**: Tell me about it. I barely survived last semester. Need any help?\n\n**Sam**: Appreciate it, but I think I got it... kinda. If I fail, you can roast me later. 😂\n\n**Alex**: Deal! Just hit me up if you need a hand. Catch you later?\n\n**Sam**: Will do. Later!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 203,
+    "total_tokens": 248
+  },
+  "timestamp": "2026-07-10T00:38:55.242955+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 66,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex**: Yo, did you finish that history project yet?\n\n**Sam**: Haha, nope. Still procrastinating 😅. You?\n\n**Alex**: Legit same. I watched like three episodes of that new show instead.\n\n**Sam**: Omg, same! That show is soooo good. I'm obsessed with it.\n\n**Alex**: Right?! We should totally binge it this weekend.\n\n**Sam**: Yes! But after we finish this project, lol. We gotta get it done or we're doomed.\n\n**Alex**: True, true. Alright, let's power through this. I’ll text you if I find anything useful.\n\n**Sam**: Deal. Let’s nail this thing so we can chill later!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 149,
+    "total_tokens": 194
+  },
+  "timestamp": "2026-07-10T00:38:57.120898+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 67,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex:** Yo, did you see the new episode of that show we’ve been watching? 😮\n\n**Sam:** Nah, not yet. Is it any good?\n\n**Alex:** OMG, so good! There's this crazy plot twist that I did *not* see coming. 😱\n\n**Jamie:** Wait, hold up. No spoilers, please! I’m still on the previous episode. 😂\n\n**Alex:** Haha, don’t worry! I won’t spoil anything. But seriously, you gotta catch up soon!\n\n**Sam:** Ugh, I wish I could binge it all right now, but homework is killing me. 😩\n\n**Jamie:** Same here. I’ve got like a million assignments due tomorrow. Why can’t we just watch TV for homework? 😂\n\n**Alex:** For real, that would be the dream. 📺💤\n\n**Sam:** Anyway, let’s plan a watch party this weekend? Snacks on me! 🍿\n\n**Jamie:** Yesss, I’m down for that! 🎉\n\n**Alex:** Count me in! Let’s do it. 🙌",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 228,
+    "total_tokens": 273
+  },
+  "timestamp": "2026-07-10T00:38:59.851053+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 68,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex**: Yo, did you check out the new episode of that show last night?\n\n**Jordan**: Nah, I was stuck doing homework 😩 Was it any good?\n\n**Alex**: Bro, you missed out! It was so intense. I was literally on the edge of my seat the whole time.\n\n**Jordan**: Dang, now I gotta catch up. Was there a crazy plot twist or something?\n\n**Alex**: Oh yeah, big time! But no spoilers from me 😉 You gotta see it for yourself.\n\n**Jordan**: Alright, alright. Guess I know what I'm doing tonight. Also, did you see what Sam posted earlier?\n\n**Alex**: Lol, yeah! That meme was hilarious. Sam's always finding the best stuff.\n\n**Jordan**: For real! We gotta hang out soon. Maybe binge the show together?\n\n**Alex**: I'm down! Snacks and a marathon sound perfect. Let's plan for the weekend?\n\n**Jordan**: Bet! I'll hit you up later to confirm. Catch ya then! ✌️\n\n**Alex**: Cool, later! 🚀",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 228,
+    "total_tokens": 273
+  },
+  "timestamp": "2026-07-10T00:39:02.616581+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 69,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Sam:** Yo, did you finish that English project yet?\n\n**Alex:** Ugh, don’t remind me. I’ve barely started. It’s like pulling teeth trying to get it done.\n\n**Sam:** Haha, I feel that. I stayed up ‘til like 2 AM last night working on it. 😩\n\n**Jordan:** Same here! I’m surviving on caffeine and pure regret today. 😂\n\n**Alex:** Why do we always leave everything to the last minute? Procrastination is my worst enemy but also my best friend, lol.\n\n**Sam:** Seriously. We should just have a “Procrastinators Anonymous” support group. 😅\n\n**Jordan:** I’m in. But like, can we meet next week? I’m too busy procrastinating right now.\n\n**Alex:** 😂 Sounds like a plan!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 171,
+    "total_tokens": 216
+  },
+  "timestamp": "2026-07-10T00:39:04.868914+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 70,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex**: Yo, did you see the new episode of that show we were binging?\n\n**Jamie**: Not yet! No spoilers, please. I was stuck doing homework all night 😩\n\n**Alex**: Ugh, school is the worst. But the episode was soooo good. We gotta talk about it once you watch!\n\n**Jamie**: For sure! I’ll try to catch it tonight. Did you see the group chat? Everyone’s planning something for the weekend.\n\n**Alex**: Oh yeah, I saw. Are we actually doing the beach thing, or is that just talk again?\n\n**Jamie**: I think it’s happening! Sarah said she can drive, and I’m down if the weather’s good.\n\n**Alex**: Sweet, I’m in! I’ll bring snacks. What about you?\n\n**Jamie**: I’ll bring the speaker, gotta have some music. 🎶\n\n**Alex**: Yesss, can’t wait. Just let me know if plans change, alright?\n\n**Jamie**: Will do! Catch you later.\n\n**Alex**: Later!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 227,
+    "total_tokens": 272
+  },
+  "timestamp": "2026-07-10T00:39:08.249654+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 71,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex:** Yo, did you finish the homework for math yet? 🤔\n\n**Jordan:** Nah, not yet. That stuff is brutal! 😩\n\n**Sam:** Same here, I've been staring at it for like an hour lol. Might just wing it tomorrow 😂\n\n**Alex:** Honestly, same. I swear Mr. Thompson thinks we have nothing better to do 😅\n\n**Jordan:** Right?! Like, we got lives outside of algebra, dude! 😜\n\n**Sam:** For real. Anyway, y’all down for some gaming later? 🎮\n\n**Alex:** Heck yeah, I'm in. Need a break from this math madness. What about you, Jordan?\n\n**Jordan:** I'm so down. Let’s meet up around 8?\n\n**Sam:** Sounds good, see y’all then! Don't forget to bring snacks 🍕🥤\n\n**Alex:** Bet! Catch ya later, peeps! ✌️",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 191,
+    "total_tokens": 236
+  },
+  "timestamp": "2026-07-10T00:39:11.013719+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 72,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex:** Yo, did you finish the math homework yet?\n\n**Jordan:** Nah, I'm stuck on problem 5. It's like my brain just refuses to math today 😂\n\n**Sam:** Same here! I started watching a tutorial, but then I got distracted by TikTok. Oops.\n\n**Alex:** Classic Sam! 😆 I can help if you want. I think I figured it out.\n\n**Jordan:** Yesss, please! You're a lifesaver, Alex. 🙌\n\n**Sam:** Seriously, you're the hero we need. But first, what’s everyone doing this weekend?\n\n**Alex:** Probably just chilling. Maybe hit up the mall or something. You guys down?\n\n**Jordan:** I'm in! Need to grab some new shoes anyway. 👟\n\n**Sam:** For sure! Let's make it a plan. But first, save us from this math doom, Alex. 😂",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 183,
+    "total_tokens": 228
+  },
+  "timestamp": "2026-07-10T00:39:13.355100+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 73,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex**: Yo! Did you finish the new season of that show yet?\n\n**Jordan**: Nah, not yet. I'm only on episode 3. No spoilers, please!\n\n**Alex**: Haha, alright, I got you. But omg, the ending is wild. You're gonna freak out!\n\n**Jordan**: Ugh, now I wanna binge it tonight. Got any snacks recs?\n\n**Alex**: Totally. Go for the spicy chips and some chocolate. Perfect combo for a binge sesh.\n\n**Jordan**: Yes! My taste buds are ready. 😂 What about you, what else you watching?\n\n**Alex**: Just started that new anime everyone's talking about. It's kinda dope.\n\n**Jordan**: Nice! I'll add it to my never-ending list. 😂\n\n**Alex**: For real, so many shows, so little time.\n\n**Jordan**: Truth. Anyway, I'll hit you up when I finish the season. We gotta discuss!\n\n**Alex**: Bet. Talk later! 👋\n\n**Jordan**: Peace! ✌️",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 221,
+    "total_tokens": 266
+  },
+  "timestamp": "2026-07-10T00:39:16.133176+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 74,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex**: Heyyyy, did you finish the math homework yet? 🤔\n\n**Jordan**: Nah, not yet. I got distracted watching TikToks 😂 You?\n\n**Alex**: Lol, same. I was gonna start but then I fell down a YouTube rabbit hole. 😅\n\n**Jordan**: Omg, relatable. I keep telling myself \"just one more video\" but we know how that goes 😂\n\n**Alex**: Exactly! Also, did you see that new Netflix series everyone's talking about?\n\n**Jordan**: Yesss, I've been binge-watching it all weekend! It's sooo good. We should totally have a watch party sometime. 📺\n\n**Alex**: For sure! Let’s do it this weekend. Also, we gotta tackle that math homework at some point. Maybe tomorrow? 😬\n\n**Jordan**: Yeah, let's aim for tomorrow. We can suffer together lol. 🤓\n\n**Alex**: Deal! Catch you later, gotta go pretend to be productive now. 😜\n\n**Jordan**: Haha, same. Later! ✌️",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 228,
+    "total_tokens": 273
+  },
+  "timestamp": "2026-07-10T00:39:19.615992+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 75,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex**: Yo, did you finish that math homework yet?\n\n**Jordan**: Ugh, don’t remind me. I tried starting it last night but got distracted with TikTok 😂\n\n**Alex**: Same, dude. I was watching those weird food hack videos. Like, who even eats that stuff?\n\n**Jordan**: Right?! I saw one where they put Skittles in a burrito. I mean, what even 🤢\n\n**Alex**: Haha, that’s so cursed. Anyway, we should prob get it done. Wanna FaceTime later and suffer together?\n\n**Jordan**: Yeah, I'm down. Let’s aim for like 7? I need time to procrastinate a bit more lol\n\n**Alex**: Sounds good! I’ll be ready, with snacks and everything 🎉\n\n**Jordan**: Perfect. See ya then!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 178,
+    "total_tokens": 223
+  },
+  "timestamp": "2026-07-10T00:39:21.967094+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 76,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex:** Yo, did you catch the new episode of that show last night?\n\n**Jordan:** Nah, I was stuck doing homework all night. Was it good?\n\n**Alex:** Dude, it was insane! You gotta watch it ASAP. Major plot twist!\n\n**Jordan:** Ugh, I hate missing out. Was it better than last week's episode?\n\n**Alex:** 100%. Last week was cool, but this one had me on the edge of my seat. \n\n**Jordan:** Alright, I'm watching it tonight. No spoilers!\n\n**Alex:** Promise. Just hit me up after you watch it. I need someone to freak out with 😂\n\n**Jordan:** Bet. I'll text you as soon as I'm done!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 147,
+    "total_tokens": 192
+  },
+  "timestamp": "2026-07-10T00:39:24.314096+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 77,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex**: Yo, did you finish that math homework yet? 🤔\n\n**Jordan**: Nah, not even close. I got distracted binge-watching that new series on Netflix 😂\n\n**Alex**: Haha, same here. I watched like 5 episodes straight 💀\n\n**Jordan**: It's so good though! But now I'm stressing about math 😅\n\n**Alex**: For real! We gotta start working on it. Maybe we can video chat later and figure it out together?\n\n**Jordan**: Sounds good! Let's aim for 7ish? 📚\n\n**Alex**: Cool, I'll bring snacks to the virtual study sesh 😋\n\n**Jordan**: You're the best! See ya then! ✌️",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 153,
+    "total_tokens": 198
+  },
+  "timestamp": "2026-07-10T00:39:26.888542+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 78,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex:** Yo, did you see the new episode of that show we love?\n\n**Jordan:** Nah, not yet! Is it good?\n\n**Alex:** OMG, it's so intense! You gotta watch it ASAP.\n\n**Jordan:** Ugh, I'm still stuck on homework. 😩\n\n**Alex:** Same, but I had to watch it during my \"study break\" lol.\n\n**Jordan:** Lol, your study breaks are like 2 hours long. 😂\n\n**Alex:** True, but no regrets. Totally worth it!\n\n**Jordan:** Alright, I'll binge it tonight. Let’s chat after?\n\n**Alex:** For sure! Hit me up when you're done. 🙌\n\n**Jordan:** Cool, catch ya later!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 149,
+    "total_tokens": 194
+  },
+  "timestamp": "2026-07-10T00:39:28.830859+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 79,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex**: Yo, did you see the new episode of that show last night? 😱\n\n**Taylor**: Omg yes! I’m still freaking out about that plot twist. 🤯 How did we not see that coming?\n\n**Jordan**: Wait, don’t spoil it for me! I haven’t watched it yet. 🙈\n\n**Alex**: My bad! But seriously, you gotta catch up. It's wild.\n\n**Taylor**: Yeah, for real! Also, are we still on for gaming tonight?\n\n**Jordan**: Totally! I’ll be online around 8. Gotta finish this homework first, though. 😩\n\n**Alex**: Same, ugh. But hey, at least we'll get to wreck some noobs later. 😎\n\n**Taylor**: Haha, can't wait! Let’s show them who’s boss. 🕹️🔥\n\n**Jordan**: You know it! Catch ya later, losers. 😂",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 199,
+    "total_tokens": 244
+  },
+  "timestamp": "2026-07-10T00:39:31.903010+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 80,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Jamie:** Yo, anyone here?\n\n**Alex:** Heyyy, what's up?\n\n**Sam:** Sup peeps! Just got done with homework. Finally freeee.\n\n**Jamie:** Nice! I still gotta finish that history essay 😩\n\n**Alex:** Ugh, same here. Procrastination squad lol\n\n**Sam:** You guys wanna hop on a game later?\n\n**Jamie:** Yassss, need a break from all this school stuff. What game tho?\n\n**Alex:** Fortnite or COD? I'm down for either.\n\n**Sam:** I'm cool with Fortnite. Haven't played in a bit.\n\n**Jamie:** Fortnite it is then! 9 PM okay?\n\n**Alex:** Perfect! I'll bring the snacks 😂\n\n**Sam:** Bet! See ya in the game, squad! 🎮",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 162,
+    "total_tokens": 207
+  },
+  "timestamp": "2026-07-10T00:39:34.102276+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 81,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex**: Yo, did you see the new episode of that show last night?\n\n**Jordan**: Nah, I missed it. Was it good?\n\n**Alex**: Dude, it was wild! Like, plot twist central haha.\n\n**Taylor**: OMG, I watched it! The part where the main character just flipped out was insane.\n\n**Jordan**: Ugh, now I gotta catch up. Is it on streaming yet?\n\n**Alex**: Yeah, it's already up. You gotta watch it so we can talk about it!\n\n**Jordan**: For sure, I'll watch it tonight. No spoilers, tho!\n\n**Taylor**: Pinky promise, no spoilers. 😁\n\n**Alex**: Haha, alright. But seriously, watch it ASAP!\n\n**Jordan**: Will do! Btw, anyone free this weekend?\n\n**Taylor**: I'm down for whatever. Maybe a movie night?\n\n**Alex**: Yes! Let's do it. I'll bring snacks. 🍿\n\n**Jordan**: Sweet, it's a plan!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 213,
+    "total_tokens": 258
+  },
+  "timestamp": "2026-07-10T00:39:36.921547+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 82,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex**: Yo, did you finish the math homework yet?\n\n**Jordan**: Nah, not yet. I got stuck on problem 6. It's like a whole different language 😅\n\n**Alex**: For real! I was staring at it like it was gonna solve itself 😂\n\n**Taylor**: Lmao same here. I ended up watching like three tutorials and still confused.\n\n**Jordan**: Ugh, math is the worst. But hey, did you guys see the new episode of that show we watch?\n\n**Alex**: Yesss, it was so good! Can't believe what happened at the end tho 👀\n\n**Taylor**: Omg, right?! I was literally screaming at my screen lol\n\n**Jordan**: I need to catch up! No spoilers plz 🙏\n\n**Alex**: No worries, we got you. But hurry up and watch it so we can freak out together 😂\n\n**Taylor**: True, you gotta see it, Jordan. It's wild.\n\n**Jordan**: Okay, okay, I’ll watch it tonight. But seriously, can someone help me with problem 6 before I lose my mind?\n\n**Alex**: Haha, I got you. Let’s tackle it together. Maybe we’ll figure it out this time 🤞\n\n**Taylor**: Good luck, you guys 😂 Meanwhile, I'll be here trying to figure out problem 7. It's a whole nightmare!\n\n**Jordan**: We got this... maybe. 🙃",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 306,
+    "total_tokens": 351
+  },
+  "timestamp": "2026-07-10T00:39:41.426488+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 83,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex**: Yo, did you finish the history project yet?\n\n**Sam**: Nah, I'm still working on it. Got distracted by TikTok, lol. You done with yours?\n\n**Alex**: Kinda. I just need to add some more info about the Industrial Revolution. It's so boring tho 😩\n\n**Sam**: Seriously, why does it feel like it takes forever? I swear, the teacher's got a thing for ancient stuff.\n\n**Alex**: For real! Btw, did you see the new episode of that show we were watching?\n\n**Sam**: Yesss, it was insane! That plot twist had me like 😱\n\n**Alex**: Right?! I can’t believe what happened to Jenna. Totally didn’t see that coming.\n\n**Sam**: Same! I was like screaming at my screen. We gotta binge it together soon.\n\n**Alex**: Definitely! After we survive this history project tho 😂\n\n**Sam**: Ugh, facts. Back to the grind, I guess. Hit me up if you need any help!\n\n**Alex**: Will do. Good luck! We got this 💪",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 237,
+    "total_tokens": 282
+  },
+  "timestamp": "2026-07-10T00:39:44.807290+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 84,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex**: yo did u see the new episode of that show last night?\n\n**Jamie**: nah, not yet. is it good? no spoilers tho!\n\n**Alex**: omg it's sooo good. the ending had me like 🤯\n\n**Jamie**: dang, now i really gotta watch it tonight. btw, did u finish that history project?\n\n**Alex**: lol nope, still struggling with it. u?\n\n**Jamie**: kinda, but idk if it's any good. this class is killing me 😩\n\n**Alex**: same, but we got this. wanna work on it together later?\n\n**Jamie**: yeah, that'd be cool. maybe we can binge some episodes after 😂\n\n**Alex**: deal! let's just hope we finish the project first lol\n\n**Jamie**: for real, priorities tho 😂 see ya later!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 178,
+    "total_tokens": 223
+  },
+  "timestamp": "2026-07-10T00:39:47.312969+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 85,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Taylor:** Yo, did you finish that math homework yet?\n\n**Jordan:** Nah, not even close. I got distracted watching TikToks lol. What about you?\n\n**Taylor:** Same here 😂. It's so hard to focus. I was gonna start it last night, but then I ended up watching that new Netflix show. \n\n**Jordan:** Which one?\n\n**Taylor:** The one everyone's been raving about, it's called \"Mystery Lane\" or something. It's actually so good.\n\n**Jordan:** Ohhh, I've heard about it! Gotta check it out then. Maybe after I *attempt* this homework.\n\n**Taylor:** Haha, priorities, right? Okay, let's try to knock it out. Wanna hop on a call later if you get stuck?\n\n**Jordan:** For sure, might need the help. Hit me up in like an hour?\n\n**Taylor:** Bet, talk soon!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 183,
+    "total_tokens": 228
+  },
+  "timestamp": "2026-07-10T00:39:49.823991+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 86,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex:** yo, did you finish the math homework yet?\n\n**Jordan:** nah man, I’m stuck on question 7. That thing is impossible 😂\n\n**Alex:** fr, I was staring at it for like an hour. I might just ask Emily for help, she's a math wizard.\n\n**Jordan:** good call, she’s like a human calculator lol. \n\n**Alex:** 😂 facts. btw, you coming to the game on Friday?\n\n**Jordan:** yeah, totally! gotta cheer for our team. plus, rumor has it there’s gonna be a party after 👀\n\n**Alex:** ohhh nice, I’m down for that! who’s hosting?\n\n**Jordan:** I think it’s at Sam’s place. they always throw the best parties.\n\n**Alex:** sweet, count me in! we gotta win first though 💪\n\n**Jordan:** no doubt! alright, I’ll hit up Emily about math. catch ya later?\n\n**Alex:** cool, let me know what she says. later!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 207,
+    "total_tokens": 252
+  },
+  "timestamp": "2026-07-10T00:39:52.794240+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 87,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex**: Yo, did you see the new episode of that show last night?\n\n**Sam**: Nah, I missed it! My Wi-Fi was acting up again. 🙄 Was it good?\n\n**Alex**: So good! You gotta catch up. I won’t spoil it, but there’s a crazy twist at the end.\n\n**Sam**: Ugh, I hate missing out. Hopefully, I can stream it tonight if my Wi-Fi decides to cooperate.\n\n**Alex**: Fingers crossed! We gotta discuss it once you watch. Also, did you finish the homework for bio?\n\n**Sam**: Not yet... Procrastination is my middle name. 😅 You?\n\n**Alex**: Same here, lol. I’m planning to do it right before class. Classic move, right?\n\n**Sam**: 😂 Yep, classic us. Let’s hope for some last-minute genius inspiration.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 185,
+    "total_tokens": 230
+  },
+  "timestamp": "2026-07-10T00:39:55.245418+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 88,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex:** Yo, what's up?\n\n**Jordan:** Not much, just chillin'. You finished that history project yet?\n\n**Alex:** Nah, still cramming. It's due tomorrow, right? 🤦‍♂️\n\n**Jordan:** Yeah, but Mr. Thompson extended it to next week! 🙌\n\n**Alex:** For real?! That's a lifesaver, man. \n\n**Jordan:** I know, right? So, game later?\n\n**Alex:** 100%. Gonna wreck you in Rocket League. 😎\n\n**Jordan:** Dream on! Just wait till you see my new moves. 😏\n\n**Alex:** Bring it on! 😂\n\n**Jordan:** Oh, btw, did you see that new series on Netflix?\n\n**Alex:** Nah, is it good?\n\n**Jordan:** Totally binge-worthy. We gotta discuss once you watch it.\n\n**Alex:** Alright, adding it to my list. Catch you later, dude!\n\n**Jordan:** Later! ",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 199,
+    "total_tokens": 244
+  },
+  "timestamp": "2026-07-10T00:39:58.532509+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 89,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex**: Yo, did you catch the new episode of that series last night? 🤔\n\n**Jesse**: Nah, I totally crashed early. Was it good? Should I watch it tonight?\n\n**Alex**: For sure! It was wild, especially the part where they revealed the secret about Sam. 😲\n\n**Jesse**: No way! I knew there was something up with Sam. Always acting sus. 😂\n\n**Alex**: Haha, right? And the cliffhanger at the end... I'm shook. Can't wait for the next one!\n\n**Jesse**: Okay, now I'm hyped! Guess I'm binging tonight. 📺🍿\n\n**Alex**: Do it! And let me know when you get to the end. I need someone to freak out with. 😂\n\n**Jesse**: You got it! 🚀",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 179,
+    "total_tokens": 224
+  },
+  "timestamp": "2026-07-10T00:40:01.293614+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 90,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Jess:** Yo, did you see the new episode of that show last night?\n\n**Alex:** Nah, I missed it! My WiFi was acting up. 😩 What happened??\n\n**Jess:** OMG, so much drama! 😱 You gotta catch up. Like, you won’t believe what happened with Sam and Taylor.\n\n**Alex:** No way! Are they finally together, or did something crazy go down?\n\n**Jess:** Haha, not telling! But let's just say it was totally unexpected.\n\n**Alex:** Ugh, now I’m even more curious! I’ll watch it tonight for sure. 😂\n\n**Jess:** Do it, and text me when you do! I need someone to freak out with. 🙌\n\n**Alex:** For sure! Btw, did you finish the math homework?\n\n**Jess:** Just barely. 😅 I’m pretty sure I messed up half of it.\n\n**Alex:** Same here. Let’s just hope Mr. B is in a good mood tomorrow. 🤞\n\n**Jess:** Fingers crossed! Anyway, I gotta run. Catch you later!\n\n**Alex:** Later, gator! 🐊",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 234,
+    "total_tokens": 279
+  },
+  "timestamp": "2026-07-10T00:40:04.371230+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 91,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Ava**: yo, did you check out that new show on Netflix yet?\n\n**Liam**: nah, not yet. everyone’s talking about it though. any good?\n\n**Ava**: omg, it’s sooo good. i binged like 4 episodes last night. 😂\n\n**Liam**: haha, sounds like a plan for the weekend. what's it about anyway?\n\n**Ava**: it’s kinda like a mystery with some crazy plot twists. you’d love it!\n\n**Liam**: nice, i’m in. also, did you finish the math homework?\n\n**Ava**: ugh, don’t remind me. still got like half left. 😩\n\n**Liam**: same here. maybe we should just swap answers lol\n\n**Ava**: 😂 for real tho, might need to. let’s sync up later?\n\n**Liam**: deal! ttyl!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 192,
+    "total_tokens": 237
+  },
+  "timestamp": "2026-07-10T00:40:07.232656+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 92,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex**: Yo, did you finish that history project yet?\n\n**Jamie**: Nah, I've barely started. It's so boring 😩\n\n**Alex**: Tell me about it. I just wanna watch Netflix and chill, not write about ancient Rome.\n\n**Jamie**: Right?! I found this one random YouTube vid tho, made it a bit less painful to get through.\n\n**Alex**: Link me! Anything to make this stuff less snooze-worthy.\n\n**Jamie**: Sure thing, let me find it... Okay, here you go: [link]\n\n**Alex**: You're a lifesaver, fr. We should do a study group or something.\n\n**Jamie**: I'm down. Might make it suck less if we're all suffering together 😂\n\n**Alex**: True that. Let's hit up Sam and see if they're in.\n\n**Jamie**: Good idea. More brains, less pain, right?",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 188,
+    "total_tokens": 233
+  },
+  "timestamp": "2026-07-10T00:40:09.792986+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 93,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Jamie**: Yo, did you see the new episode of that show we were talking about?\n\n**Alex**: Yeah, I watched it last night! Crazy plot twist, right?\n\n**Jamie**: I was not ready for that! 😱 I literally screamed at my TV.\n\n**Alex**: Same! I had to pause and process for a sec. 😂\n\n**Jamie**: Seriously, though. How are we gonna wait another week for the next one?\n\n**Alex**: I know, right? It's torture. We should totally binge something else in the meantime.\n\n**Jamie**: For sure! Got any suggestions?\n\n**Alex**: Hmm, how about that new series everyone's been raving about? Heard it's pretty good.\n\n**Jamie**: Oh, the one with the mystery vibes? I'm down. Let's start tonight?\n\n**Alex**: Bet! I'll bring the snacks. 🍿\n\n**Jamie**: Sweet! I’ll text you when I'm ready. Can't wait. 🙌\n\n**Alex**: Cool, see ya later!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 215,
+    "total_tokens": 260
+  },
+  "timestamp": "2026-07-10T00:40:12.660769+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 94,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex**: yo, did you finish the history project yet?\n\n**Sam**: nah, not yet 😅. i got distracted by tiktok lol. what about you?\n\n**Alex**: same here 😂. i keep telling myself \"just one more video\" and then boom, an hour is gone.\n\n**Sam**: seriously! i did find some good stuff tho. like, did you know they used pigeons for communication during wars? mind blown 🤯\n\n**Alex**: no way! that's so wild. i’m gonna tell my teacher that pigeons did more work than i did for this project 😂\n\n**Sam**: lol, for real. we should totally partner up and get this done. i’m free after 6 if you’re down?\n\n**Alex**: sounds good! let’s meet up on discord later. we got this 💪\n\n**Sam**: yasss, teamwork makes the dream work! catch ya later! 🙌",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 199,
+    "total_tokens": 244
+  },
+  "timestamp": "2026-07-10T00:40:16.042514+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 95,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex**: Yo, did you see the new episode of that show last night?\n\n**Jordan**: Nah, I was stuck doing homework. Was it any good?\n\n**Alex**: Dude, it was insane! Like, plot twist central. You gotta catch up!\n\n**Jordan**: Ugh, now I’m curious. I might binge it this weekend. Anything else worth watching?\n\n**Alex**: For sure, check out that new movie that dropped on streaming. It's getting crazy reviews.\n\n**Jordan**: Bet, I’ll add it to my watchlist. Also, are we still on for the game night this Friday?\n\n**Alex**: Yesss, can’t wait. I’m bringing snacks, so let me know if you want anything specific.\n\n**Jordan**: Chips and salsa are a must. Let’s make it epic!\n\n**Alex**: Done deal. Gonna crush you in Mario Kart tho 😜\n\n**Jordan**: Haha, we’ll see about that! Bring it on!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 208,
+    "total_tokens": 253
+  },
+  "timestamp": "2026-07-10T00:40:18.430800+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 96,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex**: Yo, did you check out the new episode of that show we like?\n\n**Sam**: Not yet! Is it good? No spoilers tho 😅\n\n**Alex**: For real, it's wild! The ending had me like 🤯\n\n**Jess**: Omg, I need to catch up. I'm still on last week's ep. School's been crazy busy.\n\n**Sam**: Same here. I had a math test today, and I think my brain exploded 😂\n\n**Alex**: LOL, mood. We should do a watch party this weekend!\n\n**Jess**: Yes! I'll bring the popcorn 🍿\n\n**Sam**: And I'll bring the snacks! Can't wait 🤩",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 146,
+    "total_tokens": 191
+  },
+  "timestamp": "2026-07-10T00:40:20.953257+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 97,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex:** Yo, did you finish the history project yet?\n\n**Sam:** Nah, not even close. I've been procrastinating hard. 😂 You?\n\n**Alex:** Same here! I started it but then got sucked into watching TikToks. 😅\n\n**Sam:** Haha, classic. Maybe we should just pull an all-nighter and knock it out tonight?\n\n**Alex:** I'm down. But we gotta reward ourselves with some gaming afterwards. 🎮\n\n**Sam:** Deal! Let's meet in the group chat around 8pm? We can suffer together. 🤣\n\n**Alex:** Perfect. Bring snacks, though. I’m gonna need the sugar rush. 🍫\n\n**Sam:** Already on it! See ya later!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 150,
+    "total_tokens": 195
+  },
+  "timestamp": "2026-07-10T00:40:23.003950+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 98,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex:** Yo, did you see the new episode of that show last night?\n\n**Sam:** Nah, I missed it! Was it any good?\n\n**Alex:** Bro, it was insane! They finally revealed who the villain is, and it's wild.\n\n**Sam:** No way! Don't spoil it for me! 😱\n\n**Alex:** Haha, don’t worry, I won't. But seriously, you gotta catch up. It's getting intense.\n\n**Sam:** For sure, I'll binge it this weekend. Did you finish that history assignment yet?\n\n**Alex:** Ugh, not yet. I’m procrastinating hard. 😅\n\n**Sam:** Same here. Maybe we should just start a club for last-minute homework warriors. 😂\n\n**Alex:** Lol, for real! But okay, we gotta focus. Let's do this thing. 💪\n\n**Sam:** Agreed. I'll hit you up later for a study sesh?\n\n**Alex:** Sounds good. Peace out! ✌️\n\n**Sam:** Later!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 208,
+    "total_tokens": 253
+  },
+  "timestamp": "2026-07-10T00:40:25.562665+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "gpt-4o",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 99,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "**Alex:** Yo, did you see that new movie trailer drop last night?\n\n**Jesse:** Omg yes! The one with the aliens, right? It looks soooo good!\n\n**Taylor:** Wait, wait, what movie are y'all talking about? I feel like I missed something big lol.\n\n**Alex:** It's called \"Galactic Chaos\" or something. Dropped super late last night. It’s all over my feed.\n\n**Jesse:** Yeah, and the CGI looks insane! Like, I'm definitely watching this as soon as it comes out.\n\n**Taylor:** Dang, now I gotta check it out. Is it gonna be in theaters or streaming?\n\n**Alex:** Both, I think? But honestly, this feels like a must-see on the big screen.\n\n**Jesse:** For real! Let's make a plan to go together. Movie night, anyone?\n\n**Taylor:** I'm down! As long as we get popcorn and those giant slushies 😂\n\n**Alex:** It's a date then! 🎬🍿\n\n**Jesse:** Can't wait! I'll set a reminder so I don't totally forget lol.\n\n**Taylor:** Same 😂 Alright, catch y'all later!\n\n**Alex:** Peace out!\n\n**Jesse:** Byeee!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 253,
+    "total_tokens": 298
+  },
+  "timestamp": "2026-07-10T00:40:29.044716+00:00"
+}
+

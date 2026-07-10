@@ -1,0 +1,1900 @@
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 0,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between three friends:\n\n---\n\n**Maya:** guys guys guys you will NOT believe what just happened\n\n**Jordan:** omg what\n\n**Maya:** so i was at the mall right and i literally ran into mr henderson from 6th grade math\n\n**Jordan:** LMAOOO no way\n\n**Tyler:** wait the one who used to say \"put your thinking caps on\" 💀\n\n**Maya:** YES HIM and he still says it i cannot\n\n**Jordan:** did he recognize you\n\n**Maya:** yeah he was like \"maya!! are you still good at fractions\" and i wanted to disappear into the floor\n\n**Tyler:** FRACTIONS 😭😭😭\n\n**Jordan:** i would have actually died on the spot\n\n**Maya:** it gets worse. my MOM was with me and they started talking for like 20 minutes\n\n**Tyler:** ur mom is so real for that actually\n\n**Jordan:** she was NOT going to let that man go\n\n**Maya:** i was standing there like 🧍\n\n**Tyler:** this is the funniest thing ive heard all week ngl\n\n**Maya:** glad my suffering entertains you 🙄\n\n**Jordan:** always 💕\n\n---",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 273,
+    "total_tokens": 315
+  },
+  "timestamp": "2026-07-10T00:19:37.219340+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 1,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between friends:\n\n---\n\n**Maya:** omg guys did u see what happened in math today 💀\n\n**Jordan:** LMAOOO yes i was trying so hard not to laugh\n\n**Maya:** mr. henderson's face when the projector just died mid lesson\n\n**Jordan:** he looked so defeated lol like sir just let us go home\n\n**Priya:** wait i missed this what happened\n\n**Maya:** basically he spent like 20 mins setting up this whole presentation and then boom. black screen. gone forever\n\n**Priya:** NOOO 😭😭\n\n**Jordan:** and then he tried to fix it for another 10 mins while we all just sat there\n\n**Priya:** free period basically lol\n\n**Maya:** literally we did nothing the whole class it was so good\n\n**Jordan:** best day of the semester ngl\n\n**Priya:** ugh i picked the wrong day to go to the nurse\n\n**Maya:** ur so unlucky omg\n\n**Jordan:** anyway u guys coming to sam's thing friday or nah\n\n**Priya:** yeah def\n\n**Maya:** depends if my mom stops being weird about it lol ill let u know\n\n**Jordan:** ok lmk 👍\n\n---",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 281,
+    "total_tokens": 323
+  },
+  "timestamp": "2026-07-10T00:19:45.339617+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 2,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between three friends:\n\n---\n\n**Maya:** guys guys guys you will NOT believe what just happened 😭\n\n**Jordan:** omg what\n\n**Maya:** so i was at the mall w my sister and i literally walked into mr henderson like full on collision\n\n**Jordan:** LMAOOO no way 💀\n\n**Tyler:** wait ur bio teacher??? did u die\n\n**Maya:** i wanted to??? he was with his WIFE and like a little kid and it was so awkward\n\n**Jordan:** wait he has a whole family??? i thought he just lived at school lmao\n\n**Tyler:** teachers aren't real people outside of school everyone knows this\n\n**Maya:** RIGHT like why is he allowed to just be at the mall\n\n**Jordan:** what did u even say\n\n**Maya:** i said \"oh sorry sir\" and then literally walked away as fast as possible\n\n**Tyler:** SIR 💀💀💀\n\n**Jordan:** u called him sir at the MALL\n\n**Maya:** i panicked ok i don't make the rules\n\n**Tyler:** ur never gonna live this down\n\n**Maya:** i know i'm moving schools bye\n\n**Jordan:** 😭😭 we'll miss u\n\n---",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 273,
+    "total_tokens": 315
+  },
+  "timestamp": "2026-07-10T00:19:53.654394+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 3,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between friends:\n\n---\n\n**Maya:** omg did u see what happened in math today 💀\n\n**Jordan:** LMAOOO yes i literally almost died trying not to laugh\n\n**Maya:** mr henderson's face when tyler dropped his chromebook for the third time\n\n**Jordan:** bro was DONE done 😭😭\n\n**Maya:** anyway what r u doing later\n\n**Jordan:** idk probably nothing why\n\n**Maya:** wanna come over and watch something on netflix\n\n**Jordan:** yes omg finally something to do\n\n**Jordan:** what r we watching tho bc if u say another true crime doc i'm leaving\n\n**Maya:** lmaoo ok ok no true crime\n\n**Maya:** what about that show everyone keeps talking abt\n\n**Jordan:** which one there's like 50\n\n**Maya:** the one with the guy from that movie\n\n**Jordan:** that literally tells me nothing 💀\n\n**Maya:** UGH ok i'll send u the trailer\n\n**Jordan:** ok lol just text me when ur ready i'll walk over\n\n**Maya:** k see u like 7ish\n\n**Jordan:** bet 👍\n\n---",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 260,
+    "total_tokens": 302
+  },
+  "timestamp": "2026-07-10T00:20:01.148635+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 4,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between three friends:\n\n---\n\n**Maya:** guys guys guys 😭 did you see what happened at lunch today\n\n**Jordan:** omg YES i was literally dying 💀\n\n**Maya:** ms henderson's face when tyler dropped the whole tray lmaooo\n\n**Jordan:** SCREAMING she looked so done with everything 😭😭\n\n**Kai:** wait what i wasn't there what happened\n\n**Maya:** ok so basically tyler was trying to walk and text at the same time\n\n**Maya:** and he just. went down. full send. chocolate milk EVERYWHERE\n\n**Kai:** NO WAY 💀💀💀\n\n**Jordan:** it got on brendan's new shoes too lol\n\n**Kai:** oh he's so dead 😭\n\n**Maya:** right?? brendan looked like he was gonna actually cry\n\n**Jordan:** anyway what are you guys doing later\n\n**Kai:** idk probably nothing my mom might make me clean my room ugh\n\n**Maya:** same energy my whole weekend is ruined bc of homework\n\n**Jordan:** we should do something friday tho fr\n\n**Kai:** yes pls i need to escape this house\n\n**Maya:** literally same let's figure it out tomorrow\n\n**Jordan:** bet 👍\n\n---",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 287,
+    "total_tokens": 329
+  },
+  "timestamp": "2026-07-10T00:20:10.314889+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 5,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between three friends:\n\n---\n\n**Maya:** guys guys guys 👀\n\n**Maya:** you will NOT believe what just happened\n\n**Jordan:** omg what\n\n**Jordan:** tell us rn\n\n**Maya:** so i was at the mall right\n\n**Maya:** and i literally ran INTO mr henderson like physically crashed into him 💀\n\n**Cam:** LMAOOO NO WAY\n\n**Cam:** was it awkward\n\n**Maya:** SO awkward he was holding a smoothie and it went everywhere\n\n**Jordan:** MAYA 😭😭😭\n\n**Jordan:** what did you do\n\n**Maya:** i said sorry like 47 times and then basically speed walked away\n\n**Cam:** you just LEFT him there?? 💀💀\n\n**Maya:** cam what was i supposed to do help him clean up?? he's my math teacher\n\n**Jordan:** honestly yeah that's the only option i'm running away too\n\n**Cam:** same ngl\n\n**Cam:** ok but is he gonna be weird about it in class tomorrow\n\n**Maya:** idk but i'm considering faking sick\n\n**Jordan:** valid\n\n**Cam:** extremely valid 😭\n\n---",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 270,
+    "total_tokens": 312
+  },
+  "timestamp": "2026-07-10T00:20:19.634935+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 6,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between friends:\n\n---\n\n**Maya:** omg did u see what happened in math today 💀\n\n**Jordan:** LMAOOO yes i literally cannot believe mr. henderson said that\n\n**Maya:** bro i was trying SO hard not to laugh\n\n**Jordan:** same i had to look at my desk for like 5 mins straight 😭\n\n**Maya:** anyway r u coming to kayla's thing friday\n\n**Jordan:** idk maybe?? what time does it start\n\n**Maya:** like 7 i think she said bring snacks tho\n\n**Jordan:** ugh fine but only if we can leave by 10 my mom is being so extra about curfew rn\n\n**Maya:** same honestly she's been on my case all week\n\n**Jordan:** wait did u finish the history hw btw\n\n**Maya:** ...no💀 was i supposed to\n\n**Jordan:** MAYA it's due tomorrow omg\n\n**Maya:** ok ok i'm doing it rn chill 😭😭\n\n**Jordan:** ur literally so cooked lol good luck bestie\n\n**Maya:** i hate u sm\n\n**Jordan:** 🥰🥰\n\n---",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 268,
+    "total_tokens": 310
+  },
+  "timestamp": "2026-07-10T00:20:28.794484+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 7,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between friends:\n\n---\n\n**Maya:** omg did u see what happened in math today 💀\n\n**Jordan:** LMAOOO yes i literally almost died trying not to laugh\n\n**Maya:** mr henderson's face when tyler dropped his chromebook for the third time\n\n**Jordan:** bro was so done 😭😭\n\n**Maya:** \"TYLER. PLEASE.\" the way he said it so quietly\n\n**Jordan:** the quiet ones are always scarier than when they yell lol\n\n**Maya:** facts. anyway u coming to kayla's thing friday or nah\n\n**Jordan:** idk yet my mom is being weird about it\n\n**Maya:** tell her it's a study group 💅\n\n**Jordan:** she literally knows kayla doesn't study\n\n**Maya:** 😭😭 fair\n\n**Jordan:** ill figure it out tho. who else is going\n\n**Maya:** like me u kayla obviously, dre said maybe, and i think some ppl from the soccer team\n\n**Jordan:** ok yeah i def wanna go then lol\n\n**Maya:** i KNEW it 👀👀\n\n**Jordan:** shut upppp\n\n**Maya:** never 😂\n\n---",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 272,
+    "total_tokens": 314
+  },
+  "timestamp": "2026-07-10T00:20:37.398649+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 8,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between three friends:\n\n---\n\n**Maya:** guys guys guys you will NOT believe what just happened\n\n**Jordan:** omg what\n\n**Maya:** so i was at starbucks and i literally ran into tyler from 3rd period and spilled my drink everywhere 💀\n\n**Jordan:** NOOOOO\n\n**Casey:** LMAOOO please tell me he saw\n\n**Maya:** he literally helped me clean it up i wanted to disappear into the floor\n\n**Casey:** wait that's actually kinda cute tho??\n\n**Jordan:** fr tho he was probably being nice bc he likes u\n\n**Maya:** stop it he does NOT\n\n**Casey:** maya he literally sits next to you when he doesn't have to 🙄\n\n**Jordan:** she has a point bestie\n\n**Maya:** ok but also i had the ugliest fit on today like WHY\n\n**Casey:** 💀💀💀\n\n**Jordan:** the universe said chaos only\n\n**Maya:** i hate both of you\n\n**Casey:** no you don't lol\n\n**Jordan:** text him tho seriously\n\n**Maya:** absolutely not goodbye 😭\n\n**Casey:** coward\n\n**Jordan:** total coward lmaooo",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 272,
+    "total_tokens": 314
+  },
+  "timestamp": "2026-07-10T00:20:45.078531+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 9,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between three friends:\n\n---\n\n**Maya:** guys guys guys 🚨\n\n**Jordan:** what\n\n**Maya:** i just saw tyler at starbucks with some girl and he was literally holding her hand\n\n**Jordan:** WAIT WHAT\n\n**Priya:** omg stop 😭 does kayla know\n\n**Maya:** idk thats why im texting u guys what do we do\n\n**Jordan:** we HAVE to tell her\n\n**Priya:** but what if its like his cousin or smth lol\n\n**Jordan:** nobody holds their cousins hand like that priya 💀\n\n**Priya:** okay fair lmaooo\n\n**Maya:** should i have taken a pic\n\n**Jordan:** yes obviously??? go back\n\n**Maya:** i already left 😭😭\n\n**Priya:** okay so we just tell kayla and let her handle it\n\n**Jordan:** agreed. maya u tell her ur closer with her\n\n**Maya:** why do i have to do it 😭\n\n**Jordan:** bc u were literally THERE u have the most context\n\n**Priya:** she's right tbh\n\n**Maya:** ugh fine. pray for me\n\n**Priya:** godspeed bestie 🙏\n\n---",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 285,
+    "total_tokens": 327
+  },
+  "timestamp": "2026-07-10T00:20:54.862067+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 10,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between three friends:\n\n---\n\n**Maya:** guys guys guys 😭 did you see what happened at lunch today\n\n**Jordan:** omg YES i was literally dying 💀\n\n**Maya:** ms henderson's face when tyler dropped the whole tray lmaooo\n\n**Jordan:** SCREAMING she looked so done with everything 😭😭\n\n**Kai:** wait what i was in the library i missed everything\n\n**Maya:** dude tyler slipped and the entire tray just. went. everywhere. chocolate milk on THREE people\n\n**Kai:** NO WAY\n\n**Jordan:** way. brianna's white hoodie is literally ruined rip 🙏\n\n**Kai:** oh nooo she just got that one too didn't she\n\n**Maya:** yeah she was SO mad lol but also tyler felt so bad he was apologizing for like 10 minutes straight\n\n**Jordan:** honestly kinda cute ngl 👀\n\n**Maya:** JORDAN\n\n**Kai:** lolll okay but real talk are we still going to the mall after school or\n\n**Maya:** yes omg i need to get out of here\n\n**Jordan:** yes but someone needs to remind me to actually save my money this time\n\n**Kai:** you say that every time 💀\n\n**Jordan:** and i will say it every time 😌\n\n---",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 303,
+    "total_tokens": 345
+  },
+  "timestamp": "2026-07-10T00:21:03.920633+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 11,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between three friends:\n\n---\n\n**Maya:** guys guys guys 😭 did you see what happened at lunch today\n\n**Jordan:** omg YES i was literally right there lmaooo\n\n**Maya:** ms henderson's face when tyler dropped the whole tray 💀💀💀\n\n**Jordan:** i'm still not over it bro i almost choked\n\n**Priya:** WAIT i missed this?? i was at the library i'm so mad rn\n\n**Maya:** girl he dropped EVERYTHING. like the whole tray. chocolate milk everywhere\n\n**Jordan:** and it got on mr. kowalski's shoes too 😭😭\n\n**Priya:** NO WAY\n\n**Maya:** yes way lmaooo tyler literally just stood there like 🧍\n\n**Jordan:** he didn't even apologize he just said \"well that happened\"\n\n**Priya:** LMAOOO that's so him honestly\n\n**Maya:** fr tho 💀 ok anyway are we still doing the mall thing saturday or nah\n\n**Jordan:** yeah i'm down\n\n**Priya:** same but i gotta be home by 7 my mom is being SO extra lately\n\n**Jordan:** same honestly parents have been wild this week idk what's going on\n\n**Maya:** mercury retrograde probably lol\n\n**Priya:** 💀💀💀\n\n---",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 315,
+    "total_tokens": 357
+  },
+  "timestamp": "2026-07-10T00:21:13.033242+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 12,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between two friends:\n\n---\n\n**Maya:** omg did u see what happened in math today 💀\n\n**Jordan:** LMAOOO yes bro mr henderson literally tripped over the projector cord\n\n**Maya:** i was SO close to losing it i had to look at my desk\n\n**Jordan:** same i bit my lip so hard 😭😭\n\n**Maya:** anyway r u coming to kayla's thing friday\n\n**Jordan:** idk maybe?? what time is it\n\n**Maya:** like 7 i think she said bring snacks tho\n\n**Jordan:** ugh fine but only if we can leave by 10 my mom is being weird about curfew rn\n\n**Maya:** same honestly she's been on my case too lately like relax??\n\n**Jordan:** FR parents are so extra this week idk what happened\n\n**Maya:** mercury retrograde probably lol\n\n**Jordan:** 💀💀 ok but actually tho\n\n**Maya:** lmaooo ok text me tomorrow abt friday\n\n**Jordan:** ok bet 👍\n\n---",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 245,
+    "total_tokens": 287
+  },
+  "timestamp": "2026-07-10T00:21:21.633806+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 13,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between three friends:\n\n---\n\n**Maya:** guys guys guys 😭 did you see what happened in math today\n\n**Jordan:** LMAOOO yes i was literally trying not to die laughing\n\n**Maya:** mr. peterson's face when the projector fell 💀💀💀\n\n**Tyler:** wait WHAT i was out sick what happened omg tell me everything\n\n**Jordan:** ok so basically he was doing that thing where he leans on the desk\n\n**Maya:** and the projector just. fell. on the floor. in front of everyone\n\n**Tyler:** NO WAY\n\n**Jordan:** way. dead serious\n\n**Maya:** and he just stood there for like 10 whole seconds not saying anything lmaooo\n\n**Tyler:** i'm so mad i missed this wtf\n\n**Jordan:** it gets better he just went \"well. anyway.\" and kept teaching 💀\n\n**Tyler:** WELL ANYWAY 😭😭😭 i'm crying\n\n**Maya:** it's literally all i can think about\n\n**Jordan:** same lol ok anyway are we still doing the thing at kayla's friday or nah\n\n**Tyler:** yeah i'm down what time\n\n**Maya:** like 7 ish i think she said\n\n**Jordan:** bet\n\n---",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 289,
+    "total_tokens": 331
+  },
+  "timestamp": "2026-07-10T00:21:30.235408+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 14,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between three friends:\n\n---\n\n**Maya:** guys guys guys 😭 did you see what happened at lunch today\n\n**Jordan:** omg YES i was literally dying 💀\n\n**Maya:** ms henderson's face when tyler dropped the whole tray lmaooo\n\n**Jordan:** SCREAMING she looked so done with everything 😭😭\n\n**Kai:** wait what i wasn't there what happened\n\n**Maya:** ok so basically tyler was trying to balance his tray with one hand to look cool\n\n**Jordan:** (for ashley btw lol)\n\n**Maya:** LMAOOO yes for ashley and he just. dropped everything. chocolate milk everywhere\n\n**Kai:** WAIT NO 💀💀💀\n\n**Jordan:** the sound it made i cannot\n\n**Kai:** did ashley see\n\n**Maya:** she was standing RIGHT there bro\n\n**Jordan:** i feel bad but also i don't 😭\n\n**Kai:** tyler really said lemme embarrass myself in front of my crush on a tuesday\n\n**Maya:** a RANDOM tuesday 😭 no reason\n\n**Jordan:** he's so brave actually\n\n**Kai:** lmaoooo fr tho respect the confidence\n\n**Maya:** someone check on him rn 💀\n\n---",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 287,
+    "total_tokens": 329
+  },
+  "timestamp": "2026-07-10T00:21:39.247244+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 15,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between friends:\n\n---\n\n**Maya:** omg did u see what happened in math today 💀\n\n**Jordan:** LMAOOO yes im still not over it\n\n**Jordan:** mr. harris's face when tyler fell off his chair\n\n**Maya:** i literally had to look away so i wouldn't lose it\n\n**Maya:** i was biting my lip so hard\n\n**Jordan:** same i was shaking trying not to laugh 😭😭\n\n**Jordan:** hey r u coming to kayla's thing friday btw\n\n**Maya:** idk maybe?? is it gonna be a lot of people\n\n**Jordan:** like 10 i think\n\n**Jordan:** she said bring snacks lol\n\n**Maya:** ok yeah probably. my mom might be weird about it tho\n\n**Jordan:** just say ur studying at my house 😭\n\n**Maya:** jordan NO last time that backfired so bad\n\n**Jordan:** ok fair point lmaooo\n\n**Maya:** ill just ask her normally and hope for the best 🙏\n\n**Jordan:** respect the honesty era\n\n**Maya:** right 😂 ok gtg dinner. text me later\n\n**Jordan:** k byeee 👋\n\n---",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 275,
+    "total_tokens": 317
+  },
+  "timestamp": "2026-07-10T00:21:47.131193+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 16,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between three friends:\n\n---\n\n**Maya:** guys guys guys 😭 did anyone watch the new episode last night\n\n**Jordan:** YESSS i literally screamed at the ending wtf\n\n**Maya:** RIGHT?? i was not prepared for that at all\n\n**Tyler:** wait what episode of what\n\n**Jordan:** tyler we literally talked about this show for two weeks straight how are you not watching it 💀\n\n**Tyler:** i forgot okay 😭 no spoilers\n\n**Maya:** bro you have one job\n\n**Jordan:** one (1) job\n\n**Tyler:** okay okay ill watch it tonight can we hang tomorrow after school tho\n\n**Maya:** yes omg i need to debrief with someone who actually watches it lol\n\n**Jordan:** same but also can we get food im broke tho so someone needs to pay for me\n\n**Maya:** jordan you literally always say that\n\n**Jordan:** and someone always pays so the system works 😇\n\n**Tyler:** 💀💀💀 yeah tomorrow works for me\n\n**Maya:** cool cool. tyler dont forget to watch it or we're leaving you out of the convo\n\n**Tyler:** noted 😭\n\n---",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 269,
+    "total_tokens": 311
+  },
+  "timestamp": "2026-07-10T00:21:56.141264+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 17,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between three friends:\n\n---\n\n**Maya:** guys guys guys guess what happened today 😭\n\n**Jordan:** omg what\n\n**Maya:** so i was walking to 3rd period and i literally tripped in front of the ENTIRE hallway\n\n**Jordan:** LMAOOOO no way 💀💀\n\n**Maya:** YES WAY i wanted to actually die on the spot\n\n**Tyler:** wait i heard about this 😭 someone told me during lunch\n\n**Maya:** TYLER NO\n\n**Tyler:** bro it spread fast not gonna lie 💀\n\n**Jordan:** ok but did anyone help you up or\n\n**Maya:** this one kid from my bio class did and i was so embarrassed i literally just said \"cool\" and walked away\n\n**Jordan:** YOU SAID COOL 😭😭😭\n\n**Tyler:** that is so unhinged lmaooo\n\n**Maya:** i PANICKED okay\n\n**Jordan:** girl what does that even mean 😭\n\n**Tyler:** nah fr tho that's kinda iconic honestly\n\n**Maya:** it is NOT iconic tyler\n\n**Tyler:** no fr own it. you're the cool trip girl now\n\n**Jordan:** he's right tbh lol\n\n**Maya:** i hate both of you so much rn\n\n---",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 292,
+    "total_tokens": 334
+  },
+  "timestamp": "2026-07-10T00:22:05.154045+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 18,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between three friends:\n\n---\n\n**Maya:** guys guys guys 😭 did you see what happened at lunch today\n\n**Jordan:** omg YES i was literally dying 💀\n\n**Maya:** ms henderson's face when tyler spilled the entire tray 😭😭\n\n**Jordan:** bro i had to pretend i was coughing so i wouldn't get in trouble for laughing\n\n**Alex:** wait WHAT i was in the bathroom what happened\n\n**Maya:** tyler was trying to be all smooth walking past brianna's table and just.. boom. chocolate milk EVERYWHERE\n\n**Alex:** LMAOOO no way 💀💀💀\n\n**Jordan:** and brianna was like completely unbothered too she just kept talking to her friends\n\n**Alex:** she really said not my problem lol\n\n**Maya:** honestly respect tbh\n\n**Jordan:** tyler literally ran out of the cafeteria 😭 i feel bad but also not really\n\n**Alex:** this is the funniest thing ive heard all week\n\n**Maya:** someone recorded it too so it's gonna be everywhere by tomorrow guaranteed\n\n**Jordan:** rip tyler fr\n\n**Alex:** ok but also are we still doing the thing at your house saturday or nah\n\n**Maya:** YES omg i almost forgot, my mom said it's fine\n\n**Jordan:** lessgo 🙌\n\n---",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 309,
+    "total_tokens": 351
+  },
+  "timestamp": "2026-07-10T00:22:16.007827+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 19,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between three friends:\n\n---\n\n**Maya:** guys guys guys 😭\n\n**Jordan:** what happened\n\n**Maya:** i literally just spilled an entire smoothie on my laptop\n\n**Jordan:** MAYA NO 💀\n\n**Zoe:** omg are you serious rn\n\n**Maya:** yes im freaking out it was a FULL cup\n\n**Zoe:** ok ok turn it upside down RIGHT NOW\n\n**Jordan:** yeah and don't turn it on\n\n**Maya:** i already tried turning it on 😭😭\n\n**Zoe:** MAYA\n\n**Jordan:** bro why would you do that 💀💀\n\n**Maya:** I PANICKED okay i wasn't thinking\n\n**Zoe:** ok put it in rice or something idk\n\n**Jordan:** that's for phones lol\n\n**Zoe:** well i don't know i'm trying to help 😭\n\n**Maya:** my mom is gonna literally kill me this is so bad\n\n**Jordan:** how bad does it look\n\n**Maya:** the screen is doing this weird flickery thing and then it just went black\n\n**Zoe:** ok rip 🪦\n\n**Jordan:** zoe 💀\n\n**Zoe:** i mean… maybe it'll be fine!! 🙂\n\n**Maya:** i hate both of you",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 301,
+    "total_tokens": 343
+  },
+  "timestamp": "2026-07-10T00:22:24.201713+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 20,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between friends:\n\n---\n\n**Maya:** omg did u see what happened in math today 💀\n\n**Jordan:** LMAOOO yes i literally cannot believe mr. henderson said that\n\n**Maya:** bro i was trying SO hard not to laugh\n\n**Jordan:** same i had to look at my desk for like 5 mins straight 😭\n\n**Maya:** anyway r u coming to kayla's thing friday\n\n**Jordan:** idk my mom is being weird about it. she keeps asking if there's gonna be parents there\n\n**Maya:** there will be!! her older sister is home from college\n\n**Jordan:** ok that's literally the opposite of what my mom wants to hear lol\n\n**Maya:** HAHAHA fair point ok just say \"responsible adults will be present\"\n\n**Jordan:** omg ur a genius. ok asking her rn\n\n**Maya:** let me know!! it's not gonna be the same without u there fr\n\n**Jordan:** aww ok ok don't make it weird 😭❤️\n\n**Maya:** too late bye\n\n**Jordan:** 💀💀\n\n---",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 250,
+    "total_tokens": 292
+  },
+  "timestamp": "2026-07-10T00:22:31.509146+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 21,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between three friends:\n\n---\n\n**Maya:** guys guys guys 😭 did you see what happened at lunch today\n\n**Jordan:** omg YES i literally cannot believe ms. henderson did that 💀\n\n**Maya:** like she really just called him out in front of EVERYONE\n\n**Tyler:** wait what i was sitting on the other side i missed the whole thing what happened\n\n**Jordan:** dude where do i even start lmao\n\n**Maya:** ok so basically tyler you know how derek always has his airpods in during class right\n\n**Tyler:** yeah lol\n\n**Maya:** she like YANKED one out and started rapping the lyrics he was listening to 😭😭😭\n\n**Jordan:** I STILL CANNOT GET OVER IT bro i almost choked on my sandwich\n\n**Tyler:** NO WAY 💀💀💀\n\n**Maya:** way. derek looked like he wanted to disappear into the floor\n\n**Jordan:** honestly same i was embarrassed FOR him\n\n**Tyler:** this is the funniest thing ive heard all week i cant believe i missed it\n\n**Maya:** you had to be there it was a moment for real\n\n**Jordan:** legendary honestly. ms. henderson is NOT who i thought she was 😭\n\n**Tyler:** lmaooo ok she went up in my rankings ngl\n\n---",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 302,
+    "total_tokens": 344
+  },
+  "timestamp": "2026-07-10T00:22:40.381661+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 22,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between three friends:\n\n---\n\n**Maya:** guys guys guys 🚨\n\n**Maya:** did you see what happened in 3rd period today omg\n\n**Jordan:** nooo i was literally falling asleep in math tell me everything\n\n**Maya:** okay so basically tyler dropped his whole lunch tray right in front of ms henderson 💀\n\n**Priya:** LMAOOOO NO WAY\n\n**Priya:** was she mad\n\n**Maya:** she looked so done with everything lol she just walked away\n\n**Jordan:** honestly same energy as me every single day\n\n**Priya:** bro i would have just transferred schools on the spot\n\n**Maya:** tyler literally just picked up his pizza and kept eating it like nothing happened\n\n**Jordan:** king behavior actually\n\n**Priya:** no fr respect 😭\n\n**Maya:** anyway what are you guys doing later\n\n**Jordan:** nothing my mom wants me to clean my room but that is NOT happening\n\n**Priya:** same lol i told my parents i had homework\n\n**Priya:** i do not have homework\n\n**Maya:** lmaooo okay so netflix at 8??\n\n**Jordan:** obviously\n\n**Priya:** say less 🍿\n\n---",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 279,
+    "total_tokens": 321
+  },
+  "timestamp": "2026-07-10T00:22:49.903858+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 23,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between three friends:\n\n---\n\n**Maya:** guys guys guys 😭 did you see what happened at lunch today\n\n**Jordan:** omg YES i was literally dying 💀\n\n**Maya:** ms henderson's face when tyler dropped the whole tray lmaoooo\n\n**Jordan:** bro i had to look away i was about to lose it\n\n**Kai:** wait WHAT i wasn't there what happened\n\n**Maya:** ok so basically tyler was trying to be all smooth carrying like 3 trays at once\n\n**Jordan:** he literally said \"i got it i got it\" RIGHT before he dropped everything\n\n**Kai:** NOOO 💀💀💀\n\n**Maya:** chocolate milk went EVERYWHERE\n\n**Jordan:** it got on brendan's new shoes too he was so mad lol\n\n**Kai:** omg i'm so sad i missed this\n\n**Maya:** it's ok we'll never let tyler live it down so you'll hear about it forever\n\n**Jordan:** honestly iconic moment in cafeteria history\n\n**Kai:** someone better have recorded it\n\n**Maya:** jordan DID\n\n**Jordan:** i mean… yeah i did 😭 it was instinct\n\n**Kai:** SEND IT RN\n\n---",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 280,
+    "total_tokens": 322
+  },
+  "timestamp": "2026-07-10T00:22:58.784999+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 24,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between friends:\n\n---\n\n**Maya:** omg did u see what happened in math today 💀\n\n**Jordan:** LMAOOO yes i literally almost died trying not to laugh\n\n**Maya:** mr henderson's face when tyler dropped his chromebook for the THIRD time\n\n**Jordan:** bro was so done 😭😭\n\n**Maya:** ok but anyway r u coming to kira's thing friday\n\n**Jordan:** idk my mom is being weird about it rn\n\n**Jordan:** she wants to \"meet kira's parents first\" like mom PLEASE\n\n**Maya:** noooo that's so embarrassing 💀\n\n**Jordan:** RIGHT like i'm 16 not 6\n\n**Maya:** ok tell her it's just like 6 people hanging out no big deal\n\n**Jordan:** yeah i'll try that. what r u wearing btw\n\n**Maya:** idk probably my black hoodie and the jeans i got last week\n\n**Jordan:** ooh the ones with the rips??\n\n**Maya:** yes bestie 🙌\n\n**Jordan:** ok cute ok ok i'm def coming now i need to find something\n\n**Maya:** lol ur so dramatic\n\n**Jordan:** and?? 😌\n\n**Maya:** 😂😂 ok lmk what ur mom says\n\n**Jordan:** will do 🫶\n\n---",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 308,
+    "total_tokens": 350
+  },
+  "timestamp": "2026-07-10T00:23:07.582285+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 25,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between three friends:\n\n---\n\n**Maya:** guys guys guys 😭 did you see what happened at lunch today\n\n**Jordan:** omg YES i literally cannot believe ms. henderson did that\n\n**Maya:** like she really just called him out in front of EVERYONE\n\n**Tyler:** wait what i was at practice what happened\n\n**Jordan:** dude you missed it. she caught Dylan sleeping and made him stand up and answer a question and he didn't even know what CLASS he was in 💀\n\n**Tyler:** LMAOOO no way\n\n**Maya:** he said \"uh... english?\" and we're in HISTORY\n\n**Tyler:** bro is NOT okay 😭😭\n\n**Jordan:** the whole table was dead silent for like 3 seconds and then everyone just lost it\n\n**Maya:** i felt so bad but also i was literally crying laughing\n\n**Tyler:** ok but same tho\n\n**Jordan:** anyway wyd after school\n\n**Maya:** nothing why\n\n**Jordan:** target run?? i need new earbuds mine are cooked\n\n**Tyler:** im in\n\n**Maya:** yeah ok lmk when ur leaving 🙏\n\n---",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 263,
+    "total_tokens": 305
+  },
+  "timestamp": "2026-07-10T00:23:15.607854+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 26,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between three friends:\n\n---\n\n**Maya:** guys guys guys 😭 did you see what happened at lunch today\n\n**Jordan:** omg YES i was literally dying 💀\n\n**Maya:** ms henderson's face when tyler dropped the whole tray lmaooo\n\n**Jordan:** SCREAMING she looked so done with everything lol\n\n**Kai:** wait what i was in the library what happened\n\n**Maya:** ok so basically tyler was trying to show off doing some stupid walk\n\n**Jordan:** he was literally moonwalking kai 💀💀\n\n**Kai:** NO WAY\n\n**Maya:** yes way and he slipped and the whole tray went flying\n\n**Jordan:** chocolate milk EVERYWHERE i'm not even joking\n\n**Kai:** omg i'm so sad i missed this\n\n**Maya:** it's fine tyler posted a video on his story lol\n\n**Kai:** WAIT HE POSTED IT HIMSELF\n\n**Jordan:** bro has no shame and honestly respect 😭\n\n**Kai:** lmaooo ok that's actually hilarious\n\n**Maya:** he's literally so unhinged i love him\n\n**Jordan:** fr our school would be so boring without him ngl\n\n**Kai:** someone send me the link rn i need to see this",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 289,
+    "total_tokens": 331
+  },
+  "timestamp": "2026-07-10T00:23:25.542720+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 27,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between three friends:\n\n---\n\n**Maya:** guys guys guys 😭 did you see what happened in math today\n\n**Jordan:** omg YES i was literally dying trying not to laugh\n\n**Maya:** mr. henderson's face when the projector fell 💀💀💀\n\n**Tyler:** wait WHAT i was absent what happened\n\n**Jordan:** dude you missed everything lmaooo\n\n**Maya:** ok so basically he was doing that thing where he leans on the desk right\n\n**Tyler:** yeah he always does that lol\n\n**Maya:** and he leaned too hard and knocked the whole projector off the cart and it just. fell. \n\n**Jordan:** the SOUND it made tho 😭\n\n**Tyler:** NO WAY bro i cannot believe i missed this\n\n**Maya:** it gets better he tried to catch it and just kinda. didn't.\n\n**Jordan:** he stood there for like 5 seconds just staring at it on the floor\n\n**Tyler:** LMAOOO i'm so mad i was sick\n\n**Maya:** honestly iconic moment in school history\n\n**Jordan:** fr putting that in the yearbook petition\n\n**Tyler:** sign me UP\n\n---",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 270,
+    "total_tokens": 312
+  },
+  "timestamp": "2026-07-10T00:23:33.322636+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 28,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between three friends:\n\n---\n\n**Maya:** guys guys guys 🚨\n\n**Jordan:** what\n\n**Maya:** i just saw tyler at the mall with some girl lmaooo\n\n**Jordan:** WAIT NO WAY\n\n**Dev:** hold on im eating\n\n**Maya:** dev this is urgent PUT THE FOOD DOWN\n\n**Dev:** ok ok what happened\n\n**Maya:** they were literally sharing a pretzel at auntie annes like 😭😭\n\n**Jordan:** that is so specific\n\n**Dev:** maybe it was his cousin or smth\n\n**Maya:** dev they were SHARING A PRETZEL\n\n**Jordan:** yeah that's not a cousin thing lol\n\n**Dev:** ok fair point\n\n**Maya:** should i tell kayla or is that not my business\n\n**Jordan:** definitely not ur business\n\n**Dev:** 100% not ur business\n\n**Jordan:** but also tell her immediately\n\n**Dev:** yeah obviously tell her rn\n\n**Maya:** ok glad we sorted that out 💀\n\n**Jordan:** lmk what she says\n\n**Dev:** keep us posted fr\n\n**Maya:** you guys are so bad lol brb texting her\n\n---",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 265,
+    "total_tokens": 307
+  },
+  "timestamp": "2026-07-10T00:23:43.278605+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 29,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between friends:\n\n---\n\n**Maya:** omg did u see what happened in math today 💀\n\n**Jordan:** LMAOOO yes i was literally dying trying not to laugh\n\n**Maya:** mr henderson's face when tyler knocked over the projector 😭😭\n\n**Jordan:** bro i had to pretend i was coughing so bad\n\n**Maya:** ur so bad lol anyway r u coming to kayla's thing friday\n\n**Jordan:** idk maybe?? what time is it even\n\n**Maya:** like 7 i think she said bring snacks tho\n\n**Jordan:** ugh fine but only if we watch something actually good this time. last time u made us watch that movie 💀\n\n**Maya:** EXCUSE ME that movie was a masterpiece and u know it\n\n**Jordan:** it was 3 hours of nothing happening maya. THREE HOURS\n\n**Maya:** ok fine we can vote or whatever lol\n\n**Jordan:** deal. also can ur sister drive us\n\n**Maya:** ill ask her but she's gonna want gas money again 🙄\n\n**Jordan:** she always does lmaooo ok lmk\n\n**Maya:** yep yep 👍\n\n---",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 274,
+    "total_tokens": 316
+  },
+  "timestamp": "2026-07-10T00:23:53.322031+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 30,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between friends:\n\n---\n\n**Maya:** omg did u see what happened in math today 💀\n\n**Jordan:** LMAOOO yes i literally could not keep it together\n\n**Maya:** mr henderson's face when the projector fell 😭😭😭\n\n**Jordan:** bro i thought he was gonna cry ngl\n\n**Maya:** ok but real talk are u coming to kayla's thing friday\n\n**Jordan:** idk my mom's being weird about it\n\n**Jordan:** she wants to meet kayla's parents first or whatever\n\n**Maya:** ugh mine too honestly\n\n**Maya:** so embarrassing\n\n**Jordan:** RIGHT like we're not 10 💀\n\n**Maya:** lol ok ask her tonight and lmk\n\n**Jordan:** yeah yeah i will\n\n**Jordan:** also have u started the history project yet\n\n**Maya:** ...no\n\n**Jordan:** MAYA\n\n**Maya:** i know i know don't @ me\n\n**Maya:** wanna do it together tmrw after school\n\n**Jordan:** yes pls before i fail this class lol\n\n**Maya:** 😭 same honestly ok deal\n\n**Jordan:** 👍 k gtg my mom's calling\n\n**Maya:** ok byeee",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 279,
+    "total_tokens": 321
+  },
+  "timestamp": "2026-07-10T00:24:01.175479+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 31,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo:\n\n---\n\n**Maya:** omg did u see what happened in math today 💀\n\n**Jordan:** LMAOOO yes i thought mr henderson was gonna actually lose it\n\n**Maya:** bro he was so mad his face turned like completely red 😭\n\n**Jordan:** tyler is so cooked if his parents find out\n\n**Maya:** ong he's literally so stupid why would u do that during CLASS\n\n**Jordan:** idk man he thought it was funny i guess lol\n\n**Maya:** it was kinda funny ngl 😭😭\n\n**Jordan:** LMAOOO okay yeah it was hilarious but still\n\n**Maya:** anyway r u coming to kayla's thing friday or nah\n\n**Jordan:** idk she invited me but idk if it's gonna be weird bc of the whole thing w alex\n\n**Maya:** oh yeah that's still a thing??\n\n**Jordan:** apparently 🙄 idk i might just stay home tbh\n\n**Maya:** nooo come on it'll be fine just ignore him\n\n**Jordan:** ugh fine but if it gets weird ur literally driving me home\n\n**Maya:** deal lol 😭\n\n---",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 266,
+    "total_tokens": 308
+  },
+  "timestamp": "2026-07-10T00:24:10.288542+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 32,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between three friends:\n\n---\n\n**Maya:** guys guys guys 😭 did you see what happened in math today\n\n**Jordan:** LMAOOO yes omg I was literally dying\n\n**Maya:** mr. henderson's face when the projector just died mid lesson 💀💀\n\n**Jordan:** he looked so lost lmaooo like a lost puppy\n\n**Priya:** wait I missed this what happened I was zoning out\n\n**Maya:** PRIYA how do you zone out for that long 😭\n\n**Jordan:** she does this every single class lol\n\n**Priya:** ok but in my defense that class is SO boring\n\n**Maya:** valid actually\n\n**Jordan:** hey are we still hanging at the mall saturday or nah\n\n**Priya:** yes omg I need to get out of this house\n\n**Maya:** same my little brother has been SO annoying lately\n\n**Jordan:** lol how old is he again\n\n**Maya:** 9 and acts like he owns the whole place\n\n**Priya:** 💀 classic\n\n**Jordan:** ok saturday it is then. like noon?\n\n**Maya:** works for me\n\n**Priya:** 👍🏽 don't be late this time jordan\n\n**Jordan:** that was ONE time 😭\n\n**Maya & Priya:** it was literally four times 💀\n\n---",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 312,
+    "total_tokens": 354
+  },
+  "timestamp": "2026-07-10T00:24:19.812716+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 33,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between three friends:\n\n---\n\n**Maya:** guys guys guys 🚨\n\n**Jordan:** what\n\n**Maya:** i just saw tyler at the mall with some girl i've never seen before\n\n**Jordan:** WAIT WHAT\n\n**Jordan:** like together together??\n\n**Maya:** they were sharing a pretzel so yeah i think so lol\n\n**Dev:** bro i just woke up what is happening\n\n**Jordan:** tyler has a secret girlfriend apparently\n\n**Dev:** NO WAY\n\n**Dev:** he literally told me last week he wasn't talking to anyone 💀\n\n**Maya:** liaaaar\n\n**Jordan:** maybe it's just a friend??\n\n**Maya:** jordan they were sharing ONE pretzel and she was laughing at everything he said\n\n**Dev:** that's literally the most suspicious thing i've ever heard\n\n**Jordan:** okay yeah no that's a girlfriend\n\n**Maya:** THANK YOU\n\n**Dev:** someone needs to text him rn\n\n**Jordan:** NOT ME\n\n**Maya:** not me either lol\n\n**Dev:** so we're all just gonna sit here and be nosy about it\n\n**Maya:** obviously yes what else would we do\n\n**Jordan:** 😭😭 fair enough\n\n---",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 274,
+    "total_tokens": 316
+  },
+  "timestamp": "2026-07-10T00:24:27.701429+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 34,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between three friends:\n\n---\n\n**Maya:** guys guys guys 👀\n\n**Maya:** you will NOT believe what just happened\n\n**Jordan:** omg what\n\n**Jordan:** ur killing me with the suspense rn\n\n**Maya:** ok so u know how i've been lowkey obsessed with tyler from bio class\n\n**Priya:** MAYA NO WAY\n\n**Priya:** WHAT HAPPENED TELL US EVERYTHING\n\n**Maya:** he literally just followed me on insta 😭😭\n\n**Jordan:** SCREAMING\n\n**Priya:** ok ok ok this is huge actually\n\n**Jordan:** bestie u need to post a story rn so he sees ur face\n\n**Maya:** i literally cannot function i've been staring at my phone for like 20 mins\n\n**Priya:** lmaooo ur so cooked\n\n**Maya:** i KNOW\n\n**Jordan:** follow him back and then leave him on read for a bit don't seem desperate\n\n**Priya:** yes exactly play it cool\n\n**Maya:** what if i accidentally double tap something from 47 weeks ago tho\n\n**Jordan:** maya i swear to god 💀💀\n\n**Priya:** DO NOT TOUCH ANYTHING\n\n**Maya:** i'm too nervous to even open the app help\n\n---",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 296,
+    "total_tokens": 338
+  },
+  "timestamp": "2026-07-10T00:24:37.630728+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 35,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between two friends:\n\n---\n\n**Maya:** omg did u see what happened in math today 💀\n\n**Jordan:** LMAOOO yes i literally almost died trying not to laugh\n\n**Maya:** mr henderson's face when tyler dropped his chromebook for the third time 😭😭\n\n**Jordan:** bro i was DONE. i had to look at the ceiling so he wouldn't see me\n\n**Maya:** the ceiling trick never works btw ur always so obvious lol\n\n**Jordan:** excuse me it works PERFECTLY i have never been caught\n\n**Maya:** u got caught literally last tuesday\n\n**Jordan:** …that was different\n\n**Maya:** how was it different 💀💀\n\n**Jordan:** it just was ok. anyway what r u doing later\n\n**Maya:** prob nothing why\n\n**Jordan:** wanna come over and watch something on netflix i'm so bored rn\n\n**Maya:** yeah sure what time\n\n**Jordan:** like 5ish? my mom's making pasta too if u wanna stay for dinner\n\n**Maya:** ok yeah i'm literally always down for ur mom's pasta lol\n\n**Jordan:** she's gonna be so happy u said that 😭 she loves u more than me\n\n**Maya:** as she should tbh 💅\n\n---",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 289,
+    "total_tokens": 331
+  },
+  "timestamp": "2026-07-10T00:24:48.646257+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 36,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between three friends:\n\n---\n\n**Maya:** guys guys guys 😭 did you see what happened in math today\n\n**Jordan:** omg YES i was literally dying trying not to laugh\n\n**Maya:** mr henderson said \"anybody\" and looked directly at tyler for like 10 whole seconds 💀\n\n**Tyler:** I WAS RIGHT THERE YOU KNOW\n\n**Jordan:** LMAOOO bro you were so red\n\n**Tyler:** i was NOT red i was just warm it's hot in that classroom\n\n**Maya:** sure jan 😂\n\n**Jordan:** anyway what are we doing this weekend\n\n**Maya:** idk my mom might let me have ppl over if we're not loud\n\n**Tyler:** \"if we're not loud\" so never then\n\n**Jordan:** facts lol\n\n**Maya:** ok you know what forget it 😭\n\n**Jordan:** nooo we'll be quiet i promise\n\n**Tyler:** yeah fr we got you\n\n**Maya:** i'll ask her tonight and lmk\n\n**Jordan:** ok bet 🤙\n\n**Tyler:** 👍🏼 also maya ur still never gonna let me live down the henderson thing are you\n\n**Maya:** absolutely not. that's mine forever\n\n**Tyler:** i hate you both\n\n**Jordan:** no you don't 😇\n\n**Tyler:** …no i don't 😭\n\n---",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 309,
+    "total_tokens": 351
+  },
+  "timestamp": "2026-07-10T00:24:58.973630+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 37,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between three friends:\n\n---\n\n**Maya:** guys guys guys 🚨\n\n**Jordan:** what\n\n**Maya:** i just saw tyler at starbucks with some girl lmaoo\n\n**Jordan:** WAIT WHAT\n\n**Jordan:** which tyler\n\n**Maya:** TYLER FROM MATH CLASS who else 💀\n\n**Zoe:** omg i just woke up to this thread and i am NOT ready\n\n**Jordan:** was it like a date or nah\n\n**Maya:** idk they were sharing a drink so like… maybe??\n\n**Zoe:** sharing a drink is literally nothing my brother shares drinks with his friends all the time\n\n**Jordan:** yeah but your brother is also kind of weird no offense\n\n**Zoe:** LMAOOO none taken honestly\n\n**Maya:** ok but the way he was smiling tho 👀\n\n**Zoe:** ok THAT is actually suspicious\n\n**Jordan:** did he see you\n\n**Maya:** yes and it was so awkward he like waved and i did that thing where i waved back too hard\n\n**Zoe:** THE TOO HARD WAVE 😭😭😭\n\n**Jordan:** why are you like this\n\n**Maya:** i genuinely do not know\n\n---",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 284,
+    "total_tokens": 326
+  },
+  "timestamp": "2026-07-10T00:25:07.091595+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 38,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between three friends:\n\n---\n\n**Maya:** guys guys guys 😭 did you see what happened in math today\n\n**Jordan:** omg YES mr peterson literally forgot what he was teaching lmaooo\n\n**Maya:** he stood there for like 3 whole minutes 💀💀\n\n**Tyler:** wait i was zoned out what happened\n\n**Jordan:** bro how are you always the last to know everything\n\n**Tyler:** i was thinking about lunch ok leave me alone 😭\n\n**Maya:** LMAOOO anyway are we still going to kayla's after school or nah\n\n**Jordan:** yes but she said come after 4 bc her mom gets home at 3:30\n\n**Tyler:** ok cool can someone's mom pick me up tho my bike has a flat\n\n**Jordan:** ask maya not me my sister has the car\n\n**Maya:** ugh FINE but you owe me\n\n**Tyler:** ur literally the best maya fr\n\n**Maya:** i know 🙄❤️\n\n**Jordan:** this is so cute im gonna cry\n\n**Tyler:** shut upppp 😭\n\n---",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 254,
+    "total_tokens": 296
+  },
+  "timestamp": "2026-07-10T00:25:14.802309+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 39,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between friends:\n\n---\n\n**Maya:** omg did u see what happened in math today 💀\n\n**Jordan:** LMAOOO yes i literally cannot believe mr. henderson said that\n\n**Maya:** bro i was trying so hard not to laugh i think i pulled something\n\n**Jordan:** 😭😭 ok but real talk are u coming to kayla's thing friday\n\n**Maya:** idk my mom is being SO weird about it rn\n\n**Jordan:** ugh tell her its just a hangout not like a party party\n\n**Maya:** thats literally what i said and she was like \"i'll think about it\" which means no btw\n\n**Jordan:** nooo u HAVE to come dude everyone's gonna be there\n\n**Maya:** wait is tyler gonna be there 👀\n\n**Jordan:** MAYA.\n\n**Maya:** what im just asking 😇\n\n**Jordan:** u are so obvious lmaooo yes he's coming\n\n**Maya:** ok suddenly i am very motivated to convince my mom\n\n**Jordan:** i KNEW it lol ok good luck text me later\n\n**Maya:** 🙏🙏🙏\n\n---",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 264,
+    "total_tokens": 306
+  },
+  "timestamp": "2026-07-10T00:25:22.941942+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 40,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between friends:\n\n---\n\n**Maya:** omg did u see what happened in math today 💀\n\n**Jordan:** LMAOOO yes i literally almost died trying not to laugh\n\n**Maya:** ms henderson's face when tyler dropped his whole lunch on the floor\n\n**Jordan:** bro it was SO loud too like the whole class just went silent\n\n**Maya:** and then he just said \"worth it\" and sat down 💀💀\n\n**Jordan:** i cant he is so unhinged lmaooo\n\n**Maya:** anyway r u coming to kayla's thing friday or nah\n\n**Jordan:** idk maybe?? what time is it\n\n**Maya:** like 7 i think she said bring snacks tho\n\n**Jordan:** ugh ok fine yeah ill come. can ur sister drive us\n\n**Maya:** ill ask her but she's gonna want gas money probably 😭\n\n**Jordan:** ughhh ok ill bring like 5 bucks\n\n**Maya:** lol same ok bet see u tmrw\n\n**Jordan:** yep byeee 👋\n\n---",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 248,
+    "total_tokens": 290
+  },
+  "timestamp": "2026-07-10T00:25:30.415006+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 41,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between three friends:\n\n---\n\n**Maya:** guys guys guys 😭 did you see what happened at lunch today\n\n**Jordan:** omg YES i was literally dying 💀\n\n**Maya:** ms henderson's face when tyler dropped that whole tray 😭😭\n\n**Jordan:** LMAOOO the chocolate milk went EVERYWHERE\n\n**Alex:** wait what i wasn't there what happened\n\n**Maya:** dude you missed the most iconic moment of our entire school year possibly our lives\n\n**Jordan:** tyler was trying to be all cool walking past the table and just. boom. gone. tray, food, everything\n\n**Alex:** NO WAY 😭😭😭\n\n**Maya:** yes way and he tried to play it off like he did it on purpose\n\n**Jordan:** \"yeah i meant to do that\" bro you did NOT 💀💀\n\n**Alex:** lmaooo that's so embarrassing i feel bad but also i'm crying rn\n\n**Maya:** don't feel too bad he was literally laughing too after like two seconds\n\n**Jordan:** honestly iconic behavior tbh\n\n**Alex:** we have to bring this up forever\n\n**Maya:** obviously that's not even a question\n\n---",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 274,
+    "total_tokens": 316
+  },
+  "timestamp": "2026-07-10T00:25:38.355247+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 42,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between three friends:\n\n---\n\n**Maya:** guys guys guys 😭 did you see what happened at lunch today\n\n**Jordan:** omg YES i literally could not stop laughing\n\n**Maya:** ms peterson's face when tyler dropped the whole tray 💀💀💀\n\n**Jordan:** bro i thought she was gonna actually explode lmaooo\n\n**Chloe:** wait WHAT i was in the library i missed everything\n\n**Maya:** tyler was trying to be all cool carrying like 3 trays at once\n\n**Jordan:** like bro you are not a waiter 😭\n\n**Chloe:** LMAOOO did he get in trouble\n\n**Maya:** no that's the thing she just like stared at him for 10 seconds and walked away\n\n**Jordan:** the silence was so uncomfortable i wanted to disappear\n\n**Chloe:** dead 💀 i can't believe i missed this\n\n**Maya:** don't worry we'll remind tyler about it every day for the rest of his life\n\n**Jordan:** obviously that's just what we do as his friends 😇\n\n**Chloe:** our duty honestly\n\n---",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 267,
+    "total_tokens": 309
+  },
+  "timestamp": "2026-07-10T00:25:47.877260+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 43,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between three friends:\n\n---\n\n**Maya:** guys guys guys 😭\n\n**Maya:** something happened\n\n**Jordan:** omg what\n\n**Jordan:** are you ok\n\n**Maya:** yes lol calm down\n\n**Maya:** so basically i was at the mall and i literally ran into tyler from 3rd period\n\n**Jordan:** NO WAY\n\n**Priya:** wait i just got here what did i miss\n\n**Jordan:** maya ran into tyler\n\n**Priya:** TYLER TYLER???\n\n**Maya:** TYLER TYLER 😭😭\n\n**Priya:** ok i'm screaming what happened tell us everything\n\n**Maya:** ok so i literally dropped all my stuff and he helped me pick it up and he was like \"hey aren't you in my bio class\" and i wanted to actually die\n\n**Jordan:** that is so cute wtf\n\n**Priya:** what did you SAY\n\n**Maya:** i said yeah lol and then we talked for like 10 mins\n\n**Priya:** 10 MINUTES???\n\n**Jordan:** maya this is literally your origin story\n\n**Maya:** stoppp 💀💀\n\n**Priya:** no fr you're going to tell this story at your wedding\n\n**Maya:** i hate you both so much",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 288,
+    "total_tokens": 330
+  },
+  "timestamp": "2026-07-10T00:25:56.048434+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 44,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between three friends:\n\n---\n\n**Maya:** guys guys guys 🚨\n\n**Jordan:** what happened lol\n\n**Maya:** ok so u know how i said i was gonna talk to tyler today\n\n**Jordan:** WAIT YOU ACTUALLY DID IT\n\n**Maya:** i mean... kinda\n\n**Zoe:** kinda?? what does kinda mean maya 💀\n\n**Maya:** ok so i walked up to him and then completely blanked and asked him what time it was\n\n**Jordan:** LMAOOO\n\n**Zoe:** bestie you have a phone\n\n**Maya:** I KNOW ZOE THANK YOU\n\n**Jordan:** what did he say tho\n\n**Maya:** he literally looked at me for like 3 seconds and then smiled and was like \"it's 2:30\"\n\n**Zoe:** he SMILED?? ok that's actually something\n\n**Maya:** right?? or am i just coping\n\n**Jordan:** you're def coping a little but also the smile is real so\n\n**Zoe:** try again tomorrow. but maybe ask him something that makes more sense this time 😭\n\n**Maya:** noted. i hate both of you\n\n**Jordan:** no u don't 🥰\n\n**Maya:** no i don't 😭❤️",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 297,
+    "total_tokens": 339
+  },
+  "timestamp": "2026-07-10T00:26:03.976843+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 45,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between three friends:\n\n---\n\n**Maya:** guys guys guys 👀\n\n**Maya:** you will NOT believe what just happened\n\n**Jordan:** omg what\n\n**Jordan:** wait is this about tyler again lmaooo\n\n**Maya:** NOOO ok well. maybe\n\n**Maya:** he literally texted me first this time\n\n**Casey:** WAIT WHAT\n\n**Casey:** i thought u said u were over him 💀\n\n**Maya:** i AM over him\n\n**Maya:** i was just letting you guys know as like. a news update\n\n**Jordan:** sure jan 😭\n\n**Casey:** what did he even say\n\n**Maya:** he said \"hey\" and i said \"hey\" back and now i'm literally shaking\n\n**Jordan:** maya he said ONE word\n\n**Casey:** bro said hey and she's shaking 😭😭\n\n**Maya:** ok you know what forget i said anything\n\n**Jordan:** nooo come back we love you\n\n**Casey:** we're rooting for u bestie fr fr 🙏\n\n**Maya:** ugh fine. ok so should i send a meme or\n\n**Jordan:** SEND THE MEME\n\n**Casey:** SEND IT\n\n---",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 274,
+    "total_tokens": 316
+  },
+  "timestamp": "2026-07-10T00:26:12.660508+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 46,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between friends:\n\n---\n\n**Maya:** omg did u see what happened in math today 💀\n\n**Jordan:** LMAOOO yes mr henderson literally tripped over the projector cord\n\n**Maya:** i was trying so hard not to laugh i think i pulled a muscle\n\n**Jordan:** STOP 😭😭 also wait r u coming to kayla's thing friday\n\n**Maya:** idk my mom is being weird about it rn\n\n**Maya:** she keeps saying \"we'll see\" which basically means no\n\n**Jordan:** ugh that's so annoying can't u just tell her it's like a small thing\n\n**Maya:** she's gonna ask if there's gonna be parents there and then it's over for me lol\n\n**Jordan:** ok fair 💀 what if u said u were sleeping at mine first\n\n**Maya:** omg ur a genius wait let me think abt this\n\n**Jordan:** i got u bestie 😭✋\n\n**Maya:** ok also completely unrelated did u finish the english essay\n\n**Jordan:** …no\n\n**Jordan:** did u\n\n**Maya:** …also no\n\n**Jordan:** we are so cooked 😭😭😭\n\n**Maya:** literally why are we like this\n\n---",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 283,
+    "total_tokens": 325
+  },
+  "timestamp": "2026-07-10T00:26:20.823971+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 47,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between friends:\n\n---\n\n**Maya:** omg did u see what happened in math today 💀\n\n**Jordan:** LMAOOO yes i literally almost died trying not to laugh\n\n**Maya:** mr henderson's face when tyler dropped his chromebook for the third time\n\n**Jordan:** bro was SO done 😭😭\n\n**Maya:** anyway r u coming to kayla's thing friday or nah\n\n**Jordan:** idk my mom is being weird about it. what time does it start\n\n**Maya:** like 7 i think?? she hasn't even posted the details yet lol\n\n**Jordan:** classic kayla\n\n**Maya:** LMAO fr. ok well lmk when u figure it out\n\n**Jordan:** yeah for sure. also have u started the english essay yet\n\n**Maya:** ...no\n\n**Jordan:** MAYA\n\n**Maya:** it's not due til thursday!!\n\n**Jordan:** it's wednesday\n\n**Maya:** 💀💀💀 ok i have to go bye\n\n**Jordan:** LMAOOO good luck\n\n---",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 244,
+    "total_tokens": 286
+  },
+  "timestamp": "2026-07-10T00:26:27.917667+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 48,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between three friends:\n\n---\n\n**Maya:** guys guys guys 😭 did you see what happened at lunch today\n\n**Jordan:** omg YES i was literally dying 💀\n\n**Maya:** ms henderson's face when tyler dropped the whole tray lmaooo\n\n**Jordan:** SCREAMING she looked so done with everything 😭😭\n\n**Kai:** wait what i was absent what happened\n\n**Maya:** ok so basically tyler was trying to balance like 3 drinks and his whole tray just.. went. everywhere.\n\n**Kai:** NO WAY\n\n**Jordan:** bro there was chocolate milk on the CEILING somehow. nobody knows how\n\n**Kai:** the ceiling?? that's actually impressive ngl\n\n**Maya:** right like respect the commitment\n\n**Jordan:** tyler looked like he wanted to disappear into the floor lol\n\n**Kai:** i'm so sad i missed this this is the most exciting thing that's happened all year\n\n**Maya:** fr our school is so boring this was literally the highlight of 2024\n\n**Jordan:** someone recorded it btw 👀\n\n**Kai:** SEND IT\n\n**Jordan:** already on it lol\n\n---",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 267,
+    "total_tokens": 309
+  },
+  "timestamp": "2026-07-10T00:26:37.335682+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 49,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between three friends:\n\n---\n\n**Maya:** guys guys guys 😭 did you see what happened at lunch today\n\n**Jordan:** omg YES i was literally dying 💀\n\n**Maya:** ms peterson's face when tyler knocked over the whole cart LMAOOO\n\n**Jordan:** bro i had to pretend i was coughing so i wouldn't get in trouble for laughing\n\n**Priya:** wait WHAT i was in the bathroom i missed everything\n\n**Maya:** ok so basically tyler was trying to be cool and walk backwards\n\n**Jordan:** 💀💀💀\n\n**Maya:** and he just. fully. obliterated the lunch cart\n\n**Priya:** NO WAY\n\n**Jordan:** trays everywhere. chocolate milk on the floor. it was genuinely cinematic\n\n**Priya:** is tyler ok 😭\n\n**Maya:** oh he's fine he just turned red and sat down lol\n\n**Jordan:** he's never gonna live this down honestly\n\n**Priya:** i can't believe i missed it i'm so upset rn\n\n**Maya:** don't worry i saw three people record it so it'll def be on someone's story by tonight lol\n\n**Priya:** LMAOOO ok good\n\n**Jordan:** tyler really said hold my milk 💀\n\n**Maya:** STOPPP 😭😭\n\n---",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 310,
+    "total_tokens": 352
+  },
+  "timestamp": "2026-07-10T00:26:47.771168+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 50,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo:\n\n---\n\n**Maya:** omg did u see what happened in math today 💀\n\n**Jordan:** YESS mr henderson literally tripped over the projector cord lmaooo\n\n**Maya:** i was trying so hard not to laugh i thought i was gonna die\n\n**Jordan:** bro tyler literally snorted out loud 😭😭\n\n**Maya:** STOP i forgot about that lol the whole class lost it\n\n**Jordan:** henderson was so embarrassed poor guy\n\n**Maya:** ok but actually feel bad he just kept saying \"moving on moving on\" 💀\n\n**Jordan:** lol fr though hey r u coming to kayla's thing friday\n\n**Maya:** idk yet my mom is being weird about it\n\n**Jordan:** ugh same mine wants to meet kayla's parents first like MOM\n\n**Maya:** that is so painfully awkward pls no\n\n**Jordan:** RIGHT like let me just live 😭\n\n**Maya:** lol okay i'll text u later maybe we can figure something out\n\n**Jordan:** yes ok bet 👍\n\n---",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 244,
+    "total_tokens": 286
+  },
+  "timestamp": "2026-07-10T00:26:57.612460+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 51,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between three friends:\n\n---\n\n**Maya:** guys guys guys 👀\n\n**Maya:** you will NOT believe what just happened\n\n**Jordan:** omg what\n\n**Jordan:** tell me rn\n\n**Maya:** so i was at the mall and i literally ran into tyler from 3rd period\n\n**Dani:** TYLER TYLER???\n\n**Maya:** YES that tyler 💀\n\n**Jordan:** no way lmaooo what happened\n\n**Maya:** i dropped everything out of my bag and he helped me pick it up and i wanted to actually die\n\n**Dani:** SCREAMING this is so romcom coded\n\n**Jordan:** did he say anything or\n\n**Maya:** he said \"you good?\" and i said \"yep totally\" in the most weird voice ever\n\n**Dani:** LMAOOO \"yep totally\" 💀💀\n\n**Jordan:** bro you are so cooked\n\n**Maya:** i KNOW i literally walked into a different store just to hide\n\n**Dani:** ok but he helped you pick stuff up tho so that's cute right\n\n**Jordan:** fr that means something!!\n\n**Maya:** you guys are actually delulu\n\n**Dani:** we're being supportive 😭\n\n**Jordan:** text him\n\n**Maya:** absolutely not goodbye 🚪\n\n---",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 300,
+    "total_tokens": 342
+  },
+  "timestamp": "2026-07-10T00:27:06.262261+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 52,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between three friends:\n\n---\n\n**Maya:** guys guys guys 😭 did you see what happened in 3rd period today\n\n**Jordan:** omg YES i heard mr. kellner literally lost it lmaooo\n\n**Maya:** he threw a DRY ERASE MARKER at the board i was SHAKING trying not to laugh\n\n**Jordan:** LMAOOO i would've lost it fr\n\n**Tyler:** wait what i missed this?? i was in the bathroom 💀\n\n**Maya:** tyler you have the WORST timing ever\n\n**Tyler:** story of my life honestly\n\n**Jordan:** ok but are we still going to bri's after school or nah\n\n**Maya:** yes omw to my locker rn actually\n\n**Tyler:** wait can someone give me a ride i missed the bus yesterday and my mom said if it happens again she's taking my phone\n\n**Jordan:** dude 😭\n\n**Maya:** tyler i cannot with you\n\n**Tyler:** please i'm begging\n\n**Jordan:** FINE but you owe me gas money or whatever\n\n**Tyler:** you drive a 2009 honda civic calm down 💀💀\n\n**Jordan:** ok you can walk then\n\n**Tyler:** ok ok ok i'll venmo you i'm sorry 😭\n\n**Maya:** lololol see you guys in 10\n\n---",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 306,
+    "total_tokens": 348
+  },
+  "timestamp": "2026-07-10T00:27:15.636608+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 53,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between two friends, Maya and Jordan:\n\n---\n\n**Maya:** omg did u see what happened in 3rd period today 💀\n\n**Jordan:** NOOO i was literally zoned out the whole time what happened\n\n**Maya:** ms. henderson called on tyler and he was literally asleep LMAOOO\n\n**Jordan:** NO WAY 😭😭\n\n**Maya:** yes and he just went \"uh… photosynthesis?\" and she was like \"we're in math class tyler\"\n\n**Jordan:** STOPPP i'm actually dead 💀💀💀\n\n**Maya:** the whole class lost it i was crying\n\n**Jordan:** why does that always happen to him lol he has the worst luck\n\n**Maya:** fr he's so cooked 😭 anyway u coming to kayla's thing friday or nah\n\n**Jordan:** idk depends if my mom lets me she's been so annoying lately about stuff\n\n**Maya:** ugh same mine literally asked to see my texts the other day\n\n**Jordan:** that's actually insane??? anyway lmk i'll go if u go\n\n**Maya:** ok deal i'll text u tomorrow 🤞\n\n**Jordan:** ok bet 👍\n\n---",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 279,
+    "total_tokens": 321
+  },
+  "timestamp": "2026-07-10T00:27:23.931426+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 54,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between three friends:\n\n---\n\n**Maya:** guys guys guys 😭 did anyone watch the new episode last night\n\n**Jordan:** YES omg i literally screamed\n\n**Maya:** RIGHT?? i was not ready for that ending at ALL\n\n**Tyler:** wait what episode what show\n\n**Maya:** tyler... TYLER how are you not caught up yet\n\n**Tyler:** i fell asleep lol sorry 💀\n\n**Jordan:** bro you have one job\n\n**Tyler:** can someone just tell me what happened without spoiling it\n\n**Maya:** that's literally impossible\n\n**Jordan:** yeah that's not how this works bestie\n\n**Tyler:** ugh fine ill watch it rn\n\n**Maya:** FINALLY\n\n**Jordan:** lmk when ur done we need to discuss IMMEDIATELY\n\n**Tyler:** ok ok watching now don't text me\n\n**Maya:** 👀👀👀\n\n**Jordan:** he's gonna lose his mind lmaooo\n\n**Maya:** absolutely he is 😂\n\n---\n\n*[15 minutes later]*\n\n**Tyler:** WHAT THE ACTUAL\n\n**Maya:** TOLD YOU 💀💀💀\n\n**Jordan:** WELCOME TO THE CLUB",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 271,
+    "total_tokens": 313
+  },
+  "timestamp": "2026-07-10T00:27:32.532700+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 55,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between three friends:\n\n---\n\n**Maya:** guys guys guys 👀\n\n**Maya:** u will NOT believe what just happened\n\n**Jordan:** omg what\n\n**Jordan:** tell me everything rn\n\n**Maya:** so i was at starbucks and i literally bumped into tyler and spilled my whole drink\n\n**Maya:** like ALL of it\n\n**Priya:** LMAOOO NO WAY 💀💀\n\n**Jordan:** HAHAHAHA please tell me he helped u\n\n**Maya:** he literally helped me clean it up and then bought me another one???\n\n**Priya:** MAYA\n\n**Priya:** MAYA HE LIKES YOU\n\n**Jordan:** bestie that is literally a sign from the universe\n\n**Maya:** ok ok calm down it was probably just him being nice 😭\n\n**Priya:** girl no. a random person is nice. a boy who BUYS YOU ANOTHER DRINK likes you\n\n**Jordan:** she's so right ur cooked 💀\n\n**Maya:** ok fine maybe i'm a little bit freaking out rn\n\n**Priya:** AS YOU SHOULD\n\n**Jordan:** text him!!\n\n**Maya:** absolutely not 😭😭\n\n**Priya:** coward\n\n**Jordan:** total coward lol",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 293,
+    "total_tokens": 335
+  },
+  "timestamp": "2026-07-10T00:27:42.585508+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 56,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick convo between two friends, Maya and Jordan:\n\n---\n\n**Maya:** omg did u see what happened in math today 💀\n\n**Jordan:** LMAOOO yes i literally cannot believe mr. henderson just stood there like that\n\n**Maya:** he had no idea the projector was still on the whole time 😭😭\n\n**Jordan:** bro i was trying SO hard not to laugh i thought i was gonna die\n\n**Maya:** keira literally had to look at the floor 💀💀\n\n**Jordan:** anyway are u coming to sam's thing friday or nah\n\n**Maya:** idk my mom is being weird about it rn\n\n**Jordan:** ugh say it's a study thing lol\n\n**Maya:** she literally checks 😭 she's not dumb\n\n**Jordan:** fair lol. ok well lmk cause sam needs a headcount i think\n\n**Maya:** yeah ok i'll figure it out by tmrw\n\n**Jordan:** ok bet. also have u started the english essay yet\n\n**Maya:** …no\n\n**Jordan:** MAYA\n\n**Maya:** I KNOW ok don't come for me rn 😭\n\n**Jordan:** it's due thursday bestie 💀\n\n**Maya:** i am fully aware and choosing not to think about it\n\n**Jordan:** valid honestly same",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 295,
+    "total_tokens": 337
+  },
+  "timestamp": "2026-07-10T00:27:51.086714+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 57,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a text conversation between two friends, Maya and Jordan:\n\n---\n\n**Maya:** ok so you're NOT gonna believe what just happened 💀\n\n**Jordan:** omg what\n\n**Maya:** i accidentally sent that tiktok to the group chat. the one making fun of ms henderson's outfit\n\n**Jordan:** MAYA NO 😭😭😭\n\n**Maya:** i KNOW i thought i was sending it to you\n\n**Jordan:** is she in the group chat\n\n**Maya:** yes jordan she is OBVIOUSLY in the group chat why do you think im panicking rn\n\n**Jordan:** ok ok ok did she see it\n\n**Maya:** she reacted to it with a thumbs up which is somehow worse than if she got mad\n\n**Jordan:** the thumbs up is DEADLY bro that means she definitely saw it\n\n**Maya:** i want to move to another country\n\n**Jordan:** lmaoo ok but actually tho you gotta say something like pretend it was meant for someone else\n\n**Maya:** and say WHAT exactly\n\n**Jordan:** idk like \"oops wrong chat haha\" and then change the subject fast\n\n**Maya:** that is the worst advice you have ever given me and you once told me to cut my own bangs\n\n**Jordan:** ok fair but do you have a better idea 💀\n\n**Maya:** no 😭 ugh fine",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 302,
+    "total_tokens": 344
+  },
+  "timestamp": "2026-07-10T00:28:01.205466+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 58,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between three friends:\n\n---\n\n**Maya:** guys guys guys 😭 did you see what happened at lunch today\n\n**Jordan:** omg YES i was literally dying 💀\n\n**Maya:** ms henderson's face when tyler dropped the whole tray 😭😭😭\n\n**Jordan:** bro i had to pretend i was coughing so i wouldn't laugh out loud\n\n**Kai:** wait WHAT i was in the bathroom i missed everything\n\n**Maya:** dude tyler was trying to be all cool carrying like 3 trays at once\n\n**Jordan:** and then BOOM. chocolate milk EVERYWHERE\n\n**Kai:** LMAOOO no way 😭\n\n**Jordan:** it got on brendan's new shoes too\n\n**Kai:** oh noooo he just got those\n\n**Maya:** yeah brendan was NOT happy lol\n\n**Kai:** i can't believe i missed this i'm so upset rn\n\n**Jordan:** don't worry tyler's never gonna live it down so you'll hear about it for the next 3 years\n\n**Maya:** honestly true 💀💀\n\n**Kai:** someone better have recorded it\n\n**Jordan:** already in the group chat 😂\n\n**Kai:** SENDING ME RN",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 286,
+    "total_tokens": 328
+  },
+  "timestamp": "2026-07-10T00:28:09.294944+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 59,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between three friends:\n\n---\n\n**Maya:** guys guys guys 😭 did you see what happened at lunch today\n\n**Jordan:** omg YES i was literally dying 💀\n\n**Maya:** ms henderson's face when tyler dropped the whole tray lmaooo\n\n**Jordan:** SCREAMING she looked so done with everything 😭😭\n\n**Kai:** wait what i was at the library i missed everything??\n\n**Maya:** KAI where were you bro this was the event of the year\n\n**Jordan:** tyler slipped and like. the entire tray just. gone. chocolate milk everywhere\n\n**Kai:** NO WAY\n\n**Kai:** was he ok tho 😭\n\n**Maya:** yeah he's fine he literally just stood up and took a bow\n\n**Jordan:** which is so him honestly\n\n**Kai:** LMAOOO ok that's iconic ngl\n\n**Maya:** right?? anyway we still on for saturday\n\n**Jordan:** yeah def what time\n\n**Kai:** idk like 2?? my mom needs the car in the morning\n\n**Maya:** works for me 👍\n\n**Jordan:** same, k bet see you guys then\n\n**Kai:** 🫡\n\n---",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 279,
+    "total_tokens": 321
+  },
+  "timestamp": "2026-07-10T00:28:17.387701+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 60,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick convo between two friends, Maya and Jordan:\n\n---\n\n**Maya:** omg did u see what happened in math today 💀\n\n**Jordan:** LMAOOO yes i literally almost died trying not to laugh\n\n**Maya:** mr. henderson's face when tyler knocked over the projector 😭😭\n\n**Jordan:** bro i had to pretend i was coughing so bad\n\n**Maya:** lol same ok but anyway are u coming to kayla's thing friday or nah\n\n**Jordan:** idk my mom's being weird about it rn\n\n**Jordan:** like she keeps saying \"we'll see\" which basically means no 🙄\n\n**Maya:** nooo u have to come tho!! it's not gonna be the same without u\n\n**Jordan:** ugh i know i'm gonna try again tonight when she's in a better mood lol\n\n**Maya:** ok good luck bestie 🤞🤞 text me after\n\n**Jordan:** will do lol ok i gotta finish this homework before dinner\n\n**Maya:** same ugh ok bye 💕\n\n**Jordan:** byeee 👋\n\n---",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 257,
+    "total_tokens": 299
+  },
+  "timestamp": "2026-07-10T00:28:26.427381+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 61,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between friends:\n\n---\n\n**Maya:** omg did u see what happened in math today 💀\n\n**Jordan:** LMAOOO yes i literally cannot believe mr. henderson said that\n\n**Maya:** bro i was trying SO hard not to laugh\n\n**Jordan:** same i had to look at my desk for like 5 mins straight 😭\n\n**Maya:** anyway r u coming to kayla's thing friday\n\n**Jordan:** idk maybe?? is it gonna be a lot of ppl\n\n**Maya:** like 10 i think. its not that big\n\n**Jordan:** ok yeah probably. does she need us to bring anything\n\n**Maya:** she said just snacks or whatever\n\n**Jordan:** ok bet. u want me to pick u up\n\n**Maya:** yes omg please my mom is being so annoying about the car rn\n\n**Jordan:** lol same honestly. ok ill text u thursday\n\n**Maya:** ok cool 👍\n\n**Jordan:** wait also did u finish the english essay\n\n**Maya:** ...no 💀\n\n**Jordan:** MAYA\n\n**Maya:** I KNOW OK ill do it tomorrow\n\n**Jordan:** sure u will lol\n\n**Maya:** shut upppp 😭😭\n\n---",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 279,
+    "total_tokens": 321
+  },
+  "timestamp": "2026-07-10T00:28:34.333112+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 62,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick convo between three friends in a group chat:\n\n---\n\n**maya 🌙:** guys guys guys guess what\n\n**jaylen:** what\n\n**maya 🌙:** mr. peterson gave us a free day tomorrow bc he forgot to make the test 💀\n\n**jaylen:** LMAOOO he is so cooked\n\n**bri ✨:** wait fr?? that man really said \"my bad\" to a whole class\n\n**maya 🌙:** literally he was like \"uh we'll push it to friday\" and everyone just STARED at him\n\n**jaylen:** i wouldve started clapping\n\n**bri ✨:** u wouldve gotten detention and u know it\n\n**jaylen:** worth it\n\n**maya 🌙:** anyway what r we doing after school then since we're not studying anymore lol\n\n**bri ✨:** chipotle??\n\n**jaylen:** always chipotle with u bri\n\n**bri ✨:** and i will NEVER apologize for that\n\n**maya 🌙:** ok chipotle it is lmao\n\n**jaylen:** someone tell marcus he's coming whether he wants to or not\n\n**bri ✨:** already texted him he said \"fine whatever\" so that's basically yes\n\n**maya 🌙:** perfect 😭\n\n---",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 308,
+    "total_tokens": 350
+  },
+  "timestamp": "2026-07-10T00:28:42.592627+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 63,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between three friends:\n\n---\n\n**Maya:** guys guys guys 😭 did you see what happened at lunch today\n\n**Jordan:** omg YES i was literally dying 💀\n\n**Maya:** ms henderson's face when tyler knocked over the whole cart LMAOOO\n\n**Jordan:** bro the chocolate milk went EVERYWHERE\n\n**Kai:** wait what i was absent what happened\n\n**Maya:** oh ur so lucky u missed it honestly\n\n**Jordan:** no he MISSED it that's the point 😭😭\n\n**Kai:** someone tell me rn or i'm blocking both of you\n\n**Maya:** ok ok so basically tyler was trying to look cool in front of brianna right\n\n**Jordan:** keyword TRYING lol\n\n**Maya:** and he like speed walked past the lunch cart and just. obliterated it\n\n**Kai:** NO WAY\n\n**Jordan:** full tray. chocolate milk. three plates. gone.\n\n**Kai:** i cannot believe i got sick TODAY of all days\n\n**Maya:** honestly the universe said not today kai 💀\n\n**Jordan:** he's never gonna live this down btw\n\n**Kai:** someone better have filmed it\n\n**Maya:** …………\n\n**Jordan:** …………\n\n**Kai:** YOU GUYS FILMED IT AND DIDNT SEND IT YET???\n\n**Maya:** we're sending it rn omg chill 😭😭",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 317,
+    "total_tokens": 359
+  },
+  "timestamp": "2026-07-10T00:28:53.024269+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 64,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between three friends:\n\n---\n\n**Maya:** guys guys guys 🚨\n\n**Jordan:** what happened lol\n\n**Maya:** ok so u know how i've been lowkey obsessed with tyler from bio class\n\n**Jordan:** MAYA NO WAY\n\n**Maya:** he literally just followed me on insta 💀\n\n**Jordan:** SCREAMING\n\n**Lena:** wait i just woke up what did i miss\n\n**Jordan:** tyler followed maya\n\n**Lena:** SHUT UP are you serious rn\n\n**Maya:** i am literally shaking i don't know what to do\n\n**Lena:** ok ok ok don't panic. do NOT follow back right away\n\n**Jordan:** yeah give it like an hour so u don't look desperate lmao\n\n**Maya:** an HOUR?? that's so long\n\n**Lena:** maya i swear if u follow back in 2 seconds i will block u myself\n\n**Jordan:** 💀💀💀\n\n**Maya:** fine FINE one hour. but someone has to stay on the phone with me i cannot be alone rn\n\n**Lena:** this is so dramatic i love it\n\n**Jordan:** we're here bestie don't worry 😭❤️\n\n---",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 285,
+    "total_tokens": 327
+  },
+  "timestamp": "2026-07-10T00:29:03.876209+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 65,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between friends:\n\n---\n\n**Maya:** omg did u see what happened in math today 💀\n\n**Jordan:** LMAOOO yes i was literally dying\n\n**Jordan:** mr henderson's face when tyler dropped his chromebook\n\n**Maya:** bro it was so loud i actually jumped\n\n**Maya:** ms kim from next door came in to check 😭😭\n\n**Jordan:** no way i didn't see that\n\n**Jordan:** i was trying so hard not to laugh\n\n**Maya:** same i had to pretend i was coughing\n\n**Jordan:** 💀💀💀\n\n**Jordan:** anyway u doing anything later\n\n**Maya:** idk maybe. what r u thinking\n\n**Jordan:** could come over and watch something? my mom got that new snack mix from costco\n\n**Maya:** ok that's literally the only reason i'm saying yes\n\n**Jordan:** rude 😭\n\n**Maya:** lol jk see u at like 4?\n\n**Jordan:** bet 👍",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 230,
+    "total_tokens": 272
+  },
+  "timestamp": "2026-07-10T00:29:12.107927+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 66,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a text convo between three friends:\n\n---\n\n**Maya:** guys guys guys 😭 did you see what happened in 3rd period today\n\n**Jordan:** omg YES i heard mr. kellner literally threw a marker at the board lmaooo\n\n**Maya:** he did NOT throw it he like... slammed it down but still it was so loud everyone jumped 💀\n\n**Tyler:** wait what i missed this i had a free period\n\n**Jordan:** basically derek was on his phone AGAIN and kellner just lost it\n\n**Tyler:** lolll derek never learns bro\n\n**Maya:** right?? like this is the 4th time this month\n\n**Jordan:** ok but also can we talk about the fact that we have that history essay due tomorrow\n\n**Tyler:** ...due TOMORROW??\n\n**Maya:** tyler 😭😭\n\n**Jordan:** bro how do you not know this\n\n**Tyler:** i thought it was friday i literally want to cry rn\n\n**Maya:** its only like 2 pages its fine you got this\n\n**Tyler:** \"you got this\" is NOT helpful maya lol\n\n**Jordan:** 😂😂 ok group call in 20 we'll figure it out\n\n**Tyler:** ur a lifesaver fr\n\n---",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 282,
+    "total_tokens": 324
+  },
+  "timestamp": "2026-07-10T00:29:21.921472+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 67,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between friends:\n\n---\n\n**Maya:** guys guys guys 😭\n\n**Jordan:** what happened\n\n**Maya:** ok so u know how i've been lowkey obsessed with that coffee place on elm st\n\n**Jordan:** the one with the ugly logo lmaooo yes\n\n**Maya:** LMAOOO yes that one anyway they just posted they're closing forever 😭😭\n\n**Priya:** WAIT NO\n\n**Priya:** that's literally where we always go after school\n\n**Jordan:** that's so sad ngl\n\n**Maya:** RIGHT like where are we even supposed to go now\n\n**Priya:** there's that boba place like two blocks over??\n\n**Jordan:** ooh actually that place slaps\n\n**Maya:** i mean yeah but it's not the SAME\n\n**Priya:** true true 😔\n\n**Jordan:** ok but real talk we should go one last time before it closes\n\n**Maya:** omg yes when are u guys free\n\n**Priya:** tmrw after 3?\n\n**Jordan:** i got practice till 4 but after that yeah\n\n**Maya:** ok 4:30 it is bestiesss 🥹\n\n**Priya:** it's what they would have wanted 💀\n\n**Jordan:** LMAOOO ur so dramatic\n\n---",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 301,
+    "total_tokens": 343
+  },
+  "timestamp": "2026-07-10T00:29:31.752653+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 68,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between three friends:\n\n---\n\n**Maya:** guys guys guys guess what\n\n**Jordan:** what lol\n\n**Maya:** i just saw tyler at the mall with some girl 👀\n\n**Jordan:** WAIT NO WAY\n\n**Dani:** omg which girl\n\n**Maya:** idk her she had like really long dark hair\n\n**Dani:** was it from his bio class?? i think her name is ava or something\n\n**Jordan:** AVA?? no way he liked her for like forever\n\n**Maya:** i mean they were literally sharing a smoothie so\n\n**Dani:** 💀💀💀 bro that's so cute tho ngl\n\n**Jordan:** should we tell kayla or nah\n\n**Maya:** absolutely not that is NOT our business lmaooo\n\n**Dani:** yeah fr let him have his moment 😭\n\n**Jordan:** ok fair fair\n\n**Dani:** also can we talk abt the math homework bc i am LOST\n\n**Maya:** same i literally stared at it for an hour and did nothing\n\n**Jordan:** lmaooo same i just gave up\n\n**Dani:** we are so cooked for tomorrow 💀\n\n---",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 278,
+    "total_tokens": 320
+  },
+  "timestamp": "2026-07-10T00:29:41.559974+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 69,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between three friends:\n\n---\n\n**maya 🦋:** guys guys guys guess what\n\n**jaylen:** what\n\n**maya 🦋:** i literally just saw tyler at the mall with some girl 👀\n\n**jaylen:** WAIT WHAT\n\n**jaylen:** which tyler\n\n**maya 🦋:** TYLER TYLER. from bio class tyler\n\n**priya:** omg no way i thought he liked kayla??\n\n**maya 🦋:** RIGHT that's what i thought too lmaoo\n\n**jaylen:** ok but who was the girl tho\n\n**maya 🦋:** idk never seen her before she had like really long dark hair\n\n**priya:** could be his cousin or smth lol don't assume\n\n**jaylen:** priya being the voice of reason as always 💀\n\n**priya:** i'm just saying!! y'all are so messy\n\n**maya 🦋:** ok fair but they were sharing a pretzel so\n\n**jaylen:** SHARING A PRETZEL?? that's literally so romantic i'm sorry\n\n**priya:** ok yeah that's not a cousin thing\n\n**priya:** that's a whole situation\n\n**maya 🦋:** THANK YOU\n\n**jaylen:** someone needs to tell kayla omg\n\n**priya:** do NOT start drama pls i'm begging\n\n**maya 🦋:** lolll ok ok i won't say anything 🤐\n\n**maya 🦋:** probably\n\n---",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 343,
+    "total_tokens": 385
+  },
+  "timestamp": "2026-07-10T00:29:52.208620+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 70,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between three friends:\n\n---\n\n**Maya:** guys guys guys 😭 did you see what happened at lunch today\n\n**Jordan:** omg YES i was literally dying 💀\n\n**Maya:** ms henderson's face when tyler dropped the whole tray lmaooo\n\n**Jordan:** SCREAMING she looked so done with everything 😭😭\n\n**Caleb:** wait what i was at practice what happened\n\n**Maya:** dude tyler was trying to balance his tray on one hand like a waiter and it went EVERYWHERE\n\n**Caleb:** no way 💀\n\n**Jordan:** chocolate milk went on like three people it was insane\n\n**Caleb:** lol did he get in trouble\n\n**Maya:** nah henderson just made him clean it up she was actually kinda chill about it\n\n**Jordan:** okay but real talk are we still going to the mall saturday or nah\n\n**Caleb:** im in but i gotta be back by 6\n\n**Maya:** same works for me\n\n**Jordan:** okayy bet 🙌 who's asking for a ride\n\n**Maya:** not me my mom said no more driving you guys around lol she's tired of it 😭\n\n**Caleb:** lol fair enough i'll ask my brother\n\n---",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 292,
+    "total_tokens": 334
+  },
+  "timestamp": "2026-07-10T00:30:02.335777+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 71,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between three friends:\n\n---\n\n**Maya:** guys guys guys 😭 did anyone actually do the history homework\n\n**Jordan:** lmaoo no i completely forgot\n\n**Maya:** JORDAN\n\n**Jordan:** what i was busy!!\n\n**Kayla:** i did like half of it and then fell asleep on my notebook lol\n\n**Maya:** ok so we're all cooked basically\n\n**Jordan:** mr henderson never checks it anyway tbh\n\n**Kayla:** he literally checked it LAST WEEK jordan\n\n**Jordan:** ok but like... the week before he didn't\n\n**Maya:** that is the worst logic ive ever heard in my life\n\n**Kayla:** fr 💀\n\n**Jordan:** ok fine ill do it on the bus\n\n**Maya:** the bus comes in 20 minutes\n\n**Jordan:** yeah so i better hurry up then bye\n\n**Kayla:** he's not gonna do it on the bus\n\n**Maya:** he is absolutely not doing it on the bus\n\n**Jordan:** I CAN SEE THIS\n\n**Kayla:** 😭😭😭\n\n**Maya:** good luck bestie we believe in u 🙏",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 265,
+    "total_tokens": 307
+  },
+  "timestamp": "2026-07-10T00:30:11.431183+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 72,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between three friends:\n\n---\n\n**Maya:** guys guys guys guess what\n\n**Jordan:** what lol\n\n**Maya:** i literally just saw tyler at starbucks with some girl 👀\n\n**Jordan:** WAIT WHAT\n\n**Jordan:** which tyler\n\n**Maya:** TYLER FROM MATH CLASS TYLER\n\n**Priya:** omg i'm dead 💀 was it anyone we know\n\n**Maya:** idk she had like really long dark hair?? never seen her before\n\n**Jordan:** no way he's been talking to someone this whole time and said NOTHING\n\n**Priya:** bro the audacity 😭\n\n**Maya:** right?? he saw me too and got all weird about it lmaooo\n\n**Jordan:** he literally told marcus he wasn't talking to anyone like two weeks ago\n\n**Priya:** men will LIE\n\n**Maya:** on god 💀💀\n\n**Jordan:** ok but did they look cute together or nah\n\n**Maya:** i mean… kinda yeah\n\n**Priya:** ugh fine i'll allow it\n\n**Jordan:** lmaooo you'll ALLOW it\n\n**Priya:** yes i'm the authority on these things goodbye 😭",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 279,
+    "total_tokens": 321
+  },
+  "timestamp": "2026-07-10T00:30:20.231432+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 73,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between three friends:\n\n---\n\n**Maya:** guys guys guys 👀\n\n**Maya:** you will NOT believe what just happened\n\n**Jordan:** omg what\n\n**Jordan:** tell me rn\n\n**Maya:** so u know how i've been lowkey obsessed with tyler from bio class\n\n**Jordan:** MAYA YES OBVIOUSLY\n\n**Priya:** wait i'm here what did i miss\n\n**Jordan:** maya's about to spill\n\n**Maya:** OK SO he literally just followed me on instagram\n\n**Priya:** SCREAMING\n\n**Jordan:** WAIT WAIT WAIT\n\n**Jordan:** did u follow back yet\n\n**Maya:** i followed back in like 0.2 seconds lmaooo\n\n**Priya:** not u being normal about it 💀\n\n**Maya:** i am SO not normal about it rn my hands are literally shaking\n\n**Jordan:** this is the best day of my life and it didn't even happen to me\n\n**Priya:** ok but now u HAVE to post something cute asap so he sees it\n\n**Maya:** already on it i've been staring at my camera roll for 10 mins\n\n**Jordan:** we're so invested in ur love life it's actually embarrassing\n\n**Maya:** ur literally the best people alive ily both 🥹\n\n**Priya:** keep us updated every 5 minutes\n\n**Maya:** obviously 😭\n\n---",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 320,
+    "total_tokens": 362
+  },
+  "timestamp": "2026-07-10T00:30:29.118209+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 74,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between three friends:\n\n---\n\n**Maya:** guys guys guys 🚨\n\n**Jordan:** what happened lol\n\n**Maya:** ok so u know how i said i was gonna talk to Tyler today\n\n**Jordan:** MAYA NO WAY DID YOU ACTUALLY DO IT\n\n**Priya:** wait im here what did i miss\n\n**Jordan:** Maya finally talked to Tyler!!\n\n**Priya:** SCREAMING omg ok and?? what happened give us everything\n\n**Maya:** ok so i walked up to him after 4th period and literally forgot every word in the english language\n\n**Jordan:** 💀💀💀\n\n**Priya:** LMAOO no Maya\n\n**Maya:** i said \"cool backpack\" and walked away\n\n**Jordan:** the BACKPACK\n\n**Priya:** i am deceased\n\n**Maya:** it gets worse. he doesn't even have a backpack. he had like a tote bag\n\n**Jordan:** I CANNOT 😭😭😭\n\n**Priya:** ok ok ok but did he say anything back\n\n**Maya:** he said \"thanks lol\" and smiled so idk maybe im fine??\n\n**Priya:** he smiled!! thats literally so good\n\n**Jordan:** ur so in 💍\n\n**Maya:** stop omg im never leaving my house again\n\n---",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 303,
+    "total_tokens": 345
+  },
+  "timestamp": "2026-07-10T00:30:37.874862+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 75,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between three friends:\n\n---\n\n**Maya:** guys guys guys 😭 did you see what happened at lunch today\n\n**Jordan:** omg YES i was literally standing right there lmao\n\n**Maya:** ms henderson's face when tyler dropped his whole tray 💀💀💀\n\n**Jordan:** bro i almost choked on my water i can't\n\n**Alex:** wait WHAT i was in the bathroom for like 2 minutes and i missed everything??\n\n**Maya:** dude it was so bad the chocolate milk went EVERYWHERE\n\n**Jordan:** it got on brendan's new shoes too lmaooo he was so mad\n\n**Alex:** NOOO not the shoes 😭😭\n\n**Maya:** tyler looked like he wanted to disappear into the floor fr\n\n**Jordan:** honestly same i would've just walked out of the school and never come back\n\n**Alex:** lol okay dramatic much 💀\n\n**Jordan:** i'm just saying!!\n\n**Maya:** okay but are we still going to the mall after school or nah\n\n**Alex:** yes omg i need to get out of this house\n\n**Jordan:** yeah same let's go, my mom can drive us\n\n**Maya:** bet see you guys at 3 👍\n\n---",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 284,
+    "total_tokens": 326
+  },
+  "timestamp": "2026-07-10T00:30:46.379680+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 76,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between three friends:\n\n---\n\n**Maya:** guys guys guys 😭 did you see what happened in math today\n\n**Jordan:** omg YES i literally cannot believe mr. henderson said that 💀\n\n**Maya:** i was trying so hard not to laugh i thought i was gonna die\n\n**Tyler:** wait what happened i was zoned out lol\n\n**Jordan:** TYLER how are you always asleep in that class\n\n**Tyler:** its 8am bro what do you want from me\n\n**Maya:** lmaooo fair but basically he called on himself by accident like said his own name waiting for an answer\n\n**Tyler:** WAIT NO 😭😭😭\n\n**Jordan:** it gets worse he just stared at the board for like 10 seconds after\n\n**Tyler:** i am so sad i missed this\n\n**Maya:** honestly same it was the highlight of my entire week\n\n**Jordan:** your week is sad then 💀\n\n**Maya:** jordan i had a math test AND gym on the same day so yes it is\n\n**Tyler:** that IS criminal actually\n\n**Jordan:** ok fair point lol\n\n**Maya:** anyway wanna come over later and do literally nothing\n\n**Jordan:** obviously yes\n\n**Tyler:** omw after practice 🤙",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 284,
+    "total_tokens": 326
+  },
+  "timestamp": "2026-07-10T00:30:55.185635+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 77,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between three friends:\n\n---\n\n**Maya:** guys guys guys 😭 did u see what happened in math today\n\n**Jordan:** LMAOOO yes im still not over it\n\n**Maya:** mr henderson literally tripped over the projector cord and knocked his coffee everywhere 💀\n\n**Kai:** wait WHAT i was absent omg i missed everything\n\n**Jordan:** it was so bad but also the funniest thing ive ever seen in my life\n\n**Kai:** someone better have recorded it\n\n**Maya:** obv i did lol sending now\n\n**Jordan:** the way he just stood there soaking wet for like 5 seconds 😭😭\n\n**Kai:** OMG THE VIDEO\n\n**Kai:** im actually deceased\n\n**Maya:** he just kept going with the lesson too like nothing happened 💀💀\n\n**Jordan:** the most unbothered man alive honestly\n\n**Kai:** lowkey respect tho\n\n**Maya:** TRUE lmaooo king behavior\n\n**Jordan:** anyway whos doing the homework bc i def didnt understand any of that\n\n**Maya:** same lol\n\n**Kai:** we are so cooked\n\n---",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 265,
+    "total_tokens": 307
+  },
+  "timestamp": "2026-07-10T00:31:03.201332+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 78,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between friends:\n\n---\n\n**Maya:** omg did u see what happened in math today 💀\n\n**Jordan:** LMAOOO yes i literally cannot believe mr. henderson said that\n\n**Maya:** bro i was trying so hard not to laugh i thought i was gonna die\n\n**Jordan:** same i had to look at my desk for like 5 mins straight 😭\n\n**Maya:** anyway r u coming to kayla's thing friday\n\n**Jordan:** idk maybe?? is it gonna be a lot of people\n\n**Maya:** like 10 i think?? nothing crazy\n\n**Jordan:** ok yeah probably. what time\n\n**Maya:** she said 7 but u know how that goes lol\n\n**Jordan:** so like 8 💀\n\n**Maya:** EXACTLY lmaooo\n\n**Jordan:** ok yeah ill be there. u want me to pick u up\n\n**Maya:** yes pls ur the best fr\n\n**Jordan:** 😭😭 ok cool see u then\n\n**Maya:** yesss ok byeee\n\n**Jordan:** byee 👋\n\n---",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 251,
+    "total_tokens": 293
+  },
+  "timestamp": "2026-07-10T00:31:11.876857+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 79,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between three friends:\n\n---\n\n**Maya:** guys guys guys 🚨\n\n**Jordan:** what happened lol\n\n**Maya:** okay so you know how i've been lowkey crushing on tyler for like literally forever\n\n**Jordan:** MAYA YES GET TO THE POINT\n\n**Dani:** omg did something happen 👀\n\n**Maya:** HE TEXTED ME FIRST\n\n**Jordan:** WAIT WHAT\n\n**Dani:** SCREAMING\n\n**Maya:** i literally dropped my phone when i saw the notification i'm not even joking\n\n**Jordan:** what did he say what did he say what did he SAY\n\n**Maya:** he asked if i knew what the math homework was\n\n**Dani:** ...\n\n**Jordan:** bestie 💀\n\n**Maya:** NO WAIT but then we kept talking for like an hour after that so\n\n**Dani:** okay okay that's actually cute ngl\n\n**Jordan:** so are you gonna tell him or what\n\n**Maya:** absolutely not i will take this to my grave\n\n**Dani:** MAYA\n\n**Jordan:** you are so hopeless lmaooo\n\n**Maya:** i know 😭 anyway what are you guys doing friday\n\n---",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 276,
+    "total_tokens": 318
+  },
+  "timestamp": "2026-07-10T00:31:19.659374+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 80,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between three friends:\n\n---\n\n**Maya:** guys guys guys 😭 did you see what happened at lunch today\n\n**Jordan:** omg YES i was literally dying 💀\n\n**Maya:** ms peterson's face when tyler dropped the whole tray lmaooo\n\n**Jordan:** bro i had to pretend i was coughing so she wouldn't see me laughing\n\n**Alex:** wait WHAT i was in the bathroom for like 2 minutes what did i miss\n\n**Maya:** tyler was trying to be all smooth carrying like 3 trays at once\n\n**Jordan:** he was literally showing off for no reason 😭😭\n\n**Alex:** LOLLL classic tyler honestly\n\n**Maya:** and then he slipped and the chocolate milk went EVERYWHERE\n\n**Jordan:** it got on brendan's shoes and brendan just stood there like 🧍\n\n**Alex:** STOPPP i'm so mad i missed this\n\n**Maya:** don't worry we got it on video 💀\n\n**Jordan:** we are terrible people\n\n**Alex:** send it rn immediately right now\n\n**Maya:** [video.mp4]\n\n**Alex:** I AM DECEASED 💀💀💀\n\n**Jordan:** lol same time tomorrow?\n\n**Maya:** tyler better not attempt the tray thing again\n\n**Alex:** he absolutely will tho\n\n**Jordan:** he absolutely will 😭",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 315,
+    "total_tokens": 357
+  },
+  "timestamp": "2026-07-10T00:31:28.876027+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 81,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between three friends:\n\n---\n\n**Maya:** guys guys guys 😭 did you see what happened in math today\n\n**Jordan:** omg YES i literally almost died trying not to laugh\n\n**Maya:** mr. henderson's face when the projector fell 💀💀💀\n\n**Jordan:** LMAOOO he was so mad\n\n**Tyler:** wait what i was absent what happened\n\n**Maya:** ok so basically the projector just. fell. mid lecture\n\n**Jordan:** it was so loud the class next door knocked to check on us 😭\n\n**Tyler:** NO WAY\n\n**Maya:** on god it happened\n\n**Tyler:** i'm so upset i missed this\n\n**Jordan:** honestly iconic day to be absent ngl\n\n**Tyler:** ugh whatever are we still hanging at your place after school maya\n\n**Maya:** yeah my mom said it's fine but she wants us out by 8\n\n**Jordan:** bet. can we order pizza tho i'm not eating that cafeteria stuff again\n\n**Tyler:** +1 to that the pizza today looked like cardboard\n\n**Maya:** lol fair. i'll send the link\n\n**Jordan:** ur the best ok see you guys later 🫶\n\n**Tyler:** later ✌️",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 281,
+    "total_tokens": 323
+  },
+  "timestamp": "2026-07-10T00:31:37.261116+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 82,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between three friends:\n\n---\n\n**Maya:** guys guys guys 😭 did anyone else see what happened in math today\n\n**Jordan:** omg YES i literally cannot believe mr. henderson said that 💀\n\n**Maya:** i was trying so hard not to laugh i thought i was gonna die\n\n**Tyler:** wait what happened i was zoning out lol\n\n**Jordan:** TYLER you missed everything as usual 😭😭\n\n**Maya:** ok so basically he was writing on the board and his marker ran out and he just stood there for like a full minute staring at it\n\n**Tyler:** lmaooo that's it??\n\n**Jordan:** no dude he then goes \"this marker has betrayed me\" completely serious\n\n**Tyler:** LMAOOO NO WAY 💀💀💀\n\n**Maya:** swear on my life. the whole class lost it\n\n**Jordan:** brianna fell out of her chair almost\n\n**Tyler:** i literally cannot believe i picked that day to mentally check out\n\n**Maya:** honestly serves you right lol\n\n**Tyler:** rude 😭 someone send me the video\n\n**Jordan:** nobody recorded it unfortunately 😔\n\n**Tyler:** this is the worst day of my life fr\n\n---",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 280,
+    "total_tokens": 322
+  },
+  "timestamp": "2026-07-10T00:31:45.480009+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 83,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick convo between three friends in a group chat:\n\n---\n\n**maya 🌙:** guys guys guys i just finished watching that show u told me to start\n\n**maya 🌙:** i am NOT okay\n\n**jake:** FINALLY took you long enough lmao\n\n**maya 🌙:** jake i swear if you spoiled anything for me earlier i will never forgive you\n\n**jake:** i literally said NOTHING\n\n**chloe ☆:** maya which part are you on 👀\n\n**maya 🌙:** i just finished the whole thing\n\n**maya 🌙:** that ending??? hello???\n\n**chloe ☆:** YESSSSS i knew you would lose it\n\n**jake:** told her she'd be obsessed but did she listen. no.\n\n**maya 🌙:** ok ur right i should have started it sooner i admit it\n\n**chloe ☆:** screenshot this moment\n\n**jake:** framing it\n\n**maya 🌙:** you guys are so annoying i literally hate you both\n\n**chloe ☆:** no you don't lol\n\n**maya 🌙:** no i don't 😭 can we please talk about it tmr at lunch i have so many thoughts\n\n**jake:** obviously. already got a lot to say\n\n**chloe ☆:** same omg. ok gn besties 🫶\n\n**maya 🌙:** gn!!\n\n**jake:** night ✌️",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 343,
+    "total_tokens": 385
+  },
+  "timestamp": "2026-07-10T00:31:54.739757+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 84,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between three friends:\n\n---\n\n**Maya:** guys guys guys 😭 did you see what happened at lunch today\n\n**Jordan:** omg YES i was literally dying 💀\n\n**Maya:** ms. peterson's face when tyler dropped the whole tray 😭😭😭\n\n**Jordan:** bro i had to look away i was gonna lose it\n\n**Cam:** wait WHAT i was in the bathroom for like 2 minutes what did i miss\n\n**Maya:** lmaooo cam you literally always miss everything\n\n**Jordan:** it was so bad like chocolate milk EVERYWHERE\n\n**Cam:** no way 💀💀\n\n**Maya:** way. tyler was so red omg i felt bad but also\n\n**Jordan:** also it was hilarious\n\n**Maya:** yeah basically\n\n**Cam:** does he know we saw\n\n**Jordan:** he def knows everyone saw 😭\n\n**Maya:** anyway what are you guys doing later my mom said she can drive us to the mall if you want\n\n**Cam:** YESSS im so down\n\n**Jordan:** same let me ask my dad real quick\n\n**Cam:** if he says no just tell him it's for a school project lol\n\n**Jordan:** 💀 ur so cooked\n\n---",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 286,
+    "total_tokens": 328
+  },
+  "timestamp": "2026-07-10T00:32:03.386336+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 85,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between two friends, Maya and Jordan:\n\n---\n\n**Maya:** omg did u see what happened in math today 💀\n\n**Jordan:** LMAOOO yes i literally almost died trying not to laugh\n\n**Maya:** mr. henderson's face when tyler dropped his chromebook for the THIRD time\n\n**Jordan:** bro i can't 😭😭 he looked so done with life\n\n**Maya:** honestly same tho lol. hey r u going to kayla's thing friday\n\n**Jordan:** idk maybe?? is it gonna be a lot of people\n\n**Maya:** like 10 i think. nothing crazy\n\n**Jordan:** ok yeah probably. what time\n\n**Maya:** she said like 7 but u know how that goes lol\n\n**Jordan:** so realistically 8 💀\n\n**Maya:** EXACTLY lmaooo. k i gotta finish this stupid essay ugh\n\n**Jordan:** wait it's due tomorrow???\n\n**Maya:** JORDAN\n\n**Jordan:** i completely forgot omg ok bye\n\n**Maya:** GOODBYE 😭\n\n---",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 246,
+    "total_tokens": 288
+  },
+  "timestamp": "2026-07-10T00:32:10.657713+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 86,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between three friends:\n\n---\n\n**Maya:** guys guys guys 😭 did you see what happened at lunch today\n\n**Jordan:** omg YES i was literally dying 💀\n\n**Maya:** ms henderson's face when tyler dropped the whole tray lmaoooo\n\n**Jordan:** SCREAMING she looked so done with everything 😭😭\n\n**Priya:** wait what i was absent today TELL ME EVERYTHING\n\n**Maya:** ok so basically tyler was trying to balance his tray with one hand to look cool\n\n**Jordan:** for NO reason btw. literally nobody asked\n\n**Maya:** and it just. went. everywhere 💀 chocolate milk on like three people\n\n**Priya:** NO WAY\n\n**Jordan:** yes way and he just stood there like 🧍\n\n**Priya:** LMAOOO i'm so sad i missed this\n\n**Maya:** honestly it was the highlight of my entire week ngl\n\n**Jordan:** same the rest of school was so boring\n\n**Priya:** ok but real talk can someone send me the math notes from today\n\n**Maya:** lol the audacity 😭\n\n**Jordan:** there she is\n\n**Priya:** PLEASE i'll venmo you a dollar\n\n**Maya:** …sending now 💀\n\n---",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 293,
+    "total_tokens": 335
+  },
+  "timestamp": "2026-07-10T00:32:21.008044+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 87,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between three friends:\n\n---\n\n**Maya:** guys guys guys 😭 did you see what happened at lunch today\n\n**Jordan:** omg YES i was literally dying 💀\n\n**Maya:** ms henderson's face when tyler dropped the whole tray lmaooo\n\n**Jordan:** SCREAMING she looked so done with everything 😭😭\n\n**Caleb:** wait what i wasn't there what happened\n\n**Maya:** dude you MISSED it tyler slipped and the entire tray just. gone. chocolate milk everywhere\n\n**Caleb:** NO WAY\n\n**Jordan:** way. it got on brendan's new shoes too\n\n**Caleb:** oh he's gonna be so mad lol\n\n**Maya:** he already is trust me the whole cafeteria heard him\n\n**Jordan:** honestly iconic moment of the year so far\n\n**Caleb:** i can't believe i had a dentist appt today of all days 😭\n\n**Maya:** karma for missing first period yesterday lol\n\n**Caleb:** that is so not fair\n\n**Jordan:** it literally is tho 💀\n\n**Caleb:** ok maybe a little",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 261,
+    "total_tokens": 303
+  },
+  "timestamp": "2026-07-10T00:32:28.677717+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 88,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between three friends:\n\n---\n\n**Maya:** guys guys guys 🚨\n\n**Jordan:** what\n\n**Maya:** i just saw tyler at the mall with some girl lmaoo\n\n**Jordan:** WAIT WHAT\n\n**Zoe:** no way omg who was she\n\n**Maya:** idk never seen her before she had like really long dark hair\n\n**Zoe:** was he holding her hand or anything 💀\n\n**Maya:** they were sharing a drink so like. yeah.\n\n**Jordan:** bro he literally told kayla he was busy today 😭😭\n\n**Zoe:** JORDAN NO\n\n**Jordan:** i'm just saying what we're all thinking\n\n**Maya:** someone has to tell her right\n\n**Zoe:** ugh this is gonna be so bad\n\n**Jordan:** not it\n\n**Maya:** NOT IT\n\n**Zoe:** you guys are actually the worst lol\n\n**Jordan:** zoe you're literally the nicest one here it has to be you\n\n**Zoe:** i hate both of you so much rn\n\n**Maya:** we love you tho 🥺\n\n**Zoe:** i'm blocking you both after this just so you know\n\n**Jordan:** lolll no you're not\n\n**Zoe:** …no i'm not 😭 ugh fine i'll text her",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 306,
+    "total_tokens": 348
+  },
+  "timestamp": "2026-07-10T00:32:38.408489+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 89,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between three friends:\n\n---\n\n**Maya:** guys guys guys 😭 did you see what happened in math today\n\n**Jordan:** omg YES i literally almost died\n\n**Maya:** mr henderson's face when tyler dropped his chromebook during the test 💀💀💀\n\n**Jordan:** LMAOO it was so loud i jumped out of my seat\n\n**Tyler:** ok can you two NOT talk about me like im not right here 😭\n\n**Maya:** sorry bestie but it was genuinely iconic\n\n**Tyler:** it slipped!! my hands were sweaty!!\n\n**Jordan:** from the TEST or from being nervous around a certain someone who sits next to you 👀\n\n**Tyler:** JORDAN I WILL BLOCK YOU\n\n**Maya:** lol he's not even denying it\n\n**Tyler:** i hate both of you so much\n\n**Jordan:** no you don't 🥰\n\n**Maya:** he literally loves us\n\n**Tyler:** …fine whatever. anyway what are we doing this weekend\n\n**Jordan:** classic subject change\n\n**Maya:** LMAOOO but actually idk, wanna go to the mall saturday??\n\n**Jordan:** yes omg i need new shoes so bad\n\n**Tyler:** yeah im in. and we're never speaking of today again\n\n**Maya:** absolutely not 😂",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 296,
+    "total_tokens": 338
+  },
+  "timestamp": "2026-07-10T00:32:47.372710+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 90,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a text conversation between two friends, Maya and Jordan:\n\n---\n\n**Maya:** omg did u see what happened in math today 💀\n\n**Jordan:** LMAOOO yes i literally cannot believe mr. harris said that\n\n**Maya:** bro i was SO dead trying not to laugh\n\n**Jordan:** same i had to pretend i was coughing 😭😭\n\n**Maya:** anyway what r u doing later\n\n**Jordan:** idk probably nothing why\n\n**Maya:** wanna come over and watch something on netflix?? my mom got those chips u like\n\n**Jordan:** the spicy ones???\n\n**Maya:** obv yes\n\n**Jordan:** ok yeah im so down what time\n\n**Maya:** like 6ish?? my sister has dance til 5:30 so after that\n\n**Jordan:** ok bet. should i tell kayla too\n\n**Maya:** yes omg yes tell her to come\n\n**Jordan:** ok asking her rn\n\n**Maya:** ok cool see u later!!\n\n**Jordan:** 🤙🤙\n\n---",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 237,
+    "total_tokens": 279
+  },
+  "timestamp": "2026-07-10T00:32:55.814772+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 91,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between friends:\n\n---\n\n**Maya:** omg did u see what happened in math today 💀\n\n**Jordan:** LMAOOO yes i literally almost died trying not to laugh\n\n**Maya:** mr henderson's face when tyler dropped his chromebook for the THIRD time\n\n**Jordan:** bro i can't 😭😭 tyler is so cooked\n\n**Maya:** he's gonna get his chromebook taken away watch\n\n**Jordan:** honestly deserved lol anyway u coming to kayla's thing friday\n\n**Maya:** idk my mom's being weird about it rn\n\n**Jordan:** ughh tell her it's like a small thing\n\n**Maya:** she's not gonna believe that lmaooo she knows kayla\n\n**Jordan:** FAIR 💀 ok well lmk\n\n**Maya:** yeah for sure. also did u finish the history hw\n\n**Jordan:** …no\n\n**Maya:** JORDAN\n\n**Jordan:** i'll do it at lunch don't stress 😭\n\n**Maya:** u say that every time and then u don't\n\n**Jordan:** this time is different trust\n\n**Maya:** i literally do not trust 😭😭",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 264,
+    "total_tokens": 306
+  },
+  "timestamp": "2026-07-10T00:33:05.231790+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 92,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between three friends:\n\n---\n\n**Maya:** guys guys guys 🚨\n\n**Jordan:** what\n\n**Maya:** i just saw tyler at starbucks with someone 👀\n\n**Priya:** WAIT WHAT who was it\n\n**Maya:** idk some girl?? they were literally sharing a cake pop\n\n**Jordan:** sharing a cake pop is literally nothing lmaooo\n\n**Priya:** no jordan sharing a cake pop is EVERYTHING stop\n\n**Maya:** right?? like you don't just share a cake pop with someone\n\n**Jordan:** i shared a cake pop with my cousin last week does that mean we're dating 💀\n\n**Priya:** LMAOOO okay fair but still\n\n**Maya:** okay but your cousin isn't tyler so it's different\n\n**Jordan:** i give up\n\n**Priya:** maya did they see you\n\n**Maya:** yes and it was SO awkward he like waved and i literally speed walked out\n\n**Priya:** MAYA 😭😭\n\n**Jordan:** why would you speed walk out 💀💀\n\n**Maya:** I PANICKED okay\n\n**Priya:** we need to debrief this properly can you call later\n\n**Maya:** yes obviously. 8pm\n\n**Jordan:** i'll be there for the chaos 🍿\n\n---",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 302,
+    "total_tokens": 344
+  },
+  "timestamp": "2026-07-10T00:33:13.885106+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 93,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between three friends:\n\n---\n\n**Maya:** guys guys guys 😭 did you see what happened at lunch today\n\n**Jordan:** omg YES i was literally dying 💀\n\n**Maya:** ms henderson's face when tyler dropped the whole tray i CANNOT\n\n**Jordan:** bro the chocolate milk went EVERYWHERE i had to leave i was gonna lose it 😭😭\n\n**Kai:** wait what?? i was at practice what happened\n\n**Maya:** ok so basically tyler was trying to carry like 4 trays at once bc he was showing off\n\n**Jordan:** as he DOES\n\n**Maya:** lmaooo right and then he just. went down. full wipeout. in front of EVERYONE\n\n**Kai:** NOOO 💀💀💀\n\n**Jordan:** and then he just stood up and took a bow like nothing happened\n\n**Kai:** ok that's actually kinda legendary ngl\n\n**Maya:** it really was tho 😭 i feel bad for laughing but also i don't\n\n**Jordan:** same he literally took a BOW kai\n\n**Kai:** i'm so mad i missed this fr\n\n**Maya:** don't worry tyler will probably do it again tomorrow knowing him 💀\n\n**Jordan:** accurate 😭\n\n---",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 292,
+    "total_tokens": 334
+  },
+  "timestamp": "2026-07-10T00:33:22.439362+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 94,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between three friends:\n\n---\n\n**Maya:** guys guys guys 😭\n\n**Maya:** you will NOT believe what just happened\n\n**Jordan:** omg what\n\n**Jordan:** are you ok??\n\n**Maya:** yes lmaooo its not bad actually\n\n**Maya:** so i was at starbucks and i literally bumped into tyler and spilled my whole drink\n\n**Priya:** NOOO 💀💀💀\n\n**Jordan:** TYLER TYLER?? ur crush tyler???\n\n**Maya:** YES THAT TYLER I WANTED TO DISAPPEAR\n\n**Priya:** what did he do omg\n\n**Maya:** ok so he was actually super nice about it and helped me clean up and then he was like \"let me buy you another one\"\n\n**Jordan:** STOP\n\n**Priya:** MAYA.\n\n**Maya:** AND THEN WE TALKED FOR LIKE 20 MINUTES\n\n**Jordan:** ur literally manifesting rn what the heck\n\n**Priya:** did he ask for ur number or what\n\n**Maya:** no but he follows me on insta now 👀\n\n**Priya:** ok that literally means the same thing\n\n**Jordan:** ur so lucky i literally cannot 😭",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 282,
+    "total_tokens": 324
+  },
+  "timestamp": "2026-07-10T00:33:30.332728+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 95,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick convo between two friends, Maya and Jordan:\n\n---\n\n**Maya:** omg did u see what happened in math today 💀\n\n**Jordan:** LMAOOO yes i literally almost fell out of my chair\n\n**Maya:** mr. henderson's face when tyler dropped his whole lunch on the floor 😭😭\n\n**Jordan:** bro it was giving cartoon character energy\n\n**Maya:** the chocolate milk going EVERYWHERE sent me to another dimension\n\n**Jordan:** i had to pretend i was coughing so i wouldn't get in trouble lmao\n\n**Maya:** same i was literally biting my lip so hard\n\n**Jordan:** anyway u doing the homework tonight or nah\n\n**Maya:** ugh don't remind me i forgot about that\n\n**Jordan:** same lol we're so cooked\n\n**Maya:** wait what pages is it even\n\n**Jordan:** idk i wasn't paying attention obviously 💀\n\n**Maya:** ok lemme text riley she actually listens\n\n**Jordan:** smart move. also wanna hop on later and play?\n\n**Maya:** yeah give me like an hour\n\n**Jordan:** bet 👍\n\n---",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 255,
+    "total_tokens": 297
+  },
+  "timestamp": "2026-07-10T00:33:37.392374+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 96,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between three friends:\n\n---\n\n**Maya:** guys guys guys you will NOT believe what just happened 😭\n\n**Jordan:** omg what\n\n**Maya:** so i was at the store right and i literally ran into mr henderson outside of school and it was SO weird seeing him like. in real life buying groceries\n\n**Tyler:** LMAOOO did he see you\n\n**Maya:** YES and he waved at me and i panicked and just. walked away really fast\n\n**Jordan:** YOU WALKED AWAY 💀💀💀\n\n**Tyler:** bro why are you like this 😭\n\n**Maya:** i dont know i just froze!! he probably thinks im so rude now\n\n**Jordan:** nah he probably forgot about it already lol\n\n**Tyler:** yeah teachers dont think about us outside of school trust\n\n**Maya:** you think??\n\n**Jordan:** 100% he went home and immediately thought about literally anything else\n\n**Tyler:** he was probably just trying to get his groceries and go home like everyone else lmao\n\n**Maya:** ok yeah ur right im being so dramatic\n\n**Jordan:** a little bit yeah 💀\n\n**Maya:** WOW ok thanks for the support bestie\n\n**Jordan:** always here for u bestie 🥰",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 287,
+    "total_tokens": 329
+  },
+  "timestamp": "2026-07-10T00:33:45.891949+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 97,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between friends:\n\n---\n\n**Maya:** guys guys guys 😭 did you see what happened in math today\n\n**Jordan:** omg YES i was literally dying trying not to laugh\n\n**Maya:** mr henderson's face when the projector just DIED mid lesson 💀💀\n\n**Jordan:** he looked so lost lmaoo like a lost puppy\n\n**Priya:** wait i missed this what happened i was zoned out\n\n**Maya:** PRIYA how are you always asleep in that class\n\n**Priya:** its 8am maya. 8. AM.\n\n**Jordan:** valid honestly\n\n**Maya:** ok fair but basically the whole screen went black and he just stood there for like 3 minutes\n\n**Priya:** 💀 did he just give up\n\n**Jordan:** basically yeah he was like \"just read chapter 9\" and sat down\n\n**Priya:** that's actually the best possible outcome\n\n**Maya:** right?? free period vibes\n\n**Jordan:** we should manifest this every day tbh\n\n**Priya:** someone unplug it tomorrow\n\n**Maya:** PRIYA NO 😭😭\n\n**Jordan:** do it coward\n\n**Priya:** i will NOT be expelled over chapter 9\n\n---",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 287,
+    "total_tokens": 329
+  },
+  "timestamp": "2026-07-10T00:33:54.591978+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 98,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a text conversation between three friends:\n\n---\n\n**Maya:** guys guys guys 😭 did you see what happened in math today\n\n**Jordan:** omg YES i was literally dying trying not to laugh\n\n**Maya:** mr henderson's face when the projector fell 💀💀💀\n\n**Tyler:** wait WHAT i was absent what happened\n\n**Jordan:** dude you missed everything lol basically the projector just like. fell off the wall mid lesson\n\n**Tyler:** NO WAY\n\n**Maya:** yes way and he just stood there for like 10 whole seconds not saying anything\n\n**Jordan:** the silence was sending me i had to look at my desk\n\n**Tyler:** i'm actually so mad i skipped today of all days 😭\n\n**Maya:** karma for skipping lmaooo\n\n**Tyler:** ok rude\n\n**Jordan:** she's not wrong tho 💀\n\n**Tyler:** whatever are we still meeting at sam's after school tomorrow or nah\n\n**Maya:** yeah def i think so\n\n**Jordan:** i'm in, someone ask sam tho i don't have her number\n\n**Maya:** on it\n\n**Tyler:** ok bet see you guys then\n\n**Jordan:** 👍\n\n---",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 270,
+    "total_tokens": 312
+  },
+  "timestamp": "2026-07-10T00:34:04.427734+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 99,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a quick text convo between two friends:\n\n---\n\n**Maya:** omg did u see what happened in math today 💀\n\n**Jordan:** LMAOOO yes i literally could not keep it together\n\n**Maya:** mr. henderson's face when the fire alarm went off right as he was handing out the test 😭😭\n\n**Jordan:** bro i was SO ready to just walk out and never come back\n\n**Maya:** same honestly. free pass to not take it??\n\n**Jordan:** right?? but nooo we had to go back in 20 mins and do it anyway\n\n**Maya:** i hate it here\n\n**Jordan:** 😂😂 fr though what are u doing later\n\n**Maya:** idk probably nothing. wanna come over\n\n**Jordan:** yeah maybe around 4?? gotta walk my dog first\n\n**Maya:** ok cool we can watch something on netflix\n\n**Jordan:** ooh yes what tho\n\n**Maya:** idc u pick im bad at choosing\n\n**Jordan:** ok but last time i picked u complained the whole time 💀\n\n**Maya:** THAT WAS ONE TIME\n\n**Jordan:** it was three times maya\n\n**Maya:** ...ok fine we'll pick together 😭\n\n**Jordan:** lol see u at 4 ✌️",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 291,
+    "total_tokens": 333
+  },
+  "timestamp": "2026-07-10T00:34:13.129560+00:00"
+}
+

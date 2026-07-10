@@ -1,0 +1,1691 @@
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 11,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a convo between me (Mia), my BFFs Emily and Matt:\n\n[Mia]: hey guys whats up?? \n\n[Emily]: nm just got out of math lol how bout u\n\n[Matt]: same lol just ate a whole pizza by myself dont @ me\n\n[Mia]: matt ur such a pig btw emily did u do the homework for english yet?\n\n[Emily]: yeah i did it last night its pretty easy u should totes be able to finish it in like 10 mins\n\n[Matt]: yeah mia u can do it!! btw emily u wanna come over and watch a movie tonight?\n\n[Emily]: idk whats playing?\n\n[Matt]: we can watch whatever u want!! \n\n[Mia]: ooh yeah emily u should come!! we can have a movie night!!\n\n[Emily]: k sounds good to me whats the plan?\n\n[Matt]: ill pick u up at 6 and we can grab some food on the way \n\n[Mia]: yay cant wait!!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 205,
+    "total_tokens": 274
+  },
+  "timestamp": "2026-07-10T00:03:52.843004+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 12,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "[Samantha]: hey guys whats up\n\n[Emily]: nm just got out of math lol u?\n\n[Samantha]: same just left english whats the plan 4 2day\n\n[Matthew]: idk was thinkin maybe we could hit the mall later? saw a new gaming store opened up\n\n[Emily]: yaaas thats sounds lit when were u thinkin of goin\n\n[Samantha]: how bout 3? i gotta finish this essay 1st\n\n[Matthew]: sounds good 2 me em u in\n\n[Emily]: def in c u guys @ 3",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 122,
+    "total_tokens": 191
+  },
+  "timestamp": "2026-07-10T00:03:57.240996+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 13,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a convo between me (Mia) and my friends Emily and Matt:\n\n[Mia]: hey guys whats up\n\n[Emily]: nm just got out of math lol u?\n\n[Matt]: same here. i'm so done with homework\n\n[Mia]: i feel u. i have a ton of work due tomorrow and i havent even started \n\n[Emily]: yeah same. we should totes study together at my place this weekend\n\n[Matt]: sounds good to me. when were u thinking?\n\n[Mia]: how about sat afternoon? we can order some pizza and get everything done\n\n[Emily]: perfect! i'll send u guys the deets later\n\n[Matt]: cool see u sat",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 144,
+    "total_tokens": 213
+  },
+  "timestamp": "2026-07-10T00:04:01.335261+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 14,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a convo between me (Mia) and my friends Emily and Matt:\n\n[Mia]: hey guys whats up?\n\n[Emily]: nm just got out of math lol how bout u?\n\n[Matt]: same here, that test was soo hard\n\n[Mia]: ikr i thought i was gonna fail for sure\n\n[Emily]: dont worry mia u got this!! did u hear about the party on sat?\n\n[Matt]: yeah i heard its gonna be lit \n\n[Mia]: omg yeah i need to go!! who's going?\n\n[Emily]: me and matt r going, u in?\n\n[Mia]: totes in!! cant wait \n\n[Matt]: sweet!! its gonna be a sick night \n\n[Emily]: ok so we should meet up at 7 and head there together?\n\n[Mia]: sounds like a plan to me \n\n[Matt]: cool see u guys sat",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 180,
+    "total_tokens": 249
+  },
+  "timestamp": "2026-07-10T00:04:05.840548+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 15,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a convo between me (Mia), my BFFs Emily and Matt:\n\n[Mia]: hey guys whats up?\n\n[Emily]: nm just got out of math lol u?\n\n[Matt]: same here, that test was lit. u study for it?\n\n[Mia]: yeah i studied for like 2 hrs last nite. did ok i think\n\n[Emily]: nice! i was so nervous lol. wanna hang out @ the mall this wknd?\n\n[Matt]: yessss i'm so down. when were u thinking?\n\n[Mia]: how bout sat @ 2? we can catch a movie or smthn\n\n[Emily]: sounds good to me! matt u in?\n\n[Matt]: def in. cant w8",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 153,
+    "total_tokens": 222
+  },
+  "timestamp": "2026-07-10T00:04:10.157503+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 16,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a convo between me (Mia) and my friends, Emily and Matt:\n\n[Mia]: hey guys whats up\n\n[Emily]: nm just got out of math class u?\n\n[Mia]: same lol i hate mondays\n\n[Matt]: lol yeah me too. wanna play some fortnite later?\n\n[Emily]: yeah thats sounds lit\n\n[Mia]: def down what time were u thinkin\n\n[Matt]: how about 7? i gotta finish this homework first\n\n[Emily]: sounds good to me\n\n[Mia]: cool see u guys then",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 115,
+    "total_tokens": 184
+  },
+  "timestamp": "2026-07-10T00:04:13.111217+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 17,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a convo between me (Mia), my BFFs Emily and Matt:\n\n[Mia]: hey guys whats up?? just got out of math class \n\n[Emily]: lol hi!! i'm dyin over here in english. we're readin this super boring book \n\n[Matt]: same lol. just got out of gym. u guys wanna play some fortnite later?? \n\n[Mia]: yessss i'm so down!! em, u in?? \n\n[Emily]: yeah ok. but if i die first dont @ me \n\n[Matt]: dont worry em i gotchu. whats the plan for tonight then?? \n\n[Mia]: idk how bout we play at 7?? and then watch a movie or somethin \n\n[Emily]: sounds good to me!! what movie were u thinkin?? \n\n[Matt]: how bout that new marvel one?? \n\n[Mia]: omg yes!! i've been dyin to see it!!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 196,
+    "total_tokens": 265
+  },
+  "timestamp": "2026-07-10T00:04:17.515067+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 18,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a brief convo between me (Mia) and my friends Emily and Matt:\n\n[Mia]: hey guys whats up\n\n[Emily]: nm just got out of math lol what about u\n\n[Matt]: same here. i'm so done with school rn\n\n[Mia]: same lol i have a ton of homework 2nite u guys wanna come over and study together\n\n[Emily]: yeah thats a great idea! i'll bring pizza\n\n[Matt]: sounds good to me. what time were u thinkin\n\n[Mia]: how about 5? we can get started on our homework and then watch a movie or something later\n\n[Emily]: perfect see u then!\n\n[Matt]: cool c u soon",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 146,
+    "total_tokens": 215
+  },
+  "timestamp": "2026-07-10T00:04:20.381061+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 19,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a convo between me (Mia), my friend Emily, and our friend Matt:\n\n[Mia]: hey guys whats up\n\n[Emily]: nm just got out of practice u?\n\n[Matt]: lol emily's soccer practice is so long \n\n[Emily]: shut up matt!!\n\n[Mia]: lol what time r u free 2nite? wanna play among us\n\n[Emily]: idk like 7? and yessss i'm so down\n\n[Matt]: yeah 7 works 4 me. i'm gonna crush u guys \n\n[Emily]: we'll see about that \n\n[Mia]: ok cool see u guys @ 7",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 133,
+    "total_tokens": 202
+  },
+  "timestamp": "2026-07-10T00:04:23.658079+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 20,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a convo between me (Mia), my BFFs Emily and Matt:\n\n[Mia]: hey guys whats up?\n\n[Emily]: nm just got out of math lol u?\n\n[Matt]: same here, that test was soo hard\n\n[Mia]: ikr i was totally lost on the last question did u guys study for it?\n\n[Emily]: yeah i studied for like an hour last nite but i still dont think i did well \n\n[Matt]: lol same em, i was up till like 12 studying and i still feel like i messed up\n\n[Mia]: dont worry guys we'll all find out soon enough btw want to hang out this wknd?\n\n[Emily]: yeah thats sounds like so much fun what did u have in mind?\n\n[Matt]: idk but count me in\n\n[Mia]: lol ok cool, i was thinking we could go to the movies or something, i'll let u guys know the deets later",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 195,
+    "total_tokens": 264
+  },
+  "timestamp": "2026-07-10T00:04:29.392569+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 21,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a convo between me (Mia) and my friends Emily and Matt:\n\n[Mia]: hey guys whats up\n\n[Emily]: nm just got out of math lol how bout u\n\n[Matt]: same here that test was so hard\n\n[Mia]: ikr i thought i was gonna fail for sure did u guys do the homework for english yet\n\n[Emily]: yeah i did it last night its pretty easy whats the plan for friday\n\n[Matt]: i was thinkin we could hit the movies wanna see that new marvel movie\n\n[Mia]: yessss i'm so down who's in\n\n[Emily]: i am matt u driving\n\n[Matt]: yeah i can drive my mom said its cool \n\n[Mia]: sweet cant wait friday is gonna be lit",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 158,
+    "total_tokens": 227
+  },
+  "timestamp": "2026-07-10T00:04:33.387252+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 22,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a convo between me (Mia) and my friends Emily and Matt:\n\n[Mia]: hey guys whats up?\n\n[Emily]: nm just got out of math lol u?\n\n[Matt]: same here that test was lit \n\n[Mia]: ikr i almost fell asleep \n\n[Emily]: lol same i was so bored did u do the homework for english?\n\n[Mia]: yeah i did it last night u?\n\n[Emily]: not yet gotta do it rn \n\n[Matt]: guys wanna play some fortnite later?\n\n[Mia]: yeah sounds good to me what time were u thinkin?\n\n[Emily]: idk maybe like 7?\n\n[Matt]: sounds good to me c u guys then",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 143,
+    "total_tokens": 212
+  },
+  "timestamp": "2026-07-10T00:04:37.789835+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 23,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a brief convo between 3 friends, Mia, Alex, and Jake:\n\n[Mia]: hey guys whats up?\n\n[Alex]: nm just got out of practice whats poppin?\n\n[Jake]: lol nothing much alex u suck at soccer btw\n\n[Alex]: hey watch it i'm a star player \n\n[Mia]: lol guys stop bickering so whats the plan for friday?\n\n[Jake]: idk u guys wanna hit the movies or something?\n\n[Alex]: yeah thats sounds lit what movie were u thinkin?\n\n[Mia]: omg i just saw the trailer for the new marvel movie we have to see that\n\n[Jake]: yessss thats a great choice lets do it\n\n[Alex]: alright its a plan",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 150,
+    "total_tokens": 219
+  },
+  "timestamp": "2026-07-10T00:04:41.678935+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 24,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a convo between me (Mia) and my friends Emily and Matt:\n\n[Mia]: hey guys whats up?\n\n[Emily]: nm just got out of math class u?\n\n[Matt]: lol same here. that test was soo hard\n\n[Mia]: ikr i thought i was gonna fail for sure\n\n[Emily]: dont worry u'll be fine! so whats everyone doin 2nite?\n\n[Matt]: idk about u guys but i'm playin fortnite with my bro\n\n[Mia]: sounds lit! i might join u later em?\n\n[Emily]: yeah i'll prob watch a movie or something. u guys have fun tho!\n\n[Matt]: k cool! mia u in at like 8?\n\n[Mia]: yeah sounds good c u then!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 159,
+    "total_tokens": 228
+  },
+  "timestamp": "2026-07-10T00:04:46.026026+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 25,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a convo between me (Mia), my friend Emily, and our friend Matt:\n\n[Mia]: hey guys whats up\n\n[Emily]: nm just got out of math lol u?\n\n[Matt]: same here. that test was lit\n\n[Mia]: ikr i thought i was gonna die \n\n[Emily]: right?! i swear mr j is the worst \n\n[Matt]: lol yeah he's def the worst. wanna play some fortnite tonight?\n\n[Mia]: yessss i'm so down \n\n[Emily]: me too! what time were u thinkin?\n\n[Matt]: how bout 7? we can squad up and crush some noobs\n\n[Mia]: sounds like a plan \n\n[Emily]: k cool see u guys then",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 153,
+    "total_tokens": 222
+  },
+  "timestamp": "2026-07-10T00:04:49.361561+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 26,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "[Samantha]: hey guys whats up\n\n[Emily]: nm just got out of math lol thats a tough class\n\n[Matthew]: ikr i have it next semester and im lowkey scared\n\n[Samantha]: dont worry matt you'll be fine! em what r u doin 2nite\n\n[Emily]: idk yet maybe watching a movie or something u?\n\n[Matthew]: i was thinkin of playin some video games wanna join me?\n\n[Samantha]: yeah thats sounds lit em u in?\n\n[Emily]: yeah sure why not whats the game\n\n[Matthew]: fortnite duh \n\n[Samantha]: lol ok see u guys online",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 135,
+    "total_tokens": 204
+  },
+  "timestamp": "2026-07-10T00:04:55.812791+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 27,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a convo between me (Mia) and my friends, Alex and Jake:\n\n[Mia]: hey guys whats up?\n\n[Alex]: nm, just got out of math class. u?\n\n[Mia]: same lol, i swear that teacher hates us. whats poppin for the wknd?\n\n[Jake]: not much, was thinkin of havin a gaming session at my place. u in?\n\n[Alex]: yeah count me in! what time were u thinkin?\n\n[Jake]: like 2 pm? we can order some pizzas and play some fortnite\n\n[Mia]: sounds like a plan! cant wait \n\n[Alex]: lol @ mia's enthusiasm. see u guys sat!\n\n[Mia]: lol shut up alex. c u sat!\n\n[Jake]: later guys",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 160,
+    "total_tokens": 229
+  },
+  "timestamp": "2026-07-10T00:04:59.805785+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 28,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a convo between me (Mia) and my friends Emily and Matt:\n\n[Mia]: hey guys whats up?\n\n[Emily]: nm just got out of math class u?\n\n[Matt]: lol same emily i'm dying over here\n\n[Mia]: same lol i have a ton of homework 2nite u guys wanna study together online?\n\n[Emily]: yeah thats a gr8 idea i'll send u the google meet link\n\n[Matt]: cool see u guys in 30\n\n[Mia]: k sounds good bye 4 now \n\n[Emily]: bye! \n\n[Matt]: l8r",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 124,
+    "total_tokens": 193
+  },
+  "timestamp": "2026-07-10T00:05:03.400047+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 29,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a convo between me (Mia), my BFFs Emily and Matt:\n\n[Mia]: hey guys whats up?\n\n[Emily]: nm just got out of math lol u?\n\n[Matt]: same here. just got out of english. u do the homework yet mia?\n\n[Mia]: yeah i did it in class lol emily u wanna come over and study for our science test tomorrow?\n\n[Emily]: yeah thats a great idea!! whats the plan?\n\n[Matt]: can i come too? dont wanna fail that test\n\n[Mia]: lol of course matt! emily can u bring ur notes from class? i think i missed some stuff\n\n[Emily]: yeah no prob! ill bring everything. matt dont worry u wont fail\n\n[Matt]: thx emily u r a lifesaver \n\n[Mia]: alright so like 3 pm at my place? \n\n[Emily]: sounds good to me!\n\n[Matt]: c u guys then!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 195,
+    "total_tokens": 264
+  },
+  "timestamp": "2026-07-10T00:05:12.200109+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 30,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a convo between me (Mia), my BFFs Emily and Matt:\n\n[Mia]: hey guys whats up?? just got out of math class \n\n[Emily]: lol nothing much!! i'm so done with school btw did u do the homework?\n\n[Matt]: yeah i did it last night took me like 10 mins btw mia did u see that new vid on tiktok?\n\n[Mia]: yeah i saw it!! it's soooo funny i died laughing emily u should totes watch it\n\n[Emily]: ok ok i'll watch it lol matt what r u doin 2day?\n\n[Matt]: nm just playin some fortnite u guys wanna join?\n\n[Mia]: yeah i'm so down!! emily u in?\n\n[Emily]: yeah why not lol see u guys online",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 166,
+    "total_tokens": 235
+  },
+  "timestamp": "2026-07-10T00:05:18.853389+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 31,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a convo between me (Mia), my friends Emily and Matt:\n\n[Mia]: hey guys whats up\n\n[Emily]: nm just got out of math lol u?\n\n[Matt]: same here. i'm so done with homework\n\n[Mia]: omg me too i have like 3 essays due tomorrow \n\n[Emily]: yikes that sucks. need help w anything?\n\n[Mia]: nah i got it thx. matt u watching the game tonight?\n\n[Matt]: yeah i'll be watching. u guys in?\n\n[Emily]: yeah i'll stream it. go team!!\n\n[Mia]: lol yeah let's go!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 130,
+    "total_tokens": 199
+  },
+  "timestamp": "2026-07-10T00:05:23.153328+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 32,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a convo between me (Mia), my bffs Emily and Matt:\n\n[Mia]: hey guys whats up\n\n[Emily]: nm just got out of math lol u?\n\n[Matt]: same here. just got a text from alex, theres a party at his place this wknd\n\n[Emily]: omg rly?? i need deets\n\n[Mia]: yeah whats the plan?? is it gonna be lit?\n\n[Matt]: idk yet, alex said he'll send out a group chat later with all the info. but i heard its gonna be a movie night\n\n[Emily]: sounds cool! i'm so down. u guys in?\n\n[Mia]: def in!! cant wait",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 144,
+    "total_tokens": 213
+  },
+  "timestamp": "2026-07-10T00:05:28.888548+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 33,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a brief conversation between two teenage friends, Mia and Emily, over text message:\n\n[Mia]: hey em what r u up to?\n\n[Emily]: nm just got out of practice whats up w u?\n\n[Mia]: same lol just got out of math homework is killing me rn\n\n[Emily]: ugh dont even get me started i have a test tomorrow and im so not ready \n\n[Mia]: good luck!! u'll do fine dont stress\n\n[Emily]: thx mia u r the best btw wanna hang out this wknd?\n\n[Mia]: def yeah thats sounds like so much fun whats the plan?\n\n[Emily]: idk yet maybe we can go to the movies or something?\n\n[Mia]: sounds good to me keep me posted",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 153,
+    "total_tokens": 222
+  },
+  "timestamp": "2026-07-10T00:05:32.062403+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 34,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a convo between me (Mia) and my friends Emily and Matt:\n\n[Mia]: hey guys whats up?\n\n[Emily]: nm just got out of math class u?\n\n[Mia]: same lol just got out of english. matt u there?\n\n[Matt]: yeah i'm here! just eating lunch whats poppin\n\n[Emily]: so whats the plan for friday? we gonna hang out or what?\n\n[Mia]: idk yet i was thinkin we could go to the movies or somethin\n\n[Matt]: sounds good to me whats playin?\n\n[Emily]: i heard the new marvel movie is out we should totes go see that\n\n[Mia]: yessss that sounds amazing ok its a plan\n\n[Matt]: cool cant wait",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 156,
+    "total_tokens": 225
+  },
+  "timestamp": "2026-07-10T00:05:36.772818+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 35,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "[Samantha]: hey guys whats up?\n\n[Emily]: nm just got out of math lol how bout u?\n\n[Samantha]: same lol i swear mr johnson is so boring. u wanna come over and study for the test 2moro?\n\n[Emily]: yeah thats a gr8 idea! matt u in?\n\n[Matt]: yeah im in whats the plan\n\n[Samantha]: cool! i was thinkin we could meet at my place at 3 and quiz each other. em can u bring ur notes from class?\n\n[Emily]: yeah got em right here dont worry!\n\n[Matt]: awesome see u guys 2moro",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 132,
+    "total_tokens": 201
+  },
+  "timestamp": "2026-07-10T00:05:41.893340+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 36,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a convo between me (Mia) and my friends, Alex and Jake:\n\n[Mia]: hey guys wsup?\n\n[Alex]: nm, jst got out of math class u?\n\n[Mia]: same lol i'm so done w/ school rn. wanna hang out l8r?\n\n[Jake]: yaaas i'm down wut r u thinking?\n\n[Alex]: idk wut do u wanna do mia?\n\n[Mia]: idk yet maybe we can hit the mall or see a movie?\n\n[Jake]: sounds good to me! i need to get out of the house anyway\n\n[Alex]: k cool i'm in. wut time were u thinking?\n\n[Mia]: how bout 5? we can grab dinner too\n\n[Jake]: sounds like a plan c u guys then!\n\n[Alex]: l8r!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 174,
+    "total_tokens": 243
+  },
+  "timestamp": "2026-07-10T00:05:47.013459+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 37,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a convo between me (Mia) and my friends Emily and Matt:\n\n[Mia]: hey guys whats up?\n\n[Emily]: nm just got out of math lol u?\n\n[Mia]: same lol i hate mondays. u doin anything fun 2day?\n\n[Matt]: yeah im playin soccer after school u guys wanna come watch?\n\n[Emily]: idk i have a ton of hw but maybe ill come for a bit\n\n[Mia]: yeah me 2 maybe ill see u there matt good luck w ur game!!\n\n[Matt]: thx guys! btw emily u better come or else\n\n[Emily]: ok ok dont be so extra",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 136,
+    "total_tokens": 205
+  },
+  "timestamp": "2026-07-10T00:05:51.931420+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 38,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a convo between me (Mia), my friends Emily and Matt:\n\n[Mia]: hey guys whats up?\n\n[Emily]: nm, just got out of math class u?\n\n[Mia]: same lol, i'm so done with fractions\n\n[Matt]: lol what's wrong with fractions?\n\n[Emily]: don't even get her started\n\n[Mia]: shut up matt, they're just so annoying!! \n\n[Matt]: okay okay, no more fraction jokes\n\n[Emily]: so, you guys going to alex's party on sat?\n\n[Mia]: yeah i was thinking about it, u going?\n\n[Emily]: yeah, i'll be there! matt, u in?\n\n[Matt]: yeah, i'll come. what time is it again?\n\n[Emily]: it's at 7, don't be late!!\n\n[Mia]: lol, don't worry we won't let him be late\n\n[Matt]: hey, i resent that \n\n[Emily]: anyway, ttyl guys!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 202,
+    "total_tokens": 271
+  },
+  "timestamp": "2026-07-10T00:05:59.302666+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 39,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "[Samantha]: hey guys whats up\n\n[Emily]: nm just got out of math lol u?\n\n[Samantha]: same lol i swear that teacher hates us. u do the homework yet?\n\n[Emily]: yeah i did it in class lol u didnt?\n\n[Samantha]: no i was too busy scrolling thru tiktok. whats the assignment even about again?\n\n[Emily]: lol its about those algebra problems we did last week. i can send u a pic of my notes if u want\n\n[Samantha]: thatd be awesome thx! btw have u seen that new vid from jason derulo?\n\n[Emily]: yeah i saw it this morning its so fire \n\n[Matt]: hey guys whats going on?\n\n[Samantha]: not much just discussing math homework lol. emily just sent me her notes tho\n\n[Matt]: nice save emily lol. hey sam u wanna play some fortnite later?\n\n[Samantha]: yeah thats sounds lit when were u thinking?\n\n[Matt]: how about 7 pm?\n\n[Emily]: count me in",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 216,
+    "total_tokens": 285
+  },
+  "timestamp": "2026-07-10T00:06:13.536621+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 40,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a convo between me (Mia), my BFFs Emily and Matt:\n\n[Mia]: hey guys whats up?? \n\n[Emily]: nm just got out of practice u?? \n\n[Matt]: lol em just got destroyed in soccer \n\n[Emily]: hey watch it matt!!! \n\n[Mia]: lol what happened?? \n\n[Matt]: em tripped over her own feet \n\n[Emily]: MATT THAT WAS ONE TIME OKAY!!!!!! \n\n[Mia]: omg em u ok?? \n\n[Emily]: yeah im fine just embarrassed lol \n\n[Matt]: dont worry em we still love u \n\n[Emily]: thx guys u guys are the best",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 135,
+    "total_tokens": 204
+  },
+  "timestamp": "2026-07-10T00:06:22.239153+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 41,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a convo between me (Mia), my bestie (Emily), and our friend (Matt):\n\n[Mia]: hey guys whats up?\n\n[Emily]: nm just got out of practice u?\n\n[Matt]: lol emily's soccer practice is so long \n\n[Emily]: shut up matt!!\n\n[Mia]: lol what r u guys doin 2nite?\n\n[Emily]: idk u?\n\n[Matt]: i was thinkin we could play some fortnite u in?\n\n[Emily]: yeah thats sounds lit\n\n[Mia]: ok sounds good to me whats the time?\n\n[Matt]: how about 7?\n\n[Emily]: works for me\n\n[Mia]: k see u guys then",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 142,
+    "total_tokens": 211
+  },
+  "timestamp": "2026-07-10T00:06:25.392430+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 42,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "[Samantha]: hey guys whats up\n\n[Emily]: nm just got out of math lol whats new w u\n\n[Samantha]: same lol i have a ton of homework 2 do 2nite u?\n\n[Emily]: yeah i have a essay due 2moro didnt start it yet \n\n[Matthew]: hey whats all the complaining about\n\n[Samantha]: just homework em has an essay due 2moro and hasnt started it yet\n\n[Emily]: hey thats not fair i was gonna start it rn\n\n[Matthew]: lol sure u were em u always procrastinate\n\n[Emily]: shut up matt lol anyway sam u wanna come over and study 2gether 2nite\n\n[Samantha]: yeah thats sounds good ill come over @ 6\n\n[Matthew]: can i come 2\n\n[Emily]: yeah the more the merrier",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 177,
+    "total_tokens": 246
+  },
+  "timestamp": "2026-07-10T00:06:33.504266+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 43,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a convo between me (Mia) and my friends Emily and Matt:\n\n[Mia]: hey guys whats up?\n\n[Emily]: nm just got out of practice whats new w u?\n\n[Matt]: lol em just got destroyed in soccer \n\n[Emily]: shut up matt i had a great game!!\n\n[Mia]: lol you guys are so extra anyway em u wanna come over and study for our math test tomorrow?\n\n[Emily]: yeah thats a great idea i'll come over at 3\n\n[Matt]: can i come too? i dont wanna fail that test \n\n[Emily]: sure matt the more the merrier \n\n[Mia]: ok cool see u guys at 3 dont forget ur notes",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 143,
+    "total_tokens": 212
+  },
+  "timestamp": "2026-07-10T00:06:37.832202+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 44,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a convo between me (Mia) and my friends Emily and Matt:\n\n[Mia]: hey guys whats up?\n\n[Emily]: nm just got out of math class u?\n\n[Mia]: same lol just left english. matt u there?\n\n[Matt]: yeah im here! just got a new game on my ps4 wanna come over and play later?\n\n[Emily]: ooh whats the game?\n\n[Matt]: its that new fortnite update u guys in?\n\n[Mia]: yeah im so down! emily u coming?\n\n[Emily]: yeah count me in! whats the time?\n\n[Matt]: how bout 5 pm?\n\n[Mia]: sounds good to me!\n\n[Emily]: k cool see u guys then!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 148,
+    "total_tokens": 217
+  },
+  "timestamp": "2026-07-10T00:06:42.034992+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 45,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a convo between me (Mia), my friend Emily, and our friend Matt:\n\n[Mia]: hey guys whats up?\n\n[Emily]: nm, jus got out of math class u?\n\n[Matt]: lol emily u hate math dont pretend like its hard 4 u\n\n[Emily]: shut up matt i do not!! mia, did u do the homework?\n\n[Mia]: yeah i did it last nite, its pretty easy tho\n\n[Matt]: yeah emily u should've asked mia for help instead of struggling alone\n\n[Emily]: okay okay, i get it u guys think im bad at math whatever. mia, wanna come over and study 4 our test tomorrow?\n\n[Mia]: yeah sounds good, ill come over @ 3?\n\n[Emily]: k, c u then! matt, u should come too\n\n[Matt]: idk, maybe. ill let u guys know later",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 187,
+    "total_tokens": 256
+  },
+  "timestamp": "2026-07-10T00:06:46.113327+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 46,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a convo between me (Mia) and my friends Emily and Matt:\n\n[Mia]: hey guys whats up?\n\n[Emily]: nm just got out of practice whats new w u?\n\n[Matt]: lol em just said nm like 5 mins ago\n\n[Mia]: yeah matt lol anywayz em how was practice?\n\n[Emily]: it was ok we have a game friday so we're prepping for that \n\n[Matt]: yeah u guys gonna crush it \n\n[Mia]: totes good luck em!! u guys should come over after and we can watch a movie or something\n\n[Emily]: sounds good to me \n\n[Matt]: yeah count me in what movie were u thinking?\n\n[Mia]: idk maybe that new marvel one?\n\n[Emily]: omg yes \n\n[Matt]: lol em loves marvel \n\n[Mia]: lol yeah she does anywayz ttyl guys",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 179,
+    "total_tokens": 248
+  },
+  "timestamp": "2026-07-10T00:06:51.128498+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 47,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a convo between me (Mia) and my friends Emily and Matt:\n\n[Mia]: hey guys whats up?\n\n[Emily]: nm just got out of practice whats poppin?\n\n[Matt]: lol emily's so extra practice was prob 2 hrs long\n\n[Emily]: shut up matt!!! it was 3 hrs btw\n\n[Mia]: anywayz whats the plan 4 2nite? movie night?\n\n[Emily]: yessss i'm so down what movie were u thinkin?\n\n[Matt]: can we pls watch somethin w marvel in it?\n\n[Emily]: u and ur marvel obsession \n\n[Mia]: lol okay fine we can watch spiderman \n\n[Emily]: yay!! i'll bring the snacks\n\n[Matt]: thanks em!!! u the real mvp",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 162,
+    "total_tokens": 231
+  },
+  "timestamp": "2026-07-10T00:06:54.632525+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 48,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a convo between me (Mia) and my friends Emily and Matt:\n\n[Mia]: hey guys whats up\n\n[Emily]: nm just got out of practice u?\n\n[Mia]: same lol just got home from school. matt u there?\n\n[Matt]: yeah i'm here whats good\n\n[Emily]: so did u guys hear about the party this weekend?\n\n[Mia]: yeah i heard it's gonna be lit who's going?\n\n[Matt]: i am u guys in?\n\n[Emily]: yeah i'm so down mia u coming?\n\n[Mia]: duh of course i'm coming",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 122,
+    "total_tokens": 191
+  },
+  "timestamp": "2026-07-10T00:06:57.965426+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 49,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a convo between me (Mia) and my friends, Emily and Matt:\n\n[Mia]: hey guys whats up?? \n\n[Emily]: nm just got out of math lol u?\n\n[Matt]: same here, that test was so hard \n\n[Mia]: ikr i was so lost on like half the questions did u guys study at all?\n\n[Emily]: yeah i studied for like an hour but i dont think it helped lol\n\n[Matt]: same here, i think i'm gonna ask the teacher for help on monday\n\n[Mia]: yeah thats a good idea, maybe we can all go together and be like \"hey can u explain this again?\"\n\n[Emily]: sounds good to me, and then we can grab lunch after\n\n[Matt]: cool, i'm down",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 160,
+    "total_tokens": 229
+  },
+  "timestamp": "2026-07-10T00:07:02.263403+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 50,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a brief conversation between two teenage friends, Mia and Alex, taking place over text message:\n\n[Mia]: hey whats up? just got out of math class\n\n[Alex]: lol nothing much. i'm so done with school today. wanna hang out at the mall after school tomorrow?\n\n[Mia]: yeah thats sounds lit! i need to get out of the house anyway. my mom is being super annoying\n\n[Alex]: same lol my mom is always on my case about something. anyway, what time were you thinking of meeting up tomorrow?\n\n[Mia]: how about 3? i have to finish a project in english class first\n\n[Alex]: sounds good to me! i'll meet you at the food court at 3. cant wait!\n\n[Mia]: me neither! ttyl",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 162,
+    "total_tokens": 231
+  },
+  "timestamp": "2026-07-10T00:07:06.039933+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 51,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a convo between me (Mia) and my friends Emily and Matt:\n\n[Mia]: hey guys whats up?\n\n[Emily]: nm just got out of math lol thats a nightmare\n\n[Matt]: same omg i almost fell asleep in class\n\n[Mia]: lol yaaas i know right? so emily what r u doing 2nite?\n\n[Emily]: idk yet maybe watching a movie or something u?\n\n[Matt]: i'm free 2nite we should do something\n\n[Mia]: yeah thats a great idea! matt can u drive us to the mall?\n\n[Emily]: yeah thats sounds like fun! \n\n[Matt]: yeah i can drive u guys wanna grab food at the food court?\n\n[Mia]: omg yes that sounds amazing \n\n[Emily]: same i'm so down \n\n[Mia]: alright cool see u guys at 5",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 178,
+    "total_tokens": 247
+  },
+  "timestamp": "2026-07-10T00:07:12.449240+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 52,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a convo between me (Mia), my bestie (Emily), and our friend (Matt) on our group chat:\n\n[Mia]: hey guys whats up\n\n[Emily]: nm just got out of math lol u?\n\n[Matt]: same here, that test was lit \n\n[Mia]: right?? i thought i was gonna fail for sure \n\n[Emily]: dont worry mia u got this!! did u guys do the homework for english yet?\n\n[Matt]: yeah i did it last night, its pretty easy \n\n[Mia]: cool thx matt i'll do it rn \n\n[Emily]: k so whats the plan for friday? we doin anything?\n\n[Mia]: idk yet, u guys wanna see a movie or something?\n\n[Matt]: sounds good to me, what movie were u thinkin?\n\n[Mia]: hmm maybe that new marvel one? \n\n[Emily]: yessss i'm so down",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 188,
+    "total_tokens": 257
+  },
+  "timestamp": "2026-07-10T00:07:16.231663+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 53,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a brief convo between 3 friends, Mia, Alex, and Jake, over text:\n\n[Mia]: hey guys whats up?\n\n[Alex]: nm, just got out of practice. u?\n\n[Mia]: same lol, i'm so done with school rn. whats the plan for friday?\n\n[Jake]: omg i was thinking we could hit that new game store that just opened up downtown. heard they have a sick gaming station\n\n[Alex]: yessss that sounds lit. what time were you thinking?\n\n[Jake]: how about 3? we can grab some food first and then head over\n\n[Mia]: sounds good to me. cant wait!\n\n[Alex]: me neither. see you guys friday!\n\n[Mia]: ttyl!\n\n[Jake]: later!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 159,
+    "total_tokens": 228
+  },
+  "timestamp": "2026-07-10T00:07:18.865363+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 54,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a convo between me (Mia), my BFFs Emily and Matt:\n\n[Mia]: hey guys whats up?\n\n[Emily]: nm, jus got out of math lol. u?\n\n[Matt]: same lol. i'm so done with school rn\n\n[Mia]: sameeee. so em, did u do the homework?\n\n[Emily]: yeah i did it in class lol. its pretty easy\n\n[Matt]: nice, can u help me with it? i'm so lost\n\n[Emily]: sure thing! whats not making sense to u?\n\n[Mia]: yeah em's a genius lol. matt u should totes ask her for help\n\n[Matt]: shut up mia lol. em, can we study together at ur place tomorrow?\n\n[Emily]: yeah thats cool with me! mia u in?\n\n[Mia]: yeah sounds good to me! whats the plan for tomorrow then?\n\n[Emily]: how about we study from 2-4, then watch a movie or something?\n\n[Matt]: sounds like a plan!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 211,
+    "total_tokens": 280
+  },
+  "timestamp": "2026-07-10T00:07:23.376498+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 55,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "[Samantha]: hey guys whats up?\n\n[Emily]: nm just got out of practice whats new w u?\n\n[Matthew]: lol em just had the craziest day in math class our teacher fell asleep during the lesson \n\n[Samantha]: NO WAY thats hilarious did u guys get in trouble for laughing?\n\n[Emily]: yeah kinda but it was so worth it i got a vid of it btw\n\n[Matthew]: emo pls dont post that on social media dont wanna get in trouble \n\n[Emily]: dont worry mat i wont post it dont wanna get u in trouble either \n\n[Samantha]: lol ok good em so whats the plan for friday?\n\n[Emily]: idk whats up?\n\n[Matthew]: i was thinkin we could hit the movies or somethin \n\n[Samantha]: sounds good to me whats playing?\n\n[Emily]: lets check online and see what looks good",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 180,
+    "total_tokens": 249
+  },
+  "timestamp": "2026-07-10T00:07:27.587316+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 56,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a convo between me (Mia), my bestie (Emily), and our friend (Matt):\n\n[Mia]: hey guys whats up?\n\n[Emily]: nm just got out of math lol u?\n\n[Matt]: same here, that test was lit\n\n[Mia]: ikr i thought i was gonna die \n\n[Emily]: lol right? so whats the plan for tonight? \n\n[Matt]: idk i was thinkin we could play some fortnite?\n\n[Mia]: yessss thats a great idea!! i'm so down\n\n[Emily]: me too! what time were u thinkin?\n\n[Matt]: how about 7?\n\n[Mia]: sounds good to me!\n\n[Emily]: same here, see u guys then!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 152,
+    "total_tokens": 221
+  },
+  "timestamp": "2026-07-10T00:07:29.960258+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 57,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a convo between me (Mia), my BFFs Emily and Chris:\n\n[Mia]: hey guys whats up\n\n[Emily]: nm just got out of math lol u?\n\n[Chris]: same here, that test was soo hard\n\n[Mia]: ik i was dyin, did u guys study for it at all?\n\n[Emily]: yeah i studied for like an hour lol didnt help tho\n\n[Chris]: same, i feel like i got like half of it wrong\n\n[Mia]: lol same dont worry we'll all fail together\n\n[Emily]: exactly, btw wanna hang out this wknd?\n\n[Chris]: yeah thats sounds lit, when were u thinkin?\n\n[Mia]: idk how about sat? we could go to the mall or somethin\n\n[Emily]: sounds good to me, i'll ask my mom if its cool\n\n[Chris]: aight, count me in",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 186,
+    "total_tokens": 255
+  },
+  "timestamp": "2026-07-10T00:07:33.581972+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 58,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a convo between me (Alex), my friend Emily, and our friend Matt:\n\n[02:34 PM] Alex: hey guys whats up?\n\n[02:36 PM] Emily: nm just got out of math lol u?\n\n[02:37 PM] Matt: same here, that test was lit \n\n[02:38 PM] Alex: ikr i thought i was gonna die didnt study at all \n\n[02:40 PM] Emily: lol alex u always say that and u always do fine dont worry\n\n[02:41 PM] Matt: yeah emily's right alex u got this \n\n[02:42 PM] Alex: thx guys u r the best wanna play some fortnite later?\n\n[02:43 PM] Emily: yessss i'm so down \n\n[02:44 PM] Matt: me 2 whats the plan?\n\n[02:45 PM] Alex: idk yet maybe we can do a squad with jack and sarah?\n\n[02:46 PM] Emily: sounds good to me \n\n[02:47 PM] Matt: cool lemme text jack and see if he's in",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 234,
+    "total_tokens": 303
+  },
+  "timestamp": "2026-07-10T00:07:37.216209+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 59,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a convo between me (Mia), my bestie (Emily), and our friend (Matt):\n\n[Mia]: hey guys whats up?\n\n[Emily]: nm just got out of math lol u?\n\n[Matt]: same here that test was lit\n\n[Mia]: ikr i thought i was gonna die lol did u guys do the homework for english yet?\n\n[Emily]: yeah i did it last night its pretty easy\n\n[Matt]: nah i havent started it yet gotta get on that\n\n[Emily]: matt u better get on that dont wanna be up all night\n\n[Mia]: lol emily's right matt dont procrastinate\n\n[Matt]: ok ok i'll do it rn",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 142,
+    "total_tokens": 211
+  },
+  "timestamp": "2026-07-10T00:07:40.194174+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 60,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a convo between me (Mia), my BFFs Emily and Matt:\n\n[Mia]: hey guys whats up\n\n[Emily]: nm just got out of math lol u?\n\n[Matt]: same here thats one hard class\n\n[Mia]: ikr i'm dyin over here need a nap asap\n\n[Emily]: lol same girl same whats the plan for 2day?\n\n[Matt]: idk u guys wanna play some games or smthn?\n\n[Mia]: yeah thats sounds lit em u in?\n\n[Emily]: yessss whats the game tho?\n\n[Matt]: idk maybe some fortnite?\n\n[Mia]: ok cool im so down",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 137,
+    "total_tokens": 206
+  },
+  "timestamp": "2026-07-10T00:07:44.264881+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 61,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a convo between me (Mia) and my friends, Alex and Jake:\n\n[Mia]: hey guys whats up\n\n[Alex]: nm just got out of math lol thats a tough class\n\n[Jake]: same i'm so done with homework tonight u guys wanna play some fortnite\n\n[Mia]: yessss i'm so down alex u in\n\n[Alex]: yeah sure why not i need a break from studying\n\n[Jake]: sick lets get a squad going at 8 pm\n\n[Mia]: sounds good to me see u guys then\n\n[Alex]: later",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 119,
+    "total_tokens": 188
+  },
+  "timestamp": "2026-07-10T00:07:46.413603+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 62,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "[Samantha]: hey guys whats up\n\n[Emily]: omg i just got tickets to billie eilish!! \n\n[Matthew]: no way thats so cool em!! im low key jealous\n\n[Samantha]: yeahhh me too!! i've been listening to her album nonstop \n\n[Emily]: lol same!! we should totes make a playlist for the concert \n\n[Matthew]: def do that!! and can u guys get me a merch or something \n\n[Samantha]: lol sure thing matt!! we gotchu \n\n[Emily]: k so who's driving to the concert \n\n[Matthew]: my mom said she can take us \n\n[Samantha]: awesome thanks matt's mom!!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 142,
+    "total_tokens": 211
+  },
+  "timestamp": "2026-07-10T00:07:49.664638+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 63,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "[Samantha]: hey guys whats up\n\n[Emily]: nm just got out of math lol u?\n\n[Samantha]: sameeee i swear that test was so hard did u study at all?\n\n[Emily]: yeah i studied for like an hour but i still feel like i bombed it \n\n[Matthew]: lol u guys are so extra i didnt even study and i felt fine\n\n[Samantha]: shut up matt u always say that and then u end up getting a good grade anyway \n\n[Emily]: right?? matt's like a genius or something \n\n[Matthew]: hey thats not true i just wing it and hope for the best \n\n[Samantha]: yeah sure matt anyway em what r u doing 2day?\n\n[Emily]: idk yet maybe going to the mall with my sis u?\n\n[Samantha]: sounds fun i might come with u guys l8r",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 178,
+    "total_tokens": 247
+  },
+  "timestamp": "2026-07-10T00:07:54.093521+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 64,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "[Samantha]: hey guys whats up\n\n[Emily]: nm just got out of math class u?\n\n[Matthew]: lol same here. that test was lit\n\n[Samantha]: yeah i know i'm pretty sure i bombed it \n\n[Emily]: dont worry sam u'll be fine. btw have u seen that new vid on tiktok?\n\n[Matthew]: which one?\n\n[Emily]: the dance challenge one its sooo funny\n\n[Samantha]: omg yeah i saw it this morning i died laughing\n\n[Matthew]: link me pls i need a laugh\n\n[Emily]: just search \"dance challenge fail\" u'll find it\n\n[Samantha]: ok so who's free to hang out this weekend?\n\n[Emily]: i am! what did u have in mind?\n\n[Matthew]: me 2. movie night?\n\n[Samantha]: sounds good to me. i'll make a poll on our group chat",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 187,
+    "total_tokens": 256
+  },
+  "timestamp": "2026-07-10T00:07:57.460577+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 65,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a convo between me (Mia), my bestie (Emily), and our friend (Matt):\n\n[Mia]: hey guys whats up\n\n[Emily]: nm just got out of math lol how bout u\n\n[Matt]: same here, i'm so done with school already\n\n[Mia]: same lol only 2 more days till friday tho\n\n[Emily]: yaaas weekend vibes are gonna be lit are we hanging out sat\n\n[Matt]: idk yet, i gotta ask my parents but hopefully\n\n[Mia]: cool let me know, we can hit the mall or something\n\n[Emily]: sounds good to me, i need to get out of the house\n\n[Matt]: alright i'll text u guys later, ttyl",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 152,
+    "total_tokens": 221
+  },
+  "timestamp": "2026-07-10T00:08:00.647383+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 66,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a sim of a convo between me and my friends:\n\n[02:34 PM] Me: hey guys whats up\n[02:36 PM] Sam: nm just got out of math lol\n[02:37 PM] Emily: same lol i'm so done with homework\n[02:38 PM] Me: right?? i have like 3 essays due tomorrow \n[02:40 PM] Sam: ugh thats rough do u wanna study together @ the library 2moro\n[02:41 PM] Emily: yeah i'm down\n[02:42 PM] Me: sounds good 2 me c u guys @ 3 pm\n[02:43 PM] Sam: kay see u then \n[02:44 PM] Emily: dont 4get 2 bring ur notes",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 168,
+    "total_tokens": 237
+  },
+  "timestamp": "2026-07-10T00:08:03.515658+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 67,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a simulated conversation:\n\n**Samantha (10:05 PM)**: hey guys whats up?\n\n**Emily (10:06 PM)**: nm just got out of practice whats new w u?\n\n**Matt (10:07 PM)**: lol em just got destroyed in soccer \n\n**Samantha (10:08 PM)**: yeah em u got killed whats the plan 4 2moro?\n\n**Emily (10:09 PM)**: idk yet maybe we can hit the mall? u in?\n\n**Matt (10:10 PM)**: yeah im so down who else is coming?\n\n**Samantha (10:11 PM)**: ill ask sarah and mike see if they can come \n\n**Emily (10:12 PM)**: k cool txt me l8r",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 165,
+    "total_tokens": 234
+  },
+  "timestamp": "2026-07-10T00:08:06.322960+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 68,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "[Samantha]: hey guys whats up\n\n[Emily]: nm just got out of math lol what about u\n\n[Samantha]: same omg i hate that class btw have u seen the new vid from billie eilish\n\n[Emily]: yeah i watched it this morning its so fire whats ur fave song from the album\n\n[Matthew]: hey whats going on\n\n[Samantha]: just talking about billie eilish's new vid u?\n\n[Matthew]: oh cool i still need to watch it is it good?\n\n[Emily]: yeah its amazing u should totes watch it \n\n[Samantha]: lol yeah matthew u need to get on that \n\n[Matthew]: alright alright i'll watch it rn",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 148,
+    "total_tokens": 217
+  },
+  "timestamp": "2026-07-10T00:08:09.422438+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 69,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a convo between me (Mia) and my friends Emily and Matt:\n\n[Mia]: hey guys whats up?\n\n[Emily]: nm just got out of math lol u?\n\n[Matt]: same here, that test was soo hard\n\n[Mia]: ikr? i was totally lost on that last question did u guys study for it?\n\n[Emily]: yeah i studied for like an hour last night but i still didnt feel ready \n\n[Matt]: same lol i was up till midnight cramming for it \n\n[Mia]: lol nice you guys are dedicated i just winged it \n\n[Emily]: how'd u do?\n\n[Mia]: idk yet but i dont think i did great \n\n[Matt]: dont worry mia u'll be fine u're like a math genius or something\n\n[Mia]: thx matt u're too kind btw emily u going to alex's party tonight?\n\n[Emily]: yeah i was thinking about it u going?\n\n[Mia]: yeah matt u in?\n\n[Matt]: yessss i've been waiting for that party all week",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 217,
+    "total_tokens": 286
+  },
+  "timestamp": "2026-07-10T00:08:15.395015+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 70,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "[Samantha]: hey guys whats up\n\n[Emily]: nm just got out of math lol thats a nightmare\n\n[Samantha]: ikr i have a test in that class tomorrow and im lowkey freaking out\n\n[Matthew]: lol good luck sam u got this what r u studying for\n\n[Samantha]: idk we're doing sines and cosines and i just cant seem to get it \n\n[Emily]: omg yeah thats hard i had to watch like 10 youtube vids to understand it\n\n[Matthew]: yeah same lol but i found this one website that explains it pretty well i can send u the link if u want\n\n[Samantha]: that would be awesome thx matt \n\n[Emily]: yeah send it to me too pls \n\n[Matthew]: k just sent it to u guys gl on ur test sam",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 170,
+    "total_tokens": 239
+  },
+  "timestamp": "2026-07-10T00:08:18.590953+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 71,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a convo between me (Mia), my BFFs Emily and Matt:\n\n[Mia]: hey guys whats up?\n\n[Emily]: nm just got out of practice u?\n\n[Mia]: same lol just got home from school u free 2nite?\n\n[Matt]: yeah im free whats poppin?\n\n[Emily]: wanna play among us or smthn?\n\n[Mia]: yessss i'm so down matt u in?\n\n[Matt]: duh ofc when r we playin?\n\n[Emily]: how bout 7?\n\n[Mia]: sounds good 2 me c u guys then\n\n[Matt]: cant w8",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 130,
+    "total_tokens": 199
+  },
+  "timestamp": "2026-07-10T00:08:21.450031+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 72,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a convo between me (Mia), my BFFs, Emily and Matt:\n\n[Mia]: hey guys whats up\n\n[Emily]: nm, jst got out of math lol. u?\n\n[Matt]: same lol. i'm so done w/ school rn\n\n[Mia]: sameeeee. so em, did u finish that english essay yet?\n\n[Emily]: yeah i did it last nite. its pretty good i think. u should read it and tell me what u think\n\n[Matt]: lol no way em, mia doesnt do homework \n\n[Mia]: hey thats not true!! anyway, wanna hang out this wknd? maybe see a movie or something\n\n[Emily]: yessss thats sounds so much fun! what movie were u thinking of?\n\n[Matt]: idk, whats out rn? \n\n[Mia]: idk, i'll check. maybe we can see that new marvel movie?\n\n[Emily]: omg yes!! i've been dying to see it \n\n[Matt]: cool, sounds like a plan. ill pick u guys up @ 6?\n\n[Mia]: sounds good to me! c u guys sat",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 235,
+    "total_tokens": 304
+  },
+  "timestamp": "2026-07-10T00:08:26.658357+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 73,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a convo between me (Mia), my bestie (Emily), and our friend (Matt) on our group chat:\n\n[Mia]: hey guys whats up\n\n[Emily]: nm just got out of math lol what about u\n\n[Matt]: same here, that test was a nightmare \n\n[Mia]: ikr i studied for like 2 hours last night and still didnt feel ready \n\n[Emily]: same lol i was up till 12 studying and i still got a few wrong \n\n[Matt]: yeah i was gonna ask, did u guys do the extra credit problem?\n\n[Mia]: yeah i did! it was kinda hard tho \n\n[Emily]: yeah i did it too, i hope i got it right \n\n[Mia]: me too!! ok guys i gotta go, my mom is calling me \n\n[Emily]: k bye!\n\n[Matt]: later!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 178,
+    "total_tokens": 247
+  },
+  "timestamp": "2026-07-10T00:08:30.139466+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 74,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a convo between me (Mia), my BFFs Emily and Matt:\n\n[Mia]: hey guys whats up?\n\n[Emily]: nm just got out of math lol i'm so done with school\n\n[Matt]: same lol i have a ton of homework tonight ugh\n\n[Mia]: yeah me too i'm trying to finish this essay but i'm so distracted \n\n[Emily]: whats the essay on? maybe we can help u brainstorm\n\n[Mia]: its on 1984 by george orwell i'm supposed to analyze the themes or smthn\n\n[Matt]: oh cool i loved that book! didnt we read it in english last year?\n\n[Emily]: yeah we did! i remember the part where winston starts rebelling against the gov\n\n[Mia]: exactly!! thats what i'm trying to write about but idk how to put it into words \n\n[Matt]: we can totes help u with that! wanna facetime and discuss?\n\n[Emily]: yeah sounds good to me!\n\n[Mia]: k cool ill call u guys in 10",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 220,
+    "total_tokens": 289
+  },
+  "timestamp": "2026-07-10T00:08:35.172898+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 75,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a convo between me (Mia) and my friends Emily and Matt:\n\n[Mia]: hey guys whats up?\n\n[Emily]: nm just got out of school u?\n\n[Matt]: same lol just got home and im starving\n\n[Mia]: sameeee i had the worst math test today i'm pretty sure i failed \n\n[Emily]: aw dont worry mia u'll do fine!! did u study at all tho?\n\n[Mia]: lol kinda but not much i was too busy watching vids on youtube \n\n[Matt]: nice priorities mia anyway emily u going to alex's party this wknd?\n\n[Emily]: yeah i think so u guys going?\n\n[Mia]: yeah def going matt u bringing ur gaming setup?\n\n[Matt]: yeah probably c u guys then",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 156,
+    "total_tokens": 225
+  },
+  "timestamp": "2026-07-10T00:08:38.199574+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 76,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a convo between me (Mia), my BFFs Emily and Matt:\n\n[Mia]: hey guys whats up?\n\n[Emily]: nm, jus got out of math lol. u?\n\n[Matt]: same lol, that test was hard. did u guys study?\n\n[Mia]: yeah i studied for like an hour lol. dont think it helped tho \n\n[Emily]: same lol, i'm pretty sure i bombed it. wanna hang out l8r?\n\n[Matt]: yeah sounds good to me. mia u in?\n\n[Mia]: yeah def, whats the plan?\n\n[Emily]: idk yet, maybe we can grab food or somethin? \n\n[Matt]: sounds good, i'm down. when were u thinkin?\n\n[Mia]: how bout 5? i gotta finish this project 1st tho \n\n[Emily]: 5 works for me. c u guys then!\n\n[Matt]: c u l8r",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 193,
+    "total_tokens": 262
+  },
+  "timestamp": "2026-07-10T00:08:42.549813+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 77,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a convo between me (Mia), my bffs Emily and Matt:\n\n[Mia]: hey guys whats up?? \n\n[Emily]: nm just got out of math lol how bout u?\n\n[Matt]: same here, that test was lit \n\n[Mia]: ikr i was so nervous!! did u guys do the homework for english yet?\n\n[Emily]: yeah i did it last night its pretty easy \n\n[Matt]: nah i'm doin it rn wanna come over and study together?\n\n[Emily]: sounds good to me when were u thinkin?\n\n[Mia]: how bout 2moro @ 3? my mom said its cool\n\n[Emily]: k cool see u then!!\n\n[Matt]: c u guys 2moro",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 154,
+    "total_tokens": 223
+  },
+  "timestamp": "2026-07-10T00:08:46.524649+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 78,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a convo between me (Mia), my BFFs Emily and Matt:\n\n[Mia]: hey guys whats up? \n\n[Emily]: nm just got out of math lol u? \n\n[Matt]: same here, that test was lit \n\n[Mia]: ikr i was so nervous!! did u guys study for it? \n\n[Emily]: yeah i studied for like an hour last night lol didnt help tho \n\n[Matt]: same here, i think i might've failed \n\n[Mia]: dont say that matt!! u'll be fine lol wanna hang out 2moro? \n\n[Emily]: yessss i'm down!! what time were u thinkin? \n\n[Matt]: idk, how bout we play some fortnite at 3? \n\n[Mia]: sounds like a plan to me!!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 168,
+    "total_tokens": 237
+  },
+  "timestamp": "2026-07-10T00:08:49.288223+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 79,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a convo between me (Mia) and my friends Emily and Matt:\n\n[Mia]: hey guys whats up?\n\n[Emily]: nm just got out of math class u?\n\n[Matt]: lol same here. i'm so done with fractions\n\n[Mia]: right?? i'm dyin over here. wanna hang out at the mall this wknd?\n\n[Emily]: yeah thats sounds like so much fun! i need new shoes anyway\n\n[Matt]: cool count me in. when were you thinkin?\n\n[Mia]: how bout sat afternoon? we can grab food at the food court\n\n[Emily]: perfect! i'll meet you guys at 2?\n\n[Matt]: sounds good to me. cant wait!\n\n[Mia]: me neither!!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 153,
+    "total_tokens": 222
+  },
+  "timestamp": "2026-07-10T00:08:51.891011+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 80,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a convo between me (Mia) and my friends Emily and Matt:\n\n[Mia]: hey guys whats up?\n\n[Emily]: nm just got out of math lol how bout u?\n\n[Matt]: same here just ate a whole pizza by myself dont @ me\n\n[Mia]: matt ur such a pig btw emily did u do the homework?\n\n[Emily]: yeah i did it last night u should totes do it rn dont wanna be up late\n\n[Matt]: yeah mia dont procrastinate like me \n\n[Mia]: ok ok ill do it rn thx guys ttyl\n\n[Emily]: ttyl!\n\n[Matt]: later!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 132,
+    "total_tokens": 201
+  },
+  "timestamp": "2026-07-10T00:08:54.511385+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 81,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a convo between me (Mia) and my friends, Alex and Jake:\n\n[Mia]: hey guys whats up?\n\n[Alex]: nm just got out of math lol u?\n\n[Mia]: same lol i'm so done with that class. u do the homework?\n\n[Alex]: yeah i did it in class lol jake u do it?\n\n[Jake]: yeah i did it too. it was pretty easy\n\n[Mia]: nice i'm gonna do it rn. wanna play some fortnite later?\n\n[Alex]: yeah sounds good to me. jake u in?\n\n[Jake]: yeah i'm so down. what time were u thinking?\n\n[Mia]: how about 7?\n\n[Alex]: works for me\n\n[Jake]: cool see u guys then",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 157,
+    "total_tokens": 226
+  },
+  "timestamp": "2026-07-10T00:08:57.174093+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 82,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a convo between me and my friends:\n\n[02:34 PM] Me: hey guys whats up\n[02:36 PM] Sam: nm just got out of math lol\n[02:37 PM] Emily: sameeee i'm so done with that class\n[02:38 PM] Me: right?? i swear mr jones is so boring\n[02:40 PM] Sam: lol yeah i know i fell asleep in class today \n[02:41 PM] Emily: what!! how did u not get in trouble??\n[02:42 PM] Sam: idk i just pretended i was taking notes \n[02:43 PM] Me: nice one sam u sneaky thing\n[02:44 PM] Emily: anywayz wanna hang out this wknd?\n[02:45 PM] Me: yeah thats sounds awesome what did u have in mind?\n[02:46 PM] Sam: yeah i'm down lets go to the mall!\n[02:47 PM] Emily: perfect i need to get some new clothes for the spring fling \n[02:48 PM] Me: yaaas spring fling is gonna be lit!!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 244,
+    "total_tokens": 313
+  },
+  "timestamp": "2026-07-10T00:09:01.371917+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 83,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "[Samantha]: hey guys whats up\n\n[Emily]: nm just got out of math homework is a killer\n\n[Matthew]: same lol i have a ton of it 2\n\n[Samantha]: u guys wanna play some fortnite l8r\n\n[Emily]: yessss i'm so down whats the plan\n\n[Matthew]: i can play at 7 pm est u guys cool with that\n\n[Samantha]: sounds good 2 me em?\n\n[Emily]: yeah thats fine c u guys then",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 105,
+    "total_tokens": 174
+  },
+  "timestamp": "2026-07-10T00:09:03.199679+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 84,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a convo between me (Mia), my bestie (Emily), and our friend (Matt) on our group chat:\n\n[Mia]: hey guys whats up?\n\n[Emily]: nm just got out of math class u?\n\n[Matt]: lol same here. that test was lit\n\n[Mia]: ikr i was soooo nervous but i think i did ok\n\n[Emily]: yeah u'll be fine mia u studied hard. matt hows ur gaming stream going?\n\n[Matt]: its goin good thx for askin! just hit 1k followers\n\n[Mia]: yaaas congrats matt!!!\n\n[Emily]: nice job matt! we should all game together soon\n\n[Mia]: def down for that. when were u thinkin?\n\n[Emily]: how about sat?\n\n[Matt]: sounds good to me. ill set it up",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 175,
+    "total_tokens": 244
+  },
+  "timestamp": "2026-07-10T00:09:08.137357+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 85,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "[Samantha]: hey guys whats up?\n\n[Emily]: nm just got out of math lol u?\n\n[Matthew]: same here, that test was brutal\n\n[Samantha]: i know right? i'm pretty sure i failed \n\n[Emily]: dont say that!! u studied hard u'll be fine\n\n[Matthew]: yeah and we can study together for the next one, sound good?\n\n[Samantha]: sounds like a plan thx guys u r the best \n\n[Emily]: aw anytimr sam!!!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 105,
+    "total_tokens": 174
+  },
+  "timestamp": "2026-07-10T00:09:10.280352+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 86,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a convo between me (Mia) and my friends Emily and Matt:\n\n[Mia]: hey guys whats up\n\n[Emily]: nm just got out of practice whats new w u\n\n[Mia]: same lol just got home from school u free tonight\n\n[Matt]: yeah im free whats the plan\n\n[Emily]: idk whats going on\n\n[Mia]: i was thinkin we could watch that new movie on netflix\n\n[Matt]: sounds good to me whats it called again\n\n[Emily]: omg is it that new marvel one\n\n[Mia]: yeah thats the one u in\n\n[Emily]: def down \n\n[Matt]: cool ill bring snacks",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 137,
+    "total_tokens": 206
+  },
+  "timestamp": "2026-07-10T00:09:15.263214+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 87,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a convo between me (Mia), my bffs Emily and Matt:\n\n[Mia]: hey guys whats up?? \n\n[Emily]: nm just got out of math lol u? \n\n[Matt]: same lol i'm so done with school rn \n\n[Mia]: sameeee i need summer break asap!! u guys wanna hang out this wknd? \n\n[Emily]: yessss i'm down!! what were u thinkin? \n\n[Matt]: idk what about the movies? \n\n[Mia]: sounds good to me!! what movie were u thinkin of? \n\n[Emily]: how about that new marvel movie? \n\n[Matt]: yeah thats a great idea!! i've been dyin to see it \n\n[Mia]: ok cool!! i'll check showtimes and we can plan something",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 166,
+    "total_tokens": 235
+  },
+  "timestamp": "2026-07-10T00:09:18.472620+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 88,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a simulated conversation between two teenage friends, Mia and Emily, taking place over text message:\n\n[Mia]: hey em what r u up to?\n\n[Emily]: nm just got out of math class u?\n\n[Mia]: same lol i have a ton of homework 2 do 2nite\n\n[Emily]: ugh dont even get me started i have a essay due 2moro and i havent started it yet\n\n[Mia]: lol yikes u should come over and we can work on it 2gthr\n\n[Emily]: thats a great idea whats ur mom making 4 dinner?\n\n[Mia]: idk but i can ask her 2 make pizza if u want\n\n[Emily]: omg yes pls do that ill b over @ 5?\n\n[Mia]: sounds good c u soon!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 168,
+    "total_tokens": 237
+  },
+  "timestamp": "2026-07-10T00:09:21.992394+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 89,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a convo between me (Mia) and my friends Emily and Matt:\n\n[Mia]: hey guys whats up\n\n[Emily]: nm just got out of math lol u?\n\n[Matt]: same here, that test was lit \n\n[Mia]: ikr i thought i was gonna die i still dont get how we're supposed to solve for x\n\n[Emily]: lol girl its not that hard i can explain it to u later\n\n[Matt]: yeah emily's a math genius dont worry mia u'll get it\n\n[Mia]: thx guys u r the best btw want to hang out this wknd?\n\n[Emily]: yeah sounds good to me what time were u thinkin?\n\n[Matt]: i'm down whenever, as long as its not too early \n\n[Mia]: lol okay how about sat at 2? we can grab ice cream or something\n\n[Emily]: sounds perf to me\n\n[Matt]: cool see u guys sat",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 194,
+    "total_tokens": 263
+  },
+  "timestamp": "2026-07-10T00:09:26.562262+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 90,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a convo between me (Mia) and my friends Emily and Matt:\n\n[Mia]: hey guys whats up?\n\n[Emily]: nm just got out of math class u?\n\n[Matt]: lol same here. i'm so done with fractions\n\n[Mia]: right?? i have a ton of homework due tomorrow tho\n\n[Emily]: yeah me too. wanna come over and study together?\n\n[Matt]: sounds good to me. what time were u thinking?\n\n[Mia]: how about 3? we can grab some food and then hit the books\n\n[Emily]: perfect. see u then!\n\n[Matt]: later",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 127,
+    "total_tokens": 196
+  },
+  "timestamp": "2026-07-10T00:09:28.200652+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 91,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a convo between me (Mia), my friends Emily and Matt:\n\n[Mia]: hey guys whats up?\n\n[Emily]: nm, just got out of math class u?\n\n[Matt]: lol same, that test was a nightmare\n\n[Mia]: ikr? i'm pretty sure i failed did u study at all?\n\n[Emily]: yeah i studied a bit but i dont think it helped lol\n\n[Matt]: same, i was up all night cramming but i still felt unprepared\n\n[Mia]: lol well at least we're all in this together wanna grab coffee after school tomorrow?\n\n[Emily]: sounds good to me!\n\n[Matt]: yeah count me in, i need a coffee fix after that test",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 147,
+    "total_tokens": 216
+  },
+  "timestamp": "2026-07-10T00:09:32.398389+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 92,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a convo between me (Mia), my bestie (Emily), and our friend (Matt) on our group chat:\n\n[Mia]: hey guys whats up?\n\n[Emily]: nm just got out of math lol u?\n\n[Matt]: same here, that test was lit\n\n[Mia]: ikr? i thought for sure i was gonna fail \n\n[Emily]: dont worry mia u got this!! did u hear about the party on sat?\n\n[Matt]: yeah im so down! who's going?\n\n[Mia]: idk yet but i wanna go!! em, u in?\n\n[Emily]: yessss lets get a squad together!!\n\n[Matt]: alright lets make it happen!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 142,
+    "total_tokens": 211
+  },
+  "timestamp": "2026-07-10T00:09:35.051864+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 93,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a convo between me (Mia), my BFFs Emily and Matt:\n\n[Mia]: hey guys whats up\n\n[Emily]: nm just got out of math lol how bout u\n\n[Matt]: same here, that test was lit. u guys wanna play some fortnite tonight\n\n[Emily]: yessss i'm so down. what time were u thinkin\n\n[Mia]: idk how bout 7? i gotta finish this essay 1st tho\n\n[Matt]: sounds good to me. dont 4get to bring ur a game mia\n\n[Emily]: lol matt dont be salty cuz mia always beats u\n\n[Mia]: hey watch it matt. anyway c u guys @ 7",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 147,
+    "total_tokens": 216
+  },
+  "timestamp": "2026-07-10T00:09:39.362540+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 94,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a convo between me (Mia), my BFFs Emily and Matt:\n\n[Mia]: hey guys whats up?\n\n[Emily]: nm just got out of math lol whats new w u?\n\n[Matt]: same here, math is lit. u guys wanna play some fortnite 2nite?\n\n[Mia]: yessss i'm so down!! emily u in?\n\n[Emily]: yeah i'll play but dont expect me to carry u guys\n\n[Matt]: oh burn emily's got sass whats the plan 4 2nite then?\n\n[Mia]: idk how bout 8 pm? and dont worry emily i wont get too salty when u beat me\n\n[Emily]: 8 pm sounds good to me see u guys then!\n\n[Matt]: alright c u guys 2nite!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 167,
+    "total_tokens": 236
+  },
+  "timestamp": "2026-07-10T00:09:42.537012+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 95,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a convo between me (Sam), my friend Emily, and our friend Matt:\n\n[02:34 PM] Sam: hey guys whats up\n\n[02:36 PM] Emily: nm just got out of math lol how bout u\n\n[02:37 PM] Matt: same here, that test was lit \n\n[02:38 PM] Sam: ikr i was soooo nervous but i think i did ok\n\n[02:40 PM] Emily: yeah u'll prob get an A like always \n\n[02:41 PM] Matt: lol emily's just salty cuz she didnt study \n\n[02:42 PM] Emily: hey thats not true!! i studied for like an hour\n\n[02:43 PM] Sam: anywayz wanna hang out this wknd?\n\n[02:44 PM] Matt: yeah sounds good to me, whats the plan?\n\n[02:45 PM] Emily: idk whats good but i'm down",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 197,
+    "total_tokens": 266
+  },
+  "timestamp": "2026-07-10T00:09:45.709967+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 96,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a convo between me (Sam), my friends Emily and Matt:\n\n[02:34 PM] Sam: hey guys whats up?\n\n[02:36 PM] Emily: nm just got out of math lol how bout u?\n\n[02:37 PM] Matt: same here, that test was brutal\n\n[02:38 PM] Sam: ik right? i'm pretty sure i failed \n\n[02:40 PM] Emily: dont worry sam u'll be fine! we should study together for the next one\n\n[02:41 PM] Matt: yeah and we can grab pizza or something\n\n[02:42 PM] Sam: sounds like a plan to me",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 138,
+    "total_tokens": 207
+  },
+  "timestamp": "2026-07-10T00:09:48.171480+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 97,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a brief conversation between two teenaged friends, Mia and Alex, taking place over text message:\n\n[Mia]: hey whats up?\n\n[Alex]: nm just got out of math class u?\n\n[Mia]: same lol i swear mr johnson is so boring\n\n[Alex]: ikr i was literally dying in there btw wanna come over and study for our test together?\n\n[Mia]: yeah thats a great idea what time were u thinkin?\n\n[Alex]: how about 3? my mom said she'd order us some pizza\n\n[Mia]: sounds perf see u then!\n\n[Alex]: k bye!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 125,
+    "total_tokens": 194
+  },
+  "timestamp": "2026-07-10T00:09:51.036869+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 98,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a brief convo between me (Mia) and my friends, Alex and Jake:\n\n[Mia]: hey guys whats up?\n\n[Alex]: nm, just got out of math class u?\n\n[Mia]: same lol i'm so done with fractions\n\n[Jake]: lol what's wrong with fractions?\n\n[Alex]: don't even get her started\n\n[Mia]: hey, they're just so annoying!! anyway, u guys wanna hang out this wknd?\n\n[Jake]: yeah, i'm down. what did u have in mind?\n\n[Alex]: idk, what about we grab some food and see a movie or something?\n\n[Mia]: sounds perf to me! i'll send u guys some movie options later\n\n[Jake]: cool, sounds like a plan\n\n[Alex]: later, guys!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 165,
+    "total_tokens": 234
+  },
+  "timestamp": "2026-07-10T00:09:53.742273+00:00"
+}
+
+{
+  "run_id": "e8e6f180fb8b46f4ad7c15ae890449ba",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp4_user_simulation_youth",
+  "sample": 99,
+  "variables": {},
+  "prompt_text": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message.",
+  "system_text": "You are a young person using informal language like you would among peers.",
+  "response": "Here's a convo between me (Mia), my BFFs Emily and Matt:\n\n[Mia]: hey guys whats up\n\n[Emily]: nm just got out of math lol u?\n\n[Matt]: same here that test was lit \n\n[Mia]: lol right i almost fell asleep \n\n[Emily]: same tho i was dying in there \n\n[Matt]: so whats the plan for tonight? \n\n[Mia]: idk whats up with u guys wanna play some games or smthn\n\n[Emily]: sounds good to me what game were u thinking \n\n[Matt]: how about fortnite\n\n[Mia]: yessss thats a great idea lets do it \n\n[Emily]: k cool ill start up my console \n\n[Matt]: lol dont forget to bring ur a game \n\n[Mia]: shut up matt ill crush u",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 167,
+    "total_tokens": 236
+  },
+  "timestamp": "2026-07-10T00:09:56.668684+00:00"
+}
+
