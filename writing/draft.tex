@@ -51,7 +51,7 @@
 
 % --- Paper metadata ---
 \title{LLMs Can't Keep Up with Language That's on Fleek\\
-{\large How Training Data Age Shapes (and Freezes) Model Vocabulary}}
+{\large How Training Data Age Stunts Model Vocabulary}}
 
 % Remove author block for anonymous review; fill in for camera-ready.
 % \author{Author Name \\ Institution \\ \texttt{email@example.com}}
@@ -62,7 +62,7 @@
 
 % ============================================================
 \begin{abstract}
-Large language models inherit not only the knowledge but the temporal texture of their training data. Because web-scale corpora carry no uniform date weighting, a model trained on a decade of internet text may treat decade-old slang as equivalent to current usage. We ask whether LLMs track the temporal lifecycle of informal vocabulary or whether their slang usage is frozen relative to the pace of real-world linguistic change. Combining a sense-disambiguated frequency analysis of thirteen slang terms in FineWeb---a dated, filtered derivative of Common Crawl---with three complementary probes of four contemporary LLMs, we find that (i)~model slang usage is anchored to older, well-attested terms irrespective of recency; (ii)~explicitly stating a year in the prompt does not move models toward era-appropriate vocabulary; and (iii)~models' declarative knowledge of when a term was popular is directionally correct but systematically shifted years into the past. We argue these effects compound as human-authored text is increasingly displaced by model output, and discuss implications for training-data curation.
+Large language models inherit not only the knowledge but the temporal texture of their training data. Because web-scale corpora carry no uniform date weighting, a model trained on a decade of internet text may treat decade-old slang as equivalent to current usage. We ask whether LLMs track the temporal lifecycle of informal vocabulary or whether their slang usage is stunted relative to the pace of real-world linguistic change. Combining a frequency analysis of thirteen slang terms in FineWeb---a dated, filtered derivative of Common Crawl---with three complementary probes of four contemporary LLMs, we find that (i)~model slang usage is anchored to older, well-attested terms irrespective of recency; (ii)~explicitly stating a year in the prompt does not move models toward era-appropriate vocabulary; and (iii)~models' declarative knowledge of when a term was popular is directionally correct but systematically shifted years into the past. We argue these effects compound as human-authored text is increasingly displaced by model output, and discuss implications for training-data curation.
 \end{abstract}
 
 % ============================================================
@@ -264,6 +264,13 @@ Slicing the FineWeb 10BT sample by crawl dump and applying the RoBERTa sense fil
     \label{fig:cc-2022-24}
 \end{figure}
 
+\begin{figure}
+    \centering
+    \includegraphics[width=1.0\linewidth]{scenario_freq_count_aggregate.png}
+    \caption{Aggregate slang-sense frequency across the full scenario vocabulary in FineWeb 10BT, normalized per million tokens per crawl dump and summed across all target words. The aggregate curve rises through the mid-2010s and plateaus, reflecting the combined lifecycle of a broad informal lexicon rather than any single word's arc.}
+    \label{fig:cc-aggregate}
+\end{figure}
+
 Two properties matter for the probing analysis. First, the words we treat as ``older'' (\textit{lol}, \textit{swag}) are demonstrably in decline by the end of the window, while the ``recent'' words (\textit{aura}, \textit{slay}, \textit{glow-up}) are still rising --- so a model that reflected current usage would weight the latter group more heavily over time. Second, the sense filter is what makes these counts meaningful: without it, \textit{sick} and \textit{aura} would be dominated by their standard-English senses and show no slang lifecycle at all.
 
 \todo{Extend the curves to the full set of available dumps and overlay each word's corpus peak year as a vertical marker, for direct visual comparison against the model-stated peak years in Experiment~3 (Section~\ref{sec:exp3}). Report the RoBERTa filter's held-out accuracy.}
@@ -379,7 +386,14 @@ The practical effect today is modest, and is partly masked by instruction-tuned 
 
 \paragraph{Fine-tuning as mitigation.} The most direct test of our framing is interventional: fine-tune a model on a recency-weighted subset of the data---upsampling recent dumps, or downsampling older ones---and re-run the probes. If the temporal freeze is driven by aggregate corpus frequency, recency weighting should shift recovery toward newer slang, whereas no change would point to a deeper architectural or alignment cause. \todo{Review the literature on recency-weighted and continual-learning training for LLMs before designing this experiment.}
 
-\paragraph{Naturalistic generation.} Our recovery probe forces a single-word answer. A complementary experiment would measure the rate at which target slang appears in free, in-context generation (e.g.\ a casual message or social-media reply), giving an ecologically valid estimate of usage to set against the forced-choice recovery rates. \todo{Run a controlled free-generation probe and report per-era slang production rates with matched register prompts.}
+\paragraph{Naturalistic generation.} Our recovery probe forces a single-word answer. A complementary experiment would measure the rate at which target slang appears in free, in-context generation (e.g.\ a casual message or social-media reply), giving an ecologically valid estimate of usage to set against the forced-choice recovery rates. Figure~\ref{fig:usersim-slang} shows a preliminary result from a user-simulation prompt that asks each model to generate an informal text-message conversation: model output again skews heavily toward high-frequency, older slang (\textit{u}, \textit{lol}, \textit{omg}), consistent with the forced-choice findings. \todo{Run a controlled free-generation probe and report per-era slang production rates with matched register prompts.}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1.0\linewidth]{slang_freq_log.png}
+    \caption{Slang word frequency in naturalistic user-simulation responses (log scale), aggregated across four models (400 responses, 100 per model). Top panel: words ordered by corpus peak year (oldest~$\to$~newest), coloured by peak year (plasma scale). Bottom panel: same words ordered by descending corpus frequency. Dashed lines are log-linear trend fits. High-frequency, older terms (\textit{u}, \textit{lol}, \textit{omg}) dominate both panels; recent slang appears at the far right of the top panel with counts near 1, reproducing in free generation the recency gap observed in forced-choice recovery.}
+    \label{fig:usersim-slang}
+\end{figure}
 
 \paragraph{Further directions.}
 \begin{itemize}
@@ -406,60 +420,112 @@ Table~\ref{tab:words} lists the thirteen probed slang terms, the temporal band t
 \begin{table}[h]
 \centering
 \small
-\begin{tabular}{llc}
+\begin{tabular}{llccr}
 \toprule
-Word & Band & Corpus peak \\
+Word & Band & Peak & Peak rate & Hits \\
 \midrule
-troll      & pre-2018    & 2013 \\
-bro        & pre-2018    & 2014 \\
-lol        & pre-2018    & 2014 \\
-sick       & pre-2018    & 2014 \\
-swag       & pre-2018    & 2015 \\
-alpha      & around 2020 & 2020 \\
-vibe       & around 2020 & 2024 \\
-vibes      & around 2020 & 2024 \\
-red pill   & around 2020 & 2024 \\
-gaslight   & 2022--2024  & 2023 \\
-glow-up    & 2022--2024  & 2023 \\
-aura       & 2022--2024  & 2023 \\
-slay       & 2022--2024  & 2024 \\
+troll      & pre-2018    & 2013 & 1.008  & 6{,}077 \\
+bro        & pre-2018    & 2014 & 1.043  & 7{,}914 \\
+lol        & pre-2018    & 2014 & 16.162 & 107{,}305 \\
+sick       & pre-2018    & 2014 & 2.017  & 14{,}015 \\
+swag       & pre-2018    & 2015 & 0.408  & 2{,}624 \\
+alpha      & around 2020 & 2020 & 0.702  & 5{,}764 \\
+vibe       & around 2020 & 2024 & 3.878  & 30{,}862 \\
+vibes      & around 2020 & 2024 & 4.003  & 20{,}311 \\
+red pill   & around 2020 & 2024 & 0.135  & 546 \\
+gaslight   & 2022--2024  & 2023 & 0.072  & 316 \\
+glow-up    & 2022--2024  & 2023 & 0.041  & 98 \\
+aura       & 2022--2024  & 2023 & 0.178  & 1{,}231 \\
+slay       & 2022--2024  & 2024 & 0.308  & 1{,}795 \\
 \bottomrule
 \end{tabular}
-\caption{Probed target words, temporal band, and corpus peak year (FineWeb 10BT, RoBERTa sense score $\geq 0.99$).}
+\caption{Probed target words, temporal band, corpus peak year, peak-year slang-sense rate (occurrences per million tokens), and total slang-sense hits across the FineWeb 10BT sample (RoBERTa sense score $\geq 0.99$). Peak year is the argmax, over calendar years, of the token-normalised yearly rate; ``Hits'' is the raw count of above-threshold occurrences pooled over all 95 dumps. Rates span nearly three orders of magnitude, from the saturated \textit{lol} (16.2 per M) to the emergent \textit{glow-up} (0.04 per M).}
 \label{tab:words}
 \end{table}
 
 \section{Experiment 1: FineWeb Corpus Frequency}
 \label{app:exp1}
 
-\textbf{Data.} The public FineWeb \citep{penedo2024the} 10BT sample on HuggingFace, comprising 95 dated Common Crawl (\texttt{CC-MAIN}) dumps spanning 2013--2024. Each document's \texttt{dump} field is mapped to the Monday of its ISO year-week to place it on a calendar axis.
+\subsection{Corpus and token budget}
 
-\textbf{Sense disambiguation.} For each target word we extract every occurrence with its surrounding context and score it with a RoBERTa classifier fine-tuned to separate the slang sense from the standard-English sense (e.g.\ \textit{sick} ill vs.\ excellent, \textit{aura} energy-field vs.\ Gen-Z coolness). The paper's figures count only occurrences scoring $\geq 0.99$; the threshold is a tunable parameter.
+The corpus ground truth is the public FineWeb \citep{penedo2024the} \texttt{sample-10BT} config on HuggingFace: 95 dated Common Crawl (\texttt{CC-MAIN}) dumps spanning \texttt{2013-20} through \texttt{2024-10}, totalling $1.037\times10^{10}$ tokens. Each document's \texttt{dump} field is mapped to the Monday of its ISO year-week to place it on a calendar axis, and the per-dump token totals (cached in \texttt{fineweb\_10BT\_dump\_sizes.json}) serve as the denominators for rate normalisation. The sample is unevenly distributed across years---the mid-2010s crawls are the largest and the truncated 2024 slice the smallest---so per-year token totals (Table~\ref{tab:tokens}) are essential for interpreting raw counts.
 
-\textbf{Normalization and uncertainty.} Sense-filtered counts are converted to occurrences per million tokens of the corresponding dump, $r_{w,d} = 10^{6}\cdot \text{count}_{\text{slang}}(w,d) / \text{tokens}(d)$, using per-dump token totals from the FineWeb sample metadata. Each per-dump count is treated as a Poisson draw, and the figures show the exact (Garwood) 95\% Poisson interval as a shaded band.
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{lr@{\hskip 2em}lr}
+\toprule
+Year & Tokens (M) & Year & Tokens (M) \\
+\midrule
+2013 & 185.4  & 2019 & 1{,}236.9 \\
+2014 & 714.1  & 2020 & 974.6 \\
+2015 & 827.7  & 2021 & 1{,}134.4 \\
+2016 & 765.7  & 2022 & 852.1 \\
+2017 & 1{,}429.7 & 2023 & 809.9 \\
+2018 & 1{,}336.9 & 2024 & 103.9 \\
+\bottomrule
+\end{tabular}
+\caption{FineWeb 10BT sample token totals by calendar year (millions), summed over that year's \texttt{CC-MAIN} dumps. Total: 10{,}371.5\,M tokens across 95 dumps. The 2024 slice is truncated at dump \texttt{2024-10}.}
+\label{tab:tokens}
+\end{table}
 
-\textbf{Plotting.} Frequency curves use a $\log_2$ y-axis with a 5-dump centered moving average; dumps with zero sense-filtered occurrences are omitted so the line connects neighboring dumps rather than dropping to the floor. A linear-axis (\texttt{\_count}) version of each figure is also provided. The corpus peak year (Table~\ref{tab:words}) is the argmax, over calendar years, of the year-pooled normalized rate.
+\subsection{Context extraction}
 
-\textbf{Implementation.} \texttt{FineWebAnalysis/}: \texttt{roberta\_filter.py} (context scoring), \texttt{word\_rate\_plotter.py} (frequency curves), \texttt{peak\_year.py} (peak-year extraction).
+For each target word we stream the sample and, for every surviving document, extract a $\pm 20$-token window of the original text around each match (\texttt{fineweb\_context.py}, \texttt{--context-window 20}), preserving the raw casing, punctuation, and spacing needed for sense classification. Matching is performed on normalised tokens (whitespace-split, lower-cased, leading/trailing punctuation stripped) via a regex that mirrors the tokeniser's word boundaries, so multi-word targets (\textit{red pill}, \textit{glow-up}) and inflected forms are captured. One CSV of \texttt{(target, uri, target\_context)} rows is produced per dump.
+
+\subsection{Sense disambiguation}
+
+Each extracted context is scored with a RoBERTa classifier fine-tuned to separate the \textit{slang} sense from the \textit{standard-English} sense (e.g.\ \textit{sick} ill vs.\ excellent, \textit{aura} energy-field vs.\ Gen-Z coolness). The judged word is injected into a prompt so the decision is conditioned on \textit{which} word is in question: \texttt{Is the word "\{target\}" used as slang here? \{context\}}. The paper's figures count only occurrences scoring $\geq 0.99$; the threshold is a tunable parameter exposed by \texttt{roberta\_filter.py} (raw scores lie in $[-1,1]$). Appendix~\ref{app:classifier} documents the classifier's data and evaluation.
+
+\subsection{Normalisation and uncertainty}
+
+Sense-filtered counts are converted to occurrences per million tokens of the corresponding dump, $r_{w,d} = 10^{6}\cdot \text{count}_{\text{slang}}(w,d) / \text{tokens}(d)$, using the per-dump token totals above. Each per-dump count is modelled as a Poisson draw $k \sim \text{Poisson}(r_{w,d}\cdot\text{tokens}(d))$, and the figures show the exact (Garwood) Poisson interval (95\% by default) as a shaded band; the band tightens as the centred smoothing window aggregates more of the sample.
+
+\subsection{Plotting and peak extraction}
+
+Frequency curves use a $\log_2$ y-axis with a 5-dump centred moving average; the CI band is the exact Poisson interval on the window-pooled count. Dumps with zero sense-filtered occurrences are dropped so the line connects neighbouring dumps rather than falling to the floor, and a linear-axis (\texttt{\_count}) version of each figure is also produced. The corpus peak year (Table~\ref{tab:words}) is the argmax, over calendar years, of the year-pooled normalised rate (\texttt{peak\_year.py}).
+
+\subsection{Implementation}
+
+\texttt{FineWebAnalysis/}: \texttt{fineweb\_context.py} (context extraction), \texttt{roberta\_filter.py} (context scoring), \texttt{word\_rate\_plotter.py} (frequency curves and Poisson bands), \texttt{peak\_year.py} (peak-year extraction).
+
+\section{Sense Classifier: Data, Training, and Validation}
+\label{app:classifier}
+
+\subsection{Model and training}
+
+The sense classifier is a \texttt{roberta-base} sequence classifier fine-tuned for binary slang-vs-standard judgement (\texttt{finetune\_roberta.py}). The target word is injected into the prompt template above and the rendered string is truncated/padded to 256 tokens. Training uses a class-weighted cross-entropy loss (weights inversely proportional to class frequency, to offset the label imbalance), AdamW (learning rate $2\times10^{-5}$, weight decay $0.01$), batch size 16, and a linear schedule; we hold out a stratified 20\% split (\texttt{random\_state=42}) and keep the checkpoint with the best validation accuracy. The exact prompt template is serialised next to the model so that \texttt{roberta\_filter.py} applies identical wording at inference.
+
+\subsection{Annotation data}
+
+Training data combines human-annotated FineWeb contexts (1{,}310 rows over 15 words, 649 slang / 661 standard) with a larger synthetically generated set (8{,}504 rows over 124 words, 6{,}108 slang / 2{,}396 standard). Synthetic examples are produced by prompting Claude for 50--100 natural example sentences per target word, each self-labelled slang or standard; words with a genuine everyday sense are balanced $\sim$50/50, while slang-only words (\textit{skibidi}, \textit{rizz}, \dots) are all-slang (\texttt{generate\_synthetic\_annotations.py}). Conditioning the classifier on the target word lets a single model generalise across the full target vocabulary rather than requiring a per-word classifier.
+
+\subsection{Validation of the synthetic labels}
+
+Because the training set leans on synthetic labels, we audited their reliability against human judgement on a 995-example sample (\texttt{validation\_metrics.py}), treating the manual annotation as ground truth. Synthetic labels agree with human labels 98.7\% of the time (precision 99.9\%, recall 98.4\%, $F_1 = 99.1\%$; false-positive rate 0.4\%, false-negative rate 1.6\%; confusion matrix TN\,=\,261, FP\,=\,1, FN\,=\,12, TP\,=\,721), confirming the synthetic labels are a faithful stand-in for human sense judgements.
+
+\subsection{Held-out evaluation protocol}
+
+The trained classifier is evaluated on a separate, class-balanced held-out set of FineWeb contexts (1{,}340 rows over 15 words, 670 slang / 670 standard; \texttt{fine\_web\_small\_validation\_set}) via \texttt{auc\_eval.py}, which reports ROC AUC together with a confusion matrix, precision/recall/$F_1$ at the operating threshold, and a per-word breakdown. Passing \texttt{--train-dir} additionally restricts the metrics to contexts whose text does not appear in the training annotations, isolating performance on genuinely unseen strings. \todo{Report the held-out ROC AUC and threshold-0.99 precision/recall from the final \texttt{ft\_model\_roberta} checkpoint.}
 
 \section{Experiment 2: Semantic Slot Probing}
 \label{app:exp2}
 
-All slot prompts share the system message \texttt{"Respond with only a single word or very short phrase -- no explanation, no punctuation."} and are sampled at temperature~1.0.
+All slot prompts are sampled at temperature~1.0. Concept-slot prompts use the system message \texttt{"Respond with a single word only. No explanation, no punctuation -- just the word."}; target-recovery prompts use \texttt{"Respond with only a single word or very short phrase -- no explanation, no punctuation."}
 
-\textbf{Concept-slot mode.} Six meaning slots, each with four independently worded phrasings; the model's single-word answer is recorded without naming any target. The first phrasing of each slot:
-\begin{itemize}\itemsep2pt
-  \item \textit{cool/impressive:} ``What's a single informal word someone might use to describe something they think is very impressive or cool?''
-  \item \textit{mediocre:} ``What's a single informal word for something that is average, unimpressive, or not worth your time?''
-  \item \textit{charisma:} ``What's a single informal word for someone's natural ability to effortlessly attract others or come across as charming?''
-  \item \textit{agreement:} ``What's a single informal word someone uses to express strong enthusiastic agreement or approval?''
-  \item \textit{suspicious:} ``What's a single informal word for when something about a person or situation feels off, untrustworthy, or not right?''
-  \item \textit{excellent (sensory):} ``What's a single informal word someone would use to say a song, food, or piece of art is exceptionally good?''
+\textbf{Concept-slot mode.} Six meaning slots, each with four independently worded phrasings (24 prompts total); the model's single-word answer is recorded without naming any target, surfacing its default vocabulary per slot. The full phrasing set:
+\begin{itemize}\itemsep3pt
+  \item \textit{cool/impressive:} (1)~``What's a single informal word someone might use to describe something they think is very impressive or cool?'' (2)~``Give me one slang word people use to say something is excellent or impressive.'' (3)~``What's an informal word for something that is really good and worth getting excited about?'' (4)~``Name a single casual word that means something is exceptionally cool or impressive.''
+  \item \textit{mediocre:} (1)~``What's a single informal word for something that is average, unimpressive, or not worth your time?'' (2)~``Give me one slang word people use to say something is mediocre or disappointing.'' (3)~``What's a casual word that means something failed to meet expectations?'' (4)~``Name a single informal word that means something is just okay --- not good, not terrible.''
+  \item \textit{charisma:} (1)~``What's a single informal word for someone's natural ability to effortlessly attract others or come across as charming?'' (2)~``Give me one slang word that describes the quality of being naturally magnetic, charming, or romantically appealing.'' (3)~``What's a casual word for the thing that makes someone just naturally attractive or charismatic without trying?'' (4)~``Name a single informal word for the kind of confident, effortless charm that makes people drawn to someone.''
+  \item \textit{agreement:} (1)~``What's a single informal word someone uses to express strong enthusiastic agreement or approval?'' (2)~``Give me one slang word people say to mean `yes, absolutely, that's totally true.' '' (3)~``What's a casual word for when you hear something and you completely agree with it?'' (4)~``Name a single informal word used to affirm what someone just said --- like a stronger, more casual `exactly.' ''
+  \item \textit{suspicious:} (1)~``What's a single informal word for when something about a person or situation feels off, untrustworthy, or not right?'' (2)~``Give me one slang word that means something seems off or like it shouldn't be trusted.'' (3)~``What's a casual word for when you sense that someone is being deceptive or hiding something?'' (4)~``Name a single informal word for a feeling that something is unsafe or that a person can't be trusted.''
+  \item \textit{excellent (sensory):} (1)~``What's a single informal word someone would use to say a song, food, or piece of art is exceptionally good?'' (2)~``Give me one slang word people use when something sounds, tastes, or feels really, really good.'' (3)~``What's a casual word for when a song or meal is so good it gives you a visceral, satisfying reaction?'' (4)~``Name a single informal word meaning something is so good it almost overwhelms you in a great way.''
 \end{itemize}
 
 \textbf{Target-recovery mode.} Each of the thirteen target words has three phrasings written to evoke that word specifically. A response counts as a recovery if it matches the target after case-folding, applying a light suffix stemmer and whole-word phrase containment --- so \textit{glowup}/\textit{glow-up}, \textit{gaslighting}/\textit{gaslight}, and ``take the red pill''/\textit{red pill} all count, while \textit{swagger} is not credited as \textit{swag}. Listing~\ref{lst:exp2-recovery} shows two of the thirteen templates.
 
-\textbf{Year-conditioned variant.} Each target-recovery prompt is prefixed with ``The year is \{year\}.'' and the year is swept over 2013--2025. With four models, thirteen words, three phrasings, thirteen years, and ten samples per cell this yields 20{,}280 responses (5{,}070 per model; 30 per word\,$\times$\,year cell) --- the data behind the year-resolved heatmaps (Figure~\ref{fig:slotyear}).
+\textbf{Year-conditioned variant.} Each target-recovery prompt is prefixed with ``The year is \{year\}.'' and the year is swept over 2013--2025 (13 values). With four models, thirteen words, three phrasings, thirteen years, and ten samples per cell this yields 20{,}280 responses (5{,}070 per model; 30 per word\,$\times$\,year cell) --- the data behind the year-resolved heatmaps (Figure~\ref{fig:slotyear}). Aggregate target-word recovery (Figure~\ref{fig:slotaccuracy}) pools these responses over the stated year.
 
 \begin{lstlisting}[language=json, caption={Two of the thirteen target-recovery prompt templates (Experiment 2). The year-conditioned variant sweeps the \texttt{year} list over 2013--2025; the unconditioned recovery figure pools over all years.}, label={lst:exp2-recovery}]
 { "id": "exp3_lol",
@@ -502,14 +568,15 @@ All slot prompts share the system message \texttt{"Respond with only a single wo
 \section{Experiment 3: Direct Year Association}
 \label{app:exp3}
 
-These probes share the system message \texttt{"Give the response as a single returned token or word."} Two are free-text and one is a logprob probe:
+These probes share the system message \texttt{"Give the response as a single returned token or word."} Two are free-text point estimates and the remainder are logprob/echo probes over the same thirteen target words and the year range 2013--2025:
 \begin{itemize}\itemsep2pt
   \item \textbf{GiveYear:} ``The slang word `\{word\}' is most associated with what year? Respond using only the year.''
   \item \textbf{DatePhrase:} ``You hear someone saying `\{word\}' in conversation, which year are they most likely saying this in?''
-  \item \textbf{AssociateSlangLogprobs:} ``A standout word in term of popularity incrase in \{year\} was \{word\}'' --- an echo${+}$logprob probe (\texttt{logprobs=5}, \texttt{echo=true}) that scores the joint completion logprob of each \textit{(year, word)} pair over years 2015--2025.
+  \item \textbf{AssociateSlangLogprobs:} ``A standout word in term of popularity increase in \{year\} was \{word\}'' --- an echo${+}$logprob probe (\texttt{logprobs=5}, \texttt{echo=true}) that scores the joint completion logprob of each \textit{(year, word)} pairing across 2013--2025, yielding a continuous year\,$\times$\,word association surface rather than a single point estimate.
+  \item \textbf{GiveTopSlang / GiveTopSlangLogprobs:} ``What is the most unique and popular slang word associated with the year \{year\}? Respond using only a single word.'' --- the inverse mapping (year\,$\to$\,word), collected as free text and, for the open models, with echo${+}$logprobs; reported as supplementary.
 \end{itemize}
 
-\noindent GiveYear and DatePhrase are rendered once per target word and sampled five times per word on all four models; a four-digit year is parsed from each response. AssociateSlangLogprobs runs only on the two open-weight models, since the closed APIs do not expose token logprobs. The mean responded year per word, pooled over GiveYear and DatePhrase, is plotted against the corpus peak in Figure~\ref{fig:yearassoc}.
+\noindent GiveYear and DatePhrase are rendered once per target word and sampled five times per word on all four models ($13\times5\times2\times4 = 520$ responses); a four-digit year is parsed from each response. The logprob/echo probes run only on the two open-weight models, since the closed APIs do not expose token logprobs. The mean responded year per word, pooled over GiveYear and DatePhrase, is plotted against the corpus peak in Figure~\ref{fig:yearassoc}; the per-model mean absolute errors against the corpus peak are 6.2 (Claude), 4.4 (GPT-4o, inflated by its collapse to ``2023''), 8.0 (DeepSeek), and 7.7 (Llama) years.
 
 \section{Models and Sampling}
 \label{app:models}
@@ -521,6 +588,27 @@ These probes share the system message \texttt{"Give the response as a single ret
   \item \texttt{claude-sonnet-4-6} --- Anthropic; closed, no token logprobs.
 \end{itemize}
 
-\noindent All probing prompts are sampled at temperature~1.0. Because the closed APIs do not expose token logprobs, their response distributions are approximated by repeated sampling; the logprob-based probes (\textit{AssociateSlangLogprobs}) run only on the open-weight models. Prompt templates and the response-collection harness are in the \texttt{PromptingSlang/} directory of the project repository.
+\noindent A single harness (\texttt{PromptingSlang/}) dispatches each prompt to the correct provider by model-id convention (\texttt{org/model}\,$\to$\,Together, \texttt{claude-*}\,$\to$\,Anthropic, \texttt{gpt-*}/\texttt{o\#-*}\,$\to$\,OpenAI), retrying with exponential backoff. Prompts expand by the Cartesian product of their \texttt{variables} block, and each expansion is sampled \texttt{--samples} times (an additional \texttt{--closed-samples} factor lets closed models approximate a token distribution by repeated sampling); generation is capped at 512 tokens. All probing prompts set temperature~1.0 per template. Because the closed APIs do not expose token logprobs, their response distributions are approximated by repeated sampling, and the logprob/echo probes run only on the open-weight models. Runs are keyed by \texttt{(model, prompt, sample index)} and are resumable, so partial runs top-fill rather than restart. Prompt templates and the response-collection harness are in the \texttt{PromptingSlang/} directory of the project repository.
+
+\section{Naturalistic Generation: Statistical Analyses}
+\label{app:usersim}
+
+This appendix details the user-simulation probe behind Figure~\ref{fig:usersim-slang} (Future Work) and the estimators that quantify its ``temporal vintage.''
+
+\subsection{Probe and vocabulary}
+
+Each model is asked to role-play informal peer conversation via two prompts (system: \texttt{"You are a young person using informal language like you would among peers\dots"}; e.g.\ ``Simulate a brief conversation between two or more teenaged friends taking place online or over text message''), yielding 100 responses per model (400 total). Generated text is matched against a 150-word slang vocabulary (the union of \texttt{target\_words.txt} and \texttt{scenario\_words.txt}), each word carrying the corpus peak year of Experiment~1. As in the forced-choice probes, output concentrates on a handful of high-frequency, older terms: pooled across models the top items are the skull emoji (\texttt{U+1F480}), \textit{u}, \textit{lol}, \textit{omg}, and \textit{bro}, while post-2020 slang appears with counts near~1.
+
+\subsection{Effective vintage}
+
+We summarise each model's produced slang by its \textit{effective vintage}: the count-weighted mean corpus-peak year of the slang it emits (\texttt{effective\_vintage.py}). Over the vocabulary of 88 words with $\geq 100$ corpus hits (38 of which appear across the 1{,}000 pooled responses, 706 total hits), the model vintage is \textbf{2014.3} (95\% CI $[2014.1, 2014.4]$; parametric Poisson bootstrap, $B=5000$, seed~42) against a frequency-weighted corpus vintage of \textbf{2015.8} --- a lag of $-1.5$ years, i.e.\ models skew older than the corpus baseline over the same vocabulary. The high-frequency skull emoji (\texttt{U+1F480}) is excluded from the vintage estimators, as its corpus rate is unreliable under FineWeb's text-processing.
+
+\subsection{Temporal mixture}
+
+As a distributional cross-check we fit the model's produced-year distribution as a mixture over calendar-year slices (2013--2024) and read off an effective vintage from the fitted weights (\texttt{temporal\_mixture.py}, $\varepsilon = 0.5$ smoothing). Both fits place the dominant weight on 2013: the EM (KL-minimising) fit gives effective vintage \textbf{2013.4} $[2013.0, 2014.1]$ with $\mathrm{KL}(P_{\text{model}}\,\|\,\text{mixture}) = 0.88$ nats versus a $0.99$-nat uniform null, and the L2 fit gives \textbf{2015.8} $[2014.9, 2016.6]$. Per-word residuals show the model over-indexing on a few older, high-salience terms (\textit{bro}, \textit{omg}) and under-indexing on genuinely recent slang (\textit{vibe}, \textit{legit}, \textit{tea}).
+
+\subsection{Regression cross-check}
+
+A negative-binomial regression of per-word response counts on corpus peak year (\texttt{nb\_regression.py}, 89 words) confirms severe overdispersion (dispersion $\alpha \approx 6.8$; likelihood-ratio test vs.\ Poisson $p < 0.001$), which is why we rely on the vintage and mixture estimators for the headline comparison: with 50 of 89 words never produced and a handful of high-frequency recent outliers (\textit{legit}, \textit{vibe}), the regression's point estimate is unstable and we do not draw a directional claim from it. \todo{Report the response-level (rather than parametric) bootstrap variant and reconcile the EM vs.\ L2 vintage gap.}
 
 \end{document}
