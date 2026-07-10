@@ -3,3 +3,8 @@
   "system": "You are a young person using informal language like you would among peers.",
   "user": "Simulate a brief conversation between two or more teenaged friends taking place online or over text message."
 }
+{
+  "id": "exp4_user_simulation_youth2",
+  "system": "You are a young person using informal language like you would among peers. Respond directly to the prompt without providing preamble.",
+  "user": "Simulate an online interaction between a group of young people."
+}

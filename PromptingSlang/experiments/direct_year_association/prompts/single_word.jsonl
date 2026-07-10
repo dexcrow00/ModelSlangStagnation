@@ -1,8 +1,8 @@
 {
-  "id": "AssociateSlangLogprobs",
+  "id": "AssociatedSlangLogprobs",
   "model_type": "open",
   "system": "Give the response as a single returned token or word.",
-  "user": "A standout word in term of popularity incrase in {year} was {word}",
+  "user": "A standout word in term of popularity increase in {year} was {word}",
   "variables": {
     "year": ["2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"],
     "word": ["lol", "sick", "troll", "bro", "swag", "vibe", "vibes", "alpha", "red pill", "slay", "gaslight", "glow-up", "aura"]

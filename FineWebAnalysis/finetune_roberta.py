@@ -111,14 +111,6 @@ class _SlangDataset(Dataset):
 
 
 def _target_from_filename(stem: str) -> str:
-    """Infer the judged word/phrase from an annotation CSV's filename stem.
-
-    Handles both the bare ``<word>_annotations`` style and the longer
-    ``Annotations V1 - FineWeb - fire_annotations`` style by taking the segment
-    after the last ' - ' separator and stripping a trailing
-    ``_annotations`` / ``_annotated`` / ``_validation`` suffix. Multi-word
-    targets (e.g. ``basic bitch_annotations`` -> ``basic bitch``) are preserved.
-    """
     tail = stem.split(" - ")[-1]
     target = re.sub(r"(?i)[ _]?(?:validation|annotated|annotations)$", "", tail)
     return target.strip(" _").strip()

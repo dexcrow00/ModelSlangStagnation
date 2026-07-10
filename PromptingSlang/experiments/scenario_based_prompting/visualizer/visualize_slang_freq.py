@@ -221,7 +221,8 @@ def _draw_panel(fig, ax, words, values, colors, cmap, norm, cbar_label,
 
 def render(totals: Counter, n_responses: int, peaks: dict[str, tuple[int, int]],
            model_label: str | None, as_rate: bool, min_hits: int, output: Path | None,
-           drop_unreliable: bool = False, log_y: bool = False) -> None:
+           drop_unreliable: bool = False, log_y: bool = False,
+           caption: str = "") -> None:
     appeared = [w for w in totals if totals[w] > 0]
     if not appeared:
         sys.exit("No target words found in any response.")
@@ -312,6 +313,9 @@ def render(totals: Counter, n_responses: int, peaks: dict[str, tuple[int, int]],
                  f"{n_responses} responses, {total_hits} slang hits "
                  f"({total_hits / max(n_responses, 1):.2f} per response){greyed_note}", fontsize=11)
     fig.tight_layout(rect=(0, 0, 1, 0.95))
+    if caption:
+        fig.text(0.5, 0.01, caption, ha="center", va="bottom", fontsize=8,
+                 style="italic", wrap=True)
     if output:
         output.parent.mkdir(parents=True, exist_ok=True)
         fig.savefig(output, dpi=150, bbox_inches="tight")
@@ -378,9 +382,20 @@ def main() -> None:
     for w in {x.lower() for x in args.exclude}:
         totals.pop(w, None)
 
+    # ── Figure caption ────────────────────────────────────────────────────────
+    # Edit this string, then regenerate to embed the caption in the image.
+    caption = (
+        "Experiment 4: We generated 100 responses per model for a user simulation prompt (see appendix C or something)" \
+        "in order to collect natural slang usage metrics. We then calculated peak usage year and total count for each word" \
+        "in the FineWeb corpus. The results show that, expectedly, models tend to more frequently use slang words that appear in the corpus" \
+        "more often. Our finding is that corpus slang volume also correlates with peak slang usage age (older slang is more " \
+        "represented in the corpus), leading to models overusing out-of-date slang."
+    )
+
     render(totals, n, peaks, model_label, args.rate, args.min_peak_hits,
            None if str(args.output) == "-" else args.output,
-           drop_unreliable=args.drop_unreliable, log_y=args.log_y)
+           drop_unreliable=args.drop_unreliable, log_y=args.log_y,
+           caption=caption)
 
 
 if __name__ == "__main__":
