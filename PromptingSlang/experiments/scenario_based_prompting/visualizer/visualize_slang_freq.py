@@ -32,9 +32,10 @@ import sys
 from collections import Counter
 from pathlib import Path
 
+import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib import cm
-from matplotlib.colors import LogNorm, Normalize
+from matplotlib.colors import Normalize
 from scipy.stats import t as t_dist
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
@@ -186,24 +187,41 @@ def _fmt_p(p: float) -> str:
 
 
 def _draw_panel(fig, ax, words, values, colors, cmap, norm, cbar_label,
-                ylabel, xlabel, int_ticks: bool = False) -> None:
-    """Response-frequency bars (one per word, in the given order) with own x-axis."""
-    ax.bar(range(len(words)), values, color=colors, edgecolor="white", linewidth=0.4)
-    ax.set_xticks(range(len(words)))
+                ylabel, xlabel, int_ticks: bool = False, log_y: bool = False) -> None:
+    """Scatter plot of response frequency (one point per word) with own x-axis."""
+    xs = np.arange(len(words), dtype=float)
+    ax.scatter(xs, values, c=colors, s=60, zorder=3)
+    # Trend line: fit in log space when log_y so it appears straight on the log axis;
+    # fit in linear space otherwise.
+    ys = np.array(values, dtype=float)
+    valid = ys > 0
+    if valid.sum() > 1:
+        if log_y:
+            coeffs = np.polyfit(xs[valid], np.log(ys[valid]), 1)
+            trend = np.exp(np.polyval(coeffs, xs))
+        else:
+            coeffs = np.polyfit(xs[valid], ys[valid], 1)
+            trend = np.polyval(coeffs, xs)
+        ax.plot(xs, trend, color="black", linewidth=1.2, linestyle="--", alpha=0.55, zorder=2)
+    ax.set_xticks(xs)
     ax.set_xticklabels(words, rotation=45, ha="right", fontsize=8)
     ax.set_xlabel(xlabel, fontsize=9)
     ax.set_ylabel(ylabel, fontsize=9)
+    if log_y:
+        ax.set_yscale("log")
     ax.grid(axis="y", linestyle="--", alpha=0.4)
-    sm = cm.ScalarMappable(norm=norm, cmap=cmap)
-    sm.set_array([])
-    cbar = fig.colorbar(sm, ax=ax, pad=0.01)
-    cbar.set_label(cbar_label, fontsize=9)
-    if int_ticks:
-        cbar.ax.yaxis.set_major_formatter(plt.FuncFormatter(lambda v, _: f"{int(v)}"))
+    if cmap is not None:
+        sm = cm.ScalarMappable(norm=norm, cmap=cmap)
+        sm.set_array([])
+        cbar = fig.colorbar(sm, ax=ax, pad=0.01)
+        cbar.set_label(cbar_label, fontsize=9)
+        if int_ticks:
+            cbar.ax.yaxis.set_major_formatter(plt.FuncFormatter(lambda v, _: f"{int(v)}"))
 
 
 def render(totals: Counter, n_responses: int, peaks: dict[str, tuple[int, int]],
-           model_label: str | None, as_rate: bool, min_hits: int, output: Path | None) -> None:
+           model_label: str | None, as_rate: bool, min_hits: int, output: Path | None,
+           drop_unreliable: bool = False, log_y: bool = False) -> None:
     appeared = [w for w in totals if totals[w] > 0]
     if not appeared:
         sys.exit("No target words found in any response.")
@@ -241,48 +259,55 @@ def render(totals: Counter, n_responses: int, peaks: dict[str, tuple[int, int]],
     for w in sorted(reliable_words, key=lambda w: -totals[w]):
         print(f"  {w:<12}{peaks[w][0]:>8}{peaks[w][1]:>12}{totals[w]:>11}")
 
-    # Colour scales from the reliable words.
+    # Colour scale for top panel (peak year → plasma).
     if reliable_words:
         peak_norm = Normalize(vmin=min(rel_year),
                               vmax=max(rel_year) if max(rel_year) > min(rel_year) else min(rel_year) + 1)
-        occ_norm = LogNorm(vmin=max(min(rel_occ), 1), vmax=max(max(rel_occ), min(rel_occ) + 1))
     else:
-        peak_norm, occ_norm = Normalize(2013, 2024), LogNorm(1, 10)
-    plasma, viridis = plt.get_cmap("plasma"), plt.get_cmap("viridis")
+        peak_norm = Normalize(2013, 2024)
+    plasma = plt.get_cmap("plasma")
 
     # Each panel has its own word order: panel 1 by corpus peak year (oldest ->
-    # newest), panel 2 by corpus total occurrence (most -> least). Greyed words last.
-    order1 = (sorted(reliable_words, key=lambda w: (peaks[w][0], -totals[w], w))
-              + sorted(grey_words, key=lambda w: (-totals[w], w)))
-    order2 = (sorted(reliable_words, key=lambda w: (-peaks[w][1], w))
-              + sorted(grey_words, key=lambda w: (-totals[w], w)))
+    # newest), panel 2 by corpus total occurrence (most -> least).
+    # Unreliable words are appended greyed-out unless --drop-unreliable is set.
+    tail = [] if drop_unreliable else sorted(grey_words, key=lambda w: (-totals[w], w))
+    order1 = sorted(reliable_words, key=lambda w: (peaks[w][0], -totals[w], w)) + tail
+    order2 = sorted(reliable_words, key=lambda w: (-peaks[w][1], w)) + tail
     colors1 = [plasma(peak_norm(peaks[w][0])) if reliable_of(w) else "#bbbbbb" for w in order1]
-    colors2 = [viridis(occ_norm(peaks[w][1])) if reliable_of(w) else "#bbbbbb" for w in order2]
+    # Bottom panel: x-position already encodes corpus frequency order, no colour needed.
+    colors2 = ["#4878cf" if reliable_of(w) else "#bbbbbb" for w in order2]
 
     width = max(10, max(len(order1), len(order2)) * 0.42)
     fig, (ax_top, ax_bot) = plt.subplots(2, 1, figsize=(width, 10))
-    ylabel = "occurrences per response" if as_rate else "occurrences in responses"
+    scale_note = " (log scale)" if log_y else ""
+    ylabel = f"occurrences per response{scale_note}" if as_rate else f"occurrences in responses{scale_note}"
 
+    xlabel1 = "slang word (ordered by corpus peak year, oldest → newest)"
+    if not drop_unreliable:
+        xlabel1 += f"; grey = <{min_hits} corpus hits"
     _draw_panel(fig, ax_top, order1, [val[w] for w in order1], colors1,
-                plasma, peak_norm, "corpus peak year", ylabel,
-                f"slang word (ordered by corpus peak year; grey = <{min_hits} corpus hits)",
-                int_ticks=True)
+                plasma, peak_norm, "corpus peak year", ylabel, xlabel1,
+                int_ticks=True, log_y=log_y)
     ax_top.set_title(f"coloured by corpus peak year (recency)  ---  "
                      f"Spearman $\\rho$(peak year, response freq) $= {r_year:+.2f}$  "
                      f"($n={n_corr}$, {_fmt_p(p_year)})",
                      fontsize=10)
+    xlabel2 = "slang word (descending corpus frequency)"
+    if not drop_unreliable:
+        xlabel2 += f"; grey = <{min_hits} corpus hits"
     _draw_panel(fig, ax_bot, order2, [val[w] for w in order2], colors2,
-                viridis, occ_norm, "corpus total occurrences (log)", ylabel,
-                f"slang word (ordered by corpus total occurrence, most $\\to$ least; "
-                f"grey = <{min_hits} corpus hits)")
-    ax_bot.set_title(f"coloured by total corpus occurrence (overall frequency)  ---  "
+                None, None, None, ylabel, xlabel2, log_y=log_y)
+    ax_bot.set_title(f"ordered by total corpus occurrence (most → least)  ---  "
                      f"Pearson $r$(corpus count, response freq) $= {r_occ:+.2f}$  "
                      f"($n={n_corr}$, {_fmt_p(p_occ)})",
                      fontsize=10)
 
     total_hits = sum(totals.values())
     who = model_short(model_label) if model_label else "all models"
-    greyed_note = f"; {n_greyed} grey (<{min_hits} corpus hits)" if n_greyed else ""
+    if drop_unreliable:
+        greyed_note = f"; {n_greyed} word(s) with <{min_hits} corpus hits excluded" if n_greyed else ""
+    else:
+        greyed_note = f"; {n_greyed} grey (<{min_hits} corpus hits)" if n_greyed else ""
     fig.suptitle(f"Scenario-based prompting --- slang frequency in responses ({who})\n"
                  f"{n_responses} responses, {total_hits} slang hits "
                  f"({total_hits / max(n_responses, 1):.2f} per response){greyed_note}", fontsize=11)
@@ -313,6 +338,14 @@ def main() -> None:
     p.add_argument("--min-peak-hits", type=int, default=100, dest="min_peak_hits", metavar="N",
                    help="Grey out (treat peak year as unreliable) words backed by fewer than N "
                         "sense-filtered corpus hits (default: 100).")
+    p.add_argument("--drop-unreliable", action="store_true", dest="drop_unreliable",
+                   help="Exclude words below --min-peak-hits from the chart entirely "
+                        "instead of greying them out.")
+    p.add_argument("--log-y", action="store_true", dest="log_y",
+                   help="Use a log scale on the y-axis (trend line fitted in log space).")
+    p.add_argument("--exclude", nargs="*", default=[], metavar="WORD",
+                   help="Words to remove from the analysis entirely (case-insensitive). "
+                        "E.g. --exclude 💀 lol")
     p.add_argument("--counts-json", type=Path, default=None, dest="counts_json",
                    metavar="FILE",
                    help="Use a pre-aggregated slang_counts_by_model.json instead of raw "
@@ -342,8 +375,12 @@ def main() -> None:
         records, model_label = pick_model(records, args.model)
         totals, n = collect(records, words)
 
+    for w in {x.lower() for x in args.exclude}:
+        totals.pop(w, None)
+
     render(totals, n, peaks, model_label, args.rate, args.min_peak_hits,
-           None if str(args.output) == "-" else args.output)
+           None if str(args.output) == "-" else args.output,
+           drop_unreliable=args.drop_unreliable, log_y=args.log_y)
 
 
 if __name__ == "__main__":

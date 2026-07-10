@@ -1,0 +1,114 @@
+{
+  "sources": [
+    "FineWebAnalysis/target_words.txt",
+    "FineWebAnalysis/scenario_words.txt"
+  ],
+  "vocabulary_size": 150,
+  "models": {
+    "claude-sonnet-4-6": {
+      "responses": 100,
+      "total_slang_hits": 881,
+      "words": {
+        "💀": 255,
+        "u": 147,
+        "lmaooo": 119,
+        "omg": 114,
+        "lol": 108,
+        "bro": 62,
+        "cooked": 15,
+        "dude": 13,
+        "lmao": 9,
+        "shaking": 6,
+        "lowkey": 6,
+        "mid": 5,
+        "lmaoooo": 5,
+        "sick": 4,
+        "extra": 3,
+        "woke": 3,
+        "on god": 2,
+        "era": 1,
+        "delulu": 1,
+        "slaps": 1,
+        "vibes": 1,
+        "fire": 1
+      }
+    },
+    "deepseek-ai/DeepSeek-V4-Pro": {
+      "responses": 100,
+      "total_slang_hits": 577,
+      "words": {
+        "u": 262,
+        "💀": 97,
+        "lol": 62,
+        "lmao": 28,
+        "bro": 24,
+        "omg": 23,
+        "bruh": 23,
+        "lmaooo": 20,
+        "dude": 7,
+        "stfu": 5,
+        "lit": 4,
+        "lowkey": 4,
+        "cooked": 2,
+        "sick": 2,
+        "extra": 2,
+        "fire": 2,
+        "woke": 2,
+        "no cap": 1,
+        "shaking": 1,
+        "yeet": 1,
+        "rizz": 1,
+        "legit": 1,
+        "squad": 1,
+        "slay": 1,
+        "crash out": 1
+      }
+    },
+    "gpt-4o": {
+      "responses": 100,
+      "total_slang_hits": 205,
+      "words": {
+        "lol": 61,
+        "omg": 29,
+        "u": 16,
+        "dude": 14,
+        "bro": 13,
+        "lit": 10,
+        "squad": 10,
+        "legit": 10,
+        "epic": 7,
+        "bruh": 7,
+        "fire": 5,
+        "shook": 4,
+        "sus": 4,
+        "lmao": 3,
+        "sick": 3,
+        "tea": 2,
+        "vibe": 2,
+        "lowkey": 1,
+        "goals": 1,
+        "fam": 1,
+        "💀": 1,
+        "vibes": 1
+      }
+    },
+    "meta-llama/Llama-3.3-70B-Instruct-Turbo": {
+      "responses": 100,
+      "total_slang_hits": 694,
+      "words": {
+        "u": 418,
+        "lol": 199,
+        "lit": 35,
+        "omg": 19,
+        "extra": 6,
+        "squad": 4,
+        "lowkey": 3,
+        "sick": 3,
+        "salty": 3,
+        "fire": 2,
+        "bro": 1,
+        "vibes": 1
+      }
+    }
+  }
+}
