@@ -74,36 +74,34 @@ Large language models have scaled rapidly on ever-growing internet text corpora,
 
 \subsection{The Temporal Language Problem}
 
-Language changes continuously, with slang and informal vocabulary changing at the fastest rate, often rising and falling within months to a few years. Because internet training corpora carry no uniform date weighting, a model trained on a decade of web text may treat decade-old slang as interchangeable with contemporary usage, due to inherent lack of awareness of the structure of their own trainin data. The problem is most acute for slang of the $\sim$2010--2020 era: it is abundant in training data yet not clearly marked as dated, so its representation is governed by total corpus frequency rather than current relevance (Section~\ref{sec:exp1}). This is compounded by misalignment in the underlying corpora: \citet{cheng2024dated} show that effective training cutoffs often differ substantially from reported ones,
-% This second half of this sentence doesn't tie in super smoothly here. But is from same paper.
-and that Common Crawl dumps exhibit non-trivial temporal leakage, with old data persisting in newer dumps and being de facto upsampled.
+Language changes continuously, with slang and informal vocabulary changing at the fastest rate, often rising and falling within months to a few years. Because internet training corpora carry no uniform date weighting, a model trained on a decade of web text may treat decade-old slang as interchangeable with contemporary usage, due to inherent lack of awareness of the structure of their own training data. The problem is most acute for slang of the $\sim$2010--2020 era: it is abundant in training data yet not clearly marked as dated, so its representation is governed by total corpus frequency rather than current relevance (Section~\ref{sec:exp1}). This is compounded by misalignment in the underlying corpora: \citet{cheng2024dated} show that effective training cutoffs often differ substantially from reported ones, and that Common Crawl dumps exhibit non-trivial temporal leakage, with old data persisting in newer dumps and being de facto upsampled.
 
-In this paper we find that \textbf{LLM slang usage is temporally flat}: models do not differentiate by era when producing informal language, leaving their output sounding dated due to higher representation of older slang in training corpera. We expect this effect to worsen as the bulk of high-quality, human-authored pretraining data continues to age.
+In this paper we find that \textbf{LLM slang usage is temporally flat}: models do not differentiate by era when producing informal language, leaving their freeform output sounding dated due to higher representation of older slang in training corpera. We expect this effect to worsen if the bulk of high-quality, human-authored pretraining data continues to age without intervention.
 
 \subsection{Linguistic Framing}
 
-To demonstrate a temporal linguistic effect we require a set of words whose popularity has measurably risen and fallen within the span of LLM training data. We focus on \textit{slang}, which we situate against two adjacent classes of lexical change:
+To demonstrate a temporal linguistic effect we require a set of words whose popularity has measurably risen and fallen within the span of LLM training data. We focus on \textit{slang}, which we situate against two adjacent classes of word or phrase defined lexical change:
 
 \begin{itemize}
   \item \textbf{Neologisms:} words that rise in use and plateau as they enter the standard lexicon. Our hypothesis predicts that models should also lag in adopting neologisms, but their slower, monotonic trajectories are harder to resolve on the time scale of available data. \todo{Add a citation defining neologisms.}
 
-  \item \textbf{``Meme words'' / ephemeral slang:} words that spike quickly and fade within months to a few years---the primary focus of this study. Slang use is both creative and ephemeral \citep{eble1989slang, wu2025slang}. By selecting words that peaked in 2010--2020 and declined before our models' reported cutoffs, we can test whether reduced recent representation in training data translates into reduced model usage.
+  \item \textbf{``Meme words'' / ephemeral slang:} words that spike quickly and fade within months to a few years. Due to the current max age (~3 decades) of most colloquial text training data (internet text), this time range is ideal for our study. Slang use is both creative and ephemeral \citep{eble1989slang, wu2025slang}, for our study we select words for their ephemerality. By selecting words that peaked in 2010--2020 and declined before our models' reported cutoffs, we can test whether reduced recent representation in training data translates into reduced usage by models.
 
-  \item \textbf{``Vogue words'':} standard-English words that undergo a transient usage spike (e.g.\ \textit{awesome}, \textit{iconic}, \textit{epic}); temporally they behave much like neologisms. \todo{Add a citation defining vogue words.}
+  \item \textbf{``Vogue words'':} standard-English words that undergo a transient usage spike (e.g.\ \textit{awesome}, \textit{iconic}, \textit{epic}); temporally they behave much like neologisms. This category is also examined in this study, but should be differentiated from words that increase in usage frequency due to a new definition \todo{(Cite Hamilton polysemy vs frequency)} \todo{Add a citation defining vogue words.}
 \end{itemize}
 
-In linguistics, slang is defined by register rather than novelty, and the definition is famously contested \citep{lighter1978slang, chapman2010slang}. The property we rely on is \textit{ephemerality}: throughout this paper, ``slang'' denotes a word with a demonstrably ephemeral usage lifecycle in the sense of \citet{eble1989slang}, whose definition also ties slang to in-group identity \citep{eble1989slang, earl1972}. We further note that a substantial portion of American internet slang is appropriated African American Vernacular English; we return to this in our discussion of limitations (Section~\ref{sec:limitations}).
+In linguistics, slang is defined by register rather than novelty, but the definition is famously contested \citep{lighter1978slang, chapman2010slang}. The property we rely on to define slang here is \textit{ephemerality}: throughout this paper, ``slang'' denotes a word with a demonstrably ephemeral usage lifecycle in the sense of \citet{eble1989slang}. Additionally, in order to demonstate the effects of models using aging slang, we cite examples of slang tied to in-group identity \citep{eble1989slang, earl1972}, in particular in-group to a specific generation (we often contrast "Millenial" and "Gen-Z" slang usage). The authors would also like to acknowledge that a substantial portion of American internet slang is appropriated African American Vernacular English or language appropriated from the Queer community; we return to this in our discussion of limitations (Section~\ref{sec:limitations}).
 
 
 \subsection{Contributions}
 
 This paper makes the following contributions:
 \begin{itemize}
-  \item A sense-disambiguated, time-resolved frequency analysis of thirteen slang terms in FineWeb, establishing a ground truth for slang prevalence in LLM training data (Experiment~1).
-  \item A direct year-association probe showing that models' knowledge of slang era is directionally correct but systematically shifted into the past, dissociating what models \textit{know} about slang age from what they \textit{use} (Experiment~2).
+  \item A sense-disambiguated, time-resolved frequency analysis of thirteen slang terms in FineWeb, establishing a ground truth for slang prevalence in LLM training data and a proxy for the popularity of the terms at given time slices (Experiment~1).
+  \item A direct year-association probe showing that models' knowledge of slang era is systematically shifted into the past, dissociating what models \textit{know} about slang age from how they \textit{use} it (Experiment~2).
   \item A semantic-slot probe showing that models reliably produce older, well-attested slang but fail on the most recent terms, and that conditioning the prompt on an explicit year does not recover era-appropriate vocabulary (Experiment~3).
   \item An analysis of slang words generated by model persona simulation, mapping them back to corpus age to demonstrate a model "vintage" based on average age of slang used in a naturalistic setting (Experiment~4).
-  \item A discussion of mitigations, including recency-weighted fine-tuning, framed against the compounding risk of model-generated text in future corpora.
+  \item A discussion of potential mitigations, both technical and community driven, framed against the compounding risk of model-generated text in future corpora.
 \end{itemize}
 
 % ============================================================
@@ -111,9 +109,9 @@ This paper makes the following contributions:
 
 \subsection{Training Data Sources and Temporal Coverage}
 
-Common Crawl is a major component of most large-scale training corpora and a rich source of informal language: it includes web text from platforms such as Reddit\footnote{Reddit closed it's API to crawlers in 2024, which is the end date of the FineWeb CommonCrawl basis in this study.}, whose posts and comments are heavily colloquial, in contrast to sources like BookCorpus that are dominated by edited, formal prose. Owing to Common Crawl's size and noise, a number of cleaned derivatives are distributed on HuggingFace using aggressive deduplication and quality filtering. We examine on one such derivative, FineWeb \citep{penedo2024the}, which provides high-quality internet text using a set of novel and established filtering methods (See https://huggingface.co/datasets/HuggingFaceFW/fineweb#data-processing-steps).
+Common Crawl is a major component of most large-scale training corpora and a rich source of informal language: it includes web text from platforms such as Reddit\footnote{Reddit closed it's API to crawlers in 2024, which is the end date of the FineWeb CommonCrawl basis in this study.}, whose posts and comments capture a large variety of informal language and internet slang, in contrast to sources like BookCorpus that are dominated by edited formal prose. Owing to Common Crawl's size and noise, a number of cleaned derivatives are distributed on HuggingFace using aggressive deduplication and quality filtering. We examine on one such derivative, FineWeb \citep{penedo2024the}, which provides high-quality internet text using a set of novel and established filtering methods (See https://huggingface.co/datasets/HuggingFaceFW/fineweb#data-processing-steps).
 
-Common Crawl dumps date back to 2013 and have been collected every few months since \citep{commoncrawl2007}; FineWeb retains a \texttt{dump} field linking each document to its originating crawl. The repository releases pre-sampled subsets at several scales, and our analysis uses the 10-billion-token (10BT) sample as a representative slice. This sample was generated in 2024 and therefore spans dumps up to \texttt{CC-MAIN-2024-10} (the tenth week of 2024). The \texttt{dump} field lets us bin documents by date, typically to the granularity of a few months, and measure how the frequency of each target slang term varies over time---a corpus-level baseline for slang prevalence on the web, and a means of verifying that each target word is genuinely ephemeral (frequent in one date range and scarce in a later one).
+Common Crawl dumps date back to 2013 and have been collected every few months since \citep{commoncrawl2007}. FineWeb retains a \texttt{dump} field linking each document to its originating crawl. The repository releases pre-sampled subsets at several scales, and our analysis uses the 10-billion-token (10BT) sample as a representative slice. This sample was generated in 2024 and so spans dumps up to \texttt{CC-MAIN-2024-10} (the tenth week of 2024). The \texttt{dump} field lets us bin documents by date, typically to the granularity of a few months, and measure how the frequency of each target slang term varies over time. This is used as a corpus-level baseline for slang prevalence on the web, and a means of verifying that each target word is genuinely ephemeral (frequent in one date range and scarce in a later one). Additionally, this analysis gives us insights into which words have recently become popular and which have recently fallen out of favor.
 
 \subsection{Related Work on Emergent Behavior in Large Models}
 
@@ -129,25 +127,25 @@ A growing body of work investigates how training data temporality affects LLM be
 
 \citet{outdated2024} find that models' understanding of world events effectively lingers around 2015 even for models with nominally later cutoffs, which is highly relevant to our hypothesis of temporal stagnance in this paper.
 
-These works treat the knowledge cutoff as the main driver of temporal bias; we instead point to a distinct one---how much data survives from each slice of time---as a cause of model outdatedness. Additionally, our paper emphasizes the socio-cultural impact of this stagnation on slang language, as well as the implications of those effects on the growing area of persona simulation.
+These works treat the knowledge cutoff as the main driver of temporal bias; We instead point to a distinct one---how much data survives from each slice of time---as a cause of model outdatedness. Additionally, our paper emphasizes the socio-cultural impact of this stagnation on slang language, as well as the implications of those effects on the growing area of persona simulation. \todo{Should add more throughout about persona simulation if I want to make this point part of the paper.}
 
-\subsection{Slang Processing in LLMs}
-
-While LLM capabilities for informal language have received growing attention, the temporal dimension of slang usage has not been systematically studied.
+\subsection{Related Work on Slang Processing and Understanding in LLMs}
 
 \citet{sun2024slang} benchmark LLM slang knowledge using movie subtitles, covering detection and identification of regional and historical sources of slang. They show GPT-4 performs well as zero-shot but smaller fine-tuned models are competitive.
 
 \citet{wu2025slang} compare human-attested slang from the Online Slang Dictionary against GPT-4o and Llama-3 coined slang, finding significant biases in how LLMs perceive slang and that model slang generation does not align with humans.
 
-Neither of these works examines the \textit{temporal distribution} of slang usage --- i.e., whether models favor older vs.\ newer slang --- which is the central contribution of this paper.
+Neither of these works examines the \textit{temporal distribution} of slang usage, whether models favor older vs.\ newer slang, which is the central contribution of this paper. LLMs weaknesses in slang understanding and inability to generate slang in a way similar to human's, as demonstrated by the above papers, does provide additional support to our arguments that slang erasure is a real technical problem with models with real societal impact.
 
 \subsection{Model Collapse and LLM-Generated Data}
 
-The risk of LLM-generated text contaminating future training corpora is increasingly well-documented. \citet{shumailov2023curse} show that training on model-generated content causes irreversible defects where tails of the original distribution disappear. \citet{drayson2025mgtext}
-investigate model collapse under realistic conditions where data origin is unknown, and propose importance sampling as a mitigation.
+The risk of LLM-generated text contaminating future training corpora is increasingly well-documented. \citet{shumailov2023curse} show that training on model-generated content causes irreversible defects where tails of the original distribution disappear. 
+
+\citet{drayson2025mgtext} investigate model collapse under realistic conditions where data origin is unknown, and propose importance sampling as a mitigation.
+
 \citet{feng2024collapse} argue that verification of synthesized data can prevent model collapse.
 
-This body of work motivates our central concern: if model outputs are temporally frozen and increasingly populate the web, future corpora will contain an ever-growing proportion of linguistically dated text. Even where collapse is averted---e.g.\ by verifying synthesized data \citep{feng2024collapse}---the supply of fresh human-authored text may shrink, leaving older data to dominate the high-quality fraction of training corpora. Both passes may bias future models toward the language of the past.
+This body of work motivates our central concern: if model outputs are temporally frozen and increasingly populate the web, future corpora will contain an ever-growing proportion of linguistically dated text. Even where collapse is averted---e.g.\ by verifying synthesized data \citep{feng2024collapse}---the supply of fresh human-authored text may shrink, leaving older data to dominate the high-quality and modern fraction of training corpora.
 
 % ============================================================
 \section{Methodology}
@@ -362,7 +360,7 @@ Findings from the corpus analysis and the probing experiments converge on a cons
 
   \item \textbf{An explicit year cue does not fix it.} Prefixing the recovery prompt with ``The year is \{year\}.'' (Experiment~3, Figure~\ref{fig:slotyear}) barely changes which slang the model produces: most words are recovered at a flat rate across 2013--2025, and the words that do vary do not peak at their true corpus-peak year --- for the most recent terms (\textit{red pill}, \textit{vibe}) accuracy is, if anything, highest when an \emph{earlier} year is named. The stated date does not seem to influence the models' confidence in choosing out-of-date slang terms.
 
-  \item \textbf{Declarative knowledge vs usage are unaligned.} The year-association probes (Experiment~2, Figure~\ref{fig:yearassoc}) show that models order slang by era directionally correctly, but place the newer terms years too early relative to the corpus peak (mean absolute error 6--8 years per model), and their spontaneous usage does not track recency at all. The temporal failures contain both a usage bias and a backward-shifted sense of slang timing.
+  \item \textbf{Parametric knowledge vs usage are unaligned.} The year-association probes (Experiment~2, Figure~\ref{fig:yearassoc}) show that models order slang by era directionally correctly, but place the newer terms years too early relative to the corpus peak (mean absolute error 6--8 years per model), and their spontaneous usage does not track recency at all. The temporal failures contain both a usage bias and a backward-shifted sense of slang timing.
 
   \item \textbf{Model-level differences are consistent with RLHF slang suppression.} \texttt{Llama-3.3-70B} has the lowest semantic-slot recovery (53\% vs.\ 71\% for Claude) and most readily defaults to neutral standard-English words, consistent with reports that RLHF biases toward Standard American English \citep{barnhart2025rlhf}. \texttt{gpt-4o} exhibits a distinct artifact (returning the same year for all word association queries) that is orthogonal to the era bias but worth noting. \todo{Confirm whether DeepSeek/Claude RLHF pipelines differ enough to explain the recovery-rate spread, or maybe fully drop this point. Bias against colloquial language is pretty much still consistent.}
 
