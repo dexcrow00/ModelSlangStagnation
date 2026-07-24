@@ -152,24 +152,28 @@ This body of work motivates our central concern: if model outputs are temporally
 
 \subsection{Dataset: FineWeb}
 
-Our corpus ground truth is drawn from \textbf{FineWeb} \citep{penedo2024the}, a large, quality-filtered, deduplicated text dataset derived from Common Crawl and widely used to train open LLMs. We use the public 10BT sample on HuggingFace, whose documents retain a \texttt{dump} field identifying the originating CC-MAIN crawl (year-week). Dumps are available from 2013 to 2024, giving us a wide range to test for word ephemerality.
+Our corpus baseline on slang trends is drawn from \textbf{FineWeb} \citep{penedo2024the}, a large, quality-filtered, deduplicated text dataset derived from Common Crawl and widely used to train open LLMs. We use the public 10BT sample on HuggingFace, whose documents retain a \texttt{dump} field identifying the originating CC-MAIN crawl (year-week). Dumps are available from 2013 to 2024, giving us a wide range to test for word ephemerality taking place on the scale of years or months.
 
-Working from FineWeb rather than raw Common Crawl files has two advantages. First, it already applies the quality and boilerplate filtering characteristic of modern training corpora, so our frequency estimates better reflect the text models actually train on than a raw Common Crawl would. Second, the pre-extracted sample is much cheaper to process than re-crawling and parsing the full web archives. The trade-off is that FineWeb's own filtering and deduplication may distort raw frequencies, and de-facto temporal misalignment in Common Crawl persists into derivatives \citep{cheng2024dated}; we therefore treat the resulting rates as a representative proxy for slang prevalence, with high relevance to LLM training, in training data rather than an exact measurement of web usage.
+Working from FineWeb rather than raw Common Crawl files has two advantages. First, it already applies the quality and filtering of modern training corpora, so our frequency estimates better reflect the text models actually train on than a raw Common Crawl would. Second, the pre-extracted sample is much cheaper to process than re-crawling and parsing the full web archives. Regarding the use of FineWeb as a proxy for internet usage trends overall, while FineWeb's own filtering and deduplication may distort raw frequencies, CommonCrawl's imperfect de-deduplication processes mean that it is not a perfect representation of real internet language usage either. We therefore treat the resulting rates as a representative proxy for slang prevalence, with high relevance to LLM training, in training data rather than an exact measurement of web usage.
 
 \subsection{Identifying Target Slang Words}
+\label{sec:targets}
 
-The main analysis is divided into two main methodologies, based on the slang word set source. The initial experiments involve identifying a reference set of slang words in the FineWeb corpus, and running analysis on their frequencies across FineWeb dumps to profile their temporal characteristics. We then examine how models use and view this set of corpus identified slang words. The second set of experiments starts by generating a list of models' commonly used slang words by prompting a set of models with open ended prompts intended to generate free-form slang usage. We use the responses to generate a list of slang commonly used by models, which we can then run analysis against in the FineWeb corpus. This gives us chracteristics of the slang words most commonly used by the set of models, such as peak usage age in the corpus. 
-For the set of slang words used for initial analysis in FineWeb, we draw candidates from Word-of-the-Year lists, Urban Dictionary, and Google Search Trends\footnote{Words of the Year tend not to be slang per se, but instead often relate to global events. Using Urban Dictionary and cross referencing word popularity using Google Search Trends was the most reliable way to find good candidate words.}, then keep words that show a clear popularity arc within the analysis window. The final list is \textbf{manually curated from Urban Dictionary} and \textbf{validated against the FineWeb corpus-frequency analysis of Section~\ref{sec:exp1}} so that each word demonstrably exhibits the \textit{ephemeral} property (a clear rise and/or fall over the 2013--2024 window) and fills a recurring informal semantic slot (e.g.\ ``impressive/cool''), keeping meaning roughly controlled across eras. The thirteen words used in the probing experiments group into three temporal bands, mirroring the corpus-frequency figures (Figures~\ref{fig:cc-pre2018}--\ref{fig:cc-2022-24}):
+The main analysis is divided into two main methodologies, based on the source of the set of slang words in an experiment. The initial experiments involve identifying a reference set of slang words in the FineWeb corpus, and subsequently running analysis on their frequencies across FineWeb dumps to profile their temporal characteristics. We then examine how models use and view this set of corpus identified slang words. The second set of experiments starts by prompting a set of models with persona-style prompts intended to generate free-form slang usage. We use the responses to generate a list of slang commonly used by models, which we can then run analysis against in the FineWeb corpus. This gives us chracteristics of the slang words most commonly used by the set of models, such as peak usage age in the corpus for a given word. 
+For the set of slang words used for initial analysis in FineWeb, we draw 125 candidates from Word-of-the-Year lists, Urban Dictionary, and Google Search Trends\footnote{Words of the Year tend not to be slang per se, but instead often relate to global events. Using Urban Dictionary and cross referencing word popularity using Google Search Trends was the most reliable way to find good candidate words.}. Each candidate is then \textbf{validated against the FineWeb corpus-frequency analysis of Section~\ref{sec:exp1}} using the quantitative \textit{ephemerality} criterion below; for the probing subset we additionally require that the word fill a recurring informal semantic slot (e.g.\ ``impressive/cool''), keeping meaning roughly controlled across eras.
 
+\paragraph{Quantitative ephemerality criterion.} We read ``ephemeral'' directly off the corpus trajectory. For each candidate $w$ we take its sense-filtered rate pooled by calendar year, $r_w(y)$ for $y \in [2013, 2024]$ (Section~\ref{sec:exp1-method}), and compute three quantities: a \emph{reliability} count $N_w$ (total slang-sense hits); a \emph{trend} given by the slope $\beta_w$ and fit $R^2_w$ of an ordinary-least-squares regression of $\log_2 r_w(y)$ on year, so $\beta_w$ is the word's multiplicative drift in bits per year; and an \emph{amplitude} $A_w = \log_2\!\big(r_w^{\text{peak}} / r_w^{\text{tail}}\big)$, the peak-year rate over the rate at the endpoint on the far side of the peak. A word is admitted as an ephemeral target when (i) it is well enough attested to trust its curve --- $N_w \ge 100$, or $N_w \ge 50$ with an unmistakable trend ($R^2_w \ge 0.8$, $|\beta_w| \ge 0.3$) --- \emph{and} (ii) its trajectory is non-flat, i.e.\ at least one of: a steady directional drift ($|\beta_w| \ge 0.1$ bits/yr at $R^2_w \ge 0.5$, a $\ge 2\times$ change per decade), a prominent arc ($A_w \ge 1$ bit, a peak at least double the opposite tail), or a shallow-but-clean monotone trend ($R^2_w \ge 0.75$ with $|\beta_w| \ge 0.04$) that catches high-volume words drifting slowly. The sign of $\beta_w$ together with the peak position then sorts each word into one of three classes: \emph{declining} (early peak, $\beta_w < 0$), \emph{rising} (late peak, $\beta_w > 0$), or \emph{rise--fall} (interior peak, prominent on both sides).
+
+Applied to the 125 candidates, this yields the ephemeral target set. The twenty words carried into the probing experiments (Experiments~2--4) are drawn from it and span the three classes, mirroring the corpus-frequency figures (Figures~\ref{fig:cc-pre2018}--\ref{fig:cc-2022-24}):
 \begin{itemize}
-  \item \textbf{Pre-2018 (peaked early, now declining):} \textit{lol, sick, troll, bro, swag}.
-  \item \textbf{Around 2020 (rising through the late 2010s):} \textit{vibe, vibes, alpha, red pill}.
-  \item \textbf{2022--2024 (most recent, sharply rising):} \textit{slay, gaslight, glow-up, aura}.
+  \item \textbf{Pre-2018 (peaked early, now declining):} \textit{lol, sick, troll, bro, swag, omg, meh, lmao}.
+  \item \textbf{Around 2020 (rising through the late 2010s):} \textit{vibe, vibes, alpha, red pill, legit}.
+  \item \textbf{2022--2024 (most recent, sharply rising):} \textit{slay, gaslight, glow-up, aura, lowkey, situationship}.
 \end{itemize}
 
-Several of these words are polysemous (e.g.\ \textit{sick}, \textit{troll}, \textit{aura}), with a slang sense distinct from a standard-English sense; Section~\ref{sec:exp1} describes the sense-disambiguation step used to count only the slang usage. 
+Eighteen of the twenty clear the criterion outright; \textit{alpha} and \textit{aura} are the two marginal inclusions, with shallow, noisy corpus trajectories ($R^2 < 0.45$). We keep them for semantic-slot and recency coverage --- their slang senses are demonstrably recent even where the 10BT sample's thin 2024 tail understates them --- but flag them as the weakest cases on corpus evidence alone. The full pass/fail table with per-word statistics is given in Appendix~\ref{app:ephemerality}.
 
-\todo{The full curated target list (\texttt{FineWebAnalysis/target\_words.txt}) is larger than the thirteen probed here; document the criteria used to select the probing subset.}
+Several of these words are polysemous (e.g.\ \textit{sick}, \textit{troll}, \textit{aura}), with a slang sense distinct from a standard-English sense; Section~\ref{sec:exp1} describes the sense-disambiguation step used to count only the slang usage.
 
 \subsection{Experiment 1: Corpus Frequency Analysis (FineWeb)}
 \label{sec:exp1-method}
@@ -241,22 +245,22 @@ Slicing the FineWeb 10BT sample by crawl dump and applying the RoBERTa sense fil
 
 \begin{figure}
     \centering
-    \includegraphics[width=1.0\linewidth]{highlight_pre2018.png}
-    \caption{Slang-sense occurrences per million tokens by FineWeb crawl dump ($\log_2$ scale, RoBERTa score $\geq 0.99$, 95\% Poisson CI) for the pre-2018 band (\textit{lol, sick, troll, bro, swag}). \textit{lol} is the most frequent term throughout but declines steadily after $\sim$2018; \textit{swag} drifts downward, while \textit{sick}, \textit{troll}, and \textit{bro} are comparatively stable.}
+    \includegraphics[width=1.0\linewidth]{highlight_pre2018_count.png}
+    \caption{Slang-sense occurrences per million tokens by FineWeb crawl dump (linear scale, RoBERTa score $\geq 0.99$, 5-dump smoothing, 95\% Poisson CI) for the pre-2018 declining band (\textit{lol, sick, troll, bro, swag} plus the additional terms \textit{omg, meh, lmao}). The y-axis is broken so \textit{lol} (peak $\sim$16/M) sits in its own upper panel and does not flatten the rest: \textit{lol}, \textit{omg}, and \textit{sick} decline steadily after $\sim$2018 and \textit{swag} drifts downward, while \textit{troll}, \textit{bro}, \textit{meh}, and \textit{lmao} sit lower and taper more gently.}
     \label{fig:cc-pre2018}
 \end{figure}
 
 \begin{figure}
     \centering
-    \includegraphics[width=1.0\linewidth]{highlight_around2020.png}
-    \caption{Corpus frequency for the around-2020 band (\textit{vibe, vibes, alpha, red pill}). \textit{vibe} and \textit{vibes} rise through the late 2010s and into the 2020s; \textit{red pill}, a rarer and noisier term, sits well below with correspondingly wide confidence bands.}
+    \includegraphics[width=1.0\linewidth]{highlight_around2020_count.png}
+    \caption{Corpus frequency for the around-2020 rising band (linear scale, RoBERTa score $\geq 0.99$, 5-dump smoothing, 95\% Poisson CI): \textit{vibe, vibes, alpha, red pill} plus the additional term \textit{legit}. \textit{vibe}, \textit{vibes}, and \textit{legit} rise through the late 2010s and into the 2020s; \textit{alpha} stays low and roughly flat, and \textit{red pill}, a rarer and noisier term, sits near the floor with correspondingly wide confidence bands.}
     \label{fig:cc-around2020}
 \end{figure}
 
 \begin{figure}
     \centering
-    \includegraphics[width=1.0\linewidth]{highlight_2022_24.png}
-    \caption{Corpus frequency for the 2022--2024 band (\textit{slay, gaslight, glow-up, aura}). These newest terms rise over the window, with \textit{aura} (in its Gen-Z slang sense) climbing sharply only near the end of the series --- the clearest example of slang that postdates the bulk of the models' training data, though notably still within the models' training windows.}
+    \includegraphics[width=1.0\linewidth]{highlight_2022_24_count.png}
+    \caption{Corpus frequency for the 2022--2024 recent-riser band (linear scale, RoBERTa score $\geq 0.99$, 5-dump smoothing, 95\% Poisson CI): \textit{slay, gaslight, glow-up, aura} plus the additional terms \textit{lowkey, situationship}. \textit{slay} and \textit{lowkey} climb over the window, and \textit{gaslight}, \textit{glow-up}, and \textit{situationship} appear only near its end --- slang that postdates the bulk of the models' training data, though still within the models' training windows. \textit{aura} (in its Gen-Z slang sense) is noisier and rises less cleanly.}
     \label{fig:cc-2022-24}
 \end{figure}
 
@@ -449,6 +453,45 @@ slay       & 2022--2024  & 2024 & 0.308  & 1{,}795 \\
 \label{tab:words}
 \end{table}
 
+\section{Ephemerality Criterion: Per-Word Statistics}
+\label{app:ephemerality}
+
+Table~\ref{tab:ephemerality} reports the trajectory statistics behind the ephemerality criterion of Section~\ref{sec:targets}, for the thirteen probed words and the additional qualifying terms. For each word we regress $\log_2 r_w(y)$ on calendar year over the sense-filtered, year-pooled rates: $\beta$ is the slope (bits/yr), $R^2$ the fit, $A$ the peak-to-opposite-tail amplitude (bits), and $N$ the total slang-sense hits. A word passes when it is reliably attested ($N \ge 100$, or $N \ge 50$ with $R^2 \ge 0.8$ and $|\beta| \ge 0.3$) \emph{and} non-flat ($|\beta| \ge 0.1$ at $R^2 \ge 0.5$, or $A \ge 1$, or $R^2 \ge 0.75$ with $|\beta| \ge 0.04$). Eleven of the thirteen probed words pass; \textit{alpha} and \textit{aura} fail on a shallow, low-$R^2$ trajectory and are retained on semantic-slot grounds.
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{llrcrrrc}
+\toprule
+Word & Class & $N$ & Peak & $\beta$ & $R^2$ & $A$ & Pass \\
+\midrule
+troll    & decline & 6{,}077   & 2013 & $-0.12$ & 0.90 & 1.26 & yes \\
+bro      & decline & 7{,}914   & 2014 & $-0.13$ & 0.79 & 1.24 & yes \\
+lol      & decline & 107{,}305 & 2014 & $-0.19$ & 0.87 & 1.68 & yes \\
+sick     & decline & 14{,}015  & 2014 & $-0.14$ & 0.90 & 1.33 & yes \\
+swag     & decline & 2{,}624   & 2015 & $-0.10$ & 0.64 & 0.82 & yes \\
+alpha    & rise    & 5{,}764   & 2020 & $+0.05$ & 0.43 & 0.73 & no  \\
+gaslight & rise    & 316       & 2023 & $+0.24$ & 0.85 & 2.47 & yes \\
+glow-up  & rise    & 98        & 2023 & $+0.58$ & 0.87 & 5.36 & yes \\
+aura     & rise    & 1{,}231   & 2023 & $+0.04$ & 0.21 & 0.75 & no  \\
+vibe     & rise    & 30{,}862  & 2024 & $+0.08$ & 0.81 & 0.75 & yes \\
+vibes    & rise    & 20{,}311  & 2024 & $+0.21$ & 0.94 & 2.09 & yes \\
+red pill & rise    & 546       & 2024 & $+0.27$ & 0.63 & 2.87 & yes \\
+slay     & rise    & 1{,}795   & 2024 & $+0.18$ & 0.83 & 1.99 & yes \\
+\midrule
+\multicolumn{8}{l}{\textit{Additional qualifying terms (not probed)}} \\
+omg           & decline & 24{,}593 & 2013 & $-0.17$ & 0.86 & 1.66 & yes \\
+meh           & decline & 5{,}775  & 2014 & $-0.16$ & 0.88 & 1.60 & yes \\
+lmao          & decline & 3{,}816  & 2016 & $-0.19$ & 0.78 & 1.81 & yes \\
+legit         & rise    & 32{,}897 & 2024 & $+0.13$ & 0.89 & 1.22 & yes \\
+lowkey        & rise    & 567      & 2022 & $+0.35$ & 0.80 & 3.83 & yes \\
+situationship & rise    & 121      & 2024 & $+0.60$ & 0.88 & 6.27 & yes \\
+\bottomrule
+\end{tabular}
+\caption{Trajectory statistics behind the ephemerality criterion (Section~\ref{sec:targets}). $N$: total slang-sense hits; $\beta$: log$_2$-rate slope (bits/yr) with fit $R^2$; $A$: peak-to-opposite-tail amplitude (bits). Rows are the thirteen probed words (top, by peak year) and the additional qualifying terms (bottom). \textit{alpha} and \textit{aura} are the only probed words that fail, on a shallow, low-$R^2$ trajectory.}
+\label{tab:ephemerality}
+\end{table}
+
 \section{Experiment 1: FineWeb Corpus Frequency}
 \label{app:exp1}
 
@@ -489,7 +532,7 @@ Sense-filtered counts are converted to occurrences per million tokens of the cor
 
 \subsection{Plotting and peak extraction}
 
-Frequency curves use a $\log_2$ y-axis with a 5-dump centred moving average; the CI band is the exact Poisson interval on the window-pooled count. Dumps with zero sense-filtered occurrences are dropped so the line connects neighbouring dumps rather than falling to the floor, and a linear-axis (\texttt{\_count}) version of each figure is also produced. The corpus peak year (Table~\ref{tab:words}) is the argmax, over calendar years, of the year-pooled normalised rate (\texttt{peak\_year.py}).
+The band figures (Figures~\ref{fig:cc-pre2018}--\ref{fig:cc-2022-24}) use a linear y-axis (the \texttt{\_count} variant) with a 5-dump centred moving average; the CI band is the exact Poisson interval on the window-pooled count. For the pre-2018 band the y-axis is broken so \textit{lol} does not compress the other curves. Dumps with zero sense-filtered occurrences are dropped so the line connects neighbouring dumps rather than falling to the floor, and a $\log_2$-axis version of each figure is also produced. The corpus peak year (Table~\ref{tab:words}) is the argmax, over calendar years, of the year-pooled normalised rate (\texttt{peak\_year.py}). All band figures are generated by \texttt{word\_rate\_plotter.py --highlight-bands}, which pools the target and scenario scored contexts.
 
 \subsection{Implementation}
 

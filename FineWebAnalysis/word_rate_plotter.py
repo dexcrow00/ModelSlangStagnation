@@ -25,6 +25,7 @@ Usage:
     python word_rate_plotter.py --threshold 0.5
     python word_rate_plotter.py --threshold 0.8 --top 20 --log -o rates.png
     python word_rate_plotter.py --threshold 0.5 --words epic fire sus --confidence 0.95
+    python word_rate_plotter.py --threshold 0.99 --highlight-bands   # -> ../writing/highlight_*_count.png
 """
 
 from __future__ import annotations
@@ -54,9 +55,28 @@ log = logging.getLogger(__name__)
 logging.getLogger("httpx").setLevel(logging.WARNING)
 
 DEFAULT_SCORED_DIR = Path(__file__).resolve().parent / "prompt_scored"
+SCENARIO_SCORED_DIR = Path(__file__).resolve().parent / "scenario_prompt_scored"
 DEFAULT_SIZES_CACHE = Path(__file__).resolve().parent / "fineweb_10BT_dump_sizes.json"
+WRITING_DIR = (Path(__file__).resolve().parent / ".." / "writing").resolve()
 HF_SAMPLE_DIR = "datasets/HuggingFaceFW/fineweb/sample/10BT"
 CRAWL_ID_RE = re.compile(r"CC-MAIN-(\d{4})-(\d{2})")
+
+# --highlight-bands mode: fixed cohorts of ephemeral words (pooled from both
+# prompt_scored and scenario_prompt_scored), each saved as
+# highlight_<band>_count.png. The pre-2018 band gets a broken y-axis so lol
+# (peak ~16/M) does not flatten the rest (peak <4/M).
+HIGHLIGHT_BANDS = {
+    "pre2018":    ["lol", "sick", "troll", "bro", "swag", "omg", "meh", "lmao"],
+    "around2020": ["vibe", "vibes", "alpha", "red pill", "legit"],
+    "2022_24":    ["slay", "gaslight", "glow-up", "aura", "lowkey", "situationship"],
+}
+HIGHLIGHT_TITLES = {
+    "pre2018":    "Pre-2018 band (declining)",
+    "around2020": "Around-2020 band (rising)",
+    "2022_24":    "2022--2024 band (recent risers)",
+}
+# broken-axis split per band: (top_lo, top_hi, bot_lo, bot_hi); absent => single axis.
+HIGHLIGHT_BROKEN = {"pre2018": (4.5, 17.0, 0.0, 4.4)}
 
 
 def _crawl_date(stem: str) -> Optional[date]:
@@ -225,22 +245,13 @@ def _word_series(
     return _word_series_ci(counts, dump_tokens, dumps, target, smooth, None)[0]
 
 
-def _render_chart(
-    dumps: List[date],
-    series: Dict[str, List[float]],
-    dump_tokens: Optional[Dict[date, int]],
-    log_scale: bool,
-    title: str,
-    output: Optional[Path],
-    bands: Optional[Dict[str, tuple]] = None,
-) -> None:
-    """Draw one chart from precomputed per-word series (with optional CI bands).
+def _draw_series(ax, dumps, series, bands=None):
+    """Draw one markered line (+ optional CI band) per word on ``ax``.
 
     Dumps where a word has zero occurrences are dropped rather than plotted at 0:
     a 0 is invalid on a log axis (and a misleading dive to the floor on a linear
     one), so we skip those points and let the line connect the neighboring dumps.
     """
-    fig, ax = plt.subplots(figsize=(12, 6))
     for target, ys in series.items():
         kept = [(d, y) for d, y in zip(dumps, ys) if y > 0]
         if not kept:
@@ -255,6 +266,20 @@ def _render_chart(
                 bx, bl, bh = zip(*band)
                 ax.fill_between(bx, bl, bh, color=line.get_color(),
                                 alpha=0.18, linewidth=0)
+
+
+def _render_chart(
+    dumps: List[date],
+    series: Dict[str, List[float]],
+    dump_tokens: Optional[Dict[date, int]],
+    log_scale: bool,
+    title: str,
+    output: Optional[Path],
+    bands: Optional[Dict[str, tuple]] = None,
+) -> None:
+    """Draw one chart from precomputed per-word series (with optional CI bands)."""
+    fig, ax = plt.subplots(figsize=(12, 6))
+    _draw_series(ax, dumps, series, bands)
 
     unit = ("Occurrences in dump" if dump_tokens is None
             else "Occurrences per million sample tokens")
@@ -276,6 +301,56 @@ def _render_chart(
         log.info("Plot saved to %s", output)
     else:
         plt.show()
+    plt.close(fig)
+
+
+def _render_broken(
+    dumps: List[date],
+    series: Dict[str, List[float]],
+    dump_tokens: Optional[Dict[date, int]],
+    title: str,
+    output: Path,
+    bands: Optional[Dict[str, tuple]],
+    split: tuple,
+) -> None:
+    """Like _render_chart, but split over two y-scales with an axis break so one
+    dominant word (e.g. lol) does not flatten the rest. Every word is drawn on
+    both panels; the y-limits ``split`` = (top_lo, top_hi, bot_lo, bot_hi) decide
+    which panel each is visible in."""
+    top_lo, top_hi, bot_lo, bot_hi = split
+    fig, (top, bot) = plt.subplots(
+        2, 1, sharex=True, figsize=(12, 6),
+        gridspec_kw={"height_ratios": [1, 2.3], "hspace": 0.07})
+    _draw_series(top, dumps, series, bands)
+    _draw_series(bot, dumps, series, bands)
+    top.set_ylim(top_lo, top_hi)
+    bot.set_ylim(bot_lo, bot_hi)
+
+    top.spines["bottom"].set_visible(False)
+    bot.spines["top"].set_visible(False)
+    top.tick_params(bottom=False)
+    d = 0.008  # diagonal break marks straddling the cut
+    kw = dict(transform=top.transAxes, color="k", clip_on=False, lw=0.8)
+    top.plot((-d, +d), (-d * 2.3, +d * 2.3), **kw)
+    top.plot((1 - d, 1 + d), (-d * 2.3, +d * 2.3), **kw)
+    kw.update(transform=bot.transAxes)
+    bot.plot((-d, +d), (1 - d, 1 + d), **kw)
+    bot.plot((1 - d, 1 + d), (1 - d, 1 + d), **kw)
+
+    unit = ("Occurrences in dump" if dump_tokens is None
+            else "Occurrences per million sample tokens")
+    top.set_title(title)
+    bot.set_xlabel("Crawl dump date")
+    fig.supylabel(unit)
+    bot.xaxis.set_major_formatter(mdates.DateFormatter("%Y-%m"))
+    fig.autofmt_xdate()
+    for ax in (top, bot):
+        ax.grid(True, linestyle="--", alpha=0.5)
+    top.legend(bbox_to_anchor=(1.01, 1), loc="upper left", fontsize="small")
+
+    output.parent.mkdir(parents=True, exist_ok=True)
+    fig.savefig(output, dpi=150, bbox_inches="tight")
+    log.info("Plot saved to %s", output)
     plt.close(fig)
 
 
@@ -381,14 +456,53 @@ def plot_segmented_by_peak(
                       {w: bands[w] for w in group} if bands else None)
 
 
+def plot_highlight_bands(
+    counts: Dict[date, Counter],
+    dump_tokens: Optional[Dict[date, int]],
+    threshold: float,
+    smooth: int,
+    out_dir: Path,
+    confidence: Optional[float] = None,
+) -> None:
+    """Emit the fixed ephemeral-word band figures, one PNG per band.
+
+    Each band (HIGHLIGHT_BANDS) is a cohort of words on one linear-axis chart;
+    bands listed in HIGHLIGHT_BROKEN get a split y-axis so a dominant word does
+    not flatten the rest. Files are written as ``highlight_<band>_count.png``.
+    """
+    dumps = sorted(counts)
+    for band, words in HIGHLIGHT_BANDS.items():
+        present = [w for w in words if any(counts[d].get(w) for d in dumps)]
+        missing = [w for w in words if w not in present]
+        if missing:
+            log.warning("Band %s: no above-threshold occurrences for %s",
+                        band, ", ".join(missing))
+        series: Dict[str, List[float]] = {}
+        bands: Optional[Dict[str, tuple]] = {} if confidence else None
+        for w in present:
+            central, lo, hi = _word_series_ci(counts, dump_tokens, dumps, w, smooth, confidence)
+            series[w] = central
+            if bands is not None:
+                bands[w] = (lo, hi)
+        out = out_dir / f"highlight_{band}_count.png"
+        title = HIGHLIGHT_TITLES[band]
+        if band in HIGHLIGHT_BROKEN:
+            _render_broken(dumps, series, dump_tokens, title, out, bands, HIGHLIGHT_BROKEN[band])
+        else:
+            _render_chart(dumps, series, dump_tokens, False, title, out, bands)
+
+
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(
         description="Plot target-word slang occurrences per crawl dump from scored CSVs.")
     p.add_argument("--threshold", type=float, default=0.0, metavar="F",
                    help="Min roberta_score for a row to count (default: 0.0).")
-    p.add_argument("--scored-dir", type=Path, default=DEFAULT_SCORED_DIR,
+    p.add_argument("--scored-dir", type=Path, nargs="+", default=None,
                    metavar="DIR", dest="scored_dir",
-                   help=f"Directory of scored crawl CSVs (default: {DEFAULT_SCORED_DIR}).")
+                   help="One or more directories of scored crawl CSVs (pooled). "
+                        f"Default: {DEFAULT_SCORED_DIR.name} (or both "
+                        f"{DEFAULT_SCORED_DIR.name} and {SCENARIO_SCORED_DIR.name} "
+                        "with --highlight-bands).")
     p.add_argument("--words", nargs="+", metavar="WORD",
                    help="Only plot these target words (default: all).")
     p.add_argument("--top", type=int, metavar="N",
@@ -400,9 +514,9 @@ def build_parser() -> argparse.ArgumentParser:
                    metavar="FILE", dest="sizes_cache",
                    help="JSON cache of per-dump sample token totals; fetched "
                         f"from HuggingFace if missing (default: {DEFAULT_SIZES_CACHE.name}).")
-    p.add_argument("--smooth", type=int, default=1, metavar="N",
+    p.add_argument("--smooth", type=int, default=None, metavar="N",
                    help="Centered moving average over N dumps to damp per-dump "
-                        "noise (default: 1 = off).")
+                        "noise (default: 1 = off; 5 with --highlight-bands).")
     p.add_argument("--log", action="store_true", dest="log_scale",
                    help="Log-scale the y axis.")
     p.add_argument("--confidence", type=float, default=None, metavar="P",
@@ -416,6 +530,12 @@ def build_parser() -> argparse.ArgumentParser:
                         "Requires -o; writes <stem>_peakNN_<lo>_<hi><ext> files.")
     p.add_argument("--per-chart", type=int, default=10, metavar="N", dest="per_chart",
                    help="Max words per chart in --segment-by-peak mode (default: 10).")
+    p.add_argument("--highlight-bands", action="store_true", dest="highlight_bands",
+                   help="Emit the fixed ephemeral-word band figures "
+                        "(highlight_<band>_count.png), with a broken y-axis for the "
+                        "pre-2018 band. Pools prompt_scored + scenario_prompt_scored "
+                        "and defaults to --smooth 5, 95%% CI; -o sets the output "
+                        f"directory (default: {WRITING_DIR.name}/).")
     p.add_argument("--min-count", type=int, default=50, metavar="N", dest="min_count",
                    help="In --segment-by-peak mode, drop words with fewer than N "
                         "total above-threshold hits as noise (default: 50).")
@@ -428,14 +548,28 @@ def main() -> None:
     parser = build_parser()
     args = parser.parse_args()
 
-    if not args.scored_dir.is_dir():
-        parser.error(f"Scored directory not found: {args.scored_dir}")
-    if args.confidence is not None and not 0 < args.confidence < 1:
+    if args.scored_dir is None:
+        args.scored_dir = ([DEFAULT_SCORED_DIR, SCENARIO_SCORED_DIR]
+                           if args.highlight_bands else [DEFAULT_SCORED_DIR])
+    for d in args.scored_dir:
+        if not d.is_dir():
+            parser.error(f"Scored directory not found: {d}")
+
+    # --highlight-bands defaults: 5-dump smoothing and a 95% CI band.
+    smooth = args.smooth if args.smooth is not None else (5 if args.highlight_bands else 1)
+    confidence = args.confidence
+    if confidence is None and args.highlight_bands:
+        confidence = 0.95
+    if confidence is not None and not 0 < confidence < 1:
         parser.error("--confidence must be between 0 and 1 (e.g. 0.95).")
 
-    counts = load_dump_counts(args.scored_dir, args.threshold)
+    counts: Dict[date, Counter] = defaultdict(Counter)
+    for d in args.scored_dir:
+        for dump_date, cnt in load_dump_counts(d, args.threshold).items():
+            counts[dump_date].update(cnt)
     if not counts:
-        parser.error(f"No crawl CSVs found in {args.scored_dir}.")
+        parser.error("No crawl CSVs found in "
+                     f"{', '.join(str(d) for d in args.scored_dir)}.")
 
     dump_tokens = None
     if not args.raw_counts:
@@ -447,15 +581,19 @@ def main() -> None:
                      f"delete {args.sizes_cache} to re-fetch, or use --raw-counts.")
 
     _use_emoji_font()
-    if args.segment_by_peak:
+    if args.highlight_bands:
+        out_dir = args.output if args.output is not None else WRITING_DIR
+        plot_highlight_bands(counts, dump_tokens, args.threshold, smooth,
+                             out_dir, confidence)
+    elif args.segment_by_peak:
         if args.output is None:
             parser.error("--segment-by-peak writes multiple files; -o is required.")
-        plot_segmented_by_peak(counts, dump_tokens, args.threshold, args.smooth,
+        plot_segmented_by_peak(counts, dump_tokens, args.threshold, smooth,
                                args.log_scale, args.per_chart, args.min_count,
-                               args.output, args.confidence)
+                               args.output, confidence)
     else:
         plot_rates(counts, dump_tokens, args.threshold, args.words, args.top,
-                   args.smooth, args.log_scale, args.output, args.confidence)
+                   smooth, args.log_scale, args.output, confidence)
 
 
 if __name__ == "__main__":
