@@ -1,14 +1,24 @@
 {
-  "id": "AssociatedSlangLogprobs",
+  "disabled": true,
+  "id": "AssociateSlangLogprobs",
   "model_type": "open",
   "system": "Give the response as a single returned token or word.",
-  "user": "A standout word in term of popularity increase in {year} was {word}",
+  "user": "A standout word in terms of popularity increase in {year} was {word}",
   "variables": {
     "year": ["2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"],
-    "word": ["lol", "sick", "troll", "bro", "swag", "vibe", "vibes", "alpha", "red pill", "slay", "gaslight", "glow-up", "aura"]
+    "word": ["lol", "sick", "troll", "bro", "swag", "vibe", "vibes", "alpha", "red pill", "slay", "gaslight", "glow-up", "aura", "omg", "meh", "lmao", "legit", "lowkey", "situationship"]
   },
   "logprobs": 5,
   "echo": true
+}
+{
+  "id": "EraAppropriate",
+  "system": "Give the response as a single returned token or word.",
+  "user": "It's {year}, is it appropriate to use the term {word}?",
+  "variables": {
+    "word": ["lol","sick","troll","bro","swag","vibe","vibes","alpha","red pill","slay","gaslight","glow-up","aura","omg","meh","lmao","legit","lowkey","situationship"],
+    "year": ["2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"]
+  }
 }
 {
   "id": "GiveTopSlang",
@@ -19,6 +29,7 @@
   }
 }
 {
+  "disabled": true,
   "id": "GiveTopSlangLogprobs",
   "model_type": "open",
   "system": "Give the response as a single returned token or word.",
@@ -34,7 +45,7 @@
   "system": "Give the response as a single returned token or word.",
   "user": "The slang word \"{word}\" is most associated with what year? Respond using only the year.",
   "variables": {
-    "word": ["lol","sick","troll","bro","swag","vibe","vibes","alpha","red pill","slay","gaslight","glow-up","aura"] 
+    "word": ["lol","sick","troll","bro","swag","vibe","vibes","alpha","red pill","slay","gaslight","glow-up","aura","omg","meh","lmao","legit","lowkey","situationship"] 
   },
   "echo": true
 }
@@ -43,7 +54,7 @@
   "system": "Give the response as a single returned token or word.",
   "user": "You hear someone saying \"{word}\" in conversation, which year are they most likely saying this in?",
   "variables": {
-    "word": ["lol","sick","troll","bro","swag","vibe","vibes","alpha","red pill","slay","gaslight","glow-up","aura"] 
+    "word": ["lol","sick","troll","bro","swag","vibe","vibes","alpha","red pill","slay","gaslight","glow-up","aura","omg","meh","lmao","legit","lowkey","situationship"] 
   },
   "echo": true
 }

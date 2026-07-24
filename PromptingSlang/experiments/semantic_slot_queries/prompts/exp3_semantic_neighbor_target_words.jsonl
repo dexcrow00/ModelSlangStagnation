@@ -192,3 +192,93 @@
     ]
   }
 }
+
+{
+  "id": "exp3_omg",
+  "temperature": 1.0,
+  "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
+  "user": "The year is {year}. {phrasing}",
+  "variables": {
+    "year": ["2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"], 
+    "phrasing": [
+      "What's a short expression of shock or surprise?",
+      "Give me a reaction to being shocked or amazed.",
+      "What do people write online to react to something surprising or unbelievable?"
+    ]
+  }
+}
+
+{
+  "id": "exp3_meh",
+  "temperature": 1.0,
+  "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
+  "user": "The year is {year}. {phrasing}",
+  "variables": {
+    "year": ["2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"], 
+    "phrasing": [
+      "What's a short word someone says to show they're indifferent or unimpressed?",
+      "Give me a indicator someone uses to show they don't really care either way about something.",
+      "What word means that something is just mediocre and not worth getting excited about?"
+    ]
+  }
+}
+
+{
+  "id": "exp3_lmao",
+  "temperature": 1.0,
+  "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
+  "user": "The year is {year}. {phrasing}",
+  "variables": {
+    "year": ["2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"], 
+    "phrasing": [
+      "What's a way of indicating that something is very funny?",
+      "Give me a way of indicating that something is intended to be unserious.",
+      "What do people type online to react to something absolutely hilarious?"
+    ]
+  }
+}
+
+{
+  "id": "exp3_legit",
+  "temperature": 1.0,
+  "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
+  "user": "The year is {year}. {phrasing}",
+  "variables": {
+    "year": ["2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"], 
+    "phrasing": [
+      "What's a word meaning something is genuine or real?",
+      "Give me one word people use to say something is authentic.",
+      "What is a word used for emphasis that something is true?"
+    ]
+  }
+}
+
+{
+  "id": "exp3_lowkey",
+  "temperature": 1.0,
+  "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
+  "user": "The year is {year}. {phrasing}",
+  "variables": {
+    "year": ["2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"], 
+    "phrasing": [
+      "What's a word meaning you feel something subtly or secretly, not openly?",
+      "Give me one word for admitting something quietly or to a mild degree.",
+      "What is an adverb you would use to soften an adjective?"
+    ]
+  }
+}
+
+{
+  "id": "exp3_situationship",
+  "temperature": 1.0,
+  "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
+  "user": "The year is {year}. {phrasing}",
+  "variables": {
+    "year": ["2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"], 
+    "phrasing": [
+      "What's a word for a romantic relationship that's more than friends but not officially dating?",
+      "Give me one word for an undefined, in-between romantic arrangement without a clear label.",
+      "What term describes two people involved romantically but without a committed, defined relationship?"
+    ]
+  }
+}

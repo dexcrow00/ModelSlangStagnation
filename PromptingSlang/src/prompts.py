@@ -48,6 +48,9 @@ def load_prompts(path: str | Path) -> list[tuple[PromptTemplate, int | None, boo
     Supports both compact (one object per line) and pretty-printed (multi-line)
     formats. Each record must have at least 'id', 'system', 'user'.
 
+    A record with "disabled": true (or "enabled": false) is skipped — this is how
+    a prompt is "commented out" without deleting it, since JSON has no comments.
+
     Returns a list of (template, logprobs, echo) tuples. logprobs and echo are
     read from the corresponding JSON fields, or None if not specified;
     'model_type' and 'temperature' are carried on the PromptTemplate.
@@ -66,6 +69,10 @@ def load_prompts(path: str | Path) -> list[tuple[PromptTemplate, int | None, boo
             obj, end = decoder.raw_decode(text, pos)
         except json.JSONDecodeError as exc:
             raise ValueError(f"Invalid JSON in {path} at position {pos}: {exc}") from exc
+        pos = end
+        # "Commented out" records stay in the file but are not run.
+        if obj.get("disabled") or obj.get("enabled") is False:
+            continue
         template = PromptTemplate(
             id=obj["id"],
             system=obj["system"],
@@ -75,5 +82,4 @@ def load_prompts(path: str | Path) -> list[tuple[PromptTemplate, int | None, boo
             temperature=obj.get("temperature"),
         )
         results.append((template, obj.get("logprobs"), obj.get("echo")))
-        pos = end
     return results

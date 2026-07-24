@@ -1,4 +1,5 @@
 {
+  "disabled": true,
   "id": "exp3_lol",
   "model_type": "open",
   "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
@@ -14,6 +15,7 @@
 }
 
 {
+  "disabled": true,
   "id": "exp3_sick",
   "model_type": "open",
   "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
@@ -29,6 +31,7 @@
 }
 
 {
+  "disabled": true,
   "id": "exp3_troll",
   "model_type": "open",
   "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
@@ -44,6 +47,7 @@
 }
 
 {
+  "disabled": true,
   "id": "exp3_bro",
   "model_type": "open",
   "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
@@ -59,6 +63,7 @@
 }
 
 {
+  "disabled": true,
   "id": "exp3_swag",
   "model_type": "open",
   "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
@@ -74,6 +79,7 @@
 }
 
 {
+  "disabled": true,
   "id": "exp3_vibe",
   "model_type": "open",
   "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
@@ -89,6 +95,7 @@
 }
 
 {
+  "disabled": true,
   "id": "exp3_vibes",
   "model_type": "open",
   "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
@@ -104,6 +111,7 @@
 }
 
 {
+  "disabled": true,
   "id": "exp3_alpha",
   "model_type": "open",
   "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
@@ -119,6 +127,7 @@
 }
 
 {
+  "disabled": true,
   "id": "exp3_red_pill",
   "model_type": "open",
   "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
@@ -134,6 +143,7 @@
 }
 
 {
+  "disabled": true,
   "id": "exp3_slay",
   "model_type": "open",
   "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
@@ -149,6 +159,7 @@
 }
 
 {
+  "disabled": true,
   "id": "exp3_gaslight",
   "model_type": "open",
   "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
@@ -164,6 +175,7 @@
 }
 
 {
+  "disabled": true,
   "id": "exp3_glow_up",
   "model_type": "open",
   "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
@@ -179,6 +191,7 @@
 }
 
 {
+  "disabled": true,
   "id": "exp3_aura",
   "model_type": "open",
   "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
@@ -188,6 +201,102 @@
       "What's a single word for the intangible coolness or presence someone radiates?",
       "Give me one word used to describe the quality by which someone acts cool or cringe.",
       "What word can be used to describe someone's coolness or charisma?"
+    ]
+  },
+  "logprobs": 5
+}
+
+{
+  "disabled": true,
+  "id": "exp3_omg",
+  "model_type": "open",
+  "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
+  "user": "{phrasing}",
+  "variables": {
+    "phrasing": [
+      "What's a short text abbreviation people type to express shock or surprise?",
+      "Give me the little three-letter thing someone types when they're shocked or amazed.",
+      "What do people write online to react to something surprising or unbelievable?"
+    ]
+  },
+  "logprobs": 5
+}
+
+{
+  "disabled": true,
+  "id": "exp3_meh",
+  "model_type": "open",
+  "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
+  "user": "{phrasing}",
+  "variables": {
+    "phrasing": [
+      "What's a short informal word someone says to show they're indifferent or unimpressed?",
+      "Give me the little sound people make when they don't really care either way about something.",
+      "What word expresses a shrug, that something is just mediocre and not worth getting excited about?"
+    ]
+  },
+  "logprobs": 5
+}
+
+{
+  "disabled": true,
+  "id": "exp3_lmao",
+  "model_type": "open",
+  "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
+  "user": "{phrasing}",
+  "variables": {
+    "phrasing": [
+      "What's a text abbreviation people use to show they're laughing really hard at something?",
+      "Give me the acronym someone types when something is extremely funny, stronger than a small chuckle.",
+      "What do people type online to react to something absolutely hilarious?"
+    ]
+  },
+  "logprobs": 5
+}
+
+{
+  "disabled": true,
+  "id": "exp3_legit",
+  "model_type": "open",
+  "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
+  "user": "{phrasing}",
+  "variables": {
+    "phrasing": [
+      "What's an informal word meaning something is genuine, real, or the real deal?",
+      "Give me one casual word people use to say something is authentic or truly the real thing.",
+      "What slang word means 'for real', used to emphasize that something is genuinely true?"
+    ]
+  },
+  "logprobs": 5
+}
+
+{
+  "disabled": true,
+  "id": "exp3_lowkey",
+  "model_type": "open",
+  "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
+  "user": "{phrasing}",
+  "variables": {
+    "phrasing": [
+      "What's an informal word meaning you feel something subtly or secretly, not openly?",
+      "Give me one slang word for admitting something quietly or to a mild degree.",
+      "What word do people use to downplay a feeling, meaning 'kind of' or 'secretly'?"
+    ]
+  },
+  "logprobs": 5
+}
+
+{
+  "disabled": true,
+  "id": "exp3_situationship",
+  "model_type": "open",
+  "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
+  "user": "{phrasing}",
+  "variables": {
+    "phrasing": [
+      "What's a slang word for a romantic relationship that's more than friends but not officially dating?",
+      "Give me one word for an undefined, in-between romantic arrangement without a clear label.",
+      "What term describes two people involved romantically but without a committed, defined relationship?"
     ]
   },
   "logprobs": 5
