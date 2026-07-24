@@ -7,13 +7,11 @@ with its own x-axis. The **top panel colours each bar by the word's corpus peak
 year** (recency, ordered oldest -> newest) and the **bottom panel by its total
 corpus occurrence** (overall frequency, ordered most -> least), both from the
 FineWeb ``peak_years.json``. The top panel (year) reports Spearman correlation and the bottom panel (total
-corpus frequency) reports Pearson correlation, each with a two-tailed p-value,
-quantifying the experiment's central question: does a model's naturalistic slang
-usage track recency, or simply overall corpus frequency?
+corpus frequency) reports Pearson correlation, each with a two-tailed p-value.
 
 Words whose corpus statistics rest on fewer than ``--min-peak-hits`` (default
-100) sense-filtered occurrences are unreliable and excluded from the
-correlations and drawn grey in both panels. By default the chart aggregates over
+100) sense-filtered occurrences are considered unreliable and excluded from the
+correlations and dropped from both panels. By default the chart aggregates over
 all models; ``--model`` restricts to one.
 
 Usage (run from the PromptingSlang root):
@@ -221,7 +219,7 @@ def _draw_panel(fig, ax, words, values, colors, cmap, norm, cbar_label,
 
 def render(totals: Counter, n_responses: int, peaks: dict[str, tuple[int, int]],
            model_label: str | None, as_rate: bool, min_hits: int, output: Path | None,
-           drop_unreliable: bool = False, log_y: bool = False,
+           show_unreliable: bool = False, log_y: bool = False,
            caption: str = "") -> None:
     appeared = [w for w in totals if totals[w] > 0]
     if not appeared:
@@ -270,8 +268,8 @@ def render(totals: Counter, n_responses: int, peaks: dict[str, tuple[int, int]],
 
     # Each panel has its own word order: panel 1 by corpus peak year (oldest ->
     # newest), panel 2 by corpus total occurrence (most -> least).
-    # Unreliable words are appended greyed-out unless --drop-unreliable is set.
-    tail = [] if drop_unreliable else sorted(grey_words, key=lambda w: (-totals[w], w))
+    # Unreliable words are dropped unless --show-unreliable is set, in which case they are shown in grey.
+    tail = [] if not show_unreliable else sorted(grey_words, key=lambda w: (-totals[w], w))
     order1 = sorted(reliable_words, key=lambda w: (peaks[w][0], -totals[w], w)) + tail
     order2 = sorted(reliable_words, key=lambda w: (-peaks[w][1], w)) + tail
     colors1 = [plasma(peak_norm(peaks[w][0])) if reliable_of(w) else "#bbbbbb" for w in order1]
@@ -284,7 +282,7 @@ def render(totals: Counter, n_responses: int, peaks: dict[str, tuple[int, int]],
     ylabel = f"occurrences per response{scale_note}" if as_rate else f"occurrences in responses{scale_note}"
 
     xlabel1 = "slang word (ordered by corpus peak year, oldest → newest)"
-    if not drop_unreliable:
+    if show_unreliable:
         xlabel1 += f"; grey = <{min_hits} corpus hits"
     _draw_panel(fig, ax_top, order1, [val[w] for w in order1], colors1,
                 plasma, peak_norm, "corpus peak year", ylabel, xlabel1,
@@ -294,7 +292,7 @@ def render(totals: Counter, n_responses: int, peaks: dict[str, tuple[int, int]],
                      f"($n={n_corr}$, {_fmt_p(p_year)})",
                      fontsize=10)
     xlabel2 = "slang word (descending corpus frequency)"
-    if not drop_unreliable:
+    if show_unreliable:
         xlabel2 += f"; grey = <{min_hits} corpus hits"
     _draw_panel(fig, ax_bot, order2, [val[w] for w in order2], colors2,
                 None, None, None, ylabel, xlabel2, log_y=log_y)
@@ -305,7 +303,7 @@ def render(totals: Counter, n_responses: int, peaks: dict[str, tuple[int, int]],
 
     total_hits = sum(totals.values())
     who = model_short(model_label) if model_label else "all models"
-    if drop_unreliable:
+    if not show_unreliable:
         greyed_note = f"; {n_greyed} word(s) with <{min_hits} corpus hits excluded" if n_greyed else ""
     else:
         greyed_note = f"; {n_greyed} grey (<{min_hits} corpus hits)" if n_greyed else ""
@@ -342,9 +340,8 @@ def main() -> None:
     p.add_argument("--min-peak-hits", type=int, default=100, dest="min_peak_hits", metavar="N",
                    help="Grey out (treat peak year as unreliable) words backed by fewer than N "
                         "sense-filtered corpus hits (default: 100).")
-    p.add_argument("--drop-unreliable", action="store_true", dest="drop_unreliable",
-                   help="Exclude words below --min-peak-hits from the chart entirely "
-                        "instead of greying them out.")
+    p.add_argument("--show-unreliable", action="store_true", dest="show_unreliable",
+                   help="Show words below --min-peak-hits as greyed out on the chart, instead of droppin them.")
     p.add_argument("--log-y", action="store_true", dest="log_y",
                    help="Use a log scale on the y-axis (trend line fitted in log space).")
     p.add_argument("--exclude", nargs="*", default=[], metavar="WORD",
@@ -394,7 +391,7 @@ def main() -> None:
 
     render(totals, n, peaks, model_label, args.rate, args.min_peak_hits,
            None if str(args.output) == "-" else args.output,
-           drop_unreliable=args.drop_unreliable, log_y=args.log_y,
+           show_unreliable=args.show_unreliable, log_y=args.log_y,
            caption=caption)
 
 
