@@ -39,7 +39,7 @@ from src.response_utils import model_short, read_responses, responded_word  # no
 EXP_DIR = Path(__file__).resolve().parents[1]
 DEFAULT_RESPONSES = EXP_DIR / "responses"
 DEFAULT_OUTPUT = EXP_DIR / "figures" / "target_word_accuracy.png"
-WORDS_CHRONO_ORDER = ["lol","sick","troll","bro","swag","vibe","vibes","alpha","red pill","slay","gaslight","glow-up","aura"]
+WORDS_CHRONO_ORDER = ["lol","sick","troll","bro","swag","omg","meh","lmao","vibe","vibes","alpha","red pill","legit","slay","gaslight","glow-up","aura","lowkey","situationship"]
 
 
 def _norm(s: str) -> str:
