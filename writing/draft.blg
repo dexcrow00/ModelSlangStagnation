@@ -1,0 +1,61 @@
+This is BibTeX, Version 0.99e (TeX Live 2026)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: draft.aux
+The style file: acl_natbib.bst
+Reallocated glb_str_ptr (elt_size=4) to 20 items from 10.
+Reallocated global_strs (elt_size=200001) to 20 items from 10.
+Reallocated glb_str_end (elt_size=4) to 20 items from 10.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Database file #1: references.bib
+Warning--I didn't find a database entry for ""
+Warning--empty booktitle in cheng2024dated
+Warning--empty journal in drayson2025mgtext
+Warning--empty booktitle in feng2024collapse
+Warning--empty journal in llmlagbench2025
+Warning--empty booktitle in shumailov2023curse
+Warning--empty booktitle in wu2025slang
+Warning--empty journal in outdated2024
+You've used 19 entries,
+            3764 wiz_defined-function locations,
+            833 strings with 9999 characters,
+and the built_in function-call counts, 13737 in all, are:
+= -- 1102
+> -- 795
+< -- 10
++ -- 328
+- -- 245
+* -- 905
+:= -- 2123
+add.period$ -- 74
+call.type$ -- 19
+change.case$ -- 184
+chr.to.int$ -- 20
+cite$ -- 26
+duplicate$ -- 814
+empty$ -- 936
+format.name$ -- 300
+if$ -- 2949
+int.to.chr$ -- 1
+int.to.str$ -- 5
+missing$ -- 193
+newline$ -- 97
+num.names$ -- 76
+pop$ -- 532
+preamble$ -- 1
+purify$ -- 156
+quote$ -- 0
+skip$ -- 740
+stack$ -- 0
+substring$ -- 256
+swap$ -- 388
+text.length$ -- 2
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 165
+warning$ -- 7
+while$ -- 60
+width$ -- 0
+write$ -- 228
+(There were 8 warnings)

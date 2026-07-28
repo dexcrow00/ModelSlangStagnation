@@ -1,0 +1,137 @@
+\begin{thebibliography}{19}
+\providecommand{\natexlab}[1]{#1}
+
+\bibitem[{Barnhart et~al.(2025)Barnhart, Akbarian~Bafghi, Becker, and
+  Raissi}]{barnhart2025rlhf}
+Logan Barnhart, Reza Akbarian~Bafghi, Stephen Becker, and Maziar Raissi. 2025.
+\newblock \href {https://arxiv.org/abs/2503.09025} {Aligning to what? {L}imits
+  to {RLHF} based alignment}.
+\newblock \emph{arXiv preprint arXiv:2503.09025}.
+
+\bibitem[{Bender et~al.(2021)Bender, Gebru, McMillan-Major, and
+  Shmitchell}]{bender2021parrots}
+Emily~M. Bender, Timnit Gebru, Angelina McMillan-Major, and Shmargaret
+  Shmitchell. 2021.
+\newblock \href {https://doi.org/10.1145/3442188.3445922} {On the dangers of
+  stochastic parrots: Can language models be too big?}
+\newblock In \emph{Proceedings of the 2021 {ACM} Conference on Fairness,
+  Accountability, and Transparency}, pages 610--623.
+
+\bibitem[{Cheng et~al.(2024)Cheng, Marone, Weller, Lawrie, Khashabi, and
+  Van~Durme}]{cheng2024dated}
+Jeffrey Cheng, Marc Marone, Orion Weller, Dawn Lawrie, Daniel Khashabi, and
+  Benjamin Van~Durme. 2024.
+\newblock \href {https://arxiv.org/abs/2403.12958} {Dated data: Tracing
+  knowledge cutoffs in large language models}.
+
+\bibitem[{{Common Crawl Foundation}(2007)}]{commoncrawl2007}
+{Common Crawl Foundation}. 2007.
+\newblock Common crawl --- open repository of web crawl data.
+\newblock \url{https://data.commoncrawl.org/crawl-data/index.html}.
+\newblock Accessed: 2025.
+
+\bibitem[{Drayson et~al.(2025)Drayson, Yilmaz, and Lampos}]{drayson2025mgtext}
+George Drayson, Emine Yilmaz, and Vasileios Lampos. 2025.
+\newblock \href {https://arxiv.org/abs/2502.15654} {Machine-generated text
+  detection prevents language model collapse}.
+
+\bibitem[{Dumas and Lighter(1978)}]{lighter1978slang}
+Bethany~K. Dumas and Jonathan Lighter. 1978.
+\newblock Is slang a word for linguists?
+\newblock \emph{American Speech 53, no. 1}.
+\newblock 5–17. https://doi.org/10.2307/455336.
+
+\bibitem[{Earl(1972)}]{earl1972}
+Kim Earl. 1972.
+\newblock Semantic influence and concept attainment of slang and its effects on
+  parents' and teenagers' linguistic interaction.
+\newblock \emph{All Graduate Theses and Dissertations, Spring 1920 to Summer
+  2023. 2637}.
+\newblock Https://digitalcommons.usu.edu/etd/2637.
+
+\bibitem[{Eble(1989)}]{eble1989slang}
+Connie Eble. 1989.
+\newblock \emph{Slang and Sociability: In-Group Language among College
+  Students}.
+\newblock University of North Carolina Press.
+\newblock TODO: Verify edition and page numbers.
+
+\bibitem[{Feng et~al.(2024)}]{feng2024collapse}
+Yunzhen Feng and 1 others. 2024.
+\newblock \href {https://arxiv.org/abs/2406.07515} {Beyond model collapse:
+  Scaling up with synthesized data requires verification}.
+
+\bibitem[{Hoffmann et~al.(2022)Hoffmann, Borgeaud, Mensch, Buchatskaya, Cai,
+  Rutherford, Casas, Hendricks, Welbl, Clark et~al.}]{hoffmann2022chinchilla}
+Jordan Hoffmann, Sebastian Borgeaud, Arthur Mensch, Elena Buchatskaya, Trevor
+  Cai, Eliza Rutherford, Diego de~Las Casas, Lisa~Anne Hendricks, Johannes
+  Welbl, Aidan Clark, and 1 others. 2022.
+\newblock \href {https://arxiv.org/abs/2203.15556} {Training compute-optimal
+  large language models}.
+\newblock \emph{arXiv preprint arXiv:2203.15556}.
+
+\bibitem[{Kipfer and Chapman(2010)}]{chapman2010slang}
+Barbara Kipfer and Robert Chapman. 2010.
+\newblock \emph{Dictionary of American Slang}.
+\newblock Harper Collins.
+\newblock TODO: Verify edition and page numbers.
+
+\bibitem[{Penedo et~al.(2024)Penedo, Kydl{\'\i}{\v{c}}ek, allal, Lozhkov,
+  Mitchell, Raffel, Werra, and Wolf}]{penedo2024the}
+Guilherme Penedo, Hynek Kydl{\'\i}{\v{c}}ek, Loubna~Ben allal, Anton Lozhkov,
+  Margaret Mitchell, Colin Raffel, Leandro~Von Werra, and Thomas Wolf. 2024.
+\newblock \href {https://openreview.net/forum?id=n6SCkn2QaG} {The fineweb
+  datasets: Decanting the web for the finest text data at scale}.
+\newblock In \emph{The Thirty-eight Conference on Neural Information Processing
+  Systems Datasets and Benchmarks Track}.
+
+\bibitem[{Pęzik et~al.(2025)Pęzik, Kaczyński, Szymańska, Żarnecki,
+  Deckert, Kwiatkowski, and Janowski}]{llmlagbench2025}
+Piotr Pęzik, Konrad Kaczyński, Maria Szymańska, Filip Żarnecki, Zuzanna
+  Deckert, Jakub Kwiatkowski, and Wojciech Janowski. 2025.
+\newblock \href {https://arxiv.org/abs/2511.12116} {{LLMLagBench}: Identifying
+  temporal training boundaries in large language models}.
+
+\bibitem[{Shumailov et~al.(2023)}]{shumailov2023curse}
+Ilia Shumailov and 1 others. 2023.
+\newblock \href {https://arxiv.org/abs/2305.17493} {The curse of recursion:
+  Training on generated data makes models forget}.
+
+\bibitem[{Sun et~al.(2024)}]{sun2024slang}
+Zhewei Sun and 1 others. 2024.
+\newblock \href {https://arxiv.org/abs/2404.02323} {Toward informal language
+  processing: Knowledge of slang in large language models}.
+\newblock In \emph{Proceedings of the 2024 Conference on Empirical Methods in
+  Natural Language Processing}.
+
+\bibitem[{Villalobos et~al.(2024)Villalobos, Ho, Sevilla, Besiroglu, Heim, and
+  Hobbhahn}]{villalobos2024datalimits}
+Pablo Villalobos, Anson Ho, Jaime Sevilla, Tamay Besiroglu, Lennart Heim, and
+  Marius Hobbhahn. 2024.
+\newblock \href {https://arxiv.org/pdf/2211.04325} {Will we run out of data?
+  limits of llm scaling based on human-generated data.}
+\newblock \emph{In Forty-first International Conference on Machine Learning}.
+
+\bibitem[{Wei et~al.(2022)Wei, Tay, Bommasani, Raffel, Zoph, Borgeaud,
+  Yogatama, Bosma, Zhou, and Metzler}]{wei2022emergent}
+Jason Wei, Yi~Tay, Rishi Bommasani, Colin Raffel, Barret Zoph, Sebastian
+  Borgeaud, Dani Yogatama, Maarten Bosma, Denny Zhou, and Donald et~al.
+  Metzler. 2022.
+\newblock \href {https://arxiv.org/abs/2206.07682} {Emergent abilities of large
+  language models}.
+\newblock \emph{Transactions on Machine Learning Research}.
+
+\bibitem[{Wu and Sun(2025)}]{wu2025slang}
+Siyang Wu and Zhewei Sun. 2025.
+\newblock \href {https://arxiv.org/abs/2509.15518} {How do language models
+  generate slang: A systematic comparison between human and machine-generated
+  slang usages}.
+
+\bibitem[{Zhu et~al.(2024)Zhu, Chen, Gao, Zhang, Tiwari, and
+  Wang}]{outdated2024}
+Chenghao Zhu, Nuo Chen, Yufei Gao, Yunyi Zhang, Prayag Tiwari, and Benyou Wang.
+  2024.
+\newblock \href {https://arxiv.org/abs/2405.08460} {Is your {LLM} outdated? a
+  deep look at temporal generalization}.
+
+\end{thebibliography}
