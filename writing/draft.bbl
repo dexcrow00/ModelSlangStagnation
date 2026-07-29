@@ -1,4 +1,4 @@
-\begin{thebibliography}{19}
+\begin{thebibliography}{20}
 \providecommand{\natexlab}[1]{#1}
 
 \bibitem[{Barnhart et~al.(2025)Barnhart, Akbarian~Bafghi, Becker, and
@@ -85,12 +85,13 @@ Guilherme Penedo, Hynek Kydl{\'\i}{\v{c}}ek, Loubna~Ben allal, Anton Lozhkov,
 \newblock In \emph{The Thirty-eight Conference on Neural Information Processing
   Systems Datasets and Benchmarks Track}.
 
-\bibitem[{Pęzik et~al.(2025)Pęzik, Kaczyński, Szymańska, Żarnecki,
-  Deckert, Kwiatkowski, and Janowski}]{llmlagbench2025}
-Piotr Pęzik, Konrad Kaczyński, Maria Szymańska, Filip Żarnecki, Zuzanna
-  Deckert, Jakub Kwiatkowski, and Wojciech Janowski. 2025.
-\newblock \href {https://arxiv.org/abs/2511.12116} {{LLMLagBench}: Identifying
-  temporal training boundaries in large language models}.
+\bibitem[{Shao et~al.(2023)Shao, Li, Dai, and Qiu}]{shao2023character}
+Yunfan Shao, Linyang Li, Junqi Dai, and Xipeng Qiu. 2023.
+\newblock \href {https://arxiv.org/abs/2310.10158} {Character-{LLM}: A
+  trainable agent for role-playing}.
+\newblock In \emph{Proceedings of the 2023 Conference on Empirical Methods in
+  Natural Language Processing}, Singapore. Association for Computational
+  Linguistics.
 
 \bibitem[{Shumailov et~al.(2023)}]{shumailov2023curse}
 Ilia Shumailov and 1 others. 2023.
@@ -126,6 +127,17 @@ Siyang Wu and Zhewei Sun. 2025.
 \newblock \href {https://arxiv.org/abs/2509.15518} {How do language models
   generate slang: A systematic comparison between human and machine-generated
   slang usages}.
+
+\bibitem[{Zhao et~al.(2023)Zhao, Zhou, Li, Tang, Wang, Hou, Min, Zhang, Zhang,
+  Dong, Du, Yang, Chen, Chen, Jiang, Ren, Li, Tang, Liu, Liu, Nie, and
+  Wen}]{zhao2023survey}
+Wayne~Xin Zhao, Kun Zhou, Junyi Li, Tianyi Tang, Xiaolei Wang, Yupeng Hou,
+  Yingqian Min, Beichen Zhang, Junjie Zhang, Zican Dong, Yifan Du, Chen Yang,
+  Yushuo Chen, Zhipeng Chen, Jinhao Jiang, Ruiyang Ren, Yifan Li, Xinyu Tang,
+  Zikang Liu, and 3 others. 2023.
+\newblock \href {https://arxiv.org/abs/2303.18223} {A survey of large language
+  models}.
+\newblock \emph{arXiv preprint arXiv:2303.18223}.
 
 \bibitem[{Zhu et~al.(2024)Zhu, Chen, Gao, Zhang, Tiwari, and
   Wang}]{outdated2024}

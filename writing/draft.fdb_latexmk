@@ -1,13 +1,14 @@
 # Fdb version 4
-["bibtex draft"] 1785200261.7837 "draft.aux" "draft.bbl" "draft" 1785200263.67471 0
+["bibtex draft"] 1785291066.87076 "draft.aux" "draft.bbl" "draft" 1785291336.07733 0
   "./acl_natbib.bst" 1782172373.06833 45186 3d1af46d62cc9172ef6e42b56c1cd613 ""
-  "./references.bib" 1785200064.44937 9063 ba4393d52db2953c056a292609dd9684 ""
-  "draft.aux" 1785200263.47537 48783 229f829a008e0c847e9a5873805d61c4 "pdflatex"
+  "./references.bib" 1785290807.41555 10206 5b224ad280c281b70a9984b620ea4b8c ""
+  "draft.aux" 1785291335.87658 49698 ae69c42047690c0a96a11a2567bc85bc "pdflatex"
   (generated)
   "draft.bbl"
   "draft.blg"
   (rewritten before read)
-["pdflatex"] 1785200261.85296 "draft.tex" "draft.pdf" "draft" 1785200263.67482 0
+["pdflatex"] 1785291334.19743 "/Users/dexter/Documents/Projects/SlangShift/Writing/draft.tex" "draft.pdf" "draft" 1785291336.07747 0
+  "/Users/dexter/Documents/Projects/SlangShift/Writing/draft.tex" 1785291333.99593 85172 c21ee4c347582599a227690a186f7ee5 ""
   "/usr/local/texlive/2026/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2026/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-0.enc" 1558214095 7631 5169ff1acd97ff1c4ab83563c99f96f4 ""
   "/usr/local/texlive/2026/texmf-dist/fonts/enc/dvips/inconsolata/i4-ts1.enc" 1455745497 9446 fe5580ca6042a44427f18d450942e7d0 ""
@@ -152,10 +153,10 @@
   "/usr/local/texlive/2026/texmf-var/web2c/pdftex/pdflatex.fmt" 1774209607 3636776 dc5fa9b6b1453b9d196cd42edf876004 ""
   "/usr/local/texlive/2026/texmf.cnf" 1774209515 577 648cd9f92f9c0eac486f4c71c85cfbbe ""
   "acl.sty" 1783726029.97684 11615 e2c027f483aa40e577ed34264c8b0655 ""
-  "draft.aux" 1785200263.47537 48783 229f829a008e0c847e9a5873805d61c4 "pdflatex"
-  "draft.bbl" 1785200261.85124 6349 5ffc11f08cd475e58b9a1f45b0148857 "bibtex draft"
-  "draft.out" 1785200263.47685 2755 4248f1fc88f1c500f0145ad0b0f3c4d3 "pdflatex"
-  "draft.tex" 1785199936.50045 85657 c797c97ef58b360f712dbee6a1540c39 ""
+  "draft.aux" 1785291335.87658 49698 ae69c42047690c0a96a11a2567bc85bc "pdflatex"
+  "draft.bbl" 1785291066.9419 6932 9a1134edcd156692af2faea9d20280aa "bibtex draft"
+  "draft.out" 1785291335.87807 8666 4e5cdd2cf709d51d7d4ca6ce578aaac6 "pdflatex"
+  "draft.tex" 1785291333.99593 85172 c21ee4c347582599a227690a186f7ee5 ""
   "give_year_date_phrase_claude.png" 1784932070.96563 135275 fd1d8722901621c8bf01dd672bbcf0e0 ""
   "highlight_2022_24_count.png" 1784918205.8819 283680 36b5073e8c6ca46b7e994b10e90d61ab ""
   "highlight_around2020_count.png" 1784918205.75388 189462 4cbe64846bcf6f0e493c2d6eb841d27b ""

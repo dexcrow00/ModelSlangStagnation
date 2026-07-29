@@ -13,49 +13,48 @@ Warning--I didn't find a database entry for ""
 Warning--empty booktitle in cheng2024dated
 Warning--empty journal in drayson2025mgtext
 Warning--empty booktitle in feng2024collapse
-Warning--empty journal in llmlagbench2025
 Warning--empty booktitle in shumailov2023curse
 Warning--empty booktitle in wu2025slang
 Warning--empty journal in outdated2024
-You've used 19 entries,
+You've used 20 entries,
             3764 wiz_defined-function locations,
-            833 strings with 9999 characters,
-and the built_in function-call counts, 13737 in all, are:
-= -- 1102
-> -- 795
+            841 strings with 10491 characters,
+and the built_in function-call counts, 15385 in all, are:
+= -- 1215
+> -- 962
 < -- 10
-+ -- 328
-- -- 245
-* -- 905
-:= -- 2123
-add.period$ -- 74
-call.type$ -- 19
-change.case$ -- 184
-chr.to.int$ -- 20
++ -- 403
+- -- 301
+* -- 1041
+:= -- 2371
+add.period$ -- 80
+call.type$ -- 20
+change.case$ -- 210
+chr.to.int$ -- 21
 cite$ -- 26
-duplicate$ -- 814
-empty$ -- 936
-format.name$ -- 300
-if$ -- 2949
+duplicate$ -- 889
+empty$ -- 1008
+format.name$ -- 358
+if$ -- 3278
 int.to.chr$ -- 1
-int.to.str$ -- 5
-missing$ -- 193
-newline$ -- 97
-num.names$ -- 76
-pop$ -- 532
+int.to.str$ -- 6
+missing$ -- 217
+newline$ -- 103
+num.names$ -- 80
+pop$ -- 579
 preamble$ -- 1
-purify$ -- 156
+purify$ -- 179
 quote$ -- 0
-skip$ -- 740
+skip$ -- 828
 stack$ -- 0
-substring$ -- 256
-swap$ -- 388
+substring$ -- 269
+swap$ -- 440
 text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 165
-warning$ -- 7
-while$ -- 60
+type$ -- 174
+warning$ -- 6
+while$ -- 63
 width$ -- 0
-write$ -- 228
-(There were 8 warnings)
+write$ -- 244
+(There were 7 warnings)
