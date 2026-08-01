@@ -49,6 +49,9 @@ import numpy as np
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 PROJECT_ROOT = REPO_ROOT.parent
+sys.path.insert(0, str(REPO_ROOT))
+from src.analysis_utils import load_peak_records, load_vocab, word_pattern  # noqa: E402
+from src.response_utils import read_responses  # noqa: E402
 
 DEFAULT_PEAKS = PROJECT_ROOT / "FineWebAnalysis" / "peak_years.json"
 DEFAULT_COUNTS = (REPO_ROOT / "experiments" / "scenario_based_prompting"
@@ -59,32 +62,6 @@ DEFAULT_OUTPUT = Path(__file__).resolve().parent / "results" / "effective_vintag
 
 
 # ── helpers ───────────────────────────────────────────────────────────────────
-
-def _load_vocab(paths: list[Path]) -> list[str]:
-    seen: set[str] = set()
-    vocab: list[str] = []
-    for p in paths:
-        for line in p.read_text(encoding="utf-8").splitlines():
-            w = line.strip().lower()
-            if w and not w.startswith("#") and w not in seen:
-                seen.add(w)
-                vocab.append(w)
-    return vocab
-
-
-def _pattern(word: str) -> re.Pattern:
-    return re.compile(rf"(?<![a-z]){re.escape(word)}(?![a-z])", re.IGNORECASE)
-
-
-def _load_peak_data(path: Path, min_hits: int) -> dict[str, dict]:
-    """Return {word: {peak_year, corpus_count}} for reliable words."""
-    return {
-        r["word"].lower(): {"peak_year": int(r["peak_year"]),
-                            "corpus_count": int(r["total_hits"])}
-        for r in json.loads(path.read_text(encoding="utf-8"))
-        if "word" in r and "peak_year" in r and int(r.get("total_hits", 0)) >= min_hits
-    }
-
 
 def _load_response_counts(path: Path) -> tuple[Counter, int]:
     """Aggregate word counts and response count from slang_counts_by_model.json."""
@@ -100,8 +77,6 @@ def _load_response_counts(path: Path) -> tuple[Counter, int]:
 
 def _load_individual_responses(path: Path) -> list[str]:
     """Load response texts from a JSONL file or directory of JSONL files."""
-    sys.path.insert(0, str(REPO_ROOT))
-    from src.response_utils import read_responses  # noqa: E402
     records = read_responses(str(path))
     return [r["response"] for r in records if r.get("response")]
 
@@ -224,7 +199,7 @@ def main() -> None:
     tee = _Tee(args.output)
     sys.stdout = tee
 
-    peak_data = _load_peak_data(args.peaks, args.min_hits)
+    peak_data = load_peak_records(args.peaks, args.min_hits)
     exclude = {w.lower() for w in args.exclude}
     for w in exclude:
         peak_data.pop(w, None)
@@ -240,8 +215,8 @@ def main() -> None:
     # (potentially different models / response set) while the CI reflects the
     # given file, causing the point estimate to fall outside the CI.
     if args.responses is not None and args.responses.exists():
-        vocab = _load_vocab(args.words)
-        vocab_pats = {w: _pattern(w) for w in vocab if w in peak_data}
+        vocab = load_vocab(args.words)
+        vocab_pats = {w: word_pattern(w) for w in vocab if w in peak_data}
         response_texts = _load_individual_responses(args.responses)
         n_responses = len(response_texts)
         agg: Counter = Counter()
@@ -258,7 +233,7 @@ def main() -> None:
 
     # ── point estimates ───────────────────────────────────────────────────────
     model_vintage = _vintage(dict(response_counts), peak_data)
-    corpus_vintage = _vintage({w: d["corpus_count"] for w, d in peak_data.items()},
+    corpus_vintage = _vintage({w: d["total_hits"] for w, d in peak_data.items()},
                                peak_data)
     lag = model_vintage - corpus_vintage
 

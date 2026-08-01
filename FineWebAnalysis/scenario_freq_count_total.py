@@ -1,17 +1,14 @@
 """Single aggregated frequency chart for all scenario slang words combined."""
-import importlib.util
-import json
+import sys
 from collections import Counter, defaultdict
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-spec = importlib.util.spec_from_file_location("word_rate_plotter", HERE / "word_rate_plotter.py")
-wrp = importlib.util.module_from_spec(spec); spec.loader.exec_module(wrp)
+sys.path.insert(0, str(HERE))
+import word_rate_plotter as wrp  # noqa: E402
 
 SCORED = HERE / "scenario_prompt_scored"
 CACHE = HERE / "fineweb_10BT_dump_sizes.json"
-COUNTS_JSON = (HERE.parent / "PromptingSlang" / "experiments" / "scenario_based_prompting"
-              / "slang_counts_by_model.json")
 SCENARIO_WORDS = HERE / "scenario_words.txt"
 OUT = HERE / "scenario_charts" / "scenario_freq_count.png"
 THRESHOLD, SMOOTH, CONFIDENCE = 0.99, 5, 0.95

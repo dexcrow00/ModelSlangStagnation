@@ -14,7 +14,6 @@ Usage (run from the PromptingSlang root):
 from __future__ import annotations
 
 import argparse
-import re
 import sys
 from collections import Counter, defaultdict
 from pathlib import Path
@@ -24,26 +23,16 @@ import numpy as np
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(REPO_ROOT))
+from src.analysis_utils import load_vocab, word_pattern  # noqa: E402
 from src.response_utils import model_short, read_responses  # noqa: E402
 
 DEFAULT_RESPONSES = Path(__file__).resolve().parents[1] / "responses"
 DEFAULT_WORDS = REPO_ROOT / "data" / "prompts" / "target_words.txt"
 
 
-def load_target_words(path: Path) -> list[str]:
-    return [w.strip().lower() for w in path.read_text(encoding="utf-8").splitlines()
-            if w.strip() and not w.strip().startswith("#")]
-
-
-def _pattern(word: str) -> re.Pattern:
-    # Word-boundary-ish match that tolerates the space/hyphen in multi-word
-    # targets ("red pill", "glow-up") and is case-insensitive.
-    return re.compile(rf"(?<![a-z]){re.escape(word)}(?![a-z])", re.IGNORECASE)
-
-
 def count_usage(records: list[dict], words: list[str]) -> dict[str, Counter]:
     """Return {model: Counter(word -> total occurrences in its responses)}."""
-    pats = {w: _pattern(w) for w in words}
+    pats = {w: word_pattern(w) for w in words}
     per_model: dict[str, Counter] = defaultdict(Counter)
     for rec in records:
         text = rec.get("response") or ""
@@ -102,7 +91,7 @@ def main() -> None:
     records = read_responses(args.responses)
     if not records:
         sys.exit(f"No response records found in {args.responses}.")
-    words = load_target_words(args.words)
+    words = load_vocab(args.words)
     per_model = count_usage(records, words)
     render(per_model, words, args.output)
 

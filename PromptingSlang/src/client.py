@@ -180,6 +180,11 @@ class RouterClient:
         if anthropic is not None:
             self._clients["anthropic"] = anthropic
 
+    @property
+    def providers(self) -> list[str]:
+        """Providers with a configured client — empty when no API keys were found."""
+        return list(self._clients)
+
     def complete(self, model: str, messages: list[dict], **gen_kwargs) -> dict:
         provider = _infer_provider(model)
         client = self._clients.get(provider)

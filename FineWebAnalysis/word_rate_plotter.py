@@ -234,15 +234,28 @@ def _word_series_ci(
     return central, lower, upper
 
 
-def _word_series(
+def _build_series(
     counts: Dict[date, Counter],
     dump_tokens: Optional[Dict[date, int]],
     dumps: List[date],
-    target: str,
+    targets: List[str],
     smooth: int,
-) -> List[float]:
-    """Per-dump value series for one word (token-normalised unless raw), smoothed."""
-    return _word_series_ci(counts, dump_tokens, dumps, target, smooth, None)[0]
+    confidence: Optional[float],
+) -> tuple[Dict[str, List[float]], Optional[Dict[str, tuple]]]:
+    """Central series per word, plus the matching CI bands when ``confidence`` is set.
+
+    Returns ``(series, bands)`` ready to hand to the renderers; ``bands`` is None
+    when no confidence level was requested, which is how the renderers decide
+    whether to shade at all.
+    """
+    series: Dict[str, List[float]] = {}
+    bands: Optional[Dict[str, tuple]] = {} if confidence else None
+    for t in targets:
+        central, lo, hi = _word_series_ci(counts, dump_tokens, dumps, t, smooth, confidence)
+        series[t] = central
+        if bands is not None:
+            bands[t] = (lo, hi)
+    return series, bands
 
 
 def _draw_series(ax, dumps, series, bands=None):
@@ -268,6 +281,12 @@ def _draw_series(ax, dumps, series, bands=None):
                                 alpha=0.18, linewidth=0)
 
 
+def _unit_label(dump_tokens: Optional[Dict[date, int]]) -> str:
+    """Y-axis unit: raw per-dump counts, or the token-normalised rate."""
+    return ("Occurrences in dump" if dump_tokens is None
+            else "Occurrences per million sample tokens")
+
+
 def _render_chart(
     dumps: List[date],
     series: Dict[str, List[float]],
@@ -281,11 +300,9 @@ def _render_chart(
     fig, ax = plt.subplots(figsize=(12, 6))
     _draw_series(ax, dumps, series, bands)
 
-    unit = ("Occurrences in dump" if dump_tokens is None
-            else "Occurrences per million sample tokens")
     ax.set_title(title)
     ax.set_xlabel("Crawl dump date")
-    ax.set_ylabel(f"{unit}{' (log2 scale)' if log_scale else ''}")
+    ax.set_ylabel(f"{_unit_label(dump_tokens)}{' (log2 scale)' if log_scale else ''}")
     if log_scale:
         ax.set_yscale("log", base=2)
     ax.xaxis.set_major_formatter(mdates.DateFormatter("%Y-%m"))
@@ -337,11 +354,9 @@ def _render_broken(
     bot.plot((-d, +d), (1 - d, 1 + d), **kw)
     bot.plot((1 - d, 1 + d), (1 - d, 1 + d), **kw)
 
-    unit = ("Occurrences in dump" if dump_tokens is None
-            else "Occurrences per million sample tokens")
     top.set_title(title)
     bot.set_xlabel("Crawl dump date")
-    fig.supylabel(unit)
+    fig.supylabel(_unit_label(dump_tokens))
     bot.xaxis.set_major_formatter(mdates.DateFormatter("%Y-%m"))
     fig.autofmt_xdate()
     for ax in (top, bot):
@@ -384,13 +399,7 @@ def plot_rates(
         totals.update(dump_counts)
 
     targets = _select_targets(totals, words, top)
-    series: Dict[str, List[float]] = {}
-    bands: Optional[Dict[str, tuple]] = {} if confidence else None
-    for t in targets:
-        central, lo, hi = _word_series_ci(counts, dump_tokens, dumps, t, smooth, confidence)
-        series[t] = central
-        if bands is not None:
-            bands[t] = (lo, hi)
+    series, bands = _build_series(counts, dump_tokens, dumps, targets, smooth, confidence)
     title = (f"Slang usage per crawl dump ({len(targets)} words, "
              f"roberta_score >= {threshold:g}"
              f"{f', {confidence:.0%} CI' if confidence else ''})")
@@ -427,13 +436,7 @@ def plot_segmented_by_peak(
         sys.exit(f"No words with >= {min_count} above-threshold occurrences.")
 
     # Peak dump = argmax of each word's smoothed normalised series.
-    series: Dict[str, List[float]] = {}
-    bands: Optional[Dict[str, tuple]] = {} if confidence else None
-    for w in kept:
-        central, lo, hi = _word_series_ci(counts, dump_tokens, dumps, w, smooth, confidence)
-        series[w] = central
-        if bands is not None:
-            bands[w] = (lo, hi)
+    series, bands = _build_series(counts, dump_tokens, dumps, kept, smooth, confidence)
     peak = {w: dumps[max(range(len(dumps)), key=lambda i: ys[i])]
             for w, ys in series.items()}
     ordered = sorted(kept, key=lambda w: (peak[w], -totals[w]))
@@ -477,13 +480,7 @@ def plot_highlight_bands(
         if missing:
             log.warning("Band %s: no above-threshold occurrences for %s",
                         band, ", ".join(missing))
-        series: Dict[str, List[float]] = {}
-        bands: Optional[Dict[str, tuple]] = {} if confidence else None
-        for w in present:
-            central, lo, hi = _word_series_ci(counts, dump_tokens, dumps, w, smooth, confidence)
-            series[w] = central
-            if bands is not None:
-                bands[w] = (lo, hi)
+        series, bands = _build_series(counts, dump_tokens, dumps, present, smooth, confidence)
         out = out_dir / f"highlight_{band}_count.png"
         title = HIGHLIGHT_TITLES[band]
         if band in HIGHLIGHT_BROKEN:

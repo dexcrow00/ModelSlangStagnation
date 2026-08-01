@@ -41,7 +41,6 @@ import re
 import sys
 import warnings
 from collections import Counter, defaultdict
-from datetime import date
 from pathlib import Path
 
 import numpy as np

@@ -25,7 +25,6 @@ from __future__ import annotations
 import argparse
 import json
 import math
-import re
 import sys
 from collections import Counter
 from pathlib import Path
@@ -38,6 +37,7 @@ from scipy.stats import t as t_dist
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(REPO_ROOT))
+from src.analysis_utils import load_peak_records, load_vocab, pick_model, word_pattern  # noqa: E402
 from src.response_utils import model_short, read_responses  # noqa: E402
 
 DEFAULT_RESPONSES = Path(__file__).resolve().parents[1] / "responses"
@@ -49,44 +49,13 @@ DEFAULT_WORDS = [FINEWEB / "target_words.txt", FINEWEB / "scenario_words.txt"]
 DEFAULT_PEAKS = FINEWEB / "peak_years.json"
 
 
-def load_target_words(paths: list[Path]) -> list[str]:
-    """Union of words/phrases across the given files, lowercased, order-stable."""
-    seen: set[str] = set()
-    words: list[str] = []
-    for p in paths:
-        for line in p.read_text(encoding="utf-8").splitlines():
-            w = line.strip().lower()
-            if w and not w.startswith("#") and w not in seen:
-                seen.add(w)
-                words.append(w)
-    return words
-
-
-def load_peak_years(path: Path) -> dict[str, tuple[int, int]]:
-    """{word: (peak_year, total_hits)}; total_hits gauges how trustworthy the peak is."""
-    if not path.is_file():
-        return {}
-    return {r["word"].lower(): (int(r["peak_year"]), int(r.get("total_hits", 0)))
-            for r in json.loads(path.read_text(encoding="utf-8"))
-            if "word" in r and "peak_year" in r}
-
-
-def _pattern(word: str) -> re.Pattern:
-    # Word-boundary-ish match tolerating the space/hyphen in multi-word targets
-    # ("red pill", "glow-up", "he ate"); case-insensitive.
-    return re.compile(rf"(?<![a-z]){re.escape(word)}(?![a-z])", re.IGNORECASE)
-
-
-def pick_model(records: list[dict], requested: str | None) -> tuple[list[dict], str | None]:
-    models = sorted({r.get("model", "unknown") for r in records})
+def filter_to_model(records: list[dict], requested: str | None) -> tuple[list[dict], str | None]:
+    """Records for the one model matching *requested*; all records when it is None."""
     if requested is None:
         return records, None
-    matches = [m for m in models if requested.lower() in m.lower()]
-    if not matches:
-        sys.exit(f"No model matching '{requested}'. Available: {', '.join(models)}")
-    if len(matches) > 1:
-        sys.exit(f"'{requested}' matches several models: {', '.join(matches)}. Be more specific.")
-    return [r for r in records if r.get("model") == matches[0]], matches[0]
+    chosen = pick_model({r.get("model", "unknown") for r in records}, requested,
+                        "No records found.")
+    return [r for r in records if r.get("model") == chosen], chosen
 
 
 def load_from_counts_json(path: Path, model: str | None) -> tuple[Counter, int]:
@@ -115,7 +84,7 @@ def load_from_counts_json(path: Path, model: str | None) -> tuple[Counter, int]:
 
 def collect(records: list[dict], words: list[str]) -> tuple[Counter, int]:
     """Total occurrences per target word across *records*, and the response count."""
-    pats = {w: _pattern(w) for w in words}
+    pats = {w: word_pattern(w) for w in words}
     totals: Counter = Counter()
     n = 0
     for rec in records:
@@ -217,7 +186,7 @@ def _draw_panel(fig, ax, words, values, colors, cmap, norm, cbar_label,
             cbar.ax.yaxis.set_major_formatter(plt.FuncFormatter(lambda v, _: f"{int(v)}"))
 
 
-def render(totals: Counter, n_responses: int, peaks: dict[str, tuple[int, int]],
+def render(totals: Counter, n_responses: int, peaks: dict[str, dict],
            model_label: str | None, as_rate: bool, min_hits: int, output: Path | None,
            show_unreliable: bool = False, log_y: bool = False,
            caption: str = "") -> None:
@@ -229,7 +198,7 @@ def render(totals: Counter, n_responses: int, peaks: dict[str, tuple[int, int]],
     # sense-filtered occurrences; rarer words are greyed out in both panels.
     def reliable_of(w: str) -> bool:
         pk = peaks.get(w)
-        return bool(pk and pk[1] >= min_hits)
+        return bool(pk and pk["total_hits"] >= min_hits)
 
     reliable_words = [w for w in appeared if reliable_of(w)]
     grey_words = [w for w in appeared if not reliable_of(w)]
@@ -241,8 +210,8 @@ def render(totals: Counter, n_responses: int, peaks: dict[str, tuple[int, int]],
     # --- Spearman rank correlations over the reliable (coloured) words --------
     # Order-independent: the same data points, only plotted in different orders.
     # Rank-based, so robust to the heavy outliers (bro/omg/u) in response usage.
-    rel_year = [peaks[w][0] for w in reliable_words]
-    rel_occ = [peaks[w][1] for w in reliable_words]
+    rel_year = [peaks[w]["peak_year"] for w in reliable_words]
+    rel_occ = [peaks[w]["total_hits"] for w in reliable_words]
     rel_freq = [totals[w] for w in reliable_words]  # response counts (rate is a constant scale)
     r_year = _spearman(rel_year, rel_freq)
     r_occ = _pearson(rel_occ, rel_freq)
@@ -256,7 +225,7 @@ def render(totals: Counter, n_responses: int, peaks: dict[str, tuple[int, int]],
     print(f"  corpus total occurrence Pearson  r   = {r_occ:+.3f}  {_fmt_p(p_occ)}")
     print(f"\n  {'word':<12}{'peak_yr':>8}{'corpus_occ':>12}{'resp_freq':>11}")
     for w in sorted(reliable_words, key=lambda w: -totals[w]):
-        print(f"  {w:<12}{peaks[w][0]:>8}{peaks[w][1]:>12}{totals[w]:>11}")
+        print(f"  {w:<12}{peaks[w]['peak_year']:>8}{peaks[w]['total_hits']:>12}{totals[w]:>11}")
 
     # Colour scale for top panel (peak year → plasma).
     if reliable_words:
@@ -270,9 +239,10 @@ def render(totals: Counter, n_responses: int, peaks: dict[str, tuple[int, int]],
     # newest), panel 2 by corpus total occurrence (most -> least).
     # Unreliable words are dropped unless --show-unreliable is set, in which case they are shown in grey.
     tail = [] if not show_unreliable else sorted(grey_words, key=lambda w: (-totals[w], w))
-    order1 = sorted(reliable_words, key=lambda w: (peaks[w][0], -totals[w], w)) + tail
-    order2 = sorted(reliable_words, key=lambda w: (-peaks[w][1], w)) + tail
-    colors1 = [plasma(peak_norm(peaks[w][0])) if reliable_of(w) else "#bbbbbb" for w in order1]
+    order1 = sorted(reliable_words, key=lambda w: (peaks[w]["peak_year"], -totals[w], w)) + tail
+    order2 = sorted(reliable_words, key=lambda w: (-peaks[w]["total_hits"], w)) + tail
+    colors1 = [plasma(peak_norm(peaks[w]["peak_year"])) if reliable_of(w) else "#bbbbbb"
+               for w in order1]
     # Bottom panel: x-position already encodes corpus frequency order, no colour needed.
     colors2 = ["#4878cf" if reliable_of(w) else "#bbbbbb" for w in order2]
 
@@ -356,10 +326,10 @@ def main() -> None:
                    help=f"Output path (default: {DEFAULT_OUTPUT}). Pass '-' to display interactively.")
     args = p.parse_args()
 
-    peaks = load_peak_years(args.peaks)
+    peaks = load_peak_records(args.peaks)
     if not peaks:
         print(f"Warning: no peak years from {args.peaks}; bars will be uncoloured grey.", file=sys.stderr)
-    words = load_target_words(args.words)
+    words = load_vocab(args.words)
 
     use_json = args.counts_json or (not Path(args.responses).exists())
     if use_json:
@@ -373,7 +343,7 @@ def main() -> None:
         records = read_responses(args.responses)
         if not records:
             sys.exit(f"No response records found in {args.responses}.")
-        records, model_label = pick_model(records, args.model)
+        records, model_label = filter_to_model(records, args.model)
         totals, n = collect(records, words)
 
     for w in {x.lower() for x in args.exclude}:
