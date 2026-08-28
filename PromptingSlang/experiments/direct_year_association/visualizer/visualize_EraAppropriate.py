@@ -20,7 +20,6 @@ Usage (run from the PromptingSlang root):
 from __future__ import annotations
 
 import argparse
-import json
 import re
 import sys
 from collections import defaultdict
@@ -32,6 +31,7 @@ from matplotlib.patches import Rectangle
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(REPO_ROOT))
+from src.analysis_utils import load_peak_years, pick_model  # noqa: E402
 from src.response_utils import model_short, read_responses  # noqa: E402
 
 EXP_DIR = Path(__file__).resolve().parents[1]
@@ -62,14 +62,6 @@ def classify(resp: str) -> int | None:
     return None
 
 
-def load_peak_years(path: Path) -> dict[str, int]:
-    """{word: true peak year} from FineWebAnalysis/peak_year.py output."""
-    if not path.is_file():
-        return {}
-    records = json.loads(path.read_text(encoding="utf-8"))
-    return {r["word"]: int(r["peak_year"]) for r in records if "word" in r and "peak_year" in r}
-
-
 def collect(records: list[dict]) -> dict[str, dict[str, dict[str, list[int]]]]:
     """{model: {word: {year: [n_yes, n_total, n_unclear]}}} over EraAppropriate prompts."""
     data: dict[str, dict[str, dict[str, list[int]]]] = defaultdict(
@@ -89,24 +81,6 @@ def collect(records: list[dict]) -> dict[str, dict[str, dict[str, list[int]]]]:
         elif verdict is None:
             cell[2] += 1
     return data
-
-
-def pick_model(data: dict, requested: str | None) -> str:
-    models = sorted(data)
-    if not models:
-        sys.exit(f"No {PROMPT_ID} records found.")
-    if requested is None:
-        chosen = models[0]
-        if len(models) > 1:
-            print(f"Charting model '{chosen}'. Other models present "
-                  f"(use --model to pick): {', '.join(m for m in models if m != chosen)}")
-        return chosen
-    matches = [m for m in models if requested.lower() in m.lower()]
-    if not matches:
-        sys.exit(f"No model matching '{requested}'. Available: {', '.join(models)}")
-    if len(matches) > 1:
-        sys.exit(f"'{requested}' matches several models: {', '.join(matches)}. Be more specific.")
-    return matches[0]
 
 
 def render(data: dict, model: str, peaks: dict[str, int], output: Path | None) -> None:
@@ -189,7 +163,7 @@ def main() -> None:
         print(f"Warning: no peak years from {args.peak_years}; ordering alphabetically, "
               "no true-peak outline.", file=sys.stderr)
     data = collect(records)
-    model = pick_model(data, args.model)
+    model = pick_model(data, args.model, f"No {PROMPT_ID} records found.")
     render(data, model, peaks, None if str(args.output) == "-" else args.output)
 
 

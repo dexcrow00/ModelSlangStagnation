@@ -5,7 +5,6 @@ from __future__ import annotations
 
 import argparse
 import logging
-import os
 import sys
 import uuid
 from pathlib import Path
@@ -175,7 +174,7 @@ def main() -> None:
         openai=_try(OpenAIClient),
         anthropic=_try(AnthropicClient),
     )
-    if not router._clients:
+    if not router.providers:
         print(
             "No API keys found. Set TOGETHER_API_KEY, OPENAI_API_KEY, or ANTHROPIC_API_KEY.",
             file=sys.stderr,

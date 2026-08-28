@@ -15,7 +15,6 @@ from __future__ import annotations
 
 import argparse
 import json
-import re
 import sys
 from collections import Counter, defaultdict
 from pathlib import Path
@@ -23,31 +22,13 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[3]           # PromptingSlang
 PROJECT_ROOT = REPO_ROOT.parent                            # CommonCrawlAnalysis
 sys.path.insert(0, str(REPO_ROOT))
+from src.analysis_utils import load_vocab, word_pattern  # noqa: E402
 from src.response_utils import read_responses  # noqa: E402
 
 DEFAULT_RESPONSES = Path(__file__).resolve().parents[1] / "responses"
 WORD_FILES = [PROJECT_ROOT / "FineWebAnalysis" / "target_words.txt",
               PROJECT_ROOT / "FineWebAnalysis" / "scenario_words.txt"]
 DEFAULT_OUTPUT = Path(__file__).resolve().parents[1] / "slang_counts_by_model.json"
-
-
-def load_vocab(paths: list[Path]) -> list[str]:
-    """Union of words/phrases across the given files, lowercased, order-stable."""
-    seen: set[str] = set()
-    vocab: list[str] = []
-    for p in paths:
-        for line in p.read_text(encoding="utf-8").splitlines():
-            w = line.strip().lower()
-            if w and not w.startswith("#") and w not in seen:
-                seen.add(w)
-                vocab.append(w)
-    return vocab
-
-
-def _pattern(word: str) -> re.Pattern:
-    # Word-boundary-ish match tolerating spaces/hyphens in multi-word targets and
-    # non-letter tokens (digits, emoji); case-insensitive.
-    return re.compile(rf"(?<![a-z]){re.escape(word)}(?![a-z])", re.IGNORECASE)
 
 
 def main() -> None:
@@ -59,7 +40,7 @@ def main() -> None:
     args = p.parse_args()
 
     vocab = load_vocab(WORD_FILES)
-    pats = {w: _pattern(w) for w in vocab}
+    pats = {w: word_pattern(w) for w in vocab}
 
     records = read_responses(args.responses)
     counts: dict[str, Counter] = defaultdict(Counter)

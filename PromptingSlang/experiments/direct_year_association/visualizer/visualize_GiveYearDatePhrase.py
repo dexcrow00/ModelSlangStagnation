@@ -24,7 +24,6 @@ Usage (run from the PromptingSlang root):
 from __future__ import annotations
 
 import argparse
-import json
 import re
 import sys
 from collections import defaultdict
@@ -35,6 +34,7 @@ import numpy as np
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(REPO_ROOT))
+from src.analysis_utils import load_peak_years, pick_model  # noqa: E402
 from src.response_utils import model_short, read_responses  # noqa: E402
 
 DEFAULT_RESPONSES = Path(__file__).resolve().parents[1] / "responses"
@@ -53,14 +53,6 @@ def responded_year(rec: dict) -> int | None:
     return int(m.group(1)) if m else None
 
 
-def load_peak_years(path: Path) -> dict[str, int]:
-    """{word: true peak year} from a peak_years.json produced by FineWebAnalysis/peak_year.py."""
-    if not path.is_file():
-        return {}
-    records = json.loads(path.read_text(encoding="utf-8"))
-    return {r["word"]: int(r["peak_year"]) for r in records if "word" in r and "peak_year" in r}
-
-
 def collect(records: list[dict]) -> dict[str, dict[str, list[int]]]:
     """{model: {word: [responded year, ...]}} pooling GiveYear + DatePhrase together."""
     data: dict[str, dict[str, list[int]]] = defaultdict(lambda: defaultdict(list))
@@ -72,24 +64,6 @@ def collect(records: list[dict]) -> dict[str, dict[str, list[int]]]:
         if word and year is not None:
             data[rec.get("model", "unknown")][str(word)].append(year)
     return data
-
-
-def pick_model(data: dict, requested: str | None) -> str:
-    models = sorted(data)
-    if not models:
-        sys.exit(f"No {' / '.join(PROMPT_IDS)} records with usable years found.")
-    if requested is None:
-        chosen = models[0]
-        if len(models) > 1:
-            print(f"Charting model '{chosen}'. Other models present "
-                  f"(use --model to pick): {', '.join(m for m in models if m != chosen)}")
-        return chosen
-    matches = [m for m in models if requested.lower() in m.lower()]
-    if not matches:
-        sys.exit(f"No model matching '{requested}'. Available: {', '.join(models)}")
-    if len(matches) > 1:
-        sys.exit(f"'{requested}' matches several models: {', '.join(matches)}. Be more specific.")
-    return matches[0]
 
 
 def _clamp(year: float) -> float:
@@ -195,7 +169,9 @@ def main() -> None:
         print(f"Warning: no peak years loaded from {args.peak_years}; "
               "words will be ordered alphabetically and true-peak markers omitted.", file=sys.stderr)
     data = collect(records)
-    model = pick_model(data, args.model)
+    model = pick_model(
+        data, args.model,
+        f"No {' / '.join(PROMPT_IDS)} records with usable years found.")
     render(data, model, peaks, None if str(args.output) == "-" else args.output)
 
 

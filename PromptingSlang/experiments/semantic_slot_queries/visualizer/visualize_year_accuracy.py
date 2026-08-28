@@ -24,7 +24,6 @@ from __future__ import annotations
 
 import argparse
 import importlib.util
-import json
 import sys
 from collections import defaultdict
 from pathlib import Path
@@ -35,6 +34,7 @@ from matplotlib.patches import Rectangle
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(REPO_ROOT))
+from src.analysis_utils import load_peak_years, pick_model  # noqa: E402
 from src.response_utils import model_short, read_responses, responded_word  # noqa: E402
 
 # Reuse the matching logic (is_correct / target_prompt_id / WORDS_CHRONO_ORDER)
@@ -50,14 +50,6 @@ EXP_DIR = Path(__file__).resolve().parents[1]
 DEFAULT_RESPONSES = EXP_DIR / "responses"
 DEFAULT_OUTPUT = EXP_DIR / "figures" / "target_word_accuracy_by_year.png"
 DEFAULT_PEAK_YEARS = REPO_ROOT.parent / "FineWebAnalysis" / "peak_years.json"
-
-
-def load_peak_years(path: Path) -> dict[str, int]:
-    """{word: true peak year} from FineWebAnalysis/peak_year.py output."""
-    if not path.is_file():
-        return {}
-    records = json.loads(path.read_text(encoding="utf-8"))
-    return {r["word"]: int(r["peak_year"]) for r in records if "word" in r and "peak_year" in r}
 
 
 def collect(records: list[dict]) -> dict[str, dict[str, dict[str, list[int]]]]:
@@ -77,24 +69,6 @@ def collect(records: list[dict]) -> dict[str, dict[str, dict[str, list[int]]]]:
         if is_correct(responded_word(rec), word):
             cell[0] += 1
     return data
-
-
-def pick_model(data: dict, requested: str | None) -> str:
-    models = sorted(data)
-    if not models:
-        sys.exit("No year-resolved target-word records found.")
-    if requested is None:
-        chosen = models[0]
-        if len(models) > 1:
-            print(f"Charting model '{chosen}'. Other models present "
-                  f"(use --model to pick): {', '.join(m for m in models if m != chosen)}")
-        return chosen
-    matches = [m for m in models if requested.lower() in m.lower()]
-    if not matches:
-        sys.exit(f"No model matching '{requested}'. Available: {', '.join(models)}")
-    if len(matches) > 1:
-        sys.exit(f"'{requested}' matches several models: {', '.join(matches)}. Be more specific.")
-    return matches[0]
 
 
 def render(data: dict, model: str, peaks: dict[str, int], output: Path | None) -> None:
@@ -178,7 +152,8 @@ def main() -> None:
         print(f"Warning: no peak years from {args.peak_years}; ordering alphabetically, "
               "no true-peak outline.", file=sys.stderr)
     data = collect(records)
-    model = pick_model(data, args.model)
+    model = pick_model(data, args.model,
+                       "No year-resolved target-word records found.")
     render(data, model, peaks, None if str(args.output) == "-" else args.output)
 
 

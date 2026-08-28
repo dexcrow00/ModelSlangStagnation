@@ -6,7 +6,7 @@ import json
 import logging
 import uuid
 from datetime import datetime, timezone
-from typing import Any
+from typing import Any, NamedTuple
 
 from tenacity import (
     retry,
@@ -29,6 +29,18 @@ _RETRYABLE_STATUS = {429, 500, 502, 503, 504}
 def _is_retryable(exc: BaseException) -> bool:
     status = getattr(exc, "status_code", None) or getattr(exc, "status", None)
     return status in _RETRYABLE_STATUS
+
+
+class _Variant(NamedTuple):
+    """One prompt template rendered for a single combination of its variables."""
+    prompt_id: str
+    model_type: str | None
+    temperature: float | None
+    logprobs: int | None
+    echo: bool | None
+    variables: dict
+    system_text: str
+    user_text: str
 
 
 def model_class(model: str) -> str:
@@ -90,8 +102,8 @@ class Runner:
         """
         # Expand prompts first so tqdm shows the true total request count.
         expanded = [
-            (template.id, template.model_type, template.temperature,
-             logprobs, echo, variables, system_text, user_text)
+            _Variant(template.id, template.model_type, template.temperature,
+                     logprobs, echo, variables, system_text, user_text)
             for template, logprobs, echo in prompts
             for variables, system_text, user_text in template.expand()
         ]
@@ -100,25 +112,24 @@ class Runner:
 
         # Route by model_type: a prompt tagged 'open'/'closed' runs only on models
         # of that class; an untagged prompt (model_type=None) runs on every model.
-        combos = []
+        combos: list[tuple[str, int, _Variant]] = []
         skipped = 0
         resumed = 0
         for model in self.models:
             mclass = model_class(model)
-            for exp in expanded:
-                prompt_id, prompt_model_type = exp[0], exp[1]
-                if prompt_model_type is not None and prompt_model_type != mclass:
+            for var in expanded:
+                if var.model_type is not None and var.model_type != mclass:
                     skipped += 1
                     continue
                 # Every prompt is sampled `samples` times; closed prompts get an
                 # extra closed_samples factor (no logprobs -> approximate by counts).
-                n = self.samples * (self.closed_samples if prompt_model_type == "closed" else 1)
-                variables = exp[5]
+                n = self.samples * (self.closed_samples if var.model_type == "closed" else 1)
                 for sample_idx in range(n):
-                    if done and self._combo_key(model, prompt_id, variables, sample_idx) in done:
+                    if done and self._combo_key(model, var.prompt_id, var.variables,
+                                                sample_idx) in done:
                         resumed += 1
                         continue
-                    combos.append((model, sample_idx, *exp))
+                    combos.append((model, sample_idx, var))
         logger.info(
             "Starting run %s — %d model(s), %d prompt variant(s) -> %d requests "
             "(%d skipped by model_type; %d already done, resumed; samples x%d, "
@@ -127,10 +138,9 @@ class Runner:
             resumed, self.samples, self.closed_samples,
         )
 
-        for (model, sample_idx, prompt_id, _model_type, temperature, logprobs, echo,
-             variables, system_text, user_text) in tqdm(combos, desc="Prompting", unit="req"):
-            self._process(model, prompt_id, logprobs, echo, variables,
-                          system_text, user_text, temperature, sample_idx)
+        for model, sample_idx, var in tqdm(combos, desc="Prompting", unit="req"):
+            self._process(model, var.prompt_id, var.logprobs, var.echo, var.variables,
+                          var.system_text, var.user_text, var.temperature, sample_idx)
 
     @retry(
         retry=retry_if_exception(_is_retryable),

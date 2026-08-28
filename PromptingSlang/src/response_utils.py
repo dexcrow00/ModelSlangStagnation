@@ -113,7 +113,22 @@ def normalize_logprobs(lp) -> tuple[list[str], list[float], list[dict]]:
     return _strip_routing(tokens, lps, tops)
 
 
-_STOP_CHARS = set(".!?,\n \t")
+def _answer_tokens(tokens: list) -> int:
+    """How many leading tokens belong to the answer itself.
+
+    Stops at the first special/EOS token (``<...>``), the first token carrying
+    sentence-ending punctuation, and at whitespace once some answer has been
+    seen — so a single-word answer is taken without the trailing commentary
+    models sometimes append.
+    """
+    n = 0
+    for tok in tokens:
+        if not isinstance(tok, str) or tok.startswith("<"):
+            break
+        if any(ch in tok for ch in ".!?,\n") or (tok.strip() == "" and n):
+            break
+        n += 1
+    return n
 
 
 def responded_word(rec: dict) -> str:
@@ -127,14 +142,7 @@ def responded_word(rec: dict) -> str:
     if resp:
         return resp.strip().strip('"\'.').lower()
     tokens, _lps, _tops = normalize_logprobs(rec.get("logprobs"))
-    parts: list[str] = []
-    for tok in tokens:
-        if not isinstance(tok, str) or tok.startswith("<"):
-            break
-        if any(ch in tok for ch in ".!?,\n") or (tok.strip() == "" and parts):
-            break
-        parts.append(tok)
-    return "".join(parts).strip().strip('"\'.').lower()
+    return "".join(tokens[:_answer_tokens(tokens)]).strip().strip('"\'.').lower()
 
 
 def joint_logprob(rec: dict) -> float | None:
@@ -143,15 +151,8 @@ def joint_logprob(rec: dict) -> float | None:
     None when the record carries no usable logprobs.
     """
     tokens, lps, _tops = normalize_logprobs(rec.get("logprobs"))
-    total, got = 0.0, False
-    for tok, lp in zip(tokens, lps):
-        if not isinstance(tok, str) or tok.startswith("<"):
-            break
-        if any(ch in tok for ch in ".!?,\n") or (tok.strip() == "" and got):
-            break
-        total += lp
-        got = True
-    return total if got else None
+    n = _answer_tokens(tokens)
+    return sum(lps[:n]) if n else None
 
 
 def first_token_distribution(rec: dict) -> dict[str, float]:
