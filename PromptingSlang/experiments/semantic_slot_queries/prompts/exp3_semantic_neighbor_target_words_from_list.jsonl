@@ -1,0 +1,284 @@
+{
+  "id": "exp3_lol",
+  "temperature": 1.0,
+  "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
+  "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) lmao B) lol C) haha D) rofl",
+  "variables": {
+    "year": ["2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"], 
+    "phrasing": [
+      "What's a way, using text, people might show that something made them laugh?",
+      "Give me the short response someone adds to a message to indicate they're laughing.",
+      "What phrase do people use online to react to something funny?"
+    ]
+  }
+}
+
+{
+  "id": "exp3_sick",
+  "temperature": 1.0,
+  "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
+  "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) dank B) rad C) fire D) sick",
+  "variables": {
+    "year": ["2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"], 
+    "phrasing": [
+      "What is a word to mean something is awesome?",
+      "Give me the term that people use to say something is really cool.",
+      "What's one informal word meaning 'excellent'?"
+    ]
+  }
+}
+
+{
+  "id": "exp3_troll",
+  "temperature": 1.0,
+  "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
+  "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) troll B) karen C) shitposter D) simp",
+  "variables": {
+    "year": ["2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"], 
+    "phrasing": [
+      "What's a phrase for someone who posts inflammatory things online just to upset people?",
+      "Give me the term for a person who stirs up arguments on the internet to get a reaction.",
+      "What word describes someone who provokes others online?"
+    ]
+  }
+}
+
+{
+  "id": "exp3_bro",
+  "temperature": 1.0,
+  "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
+  "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) bruh B) unc C) stan D) bro",
+  "variables": {
+    "year": ["2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"], 
+    "phrasing": [
+      "What's a casual word guys use to address a close male friend?",
+      "Give me the term for a buddy, especially between young men.",
+      "What short slang term do people use to greet a male friend?"
+    ]
+  }
+}
+
+{
+  "id": "exp3_swag",
+  "temperature": 1.0,
+  "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
+  "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) aura B) alpha C) mog D) swag",
+  "variables": {
+    "year": ["2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"], 
+    "phrasing": [
+      "What's a phrase for effortless stylish confidence in how someone carries themselves?",
+      "Give me the term for a cool, self-assured sense of style.",
+      "What word describes someone's flashy confidence and cool personal style?"
+    ]
+  }
+}
+
+{
+  "id": "exp3_vibe",
+  "temperature": 1.0,
+  "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
+  "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) vibe B) aura C) rizz D) meh",
+  "variables": {
+    "year": ["2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"], 
+    "phrasing": [
+      "What's a phrase for the general feeling or atmosphere that a place or situation gives off?",
+      "Give me one casual word for the overall mood or energy you sense from something.",
+      "What word describes the emotional feel of a moment?"
+    ]
+  }
+}
+
+{
+  "id": "exp3_vibes",
+  "temperature": 1.0,
+  "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
+  "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) vibes B) aura C) rizz D) meh",
+  "variables": {
+    "year": ["2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"], 
+    "phrasing": [
+      "What's a single plural word for the overall feelings or atmosphere a place gives off?",
+      "Give me one casual plural word for the general mood and energy of a situation.",
+      "What word do people use for the collective good or bad feelings something radiates?"
+    ]
+  }
+}
+
+{
+  "id": "exp3_alpha",
+  "temperature": 1.0,
+  "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
+  "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) stan B) sigma C) mog D) alpha",
+  "variables": {
+    "year": ["2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"], 
+    "phrasing": [
+      "What's a phrase for a dominant, assertive man seen as the leader of the group?",
+      "Give me the term for the most socially dominant, confident male in a social hierarchy.",
+      "What word describes a dominant, take-charge man?"
+    ]
+  }
+}
+
+{
+  "id": "exp3_red_pill",
+  "temperature": 1.0,
+  "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
+  "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) brainrot B) sigma C) red pill D) gaslight",
+  "variables": {
+    "year": ["2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"], 
+    "phrasing": [
+      "What's a short phrase for suddenly waking up to a supposedly hidden truth about society?",
+      "Give me a phrase for rejecting comfortable illusions to see reality.",
+      "What phrase describes the moment someone adopts a cynical worldview, often about gender or society?"
+    ]
+  }
+}
+
+{
+  "id": "exp3_slay",
+  "temperature": 1.0,
+  "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
+  "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) ate B) snatched C) slay D) fire",
+  "variables": {
+    "year": ["2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"], 
+    "phrasing": [
+      "What's a phrase meaning to do something impressively well or to look amazing?",
+      "Give me one slang word people use to praise someone for absolutely nailing it or looking incredible.",
+      "What casual word is used to say someone did something fantastically?"
+    ]
+  }
+}
+
+{
+  "id": "exp3_gaslight",
+  "temperature": 1.0,
+  "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
+  "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) brainrot B) doomscroll C) crash out D) gaslight",
+  "variables": {
+    "year": ["2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"], 
+    "phrasing": [
+      "What's a phrase for manipulating someone into doubting their own memory or perception of reality?",
+      "Give me the phrase for psychologically making a person question whether what they experienced was real.",
+      "What term means to manipulate someone into doubting their sanity?"
+    ]
+  }
+}
+
+{
+  "id": "exp3_glow_up",
+  "temperature": 1.0,
+  "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
+  "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) clean girl B) gyatt C) glow-up D) grindset",
+  "variables": {
+    "year": ["2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"], 
+    "phrasing": [
+      "What's a phrase for a dramatic positive transformation in someone's appearance or style over time?",
+      "Give me one casual term for when someone goes from awkward-looking to strikingly attractive.",
+      "What word describes a major improvement in how good someone looks?"
+    ]
+  }
+}
+
+{
+  "id": "exp3_aura",
+  "temperature": 1.0,
+  "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
+  "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) vibe B) aura C) rizz D) mog",
+  "variables": {
+    "year": ["2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"], 
+    "phrasing": [
+      "What's a phrase for the intangible coolness or presence someone radiates?",
+      "Give me the term used to describe the quality by which someone acts cool or cringe.",
+      "What word can be used to describe someone's coolness or charisma?"
+    ]
+  }
+}
+
+{
+  "id": "exp3_omg",
+  "temperature": 1.0,
+  "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
+  "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) bussin' B) lit C) omg D) shook",
+  "variables": {
+    "year": ["2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"], 
+    "phrasing": [
+      "What's a short expression of shock or surprise?",
+      "Give me a reaction to being shocked or amazed.",
+      "What do people write online to react to something surprising or unbelievable?"
+    ]
+  }
+}
+
+{
+  "id": "exp3_meh",
+  "temperature": 1.0,
+  "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
+  "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) sus B) meh C) mid D) basic",
+  "variables": {
+    "year": ["2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"], 
+    "phrasing": [
+      "What's a short word someone says to show they're indifferent or unimpressed?",
+      "Give me a indicator someone uses to show they don't really care either way about something.",
+      "What word means that something is just mediocre and not worth getting excited about?"
+    ]
+  }
+}
+
+{
+  "id": "exp3_lmao",
+  "temperature": 1.0,
+  "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
+  "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) lmao B) lol C) haha D) rofl",
+  "variables": {
+    "year": ["2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"], 
+    "phrasing": [
+      "What's a way of indicating that something is very funny?",
+      "Give me a way of indicating that something is intended to be unserious.",
+      "What do people type online to react to something absolutely hilarious?"
+    ]
+  }
+}
+
+{
+  "id": "exp3_legit",
+  "temperature": 1.0,
+  "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
+  "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) bussin' B) on god C) legit D) lowkey",
+  "variables": {
+    "year": ["2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"], 
+    "phrasing": [
+      "What's a word meaning something is genuine or real?",
+      "Give me the term people use to say something is authentic.",
+      "What is a word used for emphasis that something is true?"
+    ]
+  }
+}
+
+{
+  "id": "exp3_lowkey",
+  "temperature": 1.0,
+  "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
+  "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) meh B) on god C) legit D) lowkey",
+  "variables": {
+    "year": ["2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"], 
+    "phrasing": [
+      "What's a word meaning you feel something subtly or secretly, not openly?",
+      "Give me the term for admitting something quietly or to a mild degree.",
+      "What is an adverb you would use to soften an adjective?"
+    ]
+  }
+}
+
+{
+  "id": "exp3_situationship",
+  "temperature": 1.0,
+  "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
+  "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) twinning B) situationship C) solo dolo D) friends with benefits",
+  "variables": {
+    "year": ["2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"], 
+    "phrasing": [
+      "What's a word for a romantic relationship that's more than friends but not officially dating?",
+      "Give me the term for an undefined, in-between romantic arrangement without a clear label.",
+      "What term describes two people involved romantically but without a committed, defined relationship?"
+    ]
+  }
+}
