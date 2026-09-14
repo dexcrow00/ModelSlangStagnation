@@ -5,6 +5,7 @@ from __future__ import annotations
 import json
 import logging
 import uuid
+from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
 from typing import Any, NamedTuple
 
@@ -64,6 +65,7 @@ class Runner:
         closed_samples: int = 1,
         samples: int = 1,
         resume: bool = False,
+        concurrency: int = 1,
     ):
         self.client = client
         self.collector = collector
@@ -79,6 +81,9 @@ class Runner:
         # When set, skip (model, prompt, variables, sample) combos already present
         # in the output directory so an interrupted run can be resumed in place.
         self.resume = resume
+        # In-flight requests. The work is HTTP wait, not CPU, so threads are the
+        # right tool; 1 keeps the original strictly-serial behaviour.
+        self.concurrency = max(1, concurrency)
 
     @staticmethod
     def _combo_key(model: str, prompt_id: str, variables: dict, sample: int) -> tuple:
@@ -133,14 +138,34 @@ class Runner:
         logger.info(
             "Starting run %s — %d model(s), %d prompt variant(s) -> %d requests "
             "(%d skipped by model_type; %d already done, resumed; samples x%d, "
-            "closed prompts x%d more)",
+            "closed prompts x%d more; concurrency %d)",
             self.run_id, len(self.models), len(expanded), len(combos), skipped,
-            resumed, self.samples, self.closed_samples,
+            resumed, self.samples, self.closed_samples, self.concurrency,
         )
 
-        for model, sample_idx, var in tqdm(combos, desc="Prompting", unit="req"):
+        def work(combo: tuple[str, int, _Variant]) -> None:
+            model, sample_idx, var = combo
             self._process(model, var.prompt_id, var.logprobs, var.echo, var.variables,
                           var.system_text, var.user_text, var.temperature, sample_idx)
+
+        if self.concurrency == 1:
+            for combo in tqdm(combos, desc="Prompting", unit="req"):
+                work(combo)
+            return
+
+        # Results are written as each request lands, so records arrive in
+        # completion order rather than combo order. Nothing downstream cares:
+        # read_responses keys records by (model, prompt_id, variables, sample).
+        with ThreadPoolExecutor(max_workers=self.concurrency) as pool:
+            try:
+                for _ in tqdm(pool.map(work, combos), total=len(combos),
+                              desc="Prompting", unit="req"):
+                    pass
+            except KeyboardInterrupt:
+                # Drop queued work instead of draining the whole backlog; --resume
+                # picks up from what already reached disk.
+                pool.shutdown(wait=False, cancel_futures=True)
+                raise
 
     @retry(
         retry=retry_if_exception(_is_retryable),

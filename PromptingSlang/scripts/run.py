@@ -31,6 +31,7 @@ DEFAULT_MODELS = [
     # Together (org/model format)
     "meta-llama/Llama-3.3-70B-Instruct-Turbo",
     "deepseek-ai/DeepSeek-V4-Pro",
+    "dexcrow-01c6/deepseek-v4-expt", # Deepseek on dedicated endpoint, has been turned down on together otherwise.
     # Anthropic (Claude)
     "claude-sonnet-4-6",
     # OpenAI (GPT)
@@ -103,6 +104,16 @@ def parse_args() -> argparse.Namespace:
         help="Global samples per prompt, applied to every request (default: 1).",
     )
     parser.add_argument(
+        "--concurrency",
+        type=int,
+        default=1,
+        help=(
+            "Requests in flight at once (default: 1, strictly serial). The calls are "
+            "HTTP waits, so this scales throughput almost linearly until the provider "
+            "starts rate-limiting; 8-16 is a sane range for a dedicated endpoint."
+        ),
+    )
+    parser.add_argument(
         "--resume",
         action="store_true",
         help=(
@@ -150,6 +161,7 @@ def main() -> None:
     print(f"  Variants       : {n_variants}  ({len(prompts)} template(s), expanded across variables)")
     print(f"  Samples        : {args.samples}  (closed prompts x{args.closed_samples} more)")
     print(f"  Total calls    : {n_requests}")
+    print(f"  Concurrency    : {args.concurrency}")
     print(f"  Output dir     : {output_dir}  (one <model>_<timestamp>.jsonl per model)")
     print()
     try:
@@ -193,6 +205,7 @@ def main() -> None:
             closed_samples=args.closed_samples,
             samples=args.samples,
             resume=args.resume,
+            concurrency=args.concurrency,
         )
         runner.run(prompts)
 

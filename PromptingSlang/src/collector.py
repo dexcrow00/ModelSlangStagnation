@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import re
+import threading
 from datetime import datetime, timezone
 from pathlib import Path
 from types import TracebackType
@@ -34,6 +35,11 @@ class ResponseCollector:
     timestamp is fixed for the lifetime of the collector (one per run), so each
     run writes a fresh set of files rather than appending to or overwriting prior
     runs.
+
+    ``save`` is safe to call from several threads at once (the Runner queries
+    models concurrently): a lock guards both the lazy handle creation and the
+    write, so two threads can neither open the same file twice nor interleave
+    halves of two records.
     """
 
     def __init__(self, output_dir: str | Path, timestamp: str | None = None):
@@ -41,6 +47,7 @@ class ResponseCollector:
         self.output_dir.mkdir(parents=True, exist_ok=True)
         self.timestamp = timestamp or datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
         self._handles: dict[str, IO[str]] = {}
+        self._lock = threading.Lock()
         self._active = False
 
     def __enter__(self) -> "ResponseCollector":
@@ -67,9 +74,11 @@ class ResponseCollector:
         if not self._active:
             raise RuntimeError("ResponseCollector must be used as a context manager.")
         model = record.get("model") or "unknown"
-        fh = self._handles.get(model)
-        if fh is None:
-            fh = open(self.path_for(model), "a", encoding="utf-8")
-            self._handles[model] = fh
-        fh.write(json.dumps(record, ensure_ascii=False, indent=2, cls=_ModelEncoder) + "\n\n")
-        fh.flush()
+        blob = json.dumps(record, ensure_ascii=False, indent=2, cls=_ModelEncoder) + "\n\n"
+        with self._lock:
+            fh = self._handles.get(model)
+            if fh is None:
+                fh = open(self.path_for(model), "a", encoding="utf-8")
+                self._handles[model] = fh
+            fh.write(blob)
+            fh.flush()
