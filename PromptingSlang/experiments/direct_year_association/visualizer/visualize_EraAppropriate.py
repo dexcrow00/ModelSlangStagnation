@@ -2,18 +2,23 @@
 """EraAppropriate visualizer: "is it appropriate to use {word}" in {year}?
 
 The EraAppropriate prompt ("It's {year}, is it appropriate to use the term
-{word}?") sweeps year 2013--2025 for each target word. For a single model this
-draws a heatmap with target word on the y-axis (ordered by true corpus peak
-year) and prompt year on the x-axis, coloured by the fraction of responses that
-answered "yes". Each word's true corpus peak year (from FineWeb
-``peak_years.json``) is outlined, so you can see whether a model calls a term
-appropriate around when it actually peaked and dated in later years --- a model
-tracking usage would show a green (yes) band up to roughly the peak and turn red
-(no) afterwards.
+{word}?") sweeps year 2013--2025 for each target word. The score for a cell is
+the fraction of decided (yes/no) responses that answered "yes". Two views:
+
+``--mode ridge`` (default) --- a ridgeline aggregated over all models (each
+model weighted equally): one ridge per target word (earliest true corpus peak
+at the top) tracing the yes-rate across prompt years, coloured blue where most
+answers say "appropriate" and red where most say "no". A dark vertical line
+through each ridge marks the word's true corpus peak year (from FineWeb
+``peak_years.json``) --- a model population tracking usage would keep each
+ridge high up to its line and let it drop off afterwards.
+
+``--mode heatmap`` --- a single model's word x prompt-year heatmap, green (yes)
+to red (no), with each word's true corpus peak year outlined.
 
 Usage (run from the PromptingSlang root):
     python experiments/direct_year_association/visualizer/visualize_EraAppropriate.py
-    python experiments/direct_year_association/visualizer/visualize_EraAppropriate.py --model claude
+    python experiments/direct_year_association/visualizer/visualize_EraAppropriate.py --mode heatmap --model claude
     python experiments/direct_year_association/visualizer/visualize_EraAppropriate.py results -o figures/era.png
 """
 
@@ -33,10 +38,14 @@ REPO_ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(REPO_ROOT))
 from src.analysis_utils import load_peak_years, pick_model  # noqa: E402
 from src.response_utils import model_short, read_responses  # noqa: E402
+from src.ridgeline import mean_rates, render_ridgeline  # noqa: E402
 
 EXP_DIR = Path(__file__).resolve().parents[1]
-DEFAULT_RESPONSES = EXP_DIR / "responses"
-DEFAULT_OUTPUT = EXP_DIR / "figures" / "era_appropriate_by_year.png"
+DEFAULT_RESPONSES = EXP_DIR / "results"
+DEFAULT_OUTPUT = {
+    "ridge": EXP_DIR / "figures" / "era_appropriate_ridge_by_year.png",
+    "heatmap": EXP_DIR / "figures" / "era_appropriate_by_year.png",
+}
 DEFAULT_PEAK_YEARS = REPO_ROOT.parent / "FineWebAnalysis" / "peak_years.json"
 PROMPT_ID = "EraAppropriate"
 
@@ -83,6 +92,25 @@ def collect(records: list[dict]) -> dict[str, dict[str, dict[str, list[int]]]]:
     return data
 
 
+def yes_rate(cell: list[int]) -> float:
+    """Fraction of decided (non-unclear) responses answering yes; NaN if none were decided."""
+    yes, tot, unclear = cell
+    decided = tot - unclear
+    return yes / decided if decided else np.nan
+
+
+def render_ridge(data: dict, peaks: dict[str, int], output: Path | None) -> None:
+    """Ridgeline of the yes-rate by prompt year, averaged over all models."""
+    per_model = {m: {w: {y: yes_rate(c) for y, c in years.items()} for w, years in words.items()}
+                 for m, words in data.items()}
+    render_ridgeline(
+        mean_rates(per_model), peaks, center=0.5, center_label="even split",
+        title=f"“Is it appropriate to use {{word}}?” — fraction answering yes — mean of "
+              f"{len(data)} models\ndoes appropriateness fall off after the word's true peak?",
+        xlabel="prompt year (“It's {year}…”)",
+        cbar_label="fraction answering “yes” (appropriate)", output=output)
+
+
 def render(data: dict, model: str, peaks: dict[str, int], output: Path | None) -> None:
     per_word = data[model]
     words = sorted(per_word, key=lambda w: (peaks.get(w, 9999), w))  # earliest peak on top
@@ -91,9 +119,7 @@ def render(data: dict, model: str, peaks: dict[str, int], output: Path | None) -
         sys.exit(f"No data to chart for model '{model}'.")
 
     def frac_yes(w, y):
-        yes, tot, unclear = per_word[w].get(y, [0, 0, 0])
-        decided = tot - unclear
-        return yes / decided if decided else np.nan
+        return yes_rate(per_word[w].get(y, [0, 0, 0]))
 
     mat = np.array([[frac_yes(w, y) for y in years] for w in words])
 
@@ -144,15 +170,19 @@ def render(data: dict, model: str, peaks: dict[str, int], output: Path | None) -
 
 def main() -> None:
     p = argparse.ArgumentParser(
-        description="Heatmap of EraAppropriate yes-fraction by prompt year vs true corpus peak, single model.")
+        description="EraAppropriate yes-fraction by prompt year vs true corpus peak.")
     p.add_argument("responses", nargs="?", default=str(DEFAULT_RESPONSES),
                    help=f"Response JSONL file or directory (default: {DEFAULT_RESPONSES}).")
+    p.add_argument("--mode", choices=("ridge", "heatmap"), default="ridge",
+                   help="'ridge': all models averaged, one ridge per word (default). "
+                        "'heatmap': one model, word x prompt year.")
     p.add_argument("-m", "--model", default=None,
-                   help="Substring of the model id to chart (default: first available).")
+                   help="Substring of the model id to chart (heatmap mode; default: first available).")
     p.add_argument("--peak-years", type=Path, default=DEFAULT_PEAK_YEARS, dest="peak_years",
                    help=f"peak_years.json with true corpus peaks (default: {DEFAULT_PEAK_YEARS}).")
-    p.add_argument("-o", "--output", type=Path, default=DEFAULT_OUTPUT,
-                   help=f"Output path (default: {DEFAULT_OUTPUT}). Pass '-' to display interactively.")
+    p.add_argument("-o", "--output", type=Path, default=None,
+                   help="Output path (default: figures/era_appropriate_{ridge_,}by_year.png). "
+                        "Pass '-' to display interactively.")
     args = p.parse_args()
 
     records = read_responses(args.responses)
@@ -163,8 +193,15 @@ def main() -> None:
         print(f"Warning: no peak years from {args.peak_years}; ordering alphabetically, "
               "no true-peak outline.", file=sys.stderr)
     data = collect(records)
-    model = pick_model(data, args.model, f"No {PROMPT_ID} records found.")
-    render(data, model, peaks, None if str(args.output) == "-" else args.output)
+    output = args.output if args.output is not None else DEFAULT_OUTPUT[args.mode]
+    output = None if str(output) == "-" else Path(output)
+    if args.mode == "ridge":
+        if not data:
+            sys.exit(f"No {PROMPT_ID} records found.")
+        render_ridge(data, peaks, output)
+    else:
+        model = pick_model(data, args.model, f"No {PROMPT_ID} records found.")
+        render(data, model, peaks, output)
 
 
 if __name__ == "__main__":

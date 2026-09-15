@@ -317,8 +317,8 @@ The year-conditioned variant prepends ``The year is \{year\}.'' to each recovery
 
 \begin{figure}
     \centering
-    \includegraphics[width=1.0\linewidth]{target_word_accuracy_by_year_claude.png}
-    \caption{Year-conditioned semantic-slot recovery for \texttt{claude-sonnet-4-6}: each cell is recovery accuracy for a target word (y-axis, ordered by true corpus peak year, shown in parentheses) when the prompt is prefixed ``The year is \{year\}.'' for the year on the x-axis (30 samples per cell). Each word's true corpus peak year is outlined in red. If the model conditioned on the stated year, the bright cells would track the red outlines; instead most rows are flat (the year is ignored) and the rows that do vary do not align with the true peak. Per-model figures (\texttt{target\_word\_accuracy\_by\_year\_*.png}) show the same pattern, with \texttt{gpt-4o}'s \textit{red pill} the clearest anti-alignment.}
+    \includegraphics[width=1.0\linewidth]{multi_choice_ridge_by_year.png}
+    \caption{Multiple choice slang test results: Aggregate results for asking all four models to select the most appropriate word/phrase from 4 multiple choice options. The models remain highly confident of their choice in most cases even if the year in the prompt shows low usage of the word in the actual corpus. This indicates that the models do not reason about the temporal relevance of a slang word of phrase on generation.}
     \label{fig:slotyear}
 \end{figure}
 
@@ -582,8 +582,8 @@ Instead, the models judge slang to be perennially appropriate: the overall yes-r
 
 \begin{figure}[t]
     \centering
-    \includegraphics[width=1.0\linewidth]{multi_choice_ridge_by_year.png}
-    \caption{Multiple choice slang test results: Aggregate results for asking all four models to select the most appropriate word/phrase from 4 multiple choice options. The models remain highly confident of their choice in most cases even if the year in the prompt shows low usage of the word in the actual corpus. This indicates that the models do not reason about the temporal relevance of a slang word of phrase on generation. }
+    \includegraphics[width=1.0\linewidth]{era_appropriate_ridge_by_year.png}
+    \caption{EraAppropriate judgements for \texttt{claude-sonnet-4-6}: each cell is the fraction of responses answering ``yes, appropriate'' to ``It's \{year\}, is it appropriate to use the term `\{word\}'?'', for target word (y-axis, ordered by true corpus peak year, shown in parentheses) against prompt year (x-axis; five samples per cell). Green is ``yes'', red is ``no''; each word's true corpus peak year is outlined. A model tracking usage would show a green band up to the peak turning red afterward; instead the panel is almost uniformly green, i.e.\ the model rarely judges any slang term inappropriate for any year and does not treat terms as dated past their peak. Per-model panels (\texttt{era\_appropriate\_*.png}) show the same near-uniform pattern, with \texttt{Llama-3.3-70B} the only model exhibiting a partial post-peak drop-off. }
     \label{fig:eraappropriate}
 \end{figure}
 
