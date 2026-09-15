@@ -1,0 +1,22 @@
+{
+  "run_id": "exp3_from_list_20260828",
+  "model": "dexcrow-01c6/deepseek-v4-expt",
+  "prompt_id": "exp3_lol",
+  "sample": 0,
+  "variables": {
+    "year": "2013",
+    "phrasing": "What's a way, using text, people might show that something made them laugh?"
+  },
+  "prompt_text": "The year is 2013. What's a way, using text, people might show that something made them laugh? Select your response from the following multiple choice: A) lmao B) lol C) haha D) rofl",
+  "system_text": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
+  "response": "B",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 75,
+    "completion_tokens": 275,
+    "total_tokens": 350
+  },
+  "timestamp": "2026-09-14T16:35:24.133592+00:00"
+}
+
