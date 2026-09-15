@@ -9,7 +9,10 @@ these records as an unbroken run of "b" and score them near zero. This script
 scores the letter-resolved rows instead and draws them as a ridgeline: one
 ridge per target word (earliest true peak at the top), tracing the target
 selection rate across prompt years averaged over all models (each model
-weighted equally). A red vertical line through each ridge marks that word's
+weighted equally). Each ridge is also coloured by that rate on a diverging
+scale centred on chance: blue where models pick the intended word more often
+than guessing would, red where they fall below chance (i.e. systematically
+prefer a distractor). A dark vertical line through each ridge marks that word's
 true corpus peak year, so a model population tracking the data distribution
 would put the crest of each ridge on its line.
 
@@ -33,6 +36,9 @@ from pathlib import Path
 
 import matplotlib.pyplot as plt
 import numpy as np
+from matplotlib import patheffects
+from matplotlib.colors import LinearSegmentedColormap, TwoSlopeNorm
+from matplotlib.path import Path as MplPath
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(REPO_ROOT))
@@ -120,6 +126,12 @@ def aggregate_rates(data: dict, min_n: int) -> dict[str, dict[str, float]]:
     return {w: {y: float(np.mean(v)) for y, v in years.items()} for w, years in per_cell.items()}
 
 
+# Diverging red <-> blue around a neutral gray: below chance reads warm, above cool.
+RATE_CMAP = LinearSegmentedColormap.from_list(
+    "below_above_chance",
+    ["#a82a2b", "#e34948", "#f5c4c2", "#f0efec", "#b7d3f6", "#5598e7", "#1c5cab"])
+
+
 def render_ridge(data: dict, peaks: dict[str, int], chance: float, min_n: int,
                  output: Path | None) -> None:
     """Ridgeline: one ridge per word of the model-averaged selection rate by prompt year."""
@@ -132,31 +144,45 @@ def render_ridge(data: dict, peaks: dict[str, int], chance: float, min_n: int,
     # Ridge height at 100%, in row spacings. Most rates sit near the ceiling, so
     # ridges taller than a row would hide the one above; keep each in its own band.
     overlap = 0.9
-    fill, edge, peak_color = "#7fa7d9", "#2f5d9a", "#d1495b"
+    edge, peak_color = "#52514e", "#0b0b0b"
+    norm = TwoSlopeNorm(vmin=0.0, vcenter=chance, vmax=1.0)
     x = np.array(years)
+    xs = np.linspace(x[0], x[-1], 600)
     n = len(words)
-    fig, ax = plt.subplots(figsize=(max(9, len(years) * 0.75), 1.5 + n * 0.5))
+    fig, ax = plt.subplots(figsize=(max(9, len(years) * 0.75) + 1.5, 1.5 + n * 0.5))
 
+    im = None
     for i, w in enumerate(words):
         base = n - 1 - i
         y = np.array([rates[w].get(str(yr), np.nan) for yr in years])
+        ok = np.isfinite(y)
+        if not ok.any():
+            continue
         top = base + overlap * y
         # Draw top to bottom so each ridge sits in front of the one above it.
         z = 3 * i
-        ax.fill_between(x, base, top, where=np.isfinite(y), interpolate=False,
-                        facecolor=fill, alpha=0.45, linewidth=0, zorder=z)
-        ax.plot(x, top, color=edge, linewidth=2, zorder=z + 2)
-        ax.plot([x[0], x[-1]], [base, base], color="#bbbbbb", linewidth=0.8, zorder=z + 2)
+        # Colour the area under the ridge by the rate at each x: a one-row gradient
+        # image, clipped to the ridge's outline (gaps for missing years stay empty).
+        grad = np.interp(xs, x[ok], y[ok])[np.newaxis, :]
+        im = ax.imshow(grad, cmap=RATE_CMAP, norm=norm, aspect="auto", origin="lower",
+                       interpolation="bilinear", extent=(x[0], x[-1], base, base + overlap),
+                       zorder=z)
+        outline = ax.fill_between(x, base, top, where=ok, facecolor="none", linewidth=0)
+        im.set_clip_path(MplPath.make_compound_path(*outline.get_paths()), ax.transData)
+        outline.remove()
+        ax.plot(x, top, color=edge, linewidth=1.5, zorder=z + 2)
+        ax.plot([x[0], x[-1]], [base, base], color="#c3c2b7", linewidth=0.8, zorder=z + 2)
         pk = peaks.get(w)
         if pk is not None and years[0] <= pk <= years[-1]:
-            ax.vlines(pk, base, base + overlap, color=peak_color, linewidth=2, zorder=z + 1)
+            ax.vlines(pk, base, base + overlap, color=peak_color, linewidth=2, zorder=z + 1,
+                      path_effects=[patheffects.withStroke(linewidth=4, foreground="white")])
 
     # Scale key for ridge height, beside the bottom ridge.
     kx = x[-1] + 0.6
-    ax.plot([kx, kx], [0, overlap], color="#555555", linewidth=1, clip_on=False)
+    ax.plot([kx, kx], [0, overlap], color="#52514e", linewidth=1, clip_on=False)
     for frac, label in ((0, "0%"), (chance, f"chance {100 * chance:.0f}%"), (1, "100%")):
-        ax.plot([kx - 0.08, kx], [overlap * frac] * 2, color="#555555", linewidth=1, clip_on=False)
-        ax.text(kx + 0.12, overlap * frac, label, va="center", fontsize=7, color="#555555")
+        ax.plot([kx - 0.08, kx], [overlap * frac] * 2, color="#52514e", linewidth=1, clip_on=False)
+        ax.text(kx + 0.12, overlap * frac, label, va="center", fontsize=7, color="#52514e")
 
     ax.set_xticks(years)
     ax.set_xticklabels([str(yr) for yr in years], rotation=45, ha="right", fontsize=8)
@@ -168,7 +194,7 @@ def render_ridge(data: dict, peaks: dict[str, int], chance: float, min_n: int,
     ax.tick_params(axis="y", length=0)
     for side in ("left", "right", "top"):
         ax.spines[side].set_visible(False)
-    ax.grid(axis="x", color="#e5e5e5", linewidth=0.6, zorder=-1)
+    ax.grid(axis="x", color="#e1e0d9", linewidth=0.6, zorder=-1)
     ax.set_axisbelow(True)
 
     ax.set_xlabel("prompt year (“The year is {year}.”)", fontsize=9)
@@ -179,6 +205,14 @@ def render_ridge(data: dict, peaks: dict[str, int], chance: float, min_n: int,
     ax.legend(handles=[plt.Line2D([], [], color=peak_color, linewidth=2,
                                   label="true corpus peak year")],
               loc="lower right", bbox_to_anchor=(1.0, 1.0), fontsize=8, frameon=False)
+    if im is not None:
+        cbar = fig.colorbar(im, ax=ax, shrink=0.35, anchor=(0.0, 1.0), pad=0.1)
+        ticks = [0.0, chance, 0.5, 0.75, 1.0]
+        cbar.set_ticks(ticks, labels=[f"{100 * t:.0f}%" + (" (chance)" if t == chance else "")
+                                      for t in ticks])
+        cbar.ax.tick_params(labelsize=7)
+        cbar.set_label("target selection rate", fontsize=8)
+        cbar.outline.set_visible(False)
     fig.tight_layout()
     _save(fig, output)
 
