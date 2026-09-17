@@ -164,8 +164,8 @@ For the set of slang words used for initial analysis in FineWeb, we draw 125 can
 Applied to the 125 candidates, this yields the ephemeral target set. The nineteen words \footnote{\textit{alpha} and \textit{aura} are the two marginal inclusions, with shallow, noisy corpus trajectories ($R^2 < 0.45$). We keep them for semantic-slot and recency coverage, but flag them as the weakest cases on corpus evidence alone. The full pass/fail table with per-word statistics is given in Appendix~\ref{app:ephemerality}.} carried into the querying experiments (Experiments~2--4) are drawn from it and span the three classes, mirroring the corpus-frequency figures (Figures~\ref{fig:cc-pre2018}--\ref{fig:cc-2022-24}):
 \begin{enumerate}
   \item \textbf{Pre-2018 (peaked early, now declining):} \textit{lol, sick, troll, bro, swag, omg, meh, lmao}.
-  \item \textbf{Around 2020 (rising through the late 2010s):} \textit{vibe, vibes, alpha, red pill, legit}.
-  \item \textbf{2022--2024 (most recent, sharply rising):} \textit{slay, gaslight, glow-up, aura, lowkey, situationship}.
+  \item \textbf{Around 2020 (rising through the late 2010s):} \textit{alpha, red pill}.
+  \item \textbf{2022--2024 (most recent, sharply rising):} \textit{slay, gaslight, glow-up, aura, lowkey, situationship, vibe, vibes, legit}.
 \end{enumerate}
 
 Several of these words are polysemous (e.g.\ \textit{sick}, \textit{troll}, \textit{aura}), with a slang sense distinct from a standard-English sense; Section~\ref{sec:exp1} describes the sense-disambiguation step used to count only the slang usage.
@@ -233,26 +233,26 @@ We test four models spanning three providers: two open-weight models served via 
 \subsection{Experiment 1: Corpus Frequency Over Time}
 \label{sec:exp1}
 
-Slicing the FineWeb 10BT sample by crawl dump and applying the RoBERTa sense filter yields, for each target word, a curve of slang-sense occurrences per million tokens against dump date (2013--2024) with 95\% Poisson confidence bands. These curves confirm that the target words exhibit the ephemeral lifecycles the querying experiments rely on, and they separate cleanly into the three temporal bands of Section~\ref{sec:exp1-method}, which we present in turn (Figures~\ref{fig:cc-pre2018}--\ref{fig:cc-2022-24}).
+Slicing the FineWeb 10BT sample by crawl dump and applying the RoBERTa sense filter yields, for each target word, a curve of slang-sense occurrences per million tokens against dump date (2013--2024). The band figures below plot each curve as a percentage of that word's own peak dump, so words spanning two orders of magnitude in absolute rate can be compared by shape on a shared axis; the absolute peak rates are reported in Table~\ref{tab:words}. These curves confirm that the target words exhibit the ephemeral lifecycles the querying experiments rely on, and they separate cleanly into the three temporal bands of Section~\ref{sec:exp1-method}, which we present in turn (Figures~\ref{fig:cc-pre2018}--\ref{fig:cc-2022-24}).
 
 \begin{figure}
     \centering
-    \includegraphics[width=1.0\linewidth]{highlight_pre2018_count.png}
-    \caption{Slang-sense occurrences per million tokens by FineWeb crawl dump (linear scale, RoBERTa score $\geq 0.99$, 5-dump smoothing, 95\% Poisson CI) for the pre-2018 declining band (\textit{lol, sick, troll, bro, swag} plus the additional terms \textit{omg, meh, lmao}). The y-axis is broken so \textit{lol} (peak $\sim$16/M) sits in its own upper panel and does not flatten the rest: \textit{lol}, \textit{omg}, and \textit{sick} decline steadily after $\sim$2018 and \textit{swag} drifts downward, while \textit{troll}, \textit{bro}, \textit{meh}, and \textit{lmao} sit lower and taper more gently.}
+    \includegraphics[width=1.0\linewidth]{highlight_pre2018_pct.png}
+    \caption{Slang-sense frequency by FineWeb crawl dump for the pre-2018 declining band (\textit{lol, sick, troll, bro, swag} plus the additional terms \textit{omg, meh, lmao}), with each word plotted as a percentage of its own peak dump. Rescaling lets terms two orders of magnitude apart in absolute rate (\textit{lol} peaks near 16 occurrences per million, \textit{swag} below 0.5) share one axis, so every curve touches 100\% at its own peak and the axis break the absolute-rate version needed is no longer required. All eight words decline after $\sim$2018 and end the window at roughly 20--50\% of peak: \textit{lmao} falls furthest, while \textit{bro} holds up best through the 2020s. Generated with \texttt{word\_rate\_plotter.py --threshold 0.99 --highlight-bands --percent-of-peak --no-ci --clean --settings-note --smooth 9}: rows scoring $\geq 0.99$ from the pooled target and scenario scored contexts, normalised to occurrences per million tokens of the corresponding FineWeb 10BT sample dump, smoothed with a 9-dump centred moving average, then rescaled so each word's highest smoothed dump reads 100\%; dumps with no occurrences are dropped rather than plotted at zero. Word selection: every word plotted passes the ephemerality criterion of Section~\ref{sec:targets} --- at least 100 slang-sense hits (or 50 with an unmistakable trend, $R^2 \geq 0.8$ and $|\beta| \geq 0.3$ bits/yr) together with a non-flat trajectory --- and is assigned to the band matching its corpus peak year. Absolute peak rates and per-word peak years are given in Table~\ref{tab:words}.}
     \label{fig:cc-pre2018}
 \end{figure}
 
 \begin{figure}
     \centering
-    \includegraphics[width=1.0\linewidth]{highlight_around2020_count.png}
-    \caption{Corpus frequency for the around-2020 rising band (linear scale, RoBERTa score $\geq 0.99$, 5-dump smoothing, 95\% Poisson CI): \textit{vibe, vibes, alpha, red pill} plus the additional term \textit{legit}. \textit{vibe}, \textit{vibes}, and \textit{legit} rise through the late 2010s and into the 2020s; \textit{alpha} stays low and roughly flat, and \textit{red pill}, a rarer and noisier term, sits near the floor with correspondingly wide confidence bands.}
+    \includegraphics[width=1.0\linewidth]{highlight_around2020_pct.png}
+    \caption{Corpus frequency for the around-2020 band (\textit{alpha, red pill}), each word as a percentage of its own peak dump. \textit{alpha} climbs through 2017--2019, holds near its peak across 2020--2022, and eases back to roughly 80\% by 2024. \textit{red pill} is rare enough (546 slang-sense hits in total) that its normalised curve swings between about 5\% and 100\% from dump to dump, spiking sharply around 2020; the percentage view makes that volatility explicit, where the absolute-rate version hid it in a flat line near the floor. Generated with \texttt{word\_rate\_plotter.py --threshold 0.99 --highlight-bands --percent-of-peak --no-ci --clean --settings-note --smooth 9}: rows scoring $\geq 0.99$ from the pooled target and scenario scored contexts, normalised to occurrences per million tokens of the corresponding FineWeb 10BT sample dump, smoothed with a 9-dump centred moving average, then rescaled so each word's highest smoothed dump reads 100\%; dumps with no occurrences are dropped rather than plotted at zero. Word selection: every word plotted passes the ephemerality criterion of Section~\ref{sec:targets} --- at least 100 slang-sense hits (or 50 with an unmistakable trend, $R^2 \geq 0.8$ and $|\beta| \geq 0.3$ bits/yr) together with a non-flat trajectory --- and is assigned to the band matching its corpus peak year. Absolute peak rates and per-word peak years are given in Table~\ref{tab:words}.}
     \label{fig:cc-around2020}
 \end{figure}
 
 \begin{figure}
     \centering
-    \includegraphics[width=1.0\linewidth]{highlight_2022_24_count.png}
-    \caption{Corpus frequency for the 2022--2024 recent-riser band (linear scale, RoBERTa score $\geq 0.99$, 5-dump smoothing, 95\% Poisson CI): \textit{slay, gaslight, glow-up, aura} plus the additional terms \textit{lowkey, situationship}. \textit{slay} and \textit{lowkey} climb over the window, and \textit{gaslight}, \textit{glow-up}, and \textit{situationship} appear only near its end --- slang that postdates the bulk of the models' training data, though still within the models' training windows. \textit{aura} (in its Gen-Z slang sense) is noisier and rises less cleanly.}
+    \includegraphics[width=1.0\linewidth]{highlight_2022_24_pct.png}
+    \caption{Corpus frequency for the 2022--2024 recent-riser band (\textit{slay, gaslight, glow-up, aura, lowkey, situationship}, together with \textit{vibe, vibes}, and \textit{legit}, whose corpus peaks also fall in 2024), each word as a percentage of its own peak dump. \textit{glow-up} and \textit{situationship} are absent from the earliest dumps and reach 100\% only in the final dumps of the window --- slang that postdates the bulk of the models' training data, though still within their training windows. \textit{gaslight} and \textit{lowkey} climb steeply from 2020 onward; \textit{slay} plateaus near its peak across 2019--2021 before a final rise; and \textit{vibe}, \textit{vibes}, and \textit{legit}, the highest-frequency members of the band, rise steadily from 30--60\% of peak to their 2024 maxima. Generated with \texttt{word\_rate\_plotter.py --threshold 0.99 --highlight-bands --percent-of-peak --no-ci --clean --settings-note --smooth 9}: rows scoring $\geq 0.99$ from the pooled target and scenario scored contexts, normalised to occurrences per million tokens of the corresponding FineWeb 10BT sample dump, smoothed with a 9-dump centred moving average, then rescaled so each word's highest smoothed dump reads 100\%; dumps with no occurrences are dropped rather than plotted at zero. Word selection: every word plotted passes the ephemerality criterion of Section~\ref{sec:targets} --- at least 100 slang-sense hits (or 50 with an unmistakable trend, $R^2 \geq 0.8$ and $|\beta| \geq 0.3$ bits/yr) together with a non-flat trajectory --- and is assigned to the band matching its corpus peak year. Absolute peak rates and per-word peak years are given in Table~\ref{tab:words}.}
     \label{fig:cc-2022-24}
 \end{figure}
 
@@ -392,9 +392,6 @@ The practical effect today is modest, and is partly masked by instruction-tuned 
 Additionally, we suggest that current RLHF also has a strong effect on language style used by models \todo{citations}.
 Correctly using RLHF from annotators that are familiar with the correct use of modern langauge could also improve the ability of models to correctly prefer up-to-date language.
 
-\todo{This is not future work, this is a proposed additional experiment. Could be pretty easy to run.}
-\paragraph{Register-controlled free generation.} Experiment~4 (Section~\ref{sec:exp4}) is a first pass at measuring slang usage in free generation, but it leans on a single fixed persona and does not attempt to manipulate prompt register. A stronger version would systematically vary the register (formal vs.\ contemporary-casual) and the conversational scenario, and report per-era slang production rates against matched human baselines, to pin down how much of the old-slang skew comes from the model versus the prompt.
-
 \paragraph{Further directions.}
 \begin{enumerate}
   \item The effects of RLHF are suspected to be a strong factor is current model vocabularies. Exploring these effects could involve replicating the queries on base (non-instruction-tuned) checkpoints to isolate the contribution of RLHF to slang suppression.
@@ -432,16 +429,16 @@ omg        & pre-2018    & 2013 & 4.125  & 24{,}593 \\
 meh        & pre-2018    & 2014 & 0.844  & 5{,}775 \\
 lmao       & pre-2018    & 2016 & 0.716  & 3{,}816 \\
 alpha      & around 2020 & 2020 & 0.702  & 5{,}764 \\
-vibe       & around 2020 & 2024 & 3.878  & 30{,}862 \\
-vibes      & around 2020 & 2024 & 4.003  & 20{,}311 \\
 red pill   & around 2020 & 2024 & 0.135  & 546 \\
-legit      & around 2020 & 2024 & 5.350  & 32{,}897 \\
 gaslight   & 2022--2024  & 2023 & 0.072  & 316 \\
 glow-up    & 2022--2024  & 2023 & 0.041  & 98 \\
 aura       & 2022--2024  & 2023 & 0.178  & 1{,}231 \\
 slay       & 2022--2024  & 2024 & 0.308  & 1{,}795 \\
+vibe       & 2022--2024  & 2024 & 3.878  & 30{,}862 \\
+vibes      & 2022--2024  & 2024 & 4.003  & 20{,}311 \\
 lowkey     & 2022--2024  & 2022 & 0.114  & 567 \\
 situationship & 2022--2024 & 2024 & 0.077 & 121 \\
+legit      & 2022--2024  & 2024 & 5.350  & 32{,}897 \\
 \bottomrule
 \end{tabular}
 \caption{Tested target words, temporal band, corpus peak year, peak-year slang-sense rate (occurrences per million tokens), and total slang-sense hits across the FineWeb 10BT sample (RoBERTa sense score $\geq 0.99$). Peak year is the argmax, over calendar years, of the token-normalised yearly rate; ``Hits'' is the raw count of above-threshold occurrences pooled over all 95 dumps. Rates span nearly three orders of magnitude, from the saturated \textit{lol} (16.2 per M) to the emergent \textit{glow-up} (0.04 per M).}
@@ -521,11 +518,11 @@ Each extracted context is scored with a RoBERTa classifier fine-tuned to separat
 
 \subsection{Normalisation and uncertainty}
 
-Sense-filtered counts are converted to occurrences per million tokens of the corresponding dump, $r_{w,d} = 10^{6}\cdot \text{count}_{\text{slang}}(w,d) / \text{tokens}(d)$, using the per-dump token totals above. Each per-dump count is modelled as a Poisson draw $k \sim \text{Poisson}(r_{w,d}\cdot\text{tokens}(d))$, and the figures show the exact (Garwood) Poisson interval (95\% by default) as a shaded band; the band tightens as the centred smoothing window aggregates more of the sample.
+Sense-filtered counts are converted to occurrences per million tokens of the corresponding dump, $r_{w,d} = 10^{6}\cdot \text{count}_{\text{slang}}(w,d) / \text{tokens}(d)$, using the per-dump token totals above. Each per-dump count is modelled as a Poisson draw $k \sim \text{Poisson}(r_{w,d}\cdot\text{tokens}(d))$, and the plotter can shade the exact (Garwood) Poisson interval (95\% by default) as a band that tightens as the centred smoothing window aggregates more of the sample. The band figures in this paper are drawn without that shading (\texttt{--no-ci}), which at 95 dumps and up to eight overlapping words obscured the lines it annotated.
 
 \subsection{Plotting and peak extraction}
 
-The band figures (Figures~\ref{fig:cc-pre2018}--\ref{fig:cc-2022-24}) use a linear y-axis (the \texttt{\_count} variant) with a 5-dump centred moving average; the CI band is the exact Poisson interval on the window-pooled count. For the pre-2018 band the y-axis is broken so \textit{lol} does not compress the other curves. Dumps with zero sense-filtered occurrences are dropped so the line connects neighbouring dumps rather than falling to the floor, and a $\log_2$-axis version of each figure is also produced. The corpus peak year (Table~\ref{tab:words}) is the argmax, over calendar years, of the year-pooled normalised rate (\texttt{peak\_year.py}). All band figures are generated by \texttt{word\_rate\_plotter.py --highlight-bands}, which pools the target and scenario scored contexts.
+The band figures (Figures~\ref{fig:cc-pre2018}--\ref{fig:cc-2022-24}) use a linear y-axis rescaled per word to a percentage of that word's peak smoothed dump (the \texttt{\_pct} variant, \texttt{--percent-of-peak}) with a 9-dump centred moving average and no shaded CI band. The rescaling removes the need for the broken y-axis the earlier \texttt{\_count} figures used to stop \textit{lol} compressing the other curves. Dumps with zero sense-filtered occurrences are dropped so the line connects neighbouring dumps rather than falling to the floor, and a $\log_2$-axis version of each figure is also produced. The corpus peak year (Table~\ref{tab:words}) is the argmax, over calendar years, of the year-pooled normalised rate (\texttt{peak\_year.py}). All band figures are generated by \texttt{word\_rate\_plotter.py --threshold 0.99 --highlight-bands --percent-of-peak --no-ci --clean --settings-note --smooth 9}, which pools the target and scenario scored contexts.
 
 \subsection{Implementation}
 
