@@ -16,10 +16,16 @@ Token totals come from the ``fineweb_10BT_dump_sizes.json`` cache that
 ``--raw-counts`` to rank peaks by raw count instead). This script itself is
 stdlib-only.
 
+Each record carries the per-year rate (``rate_by_year``) and that rate as a
+percentage of the word's own peak year (``pct_of_peak_by_year``), where the peak
+year reads exactly 100.0.
+
 Usage:
     python peak_year.py
     python peak_year.py --threshold 0.99 --words lol sick swag vibe vibes slay aura
     python peak_year.py --threshold 0.5 -o peak_years.json
+    python peak_year.py --scored-dir prompt_scored scenario_prompt_scored \
+        --threshold 0.99 -o peak_years_pct.json
 """
 
 from __future__ import annotations
@@ -119,6 +125,11 @@ def peak_years(
             "peak_rate_per_million": round(rates[peak], 3),
             "total_hits": totals[w],
             "rate_by_year": {str(y): round(rates[y], 3) for y in years},
+            # Each year as a percentage of the word's own peak year, so the peak
+            # reads exactly 100.0. Computed from the unrounded rates.
+            "pct_of_peak_by_year": {
+                str(y): (round(100.0 * rates[y] / rates[peak], 1) if rates[peak] else 0.0)
+                for y in years},
         })
     records.sort(key=lambda r: (r["peak_year"], r["word"]))
     return records
@@ -127,9 +138,10 @@ def peak_years(
 def main() -> None:
     p = argparse.ArgumentParser(
         description="Find each target word's peak-popularity year from scored FineWeb data.")
-    p.add_argument("--scored-dir", type=Path, default=DEFAULT_SCORED_DIR, metavar="DIR",
-                   dest="scored_dir",
-                   help=f"Directory of scored crawl CSVs (default: {DEFAULT_SCORED_DIR.name}/).")
+    p.add_argument("--scored-dir", type=Path, nargs="+", default=[DEFAULT_SCORED_DIR],
+                   metavar="DIR", dest="scored_dir",
+                   help="One or more directories of scored crawl CSVs, pooled "
+                        f"(default: {DEFAULT_SCORED_DIR.name}/).")
     p.add_argument("--threshold", type=float, default=0.5, metavar="F",
                    help="Min roberta_score for a row to count as the slang sense "
                         "(default: 0.5; the paper highlight figures use 0.99).")
@@ -149,12 +161,18 @@ def main() -> None:
                    help="Write the full results (incl. per-year rates) to this JSON file.")
     args = p.parse_args()
 
-    if not args.scored_dir.is_dir():
-        p.error(f"Scored directory not found: {args.scored_dir}")
+    for d in args.scored_dir:
+        if not d.is_dir():
+            p.error(f"Scored directory not found: {d}")
 
-    year_counts = load_year_counts(args.scored_dir, args.threshold)
+    year_counts: dict[int, dict[str, int]] = defaultdict(lambda: defaultdict(int))
+    for d in args.scored_dir:
+        for year, per_word in load_year_counts(d, args.threshold).items():
+            for w, c in per_word.items():
+                year_counts[year][w] += c
     if not year_counts:
-        p.error(f"No crawl CSVs found in {args.scored_dir}.")
+        p.error(f"No crawl CSVs found in "
+                f"{', '.join(str(d) for d in args.scored_dir)}.")
     year_tokens = None if args.raw_counts else load_year_tokens(args.sizes_cache)
 
     records = peak_years(year_counts, year_tokens, args.words, args.min_count)
