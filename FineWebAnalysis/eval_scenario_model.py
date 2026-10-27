@@ -34,7 +34,7 @@ def load_labeled(d: Path) -> list[dict]:
     for f in sorted(glob.glob(str(d / "*.csv"))):
         with open(f, newline="", encoding="utf-8-sig") as fh:
             for r in csv.DictReader(fh):
-                v = (r.get("is_slang") or "").strip()
+                v = (r.get("is_slang", "")).strip()
                 if v in ("0", "1"):
                     rows.append({
                         "target": (r.get("target") or "").strip(),
