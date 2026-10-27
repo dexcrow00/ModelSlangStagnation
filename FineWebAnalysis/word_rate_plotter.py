@@ -1,13 +1,15 @@
 #!/usr/bin/env python3
 """
-word_rate_plotter.py — Plot target-word slang occurrences per crawl dump from
-scored context CSVs (script version of DataProcessingTools/word_rate_plotter.ipynb).
+word_rate_plotter.py — Plot the slang occurrences of the words in HIGHLIGHT_BANDS per crawl dump from
+scored context CSVs, one figure per band (highlight_<band>_count.png).
 
 Reads the per-crawl CSVs produced by roberta_filter.py --score-all (columns:
 target, uri, target_context, roberta_score; filenames carry the crawl id,
-e.g. word_context_CC-MAIN-2019-35.csv), keeps rows with roberta_score >= the
-threshold, and plots one line per target word with one data point per crawl
-dump (the CC-MAIN year-week mapped to a calendar date).
+e.g. word_context_CC-MAIN-2019-35.csv), keeps rows with roberta_score >=
+THRESHOLD, and plots one line per word with one data point per crawl dump (the
+CC-MAIN year-week mapped to a calendar date), smoothed over SMOOTH dumps with a
+95% confidence band by default. The word list is chosen upstream (see
+plot_min_pct.py) and hard-coded in HIGHLIGHT_BANDS below.
 
 Values are normalised to occurrences per million tokens of the dump within the
 original FineWeb sample (the same sample fineweb_context.py extracted the
@@ -27,11 +29,10 @@ is k ~ Poisson(rate * tokens); the exact Poisson interval on the (window-pooled)
 count bounds the true rate. Bands are wide for rare words, tight for common ones.
 
 Usage:
-    python word_rate_plotter.py --threshold 0.5
-    python word_rate_plotter.py --threshold 0.8 --top 20 --log -o rates.png
-    python word_rate_plotter.py --threshold 0.5 --words epic fire sus --confidence 0.95
-    python word_rate_plotter.py --threshold 0.99 --highlight-bands   # -> ../writing/highlight_*_count.png
-    python word_rate_plotter.py --threshold 0.5 --words lol aura --percent-of-peak
+    python word_rate_plotter.py                      # -> ../writing/highlight_*_count.png
+    python word_rate_plotter.py --percent-of-peak    # -> ../writing/highlight_*_pct.png
+    python word_rate_plotter.py --clean --settings-note -o figures/
+    python word_rate_plotter.py --polynomial-fit     # -> ../writing/highlight_*_count_polynomial_fit.png
 """
 
 from __future__ import annotations
@@ -50,6 +51,7 @@ from typing import Dict, List, Optional
 
 import matplotlib.dates as mdates
 import matplotlib.pyplot as plt
+import numpy as np
 from scipy.stats import chi2
 
 logging.basicConfig(
@@ -67,15 +69,27 @@ WRITING_DIR = (Path(__file__).resolve().parent / ".." / "writing").resolve()
 HF_SAMPLE_DIR = "datasets/HuggingFaceFW/fineweb/sample/10BT"
 CRAWL_ID_RE = re.compile(r"CC-MAIN-(\d{4})-(\d{2})")
 
-# --highlight-bands mode: fixed cohorts of ephemeral words (pooled from both
-# prompt_scored and scenario_prompt_scored), each saved as
+# Min roberta_score for a scored row to count as a slang-sense occurrence. A
+# constant rather than a flag so any change to it is tracked in git.
+THRESHOLD = 0.99
+# Centered moving-average window, in dumps, applied to every series (1 = off).
+# Odd, so the window is symmetric about each dump.
+SMOOTH = 9
+# Degree of the least-squares polynomial fitted per word under --polynomial-fit.
+POLY_DEGREE = 3
+
+# Fixed cohorts of ephemeral words (pooled from both prompt_scored and
+# scenario_prompt_scored), bucketed by peak year, each saved as
 # highlight_<band>_count.png. The pre-2018 band gets a broken y-axis so lol
 # (peak ~16/M) does not flatten the rest (peak <4/M).
 HIGHLIGHT_BANDS = {
-    "pre2018":    ["lol", "sick", "troll", "bro", "swag", "omg", "meh", "lmao"],
-    "around2020": ["alpha", "red pill"],
-    "2022_24":    ["slay", "gaslight", "glow-up", "aura", "lowkey", "situationship",
-                   "vibe", "vibes", "legit"],
+    "pre2018":    ["stfu", "lmfao", "griefing", "methinks", "omg", "u", "yapping",
+                   "ick", "dude", "hella", "troll", "pumped", "rad", "lol", "meh",
+                   "bro", "finna", "lmao", "thot"],
+    "around2020": ["cucked", "shitposting", "struggle bus", "simp", "bruh"],
+    "2022_24":    ["cuck", "doggo", "shitpost", "💀", "lowkey", "doomscrolling",
+                   "glow-up", "vibing", "hooman", "situationship", "yeet",
+                   "catfished", "red pill", "vibes", "idgaf", "legit"],
 }
 HIGHLIGHT_TITLES = {
     "pre2018":    "Pre-2018 band (declining)",
@@ -89,7 +103,13 @@ HIGHLIGHT_BROKEN = {"pre2018": (4.5, 17.0, 0.0, 4.4)}
 # Fixed categorical hues for --clean, assigned in this order (never cycled): a
 # chart with more series than this keeps matplotlib's default cycle instead.
 CLEAN_COLORS = ["#2a78d6", "#eb6834", "#1baf7a", "#eda100",
-                "#e87ba4", "#008300", "#4a3aa7", "#e34948"]
+                "#e87ba4", "#008300", "#4a3aa7", "#e34948",
+                # Extension for the large highlight bands: each picked greedily from
+                # an OKLCH grid to maximise its minimum OKLab distance to the hues
+                # before it. Not colourblind-separable at this count; the legend
+                # carries identity.
+                "#7c140a", "#144d44", "#7fb6ee", "#a73189", "#7f6342", "#ab79f5",
+                "#a7976e", "#681c65", "#8ac738", "#8b769b", "#1590a1", "#5a4e72"]
 
 
 def _crawl_date(stem: str) -> Optional[date]:
@@ -255,18 +275,13 @@ def _build_series(
     smooth: int,
     confidence: Optional[float],
     percent_of_peak: bool = False,
-    min_change: Optional[float] = None,
-    max_ci: Optional[float] = None,
 ) -> tuple[Dict[str, List[float]], Optional[Dict[str, tuple]]]:
     """Central series per word, plus the matching CI bands when ``confidence`` is set.
 
     Returns ``(series, bands)`` ready to hand to the renderers; ``bands`` is None
     when no confidence level was requested, which is how the renderers decide
     whether to shade at all. With ``percent_of_peak`` each word is rescaled to a
-    percentage of its own maximum (see --percent-of-peak), and with
-    ``min_change`` only words that vary by at least that percentage of their own
-    peak are kept (see --min-change), and with ``max_ci`` only words whose
-    confidence band stays narrower than that width (see --max-ci).
+    percentage of its own maximum (see --percent-of-peak).
     """
     series: Dict[str, List[float]] = {}
     bands: Optional[Dict[str, tuple]] = {} if confidence else None
@@ -284,71 +299,37 @@ def _build_series(
         series[t] = central
         if bands is not None:
             bands[t] = (lo, hi)
-    if min_change is not None:
-        series, bands = _filter_by_change(series, bands, min_change)
-    if max_ci is not None:
-        series, bands = _filter_by_ci(series, bands, max_ci)
     return series, bands
 
 
-def _filter_by_ci(
-    series: Dict[str, List[float]],
-    bands: Optional[Dict[str, tuple]],
-    max_ci: float,
-) -> tuple[Dict[str, List[float]], Optional[Dict[str, tuple]]]:
-    """Keep only words whose CI band never spans more than ``max_ci`` at a drawn dump.
+def _build_fits(
+    counts: Dict[date, Counter],
+    dump_tokens: Optional[Dict[date, int]],
+    dumps: List[date],
+    targets: List[str],
+    percent_of_peak: bool = False,
+) -> tuple[Dict[str, List[float]], Dict[str, List[float]]]:
+    """Least-squares POLY_DEGREE polynomial per word, as ``(fits, points)``.
 
-    Width is measured in the plotted y unit --- percentage points of the word's
-    own peak under --percent-of-peak, occurrences per million otherwise --- and
-    only at dumps that are actually drawn (a zero dump is dropped by the
-    renderers, so its band is not on the chart either). A wide band means the
-    shape is mostly sampling noise, which is what this screens out.
+    The fit is to the unsmoothed per-dump values (zero dumps included: a count of
+    0 is a real observation), over dump dates as matplotlib date numbers, which
+    Polynomial.fit rescales internally to keep the cubic well-conditioned. The
+    fitted curve is clipped at 0. With ``percent_of_peak`` both the curve and its
+    points are divided by the curve's own maximum, so every fit peaks at 100.
     """
-    if bands is None:
-        sys.exit("--max-ci needs confidence bands — pass --confidence P (e.g. 0.95).")
-    kept = {}
-    for w, ys in series.items():
-        lo, hi = bands[w]
-        widths = [h - l for y, l, h in zip(ys, lo, hi) if y > 0]
-        if widths and max(widths) <= max_ci:
-            kept[w] = ys
-    dropped = len(series) - len(kept)
-    if dropped:
-        log.info("--max-ci %g: kept %d word(s), dropped %d whose confidence band "
-                 "exceeds that width at some dump.", max_ci, len(kept), dropped)
-    if not kept:
-        sys.exit(f"No words keep a confidence band within {max_ci:g} — raise --max-ci, "
-                 f"widen --smooth, or lower --confidence.")
-    return kept, {w: bands[w] for w in kept}
-
-
-def _filter_by_change(
-    series: Dict[str, List[float]],
-    bands: Optional[Dict[str, tuple]],
-    min_change: float,
-) -> tuple[Dict[str, List[float]], Optional[Dict[str, tuple]]]:
-    """Keep only words whose series falls at least ``min_change``% below its own peak.
-
-    The test is on the smoothed series and ignores dumps with no occurrences (a
-    zero is "not seen in this sample", not a real trough --- the renderers drop
-    those points too). It is scale-free, so it gives the same answer before or
-    after --percent-of-peak rescaling: a word qualifies when its smallest non-zero
-    dump sits below (100 - min_change)% of its largest.
-    """
-    floor = 1.0 - min_change / 100.0
-    kept = {}
-    for w, ys in series.items():
-        nz = [y for y in ys if y > 0]
-        if len(nz) >= 2 and min(nz) < floor * max(nz):
-            kept[w] = ys
-    dropped = len(series) - len(kept)
-    if dropped:
-        log.info("--min-change %g%%: kept %d word(s), dropped %d that never fall "
-                 "below %g%% of their peak.", min_change, len(kept), dropped, 100 * floor)
-    if not kept:
-        sys.exit(f"No words vary by >= {min_change:g}% of their peak — lower --min-change.")
-    return kept, ({w: bands[w] for w in kept} if bands else None)
-
+    xs = mdates.date2num(dumps)
+    raw, _ = _build_series(counts, dump_tokens, dumps, targets, 1, None)
+    fits: Dict[str, List[float]] = {}
+    points: Dict[str, List[float]] = {}
+    for t, ys in raw.items():
+        fit = np.polynomial.Polynomial.fit(xs, ys, POLY_DEGREE)(xs).clip(min=0.0)
+        peak = fit.max()
+        if percent_of_peak and peak > 0:
+            fit = 100.0 * fit / peak
+            ys = [100.0 * y / peak for y in ys]
+        fits[t] = fit.tolist()
+        points[t] = ys
+    return fits, points
 
 def _apply_clean_style(ax, n_series: int) -> None:
     """Recessive chrome for --clean: fixed hues, hairline y-grid, no boxed-in axes."""
@@ -360,13 +341,32 @@ def _apply_clean_style(ax, n_series: int) -> None:
     ax.set_axisbelow(True)
 
 
-def _draw_series(ax, dumps, series, bands=None, clean=False):
+def _draw_series(ax, dumps, series, bands=None, clean=False, points=None):
     """Draw one markered line (+ optional CI band) per word on ``ax``.
 
     Dumps where a word has zero occurrences are dropped rather than plotted at 0:
     a 0 is invalid on a log axis (and a misleading dive to the floor on a linear
     one), so we skip those points and let the line connect the neighboring dumps.
+
+    With ``points`` (--polynomial-fit), each series is a fitted curve instead: it
+    is drawn over every dump, including where it touches 0, and the word's
+    non-zero per-dump values are scattered beneath it in the same colour. The y
+    range is set by the curves, not the points: a rare word's noisy dumps can sit
+    several times above its fit and would otherwise flatten every curve, so those
+    points run off the top of the chart.
     """
+    if points is not None:
+        for target, ys in series.items():
+            line, = ax.plot(dumps, ys, linewidth=1.6 if clean else 1, label=target)
+            kept = [(d, y) for d, y in zip(dumps, points[target]) if y > 0]
+            if kept:
+                px, py = zip(*kept)
+                ax.scatter(px, py, s=6, color=line.get_color(), alpha=0.35,
+                           linewidths=0)
+        top = 1.1 * max((max(ys) for ys in series.values()), default=0.0)
+        if top > 0:
+            ax.set_ylim(-0.03 * top, top)
+        return
     for target, ys in series.items():
         kept = [(d, y) for d, y in zip(dumps, ys) if y > 0]
         if not kept:
@@ -388,23 +388,20 @@ def _draw_series(ax, dumps, series, bands=None, clean=False):
 
 def _settings_note(threshold: float, n_dirs: int, smooth: int,
                    dump_tokens: Optional[Dict[date, int]], percent_of_peak: bool,
-                   confidence: Optional[float], min_change: Optional[float],
-                   max_ci: Optional[float]) -> str:
+                   confidence: Optional[float], polynomial_fit: bool = False) -> str:
     """One-line summary of how the figure was produced, drawn in its bottom margin."""
     parts = [f"word_rate_plotter.py \u00b7 roberta_score \u2265 {threshold:g}",
              "target + scenario contexts pooled" if n_dirs > 1 else "target contexts",
              "occurrences per million sample tokens" if dump_tokens is not None
              else "raw per-dump counts"]
-    if smooth > 1:
+    if polynomial_fit:
+        parts.append(f"degree-{POLY_DEGREE} least-squares fit to per-dump values")
+    elif smooth > 1:
         parts.append(f"{smooth}-dump centred moving average")
     if percent_of_peak:
         parts.append("rescaled to % of each word's peak dump")
     if confidence:
         parts.append(f"{confidence:.0%} Poisson CI")
-    if min_change is not None:
-        parts.append(f"words dropping \u2265 {min_change:g}% below peak")
-    if max_ci is not None:
-        parts.append(f"CI width \u2264 {max_ci:g}")
     return "  \u00b7  ".join(parts)
 
 
@@ -429,12 +426,13 @@ def _render_chart(
     percent_of_peak: bool = False,
     clean: bool = False,
     note: Optional[str] = None,
+    points: Optional[Dict[str, List[float]]] = None,
 ) -> None:
     """Draw one chart from precomputed per-word series (with optional CI bands)."""
     fig, ax = plt.subplots(figsize=(12, 6))
     if clean:
         _apply_clean_style(ax, len(series))
-    _draw_series(ax, dumps, series, bands, clean)
+    _draw_series(ax, dumps, series, bands, clean, points)
 
     ax.set_title(title)
     ax.set_xlabel("Crawl dump date")
@@ -475,6 +473,7 @@ def _render_broken(
     percent_of_peak: bool = False,
     clean: bool = False,
     note: Optional[str] = None,
+    points: Optional[Dict[str, List[float]]] = None,
 ) -> None:
     """Like _render_chart, but split over two y-scales with an axis break so one
     dominant word (e.g. lol) does not flatten the rest. Every word is drawn on
@@ -487,8 +486,8 @@ def _render_broken(
     if clean:
         for ax in (top, bot):
             _apply_clean_style(ax, len(series))
-    _draw_series(top, dumps, series, bands, clean)
-    _draw_series(bot, dumps, series, bands, clean)
+    _draw_series(top, dumps, series, bands, clean, points)
+    _draw_series(bot, dumps, series, bands, clean, points)
     top.set_ylim(top_lo, top_hi)
     bot.set_ylim(bot_lo, bot_hi)
 
@@ -549,8 +548,6 @@ def plot_rates(
     output: Optional[Path],
     confidence: Optional[float] = None,
     percent_of_peak: bool = False,
-    min_change: Optional[float] = None,
-    max_ci: Optional[float] = None,
     clean: bool = False,
     note: Optional[str] = None,
 ) -> None:
@@ -561,8 +558,7 @@ def plot_rates(
 
     targets = _select_targets(totals, words, top)
     series, bands = _build_series(counts, dump_tokens, dumps, targets, smooth,
-                                  confidence, percent_of_peak, min_change, max_ci)
-    targets = [t for t in targets if t in series]
+                                  confidence, percent_of_peak)
     pct_note = ", % of each word's peak" if percent_of_peak else ""
     title = (f"Slang usage per crawl dump ({len(targets)} words, "
              f"roberta_score >= {threshold:g}"
@@ -572,79 +568,16 @@ def plot_rates(
                   percent_of_peak, clean, note)
 
 
-def plot_segmented_by_peak(
-    counts: Dict[date, Counter],
-    dump_tokens: Optional[Dict[date, int]],
-    threshold: float,
-    smooth: int,
-    log_scale: bool,
-    per_chart: int,
-    min_count: int,
-    output: Path,
-    confidence: Optional[float] = None,
-    percent_of_peak: bool = False,
-    min_change: Optional[float] = None,
-    max_ci: Optional[float] = None,
-    clean: bool = False,
-    note: Optional[str] = None,
-) -> None:
-    """One chart per cohort of words sharing a peak-popularity era (<= per_chart each).
-
-    Each word's peak dump is the argmax of its smoothed, token-normalised series;
-    words are sorted by peak date and chunked into consecutive groups, so each
-    chart shows a contiguous cohort of words that crested around the same time.
-    Words with fewer than ``min_count`` total above-threshold hits are dropped as
-    noise. Output files are named ``<stem>_peakNN_<lo>_<hi><ext>``.
-    """
-    dumps = sorted(counts)
-    totals: Counter = Counter()
-    for dump_counts in counts.values():
-        totals.update(dump_counts)
-
-    kept = [w for w, c in totals.items() if c >= min_count]
-    dropped = len(totals) - len(kept)
-    if not kept:
-        sys.exit(f"No words with >= {min_count} above-threshold occurrences.")
-
-    # Peak dump = argmax of each word's smoothed normalised series.
-    series, bands = _build_series(counts, dump_tokens, dumps, kept, smooth,
-                                  confidence, percent_of_peak, min_change, max_ci)
-    kept = [w for w in kept if w in series]
-    peak = {w: dumps[max(range(len(dumps)), key=lambda i: ys[i])]
-            for w, ys in series.items()}
-    ordered = sorted(kept, key=lambda w: (peak[w], -totals[w]))
-    log.info("Segmenting %d words by peak era (%d dropped: < %d hits); "
-             "<= %d per chart -> %d chart(s).",
-             len(kept), dropped, min_count, per_chart,
-             -(-len(ordered) // per_chart))
-
-    for idx in range(0, len(ordered), per_chart):
-        group = ordered[idx:idx + per_chart]
-        lo, hi = peak[group[0]], peak[group[-1]]
-        n = idx // per_chart + 1
-        out = output.with_name(
-            f"{output.stem}_peak{n:02d}_{lo:%Y-%m}_{hi:%Y-%m}{output.suffix}")
-        title = (f"Slang peaking {lo:%Y-%m} to {hi:%Y-%m} "
-                 f"({len(group)} words, roberta_score >= {threshold:g}"
-                 f"{f', {confidence:.0%} CI' if confidence else ''})")
-        _render_chart(dumps, {w: series[w] for w in group},
-                      dump_tokens, log_scale, title, out,
-                      {w: bands[w] for w in group} if bands else None,
-                      percent_of_peak, clean, note)
-
-
 def plot_highlight_bands(
     counts: Dict[date, Counter],
     dump_tokens: Optional[Dict[date, int]],
-    threshold: float,
     smooth: int,
     out_dir: Path,
     confidence: Optional[float] = None,
     percent_of_peak: bool = False,
-    min_change: Optional[float] = None,
-    max_ci: Optional[float] = None,
     clean: bool = False,
     note: Optional[str] = None,
+    polynomial_fit: bool = False,
 ) -> None:
     """Emit the fixed ephemeral-word band figures, one PNG per band.
 
@@ -653,6 +586,9 @@ def plot_highlight_bands(
     not flatten the rest. Files are written as ``highlight_<band>_count.png``
     (``highlight_<band>_pct.png`` under --percent-of-peak, whose rescaling makes
     the fixed broken-axis limits meaningless, so the split is skipped).
+    With ``polynomial_fit`` each word is drawn as its POLY_DEGREE fit over its
+    per-dump points instead (no smoothing or CI), and ``_polynomial_fit`` is
+    appended to the file name.
     """
     dumps = sorted(counts)
     for band, words in HIGHLIGHT_BANDS.items():
@@ -661,33 +597,35 @@ def plot_highlight_bands(
         if missing:
             log.warning("Band %s: no above-threshold occurrences for %s",
                         band, ", ".join(missing))
-        series, bands = _build_series(counts, dump_tokens, dumps, present, smooth,
-                                      confidence, percent_of_peak, min_change, max_ci)
-        out = out_dir / f"highlight_{band}_{'pct' if percent_of_peak else 'count'}.png"
-        title = HIGHLIGHT_TITLES[band]
+        points = None
+        if polynomial_fit:
+            series, points = _build_fits(counts, dump_tokens, dumps, present,
+                                         percent_of_peak)
+            bands = None
+        else:
+            series, bands = _build_series(counts, dump_tokens, dumps, present, smooth,
+                                          confidence, percent_of_peak)
+        out = out_dir / (f"highlight_{band}_{'pct' if percent_of_peak else 'count'}"
+                         f"{'_polynomial_fit' if polynomial_fit else ''}.png")
+        title = HIGHLIGHT_TITLES[band] + (f" \u2014 degree-{POLY_DEGREE} polynomial fit"
+                                          if polynomial_fit else "")
         if band in HIGHLIGHT_BROKEN and not percent_of_peak:
             _render_broken(dumps, series, dump_tokens, title, out, bands,
-                           HIGHLIGHT_BROKEN[band], percent_of_peak, clean, note)
+                           HIGHLIGHT_BROKEN[band], percent_of_peak, clean, note,
+                           points)
         else:
             _render_chart(dumps, series, dump_tokens, False, title, out, bands,
-                          percent_of_peak, clean, note)
+                          percent_of_peak, clean, note, points)
 
 
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(
-        description="Plot target-word slang occurrences per crawl dump from scored CSVs.")
-    p.add_argument("--threshold", type=float, default=0.0, metavar="F",
-                   help="Min roberta_score for a row to count (default: 0.0).")
+        description="Plot the HIGHLIGHT_BANDS words' slang occurrences per crawl "
+                    "dump from scored CSVs, one figure per band.")
     p.add_argument("--scored-dir", type=Path, nargs="+", default=None,
                    metavar="DIR", dest="scored_dir",
                    help="One or more directories of scored crawl CSVs (pooled). "
-                        f"Default: {DEFAULT_SCORED_DIR.name} (or both "
-                        f"{DEFAULT_SCORED_DIR.name} and {SCENARIO_SCORED_DIR.name} "
-                        "with --highlight-bands).")
-    p.add_argument("--words", nargs="+", metavar="WORD",
-                   help="Only plot these target words (default: all).")
-    p.add_argument("--top", type=int, metavar="N",
-                   help="Only plot the N most frequent target words.")
+                        f"Default: {DEFAULT_SCORED_DIR.name} and {SCENARIO_SCORED_DIR.name}.")
     p.add_argument("--raw-counts", action="store_true", dest="raw_counts",
                    help="Plot raw per-dump counts instead of occurrences per "
                         "million tokens of the FineWeb sample dump.")
@@ -696,58 +634,29 @@ def build_parser() -> argparse.ArgumentParser:
                         "instead of an absolute rate, so words of very different "
                         "frequency can be compared by shape. Confidence bands are "
                         "scaled by the same per-word peak.")
-    p.add_argument("--min-change", type=float, default=None, metavar="PCT",
-                   help="Only plot words whose (smoothed) rate drops at least PCT%% "
-                        "below its own peak at some dump — i.e. words that actually "
-                        "rise or fall over time. Zero dumps are ignored.")
-    p.add_argument("--max-ci", type=float, default=None, metavar="WIDTH",
-                   help="Only plot words whose confidence band never spans more than "
-                        "WIDTH at any drawn dump, in the plotted y unit (percentage "
-                        "points of the word's peak under --percent-of-peak). Screens "
-                        "out words whose shape is mostly sampling noise. Requires "
-                        "--confidence.")
+    p.add_argument("--polynomial-fit", action="store_true", dest="polynomial_fit",
+                   help="Draw each word as a least-squares POLY_DEGREE polynomial "
+                        "fitted to its unsmoothed per-dump values, over those points, "
+                        "instead of the SMOOTH moving average (no CI band). Writes "
+                        "highlight_<band>_<count|pct>_polynomial_fit.png.")
     p.add_argument("--no-ci", action="store_true", dest="no_ci",
-                   help="Never shade confidence bands, overriding the 95%% default "
-                        "that --highlight-bands would otherwise apply.")
+                   help="Never shade confidence bands, overriding --confidence.")
     p.add_argument("--clean", action="store_true",
                    help="Recessive chart styling: no per-dump markers, thicker lines, "
                         "fixed categorical hues, hairline y-grid only, and no boxed-in "
                         "axes or legend frame.")
     p.add_argument("--settings-note", action="store_true", dest="settings_note",
-                   help="Print a one-line summary of the settings used (threshold, "
-                        "pooling, normalisation, smoothing, filters) in the figure's "
+                   help="Print a one-line summary of the settings used ("
+                        "pooling, normalisation, smoothing) in the figure's "
                         "bottom margin, so the chart is self-documenting.")
-    p.add_argument("--sizes-cache", type=Path, default=DEFAULT_SIZES_CACHE,
-                   metavar="FILE", dest="sizes_cache",
-                   help="JSON cache of per-dump sample token totals; fetched "
-                        f"from HuggingFace if missing (default: {DEFAULT_SIZES_CACHE.name}).")
-    p.add_argument("--smooth", type=int, default=None, metavar="N",
-                   help="Centered moving average over N dumps to damp per-dump "
-                        "noise (default: 1 = off; 5 with --highlight-bands).")
-    p.add_argument("--log", action="store_true", dest="log_scale",
-                   help="Log-scale the y axis.")
-    p.add_argument("--confidence", type=float, default=None, metavar="P",
+    p.add_argument("--confidence", type=float, default=0.95, metavar="P",
                    help="Shade a Poisson sampling-uncertainty band at confidence "
-                        "level P (e.g. 0.95). Each per-dump count is treated as a "
+                        "level P (default: 0.95). Each per-dump count is treated as a "
                         "Poisson draw from the 10BT sample, so bands are wide for "
-                        "rare words and tight for common ones, and tighten with --smooth.")
-    p.add_argument("--segment-by-peak", action="store_true", dest="segment_by_peak",
-                   help="Emit one chart per cohort of words sharing a peak era "
-                        "(sorted by peak dump, <= --per-chart words each). "
-                        "Requires -o; writes <stem>_peakNN_<lo>_<hi><ext> files.")
-    p.add_argument("--per-chart", type=int, default=10, metavar="N", dest="per_chart",
-                   help="Max words per chart in --segment-by-peak mode (default: 10).")
-    p.add_argument("--highlight-bands", action="store_true", dest="highlight_bands",
-                   help="Emit the fixed ephemeral-word band figures "
-                        "(highlight_<band>_count.png), with a broken y-axis for the "
-                        "pre-2018 band. Pools prompt_scored + scenario_prompt_scored "
-                        "and defaults to --smooth 5, 95%% CI; -o sets the output "
-                        f"directory (default: {WRITING_DIR.name}/).")
-    p.add_argument("--min-count", type=int, default=50, metavar="N", dest="min_count",
-                   help="In --segment-by-peak mode, drop words with fewer than N "
-                        "total above-threshold hits as noise (default: 50).")
-    p.add_argument("-o", "--output", type=Path, metavar="FILE",
-                   help="Save the plot here instead of displaying it.")
+                        "rare words and tight for common ones, and tighten with a wider SMOOTH.")
+    p.add_argument("-o", "--output", type=Path, metavar="DIR",
+                   help="Directory to write highlight_<band>_*.png into "
+                        f"(default: {WRITING_DIR.name}/).")
     return p
 
 
@@ -756,25 +665,19 @@ def main() -> None:
     args = parser.parse_args()
 
     if args.scored_dir is None:
-        args.scored_dir = ([DEFAULT_SCORED_DIR, SCENARIO_SCORED_DIR]
-                           if args.highlight_bands else [DEFAULT_SCORED_DIR])
+        args.scored_dir = [DEFAULT_SCORED_DIR, SCENARIO_SCORED_DIR]
     for d in args.scored_dir:
         if not d.is_dir():
             parser.error(f"Scored directory not found: {d}")
 
-    # --highlight-bands defaults: 5-dump smoothing and a 95% CI band.
-    smooth = args.smooth if args.smooth is not None else (5 if args.highlight_bands else 1)
-    confidence = args.confidence
-    if confidence is None and args.highlight_bands:
-        confidence = 0.95
-    if args.no_ci:
-        confidence = None
+    # --polynomial-fit draws no CI band (the fit is not a Poisson rate estimate).
+    confidence = None if args.no_ci or args.polynomial_fit else args.confidence
     if confidence is not None and not 0 < confidence < 1:
         parser.error("--confidence must be between 0 and 1 (e.g. 0.95).")
 
     counts: Dict[date, Counter] = defaultdict(Counter)
     for d in args.scored_dir:
-        for dump_date, cnt in load_dump_counts(d, args.threshold).items():
+        for dump_date, cnt in load_dump_counts(d, THRESHOLD).items():
             counts[dump_date].update(cnt)
     if not counts:
         parser.error("No crawl CSVs found in "
@@ -782,34 +685,21 @@ def main() -> None:
 
     dump_tokens = None
     if not args.raw_counts:
-        dump_tokens = fetch_dump_token_counts(args.sizes_cache)
+        dump_tokens = fetch_dump_token_counts(DEFAULT_SIZES_CACHE)
         missing = [d for d in counts if d not in dump_tokens]
         if missing:
             sys.exit(f"No sample token totals for dump(s): "
                      f"{', '.join(d.isoformat() for d in sorted(missing))} — "
-                     f"delete {args.sizes_cache} to re-fetch, or use --raw-counts.")
+                     f"delete {DEFAULT_SIZES_CACHE.name} to re-fetch, or use --raw-counts.")
 
-    note = (_settings_note(args.threshold, len(args.scored_dir), smooth, dump_tokens,
-                           args.percent_of_peak, confidence, args.min_change, args.max_ci)
+    note = (_settings_note(THRESHOLD, len(args.scored_dir), SMOOTH, dump_tokens,
+                           args.percent_of_peak, confidence, args.polynomial_fit)
             if args.settings_note else None)
 
     _use_emoji_font()
-    if args.highlight_bands:
-        out_dir = args.output if args.output is not None else WRITING_DIR
-        plot_highlight_bands(counts, dump_tokens, args.threshold, smooth,
-                             out_dir, confidence, args.percent_of_peak,
-                             args.min_change, args.max_ci, args.clean, note)
-    elif args.segment_by_peak:
-        if args.output is None:
-            parser.error("--segment-by-peak writes multiple files; -o is required.")
-        plot_segmented_by_peak(counts, dump_tokens, args.threshold, smooth,
-                               args.log_scale, args.per_chart, args.min_count,
-                               args.output, confidence, args.percent_of_peak,
-                               args.min_change, args.max_ci, args.clean, note)
-    else:
-        plot_rates(counts, dump_tokens, args.threshold, args.words, args.top,
-                   smooth, args.log_scale, args.output, confidence,
-                   args.percent_of_peak, args.min_change, args.max_ci, args.clean, note)
+    out_dir = args.output if args.output is not None else WRITING_DIR
+    plot_highlight_bands(counts, dump_tokens, SMOOTH, out_dir, confidence,
+                         args.percent_of_peak, args.clean, note, args.polynomial_fit)
 
 
 if __name__ == "__main__":

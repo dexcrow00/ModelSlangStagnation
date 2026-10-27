@@ -42,7 +42,7 @@ Most scripts are standalone and self-documenting via `--help`. The usual order i
 python FineWebAnalysis/fineweb_context.py --output-dir contexts/ --words FineWebAnalysis/target_words.txt
 python FineWebAnalysis/roberta_filter.py contexts/*.parquet -o prompt_scored/ --score-all
 python FineWebAnalysis/peak_year.py
-python FineWebAnalysis/word_rate_plotter.py --threshold 0.99 --highlight-bands
+python FineWebAnalysis/word_rate_plotter.py
 ```
 
 Then the model side, per experiment:
