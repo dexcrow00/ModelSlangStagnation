@@ -159,31 +159,21 @@ We test four models spanning three providers: two open-weight models served via 
 \label{sec:targets}
 
 The main analysis is divided into two main methodologies, based on the source of the set of slang words in an experiment. The initial experiments involve identifying a reference set of slang words in the FineWeb corpus, and subsequently running analysis on their frequencies across FineWeb dumps to profile their temporal characteristics. We then examine how models use and view this set of corpus identified slang words. The second set of experiments starts by prompting a set of models with persona-style prompts intended to generate free-form slang usage. We use the responses to generate a list of slang commonly used by models, which we can then run analysis against in the FineWeb corpus. This gives us chracteristics of the slang words most commonly used by the set of models, such as peak usage age in the corpus for a given word. 
-For the set of slang words used for initial analysis in FineWeb, we draw 125 candidates from Word-of-the-Year lists, Urban Dictionary, and Google Search Trends\footnote{Words of the Year tend not to be slang per se, but instead often relate to global events. Using Urban Dictionary and cross referencing word popularity using Google Search Trends was the most reliable way to find good candidate words.}. Each candidate is then \textbf{validated against the FineWeb corpus-frequency analysis of Section~\ref{sec:exp1}} using the quantitative \textit{ephemerality} criterion below; for the experimental subset we additionally require that the word fill a recurring informal semantic slot (e.g.\ ``impressive/cool''), keeping meaning roughly controlled across eras.
+For the set of slang words used for initial analysis in FineWeb, we draw 125 candidates\footnote{144 total words are show in the appendix analysis. The additional 19 words come from Experiment 3, where we collect additional words of interest from the models directly.} from Word-of-the-Year lists, Urban Dictionary, and Google Search Trends\footnote{Words of the Year tend not to be slang per se, but instead often relate to global events. Using Urban Dictionary and cross referencing word popularity using Google Search Trends was the most reliable way to find good candidate words.}. Each candidate is then \textbf{validated against the FineWeb corpus-frequency analysis of Section~\ref{sec:exp1}} using the quantitative \textit{ephemerality} criterion below; for the experimental subset we additionally require that the word fill a recurring informal semantic slot (e.g.\ ``impressive/cool''), keeping meaning roughly controlled across eras.
 
-\paragraph{Quantitative ephemerality criterion.} 
-\todo{This should now be }
-We definine "ephemerality" relatively loosely here and look at three types of words: 1) Words with rising popularity, peaking near the end of our dataset cutoff 2) Words with decreasing popularity, with a minimum near our dataset cutoff 3) Words with a peak somewhere within the bounds of the dataset. All three of these are filtered on words that have a >40\% difference between the peak year usage in our dataset and the minimum year usage, and at least 80 instances across the dataset, to filter out extremely low-frequency noisy words.
+\paragraph{Quantitative ephemerality criterion.}
+We define ``ephemerality'' loosely and admit three trajectory shapes: words rising in popularity and peaking near the end of the dataset, words declining from an early peak, and words peaking somewhere in between. Every candidate must pass three criteria: (1) at least 80 slang-sense hits across 2013--2024, to exclude low-frequency words whose yearly rates are mostly sampling noise; (2) a minimum year at or below 50\% of the word's own peak year, i.e.\ usage changes by at least half within the dataset; and (3) at most 80\% of the word's raw occurrences rejected by the RoBERTa sense classifier at the 0.99 threshold, to exclude highly polysemous words (e.g.\ \textit{goals}, \textit{extra}, \textit{tight}) whose occurrences are overwhelmingly a standard-English sense.
 
-Applying these criteria to the 125 candidates yields the "ephemeral" target set. The full evaluation across all 125 words can be found in \ref{app:ephemerality}. The passing list of target words for subsequent experiments is the following:
+Applying these criteria to the 144 candidates yields 40 ``ephemeral'' target words; the polysemy criterion is the most restrictive, removing 42 of the 82 words that pass the first two. The full evaluation across all 144 words can be found in Appendix~\ref{app:ephemerality}. The target words for subsequent experiments, grouped by peak year, are:
 \begin{enumerate}
-  \item \textbf{Pre-2018 (peaked early, now declining):} \textit{lol, sick, troll, bro, swag, omg, meh, lmao}.
-  \item \textbf{Around 2020 (rising through the late 2010s):} \textit{alpha, red pill}.
-  \item \textbf{2022--2024 (most recent, sharply rising):} \textit{slay, gaslight, glow-up, aura, lowkey, situationship, vibe, vibes, legit}.
+  \item \textbf{Pre-2018 (peaked 2013--2016, declining since):} \textit{dude, hella, lmfao, omg, stfu, finna, lol, meh, lmao, thot, griefing, rad, yapping, bro, methinks, troll, u, ick, pumped}.
+  \item \textbf{Around 2020 (peaked 2019--2021):} \textit{cucked, shitposting, struggle bus, bruh, simp}.
+  \item \textbf{2022--2024 (most recent):} \textit{lowkey, shitpost, \texttt{U+1F480} (skull emoji), doomscrolling, glow-up, hooman, vibing, catfished, idgaf, legit, situationship, vibes, yeet, cuck, red pill, doggo}.
 \end{enumerate}
 
-\todo{Drop alpha, vibe.... worst metrics by a good margin. Can bump up filter to 50\% change}
-\todo{Will now need to rerun all inference experiments with the expanded set (except the free generation ones)}
-\todo{If we use second difference of raw data, we can check for "smootheness", in this case if we want to include all the above words and pick a cutoff then our cutoff value will be: <1.5 - drops red-pill.
-We also likely want to filter out some of the highly polysemous words. Potentially based on the roberta classifier metrics.
-Additional exclusions to consider: cancelled, slop, slaps, goon, fresh, yap, yapping, goals, ick, mid, karen, 6-7, sick, tight, twinning, u, pumped
-Additional words:
-pre-2018: finna, griefing, yap, goon, lmao, stan, hella, fresh, swag, yapping, rad, ick, karen, meh, 6-7, omg, troll, stfu, bro, sick, lol, tight, u, pumped, methinks, dude, lmfao, 
-~2020: struggle bus, yas, unbox, cuck, cancelled, slop, shitposting, shitpost, cucked, goals, mid, twinning, bae, 
-2022-24: aura, hooman, slaps, catfished, skull-emoji, pog, vibing, glow-up, gaslight, lowkey, situationship, slay, yeet, legit, vibes, woke
-}
+\todo{Will now need to rerun all inference experiments with the new target set (except the free generation ones)}
 
-Several of these words are polysemous (e.g.\ \textit{sick}, \textit{troll}, \textit{aura}), with a slang sense distinct from a standard-English sense; Section~\ref{sec:exp1} describes the sense-disambiguation step used to count only the slang usage.
+Many of these words remain substantially polysemous (e.g.\ \textit{simp}, \textit{pumped}, \textit{ick}, each with 73--80\% of occurrences rejected by the classifier, and \textit{troll}, \textit{bro}, \textit{u} at 65--70\%), with a slang sense distinct from a standard-English sense or a non-slang use; Section~\ref{sec:exp1} describes the sense-disambiguation step used to count only the slang usage.
 
 % ============================================================
 \section{Analysis}
@@ -451,191 +441,117 @@ legit      & 2022--2024  & 2024 & 5.350  & 32{,}897 \\
 \label{tab:words}
 \end{table}
 
-\todo{Replace this whole section with a percentage based criterion I hope. Maybe keep a min threshold as well.}
-
 \section{Word Selection Criteria and Statistics}
 \label{app:ephemerality}
+
+Each of the 144 candidate words is scored on three statistics, and a word joins
+the target set only if it passes all three:
+
+\begin{enumerate}
+\itemsep2pt
+\item \textbf{Frequency floor.} At least 80 slang-sense hits (occurrences scoring
+  $\geq 0.99$ on the sense classifier) summed over 2013--2024. Below this,
+  percent-of-peak values are dominated by sampling noise: a word with a handful of
+  hits can read 0\% in several years purely by chance.
+\item \textbf{Ephemerality.} The word's lowest year must sit at or below 50\% of
+  its own peak year, i.e.\ usage changes by at least half between peak and trough
+  within the dataset. Rising, falling, and peaked trajectories all qualify.
+\item \textbf{Polysemy.} At most 80\% of the word's raw occurrences may be rejected
+  by the RoBERTa sense classifier at the 0.99 threshold. A word whose occurrences
+  are overwhelmingly a standard-English sense (e.g.\ \textit{goals}, \textit{extra},
+  \textit{tight}) is too ambiguous to be read as slang by a model without context,
+  so it is excluded even if its slang sense is genuinely ephemeral.
+\end{enumerate}
+
+Of the 144 candidates, 45 fail the frequency floor, 17 fail the ephemerality
+criterion, and 66 fail the polysemy criterion (many fail more than one), leaving
+40 target words (Figure~\ref{fig:ephemerality_initial_filter}). The polysemy
+criterion does most of the work: the first two criteria alone pass 82 words, and
+the third removes 42 of them. Table~\ref{tab:selection} lists every candidate with
+its three statistics. The thresholds are set as constants in
+\texttt{FineWebAnalysis/plot\_min\_pct.py}; filter rates are read from
+\texttt{word\_filter\_rates\_99.csv}.
 
 \begin{figure}[t]
     \centering
     \includegraphics[width=1.0\linewidth]{min_pct_of_peak.png}
-    \caption{Chart of the subset of the 125 initially collected candidate words that pass the following filtering criteria:
-    Change of $>$50\% between maximum frequency in the dataset and the minimum year. Total count of $>$80 across the dataset, to exclude highly infrequent, noisy words. 82 total words. Generated using \texttt{python3 plot\_min\_pct.py --min-hits 80 --max-min-pct 50}.}
+    \caption{The 40 candidate words passing all three selection criteria:
+    $\geq 80$ slang-sense hits, a minimum year at or below 50\% of the peak year,
+    and at most 80\% of occurrences rejected by the sense classifier. Bars give
+    each word's lowest year as a percentage of its peak year, annotated with that
+    year and the word's total hits. Generated by
+    \texttt{FineWebAnalysis/plot\_min\_pct.py}.}
     \label{fig:ephemerality_initial_filter}
 \end{figure}
-
-\subsection{Trajectory smoothness: the normalised second difference}
-\label{app:roughness}
-
-The percent-of-peak screen above scores each word on a single pair of years---its
-peak and its trough---and is therefore indifferent to the path between them. A word
-that rises once and falls once and a word that oscillates across the whole decade
-can report the same drop. To separate the two we score the \emph{shape} of each
-trajectory with a discrete roughness statistic: the root-mean-square second
-difference of the series, normalised by the series' own standard deviation.
-
-Write $x_t$ for a word's slang-sense rate in calendar year $t$ expressed as a
-percentage of that word's own peak year, so $x$ is a series of $n=12$ values
-(2013--2024) whose maximum is exactly $100$. The roughness is
-
-\begin{equation}
-\rho \;=\;
-\frac{\operatorname{RMS}\!\left(\Delta^{2}x\right)}{\operatorname{SD}(x)}
-\;=\;
-\frac{\sqrt{\dfrac{1}{n-2}\displaystyle\sum_{t=2}^{n-1}\left(x_{t+1}-2x_{t}+x_{t-1}\right)^{2}}}
-     {\sqrt{\dfrac{1}{n-1}\displaystyle\sum_{t=1}^{n}\left(x_{t}-\bar{x}\right)^{2}}}\,.
-\label{eq:roughness}
-\end{equation}
-
-Explicitly, for each word:
-
-\begin{enumerate}
-\itemsep2pt
-\item \textbf{Build the series.} Divide each year's token-normalised rate by the
-  word's peak-year rate and multiply by 100, giving twelve values with the peak
-  pinned at $100$.
-\item \textbf{First difference.} $\Delta x_t = x_t - x_{t-1}$, eleven values: the
-  year-on-year change, i.e.\ the local slope.
-\item \textbf{Second difference.} $\Delta^{2}x_t = x_{t+1}-2x_{t}+x_{t-1}$, ten
-  values: the change \emph{in} the slope, i.e.\ how sharply the line bends at each
-  interior year. This is the discrete analogue of $f''$, and it is why $\rho$ is
-  trend-immune: a straight line of any steepness has constant slope, so every
-  second difference is exactly zero and only departures from linearity are counted.
-\item \textbf{Root-mean-square.} Square the ten second differences, average, take
-  the square root. Squaring prevents an upward bend and a downward bend from
-  cancelling; the result is the typical bend size in percentage points.
-\item \textbf{Normalise.} Divide by the sample standard deviation of $x$
-  ($n-1$ denominator). Without this step a word ranging over eighty points would
-  outscore one ranging over ten purely because its units are larger; the ratio
-  instead asks how large a typical bend is relative to how much the series moves
-  overall.
-\end{enumerate}
-
-\paragraph{Worked example.} Table~\ref{tab:roughness-worked} carries out the
-calculation for \textit{aura}. Summing the squared second differences gives
-$\sum(\Delta^{2}x)^{2}=5280.9$; dividing by ten and taking the root gives
-$\operatorname{RMS}=22.98$, and the series' standard deviation is $17.10$, so
-$\rho = 22.98/17.10 = 1.34$. The sign of the second difference alternates almost
-every year, which is what a large $\rho$ records. For contrast, \textit{vibes}
-travels further overall ($\operatorname{SD}=25.72$) but climbs steadily, so its
-bends are small ($\operatorname{RMS}=7.57$) and $\rho=0.29$---nine times smoother
-on identical arithmetic.
-
-\begin{table}[h]
-\centering
-\small
-\begin{tabular}{lrrr}
-\toprule
-Year & $x_t$ & $\Delta x_t$ & $\Delta^{2}x_t$ \\
-\midrule
-2013 & 60.7 &  &  \\
-2014 & 58.3 & $-2.4$ &  \\
-2015 & 53.0 & $-5.3$ & $-2.9$ \\
-2016 & 48.5 & $-4.5$ & $+0.8$ \\
-2017 & 69.2 & $+20.7$ & $+25.2$ \\
-2018 & 66.9 & $-2.3$ & $-23.0$ \\
-2019 & 51.8 & $-15.1$ & $-12.8$ \\
-2020 & 51.4 & $-0.4$ & $+14.7$ \\
-2021 & 78.8 & $+27.4$ & $+27.8$ \\
-2022 & 93.7 & $+14.9$ & $-12.5$ \\
-2023 & 100.0 & $+6.3$ & $-8.6$ \\
-2024 & 54.1 & $-45.9$ & $-52.2$ \\
-\bottomrule
-\end{tabular}
-\caption{The roughness calculation for \textit{aura}: percent of peak, first
-difference, and second difference. The ten second differences yield
-$\operatorname{RMS}=22.98$ against $\operatorname{SD}=17.10$, so $\rho=1.34$.}
-\label{tab:roughness-worked}
-\end{table}
-
-\paragraph{Reading the statistic.} $\rho \approx 0$ is a straight line at any
-slope; $0.3$--$0.7$ is a smooth curve, a trend with gentle and consistent
-curvature; $\rho \approx 1$ means a typical bend is as large as the spread of the
-whole series; and $\rho > 1.3$ means the trajectory reverses direction at a scale
-rivalling the signal itself. Across the 82 words the statistic ranges from $0.16$
-(\textit{woke}) to $2.72$ (\textit{they ate}), with a median of $1.23$
-(Table~\ref{tab:roughness}).
-
-Two properties bear on any attempt to use $\rho$ as a selection criterion. First,
-it is \textbf{blind to sampling noise}: a rare word is jagged because its per-year
-counts are small, not because usage moved, and the statistic cannot tell those
-apart. In practice $\rho$ therefore tracks frequency---Spearman
-$\rho_{s}=-0.45$ against $\log$ total hits, with median roughness falling from
-$1.46$ in the least-frequent third of the set to $0.78$ in the most-frequent
-third---and the roughest trajectories belong to the sparsest words
-(\textit{they ate}, 201 hits; \textit{sus}, 138; \textit{npc}, 136). A cutoff on
-$\rho$ alone would select for corpus frequency about as much as for shape, and
-should be paired with a noise-floor comparison (per-year relative standard error
-$1/\sqrt{k}$) before it is read as evidence about language. Second, with $n=12$
-there are only ten second differences, so a single anomalous year can dominate:
-the 2024 slice is truncated at dump \texttt{2024-10} (103.9\,M tokens against
-1{,}429.7\,M in 2017, Table~\ref{tab:tokens}), and for \textit{aura} the 2024 term
-alone contributes 52\% of $\sum(\Delta^{2}x)^{2}$.
 
 \begin{table*}[t]
 \centering
 \footnotesize
-\begin{tabular}{lrrrr@{\hskip 2.5em}lrrrr}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lrrr@{\hskip 2em}lrrr@{\hskip 2em}lrrr}
 \toprule
-Word & Hits & SD & RMS & $\rho$ & Word & Hits & SD & RMS & $\rho$ \\
+Word & Hits & Min\% & Filt\% & Word & Hits & Min\% & Filt\% & Word & Hits & Min\% & Filt\% \
 \midrule
-\textit{they ate} & 201 & 19.7 & 53.6 & 2.72 & \textit{goon} & 481 & 28.1 & 31.7 & 1.13 \\
-\textit{sus} & 138 & 23.2 & 60.0 & 2.59 & \textit{shitpost} & 113 & 34.1 & 38.4 & 1.13 \\
-\textit{he ate} & 311 & 19.0 & 48.5 & 2.54 & \textit{lmao} & 3{,}816 & 27.9 & 30.9 & 1.11 \\
-\textit{catfish} & 781 & 21.7 & 54.1 & 2.49 & \textit{stan} & 1{,}660 & 18.5 & 20.2 & 1.09 \\
-\textit{thot} & 442 & 19.5 & 44.9 & 2.31 & \textit{hella} & 2{,}628 & 17.8 & 18.6 & 1.04 \\
-\textit{npc} & 136 & 29.2 & 66.8 & 2.29 & \textit{pog} & 81 & 25.5 & 26.4 & 1.04 \\
-\textit{sigma} & 242 & 24.2 & 54.6 & 2.25 & \textit{fresh} & 2{,}797 & 16.9 & 17.2 & 1.02 \\
-\textit{era} & 933 & 16.2 & 34.2 & 2.11 & \textit{swag} & 2{,}624 & 20.9 & 20.9 & 1.00 \\
-\textit{unc} & 147 & 30.4 & 63.6 & 2.10 & \textit{cucked} & 83 & 33.6 & 32.9 & 0.98 \\
-\textit{on god} & 231 & 17.3 & 36.1 & 2.08 & \textit{yapping} & 407 & 28.3 & 27.6 & 0.98 \\
-\textit{extra} & 680 & 14.3 & 28.4 & 1.99 & \textit{vibing} & 564 & 26.0 & 25.2 & 0.97 \\
-\textit{mog} & 93 & 29.4 & 57.9 & 1.97 & \textit{rad} & 5{,}490 & 17.2 & 16.1 & 0.93 \\
-\textit{she ate} & 198 & 16.5 & 31.5 & 1.91 & \textit{ick} & 559 & 28.9 & 25.8 & 0.89 \\
-\textit{bruh} & 635 & 19.8 & 36.4 & 1.84 & \textit{goals} & 432 & 30.9 & 27.5 & 0.89 \\
-\textit{cooked} & 1{,}848 & 15.3 & 27.3 & 1.78 & \textit{mid} & 2{,}166 & 16.3 & 13.2 & 0.81 \\
-\textit{ratchet} & 754 & 23.9 & 42.1 & 1.76 & \textit{karen} & 2{,}719 & 20.5 & 16.0 & 0.78 \\
-\textit{doggo} & 208 & 28.8 & 48.7 & 1.69 & \textit{meh} & 5{,}775 & 23.6 & 18.4 & 0.78 \\
-\textit{brat} & 676 & 21.6 & 36.2 & 1.68 & \textit{glow-up} & 98 & 35.7 & 27.6 & 0.77 \\
-\textit{doomscrolling} & 89 & 33.7 & 55.8 & 1.66 & \textit{6-7} & 244 & 27.1 & 20.4 & 0.75 \\
-\textit{simp} & 108 & 31.1 & 49.8 & 1.60 & \textit{omg} & 24{,}593 & 23.8 & 17.5 & 0.73 \\
-\textit{struggle bus} & 107 & 38.3 & 59.3 & 1.55 & \textit{troll} & 6{,}077 & 20.4 & 14.5 & 0.71 \\
-\textit{idgaf} & 158 & 21.3 & 33.0 & 1.55 & \textit{gaslight} & 316 & 30.3 & 21.4 & 0.71 \\
-\textit{unboxing} & 802 & 24.5 & 37.5 & 1.53 & \textit{stfu} & 827 & 27.8 & 19.4 & 0.70 \\
-\textit{red pill} & 546 & 28.3 & 43.1 & 1.52 & \textit{bro} & 7{,}914 & 21.4 & 14.7 & 0.69 \\
-\textit{dank} & 576 & 23.3 & 35.2 & 1.51 & \textit{twinning} & 193 & 35.5 & 23.8 & 0.67 \\
-\textit{thirsty} & 1{,}500 & 14.4 & 21.6 & 1.50 & \textit{sick} & 14{,}015 & 23.4 & 15.6 & 0.67 \\
-\textit{glazing} & 149 & 34.0 & 50.6 & 1.49 & \textit{lowkey} & 567 & 34.9 & 22.8 & 0.65 \\
-\textit{cancelled} & 194 & 21.3 & 31.1 & 1.46 & \textit{lol} & 107{,}305 & 29.6 & 19.2 & 0.65 \\
-\textit{finna} & 163 & 19.2 & 27.6 & 1.44 & \textit{tight} & 359 & 25.7 & 16.1 & 0.63 \\
-\textit{slop} & 371 & 17.6 & 23.9 & 1.36 & \textit{situationship} & 121 & 30.8 & 16.9 & 0.55 \\
-\textit{unbox} & 176 & 29.5 & 39.6 & 1.34 & \textit{bae} & 1{,}649 & 29.4 & 16.1 & 0.55 \\
-\textit{aura} & 1{,}231 & 17.1 & 23.0 & 1.34 & \textit{u} & 92{,}332 & 31.2 & 16.2 & 0.52 \\
-\textit{yas} & 361 & 22.7 & 30.2 & 1.33 & \textit{pumped} & 8{,}967 & 18.2 & 8.8 & 0.48 \\
-\textit{slaps} & 1{,}064 & 21.6 & 28.1 & 1.30 & \textit{slay} & 1{,}795 & 24.7 & 11.5 & 0.47 \\
-\textit{hooman} & 237 & 28.9 & 37.6 & 1.30 & \textit{methinks} & 860 & 28.3 & 12.6 & 0.44 \\
-\textit{cuck} & 326 & 32.6 & 42.3 & 1.30 & \textit{dude} & 61{,}357 & 25.0 & 9.8 & 0.39 \\
-\textit{shitposting} & 198 & 36.2 & 46.5 & 1.29 & \textit{yeet} & 99 & 30.8 & 11.6 & 0.38 \\
-\textit{\texttt{U+1F480}} & 149 & 32.5 & 41.5 & 1.28 & \textit{lmfao} & 1{,}283 & 28.4 & 9.9 & 0.35 \\
-\textit{catfished} & 164 & 28.2 & 36.0 & 1.28 & \textit{legit} & 32{,}897 & 22.7 & 7.6 & 0.33 \\
-\textit{griefing} & 165 & 24.4 & 30.2 & 1.23 & \textit{vibes} & 20{,}311 & 25.7 & 7.6 & 0.29 \\
-\textit{yap} & 387 & 25.6 & 31.5 & 1.23 & \textit{woke} & 1{,}555 & 35.5 & 5.5 & 0.16 \\
+\textit{6-7} & 244 & 27.5 & \underline{98.4} & \textit{grindset} & \underline{7} & 0.0 & 0.0 & \textit{she ate} & 198 & 39.2 & \underline{93.1} \\
+\textit{67} & 917 & \underline{65.3} & \underline{98.8} & \textit{hard mode} & \underline{29} & 0.0 & \underline{96.8} & \textbf{\textit{shitpost}} & 113 & 0.0 & 2.6 \\
+\textit{alpha} & 5{,}764 & \underline{56.1} & \underline{94.5} & \textit{he ate} & 311 & 42.0 & \underline{94.2} & \textbf{\textit{shitposting}} & 198 & 0.0 & 1.5 \\
+\textit{aura} & 1{,}231 & 48.5 & \underline{96.5} & \textbf{\textit{hella}} & 2{,}628 & 28.2 & 33.5 & \textit{shook} & 5{,}449 & \underline{66.0} & \underline{92.3} \\
+\textit{bae} & 1{,}649 & 18.8 & \underline{83.0} & \textit{hits different} & \underline{48} & 0.0 & 33.3 & \textit{shooketh} & \underline{20} & 0.0 & 4.8 \\
+\textit{basic} & 9{,}474 & \underline{70.3} & \underline{98.8} & \textbf{\textit{hooman}} & 237 & 19.6 & 44.9 & \textit{sick} & 14{,}015 & 34.8 & \underline{94.6} \\
+\textit{bop} & 931 & \underline{59.8} & \underline{88.9} & \textit{huzz} & \underline{12} & 0.0 & 42.9 & \textit{sigma} & 242 & 32.0 & \underline{99.3} \\
+\textit{brainrot} & \underline{4} & 0.0 & 0.0 & \textbf{\textit{ick}} & 559 & 21.0 & 73.6 & \textbf{\textit{simp}} & 108 & 0.0 & 79.3 \\
+\textit{brat} & 676 & 17.5 & \underline{91.8} & \textbf{\textit{idgaf}} & 158 & 23.8 & 7.6 & \textbf{\textit{situationship}} & 121 & 0.0 & 0.0 \\
+\textbf{\textit{bro}} & 7{,}914 & 27.7 & 65.3 & \textit{karen} & 2{,}719 & 13.1 & \underline{97.3} & \textit{skibidi} & \underline{13} & 0.0 & 23.5 \\
+\textbf{\textit{bruh}} & 635 & 39.0 & 20.1 & \textit{left no crumbs} & \underline{2} & 0.0 & 0.0 & \textit{slaps} & 1{,}064 & 12.7 & \underline{83.0} \\
+\textit{bussin} & \underline{9} & 0.0 & 76.3 & \textbf{\textit{legit}} & 32{,}897 & 36.3 & 0.0 & \textit{slay} & 1{,}795 & 24.1 & \underline{83.2} \\
+\textit{bussin'} & \underline{4} & 0.0 & 55.6 & \textit{lit} & 3{,}960 & \underline{71.8} & \underline{95.9} & \textit{slop} & 371 & 35.9 & \underline{87.6} \\
+\textit{cancelled} & 194 & 20.9 & \underline{99.8} & \textbf{\textit{lmao}} & 3{,}816 & 18.8 & 1.5 & \textit{snatched} & 736 & \underline{55.0} & \underline{94.7} \\
+\textit{catfish} & 781 & 20.9 & \underline{95.2} & \textit{lmaooo} & \underline{64} & 0.0 & 0.0 & \textit{solo dolo} & \underline{22} & 0.0 & 15.4 \\
+\textbf{\textit{catfished}} & 164 & 2.7 & 33.6 & \textit{lmaoooo} & \underline{28} & 6.9 & 0.0 & \textit{soyboy} & \underline{18} & 0.0 & 18.2 \\
+\textit{clanker} & \underline{2} & 0.0 & \underline{94.6} & \textit{lmaooooo} & \underline{28} & 0.0 & 0.0 & \textit{squad} & 555 & \underline{57.3} & \underline{99.6} \\
+\textit{clean girl} & \underline{36} & 0.0 & 35.7 & \textbf{\textit{lmfao}} & 1{,}283 & 11.3 & 0.0 & \textit{stan} & 1{,}660 & 34.3 & \underline{95.7} \\
+\textit{clout} & 873 & \underline{57.9} & \underline{91.7} & \textbf{\textit{lol}} & 107{,}305 & 20.9 & 9.3 & \textbf{\textit{stfu}} & 827 & 8.7 & 10.7 \\
+\textit{cooked} & 1{,}848 & 49.8 & \underline{98.9} & \textbf{\textit{lowkey}} & 567 & 4.7 & 22.5 & \textbf{\textit{struggle bus}} & 107 & 0.0 & 7.0 \\
+\textit{crash out} & \underline{29} & 0.0 & \underline{95.1} & \textbf{\textit{meh}} & 5{,}775 & 25.1 & 20.7 & \textit{sus} & 138 & 18.2 & \underline{98.1} \\
+\textbf{\textit{cuck}} & 326 & 0.0 & 50.5 & \textbf{\textit{methinks}} & 860 & 16.7 & 66.3 & \textit{sussy baka} & \underline{5} & 0.0 & 64.3 \\
+\textbf{\textit{cucked}} & 83 & 0.0 & 3.5 & \textit{mewing} & \underline{35} & 0.0 & \underline{90.6} & \textit{swag} & 2{,}624 & 35.8 & \underline{83.0} \\
+\textit{dank} & 576 & 29.1 & \underline{88.7} & \textit{mid} & 2{,}166 & 45.0 & \underline{98.4} & \textit{tea} & 21{,}796 & \underline{55.7} & \underline{95.6} \\
+\textit{degen} & \underline{70} & 0.0 & \underline{87.6} & \textit{mog} & 93 & 0.0 & \underline{94.2} & \textit{they ate} & 201 & 38.2 & \underline{96.4} \\
+\textit{delulu} & \underline{3} & 0.0 & 0.0 & \textit{mogged} & \underline{4} & 0.0 & 75.0 & \textit{thirst trap} & \underline{76} & 0.0 & 9.5 \\
+\textbf{\textit{doggo}} & 208 & 0.0 & 70.6 & \textit{no cap} & \underline{45} & 0.0 & \underline{96.1} & \textit{thirsty} & 1{,}500 & 49.0 & \underline{93.0} \\
+\textit{doomscroll} & \underline{10} & 0.0 & 0.0 & \textit{nolife} & \underline{5} & 0.0 & 64.3 & \textbf{\textit{thot}} & 442 & 26.8 & 42.8 \\
+\textit{doomscrolled} & \underline{1} & 0.0 & 0.0 & \textit{npc} & 136 & 0.0 & \underline{98.9} & \textit{tight} & 359 & 22.6 & \underline{99.9} \\
+\textbf{\textit{doomscrolling}} & 89 & 0.0 & 1.1 & \textbf{\textit{omg}} & 24{,}593 & 18.9 & 0.0 & \textbf{\textit{troll}} & 6{,}077 & 35.3 & 66.4 \\
+\textbf{\textit{dude}} & 61{,}357 & 26.4 & 6.8 & \textit{omgggg} & \underline{48} & 0.0 & 0.0 & \textit{twinning} & 193 & 0.0 & \underline{91.7} \\
+\textit{epic} & 36{,}443 & \underline{80.9} & 75.8 & \textit{on god} & 231 & 31.3 & \underline{97.2} & \textbf{\textit{u}} & 92{,}332 & 19.4 & 69.4 \\
+\textit{era} & 933 & 48.5 & \underline{99.7} & \textit{periodt} & \underline{16} & 0.0 & 0.0 & \textit{unalive} & \underline{4} & 0.0 & 73.3 \\
+\textit{extra} & 680 & 48.4 & \underline{99.9} & \textit{phonk} & \underline{22} & 0.0 & 35.3 & \textit{unbox} & 176 & 13.3 & \underline{85.0} \\
+\textit{eye bleach} & \underline{11} & 0.0 & 35.3 & \textit{pog} & 81 & 0.0 & \underline{90.1} & \textit{unboxing} & 802 & 22.8 & \underline{85.2} \\
+\textit{fam} & 1{,}496 & \underline{53.4} & \underline{84.0} & \textit{poggers} & \underline{15} & 0.0 & 54.5 & \textit{unc} & 147 & 0.0 & \underline{99.2} \\
+\textbf{\textit{finna}} & 163 & 38.2 & 40.3 & \textbf{\textit{pumped}} & 8{,}967 & 42.3 & 73.6 & \textit{vibe} & 30{,}862 & \underline{54.4} & 57.6 \\
+\textit{fire} & 25{,}303 & \underline{65.6} & \underline{97.6} & \textit{queen shit} & \underline{6} & 0.0 & 0.0 & \textbf{\textit{vibes}} & 20{,}311 & 22.2 & 26.0 \\
+\textit{fresh} & 2{,}797 & 44.4 & \underline{99.7} & \textbf{\textit{rad}} & 5{,}490 & 47.2 & 63.5 & \textbf{\textit{vibing}} & 564 & 14.4 & 5.7 \\
+\textit{gaslight} & 316 & 13.7 & \underline{84.0} & \textit{rage bait} & \underline{2} & 0.0 & 0.0 & \textit{woke} & 1{,}555 & 0.8 & \underline{98.1} \\
+\textit{glazing} & 149 & 0.0 & \underline{99.2} & \textit{rage-bait} & \underline{1} & 0.0 & 0.0 & \textit{yap} & 387 & 0.0 & \underline{90.4} \\
+\textbf{\textit{glow-up}} & 98 & 0.0 & 16.2 & \textit{ratchet} & 754 & 7.8 & \underline{93.4} & \textbf{\textit{yapping}} & 407 & 19.4 & 64.7 \\
+\textit{goals} & 432 & 9.1 & \underline{100.0} & \textbf{\textit{red pill}} & 546 & 5.8 & 67.5 & \textit{yas} & 361 & 36.8 & \underline{84.8} \\
+\textit{goated} & \underline{10} & 0.0 & 33.3 & \textit{rent free} & \underline{18} & 0.0 & \underline{97.5} & \textbf{\textit{yeet}} & 99 & 0.0 & 23.3 \\
+\textit{goon} & 481 & 13.0 & \underline{86.7} & \textit{rizz} & \underline{9} & 0.0 & \underline{83.6} & \textit{yeeted} & \underline{17} & 0.0 & 0.0 \\
+\textit{gooner} & \underline{18} & 0.0 & \underline{95.0} & \textit{salty} & 1{,}896 & \underline{50.7} & \underline{94.7} & \textit{yeeting} & \underline{10} & 0.0 & 23.1 \\
+\textit{gooning} & \underline{11} & 0.0 & 62.1 & \textit{savage} & 2{,}543 & \underline{67.3} & \underline{94.4} & \textit{yolo} & 1{,}239 & \underline{51.1} & 66.9 \\
+\textbf{\textit{griefing}} & 165 & 14.3 & 60.7 & \textit{shaking} & \underline{16} & 0.0 & \underline{100.0} & \textbf{\textit{\texttt{U+1F480}}} & 149 & 0.0 & 0.0 \\
 \bottomrule
 \end{tabular}
-\caption{Trajectory roughness for the 82 words passing the ephemerality screen
-($\geq 80$ slang-sense hits and a minimum year at or below 50\% of peak), ordered
-by $\rho$ descending and continuing in the right-hand block. ``Hits'' is the total
-count of occurrences scoring $\geq 0.99$ on the slang-sense classifier; SD is the
-sample standard deviation of the percent-of-peak series; RMS is the
-root-mean-square of its ten second differences; $\rho$ is their ratio
-(Eq.~\ref{eq:roughness}). Values are computed by
-\texttt{FineWebAnalysis/trajectory\_explorer.py} from
-\texttt{peak\_years\_pct.json}. The skull-emoji target is written
+\caption{Selection statistics for all 144 candidate words, in alphabetical order.
+``Hits'' is the total count of slang-sense occurrences (classifier score
+$\geq 0.99$) over 2013--2024; ``Min\%'' is the word's lowest year as a percentage
+of its own peak year; ``Filt\%'' is the percentage of raw occurrences rejected by
+the sense classifier at the 0.99 threshold. Underlined values fail their criterion
+(Hits $<80$, Min\% $>50$, Filt\% $>80$); the 40 words in \textbf{bold} pass all
+three and form the target set. The skull-emoji target is written
 \texttt{U+1F480}.}
-\label{tab:roughness}
+\label{tab:selection}
 \end{table*}
-
-
 
 
 \section{Experiment 1: FineWeb Corpus Frequency}

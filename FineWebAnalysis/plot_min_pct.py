@@ -9,18 +9,21 @@ lifecycle rather than a steady presence. Bars are sorted ascending, so the most
 dramatic risers/decliners are at the top.
 
 Percent-of-peak amplifies sampling noise for rare words (a word with nine total
-hits can read 0% in several years), so ``--min-hits`` screens those out.
+hits can read 0% in several years), so ``MIN_HITS`` screens those out.
+
+The word filters (MIN_HITS, MAX_MIN_PCT, MAX_FILTERED_PCT) are constants below
+rather than flags, so any change to them is tracked in git.
 
 Usage (run from FineWebAnalysis/):
     python plot_min_pct.py
-    python plot_min_pct.py --min-hits 100 --top 40 -o figures/min_pct.png
-    python plot_min_pct.py --max-min-pct 50      # only words that halve from peak
+    python plot_min_pct.py --top 40 -o figures/min_pct.png
     python plot_min_pct.py peak_years_pct.json -            # display interactively
 """
 
 from __future__ import annotations
 
 import argparse
+import csv
 import json
 import sys
 from pathlib import Path
@@ -30,11 +33,34 @@ import matplotlib.pyplot as plt
 HERE = Path(__file__).resolve().parent
 DEFAULT_INPUT = HERE / "peak_years_pct.json"
 DEFAULT_OUTPUT = HERE / "figures" / "min_pct_of_peak.png"
+DEFAULT_FILTER_RATES = HERE / "word_filter_rates_99.csv"
 BAR, INK, GRID = "#2a78d6", "#52514e", "#e1e0d9"
 
+# Skip words with fewer than this many total slang-sense hits, whose percentages
+# are mostly sampling noise (0 keeps all).
+MIN_HITS = 80
+# Skip words whose lowest year still sits above this % of their own peak, i.e.
+# keep only words that fall by at least (100 - MAX_MIN_PCT)% at some point
+# (None keeps all).
+MAX_MIN_PCT: float | None = 50
+# Skip words whose share of hits rejected by the sense filter exceeds this %,
+# read from --filter-rates (None keeps all).
+MAX_FILTERED_PCT: float | None = 80
 
-def load(path: Path, min_hits: int,
-         max_min_pct: float | None) -> list[tuple[str, float, int, str]]:
+
+def load_filter_rates(path: Path) -> dict[str, float]:
+    """``{word: pct filtered}`` from word_filter_rates_*.csv."""
+    with path.open(encoding="utf-8", newline="") as f:
+        reader = csv.DictReader(f)
+        col = next((c for c in reader.fieldnames or [] if c.startswith("pct_filtered")), None)
+        if col is None:
+            sys.exit(f"{path} has no 'pct_filtered_*' column.")
+        return {r["word"]: float(r[col]) for r in reader}
+
+
+def load(path: Path, min_hits: int, max_min_pct: float | None,
+         filter_rates: dict[str, float] | None = None,
+         max_filtered_pct: float | None = None) -> list[tuple[str, float, int, str]]:
     """``[(word, min pct, hits, year of that minimum)]``, ascending by percentage."""
     records = json.loads(path.read_text(encoding="utf-8"))
     rows = []
@@ -44,17 +70,26 @@ def load(path: Path, min_hits: int,
             sys.exit(f"{path} has no 'pct_of_peak_by_year' — regenerate it with peak_year.py.")
         if r["total_hits"] < min_hits:
             continue
+        if max_filtered_pct is not None:
+            rate = filter_rates.get(r["word"])
+            if rate is None:
+                print(f"warning: {r['word']!r} not in filter-rates CSV; keeping it.",
+                      file=sys.stderr)
+            elif rate > max_filtered_pct:
+                continue
         year, value = min(pct.items(), key=lambda kv: kv[1])
         if max_min_pct is not None and value > max_min_pct:
             continue
         rows.append((r["word"], value, r["total_hits"], year))
     if not rows:
         sys.exit(f"No words with >= {min_hits} hits"
-                 f"{f' whose minimum is <= {max_min_pct:g}% of peak' if max_min_pct is not None else ''}.")
+                 f"{f' whose minimum is <= {max_min_pct:g}% of peak' if max_min_pct is not None else ''}"
+                 f"{f' and <= {max_filtered_pct:g}% filtered' if max_filtered_pct is not None else ''}.")
     return sorted(rows, key=lambda t: t[1])
 
 
-def render(rows, min_hits: int, max_min_pct: float | None, output: Path | None) -> None:
+def render(rows, min_hits: int, max_min_pct: float | None, output: Path | None,
+           max_filtered_pct: float | None = None) -> None:
     words = [w for w, _, _, _ in rows]
     values = [v for _, v, _, _ in rows]
 
@@ -73,7 +108,8 @@ def render(rows, min_hits: int, max_min_pct: float | None, output: Path | None) 
     ax.set_title("How far each word falls below its own peak\n"
                  f"({len(rows)} words, minimum over 2013--2024"
                  f"{f', >= {min_hits:,} slang-sense hits' if min_hits else ''}"
-                 f"{f', minimum <= {max_min_pct:g}% of peak' if max_min_pct is not None else ''})",
+                 f"{f', minimum <= {max_min_pct:g}% of peak' if max_min_pct is not None else ''}"
+                 f"{f', <= {max_filtered_pct:g}% filtered' if max_filtered_pct is not None else ''})",
                  fontsize=11, loc="left")
     ax.tick_params(axis="y", length=0)
     for side in ("top", "right", "left"):
@@ -96,13 +132,10 @@ def main() -> None:
                                 formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument("input", nargs="?", type=Path, default=DEFAULT_INPUT,
                    help=f"peak_years JSON with percentages (default: {DEFAULT_INPUT.name}).")
-    p.add_argument("--min-hits", type=int, default=100, metavar="N", dest="min_hits",
-                   help="Skip words with fewer than N total slang-sense hits, whose "
-                        "percentages are mostly sampling noise (default: 100; 0 keeps all).")
-    p.add_argument("--max-min-pct", type=float, metavar="PCT", dest="max_min_pct",
-                   help="Skip words whose lowest year still sits above PCT%% of their "
-                        "own peak, i.e. keep only words that fall by at least "
-                        "(100 - PCT)%% at some point (default: keep all).")
+    p.add_argument("--filter-rates", type=Path, default=DEFAULT_FILTER_RATES, metavar="CSV",
+                   dest="filter_rates",
+                   help=f"Per-word filter rates CSV, used when MAX_FILTERED_PCT is set "
+                        f"(default: {DEFAULT_FILTER_RATES.name}).")
     p.add_argument("--top", type=int, metavar="N",
                    help="Only plot the N words with the lowest minimum.")
     p.add_argument("-o", "--output", type=Path, default=DEFAULT_OUTPUT,
@@ -111,11 +144,16 @@ def main() -> None:
 
     if not args.input.is_file():
         p.error(f"Input not found: {args.input}")
-    rows = load(args.input, args.min_hits, args.max_min_pct)
+    filter_rates = None
+    if MAX_FILTERED_PCT is not None:
+        if not args.filter_rates.is_file():
+            p.error(f"Filter rates not found: {args.filter_rates}")
+        filter_rates = load_filter_rates(args.filter_rates)
+    rows = load(args.input, MIN_HITS, MAX_MIN_PCT, filter_rates, MAX_FILTERED_PCT)
     if args.top:
         rows = rows[:args.top]
-    render(rows, args.min_hits, args.max_min_pct,
-           None if str(args.output) == "-" else args.output)
+    render(rows, MIN_HITS, MAX_MIN_PCT,
+           None if str(args.output) == "-" else args.output, MAX_FILTERED_PCT)
 
 
 if __name__ == "__main__":
