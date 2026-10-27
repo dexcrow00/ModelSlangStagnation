@@ -161,14 +161,27 @@ We test four models spanning three providers: two open-weight models served via 
 The main analysis is divided into two main methodologies, based on the source of the set of slang words in an experiment. The initial experiments involve identifying a reference set of slang words in the FineWeb corpus, and subsequently running analysis on their frequencies across FineWeb dumps to profile their temporal characteristics. We then examine how models use and view this set of corpus identified slang words. The second set of experiments starts by prompting a set of models with persona-style prompts intended to generate free-form slang usage. We use the responses to generate a list of slang commonly used by models, which we can then run analysis against in the FineWeb corpus. This gives us chracteristics of the slang words most commonly used by the set of models, such as peak usage age in the corpus for a given word. 
 For the set of slang words used for initial analysis in FineWeb, we draw 125 candidates from Word-of-the-Year lists, Urban Dictionary, and Google Search Trends\footnote{Words of the Year tend not to be slang per se, but instead often relate to global events. Using Urban Dictionary and cross referencing word popularity using Google Search Trends was the most reliable way to find good candidate words.}. Each candidate is then \textbf{validated against the FineWeb corpus-frequency analysis of Section~\ref{sec:exp1}} using the quantitative \textit{ephemerality} criterion below; for the experimental subset we additionally require that the word fill a recurring informal semantic slot (e.g.\ ``impressive/cool''), keeping meaning roughly controlled across eras.
 
-\paragraph{Quantitative ephemerality criterion.} A word's ``ephemerality'' is dervied directly from its corpus occurence trajectory. For each candidate $w$ we take its sense-filtered rate pooled by calendar year, $r_w(y)$ for $y \in [2013, 2024]$ (Section~\ref{sec:exp1-method}), and compute three quantities: a \emph{reliability} count $N_w$ (total slang-sense hits); a \emph{trend} given by the slope $\beta_w$ and fit $R^2_w$ of an ordinary-least-squares regression of $\log_2 r_w(y)$ on year, so $\beta_w$ is the word's multiplicative drift in bits per year; and an \emph{amplitude} $A_w = \log_2\!\big(r_w^{\text{peak}} / r_w^{\text{tail}}\big)$, the peak-year rate over the rate at the endpoint on the far side of the peak. A word is admitted as an ephemeral target when (i) it is high frequency enough to trust its curve --- $N_w \ge 100$, or $N_w \ge 50$ with an unmistakable trend ($R^2_w \ge 0.8$, $|\beta_w| \ge 0.3$) --- \emph{and} (ii) its trajectory is non-flat, i.e.\ at least one of: a steady directional drift ($|\beta_w| \ge 0.1$ bits/yr at $R^2_w \ge 0.5$, a $\ge 2\times$ change per decade), a prominent arc ($A_w \ge 1$ bit, a peak at least double the opposite tail), or a defined monotone trend ($R^2_w \ge 0.75$ with $|\beta_w| \ge 0.04$) that catches high-volume words drifting steadily. The sign of $\beta_w$ together with the peak position then sorts each word into one of three classes: \emph{declining} (early peak, $\beta_w < 0$), \emph{rising} (late peak, $\beta_w > 0$), or \emph{rise--fall} (interior peak, prominent on both sides).
+\paragraph{Quantitative ephemerality criterion.} 
+\todo{This should now be }
+We definine "ephemerality" relatively loosely here and look at three types of words: 1) Words with rising popularity, peaking near the end of our dataset cutoff 2) Words with decreasing popularity, with a minimum near our dataset cutoff 3) Words with a peak somewhere within the bounds of the dataset. All three of these are filtered on words that have a >40\% difference between the peak year usage in our dataset and the minimum year usage, and at least 80 instances across the dataset, to filter out extremely low-frequency noisy words.
 
-Applied to the 125 candidates, this yields the ephemeral target set. The nineteen words \footnote{\textit{alpha} and \textit{aura} are the two marginal inclusions, with shallow, noisy corpus trajectories ($R^2 < 0.45$). We keep them for semantic-slot and recency coverage, but flag them as the weakest cases on corpus evidence alone. The full pass/fail table with per-word statistics is given in Appendix~\ref{app:ephemerality}.} carried into the querying experiments (Experiments~2--4) are drawn from it and span the three classes, mirroring the corpus-frequency figures (Figure~\ref{fig:fineweb-trends}):
+Applying these criteria to the 125 candidates yields the "ephemeral" target set. The full evaluation across all 125 words can be found in \ref{app:ephemerality}. The passing list of target words for subsequent experiments is the following:
 \begin{enumerate}
   \item \textbf{Pre-2018 (peaked early, now declining):} \textit{lol, sick, troll, bro, swag, omg, meh, lmao}.
   \item \textbf{Around 2020 (rising through the late 2010s):} \textit{alpha, red pill}.
   \item \textbf{2022--2024 (most recent, sharply rising):} \textit{slay, gaslight, glow-up, aura, lowkey, situationship, vibe, vibes, legit}.
 \end{enumerate}
+
+\todo{Drop alpha, vibe.... worst metrics by a good margin. Can bump up filter to 50\% change}
+\todo{Will now need to rerun all inference experiments with the expanded set (except the free generation ones)}
+\todo{If we use second difference of raw data, we can check for "smootheness", in this case if we want to include all the above words and pick a cutoff then our cutoff value will be: <1.5 - drops red-pill.
+We also likely want to filter out some of the highly polysemous words. Potentially based on the roberta classifier metrics.
+Additional exclusions to consider: cancelled, slop, slaps, goon, fresh, yap, yapping, goals, ick, mid, karen, 6-7, sick, tight, twinning, u, pumped
+Additional words:
+pre-2018: finna, griefing, yap, goon, lmao, stan, hella, fresh, swag, yapping, rad, ick, karen, meh, 6-7, omg, troll, stfu, bro, sick, lol, tight, u, pumped, methinks, dude, lmfao, 
+~2020: struggle bus, yas, unbox, cuck, cancelled, slop, shitposting, shitpost, cucked, goals, mid, twinning, bae, 
+2022-24: aura, hooman, slaps, catfished, skull-emoji, pog, vibing, glow-up, gaslight, lowkey, situationship, slay, yeet, legit, vibes, woke
+}
 
 Several of these words are polysemous (e.g.\ \textit{sick}, \textit{troll}, \textit{aura}), with a slang sense distinct from a standard-English sense; Section~\ref{sec:exp1} describes the sense-disambiguation step used to count only the slang usage.
 
@@ -438,42 +451,192 @@ legit      & 2022--2024  & 2024 & 5.350  & 32{,}897 \\
 \label{tab:words}
 \end{table}
 
-\section{Ephemerality Criterion: Per-Word Statistics}
+\todo{Replace this whole section with a percentage based criterion I hope. Maybe keep a min threshold as well.}
+
+\section{Word Selection Criteria and Statistics}
 \label{app:ephemerality}
 
-Table~\ref{tab:ephemerality} reports the trajectory statistics behind the ephemerality criterion of Section~\ref{sec:targets}, for all nineteen tested words. For each word we regress $\log_2 r_w(y)$ on calendar year over the sense-filtered, year-pooled rates: $\beta$ is the slope (bits/yr), $R^2$ the fit, $A$ the peak-to-opposite-tail amplitude (bits), and $N$ the total slang-sense hits. A word passes when it is reliably attested ($N \ge 100$, or $N \ge 50$ with $R^2 \ge 0.8$ and $|\beta| \ge 0.3$) \emph{and} non-flat ($|\beta| \ge 0.1$ at $R^2 \ge 0.5$, or $A \ge 1$, or $R^2 \ge 0.75$ with $|\beta| \ge 0.04$). Seventeen of the nineteen pass; \textit{alpha} and \textit{aura} fail on a shallow, low-$R^2$ trajectory and are retained on semantic-slot grounds.
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=1.0\linewidth]{min_pct_of_peak.png}
+    \caption{Chart of the subset of the 125 initially collected candidate words that pass the following filtering criteria:
+    Change of $>$50\% between maximum frequency in the dataset and the minimum year. Total count of $>$80 across the dataset, to exclude highly infrequent, noisy words. 82 total words. Generated using \texttt{python3 plot\_min\_pct.py --min-hits 80 --max-min-pct 50}.}
+    \label{fig:ephemerality_initial_filter}
+\end{figure}
+
+\subsection{Trajectory smoothness: the normalised second difference}
+\label{app:roughness}
+
+The percent-of-peak screen above scores each word on a single pair of years---its
+peak and its trough---and is therefore indifferent to the path between them. A word
+that rises once and falls once and a word that oscillates across the whole decade
+can report the same drop. To separate the two we score the \emph{shape} of each
+trajectory with a discrete roughness statistic: the root-mean-square second
+difference of the series, normalised by the series' own standard deviation.
+
+Write $x_t$ for a word's slang-sense rate in calendar year $t$ expressed as a
+percentage of that word's own peak year, so $x$ is a series of $n=12$ values
+(2013--2024) whose maximum is exactly $100$. The roughness is
+
+\begin{equation}
+\rho \;=\;
+\frac{\operatorname{RMS}\!\left(\Delta^{2}x\right)}{\operatorname{SD}(x)}
+\;=\;
+\frac{\sqrt{\dfrac{1}{n-2}\displaystyle\sum_{t=2}^{n-1}\left(x_{t+1}-2x_{t}+x_{t-1}\right)^{2}}}
+     {\sqrt{\dfrac{1}{n-1}\displaystyle\sum_{t=1}^{n}\left(x_{t}-\bar{x}\right)^{2}}}\,.
+\label{eq:roughness}
+\end{equation}
+
+Explicitly, for each word:
+
+\begin{enumerate}
+\itemsep2pt
+\item \textbf{Build the series.} Divide each year's token-normalised rate by the
+  word's peak-year rate and multiply by 100, giving twelve values with the peak
+  pinned at $100$.
+\item \textbf{First difference.} $\Delta x_t = x_t - x_{t-1}$, eleven values: the
+  year-on-year change, i.e.\ the local slope.
+\item \textbf{Second difference.} $\Delta^{2}x_t = x_{t+1}-2x_{t}+x_{t-1}$, ten
+  values: the change \emph{in} the slope, i.e.\ how sharply the line bends at each
+  interior year. This is the discrete analogue of $f''$, and it is why $\rho$ is
+  trend-immune: a straight line of any steepness has constant slope, so every
+  second difference is exactly zero and only departures from linearity are counted.
+\item \textbf{Root-mean-square.} Square the ten second differences, average, take
+  the square root. Squaring prevents an upward bend and a downward bend from
+  cancelling; the result is the typical bend size in percentage points.
+\item \textbf{Normalise.} Divide by the sample standard deviation of $x$
+  ($n-1$ denominator). Without this step a word ranging over eighty points would
+  outscore one ranging over ten purely because its units are larger; the ratio
+  instead asks how large a typical bend is relative to how much the series moves
+  overall.
+\end{enumerate}
+
+\paragraph{Worked example.} Table~\ref{tab:roughness-worked} carries out the
+calculation for \textit{aura}. Summing the squared second differences gives
+$\sum(\Delta^{2}x)^{2}=5280.9$; dividing by ten and taking the root gives
+$\operatorname{RMS}=22.98$, and the series' standard deviation is $17.10$, so
+$\rho = 22.98/17.10 = 1.34$. The sign of the second difference alternates almost
+every year, which is what a large $\rho$ records. For contrast, \textit{vibes}
+travels further overall ($\operatorname{SD}=25.72$) but climbs steadily, so its
+bends are small ($\operatorname{RMS}=7.57$) and $\rho=0.29$---nine times smoother
+on identical arithmetic.
 
 \begin{table}[h]
 \centering
 \small
-\begin{tabular}{llrcrrrc}
+\begin{tabular}{lrrr}
 \toprule
-Word & Class & $N$ & Peak & $\beta$ & $R^2$ & $A$ & Pass \\
+Year & $x_t$ & $\Delta x_t$ & $\Delta^{2}x_t$ \\
 \midrule
-troll    & decline & 6{,}077   & 2013 & $-0.12$ & 0.90 & 1.26 & yes \\
-bro      & decline & 7{,}914   & 2014 & $-0.13$ & 0.79 & 1.24 & yes \\
-lol      & decline & 107{,}305 & 2014 & $-0.19$ & 0.87 & 1.68 & yes \\
-sick     & decline & 14{,}015  & 2014 & $-0.14$ & 0.90 & 1.33 & yes \\
-swag     & decline & 2{,}624   & 2015 & $-0.10$ & 0.64 & 0.82 & yes \\l
-alpha    & rise    & 5{,}764   & 2020 & $+0.05$ & 0.43 & 0.73 & no  \\
-gaslight & rise    & 316       & 2023 & $+0.24$ & 0.85 & 2.47 & yes \\
-glow-up  & rise    & 98        & 2023 & $+0.58$ & 0.87 & 5.36 & yes \\
-aura     & rise    & 1{,}231   & 2023 & $+0.04$ & 0.21 & 0.75 & no  \\
-vibe     & rise    & 30{,}862  & 2024 & $+0.08$ & 0.81 & 0.75 & yes \\
-vibes    & rise    & 20{,}311  & 2024 & $+0.21$ & 0.94 & 2.09 & yes \\
-red pill & rise    & 546       & 2024 & $+0.27$ & 0.63 & 2.87 & yes \\
-slay     & rise    & 1{,}795   & 2024 & $+0.18$ & 0.83 & 1.99 & yes \\
-omg           & decline & 24{,}593 & 2013 & $-0.17$ & 0.86 & 1.66 & yes \\
-meh           & decline & 5{,}775  & 2014 & $-0.16$ & 0.88 & 1.60 & yes \\
-lmao          & decline & 3{,}816  & 2016 & $-0.19$ & 0.78 & 1.81 & yes \\
-legit         & rise    & 32{,}897 & 2024 & $+0.13$ & 0.89 & 1.22 & yes \\
-lowkey        & rise    & 567      & 2022 & $+0.35$ & 0.80 & 3.83 & yes \\
-situationship & rise    & 121      & 2024 & $+0.60$ & 0.88 & 6.27 & yes \\
+2013 & 60.7 &  &  \\
+2014 & 58.3 & $-2.4$ &  \\
+2015 & 53.0 & $-5.3$ & $-2.9$ \\
+2016 & 48.5 & $-4.5$ & $+0.8$ \\
+2017 & 69.2 & $+20.7$ & $+25.2$ \\
+2018 & 66.9 & $-2.3$ & $-23.0$ \\
+2019 & 51.8 & $-15.1$ & $-12.8$ \\
+2020 & 51.4 & $-0.4$ & $+14.7$ \\
+2021 & 78.8 & $+27.4$ & $+27.8$ \\
+2022 & 93.7 & $+14.9$ & $-12.5$ \\
+2023 & 100.0 & $+6.3$ & $-8.6$ \\
+2024 & 54.1 & $-45.9$ & $-52.2$ \\
 \bottomrule
 \end{tabular}
-\caption{Trajectory statistics behind the ephemerality criterion (Section~\ref{sec:targets}). $N$: total slang-sense hits; $\beta$: log$_2$-rate slope (bits/yr) with fit $R^2$; $A$: peak-to-opposite-tail amplitude (bits). \textit{alpha} and \textit{aura} are the only words that fail, on a shallow, low-$R^2$ trajectory.}
-\label{tab:ephemerality}
+\caption{The roughness calculation for \textit{aura}: percent of peak, first
+difference, and second difference. The ten second differences yield
+$\operatorname{RMS}=22.98$ against $\operatorname{SD}=17.10$, so $\rho=1.34$.}
+\label{tab:roughness-worked}
 \end{table}
+
+\paragraph{Reading the statistic.} $\rho \approx 0$ is a straight line at any
+slope; $0.3$--$0.7$ is a smooth curve, a trend with gentle and consistent
+curvature; $\rho \approx 1$ means a typical bend is as large as the spread of the
+whole series; and $\rho > 1.3$ means the trajectory reverses direction at a scale
+rivalling the signal itself. Across the 82 words the statistic ranges from $0.16$
+(\textit{woke}) to $2.72$ (\textit{they ate}), with a median of $1.23$
+(Table~\ref{tab:roughness}).
+
+Two properties bear on any attempt to use $\rho$ as a selection criterion. First,
+it is \textbf{blind to sampling noise}: a rare word is jagged because its per-year
+counts are small, not because usage moved, and the statistic cannot tell those
+apart. In practice $\rho$ therefore tracks frequency---Spearman
+$\rho_{s}=-0.45$ against $\log$ total hits, with median roughness falling from
+$1.46$ in the least-frequent third of the set to $0.78$ in the most-frequent
+third---and the roughest trajectories belong to the sparsest words
+(\textit{they ate}, 201 hits; \textit{sus}, 138; \textit{npc}, 136). A cutoff on
+$\rho$ alone would select for corpus frequency about as much as for shape, and
+should be paired with a noise-floor comparison (per-year relative standard error
+$1/\sqrt{k}$) before it is read as evidence about language. Second, with $n=12$
+there are only ten second differences, so a single anomalous year can dominate:
+the 2024 slice is truncated at dump \texttt{2024-10} (103.9\,M tokens against
+1{,}429.7\,M in 2017, Table~\ref{tab:tokens}), and for \textit{aura} the 2024 term
+alone contributes 52\% of $\sum(\Delta^{2}x)^{2}$.
+
+\begin{table*}[t]
+\centering
+\footnotesize
+\begin{tabular}{lrrrr@{\hskip 2.5em}lrrrr}
+\toprule
+Word & Hits & SD & RMS & $\rho$ & Word & Hits & SD & RMS & $\rho$ \\
+\midrule
+\textit{they ate} & 201 & 19.7 & 53.6 & 2.72 & \textit{goon} & 481 & 28.1 & 31.7 & 1.13 \\
+\textit{sus} & 138 & 23.2 & 60.0 & 2.59 & \textit{shitpost} & 113 & 34.1 & 38.4 & 1.13 \\
+\textit{he ate} & 311 & 19.0 & 48.5 & 2.54 & \textit{lmao} & 3{,}816 & 27.9 & 30.9 & 1.11 \\
+\textit{catfish} & 781 & 21.7 & 54.1 & 2.49 & \textit{stan} & 1{,}660 & 18.5 & 20.2 & 1.09 \\
+\textit{thot} & 442 & 19.5 & 44.9 & 2.31 & \textit{hella} & 2{,}628 & 17.8 & 18.6 & 1.04 \\
+\textit{npc} & 136 & 29.2 & 66.8 & 2.29 & \textit{pog} & 81 & 25.5 & 26.4 & 1.04 \\
+\textit{sigma} & 242 & 24.2 & 54.6 & 2.25 & \textit{fresh} & 2{,}797 & 16.9 & 17.2 & 1.02 \\
+\textit{era} & 933 & 16.2 & 34.2 & 2.11 & \textit{swag} & 2{,}624 & 20.9 & 20.9 & 1.00 \\
+\textit{unc} & 147 & 30.4 & 63.6 & 2.10 & \textit{cucked} & 83 & 33.6 & 32.9 & 0.98 \\
+\textit{on god} & 231 & 17.3 & 36.1 & 2.08 & \textit{yapping} & 407 & 28.3 & 27.6 & 0.98 \\
+\textit{extra} & 680 & 14.3 & 28.4 & 1.99 & \textit{vibing} & 564 & 26.0 & 25.2 & 0.97 \\
+\textit{mog} & 93 & 29.4 & 57.9 & 1.97 & \textit{rad} & 5{,}490 & 17.2 & 16.1 & 0.93 \\
+\textit{she ate} & 198 & 16.5 & 31.5 & 1.91 & \textit{ick} & 559 & 28.9 & 25.8 & 0.89 \\
+\textit{bruh} & 635 & 19.8 & 36.4 & 1.84 & \textit{goals} & 432 & 30.9 & 27.5 & 0.89 \\
+\textit{cooked} & 1{,}848 & 15.3 & 27.3 & 1.78 & \textit{mid} & 2{,}166 & 16.3 & 13.2 & 0.81 \\
+\textit{ratchet} & 754 & 23.9 & 42.1 & 1.76 & \textit{karen} & 2{,}719 & 20.5 & 16.0 & 0.78 \\
+\textit{doggo} & 208 & 28.8 & 48.7 & 1.69 & \textit{meh} & 5{,}775 & 23.6 & 18.4 & 0.78 \\
+\textit{brat} & 676 & 21.6 & 36.2 & 1.68 & \textit{glow-up} & 98 & 35.7 & 27.6 & 0.77 \\
+\textit{doomscrolling} & 89 & 33.7 & 55.8 & 1.66 & \textit{6-7} & 244 & 27.1 & 20.4 & 0.75 \\
+\textit{simp} & 108 & 31.1 & 49.8 & 1.60 & \textit{omg} & 24{,}593 & 23.8 & 17.5 & 0.73 \\
+\textit{struggle bus} & 107 & 38.3 & 59.3 & 1.55 & \textit{troll} & 6{,}077 & 20.4 & 14.5 & 0.71 \\
+\textit{idgaf} & 158 & 21.3 & 33.0 & 1.55 & \textit{gaslight} & 316 & 30.3 & 21.4 & 0.71 \\
+\textit{unboxing} & 802 & 24.5 & 37.5 & 1.53 & \textit{stfu} & 827 & 27.8 & 19.4 & 0.70 \\
+\textit{red pill} & 546 & 28.3 & 43.1 & 1.52 & \textit{bro} & 7{,}914 & 21.4 & 14.7 & 0.69 \\
+\textit{dank} & 576 & 23.3 & 35.2 & 1.51 & \textit{twinning} & 193 & 35.5 & 23.8 & 0.67 \\
+\textit{thirsty} & 1{,}500 & 14.4 & 21.6 & 1.50 & \textit{sick} & 14{,}015 & 23.4 & 15.6 & 0.67 \\
+\textit{glazing} & 149 & 34.0 & 50.6 & 1.49 & \textit{lowkey} & 567 & 34.9 & 22.8 & 0.65 \\
+\textit{cancelled} & 194 & 21.3 & 31.1 & 1.46 & \textit{lol} & 107{,}305 & 29.6 & 19.2 & 0.65 \\
+\textit{finna} & 163 & 19.2 & 27.6 & 1.44 & \textit{tight} & 359 & 25.7 & 16.1 & 0.63 \\
+\textit{slop} & 371 & 17.6 & 23.9 & 1.36 & \textit{situationship} & 121 & 30.8 & 16.9 & 0.55 \\
+\textit{unbox} & 176 & 29.5 & 39.6 & 1.34 & \textit{bae} & 1{,}649 & 29.4 & 16.1 & 0.55 \\
+\textit{aura} & 1{,}231 & 17.1 & 23.0 & 1.34 & \textit{u} & 92{,}332 & 31.2 & 16.2 & 0.52 \\
+\textit{yas} & 361 & 22.7 & 30.2 & 1.33 & \textit{pumped} & 8{,}967 & 18.2 & 8.8 & 0.48 \\
+\textit{slaps} & 1{,}064 & 21.6 & 28.1 & 1.30 & \textit{slay} & 1{,}795 & 24.7 & 11.5 & 0.47 \\
+\textit{hooman} & 237 & 28.9 & 37.6 & 1.30 & \textit{methinks} & 860 & 28.3 & 12.6 & 0.44 \\
+\textit{cuck} & 326 & 32.6 & 42.3 & 1.30 & \textit{dude} & 61{,}357 & 25.0 & 9.8 & 0.39 \\
+\textit{shitposting} & 198 & 36.2 & 46.5 & 1.29 & \textit{yeet} & 99 & 30.8 & 11.6 & 0.38 \\
+\textit{\texttt{U+1F480}} & 149 & 32.5 & 41.5 & 1.28 & \textit{lmfao} & 1{,}283 & 28.4 & 9.9 & 0.35 \\
+\textit{catfished} & 164 & 28.2 & 36.0 & 1.28 & \textit{legit} & 32{,}897 & 22.7 & 7.6 & 0.33 \\
+\textit{griefing} & 165 & 24.4 & 30.2 & 1.23 & \textit{vibes} & 20{,}311 & 25.7 & 7.6 & 0.29 \\
+\textit{yap} & 387 & 25.6 & 31.5 & 1.23 & \textit{woke} & 1{,}555 & 35.5 & 5.5 & 0.16 \\
+\bottomrule
+\end{tabular}
+\caption{Trajectory roughness for the 82 words passing the ephemerality screen
+($\geq 80$ slang-sense hits and a minimum year at or below 50\% of peak), ordered
+by $\rho$ descending and continuing in the right-hand block. ``Hits'' is the total
+count of occurrences scoring $\geq 0.99$ on the slang-sense classifier; SD is the
+sample standard deviation of the percent-of-peak series; RMS is the
+root-mean-square of its ten second differences; $\rho$ is their ratio
+(Eq.~\ref{eq:roughness}). Values are computed by
+\texttt{FineWebAnalysis/trajectory\_explorer.py} from
+\texttt{peak\_years\_pct.json}. The skull-emoji target is written
+\texttt{U+1F480}.}
+\label{tab:roughness}
+\end{table*}
+
+
+
 
 \section{Experiment 1: FineWeb Corpus Frequency}
 \label{app:exp1}
