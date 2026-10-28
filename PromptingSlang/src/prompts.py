@@ -16,6 +16,7 @@ class PromptTemplate:
     variables: dict = field(default_factory=dict)
     model_type: str | None = None   # "open" / "closed" — routes to provider class
     temperature: float | None = None  # per-record override of the run temperature
+    samples: int = 1                  # times each expanded prompt is queried per model
 
     def expand(self) -> list[tuple[dict, str, str]]:
         """Return one (variables_used, system, user) tuple per variable combination.
@@ -53,7 +54,8 @@ def load_prompts(path: str | Path) -> list[tuple[PromptTemplate, int | None, boo
 
     Returns a list of (template, logprobs, echo) tuples. logprobs and echo are
     read from the corresponding JSON fields, or None if not specified;
-    'model_type' and 'temperature' are carried on the PromptTemplate.
+    'model_type', 'temperature' and 'samples' (default 1) are carried on the
+    PromptTemplate.
     """
     results: list[tuple[PromptTemplate, int | None, bool | None]] = []
     decoder = json.JSONDecoder()
@@ -80,6 +82,7 @@ def load_prompts(path: str | Path) -> list[tuple[PromptTemplate, int | None, boo
             variables=obj.get("variables", {}),
             model_type=obj.get("model_type"),
             temperature=obj.get("temperature"),
+            samples=max(1, int(obj.get("samples", 1))),
         )
         results.append((template, obj.get("logprobs"), obj.get("echo")))
     return results

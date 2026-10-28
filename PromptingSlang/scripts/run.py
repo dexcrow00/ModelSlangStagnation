@@ -25,9 +25,10 @@ logging.basicConfig(
     datefmt="%H:%M:%S",
 )
 
-# Default models span three providers; RouterClient picks the API per model ID
+# Models every experiment runs against. Edit this list (not a CLI flag) to change
+# them, so the model set is tracked in git. RouterClient picks the API per model ID
 # ('org/model' -> Together, 'claude-*' -> Anthropic, 'gpt-*'/'o#-*' -> OpenAI).
-DEFAULT_MODELS = [
+MODELS = [
     # Together (org/model format)
     "moonshotai/Kimi-K3",
     "meta-models/Muse-Spark-Open-816B-A42B",
@@ -38,6 +39,16 @@ DEFAULT_MODELS = [
     "gpt-6-luna",
 ]
 
+# Generation settings for every run. A prompt record's own "temperature" field
+# still overrides TEMPERATURE for that prompt.
+TEMPERATURE = 0.0
+MAX_TOKENS = 512
+
+# Directory for the per-model response files (one <model>.jsonl each). None puts
+# them in a 'responses' directory next to the directory holding the prompt file
+# (e.g. <experiment>/prompts/foo.jsonl -> <experiment>/responses/).
+OUTPUT_DIR: Path | None = None
+
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
@@ -47,61 +58,6 @@ def parse_args() -> argparse.Namespace:
         "--prompts",
         default="data/prompts/example.jsonl",
         help="Path to a JSONL file of prompt templates.",
-    )
-    parser.add_argument(
-        "--models",
-        nargs="+",
-        default=DEFAULT_MODELS,
-        help=(
-            "Model IDs to query (space-separated). Together models use 'org/model' format. "
-            "OpenAI models use 'gpt-*'/'o*' names. Anthropic models use 'claude-*' names. "
-            "The correct API is chosen automatically per model."
-        ),
-    )
-    parser.add_argument(
-        "--output-dir",
-        dest="output_dir",
-        help=(
-            "Directory for the per-model response files (one <model>.jsonl each). "
-            "Defaults to a 'responses' directory next to the prompt file's directory."
-        ),
-    )
-    parser.add_argument(
-        "--temperature",
-        type=float,
-        default=0.0,
-        help="Sampling temperature (default: 0.0).",
-    )
-    parser.add_argument(
-        "--max-tokens",
-        type=int,
-        default=512,
-        dest="max_tokens",
-        help="Maximum tokens to generate per response (default: 512).",
-    )
-    parser.add_argument(
-        "--run-id",
-        default=None,
-        dest="run_id",
-        help="Explicit run identifier; auto-generated if omitted.",
-    )
-    parser.add_argument(
-        "--closed-samples",
-        type=int,
-        default=1,
-        dest="closed_samples",
-        help=(
-            "Extra sample factor for closed (non-logprob) prompts, to approximate a "
-            "token distribution from response frequencies (default: 1). Applied on "
-            "top of --samples, so a closed prompt gets samples * closed-samples calls."
-        ),
-    )
-    parser.add_argument(
-        "--samples",
-        type=int,
-        default=1,
-        dest="samples",
-        help="Global samples per prompt, applied to every request (default: 1).",
     )
     parser.add_argument(
         "--concurrency",
@@ -119,7 +75,7 @@ def parse_args() -> argparse.Namespace:
         help=(
             "Skip (model, prompt, variables, sample) combos already saved in the "
             "output directory, so an interrupted run continues where it left off "
-            "instead of re-querying everything. Point it at the same --output-dir."
+            "instead of re-querying everything."
         ),
     )
     return parser.parse_args()
@@ -129,37 +85,31 @@ def main() -> None:
     load_dotenv()
     args = parse_args()
 
-    run_id = args.run_id or uuid.uuid4().hex
+    run_id = uuid.uuid4().hex
 
     prompts = load_prompts(args.prompts)
     if not prompts:
         print("No prompts found — check your JSONL file.", file=sys.stderr)
         sys.exit(1)
 
-    # Per-model response files land in a 'responses' directory next to the
-    # directory holding the prompt file (e.g. <experiment>/prompts/foo.jsonl ->
-    # <experiment>/responses/), unless overridden with --output-dir.
-    if args.output_dir:
-        output_dir = Path(args.output_dir)
-    else:
-        output_dir = Path(args.prompts).resolve().parent.parent / "responses"
+    output_dir = OUTPUT_DIR or Path(args.prompts).resolve().parent.parent / "responses"
 
     n_variants = sum(len(template.expand()) for template, _lp, _echo in prompts)
-    n_models = len(args.models)
     # Requests honor model_type routing (a tagged prompt only runs on its model
-    # class) and closed-prompt sampling (closed prompts are queried N times).
+    # class) and each record's "samples" count.
     n_requests = sum(
-        len(template.expand()) * args.samples
-        * (args.closed_samples if template.model_type == "closed" else 1)
-        for model in args.models
+        len(template.expand()) * template.samples
+        for model in MODELS
         for template, _lp, _echo in prompts
         if template.model_type is None or template.model_type == model_class(model)
     )
 
     print(f"  Prompt file    : {args.prompts}")
-    print(f"  Models         : {n_models}")
+    print(f"  Models         : {len(MODELS)}  ({', '.join(MODELS)})")
     print(f"  Variants       : {n_variants}  ({len(prompts)} template(s), expanded across variables)")
-    print(f"  Samples        : {args.samples}  (closed prompts x{args.closed_samples} more)")
+    sample_counts = sorted({template.samples for template, _lp, _echo in prompts})
+    print(f"  Samples        : {', '.join(map(str, sample_counts))}  (per prompt record)")
+    print(f"  Generation     : temperature {TEMPERATURE}, max tokens {MAX_TOKENS}")
     print(f"  Total calls    : {n_requests}")
     print(f"  Concurrency    : {args.concurrency}")
     print(f"  Output dir     : {output_dir}  (one <model>_<timestamp>.jsonl per model)")
@@ -193,17 +143,15 @@ def main() -> None:
         )
         sys.exit(1)
 
-    gen_kwargs = {"temperature": args.temperature, "max_tokens": args.max_tokens}
+    gen_kwargs = {"temperature": TEMPERATURE, "max_tokens": MAX_TOKENS}
 
     with ResponseCollector(output_dir) as collector:
         runner = Runner(
             client=router,
             collector=collector,
-            models=args.models,
+            models=MODELS,
             gen_kwargs=gen_kwargs,
             run_id=run_id,
-            closed_samples=args.closed_samples,
-            samples=args.samples,
             resume=args.resume,
             concurrency=args.concurrency,
         )

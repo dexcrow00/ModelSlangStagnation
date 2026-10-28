@@ -1,6 +1,7 @@
 {
   "disabled": true,
   "id": "AssociateSlangLogprobs",
+  "samples": 5,
   "model_type": "open",
   "system": "Give the response as a single returned token or word.",
   "user": "A standout word in terms of popularity increase in {year} was {word}",
@@ -13,6 +14,7 @@
 }
 {
   "id": "EraAppropriate",
+  "samples": 5,
   "system": "Give the response as a single returned token or word.",
   "user": "It's {year}, is it appropriate to use the term {word}?",
   "variables": {
@@ -22,6 +24,7 @@
 }
 {
   "id": "GiveTopSlang",
+  "samples": 5,
   "system": "Give the response as a single returned token or word.",
   "user": "What is the most unique and popular slang word associated with the year {year}? Respond using only a single word.",
   "variables": {
@@ -31,6 +34,7 @@
 {
   "disabled": true,
   "id": "GiveTopSlangLogprobs",
+  "samples": 5,
   "model_type": "open",
   "system": "Give the response as a single returned token or word.",
   "user": "What is the most unique and popular slang word associated with the year {year}? Respond using only a single word.",
@@ -42,6 +46,7 @@
 }
 {
   "id": "GiveYear",
+  "samples": 5,
   "system": "Give the response as a single returned token or word.",
   "user": "The slang word \"{word}\" is most associated with what year? Respond using only the year.",
   "variables": {
@@ -51,6 +56,7 @@
 }
 {
   "id": "DatePhrase",
+  "samples": 5,
   "system": "Give the response as a single returned token or word.",
   "user": "You hear someone saying \"{word}\" in conversation, which year are they most likely saying this in?",
   "variables": {

@@ -46,43 +46,19 @@ python scripts/run.py --prompts data/prompts/example.jsonl
 
 This uses the default model (`ServiceNow-AI/Apriel-1.6-15b-Thinker`) and writes output to `data/responses/<run_id>.jsonl`.
 
-### Specify one or more models
+### Fixed run settings
 
-```bash
-python scripts/run.py \
-  --prompts data/prompts/example.jsonl \
-  --models meta-llama/Llama-3.3-70B-Instruct-Turbo mistralai/Mistral-7B-Instruct-v0.3
-```
+Models, generation settings and the output directory are not CLI flags. They are
+constants at the top of `scripts/run.py`, so any change to them is tracked in git:
 
-### Control generation parameters
-
-```bash
-python scripts/run.py \
-  --prompts data/prompts/example.jsonl \
-  --temperature 1.0 \
-  --max-tokens 256
-```
-
-| Flag | Default | Description |
+| Constant | Default | Description |
 |---|---|---|
-| `--temperature` | `0.8` | Sampling temperature |
-| `--max-tokens` | `512` | Max tokens generated per response |
+| `MODELS` | 5 models | Models every run queries |
+| `TEMPERATURE` | `0.0` | Sampling temperature (a prompt record's `temperature` overrides it) |
+| `MAX_TOKENS` | `512` | Max tokens generated per response |
+| `OUTPUT_DIR` | `None` | Response directory; `None` uses `responses/` next to the prompt file's folder |
 
-### Set a custom output path
-
-```bash
-python scripts/run.py \
-  --prompts data/prompts/example.jsonl \
-  --output data/responses/my_run.jsonl
-```
-
-### Set a fixed run ID (for reproducibility / resuming)
-
-```bash
-python scripts/run.py \
-  --prompts data/prompts/example.jsonl \
-  --run-id slang_batch_01
-```
+Each run gets a random run ID.
 
 ---
 
@@ -97,6 +73,8 @@ Prompt files are JSONL — one JSON object per record, separated by blank lines.
 | `user` | Yes | User prompt text; supports `{placeholder}` interpolation |
 | `variables` | No | Default values for placeholders; list values expand into separate requests |
 | `logprobs` | No | Integer — requests token log probabilities from the API instead of a text response |
+| `samples` | No | Integer (default `1`) — times each expanded prompt is queried per model |
+| `temperature` | No | Overrides the run's `TEMPERATURE` for this record |
 
 ```json
 {

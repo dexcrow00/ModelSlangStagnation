@@ -1,5 +1,6 @@
 {
   "id": "exp1_text_message",
+  "samples": 5,
   "system": "Write informally, exactly the way people type in real text messages. Output only the message text — no labels, no quotation marks.",
   "user": "Write a text message from a teenager to their friend about {event}.",
   "variables": {
@@ -15,6 +16,7 @@
 
 {
   "id": "exp1_reddit_comment",
+  "samples": 5,
   "system": "Write exactly the way people comment on Reddit. Informal, direct — just the comment text, no formatting.",
   "user": "Write a Reddit comment reacting to this hot take: \"{hot_take}\"",
   "variables": {
@@ -30,6 +32,7 @@
 
 {
   "id": "exp1_reaction_post",
+  "samples": 5,
   "system": "Write the way people react on social media. Casual, punchy — just the reaction text, no hashtags or labels.",
   "user": "Write a social media reaction post about: \"{situation}\"",
   "variables": {
@@ -45,6 +48,7 @@
 
 {
   "id": "exp1_livestream_chat",
+  "samples": 5,
   "system": "Write the way viewers spam messages in a live gaming stream chat — extremely casual and quick. Output only the chat message, nothing else.",
   "user": "Write a live stream chat message reacting to {moment}.",
   "variables": {
@@ -60,6 +64,7 @@
 
 {
   "id": "exp1_tiktok_comment",
+  "samples": 5,
   "system": "Write the way people comment on TikTok videos — short, reactive, very online. Output only the comment text, no hashtags or labels.",
   "user": "Write a TikTok comment on a video of {video}.",
   "variables": {
@@ -75,6 +80,7 @@
 
 {
   "id": "exp1_instagram_caption",
+  "samples": 5,
   "system": "Write the way people caption their own photos on Instagram — short, casual, a little playful. Output only the caption text, no hashtags or labels.",
   "user": "Write an Instagram caption for a photo of {photo}.",
   "variables": {
@@ -90,6 +96,7 @@
 
 {
   "id": "exp1_discord_message",
+  "samples": 5,
   "system": "Write the way people message in a Discord server with friends — casual, quick, lowercase energy. Output only the message text, no names or labels.",
   "user": "Write a Discord message reacting to {topic}.",
   "variables": {
@@ -105,6 +112,7 @@
 
 {
   "id": "exp1_forum_post",
+  "samples": 5,
   "system": "Write the way people post on an online message board — informal, opinionated, conversational. Output only the post text, no titles or formatting.",
   "user": "Write a message board post sharing your take on {topic}.",
   "variables": {
@@ -120,6 +128,7 @@
 
 {
   "id": "exp1_gaming_voice_call",
+  "samples": 5,
   "system": "Write the way someone talks out loud on a voice call while gaming with friends — fast, reactive, spoken. Output only what they say, no labels or quotation marks.",
   "user": "Write what someone would shout into voice chat when {moment}.",
   "variables": {
@@ -135,6 +144,7 @@
 
 {
   "id": "exp1_casual_story",
+  "samples": 5,
   "system": "Write the way someone tells a friend a story out loud — casual spoken language, like you're just hanging out. Output only what they say, no labels or quotation marks.",
   "user": "Write how someone would tell their friend about {event}.",
   "variables": {

@@ -1,6 +1,7 @@
 {
   "disabled": true,
   "id": "exp3_cool_impressive",
+  "samples": 50,
   "model_type": "open",
   "system": "Respond with a single word only. No explanation, no punctuation — just the word.",
   "user": "{phrasing}",
@@ -18,6 +19,7 @@
 {
   "disabled": true,
   "id": "exp3_mediocre",
+  "samples": 50,
   "model_type": "open",
   "system": "Respond with a single word only. No explanation, no punctuation — just the word.",
   "user": "{phrasing}",
@@ -35,6 +37,7 @@
 {
   "disabled": true,
   "id": "exp3_charisma",
+  "samples": 50,
   "model_type": "open",
   "system": "Respond with a single word only. No explanation, no punctuation — just the word.",
   "user": "{phrasing}",
@@ -52,6 +55,7 @@
 {
   "disabled": true,
   "id": "exp3_agreement",
+  "samples": 50,
   "model_type": "open",
   "system": "Respond with a single word only. No explanation, no punctuation — just the word.",
   "user": "{phrasing}",
@@ -69,6 +73,7 @@
 {
   "disabled": true,
   "id": "exp3_suspicious",
+  "samples": 50,
   "model_type": "open",
   "system": "Respond with a single word only. No explanation, no punctuation — just the word.",
   "user": "{phrasing}",
@@ -86,6 +91,7 @@
 {
   "disabled": true,
   "id": "exp3_excellent_sensory",
+  "samples": 50,
   "model_type": "open",
   "system": "Respond with a single word only. No explanation, no punctuation — just the word.",
   "user": "{phrasing}",
@@ -103,6 +109,7 @@
 
 {
   "id": "exp3_cool_impressive",
+  "samples": 50,
   "temperature": 1.0,
   "system": "Respond with a single word only. No explanation, no punctuation — just the word.",
   "user": "{phrasing}",
@@ -118,6 +125,7 @@
 
 {
   "id": "exp3_mediocre",
+  "samples": 50,
   "temperature": 1.0,
   "system": "Respond with a single word only. No explanation, no punctuation — just the word.",
   "user": "{phrasing}",
@@ -133,6 +141,7 @@
 
 {
   "id": "exp3_charisma",
+  "samples": 50,
   "temperature": 1.0,
   "system": "Respond with a single word only. No explanation, no punctuation — just the word.",
   "user": "{phrasing}",
@@ -148,6 +157,7 @@
 
 {
   "id": "exp3_agreement",
+  "samples": 50,
   "temperature": 1.0,
   "system": "Respond with a single word only. No explanation, no punctuation — just the word.",
   "user": "{phrasing}",
@@ -163,6 +173,7 @@
 
 {
   "id": "exp3_suspicious",
+  "samples": 50,
   "temperature": 1.0,
   "system": "Respond with a single word only. No explanation, no punctuation — just the word.",
   "user": "{phrasing}",
@@ -178,6 +189,7 @@
 
 {
   "id": "exp3_excellent_sensory",
+  "samples": 50,
   "temperature": 1.0,
   "system": "Respond with a single word only. No explanation, no punctuation — just the word.",
   "user": "{phrasing}",

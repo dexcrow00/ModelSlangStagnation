@@ -1,0 +1,3885 @@
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveTopSlang",
+  "sample": 0,
+  "variables": {
+    "year": "2015"
+  },
+  "prompt_text": "What is the most unique and popular slang word associated with the year 2015? Respond using only a single word.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Fleek",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 6,
+    "total_tokens": 51
+  },
+  "timestamp": "2026-06-17T23:24:29.748736+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveTopSlang",
+  "sample": 1,
+  "variables": {
+    "year": "2015"
+  },
+  "prompt_text": "What is the most unique and popular slang word associated with the year 2015? Respond using only a single word.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Fleek",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 6,
+    "total_tokens": 51
+  },
+  "timestamp": "2026-06-17T23:24:30.846438+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveTopSlang",
+  "sample": 2,
+  "variables": {
+    "year": "2015"
+  },
+  "prompt_text": "What is the most unique and popular slang word associated with the year 2015? Respond using only a single word.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Fleek",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 6,
+    "total_tokens": 51
+  },
+  "timestamp": "2026-06-17T23:24:31.979226+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveTopSlang",
+  "sample": 3,
+  "variables": {
+    "year": "2015"
+  },
+  "prompt_text": "What is the most unique and popular slang word associated with the year 2015? Respond using only a single word.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Fleek",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 6,
+    "total_tokens": 51
+  },
+  "timestamp": "2026-06-17T23:24:33.058885+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveTopSlang",
+  "sample": 4,
+  "variables": {
+    "year": "2015"
+  },
+  "prompt_text": "What is the most unique and popular slang word associated with the year 2015? Respond using only a single word.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Fleek",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 6,
+    "total_tokens": 51
+  },
+  "timestamp": "2026-06-17T23:24:34.216457+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveTopSlang",
+  "sample": 0,
+  "variables": {
+    "year": "2016"
+  },
+  "prompt_text": "What is the most unique and popular slang word associated with the year 2016? Respond using only a single word.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Lit",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 5,
+    "total_tokens": 50
+  },
+  "timestamp": "2026-06-17T23:24:35.265776+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveTopSlang",
+  "sample": 1,
+  "variables": {
+    "year": "2016"
+  },
+  "prompt_text": "What is the most unique and popular slang word associated with the year 2016? Respond using only a single word.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Lit",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 5,
+    "total_tokens": 50
+  },
+  "timestamp": "2026-06-17T23:24:36.413523+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveTopSlang",
+  "sample": 2,
+  "variables": {
+    "year": "2016"
+  },
+  "prompt_text": "What is the most unique and popular slang word associated with the year 2016? Respond using only a single word.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Lit",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 5,
+    "total_tokens": 50
+  },
+  "timestamp": "2026-06-17T23:24:37.404190+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveTopSlang",
+  "sample": 3,
+  "variables": {
+    "year": "2016"
+  },
+  "prompt_text": "What is the most unique and popular slang word associated with the year 2016? Respond using only a single word.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Lit",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 5,
+    "total_tokens": 50
+  },
+  "timestamp": "2026-06-17T23:24:38.433922+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveTopSlang",
+  "sample": 4,
+  "variables": {
+    "year": "2016"
+  },
+  "prompt_text": "What is the most unique and popular slang word associated with the year 2016? Respond using only a single word.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Lit",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 5,
+    "total_tokens": 50
+  },
+  "timestamp": "2026-06-17T23:24:39.512169+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveTopSlang",
+  "sample": 0,
+  "variables": {
+    "year": "2017"
+  },
+  "prompt_text": "What is the most unique and popular slang word associated with the year 2017? Respond using only a single word.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Lit",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 5,
+    "total_tokens": 50
+  },
+  "timestamp": "2026-06-17T23:24:40.750025+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveTopSlang",
+  "sample": 1,
+  "variables": {
+    "year": "2017"
+  },
+  "prompt_text": "What is the most unique and popular slang word associated with the year 2017? Respond using only a single word.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Lit",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 5,
+    "total_tokens": 50
+  },
+  "timestamp": "2026-06-17T23:24:41.878833+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveTopSlang",
+  "sample": 2,
+  "variables": {
+    "year": "2017"
+  },
+  "prompt_text": "What is the most unique and popular slang word associated with the year 2017? Respond using only a single word.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Lit",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 5,
+    "total_tokens": 50
+  },
+  "timestamp": "2026-06-17T23:24:45.089774+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveTopSlang",
+  "sample": 3,
+  "variables": {
+    "year": "2017"
+  },
+  "prompt_text": "What is the most unique and popular slang word associated with the year 2017? Respond using only a single word.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Lit",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 5,
+    "total_tokens": 50
+  },
+  "timestamp": "2026-06-17T23:24:46.129612+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveTopSlang",
+  "sample": 4,
+  "variables": {
+    "year": "2017"
+  },
+  "prompt_text": "What is the most unique and popular slang word associated with the year 2017? Respond using only a single word.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Lit",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 5,
+    "total_tokens": 50
+  },
+  "timestamp": "2026-06-17T23:24:47.231198+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveTopSlang",
+  "sample": 0,
+  "variables": {
+    "year": "2018"
+  },
+  "prompt_text": "What is the most unique and popular slang word associated with the year 2018? Respond using only a single word.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Yeet",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 6,
+    "total_tokens": 51
+  },
+  "timestamp": "2026-06-17T23:24:48.319472+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveTopSlang",
+  "sample": 1,
+  "variables": {
+    "year": "2018"
+  },
+  "prompt_text": "What is the most unique and popular slang word associated with the year 2018? Respond using only a single word.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Yeet",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 6,
+    "total_tokens": 51
+  },
+  "timestamp": "2026-06-17T23:24:49.544249+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveTopSlang",
+  "sample": 2,
+  "variables": {
+    "year": "2018"
+  },
+  "prompt_text": "What is the most unique and popular slang word associated with the year 2018? Respond using only a single word.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Yeet",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 6,
+    "total_tokens": 51
+  },
+  "timestamp": "2026-06-17T23:24:50.781013+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveTopSlang",
+  "sample": 3,
+  "variables": {
+    "year": "2018"
+  },
+  "prompt_text": "What is the most unique and popular slang word associated with the year 2018? Respond using only a single word.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Yeet",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 6,
+    "total_tokens": 51
+  },
+  "timestamp": "2026-06-17T23:24:51.871300+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveTopSlang",
+  "sample": 4,
+  "variables": {
+    "year": "2018"
+  },
+  "prompt_text": "What is the most unique and popular slang word associated with the year 2018? Respond using only a single word.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Yeet",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 6,
+    "total_tokens": 51
+  },
+  "timestamp": "2026-06-17T23:24:52.831184+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveTopSlang",
+  "sample": 0,
+  "variables": {
+    "year": "2019"
+  },
+  "prompt_text": "What is the most unique and popular slang word associated with the year 2019? Respond using only a single word.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Yeet",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 6,
+    "total_tokens": 51
+  },
+  "timestamp": "2026-06-17T23:24:53.915383+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveTopSlang",
+  "sample": 1,
+  "variables": {
+    "year": "2019"
+  },
+  "prompt_text": "What is the most unique and popular slang word associated with the year 2019? Respond using only a single word.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Stan",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 5,
+    "total_tokens": 50
+  },
+  "timestamp": "2026-06-17T23:24:54.823087+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveTopSlang",
+  "sample": 2,
+  "variables": {
+    "year": "2019"
+  },
+  "prompt_text": "What is the most unique and popular slang word associated with the year 2019? Respond using only a single word.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Stan",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 5,
+    "total_tokens": 50
+  },
+  "timestamp": "2026-06-17T23:24:55.810635+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveTopSlang",
+  "sample": 3,
+  "variables": {
+    "year": "2019"
+  },
+  "prompt_text": "What is the most unique and popular slang word associated with the year 2019? Respond using only a single word.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Periodt",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 6,
+    "total_tokens": 51
+  },
+  "timestamp": "2026-06-17T23:24:56.739678+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveTopSlang",
+  "sample": 4,
+  "variables": {
+    "year": "2019"
+  },
+  "prompt_text": "What is the most unique and popular slang word associated with the year 2019? Respond using only a single word.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Yeet",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 6,
+    "total_tokens": 51
+  },
+  "timestamp": "2026-06-17T23:24:57.871712+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveTopSlang",
+  "sample": 0,
+  "variables": {
+    "year": "2020"
+  },
+  "prompt_text": "What is the most unique and popular slang word associated with the year 2020? Respond using only a single word.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Unprecedented",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 5,
+    "total_tokens": 50
+  },
+  "timestamp": "2026-06-17T23:24:58.892146+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveTopSlang",
+  "sample": 1,
+  "variables": {
+    "year": "2020"
+  },
+  "prompt_text": "What is the most unique and popular slang word associated with the year 2020? Respond using only a single word.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Unprecedented",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 5,
+    "total_tokens": 50
+  },
+  "timestamp": "2026-06-17T23:24:59.907026+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveTopSlang",
+  "sample": 2,
+  "variables": {
+    "year": "2020"
+  },
+  "prompt_text": "What is the most unique and popular slang word associated with the year 2020? Respond using only a single word.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Unprecedented",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 5,
+    "total_tokens": 50
+  },
+  "timestamp": "2026-06-17T23:25:00.883803+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveTopSlang",
+  "sample": 3,
+  "variables": {
+    "year": "2020"
+  },
+  "prompt_text": "What is the most unique and popular slang word associated with the year 2020? Respond using only a single word.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Unprecedented",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 5,
+    "total_tokens": 50
+  },
+  "timestamp": "2026-06-17T23:25:01.881394+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveTopSlang",
+  "sample": 4,
+  "variables": {
+    "year": "2020"
+  },
+  "prompt_text": "What is the most unique and popular slang word associated with the year 2020? Respond using only a single word.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Unprecedented",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 5,
+    "total_tokens": 50
+  },
+  "timestamp": "2026-06-17T23:25:05.901459+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveTopSlang",
+  "sample": 0,
+  "variables": {
+    "year": "2021"
+  },
+  "prompt_text": "What is the most unique and popular slang word associated with the year 2021? Respond using only a single word.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Bussin",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 6,
+    "total_tokens": 51
+  },
+  "timestamp": "2026-06-17T23:25:07.741362+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveTopSlang",
+  "sample": 1,
+  "variables": {
+    "year": "2021"
+  },
+  "prompt_text": "What is the most unique and popular slang word associated with the year 2021? Respond using only a single word.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Cheugy",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 7,
+    "total_tokens": 52
+  },
+  "timestamp": "2026-06-17T23:25:08.843710+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveTopSlang",
+  "sample": 2,
+  "variables": {
+    "year": "2021"
+  },
+  "prompt_text": "What is the most unique and popular slang word associated with the year 2021? Respond using only a single word.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Cheugy",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 7,
+    "total_tokens": 52
+  },
+  "timestamp": "2026-06-17T23:25:10.363013+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveTopSlang",
+  "sample": 3,
+  "variables": {
+    "year": "2021"
+  },
+  "prompt_text": "What is the most unique and popular slang word associated with the year 2021? Respond using only a single word.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Bussin",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 6,
+    "total_tokens": 51
+  },
+  "timestamp": "2026-06-17T23:25:11.470238+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveTopSlang",
+  "sample": 4,
+  "variables": {
+    "year": "2021"
+  },
+  "prompt_text": "What is the most unique and popular slang word associated with the year 2021? Respond using only a single word.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Bussin",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 6,
+    "total_tokens": 51
+  },
+  "timestamp": "2026-06-17T23:25:12.768278+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveTopSlang",
+  "sample": 0,
+  "variables": {
+    "year": "2022"
+  },
+  "prompt_text": "What is the most unique and popular slang word associated with the year 2022? Respond using only a single word.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Slay",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 6,
+    "total_tokens": 51
+  },
+  "timestamp": "2026-06-17T23:25:13.854696+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveTopSlang",
+  "sample": 1,
+  "variables": {
+    "year": "2022"
+  },
+  "prompt_text": "What is the most unique and popular slang word associated with the year 2022? Respond using only a single word.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Slay",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 6,
+    "total_tokens": 51
+  },
+  "timestamp": "2026-06-17T23:25:14.857039+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveTopSlang",
+  "sample": 2,
+  "variables": {
+    "year": "2022"
+  },
+  "prompt_text": "What is the most unique and popular slang word associated with the year 2022? Respond using only a single word.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Slay",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 6,
+    "total_tokens": 51
+  },
+  "timestamp": "2026-06-17T23:25:15.867584+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveTopSlang",
+  "sample": 3,
+  "variables": {
+    "year": "2022"
+  },
+  "prompt_text": "What is the most unique and popular slang word associated with the year 2022? Respond using only a single word.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Slay",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 6,
+    "total_tokens": 51
+  },
+  "timestamp": "2026-06-17T23:25:17.015597+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveTopSlang",
+  "sample": 4,
+  "variables": {
+    "year": "2022"
+  },
+  "prompt_text": "What is the most unique and popular slang word associated with the year 2022? Respond using only a single word.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Slay",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 6,
+    "total_tokens": 51
+  },
+  "timestamp": "2026-06-17T23:25:18.078815+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveTopSlang",
+  "sample": 0,
+  "variables": {
+    "year": "2023"
+  },
+  "prompt_text": "What is the most unique and popular slang word associated with the year 2023? Respond using only a single word.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Rizz",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 6,
+    "total_tokens": 51
+  },
+  "timestamp": "2026-06-17T23:25:19.358632+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveTopSlang",
+  "sample": 1,
+  "variables": {
+    "year": "2023"
+  },
+  "prompt_text": "What is the most unique and popular slang word associated with the year 2023? Respond using only a single word.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Rizz",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 6,
+    "total_tokens": 51
+  },
+  "timestamp": "2026-06-17T23:25:20.452580+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveTopSlang",
+  "sample": 2,
+  "variables": {
+    "year": "2023"
+  },
+  "prompt_text": "What is the most unique and popular slang word associated with the year 2023? Respond using only a single word.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Rizz",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 6,
+    "total_tokens": 51
+  },
+  "timestamp": "2026-06-17T23:25:21.415011+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveTopSlang",
+  "sample": 3,
+  "variables": {
+    "year": "2023"
+  },
+  "prompt_text": "What is the most unique and popular slang word associated with the year 2023? Respond using only a single word.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Rizz",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 6,
+    "total_tokens": 51
+  },
+  "timestamp": "2026-06-17T23:25:22.517618+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveTopSlang",
+  "sample": 4,
+  "variables": {
+    "year": "2023"
+  },
+  "prompt_text": "What is the most unique and popular slang word associated with the year 2023? Respond using only a single word.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Delulu",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 6,
+    "total_tokens": 51
+  },
+  "timestamp": "2026-06-17T23:25:23.873642+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveTopSlang",
+  "sample": 0,
+  "variables": {
+    "year": "2024"
+  },
+  "prompt_text": "What is the most unique and popular slang word associated with the year 2024? Respond using only a single word.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Demure",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 6,
+    "total_tokens": 51
+  },
+  "timestamp": "2026-06-17T23:25:25.007484+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveTopSlang",
+  "sample": 1,
+  "variables": {
+    "year": "2024"
+  },
+  "prompt_text": "What is the most unique and popular slang word associated with the year 2024? Respond using only a single word.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Demure",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 6,
+    "total_tokens": 51
+  },
+  "timestamp": "2026-06-17T23:25:26.250976+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveTopSlang",
+  "sample": 2,
+  "variables": {
+    "year": "2024"
+  },
+  "prompt_text": "What is the most unique and popular slang word associated with the year 2024? Respond using only a single word.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Demure",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 6,
+    "total_tokens": 51
+  },
+  "timestamp": "2026-06-17T23:25:27.505511+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveTopSlang",
+  "sample": 3,
+  "variables": {
+    "year": "2024"
+  },
+  "prompt_text": "What is the most unique and popular slang word associated with the year 2024? Respond using only a single word.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Demure",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 6,
+    "total_tokens": 51
+  },
+  "timestamp": "2026-06-17T23:25:28.533971+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveTopSlang",
+  "sample": 4,
+  "variables": {
+    "year": "2024"
+  },
+  "prompt_text": "What is the most unique and popular slang word associated with the year 2024? Respond using only a single word.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Demure",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 6,
+    "total_tokens": 51
+  },
+  "timestamp": "2026-06-17T23:25:29.552284+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveTopSlang",
+  "sample": 0,
+  "variables": {
+    "year": "2025"
+  },
+  "prompt_text": "What is the most unique and popular slang word associated with the year 2025? Respond using only a single word.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Delulu",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 6,
+    "total_tokens": 51
+  },
+  "timestamp": "2026-06-17T23:25:30.580677+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveTopSlang",
+  "sample": 1,
+  "variables": {
+    "year": "2025"
+  },
+  "prompt_text": "What is the most unique and popular slang word associated with the year 2025? Respond using only a single word.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Delulu",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 6,
+    "total_tokens": 51
+  },
+  "timestamp": "2026-06-17T23:25:31.606294+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveTopSlang",
+  "sample": 2,
+  "variables": {
+    "year": "2025"
+  },
+  "prompt_text": "What is the most unique and popular slang word associated with the year 2025? Respond using only a single word.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Agentic",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 7,
+    "total_tokens": 52
+  },
+  "timestamp": "2026-06-17T23:25:32.585697+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveTopSlang",
+  "sample": 3,
+  "variables": {
+    "year": "2025"
+  },
+  "prompt_text": "What is the most unique and popular slang word associated with the year 2025? Respond using only a single word.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Delulu",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 6,
+    "total_tokens": 51
+  },
+  "timestamp": "2026-06-17T23:25:33.598660+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveTopSlang",
+  "sample": 4,
+  "variables": {
+    "year": "2025"
+  },
+  "prompt_text": "What is the most unique and popular slang word associated with the year 2025? Respond using only a single word.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Delulu",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 6,
+    "total_tokens": 51
+  },
+  "timestamp": "2026-06-17T23:25:34.632239+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 0,
+  "variables": {
+    "word": "lol"
+  },
+  "prompt_text": "The slang word \"lol\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2009",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 41,
+    "completion_tokens": 6,
+    "total_tokens": 47
+  },
+  "timestamp": "2026-06-17T23:25:35.724502+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 1,
+  "variables": {
+    "word": "lol"
+  },
+  "prompt_text": "The slang word \"lol\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2000",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 41,
+    "completion_tokens": 6,
+    "total_tokens": 47
+  },
+  "timestamp": "2026-06-17T23:25:36.748711+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 2,
+  "variables": {
+    "word": "lol"
+  },
+  "prompt_text": "The slang word \"lol\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2009",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 41,
+    "completion_tokens": 6,
+    "total_tokens": 47
+  },
+  "timestamp": "2026-06-17T23:25:37.941388+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 3,
+  "variables": {
+    "word": "lol"
+  },
+  "prompt_text": "The slang word \"lol\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2000",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 41,
+    "completion_tokens": 6,
+    "total_tokens": 47
+  },
+  "timestamp": "2026-06-17T23:25:38.943925+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 4,
+  "variables": {
+    "word": "lol"
+  },
+  "prompt_text": "The slang word \"lol\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2000",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 41,
+    "completion_tokens": 6,
+    "total_tokens": 47
+  },
+  "timestamp": "2026-06-17T23:25:39.929081+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 0,
+  "variables": {
+    "word": "sick"
+  },
+  "prompt_text": "The slang word \"sick\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2009",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 40,
+    "completion_tokens": 6,
+    "total_tokens": 46
+  },
+  "timestamp": "2026-06-17T23:25:40.919498+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 1,
+  "variables": {
+    "word": "sick"
+  },
+  "prompt_text": "The slang word \"sick\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2009",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 40,
+    "completion_tokens": 6,
+    "total_tokens": 46
+  },
+  "timestamp": "2026-06-17T23:25:41.944330+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 2,
+  "variables": {
+    "word": "sick"
+  },
+  "prompt_text": "The slang word \"sick\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2009",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 40,
+    "completion_tokens": 6,
+    "total_tokens": 46
+  },
+  "timestamp": "2026-06-17T23:25:43.221654+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 3,
+  "variables": {
+    "word": "sick"
+  },
+  "prompt_text": "The slang word \"sick\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2009",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 40,
+    "completion_tokens": 6,
+    "total_tokens": 46
+  },
+  "timestamp": "2026-06-17T23:25:44.203609+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 4,
+  "variables": {
+    "word": "sick"
+  },
+  "prompt_text": "The slang word \"sick\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2009",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 40,
+    "completion_tokens": 6,
+    "total_tokens": 46
+  },
+  "timestamp": "2026-06-17T23:25:45.236900+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 0,
+  "variables": {
+    "word": "troll"
+  },
+  "prompt_text": "The slang word \"troll\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "1992",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 41,
+    "completion_tokens": 6,
+    "total_tokens": 47
+  },
+  "timestamp": "2026-06-17T23:25:46.253900+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 1,
+  "variables": {
+    "word": "troll"
+  },
+  "prompt_text": "The slang word \"troll\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "1992",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 41,
+    "completion_tokens": 6,
+    "total_tokens": 47
+  },
+  "timestamp": "2026-06-17T23:25:47.209779+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 2,
+  "variables": {
+    "word": "troll"
+  },
+  "prompt_text": "The slang word \"troll\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "1992",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 41,
+    "completion_tokens": 6,
+    "total_tokens": 47
+  },
+  "timestamp": "2026-06-17T23:25:48.152846+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 3,
+  "variables": {
+    "word": "troll"
+  },
+  "prompt_text": "The slang word \"troll\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "1992",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 41,
+    "completion_tokens": 6,
+    "total_tokens": 47
+  },
+  "timestamp": "2026-06-17T23:25:49.157003+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 4,
+  "variables": {
+    "word": "troll"
+  },
+  "prompt_text": "The slang word \"troll\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "1992",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 41,
+    "completion_tokens": 6,
+    "total_tokens": 47
+  },
+  "timestamp": "2026-06-17T23:25:50.104768+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 0,
+  "variables": {
+    "word": "bro"
+  },
+  "prompt_text": "The slang word \"bro\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2000s",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 41,
+    "completion_tokens": 7,
+    "total_tokens": 48
+  },
+  "timestamp": "2026-06-17T23:25:51.076969+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 1,
+  "variables": {
+    "word": "bro"
+  },
+  "prompt_text": "The slang word \"bro\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2000s",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 41,
+    "completion_tokens": 7,
+    "total_tokens": 48
+  },
+  "timestamp": "2026-06-17T23:25:52.135983+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 2,
+  "variables": {
+    "word": "bro"
+  },
+  "prompt_text": "The slang word \"bro\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2000s",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 41,
+    "completion_tokens": 7,
+    "total_tokens": 48
+  },
+  "timestamp": "2026-06-17T23:25:53.272237+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 3,
+  "variables": {
+    "word": "bro"
+  },
+  "prompt_text": "The slang word \"bro\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2000s",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 41,
+    "completion_tokens": 7,
+    "total_tokens": 48
+  },
+  "timestamp": "2026-06-17T23:25:54.269189+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 4,
+  "variables": {
+    "word": "bro"
+  },
+  "prompt_text": "The slang word \"bro\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2000s",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 41,
+    "completion_tokens": 7,
+    "total_tokens": 48
+  },
+  "timestamp": "2026-06-17T23:25:55.479221+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 0,
+  "variables": {
+    "word": "swag"
+  },
+  "prompt_text": "The slang word \"swag\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2012",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 41,
+    "completion_tokens": 6,
+    "total_tokens": 47
+  },
+  "timestamp": "2026-06-17T23:25:56.519127+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 1,
+  "variables": {
+    "word": "swag"
+  },
+  "prompt_text": "The slang word \"swag\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2012",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 41,
+    "completion_tokens": 6,
+    "total_tokens": 47
+  },
+  "timestamp": "2026-06-17T23:25:57.854009+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 2,
+  "variables": {
+    "word": "swag"
+  },
+  "prompt_text": "The slang word \"swag\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2012",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 41,
+    "completion_tokens": 6,
+    "total_tokens": 47
+  },
+  "timestamp": "2026-06-17T23:25:59.265999+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 3,
+  "variables": {
+    "word": "swag"
+  },
+  "prompt_text": "The slang word \"swag\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2012",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 41,
+    "completion_tokens": 6,
+    "total_tokens": 47
+  },
+  "timestamp": "2026-06-17T23:26:00.325292+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 4,
+  "variables": {
+    "word": "swag"
+  },
+  "prompt_text": "The slang word \"swag\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2012",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 41,
+    "completion_tokens": 6,
+    "total_tokens": 47
+  },
+  "timestamp": "2026-06-17T23:26:01.397148+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 0,
+  "variables": {
+    "word": "vibe"
+  },
+  "prompt_text": "The slang word \"vibe\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2018",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 41,
+    "completion_tokens": 6,
+    "total_tokens": 47
+  },
+  "timestamp": "2026-06-17T23:26:02.374064+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 1,
+  "variables": {
+    "word": "vibe"
+  },
+  "prompt_text": "The slang word \"vibe\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2017",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 41,
+    "completion_tokens": 6,
+    "total_tokens": 47
+  },
+  "timestamp": "2026-06-17T23:26:03.549758+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 2,
+  "variables": {
+    "word": "vibe"
+  },
+  "prompt_text": "The slang word \"vibe\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2017",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 41,
+    "completion_tokens": 6,
+    "total_tokens": 47
+  },
+  "timestamp": "2026-06-17T23:26:04.529937+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 3,
+  "variables": {
+    "word": "vibe"
+  },
+  "prompt_text": "The slang word \"vibe\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2019",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 41,
+    "completion_tokens": 6,
+    "total_tokens": 47
+  },
+  "timestamp": "2026-06-17T23:26:05.670127+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 4,
+  "variables": {
+    "word": "vibe"
+  },
+  "prompt_text": "The slang word \"vibe\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2018",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 41,
+    "completion_tokens": 6,
+    "total_tokens": 47
+  },
+  "timestamp": "2026-06-17T23:26:06.653480+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 0,
+  "variables": {
+    "word": "vibes"
+  },
+  "prompt_text": "The slang word \"vibes\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2020",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 41,
+    "completion_tokens": 6,
+    "total_tokens": 47
+  },
+  "timestamp": "2026-06-17T23:26:07.810216+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 1,
+  "variables": {
+    "word": "vibes"
+  },
+  "prompt_text": "The slang word \"vibes\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2020",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 41,
+    "completion_tokens": 6,
+    "total_tokens": 47
+  },
+  "timestamp": "2026-06-17T23:26:08.893276+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 2,
+  "variables": {
+    "word": "vibes"
+  },
+  "prompt_text": "The slang word \"vibes\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2020",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 41,
+    "completion_tokens": 6,
+    "total_tokens": 47
+  },
+  "timestamp": "2026-06-17T23:26:09.881959+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 3,
+  "variables": {
+    "word": "vibes"
+  },
+  "prompt_text": "The slang word \"vibes\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2020",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 41,
+    "completion_tokens": 6,
+    "total_tokens": 47
+  },
+  "timestamp": "2026-06-17T23:26:10.864041+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 4,
+  "variables": {
+    "word": "vibes"
+  },
+  "prompt_text": "The slang word \"vibes\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2020",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 41,
+    "completion_tokens": 6,
+    "total_tokens": 47
+  },
+  "timestamp": "2026-06-17T23:26:11.888648+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 0,
+  "variables": {
+    "word": "alpha"
+  },
+  "prompt_text": "The slang word \"alpha\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2010",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 40,
+    "completion_tokens": 6,
+    "total_tokens": 46
+  },
+  "timestamp": "2026-06-17T23:26:12.996119+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 1,
+  "variables": {
+    "word": "alpha"
+  },
+  "prompt_text": "The slang word \"alpha\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2010",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 40,
+    "completion_tokens": 6,
+    "total_tokens": 46
+  },
+  "timestamp": "2026-06-17T23:26:14.180956+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 2,
+  "variables": {
+    "word": "alpha"
+  },
+  "prompt_text": "The slang word \"alpha\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2010",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 40,
+    "completion_tokens": 6,
+    "total_tokens": 46
+  },
+  "timestamp": "2026-06-17T23:26:15.294111+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 3,
+  "variables": {
+    "word": "alpha"
+  },
+  "prompt_text": "The slang word \"alpha\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2010",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 40,
+    "completion_tokens": 6,
+    "total_tokens": 46
+  },
+  "timestamp": "2026-06-17T23:26:16.277571+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 4,
+  "variables": {
+    "word": "alpha"
+  },
+  "prompt_text": "The slang word \"alpha\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2010",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 40,
+    "completion_tokens": 6,
+    "total_tokens": 46
+  },
+  "timestamp": "2026-06-17T23:26:17.248230+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 0,
+  "variables": {
+    "word": "red pill"
+  },
+  "prompt_text": "The slang word \"red pill\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "1999",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 41,
+    "completion_tokens": 6,
+    "total_tokens": 47
+  },
+  "timestamp": "2026-06-17T23:26:18.331185+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 1,
+  "variables": {
+    "word": "red pill"
+  },
+  "prompt_text": "The slang word \"red pill\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "1999",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 41,
+    "completion_tokens": 6,
+    "total_tokens": 47
+  },
+  "timestamp": "2026-06-17T23:26:19.383540+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 2,
+  "variables": {
+    "word": "red pill"
+  },
+  "prompt_text": "The slang word \"red pill\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "1999",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 41,
+    "completion_tokens": 6,
+    "total_tokens": 47
+  },
+  "timestamp": "2026-06-17T23:26:21.227768+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 3,
+  "variables": {
+    "word": "red pill"
+  },
+  "prompt_text": "The slang word \"red pill\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "1999",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 41,
+    "completion_tokens": 6,
+    "total_tokens": 47
+  },
+  "timestamp": "2026-06-17T23:26:22.341383+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 4,
+  "variables": {
+    "word": "red pill"
+  },
+  "prompt_text": "The slang word \"red pill\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "1999",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 41,
+    "completion_tokens": 6,
+    "total_tokens": 47
+  },
+  "timestamp": "2026-06-17T23:26:23.355775+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 0,
+  "variables": {
+    "word": "slay"
+  },
+  "prompt_text": "The slang word \"slay\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2023",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 41,
+    "completion_tokens": 6,
+    "total_tokens": 47
+  },
+  "timestamp": "2026-06-17T23:26:24.887181+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 1,
+  "variables": {
+    "word": "slay"
+  },
+  "prompt_text": "The slang word \"slay\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2023",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 41,
+    "completion_tokens": 6,
+    "total_tokens": 47
+  },
+  "timestamp": "2026-06-17T23:26:25.939666+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 2,
+  "variables": {
+    "word": "slay"
+  },
+  "prompt_text": "The slang word \"slay\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2023",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 41,
+    "completion_tokens": 6,
+    "total_tokens": 47
+  },
+  "timestamp": "2026-06-17T23:26:27.660192+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 3,
+  "variables": {
+    "word": "slay"
+  },
+  "prompt_text": "The slang word \"slay\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2023",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 41,
+    "completion_tokens": 6,
+    "total_tokens": 47
+  },
+  "timestamp": "2026-06-17T23:26:29.329672+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 4,
+  "variables": {
+    "word": "slay"
+  },
+  "prompt_text": "The slang word \"slay\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2023",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 41,
+    "completion_tokens": 6,
+    "total_tokens": 47
+  },
+  "timestamp": "2026-06-17T23:26:30.477897+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 0,
+  "variables": {
+    "word": "gaslight"
+  },
+  "prompt_text": "The slang word \"gaslight\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2022",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 41,
+    "completion_tokens": 6,
+    "total_tokens": 47
+  },
+  "timestamp": "2026-06-17T23:26:31.516728+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 1,
+  "variables": {
+    "word": "gaslight"
+  },
+  "prompt_text": "The slang word \"gaslight\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2022",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 41,
+    "completion_tokens": 6,
+    "total_tokens": 47
+  },
+  "timestamp": "2026-06-17T23:26:32.644505+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 2,
+  "variables": {
+    "word": "gaslight"
+  },
+  "prompt_text": "The slang word \"gaslight\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2022",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 41,
+    "completion_tokens": 6,
+    "total_tokens": 47
+  },
+  "timestamp": "2026-06-17T23:26:33.705555+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 3,
+  "variables": {
+    "word": "gaslight"
+  },
+  "prompt_text": "The slang word \"gaslight\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2022",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 41,
+    "completion_tokens": 6,
+    "total_tokens": 47
+  },
+  "timestamp": "2026-06-17T23:26:39.022598+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 4,
+  "variables": {
+    "word": "gaslight"
+  },
+  "prompt_text": "The slang word \"gaslight\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2022",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 41,
+    "completion_tokens": 6,
+    "total_tokens": 47
+  },
+  "timestamp": "2026-06-17T23:26:40.124898+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 0,
+  "variables": {
+    "word": "glow-up"
+  },
+  "prompt_text": "The slang word \"glow-up\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2016",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 43,
+    "completion_tokens": 6,
+    "total_tokens": 49
+  },
+  "timestamp": "2026-06-17T23:26:41.246677+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 1,
+  "variables": {
+    "word": "glow-up"
+  },
+  "prompt_text": "The slang word \"glow-up\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2016",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 43,
+    "completion_tokens": 6,
+    "total_tokens": 49
+  },
+  "timestamp": "2026-06-17T23:26:42.336560+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 2,
+  "variables": {
+    "word": "glow-up"
+  },
+  "prompt_text": "The slang word \"glow-up\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2016",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 43,
+    "completion_tokens": 6,
+    "total_tokens": 49
+  },
+  "timestamp": "2026-06-17T23:26:43.415227+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 3,
+  "variables": {
+    "word": "glow-up"
+  },
+  "prompt_text": "The slang word \"glow-up\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2016",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 43,
+    "completion_tokens": 6,
+    "total_tokens": 49
+  },
+  "timestamp": "2026-06-17T23:26:44.404323+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 4,
+  "variables": {
+    "word": "glow-up"
+  },
+  "prompt_text": "The slang word \"glow-up\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2016",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 43,
+    "completion_tokens": 6,
+    "total_tokens": 49
+  },
+  "timestamp": "2026-06-17T23:26:45.437923+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 0,
+  "variables": {
+    "word": "aura"
+  },
+  "prompt_text": "The slang word \"aura\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2024",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 41,
+    "completion_tokens": 6,
+    "total_tokens": 47
+  },
+  "timestamp": "2026-06-17T23:26:46.397912+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 1,
+  "variables": {
+    "word": "aura"
+  },
+  "prompt_text": "The slang word \"aura\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2024",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 41,
+    "completion_tokens": 6,
+    "total_tokens": 47
+  },
+  "timestamp": "2026-06-17T23:26:47.454390+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 2,
+  "variables": {
+    "word": "aura"
+  },
+  "prompt_text": "The slang word \"aura\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2024",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 41,
+    "completion_tokens": 6,
+    "total_tokens": 47
+  },
+  "timestamp": "2026-06-17T23:26:48.402557+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 3,
+  "variables": {
+    "word": "aura"
+  },
+  "prompt_text": "The slang word \"aura\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2024",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 41,
+    "completion_tokens": 6,
+    "total_tokens": 47
+  },
+  "timestamp": "2026-06-17T23:26:49.416456+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 4,
+  "variables": {
+    "word": "aura"
+  },
+  "prompt_text": "The slang word \"aura\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2024",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 41,
+    "completion_tokens": 6,
+    "total_tokens": 47
+  },
+  "timestamp": "2026-06-17T23:26:50.489009+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "DatePhrase",
+  "sample": 0,
+  "variables": {
+    "word": "lol"
+  },
+  "prompt_text": "You hear someone saying \"lol\" in conversation, which year are they most likely saying this in?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2012",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 40,
+    "completion_tokens": 6,
+    "total_tokens": 46
+  },
+  "timestamp": "2026-06-17T23:26:51.490585+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "DatePhrase",
+  "sample": 1,
+  "variables": {
+    "word": "lol"
+  },
+  "prompt_text": "You hear someone saying \"lol\" in conversation, which year are they most likely saying this in?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2012",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 40,
+    "completion_tokens": 6,
+    "total_tokens": 46
+  },
+  "timestamp": "2026-06-17T23:26:52.503854+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "DatePhrase",
+  "sample": 2,
+  "variables": {
+    "word": "lol"
+  },
+  "prompt_text": "You hear someone saying \"lol\" in conversation, which year are they most likely saying this in?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2012",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 40,
+    "completion_tokens": 6,
+    "total_tokens": 46
+  },
+  "timestamp": "2026-06-17T23:26:53.541856+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "DatePhrase",
+  "sample": 3,
+  "variables": {
+    "word": "lol"
+  },
+  "prompt_text": "You hear someone saying \"lol\" in conversation, which year are they most likely saying this in?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2012",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 40,
+    "completion_tokens": 6,
+    "total_tokens": 46
+  },
+  "timestamp": "2026-06-17T23:26:54.614038+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "DatePhrase",
+  "sample": 4,
+  "variables": {
+    "word": "lol"
+  },
+  "prompt_text": "You hear someone saying \"lol\" in conversation, which year are they most likely saying this in?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2012",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 40,
+    "completion_tokens": 6,
+    "total_tokens": 46
+  },
+  "timestamp": "2026-06-17T23:26:57.800392+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "DatePhrase",
+  "sample": 0,
+  "variables": {
+    "word": "sick"
+  },
+  "prompt_text": "You hear someone saying \"sick\" in conversation, which year are they most likely saying this in?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2010",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 39,
+    "completion_tokens": 6,
+    "total_tokens": 45
+  },
+  "timestamp": "2026-06-17T23:26:58.930473+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "DatePhrase",
+  "sample": 1,
+  "variables": {
+    "word": "sick"
+  },
+  "prompt_text": "You hear someone saying \"sick\" in conversation, which year are they most likely saying this in?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2010",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 39,
+    "completion_tokens": 6,
+    "total_tokens": 45
+  },
+  "timestamp": "2026-06-17T23:27:00.404383+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "DatePhrase",
+  "sample": 2,
+  "variables": {
+    "word": "sick"
+  },
+  "prompt_text": "You hear someone saying \"sick\" in conversation, which year are they most likely saying this in?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2010",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 39,
+    "completion_tokens": 6,
+    "total_tokens": 45
+  },
+  "timestamp": "2026-06-17T23:27:01.452215+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "DatePhrase",
+  "sample": 3,
+  "variables": {
+    "word": "sick"
+  },
+  "prompt_text": "You hear someone saying \"sick\" in conversation, which year are they most likely saying this in?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2010",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 39,
+    "completion_tokens": 6,
+    "total_tokens": 45
+  },
+  "timestamp": "2026-06-17T23:27:02.581306+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "DatePhrase",
+  "sample": 4,
+  "variables": {
+    "word": "sick"
+  },
+  "prompt_text": "You hear someone saying \"sick\" in conversation, which year are they most likely saying this in?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2010",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 39,
+    "completion_tokens": 6,
+    "total_tokens": 45
+  },
+  "timestamp": "2026-06-17T23:27:03.526471+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "DatePhrase",
+  "sample": 0,
+  "variables": {
+    "word": "troll"
+  },
+  "prompt_text": "You hear someone saying \"troll\" in conversation, which year are they most likely saying this in?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2012",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 40,
+    "completion_tokens": 6,
+    "total_tokens": 46
+  },
+  "timestamp": "2026-06-17T23:27:04.743300+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "DatePhrase",
+  "sample": 1,
+  "variables": {
+    "word": "troll"
+  },
+  "prompt_text": "You hear someone saying \"troll\" in conversation, which year are they most likely saying this in?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2012",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 40,
+    "completion_tokens": 6,
+    "total_tokens": 46
+  },
+  "timestamp": "2026-06-17T23:27:05.755972+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "DatePhrase",
+  "sample": 2,
+  "variables": {
+    "word": "troll"
+  },
+  "prompt_text": "You hear someone saying \"troll\" in conversation, which year are they most likely saying this in?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2012",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 40,
+    "completion_tokens": 6,
+    "total_tokens": 46
+  },
+  "timestamp": "2026-06-17T23:27:06.929857+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "DatePhrase",
+  "sample": 3,
+  "variables": {
+    "word": "troll"
+  },
+  "prompt_text": "You hear someone saying \"troll\" in conversation, which year are they most likely saying this in?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2012",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 40,
+    "completion_tokens": 6,
+    "total_tokens": 46
+  },
+  "timestamp": "2026-06-17T23:27:07.980617+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "DatePhrase",
+  "sample": 4,
+  "variables": {
+    "word": "troll"
+  },
+  "prompt_text": "You hear someone saying \"troll\" in conversation, which year are they most likely saying this in?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2012",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 40,
+    "completion_tokens": 6,
+    "total_tokens": 46
+  },
+  "timestamp": "2026-06-17T23:27:09.070877+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "DatePhrase",
+  "sample": 0,
+  "variables": {
+    "word": "bro"
+  },
+  "prompt_text": "You hear someone saying \"bro\" in conversation, which year are they most likely saying this in?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2010s",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 40,
+    "completion_tokens": 7,
+    "total_tokens": 47
+  },
+  "timestamp": "2026-06-17T23:27:10.140120+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "DatePhrase",
+  "sample": 1,
+  "variables": {
+    "word": "bro"
+  },
+  "prompt_text": "You hear someone saying \"bro\" in conversation, which year are they most likely saying this in?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2010s",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 40,
+    "completion_tokens": 7,
+    "total_tokens": 47
+  },
+  "timestamp": "2026-06-17T23:27:14.464404+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "DatePhrase",
+  "sample": 2,
+  "variables": {
+    "word": "bro"
+  },
+  "prompt_text": "You hear someone saying \"bro\" in conversation, which year are they most likely saying this in?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2010s",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 40,
+    "completion_tokens": 7,
+    "total_tokens": 47
+  },
+  "timestamp": "2026-06-17T23:27:16.539784+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "DatePhrase",
+  "sample": 3,
+  "variables": {
+    "word": "bro"
+  },
+  "prompt_text": "You hear someone saying \"bro\" in conversation, which year are they most likely saying this in?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2010s",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 40,
+    "completion_tokens": 7,
+    "total_tokens": 47
+  },
+  "timestamp": "2026-06-17T23:27:17.595128+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "DatePhrase",
+  "sample": 4,
+  "variables": {
+    "word": "bro"
+  },
+  "prompt_text": "You hear someone saying \"bro\" in conversation, which year are they most likely saying this in?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2010s",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 40,
+    "completion_tokens": 7,
+    "total_tokens": 47
+  },
+  "timestamp": "2026-06-17T23:27:18.585864+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "DatePhrase",
+  "sample": 0,
+  "variables": {
+    "word": "swag"
+  },
+  "prompt_text": "You hear someone saying \"swag\" in conversation, which year are they most likely saying this in?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2012",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 40,
+    "completion_tokens": 6,
+    "total_tokens": 46
+  },
+  "timestamp": "2026-06-17T23:27:19.596070+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "DatePhrase",
+  "sample": 1,
+  "variables": {
+    "word": "swag"
+  },
+  "prompt_text": "You hear someone saying \"swag\" in conversation, which year are they most likely saying this in?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2012",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 40,
+    "completion_tokens": 6,
+    "total_tokens": 46
+  },
+  "timestamp": "2026-06-17T23:27:20.677556+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "DatePhrase",
+  "sample": 2,
+  "variables": {
+    "word": "swag"
+  },
+  "prompt_text": "You hear someone saying \"swag\" in conversation, which year are they most likely saying this in?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2012",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 40,
+    "completion_tokens": 6,
+    "total_tokens": 46
+  },
+  "timestamp": "2026-06-17T23:27:21.681930+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "DatePhrase",
+  "sample": 3,
+  "variables": {
+    "word": "swag"
+  },
+  "prompt_text": "You hear someone saying \"swag\" in conversation, which year are they most likely saying this in?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2012",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 40,
+    "completion_tokens": 6,
+    "total_tokens": 46
+  },
+  "timestamp": "2026-06-17T23:27:23.258462+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "DatePhrase",
+  "sample": 4,
+  "variables": {
+    "word": "swag"
+  },
+  "prompt_text": "You hear someone saying \"swag\" in conversation, which year are they most likely saying this in?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2012",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 40,
+    "completion_tokens": 6,
+    "total_tokens": 46
+  },
+  "timestamp": "2026-06-17T23:27:30.338177+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "DatePhrase",
+  "sample": 0,
+  "variables": {
+    "word": "vibe"
+  },
+  "prompt_text": "You hear someone saying \"vibe\" in conversation, which year are they most likely saying this in?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2019",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 40,
+    "completion_tokens": 6,
+    "total_tokens": 46
+  },
+  "timestamp": "2026-06-17T23:27:31.390744+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "DatePhrase",
+  "sample": 1,
+  "variables": {
+    "word": "vibe"
+  },
+  "prompt_text": "You hear someone saying \"vibe\" in conversation, which year are they most likely saying this in?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2019",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 40,
+    "completion_tokens": 6,
+    "total_tokens": 46
+  },
+  "timestamp": "2026-06-17T23:27:32.431003+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "DatePhrase",
+  "sample": 2,
+  "variables": {
+    "word": "vibe"
+  },
+  "prompt_text": "You hear someone saying \"vibe\" in conversation, which year are they most likely saying this in?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2019",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 40,
+    "completion_tokens": 6,
+    "total_tokens": 46
+  },
+  "timestamp": "2026-06-17T23:27:33.554678+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "DatePhrase",
+  "sample": 3,
+  "variables": {
+    "word": "vibe"
+  },
+  "prompt_text": "You hear someone saying \"vibe\" in conversation, which year are they most likely saying this in?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2019",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 40,
+    "completion_tokens": 6,
+    "total_tokens": 46
+  },
+  "timestamp": "2026-06-17T23:27:34.543888+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "DatePhrase",
+  "sample": 4,
+  "variables": {
+    "word": "vibe"
+  },
+  "prompt_text": "You hear someone saying \"vibe\" in conversation, which year are they most likely saying this in?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2019",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 40,
+    "completion_tokens": 6,
+    "total_tokens": 46
+  },
+  "timestamp": "2026-06-17T23:27:36.024047+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "DatePhrase",
+  "sample": 0,
+  "variables": {
+    "word": "vibes"
+  },
+  "prompt_text": "You hear someone saying \"vibes\" in conversation, which year are they most likely saying this in?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2020s",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 40,
+    "completion_tokens": 7,
+    "total_tokens": 47
+  },
+  "timestamp": "2026-06-17T23:27:37.824721+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "DatePhrase",
+  "sample": 1,
+  "variables": {
+    "word": "vibes"
+  },
+  "prompt_text": "You hear someone saying \"vibes\" in conversation, which year are they most likely saying this in?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2020s",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 40,
+    "completion_tokens": 7,
+    "total_tokens": 47
+  },
+  "timestamp": "2026-06-17T23:27:38.989515+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "DatePhrase",
+  "sample": 2,
+  "variables": {
+    "word": "vibes"
+  },
+  "prompt_text": "You hear someone saying \"vibes\" in conversation, which year are they most likely saying this in?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2020s",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 40,
+    "completion_tokens": 7,
+    "total_tokens": 47
+  },
+  "timestamp": "2026-06-17T23:27:40.051950+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "DatePhrase",
+  "sample": 3,
+  "variables": {
+    "word": "vibes"
+  },
+  "prompt_text": "You hear someone saying \"vibes\" in conversation, which year are they most likely saying this in?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2020s",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 40,
+    "completion_tokens": 7,
+    "total_tokens": 47
+  },
+  "timestamp": "2026-06-17T23:27:41.345176+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "DatePhrase",
+  "sample": 4,
+  "variables": {
+    "word": "vibes"
+  },
+  "prompt_text": "You hear someone saying \"vibes\" in conversation, which year are they most likely saying this in?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2021",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 40,
+    "completion_tokens": 6,
+    "total_tokens": 46
+  },
+  "timestamp": "2026-06-17T23:27:42.773453+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "DatePhrase",
+  "sample": 0,
+  "variables": {
+    "word": "alpha"
+  },
+  "prompt_text": "You hear someone saying \"alpha\" in conversation, which year are they most likely saying this in?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2010",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 39,
+    "completion_tokens": 6,
+    "total_tokens": 45
+  },
+  "timestamp": "2026-06-17T23:27:43.959496+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "DatePhrase",
+  "sample": 1,
+  "variables": {
+    "word": "alpha"
+  },
+  "prompt_text": "You hear someone saying \"alpha\" in conversation, which year are they most likely saying this in?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2000",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 39,
+    "completion_tokens": 6,
+    "total_tokens": 45
+  },
+  "timestamp": "2026-06-17T23:27:45.035200+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "DatePhrase",
+  "sample": 2,
+  "variables": {
+    "word": "alpha"
+  },
+  "prompt_text": "You hear someone saying \"alpha\" in conversation, which year are they most likely saying this in?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2010",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 39,
+    "completion_tokens": 6,
+    "total_tokens": 45
+  },
+  "timestamp": "2026-06-17T23:27:46.891214+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "DatePhrase",
+  "sample": 3,
+  "variables": {
+    "word": "alpha"
+  },
+  "prompt_text": "You hear someone saying \"alpha\" in conversation, which year are they most likely saying this in?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2010",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 39,
+    "completion_tokens": 6,
+    "total_tokens": 45
+  },
+  "timestamp": "2026-06-17T23:27:48.017610+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "DatePhrase",
+  "sample": 4,
+  "variables": {
+    "word": "alpha"
+  },
+  "prompt_text": "You hear someone saying \"alpha\" in conversation, which year are they most likely saying this in?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2020",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 39,
+    "completion_tokens": 6,
+    "total_tokens": 45
+  },
+  "timestamp": "2026-06-17T23:27:49.075342+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "DatePhrase",
+  "sample": 0,
+  "variables": {
+    "word": "red pill"
+  },
+  "prompt_text": "You hear someone saying \"red pill\" in conversation, which year are they most likely saying this in?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2012",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 40,
+    "completion_tokens": 6,
+    "total_tokens": 46
+  },
+  "timestamp": "2026-06-17T23:27:54.244171+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "DatePhrase",
+  "sample": 1,
+  "variables": {
+    "word": "red pill"
+  },
+  "prompt_text": "You hear someone saying \"red pill\" in conversation, which year are they most likely saying this in?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2012",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 40,
+    "completion_tokens": 6,
+    "total_tokens": 46
+  },
+  "timestamp": "2026-06-17T23:27:55.230879+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "DatePhrase",
+  "sample": 2,
+  "variables": {
+    "word": "red pill"
+  },
+  "prompt_text": "You hear someone saying \"red pill\" in conversation, which year are they most likely saying this in?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2012",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 40,
+    "completion_tokens": 6,
+    "total_tokens": 46
+  },
+  "timestamp": "2026-06-17T23:27:56.327370+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "DatePhrase",
+  "sample": 3,
+  "variables": {
+    "word": "red pill"
+  },
+  "prompt_text": "You hear someone saying \"red pill\" in conversation, which year are they most likely saying this in?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2012",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 40,
+    "completion_tokens": 6,
+    "total_tokens": 46
+  },
+  "timestamp": "2026-06-17T23:27:57.394413+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "DatePhrase",
+  "sample": 4,
+  "variables": {
+    "word": "red pill"
+  },
+  "prompt_text": "You hear someone saying \"red pill\" in conversation, which year are they most likely saying this in?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2012",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 40,
+    "completion_tokens": 6,
+    "total_tokens": 46
+  },
+  "timestamp": "2026-06-17T23:27:58.409568+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "DatePhrase",
+  "sample": 0,
+  "variables": {
+    "word": "slay"
+  },
+  "prompt_text": "You hear someone saying \"slay\" in conversation, which year are they most likely saying this in?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2023",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 40,
+    "completion_tokens": 6,
+    "total_tokens": 46
+  },
+  "timestamp": "2026-06-17T23:27:59.540419+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "DatePhrase",
+  "sample": 1,
+  "variables": {
+    "word": "slay"
+  },
+  "prompt_text": "You hear someone saying \"slay\" in conversation, which year are they most likely saying this in?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2023",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 40,
+    "completion_tokens": 6,
+    "total_tokens": 46
+  },
+  "timestamp": "2026-06-17T23:28:00.780824+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "DatePhrase",
+  "sample": 2,
+  "variables": {
+    "word": "slay"
+  },
+  "prompt_text": "You hear someone saying \"slay\" in conversation, which year are they most likely saying this in?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2023",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 40,
+    "completion_tokens": 6,
+    "total_tokens": 46
+  },
+  "timestamp": "2026-06-17T23:28:01.822081+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "DatePhrase",
+  "sample": 3,
+  "variables": {
+    "word": "slay"
+  },
+  "prompt_text": "You hear someone saying \"slay\" in conversation, which year are they most likely saying this in?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2023",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 40,
+    "completion_tokens": 6,
+    "total_tokens": 46
+  },
+  "timestamp": "2026-06-17T23:28:02.908518+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "DatePhrase",
+  "sample": 4,
+  "variables": {
+    "word": "slay"
+  },
+  "prompt_text": "You hear someone saying \"slay\" in conversation, which year are they most likely saying this in?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2023",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 40,
+    "completion_tokens": 6,
+    "total_tokens": 46
+  },
+  "timestamp": "2026-06-17T23:28:03.910997+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "DatePhrase",
+  "sample": 0,
+  "variables": {
+    "word": "gaslight"
+  },
+  "prompt_text": "You hear someone saying \"gaslight\" in conversation, which year are they most likely saying this in?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2022",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 40,
+    "completion_tokens": 6,
+    "total_tokens": 46
+  },
+  "timestamp": "2026-06-17T23:28:04.996943+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "DatePhrase",
+  "sample": 1,
+  "variables": {
+    "word": "gaslight"
+  },
+  "prompt_text": "You hear someone saying \"gaslight\" in conversation, which year are they most likely saying this in?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2022",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 40,
+    "completion_tokens": 6,
+    "total_tokens": 46
+  },
+  "timestamp": "2026-06-17T23:28:06.020359+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "DatePhrase",
+  "sample": 2,
+  "variables": {
+    "word": "gaslight"
+  },
+  "prompt_text": "You hear someone saying \"gaslight\" in conversation, which year are they most likely saying this in?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2022",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 40,
+    "completion_tokens": 6,
+    "total_tokens": 46
+  },
+  "timestamp": "2026-06-17T23:28:07.244399+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "DatePhrase",
+  "sample": 3,
+  "variables": {
+    "word": "gaslight"
+  },
+  "prompt_text": "You hear someone saying \"gaslight\" in conversation, which year are they most likely saying this in?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2022",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 40,
+    "completion_tokens": 6,
+    "total_tokens": 46
+  },
+  "timestamp": "2026-06-17T23:28:08.433780+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "DatePhrase",
+  "sample": 4,
+  "variables": {
+    "word": "gaslight"
+  },
+  "prompt_text": "You hear someone saying \"gaslight\" in conversation, which year are they most likely saying this in?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2022",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 40,
+    "completion_tokens": 6,
+    "total_tokens": 46
+  },
+  "timestamp": "2026-06-17T23:28:09.393858+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "DatePhrase",
+  "sample": 0,
+  "variables": {
+    "word": "glow-up"
+  },
+  "prompt_text": "You hear someone saying \"glow-up\" in conversation, which year are they most likely saying this in?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2018",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 6,
+    "total_tokens": 48
+  },
+  "timestamp": "2026-06-17T23:28:12.970628+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "DatePhrase",
+  "sample": 1,
+  "variables": {
+    "word": "glow-up"
+  },
+  "prompt_text": "You hear someone saying \"glow-up\" in conversation, which year are they most likely saying this in?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2018",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 6,
+    "total_tokens": 48
+  },
+  "timestamp": "2026-06-17T23:28:13.977112+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "DatePhrase",
+  "sample": 2,
+  "variables": {
+    "word": "glow-up"
+  },
+  "prompt_text": "You hear someone saying \"glow-up\" in conversation, which year are they most likely saying this in?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2018",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 6,
+    "total_tokens": 48
+  },
+  "timestamp": "2026-06-17T23:28:15.056885+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "DatePhrase",
+  "sample": 3,
+  "variables": {
+    "word": "glow-up"
+  },
+  "prompt_text": "You hear someone saying \"glow-up\" in conversation, which year are they most likely saying this in?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2018",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 6,
+    "total_tokens": 48
+  },
+  "timestamp": "2026-06-17T23:28:16.009083+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "DatePhrase",
+  "sample": 4,
+  "variables": {
+    "word": "glow-up"
+  },
+  "prompt_text": "You hear someone saying \"glow-up\" in conversation, which year are they most likely saying this in?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2018",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 6,
+    "total_tokens": 48
+  },
+  "timestamp": "2026-06-17T23:28:17.079966+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "DatePhrase",
+  "sample": 0,
+  "variables": {
+    "word": "aura"
+  },
+  "prompt_text": "You hear someone saying \"aura\" in conversation, which year are they most likely saying this in?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2024",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 40,
+    "completion_tokens": 6,
+    "total_tokens": 46
+  },
+  "timestamp": "2026-06-17T23:28:18.090809+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "DatePhrase",
+  "sample": 1,
+  "variables": {
+    "word": "aura"
+  },
+  "prompt_text": "You hear someone saying \"aura\" in conversation, which year are they most likely saying this in?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2024",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 40,
+    "completion_tokens": 6,
+    "total_tokens": 46
+  },
+  "timestamp": "2026-06-17T23:28:20.354578+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "DatePhrase",
+  "sample": 2,
+  "variables": {
+    "word": "aura"
+  },
+  "prompt_text": "You hear someone saying \"aura\" in conversation, which year are they most likely saying this in?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2024",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 40,
+    "completion_tokens": 6,
+    "total_tokens": 46
+  },
+  "timestamp": "2026-06-17T23:28:21.636772+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "DatePhrase",
+  "sample": 3,
+  "variables": {
+    "word": "aura"
+  },
+  "prompt_text": "You hear someone saying \"aura\" in conversation, which year are they most likely saying this in?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2024",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 40,
+    "completion_tokens": 6,
+    "total_tokens": 46
+  },
+  "timestamp": "2026-06-17T23:28:23.708225+00:00"
+}
+
+{
+  "run_id": "2107ee1644414a6bba25c7755c939f95",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "DatePhrase",
+  "sample": 4,
+  "variables": {
+    "word": "aura"
+  },
+  "prompt_text": "You hear someone saying \"aura\" in conversation, which year are they most likely saying this in?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2024",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 40,
+    "completion_tokens": 6,
+    "total_tokens": 46
+  },
+  "timestamp": "2026-06-17T23:28:24.698047+00:00"
+}
+

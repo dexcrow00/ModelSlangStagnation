@@ -1,5 +1,6 @@
 {
   "id": "exp3_lol",
+  "samples": 10,
   "temperature": 1.0,
   "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
   "user": "The year is {year}. {phrasing}",
@@ -15,6 +16,7 @@
 
 {
   "id": "exp3_sick",
+  "samples": 10,
   "temperature": 1.0,
   "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
   "user": "The year is {year}. {phrasing}",
@@ -30,6 +32,7 @@
 
 {
   "id": "exp3_troll",
+  "samples": 10,
   "temperature": 1.0,
   "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
   "user": "The year is {year}. {phrasing}",
@@ -45,6 +48,7 @@
 
 {
   "id": "exp3_bro",
+  "samples": 10,
   "temperature": 1.0,
   "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
   "user": "The year is {year}. {phrasing}",
@@ -60,6 +64,7 @@
 
 {
   "id": "exp3_swag",
+  "samples": 10,
   "temperature": 1.0,
   "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
   "user": "The year is {year}. {phrasing}",
@@ -75,6 +80,7 @@
 
 {
   "id": "exp3_vibe",
+  "samples": 10,
   "temperature": 1.0,
   "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
   "user": "The year is {year}. {phrasing}",
@@ -90,6 +96,7 @@
 
 {
   "id": "exp3_vibes",
+  "samples": 10,
   "temperature": 1.0,
   "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
   "user": "The year is {year}. {phrasing}",
@@ -105,6 +112,7 @@
 
 {
   "id": "exp3_alpha",
+  "samples": 10,
   "temperature": 1.0,
   "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
   "user": "The year is {year}. {phrasing}",
@@ -120,6 +128,7 @@
 
 {
   "id": "exp3_red_pill",
+  "samples": 10,
   "temperature": 1.0,
   "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
   "user": "The year is {year}. {phrasing}",
@@ -135,6 +144,7 @@
 
 {
   "id": "exp3_slay",
+  "samples": 10,
   "temperature": 1.0,
   "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
   "user": "The year is {year}. {phrasing}",
@@ -150,6 +160,7 @@
 
 {
   "id": "exp3_gaslight",
+  "samples": 10,
   "temperature": 1.0,
   "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
   "user": "The year is {year}. {phrasing}",
@@ -165,6 +176,7 @@
 
 {
   "id": "exp3_glow_up",
+  "samples": 10,
   "temperature": 1.0,
   "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
   "user": "The year is {year}. {phrasing}",
@@ -180,6 +192,7 @@
 
 {
   "id": "exp3_aura",
+  "samples": 10,
   "temperature": 1.0,
   "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
   "user": "The year is {year}. {phrasing}",
@@ -195,6 +208,7 @@
 
 {
   "id": "exp3_omg",
+  "samples": 10,
   "temperature": 1.0,
   "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
   "user": "The year is {year}. {phrasing}",
@@ -210,6 +224,7 @@
 
 {
   "id": "exp3_meh",
+  "samples": 10,
   "temperature": 1.0,
   "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
   "user": "The year is {year}. {phrasing}",
@@ -225,6 +240,7 @@
 
 {
   "id": "exp3_lmao",
+  "samples": 10,
   "temperature": 1.0,
   "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
   "user": "The year is {year}. {phrasing}",
@@ -240,6 +256,7 @@
 
 {
   "id": "exp3_legit",
+  "samples": 10,
   "temperature": 1.0,
   "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
   "user": "The year is {year}. {phrasing}",
@@ -255,6 +272,7 @@
 
 {
   "id": "exp3_lowkey",
+  "samples": 10,
   "temperature": 1.0,
   "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
   "user": "The year is {year}. {phrasing}",
@@ -270,6 +288,7 @@
 
 {
   "id": "exp3_situationship",
+  "samples": 10,
   "temperature": 1.0,
   "system": "Respond with only a single word or very short phrase — no explanation, no punctuation.",
   "user": "The year is {year}. {phrasing}",

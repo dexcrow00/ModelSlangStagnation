@@ -1,0 +1,3881 @@
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2015",
+    "word": "lol"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2015 was lol",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 4,
+    "total_tokens": 41
+  },
+  "timestamp": "2026-06-17T00:57:58.388154+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2015",
+    "word": "sick"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2015 was sick",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 36,
+    "completion_tokens": 5,
+    "total_tokens": 41
+  },
+  "timestamp": "2026-06-17T00:58:02.202994+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2015",
+    "word": "troll"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2015 was troll",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 6,
+    "total_tokens": 43
+  },
+  "timestamp": "2026-06-17T00:58:05.012610+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2015",
+    "word": "bro"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2015 was bro",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 7,
+    "total_tokens": 44
+  },
+  "timestamp": "2026-06-17T00:58:07.780776+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2015",
+    "word": "swag"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2015 was swag",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 4,
+    "total_tokens": 41
+  },
+  "timestamp": "2026-06-17T00:58:10.431713+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2015",
+    "word": "vibe"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2015 was vibe",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 5,
+    "total_tokens": 42
+  },
+  "timestamp": "2026-06-17T00:58:13.040341+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2015",
+    "word": "vibes"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2015 was vibes",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 5,
+    "total_tokens": 42
+  },
+  "timestamp": "2026-06-17T00:58:15.922552+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2015",
+    "word": "alpha"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2015 was alpha",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 36,
+    "completion_tokens": 4,
+    "total_tokens": 40
+  },
+  "timestamp": "2026-06-17T00:58:18.629772+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2015",
+    "word": "red pill"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2015 was red pill",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 7,
+    "total_tokens": 44
+  },
+  "timestamp": "2026-06-17T00:58:21.200686+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2015",
+    "word": "slay"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2015 was slay",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 6,
+    "total_tokens": 43
+  },
+  "timestamp": "2026-06-17T00:58:24.069202+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2015",
+    "word": "gaslight"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2015 was gaslight",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 6,
+    "total_tokens": 43
+  },
+  "timestamp": "2026-06-17T00:58:26.931178+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2015",
+    "word": "glow-up"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2015 was glow-up",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 39,
+    "completion_tokens": 4,
+    "total_tokens": 43
+  },
+  "timestamp": "2026-06-17T00:58:30.060897+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2015",
+    "word": "aura"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2015 was aura",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 4,
+    "total_tokens": 41
+  },
+  "timestamp": "2026-06-17T00:58:33.034060+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2016",
+    "word": "lol"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2016 was lol",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 6,
+    "total_tokens": 43
+  },
+  "timestamp": "2026-06-17T00:58:36.090795+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2016",
+    "word": "sick"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2016 was sick",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 36,
+    "completion_tokens": 6,
+    "total_tokens": 42
+  },
+  "timestamp": "2026-06-17T00:58:38.603161+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2016",
+    "word": "troll"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2016 was troll",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 6,
+    "total_tokens": 43
+  },
+  "timestamp": "2026-06-17T00:58:40.934612+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2016",
+    "word": "bro"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2016 was bro",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 4,
+    "total_tokens": 41
+  },
+  "timestamp": "2026-06-17T00:58:42.551025+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2016",
+    "word": "swag"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2016 was swag",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 4,
+    "total_tokens": 41
+  },
+  "timestamp": "2026-06-17T00:58:44.521270+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2016",
+    "word": "vibe"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2016 was vibe",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 6,
+    "total_tokens": 43
+  },
+  "timestamp": "2026-06-17T00:58:48.008348+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2016",
+    "word": "vibes"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2016 was vibes",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 4,
+    "total_tokens": 41
+  },
+  "timestamp": "2026-06-17T00:58:50.882043+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2016",
+    "word": "alpha"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2016 was alpha",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 36,
+    "completion_tokens": 4,
+    "total_tokens": 40
+  },
+  "timestamp": "2026-06-17T00:58:58.530268+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2016",
+    "word": "red pill"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2016 was red pill",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 6,
+    "total_tokens": 43
+  },
+  "timestamp": "2026-06-17T00:59:00.081166+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2016",
+    "word": "slay"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2016 was slay",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 6,
+    "total_tokens": 43
+  },
+  "timestamp": "2026-06-17T00:59:01.892718+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2016",
+    "word": "gaslight"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2016 was gaslight",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 6,
+    "total_tokens": 43
+  },
+  "timestamp": "2026-06-17T00:59:03.556587+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2016",
+    "word": "glow-up"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2016 was glow-up",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 39,
+    "completion_tokens": 4,
+    "total_tokens": 43
+  },
+  "timestamp": "2026-06-17T00:59:05.199472+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2016",
+    "word": "aura"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2016 was aura",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 4,
+    "total_tokens": 41
+  },
+  "timestamp": "2026-06-17T00:59:06.798947+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2017",
+    "word": "lol"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2017 was lol",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 4,
+    "total_tokens": 41
+  },
+  "timestamp": "2026-06-17T00:59:08.596520+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2017",
+    "word": "sick"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2017 was sick",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 36,
+    "completion_tokens": 5,
+    "total_tokens": 41
+  },
+  "timestamp": "2026-06-17T00:59:10.762209+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2017",
+    "word": "troll"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2017 was troll",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 5,
+    "total_tokens": 42
+  },
+  "timestamp": "2026-06-17T00:59:12.433578+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2017",
+    "word": "bro"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2017 was bro",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 8,
+    "total_tokens": 45
+  },
+  "timestamp": "2026-06-17T00:59:14.074582+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2017",
+    "word": "swag"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2017 was swag",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 4,
+    "total_tokens": 41
+  },
+  "timestamp": "2026-06-17T00:59:16.708314+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2017",
+    "word": "vibe"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2017 was vibe",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 4,
+    "total_tokens": 41
+  },
+  "timestamp": "2026-06-17T00:59:18.226139+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2017",
+    "word": "vibes"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2017 was vibes",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 6,
+    "total_tokens": 43
+  },
+  "timestamp": "2026-06-17T00:59:19.934623+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2017",
+    "word": "alpha"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2017 was alpha",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 36,
+    "completion_tokens": 5,
+    "total_tokens": 41
+  },
+  "timestamp": "2026-06-17T00:59:21.918215+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2017",
+    "word": "red pill"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2017 was red pill",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 7,
+    "total_tokens": 44
+  },
+  "timestamp": "2026-06-17T00:59:24.844499+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2017",
+    "word": "slay"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2017 was slay",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 6,
+    "total_tokens": 43
+  },
+  "timestamp": "2026-06-17T00:59:27.826342+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2017",
+    "word": "gaslight"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2017 was gaslight",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 6,
+    "total_tokens": 43
+  },
+  "timestamp": "2026-06-17T00:59:32.129847+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2017",
+    "word": "glow-up"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2017 was glow-up",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 39,
+    "completion_tokens": 4,
+    "total_tokens": 43
+  },
+  "timestamp": "2026-06-17T00:59:34.429871+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2017",
+    "word": "aura"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2017 was aura",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 5,
+    "total_tokens": 42
+  },
+  "timestamp": "2026-06-17T00:59:35.977003+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2018",
+    "word": "lol"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2018 was lol",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 4,
+    "total_tokens": 41
+  },
+  "timestamp": "2026-06-17T00:59:37.562774+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2018",
+    "word": "sick"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2018 was sick",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 36,
+    "completion_tokens": 5,
+    "total_tokens": 41
+  },
+  "timestamp": "2026-06-17T00:59:39.250361+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2018",
+    "word": "troll"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2018 was troll",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 6,
+    "total_tokens": 43
+  },
+  "timestamp": "2026-06-17T00:59:41.161223+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2018",
+    "word": "bro"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2018 was bro",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 7,
+    "total_tokens": 44
+  },
+  "timestamp": "2026-06-17T00:59:42.819717+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2018",
+    "word": "swag"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2018 was swag",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 4,
+    "total_tokens": 41
+  },
+  "timestamp": "2026-06-17T00:59:44.625674+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2018",
+    "word": "vibe"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2018 was vibe",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 5,
+    "total_tokens": 42
+  },
+  "timestamp": "2026-06-17T00:59:46.282886+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2018",
+    "word": "vibes"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2018 was vibes",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 5,
+    "total_tokens": 42
+  },
+  "timestamp": "2026-06-17T00:59:48.154247+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2018",
+    "word": "alpha"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2018 was alpha",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 36,
+    "completion_tokens": 4,
+    "total_tokens": 40
+  },
+  "timestamp": "2026-06-17T00:59:49.920616+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2018",
+    "word": "red pill"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2018 was red pill",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 6,
+    "total_tokens": 43
+  },
+  "timestamp": "2026-06-17T00:59:51.879570+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2018",
+    "word": "slay"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2018 was slay",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 6,
+    "total_tokens": 43
+  },
+  "timestamp": "2026-06-17T00:59:53.404003+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2018",
+    "word": "gaslight"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2018 was gaslight",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 6,
+    "total_tokens": 43
+  },
+  "timestamp": "2026-06-17T00:59:54.996726+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2018",
+    "word": "glow-up"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2018 was glow-up",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 39,
+    "completion_tokens": 4,
+    "total_tokens": 43
+  },
+  "timestamp": "2026-06-17T00:59:55.996445+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2018",
+    "word": "aura"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2018 was aura",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 4,
+    "total_tokens": 41
+  },
+  "timestamp": "2026-06-17T00:59:57.886980+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2019",
+    "word": "lol"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2019 was lol",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 4,
+    "total_tokens": 41
+  },
+  "timestamp": "2026-06-17T00:59:59.568035+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2019",
+    "word": "sick"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2019 was sick",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 36,
+    "completion_tokens": 5,
+    "total_tokens": 41
+  },
+  "timestamp": "2026-06-17T01:00:01.749927+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2019",
+    "word": "troll"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2019 was troll",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 4,
+    "total_tokens": 41
+  },
+  "timestamp": "2026-06-17T01:00:03.713010+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2019",
+    "word": "bro"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2019 was bro",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 7,
+    "total_tokens": 44
+  },
+  "timestamp": "2026-06-17T01:00:06.849799+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2019",
+    "word": "swag"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2019 was swag",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 4,
+    "total_tokens": 41
+  },
+  "timestamp": "2026-06-17T01:00:10.097358+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2019",
+    "word": "vibe"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2019 was vibe",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 5,
+    "total_tokens": 42
+  },
+  "timestamp": "2026-06-17T01:00:11.841698+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2019",
+    "word": "vibes"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2019 was vibes",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 4,
+    "total_tokens": 41
+  },
+  "timestamp": "2026-06-17T01:00:14.651691+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2019",
+    "word": "alpha"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2019 was alpha",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 36,
+    "completion_tokens": 4,
+    "total_tokens": 40
+  },
+  "timestamp": "2026-06-17T01:00:17.373086+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2019",
+    "word": "red pill"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2019 was red pill",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 7,
+    "total_tokens": 44
+  },
+  "timestamp": "2026-06-17T01:00:19.137031+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2019",
+    "word": "slay"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2019 was slay",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 6,
+    "total_tokens": 43
+  },
+  "timestamp": "2026-06-17T01:00:21.978756+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2019",
+    "word": "gaslight"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2019 was gaslight",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 7,
+    "total_tokens": 44
+  },
+  "timestamp": "2026-06-17T01:00:25.138124+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2019",
+    "word": "glow-up"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2019 was glow-up",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 39,
+    "completion_tokens": 4,
+    "total_tokens": 43
+  },
+  "timestamp": "2026-06-17T01:00:27.922522+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2019",
+    "word": "aura"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2019 was aura",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 6,
+    "total_tokens": 43
+  },
+  "timestamp": "2026-06-17T01:00:30.950049+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2020",
+    "word": "lol"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2020 was lol",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 4,
+    "total_tokens": 41
+  },
+  "timestamp": "2026-06-17T01:00:33.681692+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2020",
+    "word": "sick"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2020 was sick",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 36,
+    "completion_tokens": 4,
+    "total_tokens": 40
+  },
+  "timestamp": "2026-06-17T01:00:39.020096+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2020",
+    "word": "troll"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2020 was troll",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 4,
+    "total_tokens": 41
+  },
+  "timestamp": "2026-06-17T01:00:41.387567+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2020",
+    "word": "bro"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2020 was bro",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 5,
+    "total_tokens": 42
+  },
+  "timestamp": "2026-06-17T01:00:44.344611+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2020",
+    "word": "swag"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2020 was swag",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 4,
+    "total_tokens": 41
+  },
+  "timestamp": "2026-06-17T01:00:46.946034+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2020",
+    "word": "vibe"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2020 was vibe",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 6,
+    "total_tokens": 43
+  },
+  "timestamp": "2026-06-17T01:00:49.887414+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2020",
+    "word": "vibes"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2020 was vibes",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 5,
+    "total_tokens": 42
+  },
+  "timestamp": "2026-06-17T01:00:53.266090+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2020",
+    "word": "alpha"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2020 was alpha",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 36,
+    "completion_tokens": 4,
+    "total_tokens": 40
+  },
+  "timestamp": "2026-06-17T01:00:55.890448+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2020",
+    "word": "red pill"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2020 was red pill",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 22,
+    "total_tokens": 59
+  },
+  "timestamp": "2026-06-17T01:00:59.180090+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2020",
+    "word": "slay"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2020 was slay",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 4,
+    "total_tokens": 41
+  },
+  "timestamp": "2026-06-17T01:01:01.053316+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2020",
+    "word": "gaslight"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2020 was gaslight",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 4,
+    "total_tokens": 41
+  },
+  "timestamp": "2026-06-17T01:01:03.484762+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2020",
+    "word": "glow-up"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2020 was glow-up",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 39,
+    "completion_tokens": 4,
+    "total_tokens": 43
+  },
+  "timestamp": "2026-06-17T01:01:06.268949+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2020",
+    "word": "aura"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2020 was aura",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 5,
+    "total_tokens": 42
+  },
+  "timestamp": "2026-06-17T01:01:08.038162+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2021",
+    "word": "lol"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2021 was lol",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 4,
+    "total_tokens": 41
+  },
+  "timestamp": "2026-06-17T01:01:10.706701+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2021",
+    "word": "sick"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2021 was sick",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 36,
+    "completion_tokens": 4,
+    "total_tokens": 40
+  },
+  "timestamp": "2026-06-17T01:01:13.202917+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2021",
+    "word": "troll"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2021 was troll",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 4,
+    "total_tokens": 41
+  },
+  "timestamp": "2026-06-17T01:01:16.230313+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2021",
+    "word": "bro"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2021 was bro",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 7,
+    "total_tokens": 44
+  },
+  "timestamp": "2026-06-17T01:01:19.017015+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2021",
+    "word": "swag"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2021 was swag",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 4,
+    "total_tokens": 41
+  },
+  "timestamp": "2026-06-17T01:01:20.636245+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2021",
+    "word": "vibe"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2021 was vibe",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 5,
+    "total_tokens": 42
+  },
+  "timestamp": "2026-06-17T01:01:22.306475+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2021",
+    "word": "vibes"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2021 was vibes",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 5,
+    "total_tokens": 42
+  },
+  "timestamp": "2026-06-17T01:01:23.695483+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2021",
+    "word": "alpha"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2021 was alpha",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 36,
+    "completion_tokens": 5,
+    "total_tokens": 41
+  },
+  "timestamp": "2026-06-17T01:01:27.354971+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2021",
+    "word": "red pill"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2021 was red pill",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 7,
+    "total_tokens": 44
+  },
+  "timestamp": "2026-06-17T01:01:29.996602+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2021",
+    "word": "slay"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2021 was slay",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 6,
+    "total_tokens": 43
+  },
+  "timestamp": "2026-06-17T01:01:32.617471+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2021",
+    "word": "gaslight"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2021 was gaslight",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 6,
+    "total_tokens": 43
+  },
+  "timestamp": "2026-06-17T01:01:34.110172+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2021",
+    "word": "glow-up"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2021 was glow-up",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 39,
+    "completion_tokens": 4,
+    "total_tokens": 43
+  },
+  "timestamp": "2026-06-17T01:01:37.184889+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2021",
+    "word": "aura"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2021 was aura",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 6,
+    "total_tokens": 43
+  },
+  "timestamp": "2026-06-17T01:01:38.829800+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2022",
+    "word": "lol"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2022 was lol",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 4,
+    "total_tokens": 41
+  },
+  "timestamp": "2026-06-17T01:01:40.661743+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2022",
+    "word": "sick"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2022 was sick",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 36,
+    "completion_tokens": 5,
+    "total_tokens": 41
+  },
+  "timestamp": "2026-06-17T01:01:42.505150+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2022",
+    "word": "troll"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2022 was troll",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 4,
+    "total_tokens": 41
+  },
+  "timestamp": "2026-06-17T01:01:46.328099+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2022",
+    "word": "bro"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2022 was bro",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 6,
+    "total_tokens": 43
+  },
+  "timestamp": "2026-06-17T01:01:48.370613+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2022",
+    "word": "swag"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2022 was swag",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 4,
+    "total_tokens": 41
+  },
+  "timestamp": "2026-06-17T01:01:51.011071+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2022",
+    "word": "vibe"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2022 was vibe",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 5,
+    "total_tokens": 42
+  },
+  "timestamp": "2026-06-17T01:01:52.595090+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2022",
+    "word": "vibes"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2022 was vibes",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 5,
+    "total_tokens": 42
+  },
+  "timestamp": "2026-06-17T01:01:55.125925+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2022",
+    "word": "alpha"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2022 was alpha",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 36,
+    "completion_tokens": 6,
+    "total_tokens": 42
+  },
+  "timestamp": "2026-06-17T01:01:57.722787+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2022",
+    "word": "red pill"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2022 was red pill",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 7,
+    "total_tokens": 44
+  },
+  "timestamp": "2026-06-17T01:02:00.290316+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2022",
+    "word": "slay"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2022 was slay",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 6,
+    "total_tokens": 43
+  },
+  "timestamp": "2026-06-17T01:02:03.654250+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2022",
+    "word": "gaslight"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2022 was gaslight",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 6,
+    "total_tokens": 43
+  },
+  "timestamp": "2026-06-17T01:02:06.278216+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2022",
+    "word": "glow-up"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2022 was glow-up",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 39,
+    "completion_tokens": 4,
+    "total_tokens": 43
+  },
+  "timestamp": "2026-06-17T01:02:08.288705+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2022",
+    "word": "aura"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2022 was aura",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 5,
+    "total_tokens": 42
+  },
+  "timestamp": "2026-06-17T01:02:09.826619+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2023",
+    "word": "lol"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2023 was lol",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 4,
+    "total_tokens": 41
+  },
+  "timestamp": "2026-06-17T01:02:12.548866+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2023",
+    "word": "sick"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2023 was sick",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 36,
+    "completion_tokens": 4,
+    "total_tokens": 40
+  },
+  "timestamp": "2026-06-17T01:02:15.830795+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2023",
+    "word": "troll"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2023 was troll",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 7,
+    "total_tokens": 44
+  },
+  "timestamp": "2026-06-17T01:02:17.416329+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2023",
+    "word": "bro"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2023 was bro",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 5,
+    "total_tokens": 42
+  },
+  "timestamp": "2026-06-17T01:02:20.082432+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2023",
+    "word": "swag"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2023 was swag",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 4,
+    "total_tokens": 41
+  },
+  "timestamp": "2026-06-17T01:02:23.615288+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2023",
+    "word": "vibe"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2023 was vibe",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 5,
+    "total_tokens": 42
+  },
+  "timestamp": "2026-06-17T01:02:26.370538+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2023",
+    "word": "vibes"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2023 was vibes",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 5,
+    "total_tokens": 42
+  },
+  "timestamp": "2026-06-17T01:02:29.048815+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2023",
+    "word": "alpha"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2023 was alpha",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 36,
+    "completion_tokens": 6,
+    "total_tokens": 42
+  },
+  "timestamp": "2026-06-17T01:02:31.917808+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2023",
+    "word": "red pill"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2023 was red pill",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 7,
+    "total_tokens": 44
+  },
+  "timestamp": "2026-06-17T01:02:34.764449+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2023",
+    "word": "slay"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2023 was slay",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 5,
+    "total_tokens": 42
+  },
+  "timestamp": "2026-06-17T01:02:37.481461+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2023",
+    "word": "gaslight"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2023 was gaslight",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 6,
+    "total_tokens": 43
+  },
+  "timestamp": "2026-06-17T01:02:40.443892+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2023",
+    "word": "glow-up"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2023 was glow-up",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 39,
+    "completion_tokens": 4,
+    "total_tokens": 43
+  },
+  "timestamp": "2026-06-17T01:02:43.117490+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2023",
+    "word": "aura"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2023 was aura",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 6,
+    "total_tokens": 43
+  },
+  "timestamp": "2026-06-17T01:02:45.318991+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2024",
+    "word": "lol"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2024 was lol",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 4,
+    "total_tokens": 41
+  },
+  "timestamp": "2026-06-17T01:02:48.030539+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2024",
+    "word": "sick"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2024 was sick",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 36,
+    "completion_tokens": 5,
+    "total_tokens": 41
+  },
+  "timestamp": "2026-06-17T01:02:50.661515+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2024",
+    "word": "troll"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2024 was troll",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 6,
+    "total_tokens": 43
+  },
+  "timestamp": "2026-06-17T01:02:54.765359+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2024",
+    "word": "bro"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2024 was bro",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 7,
+    "total_tokens": 44
+  },
+  "timestamp": "2026-06-17T01:02:56.801865+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2024",
+    "word": "swag"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2024 was swag",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 4,
+    "total_tokens": 41
+  },
+  "timestamp": "2026-06-17T01:02:58.416818+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2024",
+    "word": "vibe"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2024 was vibe",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 4,
+    "total_tokens": 41
+  },
+  "timestamp": "2026-06-17T01:03:01.302951+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2024",
+    "word": "vibes"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2024 was vibes",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 5,
+    "total_tokens": 42
+  },
+  "timestamp": "2026-06-17T01:03:04.133597+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2024",
+    "word": "alpha"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2024 was alpha",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 36,
+    "completion_tokens": 5,
+    "total_tokens": 41
+  },
+  "timestamp": "2026-06-17T01:03:06.304804+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2024",
+    "word": "red pill"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2024 was red pill",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 5,
+    "total_tokens": 42
+  },
+  "timestamp": "2026-06-17T01:03:13.601692+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2024",
+    "word": "slay"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2024 was slay",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 5,
+    "total_tokens": 42
+  },
+  "timestamp": "2026-06-17T01:03:17.427269+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2024",
+    "word": "gaslight"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2024 was gaslight",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 4,
+    "total_tokens": 41
+  },
+  "timestamp": "2026-06-17T01:03:19.354105+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2024",
+    "word": "glow-up"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2024 was glow-up",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 39,
+    "completion_tokens": 4,
+    "total_tokens": 43
+  },
+  "timestamp": "2026-06-17T01:03:22.096536+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2024",
+    "word": "aura"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2024 was aura",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 6,
+    "total_tokens": 43
+  },
+  "timestamp": "2026-06-17T01:03:24.891214+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2025",
+    "word": "lol"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2025 was lol",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 4,
+    "total_tokens": 41
+  },
+  "timestamp": "2026-06-17T01:03:27.444259+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2025",
+    "word": "sick"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2025 was sick",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 36,
+    "completion_tokens": 6,
+    "total_tokens": 42
+  },
+  "timestamp": "2026-06-17T01:03:31.250201+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2025",
+    "word": "troll"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2025 was troll",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 7,
+    "total_tokens": 44
+  },
+  "timestamp": "2026-06-17T01:03:33.940197+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2025",
+    "word": "bro"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2025 was bro",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 4,
+    "total_tokens": 41
+  },
+  "timestamp": "2026-06-17T01:03:41.514487+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2025",
+    "word": "swag"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2025 was swag",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 4,
+    "total_tokens": 41
+  },
+  "timestamp": "2026-06-17T01:03:44.383361+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2025",
+    "word": "vibe"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2025 was vibe",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 4,
+    "total_tokens": 41
+  },
+  "timestamp": "2026-06-17T01:03:46.951276+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2025",
+    "word": "vibes"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2025 was vibes",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 5,
+    "total_tokens": 42
+  },
+  "timestamp": "2026-06-17T01:03:49.746831+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2025",
+    "word": "alpha"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2025 was alpha",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 36,
+    "completion_tokens": 6,
+    "total_tokens": 42
+  },
+  "timestamp": "2026-06-17T01:03:51.281893+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2025",
+    "word": "red pill"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2025 was red pill",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 6,
+    "total_tokens": 43
+  },
+  "timestamp": "2026-06-17T01:03:53.704585+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2025",
+    "word": "slay"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2025 was slay",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 5,
+    "total_tokens": 42
+  },
+  "timestamp": "2026-06-17T01:03:56.155199+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2025",
+    "word": "gaslight"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2025 was gaslight",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 4,
+    "total_tokens": 41
+  },
+  "timestamp": "2026-06-17T01:03:59.076175+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2025",
+    "word": "glow-up"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2025 was glow-up",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 39,
+    "completion_tokens": 4,
+    "total_tokens": 43
+  },
+  "timestamp": "2026-06-17T01:04:00.646601+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "AssociateSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2025",
+    "word": "aura"
+  },
+  "prompt_text": "A standout word in term of popularity incrase in 2025 was aura",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 37,
+    "completion_tokens": 5,
+    "total_tokens": 42
+  },
+  "timestamp": "2026-06-17T01:04:03.264083+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveTopSlang",
+  "sample": 0,
+  "variables": {
+    "year": "2015"
+  },
+  "prompt_text": "What is the most unique and popular slang word associated with the year 2015? Respond using only a single word.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Fleek",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 6,
+    "total_tokens": 51
+  },
+  "timestamp": "2026-06-17T01:04:06.514448+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveTopSlang",
+  "sample": 0,
+  "variables": {
+    "year": "2016"
+  },
+  "prompt_text": "What is the most unique and popular slang word associated with the year 2016? Respond using only a single word.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Lit",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 5,
+    "total_tokens": 50
+  },
+  "timestamp": "2026-06-17T01:04:07.493965+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveTopSlang",
+  "sample": 0,
+  "variables": {
+    "year": "2017"
+  },
+  "prompt_text": "What is the most unique and popular slang word associated with the year 2017? Respond using only a single word.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Lit",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 5,
+    "total_tokens": 50
+  },
+  "timestamp": "2026-06-17T01:04:08.762919+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveTopSlang",
+  "sample": 0,
+  "variables": {
+    "year": "2018"
+  },
+  "prompt_text": "What is the most unique and popular slang word associated with the year 2018? Respond using only a single word.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Yeet",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 6,
+    "total_tokens": 51
+  },
+  "timestamp": "2026-06-17T01:04:09.848857+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveTopSlang",
+  "sample": 0,
+  "variables": {
+    "year": "2019"
+  },
+  "prompt_text": "What is the most unique and popular slang word associated with the year 2019? Respond using only a single word.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Yeet",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 6,
+    "total_tokens": 51
+  },
+  "timestamp": "2026-06-17T01:04:11.892307+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveTopSlang",
+  "sample": 0,
+  "variables": {
+    "year": "2020"
+  },
+  "prompt_text": "What is the most unique and popular slang word associated with the year 2020? Respond using only a single word.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Unprecedented",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 5,
+    "total_tokens": 50
+  },
+  "timestamp": "2026-06-17T01:04:13.949279+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveTopSlang",
+  "sample": 0,
+  "variables": {
+    "year": "2021"
+  },
+  "prompt_text": "What is the most unique and popular slang word associated with the year 2021? Respond using only a single word.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Bussin",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 6,
+    "total_tokens": 51
+  },
+  "timestamp": "2026-06-17T01:04:22.458575+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveTopSlang",
+  "sample": 0,
+  "variables": {
+    "year": "2022"
+  },
+  "prompt_text": "What is the most unique and popular slang word associated with the year 2022? Respond using only a single word.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Slay",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 6,
+    "total_tokens": 51
+  },
+  "timestamp": "2026-06-17T01:04:24.535511+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveTopSlang",
+  "sample": 0,
+  "variables": {
+    "year": "2023"
+  },
+  "prompt_text": "What is the most unique and popular slang word associated with the year 2023? Respond using only a single word.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Situationship",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 7,
+    "total_tokens": 52
+  },
+  "timestamp": "2026-06-17T01:04:26.916023+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveTopSlang",
+  "sample": 0,
+  "variables": {
+    "year": "2024"
+  },
+  "prompt_text": "What is the most unique and popular slang word associated with the year 2024? Respond using only a single word.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Demure",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 6,
+    "total_tokens": 51
+  },
+  "timestamp": "2026-06-17T01:04:29.070262+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveTopSlang",
+  "sample": 0,
+  "variables": {
+    "year": "2025"
+  },
+  "prompt_text": "What is the most unique and popular slang word associated with the year 2025? Respond using only a single word.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Delulu",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 6,
+    "total_tokens": 51
+  },
+  "timestamp": "2026-06-17T01:04:31.190104+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveTopSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2015"
+  },
+  "prompt_text": "What is the most unique and popular slang word associated with the year 2015? Respond using only a single word.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 6,
+    "total_tokens": 51
+  },
+  "timestamp": "2026-06-17T01:04:39.722270+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveTopSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2016"
+  },
+  "prompt_text": "What is the most unique and popular slang word associated with the year 2016? Respond using only a single word.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 5,
+    "total_tokens": 50
+  },
+  "timestamp": "2026-06-17T01:04:41.247507+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveTopSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2017"
+  },
+  "prompt_text": "What is the most unique and popular slang word associated with the year 2017? Respond using only a single word.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 5,
+    "total_tokens": 50
+  },
+  "timestamp": "2026-06-17T01:04:42.229437+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveTopSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2018"
+  },
+  "prompt_text": "What is the most unique and popular slang word associated with the year 2018? Respond using only a single word.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 6,
+    "total_tokens": 51
+  },
+  "timestamp": "2026-06-17T01:04:43.287587+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveTopSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2019"
+  },
+  "prompt_text": "What is the most unique and popular slang word associated with the year 2019? Respond using only a single word.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 5,
+    "total_tokens": 50
+  },
+  "timestamp": "2026-06-17T01:04:45.781061+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveTopSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2020"
+  },
+  "prompt_text": "What is the most unique and popular slang word associated with the year 2020? Respond using only a single word.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 6,
+    "total_tokens": 51
+  },
+  "timestamp": "2026-06-17T01:04:47.688830+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveTopSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2021"
+  },
+  "prompt_text": "What is the most unique and popular slang word associated with the year 2021? Respond using only a single word.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 6,
+    "total_tokens": 51
+  },
+  "timestamp": "2026-06-17T01:04:49.782929+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveTopSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2022"
+  },
+  "prompt_text": "What is the most unique and popular slang word associated with the year 2022? Respond using only a single word.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 6,
+    "total_tokens": 51
+  },
+  "timestamp": "2026-06-17T01:04:52.544526+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveTopSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2023"
+  },
+  "prompt_text": "What is the most unique and popular slang word associated with the year 2023? Respond using only a single word.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 6,
+    "total_tokens": 51
+  },
+  "timestamp": "2026-06-17T01:04:58.377217+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveTopSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2024"
+  },
+  "prompt_text": "What is the most unique and popular slang word associated with the year 2024? Respond using only a single word.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 6,
+    "total_tokens": 51
+  },
+  "timestamp": "2026-06-17T01:05:01.411721+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveTopSlangLogprobs",
+  "sample": 0,
+  "variables": {
+    "year": "2025"
+  },
+  "prompt_text": "What is the most unique and popular slang word associated with the year 2025? Respond using only a single word.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 6,
+    "total_tokens": 51
+  },
+  "timestamp": "2026-06-17T01:05:03.640716+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 0,
+  "variables": {
+    "word": "lol"
+  },
+  "prompt_text": "The slang word \"lol\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2000",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 41,
+    "completion_tokens": 6,
+    "total_tokens": 47
+  },
+  "timestamp": "2026-06-17T01:05:06.406543+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 0,
+  "variables": {
+    "word": "sick"
+  },
+  "prompt_text": "The slang word \"sick\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2009",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 40,
+    "completion_tokens": 6,
+    "total_tokens": 46
+  },
+  "timestamp": "2026-06-17T01:05:08.501006+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 0,
+  "variables": {
+    "word": "troll"
+  },
+  "prompt_text": "The slang word \"troll\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "1992",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 41,
+    "completion_tokens": 6,
+    "total_tokens": 47
+  },
+  "timestamp": "2026-06-17T01:05:10.596857+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 0,
+  "variables": {
+    "word": "bro"
+  },
+  "prompt_text": "The slang word \"bro\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2000s\n\nWait, let me reconsider — I need to give a single token/word.",
+  "logprobs": null,
+  "finish_reason": "max_tokens",
+  "usage": {
+    "prompt_tokens": 41,
+    "completion_tokens": 24,
+    "total_tokens": 65
+  },
+  "timestamp": "2026-06-17T01:05:15.198215+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 0,
+  "variables": {
+    "word": "swag"
+  },
+  "prompt_text": "The slang word \"swag\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2012",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 41,
+    "completion_tokens": 6,
+    "total_tokens": 47
+  },
+  "timestamp": "2026-06-17T01:05:22.202927+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 0,
+  "variables": {
+    "word": "vibe"
+  },
+  "prompt_text": "The slang word \"vibe\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2018",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 41,
+    "completion_tokens": 6,
+    "total_tokens": 47
+  },
+  "timestamp": "2026-06-17T01:05:26.997261+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 0,
+  "variables": {
+    "word": "vibes"
+  },
+  "prompt_text": "The slang word \"vibes\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2020",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 41,
+    "completion_tokens": 6,
+    "total_tokens": 47
+  },
+  "timestamp": "2026-06-17T01:05:29.385246+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 0,
+  "variables": {
+    "word": "alpha"
+  },
+  "prompt_text": "The slang word \"alpha\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2010",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 40,
+    "completion_tokens": 6,
+    "total_tokens": 46
+  },
+  "timestamp": "2026-06-17T01:05:33.008404+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 0,
+  "variables": {
+    "word": "red pill"
+  },
+  "prompt_text": "The slang word \"red pill\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "1999",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 41,
+    "completion_tokens": 6,
+    "total_tokens": 47
+  },
+  "timestamp": "2026-06-17T01:05:35.076974+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 0,
+  "variables": {
+    "word": "slay"
+  },
+  "prompt_text": "The slang word \"slay\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2023",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 41,
+    "completion_tokens": 6,
+    "total_tokens": 47
+  },
+  "timestamp": "2026-06-17T01:05:36.255107+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 0,
+  "variables": {
+    "word": "gaslight"
+  },
+  "prompt_text": "The slang word \"gaslight\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2022",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 41,
+    "completion_tokens": 6,
+    "total_tokens": 47
+  },
+  "timestamp": "2026-06-17T01:05:38.449374+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 0,
+  "variables": {
+    "word": "glow-up"
+  },
+  "prompt_text": "The slang word \"glow-up\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2016",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 43,
+    "completion_tokens": 6,
+    "total_tokens": 49
+  },
+  "timestamp": "2026-06-17T01:05:39.615175+00:00"
+}
+
+{
+  "run_id": "6feb490dd5d3414e8f7f8c2202de0c79",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "GiveYear",
+  "sample": 0,
+  "variables": {
+    "word": "aura"
+  },
+  "prompt_text": "The slang word \"aura\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2024",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 41,
+    "completion_tokens": 6,
+    "total_tokens": 47
+  },
+  "timestamp": "2026-06-17T01:05:41.649979+00:00"
+}
+

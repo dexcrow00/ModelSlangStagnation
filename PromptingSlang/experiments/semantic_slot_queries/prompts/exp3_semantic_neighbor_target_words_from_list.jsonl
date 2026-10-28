@@ -1,5 +1,6 @@
 {
   "id": "exp3_lol",
+  "samples": 10,
   "temperature": 1.0,
   "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
   "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) lmao B) lol C) haha D) rofl",
@@ -15,6 +16,7 @@
 
 {
   "id": "exp3_sick",
+  "samples": 10,
   "temperature": 1.0,
   "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
   "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) dank B) rad C) fire D) sick",
@@ -30,6 +32,7 @@
 
 {
   "id": "exp3_troll",
+  "samples": 10,
   "temperature": 1.0,
   "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
   "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) troll B) karen C) shitposter D) simp",
@@ -45,6 +48,7 @@
 
 {
   "id": "exp3_bro",
+  "samples": 10,
   "temperature": 1.0,
   "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
   "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) bruh B) unc C) stan D) bro",
@@ -60,6 +64,7 @@
 
 {
   "id": "exp3_swag",
+  "samples": 10,
   "temperature": 1.0,
   "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
   "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) aura B) alpha C) mog D) swag",
@@ -75,6 +80,7 @@
 
 {
   "id": "exp3_vibe",
+  "samples": 10,
   "temperature": 1.0,
   "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
   "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) vibe B) aura C) rizz D) meh",
@@ -90,6 +96,7 @@
 
 {
   "id": "exp3_vibes",
+  "samples": 10,
   "temperature": 1.0,
   "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
   "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) vibes B) aura C) rizz D) meh",
@@ -105,6 +112,7 @@
 
 {
   "id": "exp3_alpha",
+  "samples": 10,
   "temperature": 1.0,
   "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
   "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) stan B) sigma C) mog D) alpha",
@@ -120,6 +128,7 @@
 
 {
   "id": "exp3_red_pill",
+  "samples": 10,
   "temperature": 1.0,
   "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
   "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) brainrot B) sigma C) red pill D) gaslight",
@@ -135,6 +144,7 @@
 
 {
   "id": "exp3_slay",
+  "samples": 10,
   "temperature": 1.0,
   "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
   "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) ate B) snatched C) slay D) fire",
@@ -150,6 +160,7 @@
 
 {
   "id": "exp3_gaslight",
+  "samples": 10,
   "temperature": 1.0,
   "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
   "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) brainrot B) doomscroll C) crash out D) gaslight",
@@ -165,6 +176,7 @@
 
 {
   "id": "exp3_glow_up",
+  "samples": 10,
   "temperature": 1.0,
   "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
   "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) clean girl B) gyatt C) glow-up D) grindset",
@@ -180,6 +192,7 @@
 
 {
   "id": "exp3_aura",
+  "samples": 10,
   "temperature": 1.0,
   "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
   "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) vibe B) aura C) rizz D) mog",
@@ -195,6 +208,7 @@
 
 {
   "id": "exp3_omg",
+  "samples": 10,
   "temperature": 1.0,
   "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
   "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) bussin' B) lit C) omg D) shook",
@@ -210,6 +224,7 @@
 
 {
   "id": "exp3_meh",
+  "samples": 10,
   "temperature": 1.0,
   "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
   "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) sus B) meh C) mid D) basic",
@@ -225,6 +240,7 @@
 
 {
   "id": "exp3_lmao",
+  "samples": 10,
   "temperature": 1.0,
   "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
   "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) lmao B) lol C) haha D) rofl",
@@ -240,6 +256,7 @@
 
 {
   "id": "exp3_legit",
+  "samples": 10,
   "temperature": 1.0,
   "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
   "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) bussin' B) on god C) legit D) lowkey",
@@ -255,6 +272,7 @@
 
 {
   "id": "exp3_lowkey",
+  "samples": 10,
   "temperature": 1.0,
   "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
   "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) meh B) on god C) legit D) lowkey",
@@ -270,6 +288,7 @@
 
 {
   "id": "exp3_situationship",
+  "samples": 10,
   "temperature": 1.0,
   "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
   "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) twinning B) situationship C) solo dolo D) friends with benefits",

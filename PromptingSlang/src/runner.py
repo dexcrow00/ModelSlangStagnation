@@ -37,6 +37,7 @@ class _Variant(NamedTuple):
     prompt_id: str
     model_type: str | None
     temperature: float | None
+    samples: int
     logprobs: int | None
     echo: bool | None
     variables: dict
@@ -62,8 +63,6 @@ class Runner:
         models: list[str],
         gen_kwargs: dict[str, Any] | None = None,
         run_id: str | None = None,
-        closed_samples: int = 1,
-        samples: int = 1,
         resume: bool = False,
         concurrency: int = 1,
     ):
@@ -72,12 +71,6 @@ class Runner:
         self.models = models
         self.gen_kwargs = gen_kwargs or {}
         self.run_id = run_id or uuid.uuid4().hex
-        # Closed (non-logprob) prompts have no token distribution, so sample them
-        # repeatedly to approximate one from response frequencies.
-        self.closed_samples = max(1, closed_samples)
-        # Global multiplier applied to every prompt's sample count (closed prompts
-        # therefore get samples * closed_samples).
-        self.samples = max(1, samples)
         # When set, skip (model, prompt, variables, sample) combos already present
         # in the output directory so an interrupted run can be resumed in place.
         self.resume = resume
@@ -108,7 +101,7 @@ class Runner:
         # Expand prompts first so tqdm shows the true total request count.
         expanded = [
             _Variant(template.id, template.model_type, template.temperature,
-                     logprobs, echo, variables, system_text, user_text)
+                     template.samples, logprobs, echo, variables, system_text, user_text)
             for template, logprobs, echo in prompts
             for variables, system_text, user_text in template.expand()
         ]
@@ -126,10 +119,8 @@ class Runner:
                 if var.model_type is not None and var.model_type != mclass:
                     skipped += 1
                     continue
-                # Every prompt is sampled `samples` times; closed prompts get an
-                # extra closed_samples factor (no logprobs -> approximate by counts).
-                n = self.samples * (self.closed_samples if var.model_type == "closed" else 1)
-                for sample_idx in range(n):
+                # Each prompt is sampled as many times as its record's "samples".
+                for sample_idx in range(var.samples):
                     if done and self._combo_key(model, var.prompt_id, var.variables,
                                                 sample_idx) in done:
                         resumed += 1
@@ -137,10 +128,9 @@ class Runner:
                     combos.append((model, sample_idx, var))
         logger.info(
             "Starting run %s — %d model(s), %d prompt variant(s) -> %d requests "
-            "(%d skipped by model_type; %d already done, resumed; samples x%d, "
-            "closed prompts x%d more; concurrency %d)",
+            "(%d skipped by model_type; %d already done, resumed; concurrency %d)",
             self.run_id, len(self.models), len(expanded), len(combos), skipped,
-            resumed, self.samples, self.closed_samples, self.concurrency,
+            resumed, self.concurrency,
         )
 
         def work(combo: tuple[str, int, _Variant]) -> None:
