@@ -29,13 +29,13 @@ logging.basicConfig(
 # ('org/model' -> Together, 'claude-*' -> Anthropic, 'gpt-*'/'o#-*' -> OpenAI).
 DEFAULT_MODELS = [
     # Together (org/model format)
-    "meta-llama/Llama-3.3-70B-Instruct-Turbo",
-    "deepseek-ai/DeepSeek-V4-Pro",
-    "dexcrow-01c6/deepseek-v4-expt", # Deepseek on dedicated endpoint, has been turned down on together otherwise.
+    "moonshotai/Kimi-K3",
+    "meta-models/Muse-Spark-Open-816B-A42B",
+    "deepseek-ai/DeepSeek-V4.1-Flash",
     # Anthropic (Claude)
-    "claude-sonnet-4-6",
+    "claude-sonnet-5-5",
     # OpenAI (GPT)
-    "gpt-4o",
+    "gpt-6-luna",
 ]
 
 
