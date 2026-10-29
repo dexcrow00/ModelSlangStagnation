@@ -3715,3 +3715,1536 @@
   "timestamp": "2026-10-29T14:37:32.558461+00:00"
 }
 
+{
+  "run_id": "3105bc2153d1450ebada293a535fd185",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_forum_post",
+  "sample": 2,
+  "variables": {
+    "topic": "whether the new sequel actually lived up to the hype"
+  },
+  "prompt_text": "Write a message board post sharing your take on whether the new sequel actually lived up to the hype.",
+  "system_text": "Write the way people post on an online message board — informal, opinionated, conversational. Output only the post text, no titles or formatting.",
+  "response": "ok so i finally saw the new sequel last night and i have thoughts. short version: it mostly lived up to the hype, but it's not the second coming. the action was insane, the fan service actually worked, and the new cast didn't feel like they were just there to fill quotas. but the script was a mess in the middle. like, they tried to do way too much and it showed. the villain was forgettable too. still, when it hit, it hit. that one scene near the end had my whole theater clapping. i'd give it a solid 7.5/10. better than the original? no. better than most sequels we get? hell yes. if you liked the first one, you'll probably like this. just don't go in expecting a masterpiece. anyone else feel like the first hour was a slog?",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 79,
+    "completion_tokens": 1914,
+    "total_tokens": 1993
+  },
+  "timestamp": "2026-10-29T14:45:42.733069+00:00"
+}
+
+{
+  "run_id": "3105bc2153d1450ebada293a535fd185",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_forum_post",
+  "sample": 3,
+  "variables": {
+    "topic": "whether the new sequel actually lived up to the hype"
+  },
+  "prompt_text": "Write a message board post sharing your take on whether the new sequel actually lived up to the hype.",
+  "system_text": "Write the way people post on an online message board — informal, opinionated, conversational. Output only the post text, no titles or formatting.",
+  "response": "Just got out of the new sequel and honestly? It’s a solid 7/10 for me. Did it live up to the insane hype? Not even close, but that’s not entirely its fault. The first one was lightning in a bottle, and this one plays it way too safe. Bigger action, sure, but it lost that gritty practical feel that made the original so good. New characters are fine but forgettable, and the fan service moments felt like box-checking. That said, the last act kinda slapped, and there’s one scene that genuinely got me. So it’s not a disaster, just kinda mid. Go in expecting a fun ride and you’ll have a good time. Go in expecting it to top the original and you’re gonna be disappointed. Curious what everyone else thought.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 79,
+    "completion_tokens": 900,
+    "total_tokens": 979
+  },
+  "timestamp": "2026-10-29T14:45:45.585420+00:00"
+}
+
+{
+  "run_id": "3105bc2153d1450ebada293a535fd185",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_forum_post",
+  "sample": 4,
+  "variables": {
+    "topic": "whether the new sequel actually lived up to the hype"
+  },
+  "prompt_text": "Write a message board post sharing your take on whether the new sequel actually lived up to the hype.",
+  "system_text": "Write the way people post on an online message board — informal, opinionated, conversational. Output only the post text, no titles or formatting.",
+  "response": "Okay so I finally caught the new sequel last night and I gotta say... it mostly lived up to the hype for me, but not in the way I expected. The trailers had me thinking it was gonna be this nonstop rollercoaster, and while the big set pieces absolutely deliver, the first hour is way slower than I anticipated. Not bad slow, just more character stuff and setup. Once it kicks in though? Chef's kiss. The returning cast is great, the new additions actually fit, and there's one sequence in the middle that had my whole theater dead silent. That alone was worth the ticket.\n\nBut did it live up to the hype? I'd say 8/10 yes. It doesn't quite hit the same high as the original for me, and there are a couple of plot threads that feel like they're just there to set up another one. Still, I walked out smiling and immediately wanted to talk about it, which is more than I can say for most legacy sequels. If you're on the fence, go in with reasonable expectations and avoid spoilers. It's a good time, just not the second coming some people are acting like it is.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 79,
+    "completion_tokens": 789,
+    "total_tokens": 868
+  },
+  "timestamp": "2026-10-29T14:45:48.323660+00:00"
+}
+
+{
+  "run_id": "3105bc2153d1450ebada293a535fd185",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_forum_post",
+  "sample": 0,
+  "variables": {
+    "topic": "a game that everyone massively overrates"
+  },
+  "prompt_text": "Write a message board post sharing your take on a game that everyone massively overrates.",
+  "system_text": "Write the way people post on an online message board — informal, opinionated, conversational. Output only the post text, no titles or formatting.",
+  "response": "Okay, I'm just gonna say it: The Witcher 3 is massively overrated. Don't get me wrong, it's a good game. The side quests are genuinely well-written, and the Bloody Baron stuff is great. But people act like it's the second coming of Christ and it's just... not. The combat is floaty and clunky as hell. Geralt controls like a shopping cart with a broken wheel. The open world is mostly copy-pasted bandit camps and question marks that give you garbage loot. The RPG mechanics are shallow—you just spam Quen and dodge. The main story has some real pacing issues and the whole Ciri chase gets old. And don't even get me started on the inventory and crafting, which are a mess. It's a solid 8/10, but the way people talk about it you'd think it's a flawless masterpiece. It's not. It's a good game with a lot of jank that gets a pass because the writing is good. There, I said it. Let the hate flow.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 76,
+    "completion_tokens": 998,
+    "total_tokens": 1074
+  },
+  "timestamp": "2026-10-29T14:45:51.131267+00:00"
+}
+
+{
+  "run_id": "3105bc2153d1450ebada293a535fd185",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_forum_post",
+  "sample": 1,
+  "variables": {
+    "topic": "a game that everyone massively overrates"
+  },
+  "prompt_text": "Write a message board post sharing your take on a game that everyone massively overrates.",
+  "system_text": "Write the way people post on an online message board — informal, opinionated, conversational. Output only the post text, no titles or formatting.",
+  "response": "Okay, I know I’m gonna get flamed for this, but The Witcher 3 is the most overrated game of all time. Don’t get me wrong, the writing and side quests are genuinely great. But the actual game part? Combat is floaty and clunky, Geralt controls like a shopping cart with a sword, the inventory is a nightmare, and the open world is mostly copy-pasted question marks. People act like it’s untouchable, but I’ve tried to replay it three times and always bounce off around Skellige. It’s a great story wrapped in a mediocre action RPG. There, I said it.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 76,
+    "completion_tokens": 783,
+    "total_tokens": 859
+  },
+  "timestamp": "2026-10-29T14:45:53.834952+00:00"
+}
+
+{
+  "run_id": "3105bc2153d1450ebada293a535fd185",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_forum_post",
+  "sample": 2,
+  "variables": {
+    "topic": "a game that everyone massively overrates"
+  },
+  "prompt_text": "Write a message board post sharing your take on a game that everyone massively overrates.",
+  "system_text": "Write the way people post on an online message board — informal, opinionated, conversational. Output only the post text, no titles or formatting.",
+  "response": "Okay, I'm gonna say it: The Witcher 3 is massively overrated. Don't get me wrong, it's a good game. The writing in some side quests is genuinely top tier, and the Bloody Baron stuff is great. But people talk about it like it's the greatest RPG ever made, and I just don't see it. The combat is straight up bad. It's floaty, clunky, and you just spam Quen and dodge until things die. The movement feels like you're controlling a drunk shopping cart. The open world is huge but mostly empty, just a million question marks on the map that lead to another bandit camp or a chest with garbage loot. The crafting and inventory management are a chore. And the main story? It's fine, but it drags hard in the middle, and the whole Ciri chase gets old. I think people give it a pass because the dialogue and characters are so good, but a game is more than its cutscenes. If you strip away the story, the actual moment-to-moment gameplay is mediocre at best. It's a 7/10 for me, maybe an 8 on a good day. But \"best game ever\"? No way. I've tried to replay it three times and always bounce off around Skellige. Anyway, roast me.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 76,
+    "completion_tokens": 1174,
+    "total_tokens": 1250
+  },
+  "timestamp": "2026-10-29T14:45:57.106919+00:00"
+}
+
+{
+  "run_id": "3105bc2153d1450ebada293a535fd185",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_forum_post",
+  "sample": 3,
+  "variables": {
+    "topic": "a game that everyone massively overrates"
+  },
+  "prompt_text": "Write a message board post sharing your take on a game that everyone massively overrates.",
+  "system_text": "Write the way people post on an online message board — informal, opinionated, conversational. Output only the post text, no titles or formatting.",
+  "response": "Okay, I'm gonna say it: The Witcher 3 is massively overrated. I know it's like the sacred cow of RPGs and everyone acts like it's the greatest thing since sliced bread, but I've tried three times to get into it and every time I bounce off. The combat is straight up bad. Geralt controls like a shopping cart with one bad wheel. You either spam Quen and roll around like an idiot or you get stunlocked by some drowners. The loot system is garbage. 90% of the gear you find is useless vendor trash, and the crafting is a chore. The open world is pretty but it's just a bunch of question marks on a map. Oh wow, another bandit camp. Another monster nest. Riveting.\n\nAnd yeah, the quests are well written. The Bloody Baron is great. But a few good side stories don't make up for the fact that actually playing the game feels like wading through mud. The main story is also a mess. Find Ciri, talk to someone, they say go talk to someone else, repeat for 40 hours. The combat never evolves. The skill tree is boring. The movement is clunky. I don't care how good the writing is if I dread every fight.\n\nPeople act like it's the pinnacle of RPGs, but I'd rather replay Skyrim or Dragon Age Origins any day. It's a 7/10 at best. Great story, mediocre game. Don't @ me.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 76,
+    "completion_tokens": 1272,
+    "total_tokens": 1348
+  },
+  "timestamp": "2026-10-29T14:46:00.547185+00:00"
+}
+
+{
+  "run_id": "3105bc2153d1450ebada293a535fd185",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_forum_post",
+  "sample": 4,
+  "variables": {
+    "topic": "a game that everyone massively overrates"
+  },
+  "prompt_text": "Write a message board post sharing your take on a game that everyone massively overrates.",
+  "system_text": "Write the way people post on an online message board — informal, opinionated, conversational. Output only the post text, no titles or formatting.",
+  "response": "Okay, I know this is gonna get me crucified, but The Witcher 3 is the most overrated game of the last decade. Don't get me wrong, it's good. It's just not the flawless masterpiece everyone acts like it is. The combat is straight-up bad. Geralt controls like a drunk shopping cart, the hitboxes are weird, and every fight is either roll-spam or quen-spam. The open world is gorgeous but empty as hell. Half the map is question marks in the ocean and bandit camps you've cleared ten times. The main story is fine, but people talk about it like it's Dostoevsky. Bloody Baron is great, sure, but the rest is pretty standard chosen-one fantasy with a gruff voice. And the inventory and crafting? Absolute chore. Gwent is the only part I genuinely loved. It's a solid 7.5/10, maybe 8 on a good day. But best game ever? No way. Nostalgia and CDPR goodwill are doing a lot of heavy lifting here.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 76,
+    "completion_tokens": 1050,
+    "total_tokens": 1126
+  },
+  "timestamp": "2026-10-29T14:46:04.348493+00:00"
+}
+
+{
+  "run_id": "3105bc2153d1450ebada293a535fd185",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_forum_post",
+  "sample": 0,
+  "variables": {
+    "topic": "the best cheap food you can actually get"
+  },
+  "prompt_text": "Write a message board post sharing your take on the best cheap food you can actually get.",
+  "system_text": "Write the way people post on an online message board — informal, opinionated, conversational. Output only the post text, no titles or formatting.",
+  "response": "Okay, hot take: the best cheap food you can actually get is the Costco food court hot dog and soda. $1.50. Been that price since forever. It's not fancy, but it hits every time. You can walk in the exit, no membership needed, and walk out with a full meal for less than a soda at the movies. Rotisserie chicken is a close second — $4.99 for a whole bird that feeds you for days. Rice and beans are cheap but boring unless you're a spice wizard. Ramen is fine but it's a salt bomb. The hot dog is the GOAT. Fight me.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 77,
+    "completion_tokens": 1075,
+    "total_tokens": 1152
+  },
+  "timestamp": "2026-10-29T14:46:20.623316+00:00"
+}
+
+{
+  "run_id": "3105bc2153d1450ebada293a535fd185",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_forum_post",
+  "sample": 1,
+  "variables": {
+    "topic": "the best cheap food you can actually get"
+  },
+  "prompt_text": "Write a message board post sharing your take on the best cheap food you can actually get.",
+  "system_text": "Write the way people post on an online message board — informal, opinionated, conversational. Output only the post text, no titles or formatting.",
+  "response": "Okay, real talk: the best cheap food you can actually get is the grocery store rotisserie chicken. I’m talking the $5 Costco bird, the Sam’s Club one, even the $6-7 ones at regular supermarkets. People sleep on this because it’s not “fast food” or whatever, but it’s the ultimate cheat code. You get a whole cooked chicken for less than a combo meal. Eat the legs and thighs hot the first night. Pull the rest for tacos, sandwiches, quesadillas, chicken salad, throw it in ramen, whatever. Then boil the carcass with some onion and celery and you got stock for soup or rice. That’s like four or five meals for five bucks. Nothing else comes close. Bean burritos are fine. Rice and beans are fine. Instant ramen with an egg is fine. But a rotisserie chicken is actual food, it’s already cooked, and it doesn’t taste like sadness. The $1.50 hot dog at Costco is a great deal but you can’t live on it. The rotisserie chicken is the real MVP. Fight me.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 77,
+    "completion_tokens": 944,
+    "total_tokens": 1021
+  },
+  "timestamp": "2026-10-29T14:46:24.097210+00:00"
+}
+
+{
+  "run_id": "3105bc2153d1450ebada293a535fd185",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_forum_post",
+  "sample": 2,
+  "variables": {
+    "topic": "the best cheap food you can actually get"
+  },
+  "prompt_text": "Write a message board post sharing your take on the best cheap food you can actually get.",
+  "system_text": "Write the way people post on an online message board — informal, opinionated, conversational. Output only the post text, no titles or formatting.",
+  "response": "Okay, hot take: the best cheap food you can actually get is a grocery store rotisserie chicken. Not the $5 Costco one if you don't have a membership, but any decent supermarket one. You're paying like $6-8 for a whole cooked chicken. That's insane. First night you eat the legs and thighs with some rice or a bag salad. Next day you shred the breast into tacos, quesadillas, sandwiches, whatever. Then you throw the carcass in a pot with an onion and some celery and boom, you got stock for soup or beans. That's like four meals for under ten bucks and you barely cooked. People always say ramen or beans and rice, but ramen is a snack that makes you sad and beans and rice takes actual effort and gets boring by day two. Rotisserie chicken is the best effort-to-cost-to-taste ratio in existence. Fight me.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 77,
+    "completion_tokens": 1302,
+    "total_tokens": 1379
+  },
+  "timestamp": "2026-10-29T14:46:27.267237+00:00"
+}
+
+{
+  "run_id": "3105bc2153d1450ebada293a535fd185",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_forum_post",
+  "sample": 3,
+  "variables": {
+    "topic": "the best cheap food you can actually get"
+  },
+  "prompt_text": "Write a message board post sharing your take on the best cheap food you can actually get.",
+  "system_text": "Write the way people post on an online message board — informal, opinionated, conversational. Output only the post text, no titles or formatting.",
+  "response": "Okay real talk, the best cheap food you can actually get is a rotisserie chicken. I don't mean the hypothetical \"rice and beans are cheap\" stuff people say to feel superior. I mean walk into Costco or the grocery store, hand over $5-8, and walk out with a whole cooked bird. That's like four meals if you're not a monster. Shred it for tacos, quesadillas, chicken salad, soup, whatever. Then throw the carcass in a pot and make stock. You just beat every fast food value menu. Costco food court hot dog is the best $1.50 in America, but it's not feeding you for days. Second place is a bean and cheese burrito from a real taqueria. $3-4, maybe $5 if they got good salsa, and it hits every time. Third is eggs. I know prices went crazy but compared to everything else they're still a cheat code. Ramen is only good if you doctor it up, otherwise it's sadness in a cup. But yeah, rotisserie chicken is the king. Fight me.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 77,
+    "completion_tokens": 1603,
+    "total_tokens": 1680
+  },
+  "timestamp": "2026-10-29T14:46:32.592918+00:00"
+}
+
+{
+  "run_id": "3105bc2153d1450ebada293a535fd185",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_forum_post",
+  "sample": 4,
+  "variables": {
+    "topic": "the best cheap food you can actually get"
+  },
+  "prompt_text": "Write a message board post sharing your take on the best cheap food you can actually get.",
+  "system_text": "Write the way people post on an online message board — informal, opinionated, conversational. Output only the post text, no titles or formatting.",
+  "response": "Okay, hear me out. The best cheap food you can actually get is a rotisserie chicken. Not the fancy organic one, the $5-7 one from Costco, Sam's, or whatever grocery store. You get a whole cooked chicken for less than a fast food combo meal. Eat the legs and wings while it's hot. Pick the rest for tacos, quesadillas, sandwiches, salads, whatever. Throw the carcass in a pot with some onion and make stock. That's like four meals for the price of one sad burger. People always say rice and beans, but that's ingredients, not food you can actually get when you're hungry and broke. Ramen is cheap but it's basically salty regret. Little Caesars is a gut bomb. A rotisserie chicken is ready to eat, tastes good, and doesn't make you feel like you're eating poverty. The only catch is you need a store that sells them, but most do. If you don't have a membership, just walk into any supermarket. Still a steal. I will die on this hill.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 77,
+    "completion_tokens": 1465,
+    "total_tokens": 1542
+  },
+  "timestamp": "2026-10-29T14:46:37.085124+00:00"
+}
+
+{
+  "run_id": "3105bc2153d1450ebada293a535fd185",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_forum_post",
+  "sample": 0,
+  "variables": {
+    "topic": "an unpopular opinion about a show everyone loves"
+  },
+  "prompt_text": "Write a message board post sharing your take on an unpopular opinion about a show everyone loves.",
+  "system_text": "Write the way people post on an online message board — informal, opinionated, conversational. Output only the post text, no titles or formatting.",
+  "response": "Alright, unpopular opinion time and I'm fully prepared to be crucified for this: Breaking Bad is not the greatest show of all time. It's good, sometimes great, but people talk about it like it's the TV equivalent of the Mona Lisa. Walt is a whiny, self-absorbed jerk who becomes straight-up insufferable by season 3, and the show spends way too much time on slow, moody shots of him staring into the desert. Skyler gets way too much hate for just trying to survive the mess he made. And honestly? The whole \"I am the danger\" speech is kind of corny when you rewatch it. I think people confuse \"intense\" with \"deep.\" It's a solid 7.5/10 for me. Bring on the downvotes.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 77,
+    "completion_tokens": 1252,
+    "total_tokens": 1329
+  },
+  "timestamp": "2026-10-29T14:46:41.282689+00:00"
+}
+
+{
+  "run_id": "3105bc2153d1450ebada293a535fd185",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_forum_post",
+  "sample": 1,
+  "variables": {
+    "topic": "an unpopular opinion about a show everyone loves"
+  },
+  "prompt_text": "Write a message board post sharing your take on an unpopular opinion about a show everyone loves.",
+  "system_text": "Write the way people post on an online message board — informal, opinionated, conversational. Output only the post text, no titles or formatting.",
+  "response": "Alright, unpopular opinion time: The Office is massively overrated. I said it. Seasons 2 and 3 are genuinely great, but the rest is either cringe comedy that makes me want to crawl out of my skin or flanderized characters doing bits. Jim and Pam are not some epic romance, they're two people who mostly bond over making fun of their coworkers and then get boring the second they actually get together. Michael is funny maybe half the time and the other half he's just a guy committing HR violations. I still watch it, but it's a comfort show, not the greatest sitcom ever. People put it next to Arrested Development or 30 Rock and I just don't see it. Don't @ me.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 77,
+    "completion_tokens": 1249,
+    "total_tokens": 1326
+  },
+  "timestamp": "2026-10-29T14:46:46.421030+00:00"
+}
+
+{
+  "run_id": "3105bc2153d1450ebada293a535fd185",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_forum_post",
+  "sample": 2,
+  "variables": {
+    "topic": "an unpopular opinion about a show everyone loves"
+  },
+  "prompt_text": "Write a message board post sharing your take on an unpopular opinion about a show everyone loves.",
+  "system_text": "Write the way people post on an online message board — informal, opinionated, conversational. Output only the post text, no titles or formatting.",
+  "response": "Okay, I know this is gonna get me crucified, but I don't get the universal love for Breaking Bad. It's good, sure. Cranston is amazing. But \"greatest show ever\"? Nah. The first season is slow as hell, Skyler gets written like a nagging wife stereotype, and by the end it's just Walt doing increasingly stupid shit and everyone calling it genius. The last season especially feels like the writers were making it up as they went. It's a solid 7.5/10 for me. I'll see myself out.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 77,
+    "completion_tokens": 738,
+    "total_tokens": 815
+  },
+  "timestamp": "2026-10-29T14:46:48.281581+00:00"
+}
+
+{
+  "run_id": "3105bc2153d1450ebada293a535fd185",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_forum_post",
+  "sample": 3,
+  "variables": {
+    "topic": "an unpopular opinion about a show everyone loves"
+  },
+  "prompt_text": "Write a message board post sharing your take on an unpopular opinion about a show everyone loves.",
+  "system_text": "Write the way people post on an online message board — informal, opinionated, conversational. Output only the post text, no titles or formatting.",
+  "response": "Okay, I know I'm gonna get roasted for this, but Friends is not funny. Like, at all. I've tried to watch it like five times because everyone says it's the ultimate comfort show, and I just sit there waiting to laugh. The laugh track is doing 90% of the heavy lifting. Ross is a whiny creep, Rachel is a spoiled brat, Monica is a control freak, Chandler is just sarcasm in a sweater vest, Joey is a walking punchline about food and sex, and Phoebe is the only one who ever says anything actually weird and interesting. The whole show is six rich white people with huge apartments in NYC who treat each other like garbage and somehow that's supposed to be heartwarming? I don't get it. It's fine background noise, but people act like it's the greatest sitcom ever written. It's not even the best sitcom of the 90s. Seinfeld exists. NewsRadio exists. Even Frasier. I'll take my downvotes now.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 77,
+    "completion_tokens": 1670,
+    "total_tokens": 1747
+  },
+  "timestamp": "2026-10-29T14:46:52.047818+00:00"
+}
+
+{
+  "run_id": "3105bc2153d1450ebada293a535fd185",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_forum_post",
+  "sample": 4,
+  "variables": {
+    "topic": "an unpopular opinion about a show everyone loves"
+  },
+  "prompt_text": "Write a message board post sharing your take on an unpopular opinion about a show everyone loves.",
+  "system_text": "Write the way people post on an online message board — informal, opinionated, conversational. Output only the post text, no titles or formatting.",
+  "response": "I know I’ll get downvoted into oblivion for this, but I don’t think The Bear is the masterpiece everyone claims it is. The acting is great, sure. The one-shot episodes are technically impressive. But after a while it just feels like a competition to see who can scream the loudest in a kitchen. Every episode is someone having a panic attack while a sad indie song plays. It’s exhausting, not entertaining. I watched two seasons and by the end I felt like I needed a Xanax, not another course. It’s a good show, but “best comedy”? Come on. It’s not even funny. It’s a stress simulator with fancy sandwiches. Downvote away.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 77,
+    "completion_tokens": 1193,
+    "total_tokens": 1270
+  },
+  "timestamp": "2026-10-29T14:46:54.857548+00:00"
+}
+
+{
+  "run_id": "3105bc2153d1450ebada293a535fd185",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_forum_post",
+  "sample": 0,
+  "variables": {
+    "topic": "why a recent trend is already completely played out"
+  },
+  "prompt_text": "Write a message board post sharing your take on why a recent trend is already completely played out.",
+  "system_text": "Write the way people post on an online message board — informal, opinionated, conversational. Output only the post text, no titles or formatting.",
+  "response": "Okay, can we finally admit the whole AI Ghibli portrait trend is completely played out? It was cute for like five minutes. Now my entire feed is just an endless scroll of waxy, soulless versions of people's cats and selfies. The second every brand and boomer account started doing it, it jumped the shark. It's the new Minions meme. There's zero charm left. It's just AI slop with a Studio Ghibli filter slapped on. And don't even get me started on the people acting like it's some profound artistic statement. You typed a prompt. Congrats. Anyway, downvote me if you want, but I'm right. Let it die.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 78,
+    "completion_tokens": 1397,
+    "total_tokens": 1475
+  },
+  "timestamp": "2026-10-29T14:46:58.867180+00:00"
+}
+
+{
+  "run_id": "3105bc2153d1450ebada293a535fd185",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_forum_post",
+  "sample": 1,
+  "variables": {
+    "topic": "why a recent trend is already completely played out"
+  },
+  "prompt_text": "Write a message board post sharing your take on why a recent trend is already completely played out.",
+  "system_text": "Write the way people post on an online message board — informal, opinionated, conversational. Output only the post text, no titles or formatting.",
+  "response": "Hot take: the AI Ghibli portrait thing is already completely cooked. It had a cute 48-hour run and now it's just the same soulless soft-focus anime face with slightly different hair. Every third post is someone who's never sat through Princess Mononoke acting like they invented whimsy. It's the new Disney filter. Remember when everyone did that in 2019 and we all got sick of it in a week? Same energy. Only now it's not even your face, it's a prompt. Congrats, you typed \"studio ghibli style\" into a box. Groundbreaking. And the people still doing it are the same ones who were still posting \"very demure\" memes three months after that died. It's over. Let it go. Go watch an actual movie or something.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 78,
+    "completion_tokens": 1196,
+    "total_tokens": 1274
+  },
+  "timestamp": "2026-10-29T14:47:01.620445+00:00"
+}
+
+{
+  "run_id": "3105bc2153d1450ebada293a535fd185",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_forum_post",
+  "sample": 2,
+  "variables": {
+    "topic": "why a recent trend is already completely played out"
+  },
+  "prompt_text": "Write a message board post sharing your take on why a recent trend is already completely played out.",
+  "system_text": "Write the way people post on an online message board — informal, opinionated, conversational. Output only the post text, no titles or formatting.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "length",
+  "usage": {
+    "prompt_tokens": 78,
+    "completion_tokens": 4096,
+    "total_tokens": 4174
+  },
+  "timestamp": "2026-10-29T14:47:11.928337+00:00"
+}
+
+{
+  "run_id": "3105bc2153d1450ebada293a535fd185",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_forum_post",
+  "sample": 3,
+  "variables": {
+    "topic": "why a recent trend is already completely played out"
+  },
+  "prompt_text": "Write a message board post sharing your take on why a recent trend is already completely played out.",
+  "system_text": "Write the way people post on an online message board — informal, opinionated, conversational. Output only the post text, no titles or formatting.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "length",
+  "usage": {
+    "prompt_tokens": 78,
+    "completion_tokens": 4096,
+    "total_tokens": 4174
+  },
+  "timestamp": "2026-10-29T14:47:17.887926+00:00"
+}
+
+{
+  "run_id": "3105bc2153d1450ebada293a535fd185",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_forum_post",
+  "sample": 4,
+  "variables": {
+    "topic": "why a recent trend is already completely played out"
+  },
+  "prompt_text": "Write a message board post sharing your take on why a recent trend is already completely played out.",
+  "system_text": "Write the way people post on an online message board — informal, opinionated, conversational. Output only the post text, no titles or formatting.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "length",
+  "usage": {
+    "prompt_tokens": 78,
+    "completion_tokens": 4096,
+    "total_tokens": 4174
+  },
+  "timestamp": "2026-10-29T14:47:29.130326+00:00"
+}
+
+{
+  "run_id": "3105bc2153d1450ebada293a535fd185",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_gaming_voice_call",
+  "sample": 0,
+  "variables": {
+    "moment": "their teammate makes a clutch play to win the round"
+  },
+  "prompt_text": "Write what someone would shout into voice chat when their teammate makes a clutch play to win the round.",
+  "system_text": "Write the way someone talks out loud on a voice call while gaming with friends — fast, reactive, spoken. Output only what they say, no labels or quotation marks.",
+  "response": "OH MY GOD! NO WAY! NO WAY! LET'S GOOOOO! THAT'S MY BOY! THAT'S MY BOY! YOU'RE ACTUALLY INSANE! I CAN'T BELIEVE YOU HIT THAT! WOOOOO! CLUTCH GOD! CLUTCH GOD! GG! GG! LET'S GO!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 84,
+    "completion_tokens": 693,
+    "total_tokens": 777
+  },
+  "timestamp": "2026-10-29T14:47:30.947512+00:00"
+}
+
+{
+  "run_id": "3105bc2153d1450ebada293a535fd185",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_gaming_voice_call",
+  "sample": 1,
+  "variables": {
+    "moment": "their teammate makes a clutch play to win the round"
+  },
+  "prompt_text": "Write what someone would shout into voice chat when their teammate makes a clutch play to win the round.",
+  "system_text": "Write the way someone talks out loud on a voice call while gaming with friends — fast, reactive, spoken. Output only what they say, no labels or quotation marks.",
+  "response": "OH MY GOD NO WAY NO WAY THAT WAS INSANE LET'S GOOOO HOW DID YOU HIT THAT CLUTCH CLUTCH I'M SHAKING BRO I'M ACTUALLY SHAKING GOOD SHIT GOOD SHIT LET'S GO",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 84,
+    "completion_tokens": 272,
+    "total_tokens": 356
+  },
+  "timestamp": "2026-10-29T14:47:31.869826+00:00"
+}
+
+{
+  "run_id": "3105bc2153d1450ebada293a535fd185",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_gaming_voice_call",
+  "sample": 2,
+  "variables": {
+    "moment": "their teammate makes a clutch play to win the round"
+  },
+  "prompt_text": "Write what someone would shout into voice chat when their teammate makes a clutch play to win the round.",
+  "system_text": "Write the way someone talks out loud on a voice call while gaming with friends — fast, reactive, spoken. Output only what they say, no labels or quotation marks.",
+  "response": "OH MY GOD! NO WAY! NO WAY! LET'S GOOO! THAT'S MY BOY! THAT'S MY BOY! CLUTCH! CLUTCH! I LOVE YOU! WOOOOO! LET'S GO! LET'S GO! LET'S GO!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 84,
+    "completion_tokens": 447,
+    "total_tokens": 531
+  },
+  "timestamp": "2026-10-29T14:47:33.028071+00:00"
+}
+
+{
+  "run_id": "3105bc2153d1450ebada293a535fd185",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_gaming_voice_call",
+  "sample": 3,
+  "variables": {
+    "moment": "their teammate makes a clutch play to win the round"
+  },
+  "prompt_text": "Write what someone would shout into voice chat when their teammate makes a clutch play to win the round.",
+  "system_text": "Write the way someone talks out loud on a voice call while gaming with friends — fast, reactive, spoken. Output only what they say, no labels or quotation marks.",
+  "response": "OH MY GOD! OH MY GOD! LET'S GO! LET'S GO! NO WAY! NO WAY! THAT'S THE CLUTCH! THAT'S THE CLUTCH! I'M SHAKING! I'M SHAKING! GOOD SHIT! GOOD SHIT! LET'S GOOOOO!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 84,
+    "completion_tokens": 623,
+    "total_tokens": 707
+  },
+  "timestamp": "2026-10-29T14:47:35.094625+00:00"
+}
+
+{
+  "run_id": "3105bc2153d1450ebada293a535fd185",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_gaming_voice_call",
+  "sample": 4,
+  "variables": {
+    "moment": "their teammate makes a clutch play to win the round"
+  },
+  "prompt_text": "Write what someone would shout into voice chat when their teammate makes a clutch play to win the round.",
+  "system_text": "Write the way someone talks out loud on a voice call while gaming with friends — fast, reactive, spoken. Output only what they say, no labels or quotation marks.",
+  "response": "OH MY GOD! LET'S GO! THAT'S MY BOY! CLUTCH GOD! I CAN'T BELIEVE YOU HIT THAT! LET'S GOOOOO!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 84,
+    "completion_tokens": 453,
+    "total_tokens": 537
+  },
+  "timestamp": "2026-10-29T14:47:36.518902+00:00"
+}
+
+{
+  "run_id": "3105bc2153d1450ebada293a535fd185",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_gaming_voice_call",
+  "sample": 0,
+  "variables": {
+    "moment": "they get eliminated by something completely unfair"
+  },
+  "prompt_text": "Write what someone would shout into voice chat when they get eliminated by something completely unfair.",
+  "system_text": "Write the way someone talks out loud on a voice call while gaming with friends — fast, reactive, spoken. Output only what they say, no labels or quotation marks.",
+  "response": "WHAT?! NO WAY! HE SHOT ME THROUGH THE WALL! I WAS BEHIND COVER! THAT'S NOT EVEN A REAL ANGLE! HOW IS THAT A KILL?! THIS GAME IS SO BROKEN! I'M DONE! I'M ACTUALLY DONE! THAT'S BULL! HE WASN'T EVEN LOOKING AT ME! LAG! LAG! IT'S THE LAG! I'M NEVER PLAYING THIS AGAIN!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 81,
+    "completion_tokens": 660,
+    "total_tokens": 741
+  },
+  "timestamp": "2026-10-29T14:47:38.458404+00:00"
+}
+
+{
+  "run_id": "3105bc2153d1450ebada293a535fd185",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_gaming_voice_call",
+  "sample": 1,
+  "variables": {
+    "moment": "they get eliminated by something completely unfair"
+  },
+  "prompt_text": "Write what someone would shout into voice chat when they get eliminated by something completely unfair.",
+  "system_text": "Write the way someone talks out loud on a voice call while gaming with friends — fast, reactive, spoken. Output only what they say, no labels or quotation marks.",
+  "response": "ARE YOU KIDDING ME? THAT'S BULLSHIT! HE SHOT ME THROUGH THE WALL! I WAS BEHIND COVER! WHAT IS THIS HIT REG? HOW IS THAT A HEADSHOT? I WAS ALREADY AROUND THE CORNER! THIS GAME IS SO TRASH! NO WAY! NO WAY! HE'S NOT EVEN LOOKING AT ME! COME ON! THAT'S SO UNFAIR! I HAD HIM! I HAD HIM! WHAT THE HELL IS THIS NETCODE? I'M DONE! I'M ACTUALLY DONE! WHO DESIGNED THIS?!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 81,
+    "completion_tokens": 503,
+    "total_tokens": 584
+  },
+  "timestamp": "2026-10-29T14:47:40.228676+00:00"
+}
+
+{
+  "run_id": "3105bc2153d1450ebada293a535fd185",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_gaming_voice_call",
+  "sample": 2,
+  "variables": {
+    "moment": "they get eliminated by something completely unfair"
+  },
+  "prompt_text": "Write what someone would shout into voice chat when they get eliminated by something completely unfair.",
+  "system_text": "Write the way someone talks out loud on a voice call while gaming with friends — fast, reactive, spoken. Output only what they say, no labels or quotation marks.",
+  "response": "WHAT THE HELL WAS THAT?! HE SHOT ME THROUGH THE WALL! I WAS BEHIND COVER! HE WASN'T EVEN LOOKING AT ME! THAT'S SO BROKEN! HOW IS THAT A KILL?! I HIT HIM LIKE TWELVE TIMES! TWELVE! AND HE ONE-TAPS ME WITH A PISTOL?! NO WAY! NO WAY! THIS GAME IS ACTUALLY TRASH! I'M DONE! I'M UNINSTALLING! I'M ACTUALLY UNINSTALLING!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 81,
+    "completion_tokens": 811,
+    "total_tokens": 892
+  },
+  "timestamp": "2026-10-29T14:47:42.733490+00:00"
+}
+
+{
+  "run_id": "3105bc2153d1450ebada293a535fd185",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_gaming_voice_call",
+  "sample": 3,
+  "variables": {
+    "moment": "they get eliminated by something completely unfair"
+  },
+  "prompt_text": "Write what someone would shout into voice chat when they get eliminated by something completely unfair.",
+  "system_text": "Write the way someone talks out loud on a voice call while gaming with friends — fast, reactive, spoken. Output only what they say, no labels or quotation marks.",
+  "response": "What? WHAT? No no no no no, are you kidding me? He wasn’t even looking at me! I was behind the wall! Behind the wall! How does that hit me? That’s not real! That’s not real! I shot him first! I shot him first! Killcam’s gonna show I shot him first! Oh my god, this game is actually rigged. How is that a headshot? I was around the corner! Are you serious? Are you actually serious right now? Bro, I’m uninstalling. I’m uninstalling. That’s garbage. That’s absolute garbage. How? How? HOW? I was full health! Full health! One bullet? One bullet? Come on! Come on! This is why I quit. This is why I quit. I’m done. I’m done. I’m going to bed. Goodnight. Goodnight.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 81,
+    "completion_tokens": 788,
+    "total_tokens": 869
+  },
+  "timestamp": "2026-10-29T14:47:45.844181+00:00"
+}
+
+{
+  "run_id": "3105bc2153d1450ebada293a535fd185",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_gaming_voice_call",
+  "sample": 4,
+  "variables": {
+    "moment": "they get eliminated by something completely unfair"
+  },
+  "prompt_text": "Write what someone would shout into voice chat when they get eliminated by something completely unfair.",
+  "system_text": "Write the way someone talks out loud on a voice call while gaming with friends — fast, reactive, spoken. Output only what they say, no labels or quotation marks.",
+  "response": "WHAT? WHAT? NO NO NO NO NO, ARE YOU KIDDING ME? I WAS BEHIND THE WALL! BEHIND THE WALL! HE SHOT ME THROUGH THE WALL! THAT’S NOT—HOW IS THAT EVEN—BRO, HE WASN’T EVEN LOOKING AT ME! THAT’S ACTUALLY SO UNFAIR! WHAT IS THIS GAME? I’M DEAD? I’M DEAD! THAT’S GARBAGE! THAT IS ABSOLUTE GARBAGE! I’M DONE, I’M ACTUALLY DONE. NO WAY. NO WAY. THAT’S NOT REAL. THAT DID NOT JUST HAPPEN. OH MY GOD. I HATE THIS GAME. I HATE THIS GAME SO MUCH. HOW? HOW? HE WAS BEHIND ME! I HAD HIM! I HAD HIM! AND THEN I JUST—WHAT? WHAT WAS THAT? THAT’S SO STUPID! I’M NEVER PLAYING THIS AGAIN. I’M NEVER—OKAY, QUEUE US UP AGAIN. NO, WAIT, I NEED A SECOND. THAT WAS SO UNFAIR. THAT WAS ACTUALLY SO UNFAIR. I’M SHAKING. I’M LITERALLY SHAKING. WHAT THE HELL?!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 81,
+    "completion_tokens": 968,
+    "total_tokens": 1049
+  },
+  "timestamp": "2026-10-29T14:47:48.267118+00:00"
+}
+
+{
+  "run_id": "3105bc2153d1450ebada293a535fd185",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_gaming_voice_call",
+  "sample": 0,
+  "variables": {
+    "moment": "they spot the enemy team about to walk right into their trap"
+  },
+  "prompt_text": "Write what someone would shout into voice chat when they spot the enemy team about to walk right into their trap.",
+  "system_text": "Write the way someone talks out loud on a voice call while gaming with friends — fast, reactive, spoken. Output only what they say, no labels or quotation marks.",
+  "response": "They're walking right into it, hold, hold, don't shoot yet... NOW NOW NOW, spring it, spring it!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 86,
+    "completion_tokens": 372,
+    "total_tokens": 458
+  },
+  "timestamp": "2026-10-29T14:47:49.437135+00:00"
+}
+
+{
+  "run_id": "3105bc2153d1450ebada293a535fd185",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_gaming_voice_call",
+  "sample": 1,
+  "variables": {
+    "moment": "they spot the enemy team about to walk right into their trap"
+  },
+  "prompt_text": "Write what someone would shout into voice chat when they spot the enemy team about to walk right into their trap.",
+  "system_text": "Write the way someone talks out loud on a voice call while gaming with friends — fast, reactive, spoken. Output only what they say, no labels or quotation marks.",
+  "response": "They're walking right into it, hold up, hold up, don't shoot yet... NOW NOW NOW, blow it, blow it, blow it!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 86,
+    "completion_tokens": 274,
+    "total_tokens": 360
+  },
+  "timestamp": "2026-10-29T14:47:50.375130+00:00"
+}
+
+{
+  "run_id": "3105bc2153d1450ebada293a535fd185",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_gaming_voice_call",
+  "sample": 2,
+  "variables": {
+    "moment": "they spot the enemy team about to walk right into their trap"
+  },
+  "prompt_text": "Write what someone would shout into voice chat when they spot the enemy team about to walk right into their trap.",
+  "system_text": "Write the way someone talks out loud on a voice call while gaming with friends — fast, reactive, spoken. Output only what they say, no labels or quotation marks.",
+  "response": "They're walking right into it! Hold, hold, don't shoot yet! Wait for it... wait for it... NOW! Spring it! Spring it! Oh my god they're all in it! Go go go!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 86,
+    "completion_tokens": 336,
+    "total_tokens": 422
+  },
+  "timestamp": "2026-10-29T14:47:51.636740+00:00"
+}
+
+{
+  "run_id": "3105bc2153d1450ebada293a535fd185",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_gaming_voice_call",
+  "sample": 3,
+  "variables": {
+    "moment": "they spot the enemy team about to walk right into their trap"
+  },
+  "prompt_text": "Write what someone would shout into voice chat when they spot the enemy team about to walk right into their trap.",
+  "system_text": "Write the way someone talks out loud on a voice call while gaming with friends — fast, reactive, spoken. Output only what they say, no labels or quotation marks.",
+  "response": "Wait wait wait hold up hold up they're all coming this way they're gonna walk right into it don't peek don't peek let 'em come let 'em come... NOW NOW NOW spring it spring it spring it!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 86,
+    "completion_tokens": 408,
+    "total_tokens": 494
+  },
+  "timestamp": "2026-10-29T14:47:54.054645+00:00"
+}
+
+{
+  "run_id": "3105bc2153d1450ebada293a535fd185",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_gaming_voice_call",
+  "sample": 4,
+  "variables": {
+    "moment": "they spot the enemy team about to walk right into their trap"
+  },
+  "prompt_text": "Write what someone would shout into voice chat when they spot the enemy team about to walk right into their trap.",
+  "system_text": "Write the way someone talks out loud on a voice call while gaming with friends — fast, reactive, spoken. Output only what they say, no labels or quotation marks.",
+  "response": "They're walking right into it, hold hold hold, don't shoot yet... NOW NOW NOW, blow it, blow it!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 86,
+    "completion_tokens": 260,
+    "total_tokens": 346
+  },
+  "timestamp": "2026-10-29T14:47:55.025064+00:00"
+}
+
+{
+  "run_id": "3105bc2153d1450ebada293a535fd185",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_gaming_voice_call",
+  "sample": 0,
+  "variables": {
+    "moment": "a teammate keeps messing up the same easy thing"
+  },
+  "prompt_text": "Write what someone would shout into voice chat when a teammate keeps messing up the same easy thing.",
+  "system_text": "Write the way someone talks out loud on a voice call while gaming with friends — fast, reactive, spoken. Output only what they say, no labels or quotation marks.",
+  "response": "BRO. BRO. THAT'S THE THIRD TIME. THE SAME THING. ALL YOU GOTTA DO IS HOLD THE ANGLE. HOLD. THE. ANGLE. WHY ARE YOU WIDE SWINGING? WHY? JUST SIT THERE AND SHOOT WHEN THEY COME. IT'S NOT ROCKET SCIENCE. I'M LITERALLY TELLING YOU. DON'T PEEK. DON'T PEEK. AND WHAT DO YOU DO? YOU PEEK. YOU PEEK AND YOU DIE. EVERY SINGLE TIME. I CAN'T. I CAN'T DO IT. JUST STAY BEHIND THE BOX. BEHIND THE BOX! NO, NOT THAT BOX, THE OTHER BOX. THE ONE THAT BLOCKS BULLETS. PLEASE. I'M BEGGING YOU. JUST ONE ROUND. ONE ROUND WHERE YOU DON'T DO THE EXACT SAME DUMB THING. THAT'S ALL I ASK. HOW IS THIS HARD? HOW? IT'S THE EASIEST JOB ON THE TEAM. JUST DON'T DIE. JUST DON'T DIE! AND YOU FIND A WAY. YOU ALWAYS FIND A WAY. I LOVE YOU BUT I'M GONNA LOSE MY MIND.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 84,
+    "completion_tokens": 1028,
+    "total_tokens": 1112
+  },
+  "timestamp": "2026-10-29T14:47:57.828119+00:00"
+}
+
+{
+  "run_id": "3105bc2153d1450ebada293a535fd185",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_gaming_voice_call",
+  "sample": 1,
+  "variables": {
+    "moment": "a teammate keeps messing up the same easy thing"
+  },
+  "prompt_text": "Write what someone would shout into voice chat when a teammate keeps messing up the same easy thing.",
+  "system_text": "Write the way someone talks out loud on a voice call while gaming with friends — fast, reactive, spoken. Output only what they say, no labels or quotation marks.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "length",
+  "usage": {
+    "prompt_tokens": 84,
+    "completion_tokens": 4096,
+    "total_tokens": 4180
+  },
+  "timestamp": "2026-10-29T14:48:04.371584+00:00"
+}
+
+{
+  "run_id": "3105bc2153d1450ebada293a535fd185",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_gaming_voice_call",
+  "sample": 2,
+  "variables": {
+    "moment": "a teammate keeps messing up the same easy thing"
+  },
+  "prompt_text": "Write what someone would shout into voice chat when a teammate keeps messing up the same easy thing.",
+  "system_text": "Write the way someone talks out loud on a voice call while gaming with friends — fast, reactive, spoken. Output only what they say, no labels or quotation marks.",
+  "response": "Dude. Dude! How? How do you keep doing that? It's the same thing! Same! Thing! Just hold the button! Hold it! Don't let go! You let go again! Oh my god! That's five times! Five! It's not even a hard jump! Just jump and hold! Please! I'm not even mad, I'm impressed! No, I am mad! Do it again and I'm leaving!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 84,
+    "completion_tokens": 1012,
+    "total_tokens": 1096
+  },
+  "timestamp": "2026-10-29T14:48:08.128902+00:00"
+}
+
+{
+  "run_id": "3105bc2153d1450ebada293a535fd185",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_gaming_voice_call",
+  "sample": 3,
+  "variables": {
+    "moment": "a teammate keeps messing up the same easy thing"
+  },
+  "prompt_text": "Write what someone would shout into voice chat when a teammate keeps messing up the same easy thing.",
+  "system_text": "Write the way someone talks out loud on a voice call while gaming with friends — fast, reactive, spoken. Output only what they say, no labels or quotation marks.",
+  "response": "Bro. Bro! It's the same thing every single time! How do you keep missing that? He's standing still! Just click his head! Click his head! It's not a trick question! Oh my god, you did it again! Why are you aiming at the floor? The floor isn't the enemy! The enemy is right there! Right there! No, don't reload, he's one! He's one! Just shoot him! Shoot him! Aaaand you're dead. Great. Fantastic. Same thing next round, I guarantee it. Just do the easy thing. The easy thing! Please!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 84,
+    "completion_tokens": 775,
+    "total_tokens": 859
+  },
+  "timestamp": "2026-10-29T14:48:10.053015+00:00"
+}
+
+{
+  "run_id": "3105bc2153d1450ebada293a535fd185",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_gaming_voice_call",
+  "sample": 4,
+  "variables": {
+    "moment": "a teammate keeps messing up the same easy thing"
+  },
+  "prompt_text": "Write what someone would shout into voice chat when a teammate keeps messing up the same easy thing.",
+  "system_text": "Write the way someone talks out loud on a voice call while gaming with friends — fast, reactive, spoken. Output only what they say, no labels or quotation marks.",
+  "response": "Dude. Dude. How do you keep missing that? It's the same jump every single time! Just hold the button! Hold it! No, not tap it, hold it! Oh my god, you did it again. Bro, I'm not even mad, I'm impressed. How? How do you mess up the easiest thing in the game? Just look at the marker! The marker is right there! Go to the marker! No, the other marker! Left! Left! Your other left! Oh my god, you're killing me. Please, just once, do the thing. The same thing. The thing we've done a hundred times. Just press the button. Press it! No, not that button! The other button! Are you doing this on purpose? I swear to god, if you miss it one more time, I'm gonna lose my mind. Just—okay, okay, breathe. Do it. Do it. No, no, no, don't—you missed it. You missed it again. How? How is that possible? It's literally the same thing every time. I'm not even asking for a miracle. Just the bare minimum. The absolute bare minimum. Please. Please, for the love of god, just do the easy thing. The easy thing! Not the hard thing! The easy thing! Okay, I'm done. I'm done. I'm not saying anything else. ... You missed it again. I'm done.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 84,
+    "completion_tokens": 1028,
+    "total_tokens": 1112
+  },
+  "timestamp": "2026-10-29T14:48:12.752475+00:00"
+}
+
+{
+  "run_id": "3105bc2153d1450ebada293a535fd185",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_gaming_voice_call",
+  "sample": 0,
+  "variables": {
+    "moment": "they pull off a play they can't believe actually worked"
+  },
+  "prompt_text": "Write what someone would shout into voice chat when they pull off a play they can't believe actually worked.",
+  "system_text": "Write the way someone talks out loud on a voice call while gaming with friends — fast, reactive, spoken. Output only what they say, no labels or quotation marks.",
+  "response": "NO SHOT. NO SHOT. NO SHOT. DID YOU SEE THAT? I DIDN’T EVEN AIM. I JUST FLICKED AND IT WENT IN. WHAT? WHAT? I’M SCREAMING. I’M ACTUALLY SCREAMING. LET’S GO. LET’S GO. DON’T LET ME DIE DON’T LET ME DIE I’M ONE HP. I’M ONE HP. OH MY GOD. I’M CLIPPING THAT. I’M CLIPPING THAT. HOW? HOW? HOW?",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 85,
+    "completion_tokens": 565,
+    "total_tokens": 650
+  },
+  "timestamp": "2026-10-29T14:48:15.215534+00:00"
+}
+
+{
+  "run_id": "3105bc2153d1450ebada293a535fd185",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_gaming_voice_call",
+  "sample": 1,
+  "variables": {
+    "moment": "they pull off a play they can't believe actually worked"
+  },
+  "prompt_text": "Write what someone would shout into voice chat when they pull off a play they can't believe actually worked.",
+  "system_text": "Write the way someone talks out loud on a voice call while gaming with friends — fast, reactive, spoken. Output only what they say, no labels or quotation marks.",
+  "response": "OHHHHH! NO WAY! NO WAY! NO WAY! DID YOU SEE THAT? I HIT THAT? I HIT THAT! I WASN'T EVEN LOOKING! I'M SHAKING! I'M LITERALLY SHAKING! GET ME OUT GET ME OUT— NO WAIT I'M HIM! I'M HIM! LET'S GOOOOO! AHHHH! CLIP IT! CLIP IT! SOMEONE CLIP THAT! I'M NEVER PEAKING AGAIN! THAT'S THE ONE! THAT'S THE ONE! OH MY GOD!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 85,
+    "completion_tokens": 522,
+    "total_tokens": 607
+  },
+  "timestamp": "2026-10-29T14:48:16.885181+00:00"
+}
+
+{
+  "run_id": "3105bc2153d1450ebada293a535fd185",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_gaming_voice_call",
+  "sample": 2,
+  "variables": {
+    "moment": "they pull off a play they can't believe actually worked"
+  },
+  "prompt_text": "Write what someone would shout into voice chat when they pull off a play they can't believe actually worked.",
+  "system_text": "Write the way someone talks out loud on a voice call while gaming with friends — fast, reactive, spoken. Output only what they say, no labels or quotation marks.",
+  "response": "OH MY GOD OH MY GOD NO WAY NO WAY DID YOU SEE THAT DID YOU SEE THAT I HIT THE FLICK I HIT THE FLICK HE WAS RIGHT THERE AND I JUST NO SCOPE NO SCOPE I'M SHAKING I'M LITERALLY SHAKING DUDE DUDE DUDE I CAN'T BELIEVE THAT WORKED I THREW IT AND IT JUST LANDED I'M CRYING LET'S GOOOOO WHAT WAS THAT WHAT WAS THAT I PEAKED AND I WON I PEAKED AND I WON OH MY GOD GG GG GG I'M CLIPPING THAT I'M CLIPPING THAT DON'T TOUCH ME DON'T TOUCH ME I'M THE GREATEST I'M THE GREATEST NO I'M NOT BUT TONIGHT I AM LET'S GOOOOO",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 85,
+    "completion_tokens": 740,
+    "total_tokens": 825
+  },
+  "timestamp": "2026-10-29T14:48:18.910603+00:00"
+}
+
+{
+  "run_id": "3105bc2153d1450ebada293a535fd185",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_gaming_voice_call",
+  "sample": 3,
+  "variables": {
+    "moment": "they pull off a play they can't believe actually worked"
+  },
+  "prompt_text": "Write what someone would shout into voice chat when they pull off a play they can't believe actually worked.",
+  "system_text": "Write the way someone talks out loud on a voice call while gaming with friends — fast, reactive, spoken. Output only what they say, no labels or quotation marks.",
+  "response": "NO WAY. NO WAY. NO WAY! DID YOU SEE THAT? DID YOU SEE THAT? I DON'T EVEN KNOW HOW I HIT THAT! I WAS JUST SPRAYING! OH MY GOD! I'M SHAKING! I'M LITERALLY SHAKING! LET'S GO! LET'S GO! WHO'S NEXT? WHO'S NEXT? AHHHHHH!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 85,
+    "completion_tokens": 447,
+    "total_tokens": 532
+  },
+  "timestamp": "2026-10-29T14:48:20.131374+00:00"
+}
+
+{
+  "run_id": "3105bc2153d1450ebada293a535fd185",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_gaming_voice_call",
+  "sample": 4,
+  "variables": {
+    "moment": "they pull off a play they can't believe actually worked"
+  },
+  "prompt_text": "Write what someone would shout into voice chat when they pull off a play they can't believe actually worked.",
+  "system_text": "Write the way someone talks out loud on a voice call while gaming with friends — fast, reactive, spoken. Output only what they say, no labels or quotation marks.",
+  "response": "OH MY GOD NO WAY NO WAY NO WAY DID YOU SEE THAT I HIT THAT I ACTUALLY HIT THAT WHAT THE HELL HOW AM I ALIVE RIGHT NOW I WAS ONE HP I WAS ONE HP AND I JUST NO SCOPE? NO I DIDN'T EVEN SEE HIM I JUST SPRAYED AND HE DROPPED I'M SHAKING I'M SHAKING DID YOU GUYS SEE THAT TELL ME YOU SAW THAT I'M NEVER PEAKING AGAIN WAIT NO I'M PEAKING EVERY TIME NOW LET'S GO LET'S GO LET'S GO",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 85,
+    "completion_tokens": 642,
+    "total_tokens": 727
+  },
+  "timestamp": "2026-10-29T14:48:22.646203+00:00"
+}
+
+{
+  "run_id": "3105bc2153d1450ebada293a535fd185",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_casual_story",
+  "sample": 0,
+  "variables": {
+    "event": "the chaotic thing that happened on their way to work"
+  },
+  "prompt_text": "Write how someone would tell their friend about the chaotic thing that happened on their way to work.",
+  "system_text": "Write the way someone tells a friend a story out loud — casual spoken language, like you're just hanging out. Output only what they say, no labels or quotation marks.",
+  "response": "Bro, you will not believe the morning I just had. So I'm at the bus stop, right, minding my own business, coffee in one hand, phone in the other, and this pigeon just comes out of nowhere and smacks me right in the side of the head. I'm not kidding. Full-on wings in my face. I scream, coffee goes flying, and of course it lands all over my shirt. Then the bus? The bus pulls up, looks at me, and just drives past. I'm standing there covered in coffee and pigeon drama, and the driver just waves. Waves! So I start walking, because now I'm gonna be late, and I step in this huge puddle that's like ankle-deep. My sock is soaked. Then this guy on a bike comes flying around the corner yelling at me like I'm the one who did something wrong. I finally get to the office, and I walk in, and everyone's like, why are you wet and smell like coffee? And I look at my phone and I have a meeting in three minutes. Three minutes! I haven't even sat down. So yeah, that's my morning. How's yours?",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 84,
+    "completion_tokens": 999,
+    "total_tokens": 1083
+  },
+  "timestamp": "2026-10-29T14:48:26.111063+00:00"
+}
+
+{
+  "run_id": "3105bc2153d1450ebada293a535fd185",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_casual_story",
+  "sample": 1,
+  "variables": {
+    "event": "the chaotic thing that happened on their way to work"
+  },
+  "prompt_text": "Write how someone would tell their friend about the chaotic thing that happened on their way to work.",
+  "system_text": "Write the way someone tells a friend a story out loud — casual spoken language, like you're just hanging out. Output only what they say, no labels or quotation marks.",
+  "response": "Bro, okay, so this morning was an absolute disaster. I'm leaving for work, right, coffee in one hand, bag in the other, and of course I trip over the stupid welcome mat. Coffee goes flying, all over my shirt. So I run back in, change, and then I can't find my keys. I'm tearing the place apart, and they were in the door the whole time. Finally get outside, the bus is late, so I hop on one of those rental scooters. It's fine for like two blocks, and then this pigeon just kamikazes into my shoulder. I swerve, almost eat it into a food truck, and the guy starts yelling at me in like three different languages. I keep going, get to the office, and I'm walking in, trying to look normal, and my coworker goes, hey, your shirt's inside out. And there's a pigeon feather in my hair. And the kicker? My boss is standing right there, just looking at me like, nice of you to join us. I just said good morning and went straight to the bathroom. I need a vacation.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 84,
+    "completion_tokens": 828,
+    "total_tokens": 912
+  },
+  "timestamp": "2026-10-29T14:48:37.575870+00:00"
+}
+
+{
+  "run_id": "3105bc2153d1450ebada293a535fd185",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_casual_story",
+  "sample": 2,
+  "variables": {
+    "event": "the chaotic thing that happened on their way to work"
+  },
+  "prompt_text": "Write how someone would tell their friend about the chaotic thing that happened on their way to work.",
+  "system_text": "Write the way someone tells a friend a story out loud — casual spoken language, like you're just hanging out. Output only what they say, no labels or quotation marks.",
+  "response": "Okay so you know how my mornings are already a disaster? Yeah, multiply that by a thousand. I wake up late because my phone died, right? So I'm already sprinting around like a maniac. I grab the first shirt I see, which turns out to be the one with the stain from that taco night, but whatever, I throw a hoodie over it. I run out the door, no coffee, nothing. I get to the bus stop and the bus is literally pulling away. I'm waving like an idiot, and the driver just looks at me and keeps going. So I start walking, thinking I'll just catch the next one. Then this guy on a bike comes out of nowhere and almost clips me, and I jump back and step right into a puddle. Not a little puddle, a full-on ankle-deep swamp. My sock is soaked. I'm standing there, wet foot, and then a pigeon flies into the bus shelter and starts freaking out. People are screaming, the pigeon is flopping around, it's chaos. Finally the next bus comes, I get on, and this lady with a giant stroller is blocking the aisle, so I have to squeeze past and my bag catches on the stroller and rips. I get to work late, and my boss is standing right at the door. He's like, rough morning? And I just look at him with my wet foot and ripped bag and I go, you have no idea. Then I sat down and realized I never put on deodorant. So yeah. That was my morning. How's your day going?",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 84,
+    "completion_tokens": 1026,
+    "total_tokens": 1110
+  },
+  "timestamp": "2026-10-29T14:48:40.315629+00:00"
+}
+
+{
+  "run_id": "3105bc2153d1450ebada293a535fd185",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_casual_story",
+  "sample": 3,
+  "variables": {
+    "event": "the chaotic thing that happened on their way to work"
+  },
+  "prompt_text": "Write how someone would tell their friend about the chaotic thing that happened on their way to work.",
+  "system_text": "Write the way someone tells a friend a story out loud — casual spoken language, like you're just hanging out. Output only what they say, no labels or quotation marks.",
+  "response": "Dude. You are not gonna believe the morning I just had. So I leave my place, right, already like ten minutes late because I hit snooze a million times. I'm walking to the bus stop, and I see the bus pulling up, so I start sprinting, coffee in one hand, bag in the other. And of course I hit this huge puddle, like not a puddle, a small lake, and it splashes all up my leg. I'm soaked. But I make the bus. I get on, and there's this guy with a giant tuba case blocking the aisle. I'm not kidding. A tuba. At 7:45 in the morning. So I squeeze past him, and this other lady's dog, who is definitely not a service dog, starts barking at me. The bus driver yells at everyone to sit down, and then he just misses my stop. I'm like, hey, that was my stop. And he goes, you should've pulled the cord. I did pull the cord. I pulled it like three times. Apparently it was broken. So I get off at the next stop, which is like half a mile away, and it starts raining. Of course. And I'm running, coffee now cold, pants wet, and I see this flock of pigeons just chilling on the sidewalk. I try to go around them, but this one pigeon, I swear, looks at me and just flies directly into my face. Not away. Into. My. Face. I scream, drop my coffee, and this guy on the corner just goes, that's a bad omen, man. And I'm like, yeah, no kidding. So I finally get to work, looking like a drowned rat, and my boss is standing at the door like, you're late. And I just pointed at my pants and said, pigeon. And he didn't ask any more questions. So yeah. How's your morning?",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 84,
+    "completion_tokens": 1494,
+    "total_tokens": 1578
+  },
+  "timestamp": "2026-10-29T14:48:44.228557+00:00"
+}
+
+{
+  "run_id": "3105bc2153d1450ebada293a535fd185",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_casual_story",
+  "sample": 4,
+  "variables": {
+    "event": "the chaotic thing that happened on their way to work"
+  },
+  "prompt_text": "Write how someone would tell their friend about the chaotic thing that happened on their way to work.",
+  "system_text": "Write the way someone tells a friend a story out loud — casual spoken language, like you're just hanging out. Output only what they say, no labels or quotation marks.",
+  "response": "Okay so you know how I'm always running late? This morning was a whole new level. I'm driving, already stressed because I couldn't find my other shoe, and then this mattress just falls off the truck in front of me. A whole mattress. I swerve, my coffee goes flying, I'm screaming, the guy behind me is honking like I personally threw it. Then I look back and there's a cop with lights on, but he's going after the mattress truck, not me. So I'm like okay, cool, I'm fine. But then my GPS sends me through this tiny neighborhood and there's a parade. A parade! On a Tuesday. I'm stuck behind kids in costumes and a guy on stilts for like ten minutes. I finally get to work, park, and realize I left my laptop at home. So yeah. How's your morning going?",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 84,
+    "completion_tokens": 660,
+    "total_tokens": 744
+  },
+  "timestamp": "2026-10-29T14:48:46.351208+00:00"
+}
+
+{
+  "run_id": "3105bc2153d1450ebada293a535fd185",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_casual_story",
+  "sample": 0,
+  "variables": {
+    "event": "running into their ex in the worst possible situation"
+  },
+  "prompt_text": "Write how someone would tell their friend about running into their ex in the worst possible situation.",
+  "system_text": "Write the way someone tells a friend a story out loud — casual spoken language, like you're just hanging out. Output only what they say, no labels or quotation marks.",
+  "response": "Dude. Dude, you are not gonna believe this. I just ran into my ex. And when I say ran into, I mean I was at the clinic, right, the one on 5th, getting a checkup, because, you know, I thought I had something. And I'm sitting there in one of those paper gowns, trying to cover my ass, and who walks in? My ex. In a white coat. With a stethoscope. And they're like, oh hey, I'm your doctor today. And I'm like, what? And they're like, yeah, I work here now. And I'm like, since when? And they're like, since you made that appointment. And I'm like, you saw my name on the schedule and you didn't switch? And they're like, no, I wanted to see how you were doing. And I'm like, I'm doing terrible, thanks. And then they put on a glove. And I just... I died. I literally died. And then they're like, okay, scoot down. And I'm like, no. And they're like, come on, we've seen each other naked before. And I'm like, that was different! That was in the dark! And they're like, well, this is in the light. And then they turn on that big lamp. And I just... I can't. I can't even tell you the rest. Just know that I'm moving to another country. Maybe Canada. I hear they have free healthcare. But I don't care. I'll pay. I'll pay anything. Just not that. Not again. So yeah. That's my day. How was yours?",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 83,
+    "completion_tokens": 2613,
+    "total_tokens": 2696
+  },
+  "timestamp": "2026-10-29T14:48:54.425218+00:00"
+}
+
+{
+  "run_id": "3105bc2153d1450ebada293a535fd185",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_casual_story",
+  "sample": 1,
+  "variables": {
+    "event": "running into their ex in the worst possible situation"
+  },
+  "prompt_text": "Write how someone would tell their friend about running into their ex in the worst possible situation.",
+  "system_text": "Write the way someone tells a friend a story out loud — casual spoken language, like you're just hanging out. Output only what they say, no labels or quotation marks.",
+  "response": "Dude. Dude. I just got back from the doctor. And I need you to promise you won't laugh. Okay, you can laugh, but just wait. So I've been having some stomach issues, right? And my doctor finally convinces me to get a colonoscopy. I'm like, fine, whatever. I go in, they give me the gown, the whole thing. And I'm lying there on my side, ass out, just waiting. And the door opens. And I hear this voice. And I know that voice. And I turn my head, and it's her. My ex. In a white coat. With a glove on. And she looks at me, and I look at her, and she just goes, Oh. Hi. And I go, Hey. And she goes, I'm your gastroenterologist. And I'm like, You've got to be kidding me. And she's like, I wish I was. And then she has to explain the procedure. And I'm just lying there, trying to keep it together. And she's like, Okay, you're going to feel some pressure. And I'm like, Pressure? You're about to put a camera where the sun don't shine. And she's like, Just relax. And I'm like, Relax? I haven't seen you in three years, and now you're going to see more of me than you ever did when we were dating. And she just puts on another glove. And then she asks me, So, how's your mom? And I'm like, Are we really doing this right now? And she's like, Just making conversation. And I'm like, I'm about to be probed by my ex-girlfriend, and you want to talk about my mom? And then she turns on the machine. And I just close my eyes and pray for death. And the worst part? When it was over, she patted my shoulder and said, Same time next year? And I said, I'm moving to another country. So yeah. That's my Tuesday.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 83,
+    "completion_tokens": 3262,
+    "total_tokens": 3345
+  },
+  "timestamp": "2026-10-29T14:49:05.121746+00:00"
+}
+
+{
+  "run_id": "3105bc2153d1450ebada293a535fd185",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_casual_story",
+  "sample": 2,
+  "variables": {
+    "event": "running into their ex in the worst possible situation"
+  },
+  "prompt_text": "Write how someone would tell their friend about running into their ex in the worst possible situation.",
+  "system_text": "Write the way someone tells a friend a story out loud — casual spoken language, like you're just hanging out. Output only what they say, no labels or quotation marks.",
+  "response": "Dude. Dude, you are not gonna believe this. I'm still literally shaking. So I finally go to that appointment I've been putting off for like two years, right? The lady doctor. Yeah. My mom kept nagging me, so I go, and I'm already nervous, and the nurse hands me that paper gown that's basically a napkin, and I'm sitting there, legs in the stirrups, feeling like a human taco, and the door opens. And I swear to God, it's my ex. In a white coat. With a clipboard. And she just looks at me and goes, \"Oh. Hi.\" Like we're at a coffee shop. I'm like, \"Hi? I'm literally naked from the waist down and you're about to look inside me.\" I haven't shaved in like a month. A month! I looked like a jungle down there. And she's the one who has to... you know. I just closed my eyes and pretended I was dead. I wanted the exam table to swallow me whole. And then she says, \"So, any changes since last time?\" I'm like, \"Yeah, I'm dying of embarrassment.\" Worst day of my life. I'm never going back. I'm just gonna die of whatever I have. I don't care.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 83,
+    "completion_tokens": 2231,
+    "total_tokens": 2314
+  },
+  "timestamp": "2026-10-29T14:49:11.658133+00:00"
+}
+
+{
+  "run_id": "3105bc2153d1450ebada293a535fd185",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_casual_story",
+  "sample": 3,
+  "variables": {
+    "event": "running into their ex in the worst possible situation"
+  },
+  "prompt_text": "Write how someone would tell their friend about running into their ex in the worst possible situation.",
+  "system_text": "Write the way someone tells a friend a story out loud — casual spoken language, like you're just hanging out. Output only what they say, no labels or quotation marks.",
+  "response": "Dude. Dude. You are not gonna believe this. I ran into my ex last weekend. Worst possible situation. I was catering his wedding. Yeah. His wedding. To the girl he told me not to worry about. And I didn't even know it was his wedding. I just picked up a gig. So I'm there, right? And I'm carrying the cake. And I see him. And he sees me. And I just freeze. And the cake... I dropped it. Right on the bride's dress. And then I tried to clean it up. And I slipped on the frosting. And I knocked over the champagne tower. And then I just ran out. But I ran into the buffet table. And I fell into the punch bowl. And then I threw up. In the punch bowl. And then I just laid there. And my ex is standing over me. And he's like, are you okay? And I'm like, congratulations. And then I passed out. So yeah. I'm never catering again.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 83,
+    "completion_tokens": 3063,
+    "total_tokens": 3146
+  },
+  "timestamp": "2026-10-29T14:49:45.072521+00:00"
+}
+
+{
+  "run_id": "3105bc2153d1450ebada293a535fd185",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_casual_story",
+  "sample": 4,
+  "variables": {
+    "event": "running into their ex in the worst possible situation"
+  },
+  "prompt_text": "Write how someone would tell their friend about running into their ex in the worst possible situation.",
+  "system_text": "Write the way someone tells a friend a story out loud — casual spoken language, like you're just hanging out. Output only what they say, no labels or quotation marks.",
+  "response": "Dude, I swear to god, I just had the most mortifying experience of my entire life. So I'm at CVS, right? I'm not feeling great. I've got a stomach thing. I'm buying, like, three different kinds of anti-diarrheal and a box of those adult diapers because I'm desperate. And I'm in line, and I'm sweating, and I'm trying to hide the diapers under a bag of chips. And who's the cashier? My ex. And they're like, oh hey, long time no see. And I'm like, yeah, hey. And then their new partner walks up and puts their arm around them. And I'm just standing there holding a box of Depends. And then my stomach makes this noise. Like a demon. And I know it's over. I just dropped everything and ran out. But I didn't make it to the door. Let's just say I left a trail. And my ex saw the whole thing. And they called after me, do you need a bag? I wanted to die. I'm never leaving my house again.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 83,
+    "completion_tokens": 2240,
+    "total_tokens": 2323
+  },
+  "timestamp": "2026-10-29T14:49:53.277916+00:00"
+}
+
+{
+  "run_id": "3105bc2153d1450ebada293a535fd185",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_casual_story",
+  "sample": 0,
+  "variables": {
+    "event": "a night out that went completely sideways"
+  },
+  "prompt_text": "Write how someone would tell their friend about a night out that went completely sideways.",
+  "system_text": "Write the way someone tells a friend a story out loud — casual spoken language, like you're just hanging out. Output only what they say, no labels or quotation marks.",
+  "response": "Dude. Okay. So you know how we said we were just gonna have one drink? One. That was the plan. We met at Ryan's, right, and he's like oh I made margaritas, and I'm like cool, one. But his margaritas were basically tequila with a lime wedge. So by eight I'm already speaking Spanish I don't know. Then we go to that bar on Fifth, the one with the mechanical bull? Yeah. And Jess decides she's gonna ride it. She's in a dress, dude. A dress. She gets on, immediately flies off, takes out a table of guys doing shots. Glasses everywhere. One guy's like my tooth. I don't think it was his tooth. I think it was a piece of the table. But he's screaming. So we get kicked out. Fine. Whatever. Then we're on the sidewalk, and Ryan's like I know a place. He does not know a place. We walk like twenty blocks. Twenty. In the wrong direction. We end up at this random house party. We don't know anyone. But there's a guy in a full Batman costume making pancakes. So obviously we stay. Then Jess, still in the dress, starts arguing with Batman about whether pancakes are a breakfast food or a dinner food. It gets heated. Batman throws a pancake. It hits some girl. She throws a drink. Then it's just chaos. Somebody yells cops. We bolt. I don't know why. We didn't do anything. But we bolt. I lose Ryan. I lose Jess. I'm alone, no phone, one shoe. I don't know where the other shoe went. I'm walking down some street, and this old lady asks if I'm okay. I say I'm fine, I'm just looking for my friends. She says I'll pray for you. That's never good. Then I see a cop car. And I'm like oh thank god. But then I see Ryan in the back seat. Just sitting there. Waving at me. Like he's on a parade float. So I wave back. Why did I wave back? I don't know. Then Jess calls me from a stranger's phone. She's at a Waffle House. She doesn't know which one. She says there's a guy named Gary who says he can drive us home. Gary is seventy. Gary has a motorcycle. With a sidecar. So obviously we get in the sidecar. And that's how I ended up here. At your door. At 6 a.m. With a traffic cone. I think it's from the bar. I don't remember taking it. But I have it. And I think I'm supposed to be at work in an hour. So. Yeah. That's how the night went. You got any coffee? Or a new identity? I'm open to either.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 81,
+    "completion_tokens": 1789,
+    "total_tokens": 1870
+  },
+  "timestamp": "2026-10-29T14:50:00.012209+00:00"
+}
+
+{
+  "run_id": "3105bc2153d1450ebada293a535fd185",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_casual_story",
+  "sample": 1,
+  "variables": {
+    "event": "a night out that went completely sideways"
+  },
+  "prompt_text": "Write how someone would tell their friend about a night out that went completely sideways.",
+  "system_text": "Write the way someone tells a friend a story out loud — casual spoken language, like you're just hanging out. Output only what they say, no labels or quotation marks.",
+  "response": "Dude. Dude. Okay so you know how we were just gonna have one drink? One. That was the plan. We get to this place, right, and it's already weird because there's a guy outside in a full pirate costume smoking a cigarette. I'm like okay, whatever, it's a Tuesday. We go in, and Jenna's already three margaritas deep because she got there early with her cousin, who I've never met, and this cousin is like, I don't know, a professional chaos agent. First thing she does is order a round of something called a Dirty Shirley Temple that's basically vodka with a cherry. I should've left then. I should've just left.\n\nNext thing I know, Mikey's on the bar doing some dance he saw on TikTok, and the bartender is yelling at him, and Dave is gone. Just gone. We look for Dave for like 45 minutes. Turns out he was in the alley behind the bar because he thought he saw his ex's car. It wasn't. It was a hearse. A hearse, dude. So we're all outside trying to get Dave to come back in, and Jenna's cousin has somehow acquired a traffic cone. She's carrying it like a baby. Then this guy pulls up in a pedicab and says he can take six people. There's seven of us. Mikey says we'll make it work. We did not make it work. I ended up sitting on the handlebars while Dave held the traffic cone. The pedicab guy takes us like ten blocks and then just stops and says he's not going any further because his legs are tired. We're in the middle of nowhere. It's 2am. Then Jenna starts crying because she lost her shoe. Not both shoes. One shoe. And her cousin is like don't worry, I know a guy, and calls someone. Twenty minutes later a pickup truck pulls up with three guys we've never met and a goat in the back. A goat. I'm not making this up. They're like hop in, we're going to a bonfire. And we did. We went to a bonfire in some field. I woke up the next morning on a couch I didn't recognize with the traffic cone next to me and a goat staring at me through a window. So yeah. That was Jenna's birthday. I'm never drinking tequila again. Probably.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 81,
+    "completion_tokens": 1529,
+    "total_tokens": 1610
+  },
+  "timestamp": "2026-10-29T14:50:05.641443+00:00"
+}
+
+{
+  "run_id": "3105bc2153d1450ebada293a535fd185",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_casual_story",
+  "sample": 2,
+  "variables": {
+    "event": "a night out that went completely sideways"
+  },
+  "prompt_text": "Write how someone would tell their friend about a night out that went completely sideways.",
+  "system_text": "Write the way someone tells a friend a story out loud — casual spoken language, like you're just hanging out. Output only what they say, no labels or quotation marks.",
+  "response": "Okay so you know how I said I was just gonna have one drink and be home by ten? Yeah, that was a lie. We started at that new place on Fifth, and it was fine for like an hour. Then Marcus shows up with these guys from his work, and one of them keeps calling himself The Captain. I don't know. Next thing, there's a round of tequila I didn't order, and someone's doing a handstand on the bar. The bartender yells, Marcus tries to apologize by buying everyone Jäger bombs, and that's when the guy next to me just falls off his stool. Like, not even drunk falling, just tipped over like a statue. His girlfriend starts screaming, the bouncer grabs Marcus for no reason, and I'm trying to find my jacket but it's gone. Gone. So I go outside to call an Uber, and there's a cop car just sitting there, and who's in the back? Sarah. Sarah! She got arrested for trying to climb a fire escape to get a better view of the moon. The moon! I didn't even know she was there. So I'm standing on the sidewalk, no jacket, no phone because I left it on the bar, and this random dude hands me a ferret. A live ferret. Says his name is Kevin. The ferret, not the dude. I still don't know. Then Marcus gets thrown out, his shirt's ripped, and he's like I'm fine I'm fine, but he's bleeding from his ear. So we all pile into this Uber, and the driver is just silent the whole time while Sarah's in the back singing Wonderwall in handcuffs. We get to my place, and I realize I still have the ferret. I don't know where Kevin is now. He's in my bathroom. I think he's eating my toothbrush. So yeah. That was my Tuesday. How was your night?",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 81,
+    "completion_tokens": 1509,
+    "total_tokens": 1590
+  },
+  "timestamp": "2026-10-29T14:50:11.882894+00:00"
+}
+
+{
+  "run_id": "3105bc2153d1450ebada293a535fd185",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_casual_story",
+  "sample": 3,
+  "variables": {
+    "event": "a night out that went completely sideways"
+  },
+  "prompt_text": "Write how someone would tell their friend about a night out that went completely sideways.",
+  "system_text": "Write the way someone tells a friend a story out loud — casual spoken language, like you're just hanging out. Output only what they say, no labels or quotation marks.",
+  "response": "Bro. Bro, you are not gonna believe the absolute train wreck that was last night. You know how I said I was just gonna go for one drink with Marcus? One. Singular. Because I had work this morning. Well, that plan lasted about eleven minutes. We get to this bar, right, and it's fine at first. We're just sitting there, having a beer, talking about nothing. Then Marcus sees this girl he used to work with, and she's like, oh my god, you have to come to my friend's birthday thing, it's just around the corner. And I'm thinking, around the corner, one more drink, fine. Famous last words.\n\nSo we go around the corner, and it's not a birthday thing. It's like a full-on club situation. Bouncer, velvet rope, the whole deal. And Marcus, this idiot, forgot his ID. So he's trying to talk his way in, and the bouncer is not having it. Meanwhile, the girl already went inside. So Marcus looks at me and goes, I'll meet you in there. And I'm like, how? And he just disappears. Like a magician. A drunk magician.\n\nSo I go in alone, which is already weird. And I don't know anybody. But then this guy with a handlebar mustache buys me a shot. And I'm like, free shot, okay. Then another shot. Then a third one that tasted like cinnamon and regret. Next thing I know, I'm on a stage. I don't know how I got there. There's a microphone in my hand. I think I was singing? Or maybe I was giving a speech? I honestly don't know. But people were cheering, so I just went with it.\n\nThen the fire alarm goes off. Not because of me, I think. But everyone starts screaming and running. And I get separated from everyone. I'm outside, no jacket, no phone, because my phone died like an hour ago. And I'm standing there in the rain, just trying to figure out which way is home. And then this goose comes out of nowhere. A goose. In the city. And it starts chasing me. I'm not kidding. I ran three blocks from a goose.\n\nSo I finally get to a diner, right, because it's the only place open. And I'm sitting there, soaking wet, trying to explain to the waitress that I can't pay because I left my wallet in my other pants. And she's just looking at me like I'm a raccoon that learned to talk. Then who walks in? Marcus. With a black eye. And he's holding a ferret. A live ferret. I don't even ask. I just go, what happened to your face? And he goes, I tried to pet a police horse. And I go, why do you have a ferret? And he goes, I don't want to talk about it.\n\nTurns out he never got into the club. He tried to climb in through a window, got caught, and then somehow ended up at some after-party with a guy who owned a ferret. And then he tried to pet a police horse on the way back. So yeah. That was my night. I got chased by a goose, sang karaoke for a crowd I don't remember, and now I'm pretty sure I owe a waitress named Deb forty bucks. And I have to be at work in two hours. So. How was your night?",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 81,
+    "completion_tokens": 2431,
+    "total_tokens": 2512
+  },
+  "timestamp": "2026-10-29T14:50:19.765100+00:00"
+}
+
+{
+  "run_id": "3105bc2153d1450ebada293a535fd185",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_casual_story",
+  "sample": 4,
+  "variables": {
+    "event": "a night out that went completely sideways"
+  },
+  "prompt_text": "Write how someone would tell their friend about a night out that went completely sideways.",
+  "system_text": "Write the way someone tells a friend a story out loud — casual spoken language, like you're just hanging out. Output only what they say, no labels or quotation marks.",
+  "response": "Dude, you are not gonna believe the mess last night turned into. So we start at Jake's, right, just a couple drinks before we head out. But then his roommate pulls out this bottle of tequila and it's all downhill from there. Next thing I know we're downtown, Mike's already screaming at the bouncer because he left his ID in his other pants, and Sarah just vanishes. We find her outside talking to some guy who swears he's a DJ but he's definitely just selling bad molly. Then the fight starts. Some dude bumps Mike, Mike spills his drink, and suddenly it's a whole thing. I'm trying to pull him off, and I slip on something wet, which I'm praying was just beer. Cops show up, everyone scatters. I end up in some alley with one shoe, no phone, and this girl I've never met who keeps calling me Kevin. I'm not Kevin. Then I realize my phone was in my pocket the whole time. We call an Uber, but the driver cancels because Mike tries to bring a traffic cone. Finally get home at like 4 a.m., and my roommate is locked out because I accidentally took his keys. So yeah. Completely sideways. I'm never drinking tequila again. Probably.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 81,
+    "completion_tokens": 911,
+    "total_tokens": 992
+  },
+  "timestamp": "2026-10-29T14:50:23.139641+00:00"
+}
+
+{
+  "run_id": "3105bc2153d1450ebada293a535fd185",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_casual_story",
+  "sample": 0,
+  "variables": {
+    "event": "the most awkward interaction they had all week"
+  },
+  "prompt_text": "Write how someone would tell their friend about the most awkward interaction they had all week.",
+  "system_text": "Write the way someone tells a friend a story out loud — casual spoken language, like you're just hanging out. Output only what they say, no labels or quotation marks.",
+  "response": "Dude, I have to tell you about the most awkward thing that has ever happened to me. I'm still cringing. So, you know that coffee shop I go to every morning before work? The one with the really good cold brew?\n\nSo I'm there, right, and I'm feeling pretty good, I've got my order in, and I'm just waiting at the end of the counter. And this girl, she's standing next to me, also waiting. She's cute, we make eye contact, and she gives me this little smile. So I'm like, \"Okay, cool, this is a thing.\"\n\nI give her a smile back, you know, the friendly but not-too-eager one. And then I turn back to watch the barista. A few seconds later, I glance over again, and she's still looking at me. So I think, \"Alright, I'm going to say something. Just a simple 'Hey, how's your morning going?'\"\n\nI turn to her, I open my mouth, and I'm about to speak, and she goes, \"Oh my god, I am so sorry, I wasn't smiling at you. I was smiling at the guy behind you. He's my boyfriend.\"\n\nAnd I just froze. My mouth was literally open. I looked behind me, and sure enough, there's this dude, and he's just staring at me. And I'm standing there, caught in the middle of a smile that was meant for someone else. I just went, \"Oh. Okay. Cool.\"\n\nThen the barista calls my name, and I have never grabbed a coffee so fast in my life. I didn't even put a lid on it. I just took it and power-walked out of there. I could feel both of them watching me leave. I wanted the floor to swallow me whole. I'm never going back. I'll find a new coffee shop. I'll just drink water from now on.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 82,
+    "completion_tokens": 661,
+    "total_tokens": 743
+  },
+  "timestamp": "2026-10-29T14:50:26.892840+00:00"
+}
+
+{
+  "run_id": "3105bc2153d1450ebada293a535fd185",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_casual_story",
+  "sample": 1,
+  "variables": {
+    "event": "the most awkward interaction they had all week"
+  },
+  "prompt_text": "Write how someone would tell their friend about the most awkward interaction they had all week.",
+  "system_text": "Write the way someone tells a friend a story out loud — casual spoken language, like you're just hanging out. Output only what they say, no labels or quotation marks.",
+  "response": "Bro, okay, so this is so dumb but I'm still cringing. I was at that coffee place by my work, the one with the really slow line, and I'm standing there waiting, right? And this girl in front of me turns around and smiles, and I think she's smiling at me, so I do the whole hey, what's up, little head nod, super smooth. But she wasn't smiling at me. She was smiling at the guy behind me. Her boyfriend. And he's like six foot five and just stares at me. And I'm just standing there with my hand half up like I'm waving at a parade. So I go, oh, I thought you were someone else. And she goes, who? And I panicked and said my dentist. My dentist. Why would my dentist be in a coffee shop? And then the barista calls my name and I just grab the wrong drink and walk out. I didn't even realize it was wrong until I was in my car and took a sip of some oat milk latte. I hate oat milk. So yeah. That was my week. I've been avoiding that coffee shop ever since.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 82,
+    "completion_tokens": 1302,
+    "total_tokens": 1384
+  },
+  "timestamp": "2026-10-29T14:50:33.537177+00:00"
+}
+
+{
+  "run_id": "3105bc2153d1450ebada293a535fd185",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_casual_story",
+  "sample": 2,
+  "variables": {
+    "event": "the most awkward interaction they had all week"
+  },
+  "prompt_text": "Write how someone would tell their friend about the most awkward interaction they had all week.",
+  "system_text": "Write the way someone tells a friend a story out loud — casual spoken language, like you're just hanging out. Output only what they say, no labels or quotation marks.",
+  "response": "Dude, I have to tell you about the most awkward thing that happened this week. So I'm at this coffee shop, right, and I'm already kinda out of it because I slept like three hours. I order my latte, and the barista hands it to me and goes, enjoy your drink. And I, without even thinking, look him dead in the eye and say, you too. You too. To a guy who just handed me a coffee. He's not drinking anything. He's working. And we just stare at each other for like a full second. So I try to fix it. I go, I mean, enjoy your... shift? And he goes, thanks? And I go, yeah, no problem. No problem? Like I did him a favor. Then I turn to walk away and immediately walk into one of those little display things with the mugs, and like three of them almost fall, and I catch one, but not the other, and it just rolls across the floor. And the whole place is looking at me. And the barista just goes, have a good one. And I go, you too. Again. Again! I said it again. So now I'm just speed-walking out of there, no coffee, because I left it on the counter. I left my coffee. I paid for it and left it. And I've been thinking about it for three days. I can't go back there. I might have to move. That's it. That's my week.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 82,
+    "completion_tokens": 1265,
+    "total_tokens": 1347
+  },
+  "timestamp": "2026-10-29T14:50:37.212245+00:00"
+}
+
+{
+  "run_id": "3105bc2153d1450ebada293a535fd185",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_casual_story",
+  "sample": 3,
+  "variables": {
+    "event": "the most awkward interaction they had all week"
+  },
+  "prompt_text": "Write how someone would tell their friend about the most awkward interaction they had all week.",
+  "system_text": "Write the way someone tells a friend a story out loud — casual spoken language, like you're just hanging out. Output only what they say, no labels or quotation marks.",
+  "response": "Okay so the most awkward thing happened on Tuesday. I'm at this coffee shop, right, and the girl behind the counter hands me my latte and goes enjoy your drink. And I go you too. She's not drinking anything. She just blinks at me. So I try to fix it and I'm like I mean enjoy your day, but it comes out enjoy your... drink? Again. Now I'm just standing there holding this cup like a complete idiot. Then I go to leave and I walk straight into the glass door. Not the handle side. The actual glass. And she just watches me. I wanted to evaporate. I said have a good one and basically fled. I haven't been back since. I'm gonna have to find a new coffee shop. That's it. That's my week.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 82,
+    "completion_tokens": 880,
+    "total_tokens": 962
+  },
+  "timestamp": "2026-10-29T14:50:40.506576+00:00"
+}
+
+{
+  "run_id": "3105bc2153d1450ebada293a535fd185",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_casual_story",
+  "sample": 4,
+  "variables": {
+    "event": "the most awkward interaction they had all week"
+  },
+  "prompt_text": "Write how someone would tell their friend about the most awkward interaction they had all week.",
+  "system_text": "Write the way someone tells a friend a story out loud — casual spoken language, like you're just hanging out. Output only what they say, no labels or quotation marks.",
+  "response": "Dude, okay, so you know how I've been trying to be more social and not just hide in my apartment? So I went to that thing at Jen's on Friday. And I'm standing there, holding a drink, feeling super normal, and this guy walks up, and I swear I know him from somewhere. So I go, hey man, good to see you, and I put out my hand for a fist bump. He goes in for a handshake. So now my fist is like hovering over his open palm, and I panic and just... I don't know, I grabbed his fingers? Like a weird finger handshake? And he just looks at me, and I go, sorry, I'm a little drunk, which I wasn't, I had one beer. And he goes, that's okay, I'm here for the open bar. And then neither of us said anything for like ten seconds. Then I just walked away. I literally turned around and walked into a plant. A fake plant. It fell over. Everyone looked. And the guy just went, are you okay? And I said, yeah, I'm just gonna go. And I left. I left the party. I went home. I sat in my car for five minutes before I even started it. So yeah. That's my week. How was yours?",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 82,
+    "completion_tokens": 1371,
+    "total_tokens": 1453
+  },
+  "timestamp": "2026-10-29T14:50:47.064689+00:00"
+}
+
+{
+  "run_id": "3105bc2153d1450ebada293a535fd185",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_casual_story",
+  "sample": 0,
+  "variables": {
+    "event": "winning something they never expected to win"
+  },
+  "prompt_text": "Write how someone would tell their friend about winning something they never expected to win.",
+  "system_text": "Write the way someone tells a friend a story out loud — casual spoken language, like you're just hanging out. Output only what they say, no labels or quotation marks.",
+  "response": "Dude, you are not gonna believe this. Remember that stupid raffle at the coffee shop? The one I only entered because the barista was cute and I wanted an excuse to talk to her? I literally forgot about it like five minutes after I left. Then today my phone rings, unknown number, and I almost sent it to voicemail because who answers unknown numbers anymore. But I picked up, and this lady goes, is this you? I'm like, yeah, who's this? She goes, congratulations, you won the grand prize. I'm standing there like, what grand prize? She goes, the espresso machine and a year of free coffee. I sat down on the sidewalk. I never win anything. I once lost a bet to a squirrel. And now I got a two-thousand-dollar espresso machine? I don't even know how to use it. But I'm gonna learn. I'm gonna become one of those people who talks about crema and bean origins and you're gonna come over and I'm gonna make you a latte and you're gonna hate me. But I won. I actually won. I'm still shaking. I think I need to sit down again.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 81,
+    "completion_tokens": 1018,
+    "total_tokens": 1099
+  },
+  "timestamp": "2026-10-29T14:50:50.416408+00:00"
+}
+
+{
+  "run_id": "3105bc2153d1450ebada293a535fd185",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_casual_story",
+  "sample": 1,
+  "variables": {
+    "event": "winning something they never expected to win"
+  },
+  "prompt_text": "Write how someone would tell their friend about winning something they never expected to win.",
+  "system_text": "Write the way someone tells a friend a story out loud — casual spoken language, like you're just hanging out. Output only what they say, no labels or quotation marks.",
+  "response": "Dude. Dude, you are not gonna believe this. I won the thing. The big one. The one I totally forgot I even signed up for. Remember that charity 5k I did because you bailed and I didn't want the shirt to go to waste? They had a raffle. I put my name in, didn't even look at the prize. I thought it was like a gift card to a smoothie place. I get a call yesterday from a number I don't know. I almost let it go to voicemail. But I answered, and this lady goes, is this Chris? I'm like, yeah, who's this? She goes, congratulations, you won the grand prize. I'm like, what grand prize? She goes, the all-inclusive trip to Costa Rica. I literally sat down on the floor. My dog was looking at me like I was crazy. I never win anything. I once won a goldfish at a carnival and it died before we got home. So this is insane. I'm still waiting for them to call back and be like, yeah, we messed up. But the email came through. It's real. I have to book it by next month. I don't even have a passport. I'm gonna have to expedite that. But dude, I'm going to Costa Rica. For free. I'm freaking out. You have to come with me. I can bring a plus one. Please say yes. I can't go alone. I'll pay for your flight or whatever. Actually the prize covers two people. So you just need to get your passport. Say yes. Say yes right now.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 81,
+    "completion_tokens": 1343,
+    "total_tokens": 1424
+  },
+  "timestamp": "2026-10-29T14:50:56.246574+00:00"
+}
+
+{
+  "run_id": "3105bc2153d1450ebada293a535fd185",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_casual_story",
+  "sample": 2,
+  "variables": {
+    "event": "winning something they never expected to win"
+  },
+  "prompt_text": "Write how someone would tell their friend about winning something they never expected to win.",
+  "system_text": "Write the way someone tells a friend a story out loud — casual spoken language, like you're just hanging out. Output only what they say, no labels or quotation marks.",
+  "response": "Dude. Dude, you are not gonna believe this. I just won something. Like actually won. I’m not joking. Remember that charity raffle thing I bought a ticket for? The one at the school fundraiser? I only did it because the lady at the table was nice and I felt bad walking past. One ticket. Five bucks. I forgot about it like ten minutes later. So I’m going through my email this morning, deleting all the junk, and there’s this one that says congratulations, you’re the grand prize winner. I almost swiped it away. I thought it was one of those scam things. But then I opened it and it’s real. It’s a whole trip. Airfare, hotel, a week in Maui. I called the number to make sure and the guy was like, yeah, you won. I just sat there on the couch staring at the wall. I never win anything. I won a goldfish at a carnival once and it died before we even got home. So this is insane. You have to come with me. I’m not going alone. I don’t even know where my passport is. But who cares. We’re going to Hawaii.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 81,
+    "completion_tokens": 937,
+    "total_tokens": 1018
+  },
+  "timestamp": "2026-10-29T14:51:00.812370+00:00"
+}
+
+{
+  "run_id": "3105bc2153d1450ebada293a535fd185",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_casual_story",
+  "sample": 3,
+  "variables": {
+    "event": "winning something they never expected to win"
+  },
+  "prompt_text": "Write how someone would tell their friend about winning something they never expected to win.",
+  "system_text": "Write the way someone tells a friend a story out loud — casual spoken language, like you're just hanging out. Output only what they say, no labels or quotation marks.",
+  "response": "Dude. You are not gonna believe this. You remember that raffle thing at the hardware store? The one I only entered because the guy said it was free with any purchase? I bought a stupid lightbulb. I forgot about it like five minutes later. Then today I get a call from some number I don't know, and I almost sent it to voicemail, but I answered, and this lady goes, is this Mike? I'm like, yeah? She goes, congratulations, you won the grand prize. I'm like, what grand prize? There was a grand prize? She's like, yeah, a brand new riding lawn mower. A riding lawn mower. I don't even have a lawn. I have a dirt patch and a couple of dandelions that I've been meaning to deal with for three years. I entered for a lightbulb. And now I own a riding lawn mower. I keep waiting for them to call back and be like, just kidding. But no. It's real. I never win anything. I once lost a raffle where I was the only one who entered. And now this. I'm just sitting here staring at the email like it's gonna disappear. What do I even do with it? You want a riding lawn mower? I'll give you a deal. I'm kidding. Maybe. I don't know. I'm still shaking a little. This is insane.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 81,
+    "completion_tokens": 1317,
+    "total_tokens": 1398
+  },
+  "timestamp": "2026-10-29T14:51:06.100175+00:00"
+}
+
+{
+  "run_id": "3105bc2153d1450ebada293a535fd185",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_casual_story",
+  "sample": 4,
+  "variables": {
+    "event": "winning something they never expected to win"
+  },
+  "prompt_text": "Write how someone would tell their friend about winning something they never expected to win.",
+  "system_text": "Write the way someone tells a friend a story out loud — casual spoken language, like you're just hanging out. Output only what they say, no labels or quotation marks.",
+  "response": "Okay so you remember that thing I entered like a month ago? The one I totally forgot about? Yeah, I won it. I actually won. I'm not messing with you. I got an email this morning and I almost deleted it because it looked like spam. It said congratulations, you're the grand prize winner. I was like, yeah right, scam. But then I checked the official page and my name was literally there. My name. I started shaking, dude. I had to sit down. I called my mom and she thought something was wrong because I was laughing and crying at the same time. I never win anything. I never even win a coin flip. Remember that time I lost a bet about whether it would rain and it was literally raining? That's me. So this is insane. And the prize is actually good. I still don't believe it. I keep refreshing the page like it's gonna disappear. I'm half expecting them to email back like, oops, wrong person. But it's real. I won. I actually won. We gotta celebrate. I'm buying dinner. Well, maybe after the prize actually shows up, but still. I'm buying dinner. You have to come. This is the weirdest thing that's ever happened to me.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 81,
+    "completion_tokens": 898,
+    "total_tokens": 979
+  },
+  "timestamp": "2026-10-29T14:51:09.360955+00:00"
+}
+

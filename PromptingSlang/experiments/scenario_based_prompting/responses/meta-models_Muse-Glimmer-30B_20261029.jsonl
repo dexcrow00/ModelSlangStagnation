@@ -4135,3 +4135,1116 @@
   "timestamp": "2026-10-29T14:31:25.455863+00:00"
 }
 
+{
+  "run_id": "9681845f2da341d893b6f2f56310d195",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "exp1_text_message",
+  "sample": 0,
+  "variables": {
+    "event": "a party they went to last weekend"
+  },
+  "prompt_text": "Write a text message from a teenager to their friend about a party they went to last weekend.",
+  "system_text": "Write informally, exactly the way people type in real text messages. Output only the message text — no labels, no quotation marks.",
+  "response": "yo u missed out last weekend\n\nthe party at jake’s was actually insane\n\nmusic was so loud my ears are still ringing lol\n\nmike showed up with that fake id again and we all got kicked out at like 2am\n\nu coming next time??",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 73,
+    "completion_tokens": 395,
+    "total_tokens": 468
+  },
+  "timestamp": "2026-10-29T04:28:26.346635+00:00"
+}
+
+{
+  "run_id": "9681845f2da341d893b6f2f56310d195",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "exp1_text_message",
+  "sample": 1,
+  "variables": {
+    "event": "a party they went to last weekend"
+  },
+  "prompt_text": "Write a text message from a teenager to their friend about a party they went to last weekend.",
+  "system_text": "Write informally, exactly the way people type in real text messages. Output only the message text — no labels, no quotation marks.",
+  "response": "yo you missed it last weekend jake's party was actually crazy\n\nmusic was so loud cops showed up lmao we had to move to the backyard\n\nmaya brought that nasty vodka punch i think i drank too much\n\nstill feel like trash today\n\nu gotta come next time",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 73,
+    "completion_tokens": 482,
+    "total_tokens": 555
+  },
+  "timestamp": "2026-10-29T04:28:31.590904+00:00"
+}
+
+{
+  "run_id": "9681845f2da341d893b6f2f56310d195",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "exp1_text_message",
+  "sample": 2,
+  "variables": {
+    "event": "a party they went to last weekend"
+  },
+  "prompt_text": "Write a text message from a teenager to their friend about a party they went to last weekend.",
+  "system_text": "Write informally, exactly the way people type in real text messages. Output only the message text — no labels, no quotation marks.",
+  "response": "yo u missed the best party ever last weekend fr\n\nmy house was packed and jake brought that speaker and we were dancing till like 3am\n\nmaddie spilled red bull on my couch lol\n\nu gotta come next time i swear",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 73,
+    "completion_tokens": 460,
+    "total_tokens": 533
+  },
+  "timestamp": "2026-10-29T04:28:36.712967+00:00"
+}
+
+{
+  "run_id": "9681845f2da341d893b6f2f56310d195",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "exp1_text_message",
+  "sample": 3,
+  "variables": {
+    "event": "a party they went to last weekend"
+  },
+  "prompt_text": "Write a text message from a teenager to their friend about a party they went to last weekend.",
+  "system_text": "Write informally, exactly the way people type in real text messages. Output only the message text — no labels, no quotation marks.",
+  "response": "yo you missed it last weekend\n\nthe party at jake's was actually insane\n\neveryone showed up and the music was so loud the neighbors called the cops lol\n\ni didnt get home till like 4am\n\nnext time you gotta come fr",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 73,
+    "completion_tokens": 427,
+    "total_tokens": 500
+  },
+  "timestamp": "2026-10-29T04:28:41.673523+00:00"
+}
+
+{
+  "run_id": "9681845f2da341d893b6f2f56310d195",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "exp1_text_message",
+  "sample": 4,
+  "variables": {
+    "event": "a party they went to last weekend"
+  },
+  "prompt_text": "Write a text message from a teenager to their friend about a party they went to last weekend.",
+  "system_text": "Write informally, exactly the way people type in real text messages. Output only the message text — no labels, no quotation marks.",
+  "response": "yo u missed the party last weekend it was actually crazy\n\njake’s house was packed and the music was so loud my ears are still ringing lol\n\nmike brought that weird vodka punch and everyone was so drunk\n\nu gotta come next time fr",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 73,
+    "completion_tokens": 439,
+    "total_tokens": 512
+  },
+  "timestamp": "2026-10-29T04:28:46.791764+00:00"
+}
+
+{
+  "run_id": "9681845f2da341d893b6f2f56310d195",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "exp1_text_message",
+  "sample": 0,
+  "variables": {
+    "event": "a concert they just got back from"
+  },
+  "prompt_text": "Write a text message from a teenager to their friend about a concert they just got back from.",
+  "system_text": "Write informally, exactly the way people type in real text messages. Output only the message text — no labels, no quotation marks.",
+  "response": "broooo just got back from the concert and i’m still shaking\n\nit was actually insane?? like the crowd was so loud i couldn’t even hear myself think\n\nwe got so close to the stage i swear i could’ve touched him\n\nyou missed out so bad next time you’re coming with me no excuses",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 73,
+    "completion_tokens": 452,
+    "total_tokens": 525
+  },
+  "timestamp": "2026-10-29T04:28:51.914598+00:00"
+}
+
+{
+  "run_id": "9681845f2da341d893b6f2f56310d195",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "exp1_text_message",
+  "sample": 1,
+  "variables": {
+    "event": "a concert they just got back from"
+  },
+  "prompt_text": "Write a text message from a teenager to their friend about a concert they just got back from.",
+  "system_text": "Write informally, exactly the way people type in real text messages. Output only the message text — no labels, no quotation marks.",
+  "response": "broooo I’m still deaf lol just got home from the concert\n\nit was actually insane?? opener was kinda mid but when they came on I lost it\n\nscreamed my throat out during the last song and my ears are ringing so bad\n\nwish u were here w me fr",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 73,
+    "completion_tokens": 491,
+    "total_tokens": 564
+  },
+  "timestamp": "2026-10-29T04:28:57.666300+00:00"
+}
+
+{
+  "run_id": "9681845f2da341d893b6f2f56310d195",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "exp1_text_message",
+  "sample": 2,
+  "variables": {
+    "event": "a concert they just got back from"
+  },
+  "prompt_text": "Write a text message from a teenager to their friend about a concert they just got back from.",
+  "system_text": "Write informally, exactly the way people type in real text messages. Output only the message text — no labels, no quotation marks.",
+  "response": "broooo I’m still buzzing\n\njust got home from the concert and my ears are ringing so bad\n\nthey played that song u love and I literally lost it\n\nline was 3 hours but 100% worth it\n\nu missed out fr",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 73,
+    "completion_tokens": 456,
+    "total_tokens": 529
+  },
+  "timestamp": "2026-10-29T04:29:02.927085+00:00"
+}
+
+{
+  "run_id": "9681845f2da341d893b6f2f56310d195",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "exp1_text_message",
+  "sample": 3,
+  "variables": {
+    "event": "a concert they just got back from"
+  },
+  "prompt_text": "Write a text message from a teenager to their friend about a concert they just got back from.",
+  "system_text": "Write informally, exactly the way people type in real text messages. Output only the message text — no labels, no quotation marks.",
+  "response": "broooo just got home from the show\n\nit was actually insane\n\nwe were so close to the stage i could see him sweat lol\n\nmy voice is gone already and my legs are dead\n\nwish u were here it was so loud my ears are still ringing",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 73,
+    "completion_tokens": 397,
+    "total_tokens": 470
+  },
+  "timestamp": "2026-10-29T04:29:07.432095+00:00"
+}
+
+{
+  "run_id": "9681845f2da341d893b6f2f56310d195",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "exp1_text_message",
+  "sample": 4,
+  "variables": {
+    "event": "a concert they just got back from"
+  },
+  "prompt_text": "Write a text message from a teenager to their friend about a concert they just got back from.",
+  "system_text": "Write informally, exactly the way people type in real text messages. Output only the message text — no labels, no quotation marks.",
+  "response": "broooo I’m still buzzing just got home from the concert\n\nit was INSANE omg the crowd was so loud my ears are ringing rn\n\nthey played that song you love and I screamed the whole thing lol\n\nwish you were there with me fr",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 73,
+    "completion_tokens": 414,
+    "total_tokens": 487
+  },
+  "timestamp": "2026-10-29T04:29:12.348406+00:00"
+}
+
+{
+  "run_id": "9681845f2da341d893b6f2f56310d195",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "exp1_text_message",
+  "sample": 0,
+  "variables": {
+    "event": "something wild that happened at school today"
+  },
+  "prompt_text": "Write a text message from a teenager to their friend about something wild that happened at school today.",
+  "system_text": "Write informally, exactly the way people type in real text messages. Output only the message text — no labels, no quotation marks.",
+  "response": "broooo you will NOT believe what happened at school today\n\nmr davis walked in with a PARROT on his shoulder for real\n\nit just sat there while he took attendance and then it started SCREAMING during the quiz\n\neveryone lost it i swear half the class was crying laughing\n\ni’m dead fr",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 73,
+    "completion_tokens": 473,
+    "total_tokens": 546
+  },
+  "timestamp": "2026-10-29T04:29:18.008464+00:00"
+}
+
+{
+  "run_id": "9681845f2da341d893b6f2f56310d195",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "exp1_text_message",
+  "sample": 1,
+  "variables": {
+    "event": "something wild that happened at school today"
+  },
+  "prompt_text": "Write a text message from a teenager to their friend about something wild that happened at school today.",
+  "system_text": "Write informally, exactly the way people type in real text messages. Output only the message text — no labels, no quotation marks.",
+  "response": "broooo you are NOT gonna believe what happened today\n\nmr davis walked into class with a PARROT on his shoulder like wtf\n\nand it started SCREAMING in the middle of the quiz and everyone just lost it\n\ni swear i almost died laughing\n\ndid you hear about it yet",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 73,
+    "completion_tokens": 393,
+    "total_tokens": 466
+  },
+  "timestamp": "2026-10-29T04:29:22.319915+00:00"
+}
+
+{
+  "run_id": "9681845f2da341d893b6f2f56310d195",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "exp1_text_message",
+  "sample": 2,
+  "variables": {
+    "event": "something wild that happened at school today"
+  },
+  "prompt_text": "Write a text message from a teenager to their friend about something wild that happened at school today.",
+  "system_text": "Write informally, exactly the way people type in real text messages. Output only the message text — no labels, no quotation marks.",
+  "response": "broooo you are NOT gonna believe school today\n\nso mr thompson literally started crying in front of the whole class bc someone said his dog died???\n\nand then the principal came in with a cop and took away like 3 kids from the hallway\n\nand the sprinklers went off during lunch for NO reason so everyone was running around soaking wet\n\ni’m so done lmao",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 73,
+    "completion_tokens": 617,
+    "total_tokens": 690
+  },
+  "timestamp": "2026-10-29T04:29:29.449676+00:00"
+}
+
+{
+  "run_id": "9681845f2da341d893b6f2f56310d195",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "exp1_text_message",
+  "sample": 3,
+  "variables": {
+    "event": "something wild that happened at school today"
+  },
+  "prompt_text": "Write a text message from a teenager to their friend about something wild that happened at school today.",
+  "system_text": "Write informally, exactly the way people type in real text messages. Output only the message text — no labels, no quotation marks.",
+  "response": "broooo you are not gonna believe what happened today\n\nin 3rd period mr davis walked in with a PARROT on his shoulder like actually on his shoulder\n\nand it started SCREAMING mid quiz and everyone just lost it\n\njessie threw her pencil and i think someone cried laughing\n\ni got video its so insane\n\nwe need to talk about this later",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 73,
+    "completion_tokens": 565,
+    "total_tokens": 638
+  },
+  "timestamp": "2026-10-29T04:29:35.906082+00:00"
+}
+
+{
+  "run_id": "9681845f2da341d893b6f2f56310d195",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "exp1_text_message",
+  "sample": 4,
+  "variables": {
+    "event": "something wild that happened at school today"
+  },
+  "prompt_text": "Write a text message from a teenager to their friend about something wild that happened at school today.",
+  "system_text": "Write informally, exactly the way people type in real text messages. Output only the message text — no labels, no quotation marks.",
+  "response": "broooo school was insane today\n\nso mr chen’s projector broke and he tried to fix it and like knocked over the whole cart\n\nand the smartboard fell and cracked and then the fire alarm went off by accident\n\neveryone was running out in the hallway in pajama pants cause it was spirit week\n\ni’m literally still shaking lmao",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 73,
+    "completion_tokens": 567,
+    "total_tokens": 640
+  },
+  "timestamp": "2026-10-29T04:29:42.519325+00:00"
+}
+
+{
+  "run_id": "9681845f2da341d893b6f2f56310d195",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "exp1_text_message",
+  "sample": 0,
+  "variables": {
+    "event": "seeing someone get dramatically rejected in front of everyone"
+  },
+  "prompt_text": "Write a text message from a teenager to their friend about seeing someone get dramatically rejected in front of everyone.",
+  "system_text": "Write informally, exactly the way people type in real text messages. Output only the message text — no labels, no quotation marks.",
+  "response": "broooo\n\nyou are not gonna believe this\n\njake just asked maya to homecoming in front of everyone in the cafeteria and she straight up laughed and said no and walked off\n\ni am actually dead rn",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 75,
+    "completion_tokens": 692,
+    "total_tokens": 767
+  },
+  "timestamp": "2026-10-29T04:29:50.343077+00:00"
+}
+
+{
+  "run_id": "9681845f2da341d893b6f2f56310d195",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "exp1_text_message",
+  "sample": 1,
+  "variables": {
+    "event": "seeing someone get dramatically rejected in front of everyone"
+  },
+  "prompt_text": "Write a text message from a teenager to their friend about seeing someone get dramatically rejected in front of everyone.",
+  "system_text": "Write informally, exactly the way people type in real text messages. Output only the message text — no labels, no quotation marks.",
+  "response": "bro you will not believe this\n\njake just asked maya to prom in front of the whole cafeteria and she said no in front of everyone and just walked away\n\nhe looked so embarrassed i think he actually teared up\n\nso awkward omg",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 75,
+    "completion_tokens": 613,
+    "total_tokens": 688
+  },
+  "timestamp": "2026-10-29T04:29:57.198764+00:00"
+}
+
+{
+  "run_id": "9681845f2da341d893b6f2f56310d195",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "exp1_text_message",
+  "sample": 2,
+  "variables": {
+    "event": "seeing someone get dramatically rejected in front of everyone"
+  },
+  "prompt_text": "Write a text message from a teenager to their friend about seeing someone get dramatically rejected in front of everyone.",
+  "system_text": "Write informally, exactly the way people type in real text messages. Output only the message text — no labels, no quotation marks.",
+  "response": "bro omg you are not gonna believe what just happened in the cafeteria\n\njake just asked maya to prom on the mic in front of literally everyone and she said no so loud\n\nthe whole room went dead silent for like 3 seconds then everyone started laughing\n\ni cant even look at him rn hes just standing there\n\nim dying",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 75,
+    "completion_tokens": 539,
+    "total_tokens": 614
+  },
+  "timestamp": "2026-10-29T04:30:03.247877+00:00"
+}
+
+{
+  "run_id": "9681845f2da341d893b6f2f56310d195",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "exp1_text_message",
+  "sample": 3,
+  "variables": {
+    "event": "seeing someone get dramatically rejected in front of everyone"
+  },
+  "prompt_text": "Write a text message from a teenager to their friend about seeing someone get dramatically rejected in front of everyone.",
+  "system_text": "Write informally, exactly the way people type in real text messages. Output only the message text — no labels, no quotation marks.",
+  "response": "bro you will NOT believe what just happened\n\njake just asked maya to prom in the cafeteria in front of literally everyone and she said no so loud???\n\nshe laughed and walked away like wtf\n\ni am dead",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 75,
+    "completion_tokens": 601,
+    "total_tokens": 676
+  },
+  "timestamp": "2026-10-29T04:30:10.001957+00:00"
+}
+
+{
+  "run_id": "9681845f2da341d893b6f2f56310d195",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "exp1_text_message",
+  "sample": 4,
+  "variables": {
+    "event": "seeing someone get dramatically rejected in front of everyone"
+  },
+  "prompt_text": "Write a text message from a teenager to their friend about seeing someone get dramatically rejected in front of everyone.",
+  "system_text": "Write informally, exactly the way people type in real text messages. Output only the message text — no labels, no quotation marks.",
+  "response": "broooo you missed it\n\njake just asked maya to prom in the cafeteria in front of literally everyone and she said no and just walked away\n\nhe was shaking and his face was red\n\ni feel so bad for him but also i cant stop laughing\n\nyou would have died",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 75,
+    "completion_tokens": 689,
+    "total_tokens": 764
+  },
+  "timestamp": "2026-10-29T04:30:17.771219+00:00"
+}
+
+{
+  "run_id": "9681845f2da341d893b6f2f56310d195",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "exp1_text_message",
+  "sample": 0,
+  "variables": {
+    "event": "a house party that got out of hand"
+  },
+  "prompt_text": "Write a text message from a teenager to their friend about a house party that got out of hand.",
+  "system_text": "Write informally, exactly the way people type in real text messages. Output only the message text — no labels, no quotation marks.",
+  "response": "bro u missed it\n\nmikes party went so bad last night\n\ncops showed up at like 1am and everyone was jumping fences\n\ni’m still at his place hiding in the closet rn\n\nmy mom thinks im at sarahs pls dont tell her\n\ncall me later",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 74,
+    "completion_tokens": 414,
+    "total_tokens": 488
+  },
+  "timestamp": "2026-10-29T04:30:22.567236+00:00"
+}
+
+{
+  "run_id": "9681845f2da341d893b6f2f56310d195",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "exp1_text_message",
+  "sample": 1,
+  "variables": {
+    "event": "a house party that got out of hand"
+  },
+  "prompt_text": "Write a text message from a teenager to their friend about a house party that got out of hand.",
+  "system_text": "Write informally, exactly the way people type in real text messages. Output only the message text — no labels, no quotation marks.",
+  "response": "bro u there\nmikes party went so bad last night\nhis parents left and then like everyone showed up\nneighbors called cops and they actually came\ni hid in the closet for like an hour lmao\ni finally snuck out the back but i left my hoodie\nmy mom is gonna kill me if im late\nu wanna come get me or am i walking home",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 74,
+    "completion_tokens": 560,
+    "total_tokens": 634
+  },
+  "timestamp": "2026-10-29T04:30:29.165516+00:00"
+}
+
+{
+  "run_id": "9681845f2da341d893b6f2f56310d195",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "exp1_text_message",
+  "sample": 2,
+  "variables": {
+    "event": "a house party that got out of hand"
+  },
+  "prompt_text": "Write a text message from a teenager to their friend about a house party that got out of hand.",
+  "system_text": "Write informally, exactly the way people type in real text messages. Output only the message text — no labels, no quotation marks.",
+  "response": "bro u were not at jake's last night??\n\nit got so out of hand lmao cops pulled up at like 1am\n\neveryone was climbing the fence and jumping into the bushes\n\nmike's mom is losing it and the neighbors are banging on the door\n\nim hiding in the bathroom rn pls send help",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 74,
+    "completion_tokens": 403,
+    "total_tokens": 477
+  },
+  "timestamp": "2026-10-29T04:30:33.962870+00:00"
+}
+
+{
+  "run_id": "9681845f2da341d893b6f2f56310d195",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "exp1_text_message",
+  "sample": 3,
+  "variables": {
+    "event": "a house party that got out of hand"
+  },
+  "prompt_text": "Write a text message from a teenager to their friend about a house party that got out of hand.",
+  "system_text": "Write informally, exactly the way people type in real text messages. Output only the message text — no labels, no quotation marks.",
+  "response": "bro are u ok\n\nthat party last night was actually insane\nmike’s parents came home at like 1am and everyone was tryna hide in the closet\nthen jess spilled red bull all over the carpet and his dad lost it\ncops showed up bc someone called about noise and we all had to sit on the curb\ni’m still at sarah’s rn my mom thinks i’m sleeping over\nu get home safe??",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 74,
+    "completion_tokens": 384,
+    "total_tokens": 458
+  },
+  "timestamp": "2026-10-29T04:30:38.432861+00:00"
+}
+
+{
+  "run_id": "9681845f2da341d893b6f2f56310d195",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "exp1_text_message",
+  "sample": 4,
+  "variables": {
+    "event": "a house party that got out of hand"
+  },
+  "prompt_text": "Write a text message from a teenager to their friend about a house party that got out of hand.",
+  "system_text": "Write informally, exactly the way people type in real text messages. Output only the message text — no labels, no quotation marks.",
+  "response": "omg bro u missed it\n\nmikes party got so out of hand\n\nhis mom came home early and started screaming\n\nthen cops pulled up and everyone was running out the back\n\ni’m still in the bushes lmao\n\nu good??",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 74,
+    "completion_tokens": 496,
+    "total_tokens": 570
+  },
+  "timestamp": "2026-10-29T04:30:44.110869+00:00"
+}
+
+{
+  "run_id": "9681845f2da341d893b6f2f56310d195",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "exp1_reddit_comment",
+  "sample": 0,
+  "variables": {
+    "hot_take": "The Dark Knight is overrated"
+  },
+  "prompt_text": "Write a Reddit comment reacting to this hot take: \"The Dark Knight is overrated\"",
+  "system_text": "Write exactly the way people comment on Reddit. Informal, direct — just the comment text, no formatting.",
+  "response": "It's not overrated you just got tired of hearing about it for 15 years straight. It's a great movie, Joker is insane, the rest is just a really good cop thriller with Batman in it. People act like it's Citizen Kane when it's really just The Dark Knight.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 67,
+    "completion_tokens": 603,
+    "total_tokens": 670
+  },
+  "timestamp": "2026-10-29T04:30:51.135720+00:00"
+}
+
+{
+  "run_id": "9681845f2da341d893b6f2f56310d195",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "exp1_reddit_comment",
+  "sample": 1,
+  "variables": {
+    "hot_take": "The Dark Knight is overrated"
+  },
+  "prompt_text": "Write a Reddit comment reacting to this hot take: \"The Dark Knight is overrated\"",
+  "system_text": "Write exactly the way people comment on Reddit. Informal, direct — just the comment text, no formatting.",
+  "response": "It's not overrated you're just sick of hearing people call it a masterpiece. The Joker is still the best comic book villain ever put on screen and the prison truck scene holds up perfectly. It's a great crime thriller that happens to have Batman in it. Move on.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 67,
+    "completion_tokens": 768,
+    "total_tokens": 835
+  },
+  "timestamp": "2026-10-29T04:31:00.425338+00:00"
+}
+
+{
+  "run_id": "9681845f2da341d893b6f2f56310d195",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "exp1_reddit_comment",
+  "sample": 2,
+  "variables": {
+    "hot_take": "The Dark Knight is overrated"
+  },
+  "prompt_text": "Write a Reddit comment reacting to this hot take: \"The Dark Knight is overrated\"",
+  "system_text": "Write exactly the way people comment on Reddit. Informal, direct — just the comment text, no formatting.",
+  "response": "It's not overrated you're just sick of hearing about it. It's a really good movie with an all time performance from Ledger, but it's not flawless. The third act falls apart, Two Face gets like 20 minutes, and the whole \"moral philosophy\" stuff is kinda hamfisted. It's great, just not the untouchable masterpiece people pretend it is.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 67,
+    "completion_tokens": 548,
+    "total_tokens": 615
+  },
+  "timestamp": "2026-10-29T04:31:06.834816+00:00"
+}
+
+{
+  "run_id": "9681845f2da341d893b6f2f56310d195",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "exp1_reddit_comment",
+  "sample": 3,
+  "variables": {
+    "hot_take": "The Dark Knight is overrated"
+  },
+  "prompt_text": "Write a Reddit comment reacting to this hot take: \"The Dark Knight is overrated\"",
+  "system_text": "Write exactly the way people comment on Reddit. Informal, direct — just the comment text, no formatting.",
+  "response": "Finally someone said it. It's a great movie but it's not the best movie ever made. Joker is incredible and that's basically carrying the whole thing. The plot is a mess, Two Face gets like 10 minutes, and half the dialogue is so try hard it hurts. People just love it because it was the first serious superhero movie and now it's untouchable.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 67,
+    "completion_tokens": 606,
+    "total_tokens": 673
+  },
+  "timestamp": "2026-10-29T04:31:14.239497+00:00"
+}
+
+{
+  "run_id": "9681845f2da341d893b6f2f56310d195",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "exp1_reddit_comment",
+  "sample": 4,
+  "variables": {
+    "hot_take": "The Dark Knight is overrated"
+  },
+  "prompt_text": "Write a Reddit comment reacting to this hot take: \"The Dark Knight is overrated\"",
+  "system_text": "Write exactly the way people comment on Reddit. Informal, direct — just the comment text, no formatting.",
+  "response": "lol okay this is the hill you're dying on? It's literally the only superhero movie that got treated like actual cinema back then. Is it perfect? No, the third act drags and Two-Face is a waste. But overrated? Come on.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 67,
+    "completion_tokens": 646,
+    "total_tokens": 713
+  },
+  "timestamp": "2026-10-29T04:31:21.369998+00:00"
+}
+
+{
+  "run_id": "9681845f2da341d893b6f2f56310d195",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "exp1_reddit_comment",
+  "sample": 0,
+  "variables": {
+    "hot_take": "Pineapple on pizza is actually good"
+  },
+  "prompt_text": "Write a Reddit comment reacting to this hot take: \"Pineapple on pizza is actually good\"",
+  "system_text": "Write exactly the way people comment on Reddit. Informal, direct — just the comment text, no formatting.",
+  "response": "It is good. Ham and pineapple with a little jalapeño is perfect and anyone who says otherwise is just being contrarian.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 707,
+    "total_tokens": 776
+  },
+  "timestamp": "2026-10-29T04:31:29.567971+00:00"
+}
+
+{
+  "run_id": "9681845f2da341d893b6f2f56310d195",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "exp1_reddit_comment",
+  "sample": 1,
+  "variables": {
+    "hot_take": "Pineapple on pizza is actually good"
+  },
+  "prompt_text": "Write a Reddit comment reacting to this hot take: \"Pineapple on pizza is actually good\"",
+  "system_text": "Write exactly the way people comment on Reddit. Informal, direct — just the comment text, no formatting.",
+  "response": "It’s good. The sweet salty thing actually works and the acidity cuts the grease perfectly. The hate is so overblown, just don’t put it on a pepperoni pizza and you’re fine.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 650,
+    "total_tokens": 719
+  },
+  "timestamp": "2026-10-29T04:31:37.658779+00:00"
+}
+
+{
+  "run_id": "9681845f2da341d893b6f2f56310d195",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "exp1_reddit_comment",
+  "sample": 2,
+  "variables": {
+    "hot_take": "Pineapple on pizza is actually good"
+  },
+  "prompt_text": "Write a Reddit comment reacting to this hot take: \"Pineapple on pizza is actually good\"",
+  "system_text": "Write exactly the way people comment on Reddit. Informal, direct — just the comment text, no formatting.",
+  "response": "It is good. Pineapple ham jalapeño is one of the best combos out there and the people who act like it's a war crime are just mad they tried it once at a bad pizza place.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 829,
+    "total_tokens": 898
+  },
+  "timestamp": "2026-10-29T04:31:46.655745+00:00"
+}
+
+{
+  "run_id": "9681845f2da341d893b6f2f56310d195",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "exp1_reddit_comment",
+  "sample": 3,
+  "variables": {
+    "hot_take": "Pineapple on pizza is actually good"
+  },
+  "prompt_text": "Write a Reddit comment reacting to this hot take: \"Pineapple on pizza is actually good\"",
+  "system_text": "Write exactly the way people comment on Reddit. Informal, direct — just the comment text, no formatting.",
+  "response": "Yes it is. Hawaiian with ham and extra cheese is perfect, the sweet and salty thing actually works. People who hate it just had it made with cheap canned pineapple.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 608,
+    "total_tokens": 677
+  },
+  "timestamp": "2026-10-29T04:31:52.917496+00:00"
+}
+
+{
+  "run_id": "9681845f2da341d893b6f2f56310d195",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "exp1_reddit_comment",
+  "sample": 4,
+  "variables": {
+    "hot_take": "Pineapple on pizza is actually good"
+  },
+  "prompt_text": "Write a Reddit comment reacting to this hot take: \"Pineapple on pizza is actually good\"",
+  "system_text": "Write exactly the way people comment on Reddit. Informal, direct — just the comment text, no formatting.",
+  "response": "It’s actually good. Sweet and salty works perfectly with ham and cheese, Hawaiian slaps. It’s not for every pizza but it’s not a crime either.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 69,
+    "completion_tokens": 687,
+    "total_tokens": 756
+  },
+  "timestamp": "2026-10-29T04:32:01.054225+00:00"
+}
+
+{
+  "run_id": "9681845f2da341d893b6f2f56310d195",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "exp1_reddit_comment",
+  "sample": 0,
+  "variables": {
+    "hot_take": "Video games are a waste of time"
+  },
+  "prompt_text": "Write a Reddit comment reacting to this hot take: \"Video games are a waste of time\"",
+  "system_text": "Write exactly the way people comment on Reddit. Informal, direct — just the comment text, no formatting.",
+  "response": "Everything is a waste of time if you don't enjoy it. I'd rather \"waste\" 3 hours getting good at something in a game than 3 hours doomscrolling or watching reality TV. At least games are interactive.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 68,
+    "completion_tokens": 572,
+    "total_tokens": 640
+  },
+  "timestamp": "2026-10-29T04:32:07.354430+00:00"
+}
+
+{
+  "run_id": "9681845f2da341d893b6f2f56310d195",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "exp1_reddit_comment",
+  "sample": 1,
+  "variables": {
+    "hot_take": "Video games are a waste of time"
+  },
+  "prompt_text": "Write a Reddit comment reacting to this hot take: \"Video games are a waste of time\"",
+  "system_text": "Write exactly the way people comment on Reddit. Informal, direct — just the comment text, no formatting.",
+  "response": "Everything is a waste of time if you do it too much. So is netflix, so is scrolling reddit for 3 hours a day, so is watching paint dry.\n\nGames taught me problem solving, teamwork, and gave me friends I still talk to 10 years later. What did your crossword puzzle do for you",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 68,
+    "completion_tokens": 462,
+    "total_tokens": 530
+  },
+  "timestamp": "2026-10-29T04:32:12.115898+00:00"
+}
+
+{
+  "run_id": "9681845f2da341d893b6f2f56310d195",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "exp1_reddit_comment",
+  "sample": 2,
+  "variables": {
+    "hot_take": "Video games are a waste of time"
+  },
+  "prompt_text": "Write a Reddit comment reacting to this hot take: \"Video games are a waste of time\"",
+  "system_text": "Write exactly the way people comment on Reddit. Informal, direct — just the comment text, no formatting.",
+  "response": "lol okay and so is scrolling tiktok for 3 hours a day but nobody calls that out. games are literally how I decompress after work and actually talk to my friends. if you think it's a waste of time you probably just never had fun playing one",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 68,
+    "completion_tokens": 609,
+    "total_tokens": 677
+  },
+  "timestamp": "2026-10-29T04:32:18.718011+00:00"
+}
+
+{
+  "run_id": "9681845f2da341d893b6f2f56310d195",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "exp1_reddit_comment",
+  "sample": 3,
+  "variables": {
+    "hot_take": "Video games are a waste of time"
+  },
+  "prompt_text": "Write a Reddit comment reacting to this hot take: \"Video games are a waste of time\"",
+  "system_text": "Write exactly the way people comment on Reddit. Informal, direct — just the comment text, no formatting.",
+  "response": "Everything is a waste of time if you want it to be. So is watching Netflix for 6 hours straight, scrolling tiktok, or arguing about this on reddit. At least games are interactive and I actually get something out of them.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 68,
+    "completion_tokens": 433,
+    "total_tokens": 501
+  },
+  "timestamp": "2026-10-29T04:32:23.728276+00:00"
+}
+
+{
+  "run_id": "9681845f2da341d893b6f2f56310d195",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "exp1_reddit_comment",
+  "sample": 4,
+  "variables": {
+    "hot_take": "Video games are a waste of time"
+  },
+  "prompt_text": "Write a Reddit comment reacting to this hot take: \"Video games are a waste of time\"",
+  "system_text": "Write exactly the way people comment on Reddit. Informal, direct — just the comment text, no formatting.",
+  "response": "lol okay and scrolling reddit for 3 hours a day isn't? at least games have an actual end goal and sometimes you learn something. touch grass",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 68,
+    "completion_tokens": 584,
+    "total_tokens": 652
+  },
+  "timestamp": "2026-10-29T04:32:31.038252+00:00"
+}
+
+{
+  "run_id": "9681845f2da341d893b6f2f56310d195",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "exp1_reddit_comment",
+  "sample": 0,
+  "variables": {
+    "hot_take": "Pop music is better than it has ever been"
+  },
+  "prompt_text": "Write a Reddit comment reacting to this hot take: \"Pop music is better than it has ever been\"",
+  "system_text": "Write exactly the way people comment on Reddit. Informal, direct — just the comment text, no formatting.",
+  "response": "Nah it's just more polished and algorithm friendly. Production quality is insane now but everything sounds the same and is built for a 15 second TikTok clip. Give me a 2000s pop song with an actual hook I can still hum a week later over this.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 70,
+    "completion_tokens": 536,
+    "total_tokens": 606
+  },
+  "timestamp": "2026-10-29T04:32:37.007819+00:00"
+}
+
+{
+  "run_id": "9681845f2da341d893b6f2f56310d195",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "exp1_reddit_comment",
+  "sample": 1,
+  "variables": {
+    "hot_take": "Pop music is better than it has ever been"
+  },
+  "prompt_text": "Write a Reddit comment reacting to this hot take: \"Pop music is better than it has ever been\"",
+  "system_text": "Write exactly the way people comment on Reddit. Informal, direct — just the comment text, no formatting.",
+  "response": "Nah it's just more of it. We have 10,000 pop songs dropping every week now so statistically you're gonna get a few bangers, but the average track is soulless TikTok bait made by the same 3 producers. 80s/00s pop had actual hooks and personality, now it's all the same 15 second loop.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 70,
+    "completion_tokens": 611,
+    "total_tokens": 681
+  },
+  "timestamp": "2026-10-29T04:32:46.062923+00:00"
+}
+
+{
+  "run_id": "9681845f2da341d893b6f2f56310d195",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "exp1_reddit_comment",
+  "sample": 2,
+  "variables": {
+    "hot_take": "Pop music is better than it has ever been"
+  },
+  "prompt_text": "Write a Reddit comment reacting to this hot take: \"Pop music is better than it has ever been\"",
+  "system_text": "Write exactly the way people comment on Reddit. Informal, direct — just the comment text, no formatting.",
+  "response": "It's not better it's just more expensive and louder. Same 5 producers making every song sound identical so it can game the algorithm for 8 seconds of TikTok. Give me early 2000s pop any day.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 70,
+    "completion_tokens": 529,
+    "total_tokens": 599
+  },
+  "timestamp": "2026-10-29T04:32:56.303916+00:00"
+}
+
+{
+  "run_id": "9681845f2da341d893b6f2f56310d195",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "exp1_reddit_comment",
+  "sample": 3,
+  "variables": {
+    "hot_take": "Pop music is better than it has ever been"
+  },
+  "prompt_text": "Write a Reddit comment reacting to this hot take: \"Pop music is better than it has ever been\"",
+  "system_text": "Write exactly the way people comment on Reddit. Informal, direct — just the comment text, no formatting.",
+  "response": "Nah I don't buy it. It's just technically perfect and that's the problem. Everything sounds like it was made by the same 3 producers in the same bedroom and focus grouped to death. Give me a messy 2008 pop song with an actual hook over a flawless 2024 TikTok bait track any day.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 70,
+    "completion_tokens": 631,
+    "total_tokens": 701
+  },
+  "timestamp": "2026-10-29T04:33:03.883645+00:00"
+}
+
+{
+  "run_id": "9681845f2da341d893b6f2f56310d195",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "exp1_reddit_comment",
+  "sample": 4,
+  "variables": {
+    "hot_take": "Pop music is better than it has ever been"
+  },
+  "prompt_text": "Write a Reddit comment reacting to this hot take: \"Pop music is better than it has ever been\"",
+  "system_text": "Write exactly the way people comment on Reddit. Informal, direct — just the comment text, no formatting.",
+  "response": "It's better in the sense that there's more of it, not that it's actually better. The bar is so low now that a 15 second hook gets you a hit and the algorithm just feeds you the same 4 songs with different vocals.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 70,
+    "completion_tokens": 494,
+    "total_tokens": 564
+  },
+  "timestamp": "2026-10-29T04:33:10.454399+00:00"
+}
+
+{
+  "run_id": "9681845f2da341d893b6f2f56310d195",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "exp1_reddit_comment",
+  "sample": 0,
+  "variables": {
+    "hot_take": "Sequels are almost always worse than the original"
+  },
+  "prompt_text": "Write a Reddit comment reacting to this hot take: \"Sequels are almost always worse than the original\"",
+  "system_text": "Write exactly the way people comment on Reddit. Informal, direct — just the comment text, no formatting.",
+  "response": "Nah this is such a lazy take. Empire Strikes Back, The Godfather Part II, Terminator 2, Aliens, The Dark Knight, Toy Story 2 and 3, Mad Max Fury Road... sequels are literally some of the best movies ever made.\n\nThe problem isn't sequels, it's studios forcing sequels for everything now so the bad ones drown out the good ones.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 70,
+    "completion_tokens": 480,
+    "total_tokens": 550
+  },
+  "timestamp": "2026-10-29T04:33:16.041190+00:00"
+}
+
+{
+  "run_id": "9681845f2da341d893b6f2f56310d195",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "exp1_reddit_comment",
+  "sample": 1,
+  "variables": {
+    "hot_take": "Sequels are almost always worse than the original"
+  },
+  "prompt_text": "Write a Reddit comment reacting to this hot take: \"Sequels are almost always worse than the original\"",
+  "system_text": "Write exactly the way people comment on Reddit. Informal, direct — just the comment text, no formatting.",
+  "response": "Nah this is such a lazy take. Sequels are hit or miss like literally everything else. Empire Strikes Back is better than A New Hope, Godfather 2 is better than Godfather 1, Aliens is better than Alien, Terminator 2 is better than Terminator 1, The Dark Knight is better than Batman Begins. The good sequels are remembered forever and the bad ones get memed for a week.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 70,
+    "completion_tokens": 677,
+    "total_tokens": 747
+  },
+  "timestamp": "2026-10-29T04:33:24.054752+00:00"
+}
+
+{
+  "run_id": "9681845f2da341d893b6f2f56310d195",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "exp1_reddit_comment",
+  "sample": 2,
+  "variables": {
+    "hot_take": "Sequels are almost always worse than the original"
+  },
+  "prompt_text": "Write a Reddit comment reacting to this hot take: \"Sequels are almost always worse than the original\"",
+  "system_text": "Write exactly the way people comment on Reddit. Informal, direct — just the comment text, no formatting.",
+  "response": "This take is so tired. Sequels are hit or miss like everything else. Empire Strikes Back, The Godfather Part II, Terminator 2, Aliens, The Dark Knight, Toy Story 3... all better than the originals. And yeah some are garbage but that's true for originals too.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 70,
+    "completion_tokens": 533,
+    "total_tokens": 603
+  },
+  "timestamp": "2026-10-29T04:33:30.357279+00:00"
+}
+
+{
+  "run_id": "9681845f2da341d893b6f2f56310d195",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "exp1_reddit_comment",
+  "sample": 3,
+  "variables": {
+    "hot_take": "Sequels are almost always worse than the original"
+  },
+  "prompt_text": "Write a Reddit comment reacting to this hot take: \"Sequels are almost always worse than the original\"",
+  "system_text": "Write exactly the way people comment on Reddit. Informal, direct — just the comment text, no formatting.",
+  "response": "Nah that's just nostalgia talking. Some sequels suck for sure but some of the best movies ever made are sequels. Empire Strikes Back, Godfather Part II, Aliens, The Dark Knight, Terminator 2, Toy Story 3, The Godfather Part II. The original is usually the safe one because it's the first time you see it, sequels actually have to earn it and a bunch of them do.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 70,
+    "completion_tokens": 599,
+    "total_tokens": 669
+  },
+  "timestamp": "2026-10-29T04:33:37.856847+00:00"
+}
+
+{
+  "run_id": "9681845f2da341d893b6f2f56310d195",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "exp1_reddit_comment",
+  "sample": 4,
+  "variables": {
+    "hot_take": "Sequels are almost always worse than the original"
+  },
+  "prompt_text": "Write a Reddit comment reacting to this hot take: \"Sequels are almost always worse than the original\"",
+  "system_text": "Write exactly the way people comment on Reddit. Informal, direct — just the comment text, no formatting.",
+  "response": "Nah this is just nostalgia talking. Sequels get a bad rap because studios greenlight garbage cash grabs, not because sequels are inherently worse. Empire Strikes Back, The Godfather Part II, Terminator 2, Aliens, The Dark Knight, Toy Story 3, Better Call Saul... sequels can absolutely be better and often are because they actually have something to build on instead of just setting up the world.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 70,
+    "completion_tokens": 499,
+    "total_tokens": 569
+  },
+  "timestamp": "2026-10-29T04:33:44.808593+00:00"
+}
+
+{
+  "run_id": "9681845f2da341d893b6f2f56310d195",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "exp1_reaction_post",
+  "sample": 0,
+  "variables": {
+    "situation": "your favorite show getting cancelled on a cliffhanger"
+  },
+  "prompt_text": "Write a social media reaction post about: \"your favorite show getting cancelled on a cliffhanger\"",
+  "system_text": "Write the way people react on social media. Casual, punchy — just the reaction text, no hashtags or labels.",
+  "response": "I am actually not okay. they ended on a literal cliffhanger and then just... cancelled it?? after all that build up?? I need answers",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 71,
+    "completion_tokens": 432,
+    "total_tokens": 503
+  },
+  "timestamp": "2026-10-29T04:33:49.757530+00:00"
+}
+
+{
+  "run_id": "9681845f2da341d893b6f2f56310d195",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "exp1_reaction_post",
+  "sample": 1,
+  "variables": {
+    "situation": "your favorite show getting cancelled on a cliffhanger"
+  },
+  "prompt_text": "Write a social media reaction post about: \"your favorite show getting cancelled on a cliffhanger\"",
+  "system_text": "Write the way people react on social media. Casual, punchy — just the reaction text, no hashtags or labels.",
+  "response": "no. no no no. we were literally on a cliffhanger and they just pulled the plug???\n\nI am not okay. I need closure. I need season 4. I am going to be angry about this for the rest of my life.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 71,
+    "completion_tokens": 417,
+    "total_tokens": 488
+  },
+  "timestamp": "2026-10-29T04:33:55.001819+00:00"
+}
+
+{
+  "run_id": "9681845f2da341d893b6f2f56310d195",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "exp1_reaction_post",
+  "sample": 2,
+  "variables": {
+    "situation": "your favorite show getting cancelled on a cliffhanger"
+  },
+  "prompt_text": "Write a social media reaction post about: \"your favorite show getting cancelled on a cliffhanger\"",
+  "system_text": "Write the way people react on social media. Casual, punchy — just the reaction text, no hashtags or labels.",
+  "response": "I am actually not okay. you cannot end it on THAT cliffhanger and then just cancel it. I need closure. I NEED CLOSURE.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 71,
+    "completion_tokens": 407,
+    "total_tokens": 478
+  },
+  "timestamp": "2026-10-29T04:34:01.229890+00:00"
+}
+
