@@ -1,25 +1,29 @@
 #!/usr/bin/env python3
 """
-generate_synthetic_scenario.py — Synthetic slang/non-slang examples for the
-scenario words, split disjointly between the training (``scenario_finetune_
-annotations``) and held-out (``scenario_finetune_validation``) sets.
+generate_synthetic_scenario.py — Top up the minority class of imbalanced
+scenario words with synthetic examples, written straight into the per-word
+CSVs of the training (``scenario_finetune_annotations``) and held-out
+(``scenario_finetune_validation``) sets.
 
-Mirrors DataProcessingTools/synthetic_data_generation/generate_synthetic_
-annotations.py: for each word it asks Claude Opus 4.7 for a balanced set of
-labelled example sentences (is_slang 1/0). The pool is then split 75/25 into a
-train portion (-> annotations dir) and a val portion (-> validation dir) so the
-two sets never share a synthetic sentence; words present only in the training
-set get all their synthetic rows there.
+For every ``<stem>_annotations.csv`` in each directory, the labelled rows are
+counted. If the gap between ``is_slang == 1`` and ``is_slang == 0`` is larger
+than ``IMBALANCE_THRESHOLD``, Claude is asked for ``N_PER_TOP_UP`` new
+contexts of the lacking class, which are appended to that same file with
+``uri = "synthetic"``. Unlabelled (blank) rows are not counted, so a file that
+has not been annotated yet is left alone.
 
-Output CSVs match the scenario format (``target, is_slang, target_context,
-uri``) with ``uri = synthetic://generated/<word>/<i>``, written as
-``<stem>_synthetic.csv`` alongside the real-context ``<stem>_annotations.csv``.
+A few of the file's real labelled rows are included in the prompt so the model
+sees which sense of the word counts as slang and what the contexts look like.
+Generated contexts that already appear in either directory's file for the word
+are dropped, so train and validation never share a synthetic row.
 
-Resumable: a word whose train synthetic CSV already exists is skipped.
+Each run tops up a word once; rerun to add another batch if it is still
+imbalanced.
 
 Usage:
-    python generate_synthetic_scenario.py --limit 1   # test one word first
-    python generate_synthetic_scenario.py             # all remaining words
+    python generate_synthetic_scenario.py --dry-run   # show counts and what would be generated
+    python generate_synthetic_scenario.py --limit 1   # test one file first
+    python generate_synthetic_scenario.py             # all imbalanced files
 """
 
 from __future__ import annotations
@@ -36,7 +40,10 @@ HERE = Path(__file__).resolve().parent
 ANNOT_DIR = HERE / "scenario_finetune_annotations"
 VAL_DIR = HERE / "scenario_finetune_validation"
 DROP = {"squad"}              # words to skip entirely
-VAL_FRAC = 0.25               # fraction of each class routed to validation
+IMBALANCE_THRESHOLD = 30      # top up only when |n_slang - n_not| exceeds this
+N_PER_TOP_UP = 20             # synthetic rows added to the lacking class per run
+N_REFERENCE = 5               # real labelled rows per class shown to the model
+SYNTHETIC_URI = "synthetic"
 
 sys.path.insert(0, str(HERE))
 from Keys import ANTHROPIC_API_KEY  # FineWebAnalysis/Keys.py  # noqa: E402
@@ -47,62 +54,52 @@ log = logging.getLogger("synth")
 
 MODEL = "claude-sonnet-5-5"
 
-# Reused (verbatim) from the original generate_synthetic_annotations.py so the
-# synthetic style matches the existing dataset; static for prompt-caching.
-SYSTEM_PROMPT = """You generate labelled example sentences for training a slang-detection classifier.
+# Static so it can be prompt-cached across words.
+SYSTEM_PROMPT = """You generate labelled training contexts for a slang-sense classifier.
 
-You will be given a single TARGET word or phrase. Produce a set of natural example sentences, each of which uses the target, and label every sentence:
-  is_slang = 1  -> the target is used as internet / informal SLANG in this sentence
-  is_slang = 0  -> the target is used in an ordinary, literal, non-slang sense
+You will be given a TARGET word or phrase, the LABEL to produce, how many contexts to write, and some real labelled contexts for that word taken from web text.
 
-DECIDE the word's nature first:
-  - If the target ALSO has a common everyday / literal / dictionary meaning
-    (e.g. "extra", "fresh", "goals", "tight", "woke", "cancelled", "clout",
-    "pumped", "shaking", "era", "dude"), set has_non_slang_meaning = true and
-    produce a roughly 50/50 mix of is_slang=1 and is_slang=0 sentences.
-  - If the target is essentially slang-only with no standard non-slang meaning
-    (e.g. "hits different", "left no crumbs", "rent free"), set
-    has_non_slang_meaning = false and make EVERY sentence is_slang=1.
+  is_slang = 1  -> the target is used in the specific internet / informal SLANG sense shown by the real is_slang=1 examples (or, if none are given, its most common current internet-slang sense)
+  is_slang = 0  -> the target is used in an ordinary, literal or non-slang sense, or in a different sense than the slang one above
 
-QUANTITY: produce between 60 and 90 sentences total. When the word has a
-non-slang meaning, keep the two classes within ~10% of each other.
-
-STYLE (match the existing dataset exactly):
-  - one sentence per example, written all in lowercase
-  - no terminal punctuation (no period/question mark/exclamation at the end)
-  - avoid commas inside the sentence
-  - apostrophes inside contractions are fine (i've, it's, that's)
-  - roughly 8 to 28 words, sounding like real web text, comments, reviews,
-    forum posts, captions, articles — vary the register and domain widely
-  - the target word/phrase MUST appear verbatim in every sentence
-  - for is_slang=0 sentences, use the literal meaning in a believable context
-    (news, recipes, sports, science, how-to, history, etc.)
-  - do not number the sentences and do not add quotation marks around them
-  - make every sentence distinct; do not reuse the same sentence frame repeatedly
+STYLE (match the real contexts):
+  - each context is a window of roughly 25 to 60 words cut out of a web page: forum posts, comments, reviews, blogs, news, product pages, captions
+  - normal web casing and punctuation; it may start or end mid-sentence
+  - the target MUST appear verbatim exactly as given, once, somewhere in the middle of the context
+  - vary topic, register and sentence structure widely; do not reuse a frame
+  - do not copy or lightly paraphrase the real examples
 
 OUTPUT: respond with a SINGLE JSON object and nothing else, of the form
-{"has_non_slang_meaning": <true|false>, "examples": [{"text": "<sentence>", "is_slang": <0|1>}, ...]}
+{"examples": ["<context>", "<context>", ...]}
 """
 
 
-def words_from_dir(d: Path) -> dict[str, str]:
-    """{stem: target_word} for every ``<stem>_annotations.csv`` in *d*."""
-    out: dict[str, str] = {}
-    for f in sorted(d.glob("*_annotations.csv")):
-        stem = f.name[: -len("_annotations.csv")]
-        with f.open(newline="", encoding="utf-8-sig") as fh:
-            for row in csv.DictReader(fh):
-                t = (row.get("target") or "").strip()
-                if t:
-                    out[stem] = t
-                    break
-    return out
+def read_rows(path: Path) -> list[dict[str, str]]:
+    with path.open(newline="", encoding="utf-8-sig") as fh:
+        return list(csv.DictReader(fh))
 
 
-def generate_for_word(client, word: str) -> list[tuple[str, int]]:
-    """Call Claude once for *word*; return [(sentence, is_slang), ...]."""
-    user_msg = (f'TARGET: "{word}"\n\nGenerate the labelled example sentences for this '
-                "target now, following all the rules. Respond with only the JSON object.")
+def label_counts(rows: list[dict[str, str]]) -> tuple[int, int]:
+    """(n_slang, n_not) over the labelled rows."""
+    labels = [(r.get("is_slang") or "").strip() for r in rows]
+    return labels.count("1"), labels.count("0")
+
+
+def _reference_block(rows: list[dict[str, str]], rng: random.Random) -> str:
+    lines = []
+    for label in ("1", "0"):
+        cls = [r["target_context"] for r in rows
+               if (r.get("is_slang") or "").strip() == label and r.get("uri") != SYNTHETIC_URI]
+        for ctx in rng.sample(cls, min(N_REFERENCE, len(cls))):
+            lines.append(f"is_slang={label}: {' '.join(ctx.split())[:400]}")
+    return "\n".join(lines) or "(none)"
+
+
+def generate_for_word(client, word: str, label: int, n: int, reference: str) -> list[str]:
+    """Call Claude once; return up to *n* new contexts of class *label* for *word*."""
+    user_msg = (f'TARGET: "{word}"\nLABEL: is_slang = {label}\nCOUNT: {n}\n\n'
+                f"Real labelled contexts for this word:\n{reference}\n\n"
+                f"Write {n} new is_slang={label} contexts now. Respond with only the JSON object.")
     with client.messages.stream(
         model=MODEL,
         max_tokens=16000,
@@ -116,67 +113,53 @@ def generate_for_word(client, word: str) -> list[tuple[str, int]]:
     if start == -1 or end == -1:
         raise ValueError(f"No JSON object in response for {word!r}: {text[:200]!r}")
     data = json.loads(text[start:end + 1])
-    rows: list[tuple[str, int]] = []
-    seen: set[str] = set()
+    out: list[str] = []
     for ex in data.get("examples", []):
-        t = (ex.get("text") or "").strip()
-        try:
-            lbl = int(ex.get("is_slang"))
-        except (TypeError, ValueError):
-            continue
-        if t and lbl in (0, 1) and t.lower() not in seen:
-            seen.add(t.lower())
-            rows.append((t, lbl))
-    return rows
+        t = " ".join(str(ex).split())
+        if t and word.casefold() in t.casefold():
+            out.append(t)
+    return out
 
 
-def _write(path: Path, word: str, rows: list[tuple[str, int]], start_idx: int) -> None:
-    with path.open("w", newline="", encoding="utf-8") as fh:
+def append_rows(path: Path, word: str, label: int, contexts: list[str]) -> None:
+    with path.open("a", newline="", encoding="utf-8") as fh:
         w = csv.writer(fh)
-        w.writerow(["target", "is_slang", "target_context", "uri"])
-        for i, (text, lbl) in enumerate(rows, start_idx):
-            w.writerow([word, lbl, text, f"synthetic://generated/{word}/{i}"])
+        for ctx in contexts:
+            w.writerow([word, label, ctx, SYNTHETIC_URI])
 
 
-def split_pool(rows: list[tuple[str, int]], to_val: bool, rng: random.Random
-               ) -> tuple[list, list]:
-    """Split a pool into (train, val), holding out VAL_FRAC of each class for val."""
-    if not to_val:
-        return rows, []
-    train, val = [], []
-    for label in (0, 1):
-        cls = [r for r in rows if r[1] == label]
-        rng.shuffle(cls)
-        k = round(len(cls) * VAL_FRAC)
-        val.extend(cls[:k])
-        train.extend(cls[k:])
-    rng.shuffle(train)
-    rng.shuffle(val)
-    return train, val
+def find_todo() -> list[tuple[Path, str, int, int, int]]:
+    """[(csv_path, word, lacking_label, n_slang, n_not)] for every file over the threshold."""
+    todo = []
+    for d in (ANNOT_DIR, VAL_DIR):
+        for f in sorted(d.glob("*_annotations.csv")):
+            stem = f.name[: -len("_annotations.csv")]
+            rows = read_rows(f)
+            word = next(((r.get("target") or "").strip() for r in rows if (r.get("target") or "").strip()), "")
+            if not word or stem in DROP or word.casefold() in DROP:
+                continue
+            n1, n0 = label_counts(rows)
+            if abs(n1 - n0) > IMBALANCE_THRESHOLD:
+                todo.append((f, word, 1 if n1 < n0 else 0, n1, n0))
+    return todo
 
 
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--limit", type=int, default=None, help="Only process the first N words.")
-    ap.add_argument("--dry-run", action="store_true", help="List words and exit.")
-    ap.add_argument("--overwrite", action="store_true", help="Regenerate existing synthetic CSVs.")
+    ap.add_argument("--limit", type=int, default=None, help="Only process the first N files.")
+    ap.add_argument("--dry-run", action="store_true", help="List files to top up and exit.")
     ap.add_argument("--seed", type=int, default=0)
     args = ap.parse_args()
 
-    annot_words = words_from_dir(ANNOT_DIR)
-    val_stems = set(words_from_dir(VAL_DIR))
-    todo = [(stem, word) for stem, word in annot_words.items()
-            if word.casefold() not in DROP and stem not in DROP]
-    if not args.overwrite:
-        todo = [(s, w) for s, w in todo if not (ANNOT_DIR / f"{s}_synthetic.csv").exists()]
+    todo = find_todo()
     if args.limit is not None:
         todo = todo[: args.limit]
 
-    log.info("%d word(s) to generate (val split for those in %s).", len(todo), VAL_DIR.name)
+    log.info("%d file(s) with |slang - not| > %d.", len(todo), IMBALANCE_THRESHOLD)
     if args.dry_run:
-        for stem, word in todo:
-            print(f"  {word:18} -> train{'+val' if stem in val_stems else ''}")
+        for f, word, label, n1, n0 in todo:
+            print(f"  {f.parent.name:30} {word:18} slang={n1:3} not={n0:3} -> +{N_PER_TOP_UP} is_slang={label}")
         return
 
     import anthropic
@@ -184,21 +167,30 @@ def main() -> None:
     rng = random.Random(args.seed)
 
     n_ok = n_fail = 0
-    for i, (stem, word) in enumerate(todo, 1):
+    for i, (f, word, label, n1, n0) in enumerate(todo, 1):
         try:
-            pool = generate_for_word(client, word)
-            if len(pool) < 30:
-                log.warning("[%d/%d] %r returned only %d rows.", i, len(todo), word, len(pool))
-            train, val = split_pool(pool, stem in val_stems, rng)
-            _write(ANNOT_DIR / f"{stem}_synthetic.csv", word, train, 0)
-            if val:
-                _write(VAL_DIR / f"{stem}_synthetic.csv", word, val, len(train))
-            pos = sum(l for _, l in pool)
-            log.info("[%d/%d] %-16s pool=%d (%d slang/%d not) -> train=%d val=%d",
-                     i, len(todo), word, len(pool), pos, len(pool) - pos, len(train), len(val))
+            rows = read_rows(f)
+            # Existing contexts for this word in both sets, to keep them disjoint.
+            seen = {" ".join(r["target_context"].split()).casefold() for r in rows}
+            for d in (ANNOT_DIR, VAL_DIR):
+                other = d / f.name
+                if other != f and other.exists():
+                    seen |= {" ".join(r["target_context"].split()).casefold() for r in read_rows(other)}
+
+            new: list[str] = []
+            for ctx in generate_for_word(client, word, label, N_PER_TOP_UP, _reference_block(rows, rng)):
+                if ctx.casefold() not in seen:
+                    seen.add(ctx.casefold())
+                    new.append(ctx)
+            new = new[:N_PER_TOP_UP]
+            if len(new) < N_PER_TOP_UP:
+                log.warning("[%d/%d] %r returned only %d usable rows.", i, len(todo), word, len(new))
+            append_rows(f, word, label, new)
+            log.info("[%d/%d] %-30s %-16s slang=%d not=%d -> +%d is_slang=%d",
+                     i, len(todo), f.parent.name, word, n1, n0, len(new), label)
             n_ok += 1
         except Exception as exc:  # noqa: BLE001
-            log.error("[%d/%d] FAILED for %r: %s", i, len(todo), word, exc)
+            log.error("[%d/%d] FAILED for %r (%s): %s", i, len(todo), word, f.parent.name, exc)
             n_fail += 1
 
     log.info("Done. %d ok, %d failed.", n_ok, n_fail)
