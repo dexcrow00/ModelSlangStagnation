@@ -65,7 +65,7 @@ You will be given a TARGET word or phrase, the LABEL to produce, how many contex
 STYLE (match the real contexts):
   - each context is a window of roughly 25 to 60 words cut out of a web page: forum posts, comments, reviews, blogs, news, product pages, captions
   - normal web casing and punctuation; it may start or end mid-sentence
-  - the target MUST appear verbatim exactly as given, once, somewhere in the middle of the context
+  - the target MUST appear verbatim exactly as given, once, somewhere in the context
   - vary topic, register and sentence structure widely; do not reuse a frame
   - do not copy or lightly paraphrase the real examples
 
