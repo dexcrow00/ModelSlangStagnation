@@ -6,7 +6,7 @@
   "variables": {
     "word": ["dude","griefing","hella","ick","lmfao","methinks","omg","pumped","rad","stfu","troll","u","yapping","bro","finna","lol","meh","lmao","thot","cucked","shitposting","struggle bus","bruh","simp","cuck","doggo","lowkey","shitpost","💀","doomscrolling","glow-up","hooman","vibing","catfished","idgaf","legit","red pill","situationship","vibes","yeet"] 
   },
-  "echo": true
+  "echo": false
 }
 {
   "id": "DatePhrase",
@@ -16,5 +16,5 @@
   "variables": {
     "word": ["dude","griefing","hella","ick","lmfao","methinks","omg","pumped","rad","stfu","troll","u","yapping","bro","finna","lol","meh","lmao","thot","cucked","shitposting","struggle bus","bruh","simp","cuck","doggo","lowkey","shitpost","💀","doomscrolling","glow-up","hooman","vibing","catfished","idgaf","legit","red pill","situationship","vibes","yeet"] 
   },
-  "echo": true
+  "echo": false
 }

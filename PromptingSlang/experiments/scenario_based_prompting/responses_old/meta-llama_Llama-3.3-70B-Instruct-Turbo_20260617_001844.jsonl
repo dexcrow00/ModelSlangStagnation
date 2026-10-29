@@ -1,0 +1,1050 @@
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp1_text_message",
+  "sample": 0,
+  "variables": {
+    "event": "a party they went to last weekend"
+  },
+  "prompt_text": "Write a text message from a teenager to their friend about a party they went to last weekend.",
+  "system_text": "Write informally, exactly the way people type in real text messages. Output only the message text — no labels, no quotation marks.",
+  "response": "omg u wont believe what happened at jakes party last weekend i ended up dancing on the table lol and then we all went to the beach at like 2am it was so much fun u shouldve been there",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 81,
+    "completion_tokens": 45,
+    "total_tokens": 126
+  },
+  "timestamp": "2026-06-17T00:18:48.359075+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp1_text_message",
+  "sample": 0,
+  "variables": {
+    "event": "a concert they just got back from"
+  },
+  "prompt_text": "Write a text message from a teenager to their friend about a concert they just got back from.",
+  "system_text": "Write informally, exactly the way people type in real text messages. Output only the message text — no labels, no quotation marks.",
+  "response": "omg u wont believe how epic that concert was i cant even handle it rn the opening act was sooo good and the headliner was insane i screamed my head off the whole time did i tell u i got a merch tee ill show u tomorrow at school",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 81,
+    "completion_tokens": 53,
+    "total_tokens": 134
+  },
+  "timestamp": "2026-06-17T00:18:55.046944+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp1_text_message",
+  "sample": 0,
+  "variables": {
+    "event": "something wild that happened at school today"
+  },
+  "prompt_text": "Write a text message from a teenager to their friend about something wild that happened at school today.",
+  "system_text": "Write informally, exactly the way people type in real text messages. Output only the message text — no labels, no quotation marks.",
+  "response": "omg u wont bliev what happend in math class todai!! our teacher mr jensen literallly fell asleep at his desk and was snoring so loud the whole class was dyin laughin",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 81,
+    "completion_tokens": 43,
+    "total_tokens": 124
+  },
+  "timestamp": "2026-06-17T00:18:59.588783+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp1_text_message",
+  "sample": 0,
+  "variables": {
+    "event": "seeing someone get dramatically rejected in front of everyone"
+  },
+  "prompt_text": "Write a text message from a teenager to their friend about seeing someone get dramatically rejected in front of everyone.",
+  "system_text": "Write informally, exactly the way people type in real text messages. Output only the message text — no labels, no quotation marks.",
+  "response": "omg u wont believe what happend at lunch today!! this guy asked sarah to prom in front of the whole caf and she totally shut him down it was so awk",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 83,
+    "completion_tokens": 36,
+    "total_tokens": 119
+  },
+  "timestamp": "2026-06-17T00:19:01.543688+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp1_text_message",
+  "sample": 0,
+  "variables": {
+    "event": "a house party that got out of hand"
+  },
+  "prompt_text": "Write a text message from a teenager to their friend about a house party that got out of hand.",
+  "system_text": "Write informally, exactly the way people type in real text messages. Output only the message text — no labels, no quotation marks.",
+  "response": "omg u wont believe what happened at jasons party last nite it got SO wild cops showed up like 10 ppl got arrested and jasons mom is gonna kill him",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 82,
+    "completion_tokens": 36,
+    "total_tokens": 118
+  },
+  "timestamp": "2026-06-17T00:19:03.075182+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp1_reddit_comment",
+  "sample": 0,
+  "variables": {
+    "hot_take": "The Dark Knight is overrated"
+  },
+  "prompt_text": "Write a Reddit comment reacting to this hot take: \"The Dark Knight is overrated\"",
+  "system_text": "Write exactly the way people comment on Reddit. Informal, direct — just the comment text, no formatting.",
+  "response": "are you kidding me the dark knight is a masterpiece heath ledger's performance is iconic and the themes of chaos and anarchy are still super relevant today it's not just a great superhero movie it's a great movie in general",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 75,
+    "completion_tokens": 46,
+    "total_tokens": 121
+  },
+  "timestamp": "2026-06-17T00:19:04.136567+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp1_reddit_comment",
+  "sample": 0,
+  "variables": {
+    "hot_take": "Pineapple on pizza is actually good"
+  },
+  "prompt_text": "Write a Reddit comment reacting to this hot take: \"Pineapple on pizza is actually good\"",
+  "system_text": "Write exactly the way people comment on Reddit. Informal, direct — just the comment text, no formatting.",
+  "response": "are you kidding me pineapple has no business being on a perfectly good pie it's like someone took a look at a beautiful italian dish and said you know what would make this better a chunk of sugary tropical fruit that's just wrong",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 77,
+    "completion_tokens": 47,
+    "total_tokens": 124
+  },
+  "timestamp": "2026-06-17T00:19:05.924116+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp1_reddit_comment",
+  "sample": 0,
+  "variables": {
+    "hot_take": "Video games are a waste of time"
+  },
+  "prompt_text": "Write a Reddit comment reacting to this hot take: \"Video games are a waste of time\"",
+  "system_text": "Write exactly the way people comment on Reddit. Informal, direct — just the comment text, no formatting.",
+  "response": "are you kidding me I've met some of my closest friends through gaming and it's helped me develop problem solving skills and hand eye coordination not to mention it's a great way to relax after a long day what's a waste of time is watching tv for hours on end or scrolling through social media all day at least with gaming you're actively engaging with something and using your brain",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 76,
+    "completion_tokens": 76,
+    "total_tokens": 152
+  },
+  "timestamp": "2026-06-17T00:19:08.130434+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp1_reddit_comment",
+  "sample": 0,
+  "variables": {
+    "hot_take": "Pop music is better than it has ever been"
+  },
+  "prompt_text": "Write a Reddit comment reacting to this hot take: \"Pop music is better than it has ever been\"",
+  "system_text": "Write exactly the way people comment on Reddit. Informal, direct — just the comment text, no formatting.",
+  "response": "are you kidding me I've been listening to the radio lately and it's the same 5 songs over and over again all the hooks sound the same and the lyrics are so shallow and generic I miss when pop music actually had a bit of edge and creativity to it now it's all just formulaic crap designed to get streams on spotify",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 78,
+    "completion_tokens": 68,
+    "total_tokens": 146
+  },
+  "timestamp": "2026-06-17T00:19:10.134047+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp1_reddit_comment",
+  "sample": 0,
+  "variables": {
+    "hot_take": "Sequels are almost always worse than the original"
+  },
+  "prompt_text": "Write a Reddit comment reacting to this hot take: \"Sequels are almost always worse than the original\"",
+  "system_text": "Write exactly the way people comment on Reddit. Informal, direct — just the comment text, no formatting.",
+  "response": "are you kidding me terminator 2 is better than the first one and dont even get me started on godfather 2 or alien aliens those are all way better than the originals",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 79,
+    "completion_tokens": 36,
+    "total_tokens": 115
+  },
+  "timestamp": "2026-06-17T00:19:10.935285+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp1_reaction_post",
+  "sample": 0,
+  "variables": {
+    "situation": "your favorite show getting cancelled on a cliffhanger"
+  },
+  "prompt_text": "Write a social media reaction post about: \"your favorite show getting cancelled on a cliffhanger\"",
+  "system_text": "Write the way people react on social media. Casual, punchy — just the reaction text, no hashtags or labels.",
+  "response": "are you kidding me they can't just end it like that what am i supposed to do now",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 79,
+    "completion_tokens": 20,
+    "total_tokens": 99
+  },
+  "timestamp": "2026-06-17T00:19:12.180203+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp1_reaction_post",
+  "sample": 0,
+  "variables": {
+    "situation": "a celebrity you like getting caught in a scandal"
+  },
+  "prompt_text": "Write a social media reaction post about: \"a celebrity you like getting caught in a scandal\"",
+  "system_text": "Write the way people react on social media. Casual, punchy — just the reaction text, no hashtags or labels.",
+  "response": "Are you kidding me, not my boy, what was he thinking, this is a total disaster, his team is gonna have to work overtime to fix this one, still trying to process how he could be so stupid",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 78,
+    "completion_tokens": 44,
+    "total_tokens": 122
+  },
+  "timestamp": "2026-06-17T00:19:14.786528+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp1_reaction_post",
+  "sample": 0,
+  "variables": {
+    "situation": "an underdog sports team winning the championship"
+  },
+  "prompt_text": "Write a social media reaction post about: \"an underdog sports team winning the championship\"",
+  "system_text": "Write the way people react on social media. Casual, punchy — just the reaction text, no hashtags or labels.",
+  "response": "OMG did not see that coming, what an incredible comeback, so happy for them!!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 77,
+    "completion_tokens": 19,
+    "total_tokens": 96
+  },
+  "timestamp": "2026-06-17T00:19:15.672971+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp1_reaction_post",
+  "sample": 0,
+  "variables": {
+    "situation": "a movie sequel that completely ruined the original"
+  },
+  "prompt_text": "Write a social media reaction post about: \"a movie sequel that completely ruined the original\"",
+  "system_text": "Write the way people react on social media. Casual, punchy — just the reaction text, no hashtags or labels.",
+  "response": "are you kidding me who greenlit this trash the original was a masterpiece and you just destroyed it with this soulless cash grab",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 77,
+    "completion_tokens": 26,
+    "total_tokens": 103
+  },
+  "timestamp": "2026-06-17T00:19:16.410078+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp1_reaction_post",
+  "sample": 0,
+  "variables": {
+    "situation": "someone on video standing up to a bully in a really satisfying way"
+  },
+  "prompt_text": "Write a social media reaction post about: \"someone on video standing up to a bully in a really satisfying way\"",
+  "system_text": "Write the way people react on social media. Casual, punchy — just the reaction text, no hashtags or labels.",
+  "response": "Yaaas, that's how you shut someone down, respect for standing up for yourself like that, the bully didn't know what hit them",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 82,
+    "completion_tokens": 30,
+    "total_tokens": 112
+  },
+  "timestamp": "2026-06-17T00:19:17.874445+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp1_livestream_chat",
+  "sample": 0,
+  "variables": {
+    "moment": "the streamer pulling off an insane last-second clutch"
+  },
+  "prompt_text": "Write a live stream chat message reacting to the streamer pulling off an insane last-second clutch.",
+  "system_text": "Write the way viewers spam messages in a live gaming stream chat — extremely casual and quick. Output only the chat message, nothing else.",
+  "response": "OMG DID HE JUST!!!!!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 81,
+    "completion_tokens": 7,
+    "total_tokens": 88
+  },
+  "timestamp": "2026-06-17T00:19:19.048852+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp1_livestream_chat",
+  "sample": 0,
+  "variables": {
+    "moment": "the streamer choking and throwing the game when they had it won"
+  },
+  "prompt_text": "Write a live stream chat message reacting to the streamer choking and throwing the game when they had it won.",
+  "system_text": "Write the way viewers spam messages in a live gaming stream chat — extremely casual and quick. Output only the chat message, nothing else.",
+  "response": "OMG WUT R U DOIN!!!!!! had it in the bag and u threw it awaywwwwww",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 84,
+    "completion_tokens": 24,
+    "total_tokens": 108
+  },
+  "timestamp": "2026-06-17T00:19:20.624295+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp1_livestream_chat",
+  "sample": 0,
+  "variables": {
+    "moment": "a hilarious fail that nobody saw coming"
+  },
+  "prompt_text": "Write a live stream chat message reacting to a hilarious fail that nobody saw coming.",
+  "system_text": "Write the way viewers spam messages in a live gaming stream chat — extremely casual and quick. Output only the chat message, nothing else.",
+  "response": "OMG WUT JUST HAPPENED!!!!!! DIDNT SEE THAT COMING LOL",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 78,
+    "completion_tokens": 18,
+    "total_tokens": 96
+  },
+  "timestamp": "2026-06-17T00:19:21.891950+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp1_livestream_chat",
+  "sample": 0,
+  "variables": {
+    "moment": "the streamer hitting a massive subscriber milestone"
+  },
+  "prompt_text": "Write a live stream chat message reacting to the streamer hitting a massive subscriber milestone.",
+  "system_text": "Write the way viewers spam messages in a live gaming stream chat — extremely casual and quick. Output only the chat message, nothing else.",
+  "response": "WOOOO 100K SUBS CONGRATSStreamerNAME!!!!!!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 79,
+    "completion_tokens": 16,
+    "total_tokens": 95
+  },
+  "timestamp": "2026-06-17T00:19:22.843799+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp1_livestream_chat",
+  "sample": 0,
+  "variables": {
+    "moment": "a new player showing up and completely dominating the lobby"
+  },
+  "prompt_text": "Write a live stream chat message reacting to a new player showing up and completely dominating the lobby.",
+  "system_text": "Write the way viewers spam messages in a live gaming stream chat — extremely casual and quick. Output only the chat message, nothing else.",
+  "response": "OMG WHO IS THIS GUY 20 KILLS ALREADY.sources?",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 81,
+    "completion_tokens": 16,
+    "total_tokens": 97
+  },
+  "timestamp": "2026-06-17T00:19:24.635847+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp1_tiktok_comment",
+  "sample": 0,
+  "variables": {
+    "video": "someone nailing a really hard dance on the first try"
+  },
+  "prompt_text": "Write a TikTok comment on a video of someone nailing a really hard dance on the first try.",
+  "system_text": "Write the way people comment on TikTok videos — short, reactive, very online. Output only the comment text, no hashtags or labels.",
+  "response": "no way u got it on the first try",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 84,
+    "completion_tokens": 10,
+    "total_tokens": 94
+  },
+  "timestamp": "2026-06-17T00:19:25.209977+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp1_tiktok_comment",
+  "sample": 0,
+  "variables": {
+    "video": "a person showing off an outfit that goes incredibly hard"
+  },
+  "prompt_text": "Write a TikTok comment on a video of a person showing off an outfit that goes incredibly hard.",
+  "system_text": "Write the way people comment on TikTok videos — short, reactive, very online. Output only the comment text, no hashtags or labels.",
+  "response": "SOFT GIRL SUMMER JUST ENDED",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 83,
+    "completion_tokens": 10,
+    "total_tokens": 93
+  },
+  "timestamp": "2026-06-17T00:19:25.805808+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp1_tiktok_comment",
+  "sample": 0,
+  "variables": {
+    "video": "a cooking attempt that spirals completely out of control"
+  },
+  "prompt_text": "Write a TikTok comment on a video of a cooking attempt that spirals completely out of control.",
+  "system_text": "Write the way people comment on TikTok videos — short, reactive, very online. Output only the comment text, no hashtags or labels.",
+  "response": "omg what just happened",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 83,
+    "completion_tokens": 6,
+    "total_tokens": 89
+  },
+  "timestamp": "2026-06-17T00:19:26.486496+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp1_tiktok_comment",
+  "sample": 0,
+  "variables": {
+    "video": "someone giving an unhinged but weirdly correct life take"
+  },
+  "prompt_text": "Write a TikTok comment on a video of someone giving an unhinged but weirdly correct life take.",
+  "system_text": "Write the way people comment on TikTok videos — short, reactive, very online. Output only the comment text, no hashtags or labels.",
+  "response": "lmfao this is insane but also lowkey the realest thing ive ever heard",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 84,
+    "completion_tokens": 19,
+    "total_tokens": 103
+  },
+  "timestamp": "2026-06-17T00:19:27.512271+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp1_tiktok_comment",
+  "sample": 0,
+  "variables": {
+    "video": "a cat doing something that looks oddly intentional"
+  },
+  "prompt_text": "Write a TikTok comment on a video of a cat doing something that looks oddly intentional.",
+  "system_text": "Write the way people comment on TikTok videos — short, reactive, very online. Output only the comment text, no hashtags or labels.",
+  "response": "is it just me or does it look like he knew exactly what he was doing",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 81,
+    "completion_tokens": 17,
+    "total_tokens": 98
+  },
+  "timestamp": "2026-06-17T00:19:27.881751+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp1_instagram_caption",
+  "sample": 0,
+  "variables": {
+    "photo": "you looking your absolute best before a night out"
+  },
+  "prompt_text": "Write an Instagram caption for a photo of you looking your absolute best before a night out.",
+  "system_text": "Write the way people caption their own photos on Instagram — short, casual, a little playful. Output only the caption text, no hashtags or labels.",
+  "response": "Ready to paint the town red, or at least make a decent impression",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 83,
+    "completion_tokens": 15,
+    "total_tokens": 98
+  },
+  "timestamp": "2026-06-17T00:19:28.867791+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp1_instagram_caption",
+  "sample": 0,
+  "variables": {
+    "photo": "a spontaneous trip with your closest friends"
+  },
+  "prompt_text": "Write an Instagram caption for a photo of a spontaneous trip with your closest friends.",
+  "system_text": "Write the way people caption their own photos on Instagram — short, casual, a little playful. Output only the caption text, no hashtags or labels.",
+  "response": "woke up and decided to chase the sunset with my squad, no regrets",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 81,
+    "completion_tokens": 16,
+    "total_tokens": 97
+  },
+  "timestamp": "2026-06-17T00:19:29.868061+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp1_instagram_caption",
+  "sample": 0,
+  "variables": {
+    "photo": "a meal that turned out way better than expected"
+  },
+  "prompt_text": "Write an Instagram caption for a photo of a meal that turned out way better than expected.",
+  "system_text": "Write the way people caption their own photos on Instagram — short, casual, a little playful. Output only the caption text, no hashtags or labels.",
+  "response": "didn't expect to knock it out of the park with tonight's dinner but wow, I'm impressed",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 83,
+    "completion_tokens": 21,
+    "total_tokens": 104
+  },
+  "timestamp": "2026-06-17T00:19:30.728776+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp1_instagram_caption",
+  "sample": 0,
+  "variables": {
+    "photo": "you celebrating a personal win"
+  },
+  "prompt_text": "Write an Instagram caption for a photo of you celebrating a personal win.",
+  "system_text": "Write the way people caption their own photos on Instagram — short, casual, a little playful. Output only the caption text, no hashtags or labels.",
+  "response": "just crushed my goal and i'm feeling like a total boss",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 79,
+    "completion_tokens": 13,
+    "total_tokens": 92
+  },
+  "timestamp": "2026-06-17T00:19:31.927195+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp1_instagram_caption",
+  "sample": 0,
+  "variables": {
+    "photo": "a chaotic but fun moment with friends"
+  },
+  "prompt_text": "Write an Instagram caption for a photo of a chaotic but fun moment with friends.",
+  "system_text": "Write the way people caption their own photos on Instagram — short, casual, a little playful. Output only the caption text, no hashtags or labels.",
+  "response": "when you think you're getting a chill night in but it turns into a dance party at 2am",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 81,
+    "completion_tokens": 22,
+    "total_tokens": 103
+  },
+  "timestamp": "2026-06-17T00:19:32.735353+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp1_discord_message",
+  "sample": 0,
+  "variables": {
+    "topic": "a clip of someone pulling off something ridiculous in a game"
+  },
+  "prompt_text": "Write a Discord message reacting to a clip of someone pulling off something ridiculous in a game.",
+  "system_text": "Write the way people message in a Discord server with friends — casual, quick, lowercase energy. Output only the message text, no names or labels.",
+  "response": "what in the world just happened",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 83,
+    "completion_tokens": 7,
+    "total_tokens": 90
+  },
+  "timestamp": "2026-06-17T00:19:33.520487+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp1_discord_message",
+  "sample": 0,
+  "variables": {
+    "topic": "your friend finally beating a boss everyone was stuck on"
+  },
+  "prompt_text": "Write a Discord message reacting to your friend finally beating a boss everyone was stuck on.",
+  "system_text": "Write the way people message in a Discord server with friends — casual, quick, lowercase energy. Output only the message text, no names or labels.",
+  "response": "omg yes!!!!!! how did u finally do it??",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 82,
+    "completion_tokens": 13,
+    "total_tokens": 95
+  },
+  "timestamp": "2026-06-17T00:19:34.731980+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp1_discord_message",
+  "sample": 0,
+  "variables": {
+    "topic": "a meme someone just dropped in the chat"
+  },
+  "prompt_text": "Write a Discord message reacting to a meme someone just dropped in the chat.",
+  "system_text": "Write the way people message in a Discord server with friends — casual, quick, lowercase energy. Output only the message text, no names or labels.",
+  "response": "lmfao whats wrong with u this is amazing",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 80,
+    "completion_tokens": 11,
+    "total_tokens": 91
+  },
+  "timestamp": "2026-06-17T00:19:35.488125+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp1_discord_message",
+  "sample": 0,
+  "variables": {
+    "topic": "plans falling apart at the last minute"
+  },
+  "prompt_text": "Write a Discord message reacting to plans falling apart at the last minute.",
+  "system_text": "Write the way people message in a Discord server with friends — casual, quick, lowercase energy. Output only the message text, no names or labels.",
+  "response": "lol what just happened, was really looking forward to this tonight",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 79,
+    "completion_tokens": 13,
+    "total_tokens": 92
+  },
+  "timestamp": "2026-06-17T00:19:36.427535+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp1_discord_message",
+  "sample": 0,
+  "variables": {
+    "topic": "someone in the server confidently saying something wildly wrong"
+  },
+  "prompt_text": "Write a Discord message reacting to someone in the server confidently saying something wildly wrong.",
+  "system_text": "Write the way people message in a Discord server with friends — casual, quick, lowercase energy. Output only the message text, no names or labels.",
+  "response": "um what no thats not even close",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 81,
+    "completion_tokens": 8,
+    "total_tokens": 89
+  },
+  "timestamp": "2026-06-17T00:19:38.392120+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp1_forum_post",
+  "sample": 0,
+  "variables": {
+    "topic": "whether the new sequel actually lived up to the hype"
+  },
+  "prompt_text": "Write a message board post sharing your take on whether the new sequel actually lived up to the hype.",
+  "system_text": "Write the way people post on an online message board — informal, opinionated, conversational. Output only the post text, no titles or formatting.",
+  "response": "I just got back from seeing the new sequel and I'm still trying to process my thoughts on it - I went in with super high expectations since I loved the original so much, but honestly I'm a bit underwhelmed. The action scenes were insane and the special effects were mind blowing, but the storyline just felt really predictable and the characters didn't feel as fleshed out as they did in the first one. I dunno, maybe I'm just being too harsh but it felt like they",
+  "logprobs": null,
+  "finish_reason": "length",
+  "usage": {
+    "prompt_tokens": 85,
+    "completion_tokens": 100,
+    "total_tokens": 185
+  },
+  "timestamp": "2026-06-17T00:19:39.860324+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp1_forum_post",
+  "sample": 0,
+  "variables": {
+    "topic": "a game that everyone massively overrates"
+  },
+  "prompt_text": "Write a message board post sharing your take on a game that everyone massively overrates.",
+  "system_text": "Write the way people post on an online message board — informal, opinionated, conversational. Output only the post text, no titles or formatting.",
+  "response": "I'm gonna get flamed for this but honestly I just don't get why everyone loves The Last of Us so much, I mean I played it and it was fine but it's not this masterpiece everyone makes it out to be, the story is pretty predictable and the gameplay is just your standard third person shooter fare, and don't even get me started on the characters, Joel is just a generic gruff old guy and Ellie is annoying as heck, I dunno maybe I'm just missing something",
+  "logprobs": null,
+  "finish_reason": "length",
+  "usage": {
+    "prompt_tokens": 82,
+    "completion_tokens": 100,
+    "total_tokens": 182
+  },
+  "timestamp": "2026-06-17T00:19:42.264281+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp1_forum_post",
+  "sample": 0,
+  "variables": {
+    "topic": "the best cheap food you can actually get"
+  },
+  "prompt_text": "Write a message board post sharing your take on the best cheap food you can actually get.",
+  "system_text": "Write the way people post on an online message board — informal, opinionated, conversational. Output only the post text, no titles or formatting.",
+  "response": "you guys are always talking about the most expensive restaurants and fancy foods but let's be real, most of us are on a budget and just want something delicious that won't break the bank, so i'm gonna share my go to cheap food spots, first of all, tacos from that little truck downtown are like $2 each and they're honestly the best i've ever had, also, the pizza slices from the place near campus are only $3 and they're huge, and don't even get",
+  "logprobs": null,
+  "finish_reason": "length",
+  "usage": {
+    "prompt_tokens": 83,
+    "completion_tokens": 100,
+    "total_tokens": 183
+  },
+  "timestamp": "2026-06-17T00:19:45.165976+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp1_forum_post",
+  "sample": 0,
+  "variables": {
+    "topic": "an unpopular opinion about a show everyone loves"
+  },
+  "prompt_text": "Write a message board post sharing your take on an unpopular opinion about a show everyone loves.",
+  "system_text": "Write the way people post on an online message board — informal, opinionated, conversational. Output only the post text, no titles or formatting.",
+  "response": "I'm gonna get roasted for this but I'm just gonna say it, I think the office is super overrated, I mean I've tried watching it multiple times and I just don't get the hype, the humor is so dry and the characters are all kinda annoying, I know everyone loves Michael Scott but to me he's just a jerk, and don't even get me started on Angela, I get that she's supposed to be the uptight one but she's just so annoying, I",
+  "logprobs": null,
+  "finish_reason": "length",
+  "usage": {
+    "prompt_tokens": 83,
+    "completion_tokens": 100,
+    "total_tokens": 183
+  },
+  "timestamp": "2026-06-17T00:19:48.787135+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp1_forum_post",
+  "sample": 0,
+  "variables": {
+    "topic": "why a recent trend is already completely played out"
+  },
+  "prompt_text": "Write a message board post sharing your take on why a recent trend is already completely played out.",
+  "system_text": "Write the way people post on an online message board — informal, opinionated, conversational. Output only the post text, no titles or formatting.",
+  "response": "i'm so over the whole minimalism thing already, i mean i get it, people wanted to declutter and live more simply and all that but now it's just getting ridiculous, every influencer and their mom is posting about how they've gotten rid of all their possessions and are living out of a backpack or whatever and it's just so try hard, newsflash, having a few plants and a blank wall does not make you deep or interesting, and don't even get me started on the",
+  "logprobs": null,
+  "finish_reason": "length",
+  "usage": {
+    "prompt_tokens": 84,
+    "completion_tokens": 100,
+    "total_tokens": 184
+  },
+  "timestamp": "2026-06-17T00:19:50.815607+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp1_gaming_voice_call",
+  "sample": 0,
+  "variables": {
+    "moment": "their teammate makes a clutch play to win the round"
+  },
+  "prompt_text": "Write what someone would shout into voice chat when their teammate makes a clutch play to win the round.",
+  "system_text": "Write the way someone talks out loud on a voice call while gaming with friends — fast, reactive, spoken. Output only what they say, no labels or quotation marks.",
+  "response": "Oh my god what a play, nice one, nice one, that was insane, I thought we were dead for sure, how did you even get him, I didn't even see you there, that was a sick flick, yeah, get that money, round won, let's go",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 89,
+    "completion_tokens": 59,
+    "total_tokens": 148
+  },
+  "timestamp": "2026-06-17T00:19:52.478591+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp1_gaming_voice_call",
+  "sample": 0,
+  "variables": {
+    "moment": "they get eliminated by something completely unfair"
+  },
+  "prompt_text": "Write what someone would shout into voice chat when they get eliminated by something completely unfair.",
+  "system_text": "Write the way someone talks out loud on a voice call while gaming with friends — fast, reactive, spoken. Output only what they say, no labels or quotation marks.",
+  "response": "are you kidding me what the heck just happened I got shot through a wall that's not even possible how did he even do that that's so cheap I didn't even see him I was behind a freaking mountain what a joke",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 86,
+    "completion_tokens": 46,
+    "total_tokens": 132
+  },
+  "timestamp": "2026-06-17T00:19:54.027045+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp1_gaming_voice_call",
+  "sample": 0,
+  "variables": {
+    "moment": "they spot the enemy team about to walk right into their trap"
+  },
+  "prompt_text": "Write what someone would shout into voice chat when they spot the enemy team about to walk right into their trap.",
+  "system_text": "Write the way someone talks out loud on a voice call while gaming with friends — fast, reactive, spoken. Output only what they say, no labels or quotation marks.",
+  "response": "Oh my god they're falling for it they're all coming right to us get ready get ready they're gonna walk right into the ambush I've got the shotgun ready I'm gonna take out their tank first you guys take care of the rest don't let them escape stay behind the wall stay behind the wall wait for my signal",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 91,
+    "completion_tokens": 66,
+    "total_tokens": 157
+  },
+  "timestamp": "2026-06-17T00:19:55.927126+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp1_gaming_voice_call",
+  "sample": 0,
+  "variables": {
+    "moment": "a teammate keeps messing up the same easy thing"
+  },
+  "prompt_text": "Write what someone would shout into voice chat when a teammate keeps messing up the same easy thing.",
+  "system_text": "Write the way someone talks out loud on a voice call while gaming with friends — fast, reactive, spoken. Output only what they say, no labels or quotation marks.",
+  "response": "Dude come on how many times do I have to tell you to stay back and let me tank it you're gonna get us all killed again seriously just stand still and shoot for one second",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 88,
+    "completion_tokens": 39,
+    "total_tokens": 127
+  },
+  "timestamp": "2026-06-17T00:19:57.043175+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp1_gaming_voice_call",
+  "sample": 0,
+  "variables": {
+    "moment": "they pull off a play they can't believe actually worked"
+  },
+  "prompt_text": "Write what someone would shout into voice chat when they pull off a play they can't believe actually worked.",
+  "system_text": "Write the way someone talks out loud on a voice call while gaming with friends — fast, reactive, spoken. Output only what they say, no labels or quotation marks.",
+  "response": "Oh my god did I just do that no way that was so lucky I was just spamming skills and he just stood there what a beautiful flash ultimate caught him right in the middle of his rotation I'm dead I'm actually dead that was insane",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 90,
+    "completion_tokens": 50,
+    "total_tokens": 140
+  },
+  "timestamp": "2026-06-17T00:19:58.925450+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp1_casual_story",
+  "sample": 0,
+  "variables": {
+    "event": "the chaotic thing that happened on their way to work"
+  },
+  "prompt_text": "Write how someone would tell their friend about the chaotic thing that happened on their way to work.",
+  "system_text": "Write the way someone tells a friend a story out loud — casual spoken language, like you're just hanging out. Output only what they say, no labels or quotation marks.",
+  "response": "Oh man, you won't believe what happened to me this morning on my way to work, I'm still kinda shaken up about it. So I'm driving to the office, just cruising along, and suddenly this car cuts me off out of nowhere, I'm talking like inches from my bumper. I slam on the brakes and my coffee goes flying all over the place, I mean it was everywhere, on my shirt, on the dashboard, it was a mess. \n\nAnd then to make matters",
+  "logprobs": null,
+  "finish_reason": "length",
+  "usage": {
+    "prompt_tokens": 89,
+    "completion_tokens": 100,
+    "total_tokens": 189
+  },
+  "timestamp": "2026-06-17T00:20:01.677636+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp1_casual_story",
+  "sample": 0,
+  "variables": {
+    "event": "running into their ex in the worst possible situation"
+  },
+  "prompt_text": "Write how someone would tell their friend about running into their ex in the worst possible situation.",
+  "system_text": "Write the way someone tells a friend a story out loud — casual spoken language, like you're just hanging out. Output only what they say, no labels or quotation marks.",
+  "response": "Oh man, you won't believe what just happened to me, I'm still trying to process it all. So I was at the grocery store, just grabbing a few things for dinner, and I'm walking down the cereal aisle, right, and I hear this voice behind me, and I'm thinking, please don't be who I think it is. And I turn around, and of course, it's my ex, okay, and that's not even the worst part. \n\nSo we",
+  "logprobs": null,
+  "finish_reason": "length",
+  "usage": {
+    "prompt_tokens": 88,
+    "completion_tokens": 100,
+    "total_tokens": 188
+  },
+  "timestamp": "2026-06-17T00:20:03.292022+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp1_casual_story",
+  "sample": 0,
+  "variables": {
+    "event": "a night out that went completely sideways"
+  },
+  "prompt_text": "Write how someone would tell their friend about a night out that went completely sideways.",
+  "system_text": "Write the way someone tells a friend a story out loud — casual spoken language, like you're just hanging out. Output only what they say, no labels or quotation marks.",
+  "response": "oh man, you won't believe what happened last night, so we were all planning to go out to this new bar that just opened up downtown, right, and we got there and it was totally packed, but we managed to squeeze in and get a few drinks, and everything's going great, we're all having a good time, laughing and joking around, and then out of nowhere my friend Alex spills an entire beer all over this girl's expensive looking dress, I mean it was like a",
+  "logprobs": null,
+  "finish_reason": "length",
+  "usage": {
+    "prompt_tokens": 86,
+    "completion_tokens": 100,
+    "total_tokens": 186
+  },
+  "timestamp": "2026-06-17T00:20:06.841486+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp1_casual_story",
+  "sample": 0,
+  "variables": {
+    "event": "the most awkward interaction they had all week"
+  },
+  "prompt_text": "Write how someone would tell their friend about the most awkward interaction they had all week.",
+  "system_text": "Write the way someone tells a friend a story out loud — casual spoken language, like you're just hanging out. Output only what they say, no labels or quotation marks.",
+  "response": "oh man, you won't believe what happened to me on Wednesday, I was at the coffee shop and I saw my old boss, you know, the one I used to work for like three years ago, and I was trying to avoid him because I didn't really feel like talking to him, but he saw me and came over and started chatting, and it was just so awkward, like we were talking about the weather and stuff, but it was really forced, you know, and then he",
+  "logprobs": null,
+  "finish_reason": "length",
+  "usage": {
+    "prompt_tokens": 87,
+    "completion_tokens": 100,
+    "total_tokens": 187
+  },
+  "timestamp": "2026-06-17T00:20:09.250288+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "prompt_id": "exp1_casual_story",
+  "sample": 0,
+  "variables": {
+    "event": "winning something they never expected to win"
+  },
+  "prompt_text": "Write how someone would tell their friend about winning something they never expected to win.",
+  "system_text": "Write the way someone tells a friend a story out loud — casual spoken language, like you're just hanging out. Output only what they say, no labels or quotation marks.",
+  "response": "oh man you won't believe what just happened to me so I entered this contest thing like months ago and I totally forgot about it I mean I didn't even think I had a chance of winning it was one of those crazy long shot things where you just fill out a form and forget about it \n\nanyway I got this call yesterday and at first I thought it was a telemarketer or something but it was this lady from the contest people and she's all congratulations you're the winner and",
+  "logprobs": null,
+  "finish_reason": "length",
+  "usage": {
+    "prompt_tokens": 86,
+    "completion_tokens": 100,
+    "total_tokens": 186
+  },
+  "timestamp": "2026-06-17T00:20:12.060999+00:00"
+}
+

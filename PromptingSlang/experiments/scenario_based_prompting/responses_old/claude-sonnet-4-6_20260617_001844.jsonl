@@ -1,0 +1,1050 @@
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp1_text_message",
+  "sample": 0,
+  "variables": {
+    "event": "a party they went to last weekend"
+  },
+  "prompt_text": "Write a text message from a teenager to their friend about a party they went to last weekend.",
+  "system_text": "Write informally, exactly the way people type in real text messages. Output only the message text — no labels, no quotation marks.",
+  "response": "omg so that party at jaydens last saturday was actually insane lmaooo like i did NOT expect it to be that good?? there were so many people there and his parents were literally gone the whole night 😭 me and kaia snuck some of his dads soda and pretended it was something else lol we were so dumb. the music was so loud i could feel it in my chest and we danced for like 3 hours straight",
+  "logprobs": null,
+  "finish_reason": "max_tokens",
+  "usage": {
+    "prompt_tokens": 55,
+    "completion_tokens": 100,
+    "total_tokens": 155
+  },
+  "timestamp": "2026-06-17T00:22:26.523523+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp1_text_message",
+  "sample": 0,
+  "variables": {
+    "event": "a concert they just got back from"
+  },
+  "prompt_text": "Write a text message from a teenager to their friend about a concert they just got back from.",
+  "system_text": "Write informally, exactly the way people type in real text messages. Output only the message text — no labels, no quotation marks.",
+  "response": "omg i JUST got home and i literally cannot stop shaking that was the best night of my entire life?? like they played all the old songs i was literally crying during the third one i could not hold it together lmao. and we were so close to the stage i could see everything. my ears are still ringing and my feet are dead but i don't even care it was so worth it. why didn't you come i'm so mad at you rn ",
+  "logprobs": null,
+  "finish_reason": "max_tokens",
+  "usage": {
+    "prompt_tokens": 55,
+    "completion_tokens": 100,
+    "total_tokens": 155
+  },
+  "timestamp": "2026-06-17T00:22:30.491704+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp1_text_message",
+  "sample": 0,
+  "variables": {
+    "event": "something wild that happened at school today"
+  },
+  "prompt_text": "Write a text message from a teenager to their friend about something wild that happened at school today.",
+  "system_text": "Write informally, exactly the way people type in real text messages. Output only the message text — no labels, no quotation marks.",
+  "response": "omg you will NOT believe what happened today 😭 so mr henderson was in the middle of his math lecture right and out of NOWHERE a pigeon just flies in through the window and starts going absolutely feral in the classroom 💀 like knocking stuff off desks and everything and he tried to shoo it out but it literally landed on his head and everyone lost it i was crying laughing so hard i couldnt breathe and then jaylen tried to catch",
+  "logprobs": null,
+  "finish_reason": "max_tokens",
+  "usage": {
+    "prompt_tokens": 55,
+    "completion_tokens": 100,
+    "total_tokens": 155
+  },
+  "timestamp": "2026-06-17T00:22:34.070828+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp1_text_message",
+  "sample": 0,
+  "variables": {
+    "event": "seeing someone get dramatically rejected in front of everyone"
+  },
+  "prompt_text": "Write a text message from a teenager to their friend about seeing someone get dramatically rejected in front of everyone.",
+  "system_text": "Write informally, exactly the way people type in real text messages. Output only the message text — no labels, no quotation marks.",
+  "response": "omg you will NOT believe what just happened in the cafeteria 💀 tyler literally got down on one knee in front of EVERYONE and asked brianna to homecoming with like a whole poster and everything and she just stared at him for like 10 seconds and said \"i'm good\" AND WALKED AWAY i wanted to disappear for him honestly the whole room went silent it was so uncomfortable i had to look at my phone i couldn't watch 😭",
+  "logprobs": null,
+  "finish_reason": "max_tokens",
+  "usage": {
+    "prompt_tokens": 57,
+    "completion_tokens": 100,
+    "total_tokens": 157
+  },
+  "timestamp": "2026-06-17T00:22:37.639490+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp1_text_message",
+  "sample": 0,
+  "variables": {
+    "event": "a house party that got out of hand"
+  },
+  "prompt_text": "Write a text message from a teenager to their friend about a house party that got out of hand.",
+  "system_text": "Write informally, exactly the way people type in real text messages. Output only the message text — no labels, no quotation marks.",
+  "response": "dude you will NOT believe what happened last night omg. so jakens parents left for the weekend and he told like 10 people but somehow literally the entire school showed up?? there were people i have never even SEEN before in my life. someone broke the glass table in the living room and his dog got out and they still havent found him 😭 and then someone called the cops at like midnight and everyone just started running in every direction it was absolute chaos.",
+  "logprobs": null,
+  "finish_reason": "max_tokens",
+  "usage": {
+    "prompt_tokens": 56,
+    "completion_tokens": 100,
+    "total_tokens": 156
+  },
+  "timestamp": "2026-06-17T00:22:41.525625+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp1_reddit_comment",
+  "sample": 0,
+  "variables": {
+    "hot_take": "The Dark Knight is overrated"
+  },
+  "prompt_text": "Write a Reddit comment reacting to this hot take: \"The Dark Knight is overrated\"",
+  "system_text": "Write exactly the way people comment on Reddit. Informal, direct — just the comment text, no formatting.",
+  "response": "honestly it gets said every few years like it's some brave contrarian take but nobody actually explains what a \"properly rated\" Dark Knight would look like. is it a 8.5 instead of a 9? cool. it's still one of the best superhero movies ever made and Ledger's Joker alone carries enough weight to justify most of the praise. the overrated label gets slapped on anything popular and it's getting kind of exhausting",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 49,
+    "completion_tokens": 99,
+    "total_tokens": 148
+  },
+  "timestamp": "2026-06-17T00:22:45.292660+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp1_reddit_comment",
+  "sample": 0,
+  "variables": {
+    "hot_take": "Pineapple on pizza is actually good"
+  },
+  "prompt_text": "Write a Reddit comment reacting to this hot take: \"Pineapple on pizza is actually good\"",
+  "system_text": "Write exactly the way people comment on Reddit. Informal, direct — just the comment text, no formatting.",
+  "response": "honestly not even a hot take anymore, pineapple on pizza is genuinely good and the people who lose their minds over it are way more annoying than the pizza itself. sweet and salty is a combo that works literally everywhere else but suddenly on a pizza it's a war crime? make it make sense",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 53,
+    "completion_tokens": 67,
+    "total_tokens": 120
+  },
+  "timestamp": "2026-06-17T00:22:47.844398+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp1_reddit_comment",
+  "sample": 0,
+  "variables": {
+    "hot_take": "Video games are a waste of time"
+  },
+  "prompt_text": "Write a Reddit comment reacting to this hot take: \"Video games are a waste of time\"",
+  "system_text": "Write exactly the way people comment on Reddit. Informal, direct — just the comment text, no formatting.",
+  "response": "honestly this take is so tired at this point. by that logic watching movies, sports, literally any hobby is a \"waste of time.\" time you enjoy spending isn't wasted, that's kind of the whole point of having free time. also some of the most meaningful stories ive ever experienced were in games. not to mention the friendships, problem solving skills, hand eye coordination etc. but sure keep gatekeeping what counts as a valid way to relax lol",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 50,
+    "completion_tokens": 100,
+    "total_tokens": 150
+  },
+  "timestamp": "2026-06-17T00:22:51.577346+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp1_reddit_comment",
+  "sample": 0,
+  "variables": {
+    "hot_take": "Pop music is better than it has ever been"
+  },
+  "prompt_text": "Write a Reddit comment reacting to this hot take: \"Pop music is better than it has ever been\"",
+  "system_text": "Write exactly the way people comment on Reddit. Informal, direct — just the comment text, no formatting.",
+  "response": "honestly this is just recency bias doing its thing. like every generation thinks whatever is popular right now is peak music. go listen to what was coming out in the late 60s through the 80s and tell me with a straight face that whatever is topping the charts right now compares. artists were actually playing instruments and writing their own stuff instead of having a team of 47 songwriters manufacture a hit in a lab",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 52,
+    "completion_tokens": 91,
+    "total_tokens": 143
+  },
+  "timestamp": "2026-06-17T00:22:54.977659+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp1_reddit_comment",
+  "sample": 0,
+  "variables": {
+    "hot_take": "Sequels are almost always worse than the original"
+  },
+  "prompt_text": "Write a Reddit comment reacting to this hot take: \"Sequels are almost always worse than the original\"",
+  "system_text": "Write exactly the way people comment on Reddit. Informal, direct — just the comment text, no formatting.",
+  "response": "honestly this is such a lazy take that people just repeat without thinking. Terminator 2, The Dark Knight, Aliens, Empire Strikes Back, Godfather Part 2, Road Warrior - like there are SO many sequels that absolutely destroy the original. and thats just off the top of my head. yeah MOST sequels are cash grabs but \"almost always worse\" is just wrong and i think you know its wrong",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 53,
+    "completion_tokens": 95,
+    "total_tokens": 148
+  },
+  "timestamp": "2026-06-17T00:22:58.860644+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp1_reaction_post",
+  "sample": 0,
+  "variables": {
+    "situation": "your favorite show getting cancelled on a cliffhanger"
+  },
+  "prompt_text": "Write a social media reaction post about: \"your favorite show getting cancelled on a cliffhanger\"",
+  "system_text": "Write the way people react on social media. Casual, punchy — just the reaction text, no hashtags or labels.",
+  "response": "ok but WHY do they always cancel it RIGHT when it gets good?? like we waited ALL season for that ending and now we're just supposed to live like that?? NO closure, NO answers, just pure suffering forever. the writers KNEW. they absolutely knew and they did it anyway. i am not okay. i will never be okay. that finale lives in my head rent free and i have no resolution. none. zero. they really said \"here's the most devastating cl",
+  "logprobs": null,
+  "finish_reason": "max_tokens",
+  "usage": {
+    "prompt_tokens": 55,
+    "completion_tokens": 100,
+    "total_tokens": 155
+  },
+  "timestamp": "2026-06-17T00:23:02.769356+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp1_reaction_post",
+  "sample": 0,
+  "variables": {
+    "situation": "a celebrity you like getting caught in a scandal"
+  },
+  "prompt_text": "Write a social media reaction post about: \"a celebrity you like getting caught in a scandal\"",
+  "system_text": "Write the way people react on social media. Casual, punchy — just the reaction text, no hashtags or labels.",
+  "response": "\"NOOO not them 😭 literally the one person I defended to EVERYONE and now I look so stupid. I'm not okay. I need a minute.\"",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 53,
+    "completion_tokens": 39,
+    "total_tokens": 92
+  },
+  "timestamp": "2026-06-17T00:23:05.599476+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp1_reaction_post",
+  "sample": 0,
+  "variables": {
+    "situation": "an underdog sports team winning the championship"
+  },
+  "prompt_text": "Write a social media reaction post about: \"an underdog sports team winning the championship\"",
+  "system_text": "Write the way people react on social media. Casual, punchy — just the reaction text, no hashtags or labels.",
+  "response": "wait WAIT WAIT they actually did it??? I had zero faith and I'm so sorry because these guys just proved every single doubter wrong including me 😭 I was ready to turn it off in the third quarter and now I'm literally crying in my living room like an idiot. nobody wanted them here. nobody gave them a chance. and they just went and WON THE WHOLE THING. this is why you never stop watching. this is why sports exist.",
+  "logprobs": null,
+  "finish_reason": "max_tokens",
+  "usage": {
+    "prompt_tokens": 52,
+    "completion_tokens": 100,
+    "total_tokens": 152
+  },
+  "timestamp": "2026-06-17T00:23:09.287167+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp1_reaction_post",
+  "sample": 0,
+  "variables": {
+    "situation": "a movie sequel that completely ruined the original"
+  },
+  "prompt_text": "Write a social media reaction post about: \"a movie sequel that completely ruined the original\"",
+  "system_text": "Write the way people react on social media. Casual, punchy — just the reaction text, no hashtags or labels.",
+  "response": "omg they actually had the audacity to make that sequel and now I can't even watch the first one the same way anymore like they RETROACTIVELY ruined my childhood what kind of villain behavior is that\n\nthe original was PERFECT. perfectly wrapped up. nobody asked for this. the director literally said in 2019 he would never make a sequel and now HERE WE ARE\n\nand the worst part?? the worst part is I WENT TO SEE IT. opening",
+  "logprobs": null,
+  "finish_reason": "max_tokens",
+  "usage": {
+    "prompt_tokens": 53,
+    "completion_tokens": 100,
+    "total_tokens": 153
+  },
+  "timestamp": "2026-06-17T00:23:17.500388+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp1_reaction_post",
+  "sample": 0,
+  "variables": {
+    "situation": "someone on video standing up to a bully in a really satisfying way"
+  },
+  "prompt_text": "Write a social media reaction post about: \"someone on video standing up to a bully in a really satisfying way\"",
+  "system_text": "Write the way people react on social media. Casual, punchy — just the reaction text, no hashtags or labels.",
+  "response": "ok but the way they just STOOD THERE and took it for two seconds and then absolutely SNAPPED 💀 I have watched this 47 times and it gets better every single time\n\nthe calm voice is what gets me. they didn't even raise it. that's SCARY confident\n\nbully really thought they picked the right one today huh. miscalculated BADLY\n\nthe look on their face when they realized nobody was jumping in to help them ",
+  "logprobs": null,
+  "finish_reason": "max_tokens",
+  "usage": {
+    "prompt_tokens": 59,
+    "completion_tokens": 100,
+    "total_tokens": 159
+  },
+  "timestamp": "2026-06-17T00:23:21.300015+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp1_livestream_chat",
+  "sample": 0,
+  "variables": {
+    "moment": "the streamer pulling off an insane last-second clutch"
+  },
+  "prompt_text": "Write a live stream chat message reacting to the streamer pulling off an insane last-second clutch.",
+  "system_text": "Write the way viewers spam messages in a live gaming stream chat — extremely casual and quick. Output only the chat message, nothing else.",
+  "response": "YOOOOOO HE ACTUALLY DID IT LMAOOOO IM SCREAMING RN 😭😭😭",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 58,
+    "completion_tokens": 34,
+    "total_tokens": 92
+  },
+  "timestamp": "2026-06-17T00:23:23.150692+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp1_livestream_chat",
+  "sample": 0,
+  "variables": {
+    "moment": "the streamer choking and throwing the game when they had it won"
+  },
+  "prompt_text": "Write a live stream chat message reacting to the streamer choking and throwing the game when they had it won.",
+  "system_text": "Write the way viewers spam messages in a live gaming stream chat — extremely casual and quick. Output only the chat message, nothing else.",
+  "response": "NOOOOO BRO HAD IT 😭😭😭 HOW U THROW FROM THERE LMAOOO",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 59,
+    "completion_tokens": 34,
+    "total_tokens": 93
+  },
+  "timestamp": "2026-06-17T00:23:25.379597+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp1_livestream_chat",
+  "sample": 0,
+  "variables": {
+    "moment": "a hilarious fail that nobody saw coming"
+  },
+  "prompt_text": "Write a live stream chat message reacting to a hilarious fail that nobody saw coming.",
+  "system_text": "Write the way viewers spam messages in a live gaming stream chat — extremely casual and quick. Output only the chat message, nothing else.",
+  "response": "LMAOOOOO BRO WHAT WAS THAT 💀💀💀",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 53,
+    "completion_tokens": 25,
+    "total_tokens": 78
+  },
+  "timestamp": "2026-06-17T00:23:27.277615+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp1_livestream_chat",
+  "sample": 0,
+  "variables": {
+    "moment": "the streamer hitting a massive subscriber milestone"
+  },
+  "prompt_text": "Write a live stream chat message reacting to the streamer hitting a massive subscriber milestone.",
+  "system_text": "Write the way viewers spam messages in a live gaming stream chat — extremely casual and quick. Output only the chat message, nothing else.",
+  "response": "LETS GOOOOOOO 🎉🎉🎉 HE DID IT OMGGGG POGGERS IN THE CHAT BOYS!!!!! 🔥🔥🔥",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 53,
+    "completion_tokens": 51,
+    "total_tokens": 104
+  },
+  "timestamp": "2026-06-17T00:23:29.376072+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp1_livestream_chat",
+  "sample": 0,
+  "variables": {
+    "moment": "a new player showing up and completely dominating the lobby"
+  },
+  "prompt_text": "Write a live stream chat message reacting to a new player showing up and completely dominating the lobby.",
+  "system_text": "Write the way viewers spam messages in a live gaming stream chat — extremely casual and quick. Output only the chat message, nothing else.",
+  "response": "POG THIS GUY JUST DROPPED IN AND WENT 47-2 WHAT IS HAPPENING 😭😭😭",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 56,
+    "completion_tokens": 34,
+    "total_tokens": 90
+  },
+  "timestamp": "2026-06-17T00:23:31.222962+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp1_tiktok_comment",
+  "sample": 0,
+  "variables": {
+    "video": "someone nailing a really hard dance on the first try"
+  },
+  "prompt_text": "Write a TikTok comment on a video of someone nailing a really hard dance on the first try.",
+  "system_text": "Write the way people comment on TikTok videos — short, reactive, very online. Output only the comment text, no hashtags or labels.",
+  "response": "bro said let me ruin everyone's self esteem real quick",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 62,
+    "completion_tokens": 17,
+    "total_tokens": 79
+  },
+  "timestamp": "2026-06-17T00:23:32.658614+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp1_tiktok_comment",
+  "sample": 0,
+  "variables": {
+    "video": "a person showing off an outfit that goes incredibly hard"
+  },
+  "prompt_text": "Write a TikTok comment on a video of a person showing off an outfit that goes incredibly hard.",
+  "system_text": "Write the way people comment on TikTok videos — short, reactive, very online. Output only the comment text, no hashtags or labels.",
+  "response": "no because the FIT is actually sending me to another dimension rn",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 61,
+    "completion_tokens": 17,
+    "total_tokens": 78
+  },
+  "timestamp": "2026-06-17T00:23:37.425538+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp1_tiktok_comment",
+  "sample": 0,
+  "variables": {
+    "video": "a cooking attempt that spirals completely out of control"
+  },
+  "prompt_text": "Write a TikTok comment on a video of a cooking attempt that spirals completely out of control.",
+  "system_text": "Write the way people comment on TikTok videos — short, reactive, very online. Output only the comment text, no hashtags or labels.",
+  "response": "bro the smoke detector said ENOUGH 💀",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 61,
+    "completion_tokens": 14,
+    "total_tokens": 75
+  },
+  "timestamp": "2026-06-17T00:23:38.857830+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp1_tiktok_comment",
+  "sample": 0,
+  "variables": {
+    "video": "someone giving an unhinged but weirdly correct life take"
+  },
+  "prompt_text": "Write a TikTok comment on a video of someone giving an unhinged but weirdly correct life take.",
+  "system_text": "Write the way people comment on TikTok videos — short, reactive, very online. Output only the comment text, no hashtags or labels.",
+  "response": "bro stumbled into enlightenment and has NO idea",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 64,
+    "completion_tokens": 15,
+    "total_tokens": 79
+  },
+  "timestamp": "2026-06-17T00:23:40.145619+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp1_tiktok_comment",
+  "sample": 0,
+  "variables": {
+    "video": "a cat doing something that looks oddly intentional"
+  },
+  "prompt_text": "Write a TikTok comment on a video of a cat doing something that looks oddly intentional.",
+  "system_text": "Write the way people comment on TikTok videos — short, reactive, very online. Output only the comment text, no hashtags or labels.",
+  "response": "he knew exactly what he was doing and he'll do it again",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 61,
+    "completion_tokens": 16,
+    "total_tokens": 77
+  },
+  "timestamp": "2026-06-17T00:23:41.394674+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp1_instagram_caption",
+  "sample": 0,
+  "variables": {
+    "photo": "you looking your absolute best before a night out"
+  },
+  "prompt_text": "Write an Instagram caption for a photo of you looking your absolute best before a night out.",
+  "system_text": "Write the way people caption their own photos on Instagram — short, casual, a little playful. Output only the caption text, no hashtags or labels.",
+  "response": "felt cute, might stay home actually",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 58,
+    "completion_tokens": 10,
+    "total_tokens": 68
+  },
+  "timestamp": "2026-06-17T00:23:42.941860+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp1_instagram_caption",
+  "sample": 0,
+  "variables": {
+    "photo": "a spontaneous trip with your closest friends"
+  },
+  "prompt_text": "Write an Instagram caption for a photo of a spontaneous trip with your closest friends.",
+  "system_text": "Write the way people caption their own photos on Instagram — short, casual, a little playful. Output only the caption text, no hashtags or labels.",
+  "response": "didn't plan it, packed in 10 minutes, wouldn't change a thing 🤍",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 57,
+    "completion_tokens": 24,
+    "total_tokens": 81
+  },
+  "timestamp": "2026-06-17T00:23:44.403378+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp1_instagram_caption",
+  "sample": 0,
+  "variables": {
+    "photo": "a meal that turned out way better than expected"
+  },
+  "prompt_text": "Write an Instagram caption for a photo of a meal that turned out way better than expected.",
+  "system_text": "Write the way people caption their own photos on Instagram — short, casual, a little playful. Output only the caption text, no hashtags or labels.",
+  "response": "didn't think i had it in me but here we are 👨‍🍳",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 58,
+    "completion_tokens": 23,
+    "total_tokens": 81
+  },
+  "timestamp": "2026-06-17T00:23:45.739658+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp1_instagram_caption",
+  "sample": 0,
+  "variables": {
+    "photo": "you celebrating a personal win"
+  },
+  "prompt_text": "Write an Instagram caption for a photo of you celebrating a personal win.",
+  "system_text": "Write the way people caption their own photos on Instagram — short, casual, a little playful. Output only the caption text, no hashtags or labels.",
+  "response": "took the leap and it actually worked out 🤞✨",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 54,
+    "completion_tokens": 17,
+    "total_tokens": 71
+  },
+  "timestamp": "2026-06-17T00:23:47.425954+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp1_instagram_caption",
+  "sample": 0,
+  "variables": {
+    "photo": "a chaotic but fun moment with friends"
+  },
+  "prompt_text": "Write an Instagram caption for a photo of a chaotic but fun moment with friends.",
+  "system_text": "Write the way people caption their own photos on Instagram — short, casual, a little playful. Output only the caption text, no hashtags or labels.",
+  "response": "we don't have it together but we have each other 🤍",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 57,
+    "completion_tokens": 18,
+    "total_tokens": 75
+  },
+  "timestamp": "2026-06-17T00:23:50.159073+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp1_discord_message",
+  "sample": 0,
+  "variables": {
+    "topic": "a clip of someone pulling off something ridiculous in a game"
+  },
+  "prompt_text": "Write a Discord message reacting to a clip of someone pulling off something ridiculous in a game.",
+  "system_text": "Write the way people message in a Discord server with friends — casual, quick, lowercase energy. Output only the message text, no names or labels.",
+  "response": "bro WHAT 💀 how does that even work like that's not supposed to be possible what game are you even playing rn",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 58,
+    "completion_tokens": 32,
+    "total_tokens": 90
+  },
+  "timestamp": "2026-06-17T00:23:51.945466+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp1_discord_message",
+  "sample": 0,
+  "variables": {
+    "topic": "your friend finally beating a boss everyone was stuck on"
+  },
+  "prompt_text": "Write a Discord message reacting to your friend finally beating a boss everyone was stuck on.",
+  "system_text": "Write the way people message in a Discord server with friends — casual, quick, lowercase energy. Output only the message text, no names or labels.",
+  "response": "bro NO WAY you actually did it??? we've been on that thing for like two weeks 💀 how does it feel to be the chosen one finally lmaooo ok now you HAVE to tell us what you did differently because i swear i tried everything and that boss just said no every single time",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 56,
+    "completion_tokens": 69,
+    "total_tokens": 125
+  },
+  "timestamp": "2026-06-17T00:23:55.141907+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp1_discord_message",
+  "sample": 0,
+  "variables": {
+    "topic": "a meme someone just dropped in the chat"
+  },
+  "prompt_text": "Write a Discord message reacting to a meme someone just dropped in the chat.",
+  "system_text": "Write the way people message in a Discord server with friends — casual, quick, lowercase energy. Output only the message text, no names or labels.",
+  "response": "bro im deceased 💀💀💀 who made this and why is it so accurate",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 55,
+    "completion_tokens": 24,
+    "total_tokens": 79
+  },
+  "timestamp": "2026-06-17T00:23:56.670772+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp1_discord_message",
+  "sample": 0,
+  "variables": {
+    "topic": "plans falling apart at the last minute"
+  },
+  "prompt_text": "Write a Discord message reacting to plans falling apart at the last minute.",
+  "system_text": "Write the way people message in a Discord server with friends — casual, quick, lowercase energy. Output only the message text, no names or labels.",
+  "response": "bro why does this ALWAYS happen like we had everything set and now it's just… gone?? i'm not even mad i'm just so tired lmao",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 53,
+    "completion_tokens": 38,
+    "total_tokens": 91
+  },
+  "timestamp": "2026-06-17T00:23:58.581613+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp1_discord_message",
+  "sample": 0,
+  "variables": {
+    "topic": "someone in the server confidently saying something wildly wrong"
+  },
+  "prompt_text": "Write a Discord message reacting to someone in the server confidently saying something wildly wrong.",
+  "system_text": "Write the way people message in a Discord server with friends — casual, quick, lowercase energy. Output only the message text, no names or labels.",
+  "response": "bro said that with his whole chest too 💀",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 57,
+    "completion_tokens": 15,
+    "total_tokens": 72
+  },
+  "timestamp": "2026-06-17T00:23:59.885056+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp1_forum_post",
+  "sample": 0,
+  "variables": {
+    "topic": "whether the new sequel actually lived up to the hype"
+  },
+  "prompt_text": "Write a message board post sharing your take on whether the new sequel actually lived up to the hype.",
+  "system_text": "Write the way people post on an online message board — informal, opinionated, conversational. Output only the post text, no titles or formatting.",
+  "response": "okay so I finally watched it last night and I have THOUGHTS\n\nlook I wanted to love this thing. I really did. I've been hyped since the announcement, defended it in every thread when people were being doom and gloom about it, even got a little annoying about it if I'm being honest. so this isn't coming from someone who was looking for reasons to hate it.\n\nbut man. it's just... fine? and fine after all that waiting feels almost worse",
+  "logprobs": null,
+  "finish_reason": "max_tokens",
+  "usage": {
+    "prompt_tokens": 60,
+    "completion_tokens": 100,
+    "total_tokens": 160
+  },
+  "timestamp": "2026-06-17T00:24:03.745308+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp1_forum_post",
+  "sample": 0,
+  "variables": {
+    "topic": "a game that everyone massively overrates"
+  },
+  "prompt_text": "Write a message board post sharing your take on a game that everyone massively overrates.",
+  "system_text": "Write the way people post on an online message board — informal, opinionated, conversational. Output only the post text, no titles or formatting.",
+  "response": "ok so I finally need to say this because I've been holding it in for years\n\nRed Dead Redemption 2 is not the masterpiece everyone pretends it is and I will die on this hill\n\nbefore you come at me - yes the graphics are gorgeous, yes the world is detailed, yes Arthur Morgan is a well written character. I'm not disputing any of that. what I AM saying is that a game being pretty and having good writing does not automatically make it F",
+  "logprobs": null,
+  "finish_reason": "max_tokens",
+  "usage": {
+    "prompt_tokens": 57,
+    "completion_tokens": 100,
+    "total_tokens": 157
+  },
+  "timestamp": "2026-06-17T00:24:07.310514+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp1_forum_post",
+  "sample": 0,
+  "variables": {
+    "topic": "the best cheap food you can actually get"
+  },
+  "prompt_text": "Write a message board post sharing your take on the best cheap food you can actually get.",
+  "system_text": "Write the way people post on an online message board — informal, opinionated, conversational. Output only the post text, no titles or formatting.",
+  "response": "ok so I've been thinking about this a lot lately and I genuinely think eggs are the most underrated cheap food on the planet and I will die on this hill\n\nlike a dozen eggs for what, two bucks? maybe three if you're buying the fancy ones? and you can do SO much with them. scrambled, fried, hard boiled, throw them in fried rice, make an omelette with whatever random stuff is in your fridge, poach them",
+  "logprobs": null,
+  "finish_reason": "max_tokens",
+  "usage": {
+    "prompt_tokens": 57,
+    "completion_tokens": 100,
+    "total_tokens": 157
+  },
+  "timestamp": "2026-06-17T00:24:10.550338+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp1_forum_post",
+  "sample": 0,
+  "variables": {
+    "topic": "an unpopular opinion about a show everyone loves"
+  },
+  "prompt_text": "Write a message board post sharing your take on an unpopular opinion about a show everyone loves.",
+  "system_text": "Write the way people post on an online message board — informal, opinionated, conversational. Output only the post text, no titles or formatting.",
+  "response": "ok so I know I'm going to get absolutely destroyed for this but I genuinely cannot stay quiet anymore\n\nBreaking Bad is... fine. It's FINE. There I said it.\n\nLike yeah the cinematography is gorgeous and Bryan Cranston is obviously a god among men but can we talk about how the second half of season 4 and basically all of season 5 felt like the show was actively trying to convince me that Walt was some kind of tragic figure when he was",
+  "logprobs": null,
+  "finish_reason": "max_tokens",
+  "usage": {
+    "prompt_tokens": 59,
+    "completion_tokens": 100,
+    "total_tokens": 159
+  },
+  "timestamp": "2026-06-17T00:24:14.230783+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp1_forum_post",
+  "sample": 0,
+  "variables": {
+    "topic": "why a recent trend is already completely played out"
+  },
+  "prompt_text": "Write a message board post sharing your take on why a recent trend is already completely played out.",
+  "system_text": "Write the way people post on an online message board — informal, opinionated, conversational. Output only the post text, no titles or formatting.",
+  "response": "ok so can we talk about how the \"underconsumption core\" thing on tiktok lasted approximately four seconds before it became the most ironic thing on the internet\n\nlike the whole POINT was supposed to be about buying less stuff, using things until they're actually worn out, not participating in haul culture. genuinely good message. i was rooting for it.\n\nand then within like three weeks it turned into an AESTHETIC. people were staging their half-empty",
+  "logprobs": null,
+  "finish_reason": "max_tokens",
+  "usage": {
+    "prompt_tokens": 58,
+    "completion_tokens": 100,
+    "total_tokens": 158
+  },
+  "timestamp": "2026-06-17T00:24:18.333425+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp1_gaming_voice_call",
+  "sample": 0,
+  "variables": {
+    "moment": "their teammate makes a clutch play to win the round"
+  },
+  "prompt_text": "Write what someone would shout into voice chat when their teammate makes a clutch play to win the round.",
+  "system_text": "Write the way someone talks out loud on a voice call while gaming with friends — fast, reactive, spoken. Output only what they say, no labels or quotation marks.",
+  "response": "YOOO LETS GOOO BRO WHAT WAS THAT oh my god dude that was INSANE how did you even — bro you're cracked you're actually cracked dude I would've just DIED there no cap that was the craziest thing I've ever seen clip that CLIP THAT someone better have clipped that oh we are SO back let's GO next round let's RUN it",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 65,
+    "completion_tokens": 96,
+    "total_tokens": 161
+  },
+  "timestamp": "2026-06-17T00:24:21.922409+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp1_gaming_voice_call",
+  "sample": 0,
+  "variables": {
+    "moment": "they get eliminated by something completely unfair"
+  },
+  "prompt_text": "Write what someone would shout into voice chat when they get eliminated by something completely unfair.",
+  "system_text": "Write the way someone talks out loud on a voice call while gaming with friends — fast, reactive, spoken. Output only what they say, no labels or quotation marks.",
+  "response": "BRO WHAT WAS THAT are you KIDDING me that hit me through the WALL how does that even — no no no rewind rewind REWIND that should not have killed me I was BEHIND COVER I was literally behind cover what is this game DOING dude that is actual garbage that is the most garbage thing I have ever seen in my LIFE I had full health bro FULL health one shot through a WALL through a wall through —",
+  "logprobs": null,
+  "finish_reason": "max_tokens",
+  "usage": {
+    "prompt_tokens": 62,
+    "completion_tokens": 100,
+    "total_tokens": 162
+  },
+  "timestamp": "2026-06-17T00:24:26.080254+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp1_gaming_voice_call",
+  "sample": 0,
+  "variables": {
+    "moment": "they spot the enemy team about to walk right into their trap"
+  },
+  "prompt_text": "Write what someone would shout into voice chat when they spot the enemy team about to walk right into their trap.",
+  "system_text": "Write the way someone talks out loud on a voice call while gaming with friends — fast, reactive, spoken. Output only what they say, no labels or quotation marks.",
+  "response": "oh oh oh WAIT wait wait nobody move nobody move they're coming they're coming RIGHT NOW just hold hold HOLD — okay they're in they're IN GO GO GO GO GO WHAT DID I TELL YOU bro WHAT DID I TELL YOU let's GOOO that was so clean dude that was so clean oh my god they had no idea they literally had ZERO idea dude we cooked them we actually cooked them",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 66,
+    "completion_tokens": 97,
+    "total_tokens": 163
+  },
+  "timestamp": "2026-06-17T00:24:30.128493+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp1_gaming_voice_call",
+  "sample": 0,
+  "variables": {
+    "moment": "a teammate keeps messing up the same easy thing"
+  },
+  "prompt_text": "Write what someone would shout into voice chat when a teammate keeps messing up the same easy thing.",
+  "system_text": "Write the way someone talks out loud on a voice call while gaming with friends — fast, reactive, spoken. Output only what they say, no labels or quotation marks.",
+  "response": "dude COME ON we literally just talked about this like two minutes ago how are you — okay no no no why did you go that way again bro that is literally the SAME thing you did last round what are you doing are you watching the same game as me because I swear to god if you push that flank one more time without telling anyone I'm gonna lose my mind just PING it man that's all I'm asking just hit the button ping it it's not hard",
+  "logprobs": null,
+  "finish_reason": "max_tokens",
+  "usage": {
+    "prompt_tokens": 64,
+    "completion_tokens": 100,
+    "total_tokens": 164
+  },
+  "timestamp": "2026-06-17T00:24:34.068308+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp1_gaming_voice_call",
+  "sample": 0,
+  "variables": {
+    "moment": "they pull off a play they can't believe actually worked"
+  },
+  "prompt_text": "Write what someone would shout into voice chat when they pull off a play they can't believe actually worked.",
+  "system_text": "Write the way someone talks out loud on a voice call while gaming with friends — fast, reactive, spoken. Output only what they say, no labels or quotation marks.",
+  "response": "no way no way no way that actually worked oh my god WAIT did you guys see that did you SEE that I was NOT supposed to survive that I just — bro I just closed my eyes and clicked I don't even know what I did can we get a replay of that please someone clip that CLIP THAT right now I am never doing that again that was a one in a million that should not have gone the way it did I'm actually shaking a little bit like my",
+  "logprobs": null,
+  "finish_reason": "max_tokens",
+  "usage": {
+    "prompt_tokens": 65,
+    "completion_tokens": 100,
+    "total_tokens": 165
+  },
+  "timestamp": "2026-06-17T00:24:38.804038+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp1_casual_story",
+  "sample": 0,
+  "variables": {
+    "event": "the chaotic thing that happened on their way to work"
+  },
+  "prompt_text": "Write how someone would tell their friend about the chaotic thing that happened on their way to work.",
+  "system_text": "Write the way someone tells a friend a story out loud — casual spoken language, like you're just hanging out. Output only what they say, no labels or quotation marks.",
+  "response": "okay so you are not gonna believe what happened to me this morning like I almost didn't even make it to work at all so I'm walking to the bus stop right and it's already like cutting it close because I slept through my first alarm and I'm basically speed walking and I've got my coffee in one hand and my bag is like half zipped because I didn't have time and so I get to the corner and the light turns green and I start crossing and out of nowhere this",
+  "logprobs": null,
+  "finish_reason": "max_tokens",
+  "usage": {
+    "prompt_tokens": 64,
+    "completion_tokens": 100,
+    "total_tokens": 164
+  },
+  "timestamp": "2026-06-17T00:24:42.766148+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp1_casual_story",
+  "sample": 0,
+  "variables": {
+    "event": "running into their ex in the worst possible situation"
+  },
+  "prompt_text": "Write how someone would tell their friend about running into their ex in the worst possible situation.",
+  "system_text": "Write the way someone tells a friend a story out loud — casual spoken language, like you're just hanging out. Output only what they say, no labels or quotation marks.",
+  "response": "Oh my god okay so you are not going to believe what happened to me yesterday, like I still cannot process it\n\nSo you know how I've been doing that whole like, glowing up, taking care of myself thing, right? Like I finally feel good, I'm in a good place mentally, whatever\n\nSo I go to the grocery store, right, and I look absolutely terrible. Like I'm talking I just woke up, I have my ratty hoodie on, the",
+  "logprobs": null,
+  "finish_reason": "max_tokens",
+  "usage": {
+    "prompt_tokens": 62,
+    "completion_tokens": 100,
+    "total_tokens": 162
+  },
+  "timestamp": "2026-06-17T00:24:46.430001+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp1_casual_story",
+  "sample": 0,
+  "variables": {
+    "event": "a night out that went completely sideways"
+  },
+  "prompt_text": "Write how someone would tell their friend about a night out that went completely sideways.",
+  "system_text": "Write the way someone tells a friend a story out loud — casual spoken language, like you're just hanging out. Output only what they say, no labels or quotation marks.",
+  "response": "okay so you are NOT going to believe what happened last night, like I still can't even process it fully\n\nso it started out totally normal right, me and Jamie decided we were just gonna go out for like two drinks, maybe three, just a chill Friday thing, nothing crazy\n\nand IMMEDIATELY, like within the first twenty minutes, we run into her ex at the bar, like the ex, the one she cried about for literally four months, and he's there with some",
+  "logprobs": null,
+  "finish_reason": "max_tokens",
+  "usage": {
+    "prompt_tokens": 61,
+    "completion_tokens": 100,
+    "total_tokens": 161
+  },
+  "timestamp": "2026-06-17T00:24:50.490075+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp1_casual_story",
+  "sample": 0,
+  "variables": {
+    "event": "the most awkward interaction they had all week"
+  },
+  "prompt_text": "Write how someone would tell their friend about the most awkward interaction they had all week.",
+  "system_text": "Write the way someone tells a friend a story out loud — casual spoken language, like you're just hanging out. Output only what they say, no labels or quotation marks.",
+  "response": "oh my god okay so you know how I've been going to that new coffee place near my work right, okay so I walk in yesterday and the barista goes \"hey welcome back!\" super enthusiastic, and I'm like oh cool she remembers me, so I go \"hey how are you!\" and she goes \"good good, the usual?\" and I'm like... I have no idea what my usual is there, I've only been like twice, so I just kind of go",
+  "logprobs": null,
+  "finish_reason": "max_tokens",
+  "usage": {
+    "prompt_tokens": 62,
+    "completion_tokens": 100,
+    "total_tokens": 162
+  },
+  "timestamp": "2026-06-17T00:24:54.687179+00:00"
+}
+
+{
+  "run_id": "98efb50008d244eba7fc14ca39301a69",
+  "model": "claude-sonnet-4-6",
+  "prompt_id": "exp1_casual_story",
+  "sample": 0,
+  "variables": {
+    "event": "winning something they never expected to win"
+  },
+  "prompt_text": "Write how someone would tell their friend about winning something they never expected to win.",
+  "system_text": "Write the way someone tells a friend a story out loud — casual spoken language, like you're just hanging out. Output only what they say, no labels or quotation marks.",
+  "response": "so okay you're not gonna believe this, I still can't even wrap my head around it honestly, but so you know how I entered that thing like ages ago and I completely forgot about it? like I literally put it out of my mind, didn't think twice about it, moved on with my life\n\nand then I get this email right, and at first I'm like okay this is spam, delete, whatever, but something made me actually open it and I'm reading it and I",
+  "logprobs": null,
+  "finish_reason": "max_tokens",
+  "usage": {
+    "prompt_tokens": 60,
+    "completion_tokens": 100,
+    "total_tokens": 160
+  },
+  "timestamp": "2026-06-17T00:24:58.179461+00:00"
+}
+

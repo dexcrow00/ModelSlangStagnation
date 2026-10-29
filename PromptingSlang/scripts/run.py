@@ -30,8 +30,8 @@ logging.basicConfig(
 # ('org/model' -> Together, 'claude-*' -> Anthropic, 'gpt-*'/'o#-*' -> OpenAI).
 MODELS = [
     # Together (org/model format)
-    "moonshotai/Kimi-K3",
-    "meta-models/Muse-Spark-Open-816B-A42B",
+    "moonshotai/Kimi-K3", # Note this is a "reasoning" model
+    "meta-models/Muse-Glimmer-30B",
     "deepseek-ai/DeepSeek-V4.1-Flash",
     # Anthropic (Claude)
     "claude-sonnet-5-5",
@@ -42,7 +42,7 @@ MODELS = [
 # Generation settings for every run. A prompt record's own "temperature" field
 # still overrides TEMPERATURE for that prompt.
 TEMPERATURE = 0.0
-MAX_TOKENS = 512
+MAX_TOKENS = 4096
 
 # Directory for the per-model response files (one <model>.jsonl each). None puts
 # them in a 'responses' directory next to the directory holding the prompt file
@@ -124,23 +124,28 @@ def main() -> None:
         sys.exit(0)
     print()
 
-    # Build whichever provider clients have keys configured.
+    # Build whichever provider clients have keys configured, noting why any
+    # failed (a missing key, or the provider's SDK not installed in this Python).
+    failures = []
+
     def _try(cls, **kw):
         try:
             return cls(**kw)
-        except (ValueError, ImportError):
-            return None
+        except ValueError as exc:
+            failures.append(f"{cls.__name__}: {exc}")
+        except ImportError as exc:
+            failures.append(f"{cls.__name__}: SDK not installed in {sys.executable} ({exc})")
+        return None
 
     router = RouterClient(
         together=_try(TogetherClient),
         openai=_try(OpenAIClient),
         anthropic=_try(AnthropicClient),
     )
+    for failure in failures:
+        print(f"Warning: {failure}", file=sys.stderr)
     if not router.providers:
-        print(
-            "No API keys found. Set TOGETHER_API_KEY, OPENAI_API_KEY, or ANTHROPIC_API_KEY.",
-            file=sys.stderr,
-        )
+        print("No provider clients could be created (see warnings above).", file=sys.stderr)
         sys.exit(1)
 
     gen_kwargs = {"temperature": TEMPERATURE, "max_tokens": MAX_TOKENS}

@@ -3,12 +3,14 @@
 import importlib.util
 import os
 import re
+import sys
 from pathlib import Path
 from typing import Any
 
 
 def _load_keys():
-    """Load the project's Keys.py (it lives at the repo root, two levels up)."""
+    if sys.platform != "win32":
+        return None
     for base in (Path(__file__).resolve().parents[2], Path.cwd()):
         candidate = base / "Keys.py"
         if candidate.is_file():
@@ -23,7 +25,6 @@ _Keys = _load_keys()
 
 
 def _get_key(name: str) -> str | None:
-    """Value of *name* from Keys.py, falling back to the environment."""
     from_keys = getattr(_Keys, name, None) if _Keys else None
     return from_keys or os.environ.get(name)
 
@@ -50,6 +51,10 @@ class TogetherClient:
         self._client = Together(api_key=key, timeout=REQUEST_TIMEOUT)
 
     def complete(self, model: str, messages: list[dict], **gen_kwargs) -> dict:
+        # DeepSeek V4.1 rejects the echo parameter, so leave it out (echo then
+        # takes its default, false).
+        if model.lower().startswith("deepseek-ai/deepseek-v4.1"):
+            gen_kwargs.pop("echo", None)
         response = self._client.chat.completions.create(
             model=model, messages=messages, **gen_kwargs,
         )
@@ -86,6 +91,10 @@ class OpenAIClient:
             gen_kwargs["logprobs"] = True
             gen_kwargs["top_logprobs"] = n_logprobs
         gen_kwargs.pop("echo", None)  # not supported by chat completions
+        # Newer OpenAI models reject max_tokens in favour of max_completion_tokens.
+        if "max_tokens" in gen_kwargs:
+            gen_kwargs["max_completion_tokens"] = gen_kwargs.pop("max_tokens")
+        gen_kwargs.pop("temperature", None)  # OpenAI models run at their default
 
         response = self._client.chat.completions.create(
             model=model, messages=messages, **gen_kwargs,
@@ -123,6 +132,7 @@ class AnthropicClient:
 
         gen_kwargs.pop("logprobs", None)  # not available in standard API
         gen_kwargs.pop("echo", None)
+        gen_kwargs.pop("temperature", None)  # Anthropic models run at their default
         gen_kwargs.setdefault("max_tokens", 512)
 
         kwargs: dict[str, Any] = {"model": model, "messages": chat, **gen_kwargs}
@@ -130,7 +140,9 @@ class AnthropicClient:
             kwargs["system"] = system
 
         response = self._client.messages.create(**kwargs)
-        text = response.content[0].text if response.content else ""
+        # The reply can open with non-text blocks (e.g. a thinking block), so
+        # keep only the text blocks.
+        text = "".join(b.text for b in response.content if b.type == "text")
         return {
             "text": text,
             "model": response.model,

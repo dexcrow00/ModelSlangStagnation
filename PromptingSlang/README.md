@@ -55,7 +55,7 @@ constants at the top of `scripts/run.py`, so any change to them is tracked in gi
 |---|---|---|
 | `MODELS` | 5 models | Models every run queries |
 | `TEMPERATURE` | `0.0` | Sampling temperature (a prompt record's `temperature` overrides it) |
-| `MAX_TOKENS` | `512` | Max tokens generated per response |
+| `MAX_TOKENS` | `4096` | Max tokens generated per response |
 | `OUTPUT_DIR` | `None` | Response directory; `None` uses `responses/` next to the prompt file's folder |
 
 Each run gets a random run ID.
