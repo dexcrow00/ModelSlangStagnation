@@ -17,12 +17,6 @@ one CSV, one ``--per-word`` cap. Each row keeps the exact target it matched in
 the ``target`` column. Groups with fewer than ``MIN_CONTEXTS`` usable contexts
 in the corpus are skipped.
 
-TODO(dexcrow): Is this true? I guess we'll find out
-Every word's occurrences are a natural mix of the slang sense and the standard
-sense (e.g. ``extra`` = dramatic vs. additional), so labelling the ``is_slang``
-column (1 = slang sense, 0 = not) yields a balanced binary training set. Once
-labelled, point ``finetune_roberta.py --annotations <out-dir>`` at the result.
-
 Words in ``slang_constants.ALWAYS_SLANG`` have no standard sense and are always
 passed by ``roberta_filter.py``, so they need no classifier training and are
 excluded by default (pass them explicitly via ``--words`` to override).
