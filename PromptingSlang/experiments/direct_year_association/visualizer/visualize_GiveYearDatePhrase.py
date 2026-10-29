@@ -179,9 +179,16 @@ def main() -> None:
                    help=f"Response JSONL file or directory (default: {DEFAULT_RESPONSES}).")
     p.add_argument("-m", "--model", default=None,
                    help="Substring of the model id to chart (default: first available).")
-    p.add_argument("-o", "--output", type=Path, default=DEFAULT_OUTPUT,
-                   help=f"Output path (default: {DEFAULT_OUTPUT}). Pass '-' to display interactively.")
+    p.add_argument("-o", "--output", type=Path, default=None,
+                   help=f"Output path (default: {DEFAULT_OUTPUT}, with '_<model>' appended to "
+                        "the name when --model is given). Pass '-' to display interactively.")
     args = p.parse_args()
+    if args.output is None:
+        args.output = DEFAULT_OUTPUT
+        if args.model:
+            # e.g. --model claude -> give_year_date_phrase_claude.png
+            suffix = re.sub(r"[^\w.-]+", "_", args.model)
+            args.output = DEFAULT_OUTPUT.with_name(f"{DEFAULT_OUTPUT.stem}_{suffix}{DEFAULT_OUTPUT.suffix}")
 
     records = read_responses(args.responses)
     if not records:
