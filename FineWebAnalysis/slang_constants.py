@@ -10,9 +10,12 @@ from __future__ import annotations
 # Consequences of membership here:
 #   - roberta_filter.py assigns score 1.0 and always passes the word (bypasses
 #     the classifier).
-#   - prepare_finetune_data.py pre-labels their training contexts is_slang=1.
 # Compared case-folded.
 ALWAYS_SLANG = frozenset({
     "omg", "omgggg", "lmfao", "lmaooo", "lmaoooo", "lmaooooo",
-    "legit", "situationship", "💀",
+    "legit", "situationship", "💀", "circlejerked", "meme'd", "meme’d", "memed",
+    "cappin", "snoozefest", "speedrun", "speedran", "speedrunning", "cluttercore",
+    "tl;dr", "kekw", "omegalul", "lul", "peepoparty", "pogchamp", "ragequit", "stunlocked",
+    "gatekeeping", "😭", "brooo", "broooo", "brooooo", "brooooooo", "yooo", "yoooo", "yooooo", 
+    "yoooooo", "nahhh", "nahhhh", "nahhhhh", "omggg"
 })

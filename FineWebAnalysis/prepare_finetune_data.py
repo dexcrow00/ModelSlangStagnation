@@ -11,6 +11,12 @@ expects --- plus a blank ``is_slang`` column for a human (or LLM) to fill:
 
     target, is_slang, target_context, uri
 
+Targets that differ only in punctuation (``chef's kiss`` / ``chef’s kiss``,
+``meme'd`` / ``memed``, ``top tier`` / ``top-tier``) are pooled into one group:
+one CSV, one ``--per-word`` cap. Each row keeps the exact target it matched in
+the ``target`` column. Groups with fewer than ``MIN_CONTEXTS`` usable contexts
+in the corpus are skipped.
+
 TODO(dexcrow): Is this true? I guess we'll find out
 Every word's occurrences are a natural mix of the slang sense and the standard
 sense (e.g. ``extra`` = dramatic vs. additional), so labelling the ``is_slang``
@@ -36,6 +42,7 @@ import logging
 import random
 import re
 import sys
+import unicodedata
 from collections import defaultdict
 from pathlib import Path
 
@@ -47,6 +54,9 @@ HERE = Path(__file__).resolve().parent
 DEFAULT_CONTEXTS = HERE / "10BT_scenario_merged"
 DEFAULT_OUT = HERE / "scenario_finetune_annotations"
 MIN_CHARS, MAX_CHARS = 40, 600  # drop fragments and over-long boilerplate
+# Skip words with fewer usable contexts than this in the corpus (all punctuation
+# variants counted together, before --exclude).
+MIN_CONTEXTS = 50
 
 # Shared with roberta_filter.py: words with no standard sense are pre-labelled.
 sys.path.insert(0, str(HERE))
@@ -58,6 +68,24 @@ def _slug(word: str) -> str:
     s = re.sub(r"\s+", "_", word.strip())
     s = re.sub(r"[^A-Za-z0-9_]+", "", s)
     return s or f"u{hex(ord(word[0]))[2:]}" if word else "word"
+
+
+_APOSTROPHES = {"'", "’", "‘", "ʼ"}
+
+
+def _group_key(word: str) -> str:
+    """Punctuation-insensitive key shared by spelling variants of one target.
+
+    Apostrophes are dropped (``chef's`` / ``chef’s`` / ``chefs``); any other
+    punctuation becomes a space (``top-tier`` == ``top tier``). Emoji and other
+    symbols are kept.
+    """
+    chars = []
+    for ch in word.casefold():
+        if ch in _APOSTROPHES:
+            continue
+        chars.append(" " if unicodedata.category(ch).startswith("P") else ch)
+    return " ".join("".join(chars).split())
 
 
 def _clean(context: str) -> str:
@@ -86,18 +114,28 @@ def load_excluded_contexts(paths: list[Path]) -> set[str]:
 
 
 def sample_contexts(contexts_dir: Path, words: set[str] | None, per_word: int,
-                    seed: int, exclude: set[str] | None = None) -> dict[str, list[tuple[str, str]]]:
-    """Reservoir-sample up to ~4x per_word cleaned contexts per target word.
+                    seed: int, exclude: set[str] | None = None
+                    ) -> tuple[dict[str, list[tuple[str, str, str]]], dict[str, int],
+                               dict[str, set[str]]]:
+    """Reservoir-sample up to ~4x per_word cleaned contexts per target group.
 
-    Oversampling leaves room to de-duplicate down to ``per_word`` afterwards.
-    Contexts whose cleaned/lower-cased text is in ``exclude`` are skipped, so a
-    validation set can be drawn disjoint from the training set.
-    Returns {word: [(uri, context), ...]}.
+    Targets are pooled by ``_group_key`` so punctuation variants share one
+    reservoir. Oversampling leaves room to de-duplicate down to ``per_word``
+    afterwards. Contexts whose cleaned/lower-cased text is in ``exclude`` are
+    skipped, so a validation set can be drawn disjoint from the training set.
+
+    Returns ``(reservoir, totals, variants)``: ``{key: [(target, uri, context), ...]}``,
+    ``{key: usable contexts in the corpus}`` (counted before ``exclude``, so the
+    minimum-context check means the same thing for train and validation runs),
+    and ``{key: {target spellings seen}}``.
     """
     rng = random.Random(seed)
     over = max(per_word * 4, 400)
-    reservoir: dict[str, list[tuple[str, str]]] = defaultdict(list)
+    reservoir: dict[str, list[tuple[str, str, str]]] = defaultdict(list)
     seen: dict[str, int] = defaultdict(int)
+    totals: dict[str, int] = defaultdict(int)
+    variants: dict[str, set[str]] = defaultdict(set)
+    want = {_group_key(w) for w in words} if words is not None else None
 
     files = sorted(contexts_dir.glob("*.csv"))
     if not files:
@@ -106,7 +144,10 @@ def sample_contexts(contexts_dir: Path, words: set[str] | None, per_word: int,
         with path.open(newline="", encoding="utf-8-sig") as fh:
             for row in csv.DictReader(fh):
                 w = (row.get("target") or "").strip()
-                if not w or (words is not None and w not in words):
+                if not w:
+                    continue
+                key = _group_key(w)
+                if want is not None and key not in want:
                     continue
                 # Always-slang words are handled by the filter allowlist and need
                 # no training data; skip them unless explicitly requested.
@@ -115,52 +156,56 @@ def sample_contexts(contexts_dir: Path, words: set[str] | None, per_word: int,
                 ctx = _clean(row.get("target_context") or "")
                 if not (MIN_CHARS <= len(ctx) <= MAX_CHARS):
                     continue
+                totals[key] += 1
+                variants[key].add(w)
                 if exclude and ctx.lower() in exclude:
                     continue
-                seen[w] += 1
-                res = reservoir[w]
-                rec = (row.get("uri") or "", ctx)
+                seen[key] += 1
+                res = reservoir[key]
+                rec = (w, row.get("uri") or "", ctx)
                 if len(res) < over:
                     res.append(rec)
                 else:
-                    j = rng.randint(0, seen[w] - 1)
+                    j = rng.randint(0, seen[key] - 1)
                     if j < over:
                         res[j] = rec
-    log.info("Streamed %d context file(s); %d target word(s) sampled.",
+    log.info("Streamed %d context file(s); %d target group(s) sampled.",
              len(files), len(reservoir))
-    return reservoir
+    return reservoir, totals, variants
 
 
-def write_annotations(reservoir: dict[str, list[tuple[str, str]]], out_dir: Path,
+def write_annotations(reservoir: dict[str, list[tuple[str, str, str]]], out_dir: Path,
                       per_word: int, seed: int) -> list[tuple[str, int]]:
-    """De-duplicate, cap at per_word, and write one annotation CSV per word."""
+    """De-duplicate, cap at per_word, and write one annotation CSV per group."""
     rng = random.Random(seed)
     out_dir.mkdir(parents=True, exist_ok=True)
     summary: list[tuple[str, int]] = []
-    for word, recs in sorted(reservoir.items(), key=lambda kv: -len(kv[1])):
+    for key, recs in sorted(reservoir.items(), key=lambda kv: -len(kv[1])):
         rng.shuffle(recs)
         seen_ctx: set[str] = set()
-        rows: list[tuple[str, str]] = []
-        for uri, ctx in recs:
-            key = ctx.lower()
-            if key in seen_ctx:
+        rows: list[tuple[str, str, str]] = []
+        for word, uri, ctx in recs:
+            ctx_key = ctx.lower()
+            if ctx_key in seen_ctx:
                 continue
-            seen_ctx.add(key)
-            rows.append((uri, ctx))
+            seen_ctx.add(ctx_key)
+            rows.append((word, uri, ctx))
             if len(rows) >= per_word:
                 break
-        path = out_dir / f"{_slug(word)}_annotations.csv"
+        path = out_dir / f"{_slug(key)}_annotations.csv"
         with path.open("w", newline="", encoding="utf-8") as fh:
             writer = csv.writer(fh)
             writer.writerow(["target", "is_slang", "target_context", "uri"])
-            for uri, ctx in rows:
+            for word, uri, ctx in rows:
                 writer.writerow([word, "", ctx, uri])
-        summary.append((word, len(rows)))
+        summary.append((key, len(rows)))
     return summary
 
 
 def write_readme(out_dir: Path, summary: list[tuple[str, int]], per_word: int,
+                 skipped: list[tuple[str, int]],
                  excluded_from: list[str] | None = None) -> None:
+    """``summary`` and ``skipped`` hold ``(display label, count)`` pairs."""
     total = sum(n for _, n in summary)
     if excluded_from:
         lines = [
@@ -204,12 +249,24 @@ def write_readme(out_dir: Path, summary: list[tuple[str, int]], per_word: int,
         ]
     lines += [
         "",
+        "Spelling variants that differ only in punctuation share one CSV; each row's",
+        "`target` keeps the spelling it matched.",
+        "",
         f"## Contents ({len(summary)} words, {total} contexts, up to {per_word} each)",
         "",
         "| word | contexts |",
         "| --- | --- |",
     ]
     lines += [f"| {w} | {n} |" for w, n in summary]
+    if skipped:
+        lines += [
+            "",
+            f"## Skipped: fewer than {MIN_CONTEXTS} contexts in the corpus ({len(skipped)} words)",
+            "",
+            "| word | contexts |",
+            "| --- | --- |",
+        ]
+        lines += [f"| {w} | {n} |" for w, n in skipped]
     (out_dir / "README.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
@@ -222,7 +279,8 @@ def main() -> None:
     p.add_argument("--per-word", type=int, default=120, dest="per_word",
                    help="Max contexts to keep per word (default: 120).")
     p.add_argument("--words", nargs="+", default=None,
-                   help="Restrict to these target words (default: all in the contexts dir).")
+                   help="Restrict to these target words, plus their punctuation variants "
+                        "(default: all in the contexts dir).")
     p.add_argument("--exclude", nargs="+", type=Path, default=None, metavar="PATH",
                    help="CSV file(s) or dir(s) whose contexts to exclude, e.g. the training "
                         "set when building a disjoint validation set.")
@@ -231,9 +289,22 @@ def main() -> None:
 
     words = set(args.words) if args.words else None
     exclude = load_excluded_contexts(args.exclude) if args.exclude else None
-    reservoir = sample_contexts(args.contexts, words, args.per_word, args.seed, exclude)
-    summary = write_annotations(reservoir, args.out, args.per_word, args.seed)
-    write_readme(args.out, summary, args.per_word,
+    reservoir, totals, variants = sample_contexts(args.contexts, words, args.per_word,
+                                                  args.seed, exclude)
+
+    def label(key: str) -> str:
+        return " / ".join(sorted(variants[key]))
+
+    rare = {k for k, n in totals.items() if n < MIN_CONTEXTS}
+    skipped = sorted(((label(k), totals[k]) for k in rare), key=lambda x: -x[1])
+    if skipped:
+        log.info("Skipping %d word(s) with fewer than %d contexts: %s", len(skipped),
+                 MIN_CONTEXTS, ", ".join(f"{w} ({n})" for w, n in skipped))
+    reservoir = {k: v for k, v in reservoir.items() if k not in rare}
+
+    summary = [(label(k), n) for k, n in
+               write_annotations(reservoir, args.out, args.per_word, args.seed)]
+    write_readme(args.out, summary, args.per_word, skipped,
                  excluded_from=[str(p) for p in args.exclude] if args.exclude else None)
 
     total = sum(n for _, n in summary)

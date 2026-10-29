@@ -45,7 +45,7 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(me
                     handlers=[logging.StreamHandler(sys.stderr)])
 log = logging.getLogger("synth")
 
-MODEL = "claude-opus-4-7"
+MODEL = "claude-sonnet-5-5"
 
 # Reused (verbatim) from the original generate_synthetic_annotations.py so the
 # synthetic style matches the existing dataset; static for prompt-caching.
