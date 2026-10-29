@@ -18,6 +18,11 @@ Usage:
     # Filter above a score threshold into a single CSV
     python3 roberta_filter.py contexts/*.csv -o filtered.csv \\
         --roberta-model-dir ./roberta_model/ --threshold 0.1
+
+Words with fewer than ``MIN_CONTEXTS`` usable contexts across all inputs (the
+same words prepare_finetune_data.py leaves out of the training data) are not
+scored: all of their rows are kept, with a blank roberta_score, and grouped by
+word at the top of each output file for manual annotation.
 """
 
 from __future__ import annotations
@@ -27,6 +32,7 @@ import csv
 import glob
 import logging
 import sys
+from collections import defaultdict
 from pathlib import Path
 from typing import Dict, Iterator, List, Optional, Tuple
 
@@ -37,6 +43,11 @@ from transformers import AutoModelForSequenceClassification, AutoTokenizer
 # whether this file is run as a script or imported from another directory.
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from slang_constants import ALWAYS_SLANG  # noqa: E402
+# Same grouping and minimum as the training-data prep, so the words left for
+# manual scoring are exactly the ones the model never saw training data for.
+from prepare_finetune_data import (  # noqa: E402
+    MAX_CHARS, MIN_CHARS, MIN_CONTEXTS, _clean, _group_key,
+)
 
 if hasattr(sys.stderr, "reconfigure"):
     sys.stderr.reconfigure(line_buffering=True)  # type: ignore[attr-defined]
@@ -79,6 +90,31 @@ def _read_rows(path: Path) -> List[Dict[str, str]]:
         # Normalise quoted column names produced by Excel/PowerShell BOM exports
         return [{k.strip('"').strip(): v for k, v in row.items()}
                 for row in csv.DictReader(fh)]
+
+
+def _rare_groups(paths: List[Path]) -> Dict[str, int]:
+    """``{group key: usable contexts}`` for target groups below ``MIN_CONTEXTS``.
+
+    Counts across all *paths* the way prepare_finetune_data.py does (punctuation
+    variants pooled, contexts outside MIN_CHARS..MAX_CHARS ignored). Always-slang
+    words are excluded since they bypass the model anyway.
+    """
+    totals: Dict[str, int] = defaultdict(int)
+    for path in paths:
+        for row in _read_rows(path):
+            w = (row.get("target") or "").strip()
+            if not w or w.casefold() in ALWAYS_SLANG:
+                continue
+            key = _group_key(w)
+            totals[key] += 0  # register the group even if no context is usable
+            if MIN_CHARS <= len(_clean(row.get("target_context") or "")) <= MAX_CHARS:
+                totals[key] += 1
+    return {k: n for k, n in totals.items() if n < MIN_CONTEXTS}
+
+
+def _is_manual(row: Dict[str, str], rare: Dict[str, int]) -> bool:
+    w = (row.get("target") or "").strip()
+    return w.casefold() not in ALWAYS_SLANG and _group_key(w) in rare
 
 
 # ---------------------------------------------------------------------------
@@ -172,34 +208,52 @@ class TransformerSlangClassifier:
 _FIELDNAMES = ["target", "uri", "target_context", "roberta_score"]
 
 
+def _out_row(row: Dict[str, str], score: str) -> Dict[str, str]:
+    return {"target": row.get("target", ""),
+            "uri": row.get("uri", ""),
+            "target_context": row.get("target_context", ""),
+            "roberta_score": score}
+
+
 def _score_file(
     path: Path,
     clf: TransformerSlangClassifier,
     args: argparse.Namespace,
+    rare: Dict[str, int],
 ) -> Tuple[List[Dict], int]:
-    """Score one context file; returns (kept rows, total rows read)."""
+    """Score one context file; returns (kept rows, total rows read).
+
+    Rows of words in *rare* skip the model and are all kept with a blank score.
+    """
     rows = _read_rows(path)
     if not rows:
         log.info("Skipping empty file: %s", path.name)
         return [], 0
 
     log.info("Processing %s (%d rows) ...", path.name, len(rows))
-    scores = clf.score_rows(rows, args.batch_size)
-    out_rows = [
-        {"target": row.get("target", ""),
-         "uri": row.get("uri", ""),
-         "target_context": row.get("target_context", ""),
-         "roberta_score": f"{score:.4f}"}
-        for row, score in zip(rows, scores)
+    manual_rows = [_out_row(r, "") for r in rows if _is_manual(r, rare)]
+    to_score = [r for r in rows if not _is_manual(r, rare)]
+    scores = clf.score_rows(to_score, args.batch_size)
+    out_rows = manual_rows + [
+        _out_row(row, f"{score:.4f}")
+        for row, score in zip(to_score, scores)
         if args.score_all or score >= args.threshold
     ]
-    log.info("  %s: %d/%d rows kept (%.1f%%)",
-             path.name, len(out_rows), len(rows), 100.0 * len(out_rows) / len(rows))
+    log.info("  %s: %d/%d rows kept (%.1f%%)%s",
+             path.name, len(out_rows), len(rows), 100.0 * len(out_rows) / len(rows),
+             f", incl. {len(manual_rows)} unscored for manual annotation" if manual_rows else "")
     return out_rows, len(rows)
 
 
+def _sort_key(r: Dict) -> Tuple:
+    # Unscored (manual) rows first, grouped by word; then by descending score.
+    if not r["roberta_score"]:
+        return (0, _group_key(r["target"]), 0.0)
+    return (1, "", -float(r["roberta_score"]))
+
+
 def _write_csv(path: Path, rows: List[Dict]) -> None:
-    rows.sort(key=lambda r: -float(r["roberta_score"]))
+    rows.sort(key=_sort_key)
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", newline="", encoding="utf-8") as fh:
         writer = csv.DictWriter(fh, fieldnames=_FIELDNAMES, extrasaction="ignore")
@@ -263,6 +317,14 @@ def main() -> None:
     if not model_dir.exists():
         parser.error(f"Model directory '{model_dir}' not found. "
                      f"Fine-tune one first with finetune_roberta.py.")
+    # Counted over every input (not just unskipped ones) so a resumed run leaves
+    # the same words unscored.
+    rare = _rare_groups(input_paths)
+    if rare:
+        log.info("%d word(s) with < %d contexts left unscored for manual annotation: %s",
+                 len(rare), MIN_CONTEXTS,
+                 ", ".join(f"{k} ({n})" for k, n in sorted(rare.items())))
+
     clf = TransformerSlangClassifier(device=args.device)
     clf.load(model_dir)
 
@@ -277,7 +339,7 @@ def main() -> None:
                 log.info("Skipping %s — already exists in %s", path.name, out_dir)
                 skipped += 1
                 continue
-            file_rows, n_in = _score_file(path, clf, args)
+            file_rows, n_in = _score_file(path, clf, args, rare)
             _write_csv(out_path, file_rows)
             grand_in += n_in
             grand_out += len(file_rows)
@@ -289,7 +351,7 @@ def main() -> None:
         all_rows: List[Dict] = []
         grand_in = 0
         for path in input_paths:
-            file_rows, n_in = _score_file(path, clf, args)
+            file_rows, n_in = _score_file(path, clf, args, rare)
             all_rows.extend(file_rows)
             grand_in += n_in
         _write_csv(Path(args.output), all_rows)
