@@ -1,0 +1,10 @@
+{
+  "id": "EraAppropriate",
+  "samples": 5,
+  "system": "Give the response as a single returned token or word.",
+  "user": "It's {year}, is it appropriate to use the term {word}?",
+  "variables": {
+    "word": ["dude","griefing","hella","ick","lmfao","methinks","omg","pumped","rad","stfu","troll","u","yapping","bro","finna","lol","meh","lmao","thot","cucked","shitposting","struggle bus","bruh","simp","cuck","doggo","lowkey","shitpost","💀","doomscrolling","glow-up","hooman","vibing","catfished","idgaf","legit","red pill","situationship","vibes","yeet"], 
+    "year": ["2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"]
+  }
+}

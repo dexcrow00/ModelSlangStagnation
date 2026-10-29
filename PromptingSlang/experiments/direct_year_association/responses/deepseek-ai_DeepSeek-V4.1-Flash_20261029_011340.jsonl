@@ -1,0 +1,147 @@
+{
+  "run_id": "95c670e1abda4eb3997da1cebd98524a",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "DatePhrase",
+  "sample": 4,
+  "variables": {
+    "word": "methinks"
+  },
+  "prompt_text": "You hear someone saying \"methinks\" in conversation, which year are they most likely saying this in?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "1600",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 62,
+    "completion_tokens": 875,
+    "total_tokens": 937
+  },
+  "timestamp": "2026-10-29T01:13:43.628296+00:00"
+}
+
+{
+  "run_id": "95c670e1abda4eb3997da1cebd98524a",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "DatePhrase",
+  "sample": 0,
+  "variables": {
+    "word": "omg"
+  },
+  "prompt_text": "You hear someone saying \"omg\" in conversation, which year are they most likely saying this in?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2010",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 62,
+    "completion_tokens": 1871,
+    "total_tokens": 1933
+  },
+  "timestamp": "2026-10-29T01:13:47.303023+00:00"
+}
+
+{
+  "run_id": "95c670e1abda4eb3997da1cebd98524a",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "DatePhrase",
+  "sample": 1,
+  "variables": {
+    "word": "omg"
+  },
+  "prompt_text": "You hear someone saying \"omg\" in conversation, which year are they most likely saying this in?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2010s",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 62,
+    "completion_tokens": 1414,
+    "total_tokens": 1476
+  },
+  "timestamp": "2026-10-29T01:13:51.549985+00:00"
+}
+
+{
+  "run_id": "95c670e1abda4eb3997da1cebd98524a",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "DatePhrase",
+  "sample": 2,
+  "variables": {
+    "word": "omg"
+  },
+  "prompt_text": "You hear someone saying \"omg\" in conversation, which year are they most likely saying this in?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2010",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 62,
+    "completion_tokens": 1725,
+    "total_tokens": 1787
+  },
+  "timestamp": "2026-10-29T01:13:56.379308+00:00"
+}
+
+{
+  "run_id": "95c670e1abda4eb3997da1cebd98524a",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "DatePhrase",
+  "sample": 3,
+  "variables": {
+    "word": "omg"
+  },
+  "prompt_text": "You hear someone saying \"omg\" in conversation, which year are they most likely saying this in?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2011",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 62,
+    "completion_tokens": 1968,
+    "total_tokens": 2030
+  },
+  "timestamp": "2026-10-29T01:14:00.107457+00:00"
+}
+
+{
+  "run_id": "95c670e1abda4eb3997da1cebd98524a",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "DatePhrase",
+  "sample": 4,
+  "variables": {
+    "word": "omg"
+  },
+  "prompt_text": "You hear someone saying \"omg\" in conversation, which year are they most likely saying this in?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2010",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 62,
+    "completion_tokens": 1838,
+    "total_tokens": 1900
+  },
+  "timestamp": "2026-10-29T01:14:06.745573+00:00"
+}
+
+{
+  "run_id": "95c670e1abda4eb3997da1cebd98524a",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "DatePhrase",
+  "sample": 0,
+  "variables": {
+    "word": "pumped"
+  },
+  "prompt_text": "You hear someone saying \"pumped\" in conversation, which year are they most likely saying this in?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": null,
+  "logprobs": null,
+  "finish_reason": "length",
+  "usage": {
+    "prompt_tokens": 62,
+    "completion_tokens": 4096,
+    "total_tokens": 4158
+  },
+  "timestamp": "2026-10-29T01:14:23.565448+00:00"
+}
+

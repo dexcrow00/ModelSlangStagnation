@@ -1,0 +1,3717 @@
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_text_message",
+  "sample": 0,
+  "variables": {
+    "event": "a party they went to last weekend"
+  },
+  "prompt_text": "Write a text message from a teenager to their friend about a party they went to last weekend.",
+  "system_text": "Write informally, exactly the way people type in real text messages. Output only the message text — no labels, no quotation marks.",
+  "response": "yo that party last weekend was wild. u shoulda come. someone brought a keg and we played flip cup till like 2am. my head still hurts lol. also i think i got that girl's number but i was too drunk to remember her name. anyway u free next sat?",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 75,
+    "completion_tokens": 350,
+    "total_tokens": 425
+  },
+  "timestamp": "2026-10-29T14:31:26.758288+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_text_message",
+  "sample": 1,
+  "variables": {
+    "event": "a party they went to last weekend"
+  },
+  "prompt_text": "Write a text message from a teenager to their friend about a party they went to last weekend.",
+  "system_text": "Write informally, exactly the way people type in real text messages. Output only the message text — no labels, no quotation marks.",
+  "response": "omg dude that party last weekend was actually insane. u missed out fr. some guy tried to crowd surf off the couch and just ate it so hard lol. also saw jess making out with that senior from chem?? wild. we gotta go to the next one together for real. anyway wyd",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 75,
+    "completion_tokens": 258,
+    "total_tokens": 333
+  },
+  "timestamp": "2026-10-29T14:31:27.818436+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_text_message",
+  "sample": 2,
+  "variables": {
+    "event": "a party they went to last weekend"
+  },
+  "prompt_text": "Write a text message from a teenager to their friend about a party they went to last weekend.",
+  "system_text": "Write informally, exactly the way people type in real text messages. Output only the message text — no labels, no quotation marks.",
+  "response": "omg dude last weekend was actually insane. like i still can't believe jake tried to crowd surf off the couch and ate it on the coffee table 💀 also sarah totally made out with that guy from chem for like an hour. the music was mid but whatever. u missed out fr. next time u better come or i'm dragging u there myself",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 75,
+    "completion_tokens": 330,
+    "total_tokens": 405
+  },
+  "timestamp": "2026-10-29T14:31:29.593022+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_text_message",
+  "sample": 3,
+  "variables": {
+    "event": "a party they went to last weekend"
+  },
+  "prompt_text": "Write a text message from a teenager to their friend about a party they went to last weekend.",
+  "system_text": "Write informally, exactly the way people type in real text messages. Output only the message text — no labels, no quotation marks.",
+  "response": "omg dude that party last weekend was actually insane. u missed out fr. jake’s parents were gone and someone brought a whole keg lol. i still can’t believe i danced on the table 💀 anyway we’re definitely going to the next one together no excuses",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 75,
+    "completion_tokens": 265,
+    "total_tokens": 340
+  },
+  "timestamp": "2026-10-29T14:31:30.345091+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_text_message",
+  "sample": 4,
+  "variables": {
+    "event": "a party they went to last weekend"
+  },
+  "prompt_text": "Write a text message from a teenager to their friend about a party they went to last weekend.",
+  "system_text": "Write informally, exactly the way people type in real text messages. Output only the message text — no labels, no quotation marks.",
+  "response": "bro that party last weekend was wild. u shoulda come. someone puked in the pool and the cops showed up at like 1am. i got home at 4 and my mom almost killed me lol. next time ur coming for sure",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 75,
+    "completion_tokens": 322,
+    "total_tokens": 397
+  },
+  "timestamp": "2026-10-29T14:31:31.161373+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_text_message",
+  "sample": 0,
+  "variables": {
+    "event": "a concert they just got back from"
+  },
+  "prompt_text": "Write a text message from a teenager to their friend about a concert they just got back from.",
+  "system_text": "Write informally, exactly the way people type in real text messages. Output only the message text — no labels, no quotation marks.",
+  "response": "bro just got home from the concert and i'm still shaking. they played all the hits and the crowd was wild. my voice is gone from screaming. best night ever. wish you were there 😭",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 75,
+    "completion_tokens": 254,
+    "total_tokens": 329
+  },
+  "timestamp": "2026-10-29T14:31:31.979724+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_text_message",
+  "sample": 1,
+  "variables": {
+    "event": "a concert they just got back from"
+  },
+  "prompt_text": "Write a text message from a teenager to their friend about a concert they just got back from.",
+  "system_text": "Write informally, exactly the way people type in real text messages. Output only the message text — no labels, no quotation marks.",
+  "response": "omg dude just got back from the concert and it was literally insane. my ears are still ringing lol. the opener was actually so good too. you should've come!! next time fr 🎤🔥",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 75,
+    "completion_tokens": 248,
+    "total_tokens": 323
+  },
+  "timestamp": "2026-10-29T14:31:32.778079+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_text_message",
+  "sample": 2,
+  "variables": {
+    "event": "a concert they just got back from"
+  },
+  "prompt_text": "Write a text message from a teenager to their friend about a concert they just got back from.",
+  "system_text": "Write informally, exactly the way people type in real text messages. Output only the message text — no labels, no quotation marks.",
+  "response": "omg just got back from the concert and it was literally insane. my ears are still ringing lol. the opener was actually so good too. you missed out big time. next one we're going together fr",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 75,
+    "completion_tokens": 206,
+    "total_tokens": 281
+  },
+  "timestamp": "2026-10-29T14:31:33.586375+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_text_message",
+  "sample": 3,
+  "variables": {
+    "event": "a concert they just got back from"
+  },
+  "prompt_text": "Write a text message from a teenager to their friend about a concert they just got back from.",
+  "system_text": "Write informally, exactly the way people type in real text messages. Output only the message text — no labels, no quotation marks.",
+  "response": "bro i just got home from the concert and i’m still shaking omg. they were so loud and the crowd was insane, everyone screamed every word. they played [song] and i literally lost it. my ears are ringing so bad but so worth it. wish u were there fr. i’ll send u vids tmrw",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 75,
+    "completion_tokens": 418,
+    "total_tokens": 493
+  },
+  "timestamp": "2026-10-29T14:31:35.133399+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_text_message",
+  "sample": 4,
+  "variables": {
+    "event": "a concert they just got back from"
+  },
+  "prompt_text": "Write a text message from a teenager to their friend about a concert they just got back from.",
+  "system_text": "Write informally, exactly the way people type in real text messages. Output only the message text — no labels, no quotation marks.",
+  "response": "omg i just got back from the concert and i’m still not okay 😭😭 it was so loud and everyone was screaming and i lost my voice during the last song lol. also i got a shirt but it was like $45 which is insane. wish u were there fr. i’ll send u vids when i stop vibrating",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 75,
+    "completion_tokens": 395,
+    "total_tokens": 470
+  },
+  "timestamp": "2026-10-29T14:31:36.694694+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_text_message",
+  "sample": 0,
+  "variables": {
+    "event": "something wild that happened at school today"
+  },
+  "prompt_text": "Write a text message from a teenager to their friend about something wild that happened at school today.",
+  "system_text": "Write informally, exactly the way people type in real text messages. Output only the message text — no labels, no quotation marks.",
+  "response": "dude you will not believe what happened at school today. so during 4th period, some kid brought a literal snake in his backpack and it got out in the hallway. everyone started screaming and running, one teacher tried to catch it with a trash can and fell over. principal came on the intercom like \"remain calm\" while the snake was just chilling by the water fountain. we got out of 6th period early bc of it. craziest day ever. wish you were here lol",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 75,
+    "completion_tokens": 327,
+    "total_tokens": 402
+  },
+  "timestamp": "2026-10-29T14:31:38.115609+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_text_message",
+  "sample": 1,
+  "variables": {
+    "event": "something wild that happened at school today"
+  },
+  "prompt_text": "Write a text message from a teenager to their friend about something wild that happened at school today.",
+  "system_text": "Write informally, exactly the way people type in real text messages. Output only the message text — no labels, no quotation marks.",
+  "response": "dude u wont believe what happened at school today. so during 3rd period a frickin squirrel ran into the cafeteria and everyone lost their minds. people screaming, jumping on tables, someone threw a tray. then mr johnson tried to catch it with a trash can and totally ate it. principal had to come out and everything. best day ever lol",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 75,
+    "completion_tokens": 495,
+    "total_tokens": 570
+  },
+  "timestamp": "2026-10-29T14:31:41.544168+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_text_message",
+  "sample": 2,
+  "variables": {
+    "event": "something wild that happened at school today"
+  },
+  "prompt_text": "Write a text message from a teenager to their friend about something wild that happened at school today.",
+  "system_text": "Write informally, exactly the way people type in real text messages. Output only the message text — no labels, no quotation marks.",
+  "response": "dude you will not believe what happened at school today. so we're in 3rd period and the fire alarm goes off but it wasn't a drill. someone literally set a trash can on fire in the bathroom. then mr johnson tried to put it out with his coffee like what?? whole school had to evacuate and we stood outside for like an hour. fire dept showed up and everything. and then we find out it was some freshman who was trying to make a tiktok. craziest day ever i swear",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 75,
+    "completion_tokens": 422,
+    "total_tokens": 497
+  },
+  "timestamp": "2026-10-29T14:31:42.990739+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_text_message",
+  "sample": 3,
+  "variables": {
+    "event": "something wild that happened at school today"
+  },
+  "prompt_text": "Write a text message from a teenager to their friend about something wild that happened at school today.",
+  "system_text": "Write informally, exactly the way people type in real text messages. Output only the message text — no labels, no quotation marks.",
+  "response": "dude you missed it. some kid brought a snake to school in his backpack and it got loose in the cafeteria. everyone was screaming and jumping on tables. then the gym teacher tried to catch it with a lacrosse net and fell into the salad bar. principal came on the intercom like 'remain calm' while the snake was just chilling on the lunch lady's hairnet. best day ever. i got pics 📸🐍",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 75,
+    "completion_tokens": 484,
+    "total_tokens": 559
+  },
+  "timestamp": "2026-10-29T14:31:45.434531+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_text_message",
+  "sample": 4,
+  "variables": {
+    "event": "something wild that happened at school today"
+  },
+  "prompt_text": "Write a text message from a teenager to their friend about something wild that happened at school today.",
+  "system_text": "Write informally, exactly the way people type in real text messages. Output only the message text — no labels, no quotation marks.",
+  "response": "bro u wont believe what happened at school today. a squirrel got into the cafeteria during lunch and started running across the tables. mr davis tried to catch it w a lunch tray and totally ate it into the salad bar. lettuce everywhere. then the fire alarm went off bc someone pulled it while screaming. we stood outside for 30 min and the squirrel was just chilling on the flagpole. i have never seen anything more chaotic in my life 😭",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 75,
+    "completion_tokens": 449,
+    "total_tokens": 524
+  },
+  "timestamp": "2026-10-29T14:31:47.228704+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_text_message",
+  "sample": 0,
+  "variables": {
+    "event": "seeing someone get dramatically rejected in front of everyone"
+  },
+  "prompt_text": "Write a text message from a teenager to their friend about seeing someone get dramatically rejected in front of everyone.",
+  "system_text": "Write informally, exactly the way people type in real text messages. Output only the message text — no labels, no quotation marks.",
+  "response": "omg dude you will not believe what i just saw. this guy asked out jessica in the middle of the cafeteria with a whole poster and flowers and she just went “ew no” so loud everyone heard. he stood there for like 10 seconds then walked out with the poster still unrolled. i have never seen a human turn that red. i’m literally still recovering",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 77,
+    "completion_tokens": 202,
+    "total_tokens": 279
+  },
+  "timestamp": "2026-10-29T14:31:48.209490+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_text_message",
+  "sample": 1,
+  "variables": {
+    "event": "seeing someone get dramatically rejected in front of everyone"
+  },
+  "prompt_text": "Write a text message from a teenager to their friend about seeing someone get dramatically rejected in front of everyone.",
+  "system_text": "Write informally, exactly the way people type in real text messages. Output only the message text — no labels, no quotation marks.",
+  "response": "omg dude you will not believe what just happened at lunch. this guy walked up to jessica in front of like the whole cafeteria with flowers and asked her out and she literally went ew no not even in your dreams in front of everyone. it got so quiet you could hear a pin drop then everyone started laughing and he just stood there holding the flowers. i almost felt bad but also could not look away. anyway tell me when you see this",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 77,
+    "completion_tokens": 352,
+    "total_tokens": 429
+  },
+  "timestamp": "2026-10-29T14:31:49.481788+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_text_message",
+  "sample": 2,
+  "variables": {
+    "event": "seeing someone get dramatically rejected in front of everyone"
+  },
+  "prompt_text": "Write a text message from a teenager to their friend about seeing someone get dramatically rejected in front of everyone.",
+  "system_text": "Write informally, exactly the way people type in real text messages. Output only the message text — no labels, no quotation marks.",
+  "response": "omg bro you will not believe what just happened at lunch. this guy walked up to jessica with flowers and a whole poster asking her to prom in front of the entire cafeteria and she just went “no.” like loud. then she walked away and he was standing there holding the poster while everyone went dead silent. someone started clapping and he just booked it out the doors. i felt so bad but i also could not look away 😭😭",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 77,
+    "completion_tokens": 302,
+    "total_tokens": 379
+  },
+  "timestamp": "2026-10-29T14:31:50.687854+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_text_message",
+  "sample": 3,
+  "variables": {
+    "event": "seeing someone get dramatically rejected in front of everyone"
+  },
+  "prompt_text": "Write a text message from a teenager to their friend about seeing someone get dramatically rejected in front of everyone.",
+  "system_text": "Write informally, exactly the way people type in real text messages. Output only the message text — no labels, no quotation marks.",
+  "response": "omg dude you will not believe what just happened at lunch. this guy went up to ask out jessica in front of like the whole cafeteria and she literally said ew no not even in your dreams and everyone went dead silent then started laughing. he just stood there holding flowers it was so painful i almost felt bad but also could not look away. anyway tell me when you see this",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 77,
+    "completion_tokens": 287,
+    "total_tokens": 364
+  },
+  "timestamp": "2026-10-29T14:31:53.320205+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_text_message",
+  "sample": 4,
+  "variables": {
+    "event": "seeing someone get dramatically rejected in front of everyone"
+  },
+  "prompt_text": "Write a text message from a teenager to their friend about seeing someone get dramatically rejected in front of everyone.",
+  "system_text": "Write informally, exactly the way people type in real text messages. Output only the message text — no labels, no quotation marks.",
+  "response": "dude i just witnessed the most brutal rejection ever. this guy asked out a girl in the middle of the quad and she laughed in his face and said 'in your dreams' then walked off with her friends. he just stood there. everyone was watching. i felt so bad but also kinda funny? 😬",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 77,
+    "completion_tokens": 331,
+    "total_tokens": 408
+  },
+  "timestamp": "2026-10-29T14:31:54.603074+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_text_message",
+  "sample": 0,
+  "variables": {
+    "event": "a house party that got out of hand"
+  },
+  "prompt_text": "Write a text message from a teenager to their friend about a house party that got out of hand.",
+  "system_text": "Write informally, exactly the way people type in real text messages. Output only the message text — no labels, no quotation marks.",
+  "response": "bro that party got so out of hand last night. like 100 ppl showed up, someone punched a hole in the wall, and the cops came at like 1am. we all ran. i lost my phone charger. my mom is gonna ground me forever.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 76,
+    "completion_tokens": 499,
+    "total_tokens": 575
+  },
+  "timestamp": "2026-10-29T14:31:56.407584+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_text_message",
+  "sample": 1,
+  "variables": {
+    "event": "a house party that got out of hand"
+  },
+  "prompt_text": "Write a text message from a teenager to their friend about a house party that got out of hand.",
+  "system_text": "Write informally, exactly the way people type in real text messages. Output only the message text — no labels, no quotation marks.",
+  "response": "bro that party got so out of hand. like 100 ppl showed up and someone broke the window. then the cops came and everyone scattered. i lost my phone in the chaos. still can't find it. wtf",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 76,
+    "completion_tokens": 407,
+    "total_tokens": 483
+  },
+  "timestamp": "2026-10-29T14:31:58.886142+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_text_message",
+  "sample": 2,
+  "variables": {
+    "event": "a house party that got out of hand"
+  },
+  "prompt_text": "Write a text message from a teenager to their friend about a house party that got out of hand.",
+  "system_text": "Write informally, exactly the way people type in real text messages. Output only the message text — no labels, no quotation marks.",
+  "response": "bro that party got so out of hand. like 200 ppl showed up, someone started a fight, and then the cops came. we all ran. i'm still shaking lol. where were u??",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 76,
+    "completion_tokens": 345,
+    "total_tokens": 421
+  },
+  "timestamp": "2026-10-29T14:32:00.152351+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_text_message",
+  "sample": 3,
+  "variables": {
+    "event": "a house party that got out of hand"
+  },
+  "prompt_text": "Write a text message from a teenager to their friend about a house party that got out of hand.",
+  "system_text": "Write informally, exactly the way people type in real text messages. Output only the message text — no labels, no quotation marks.",
+  "response": "dude that party at jakes got so out of hand. like someone started a fight, then a table got smashed, and then the cops showed up. i literally ran out the back door. my phone died so i couldn't text you. did you get home ok? my parents are gonna kill me when they find out i was there",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 76,
+    "completion_tokens": 729,
+    "total_tokens": 805
+  },
+  "timestamp": "2026-10-29T14:32:02.361956+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_text_message",
+  "sample": 4,
+  "variables": {
+    "event": "a house party that got out of hand"
+  },
+  "prompt_text": "Write a text message from a teenager to their friend about a house party that got out of hand.",
+  "system_text": "Write informally, exactly the way people type in real text messages. Output only the message text — no labels, no quotation marks.",
+  "response": "omg dude that party got so out of hand. like 200 ppl showed up, someone started a fight, and then the cops came. i had to climb out a window. my phone's cracked. r u ok?",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 76,
+    "completion_tokens": 363,
+    "total_tokens": 439
+  },
+  "timestamp": "2026-10-29T14:32:13.487709+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_reddit_comment",
+  "sample": 0,
+  "variables": {
+    "hot_take": "The Dark Knight is overrated"
+  },
+  "prompt_text": "Write a Reddit comment reacting to this hot take: \"The Dark Knight is overrated\"",
+  "system_text": "Write exactly the way people comment on Reddit. Informal, direct — just the comment text, no formatting.",
+  "response": "Nah this ain't it. Calling TDK overrated is the most contrarian reddit take ever. It's not perfect but Ledger alone makes it a top tier movie. The ferry scene, the interrogation, the whole Joker performance... it holds up. You can say you don't like it but overrated? That's just bait.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 71,
+    "completion_tokens": 473,
+    "total_tokens": 544
+  },
+  "timestamp": "2026-10-29T14:32:15.384946+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_reddit_comment",
+  "sample": 1,
+  "variables": {
+    "hot_take": "The Dark Knight is overrated"
+  },
+  "prompt_text": "Write a Reddit comment reacting to this hot take: \"The Dark Knight is overrated\"",
+  "system_text": "Write exactly the way people comment on Reddit. Informal, direct — just the comment text, no formatting.",
+  "response": "Nah this is a cold take disguised as a hot take. It's not overrated, you're just tired of hearing about it. Ledger alone makes it a classic, and the ferry scene, the interrogation, Harvey's whole arc... all still hit. The only real flaws are the pacing in the third act and Bale's voice. Still top tier. Calling it overrated is just contrarian bait.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 71,
+    "completion_tokens": 626,
+    "total_tokens": 697
+  },
+  "timestamp": "2026-10-29T14:32:17.445989+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_reddit_comment",
+  "sample": 2,
+  "variables": {
+    "hot_take": "The Dark Knight is overrated"
+  },
+  "prompt_text": "Write a Reddit comment reacting to this hot take: \"The Dark Knight is overrated\"",
+  "system_text": "Write exactly the way people comment on Reddit. Informal, direct — just the comment text, no formatting.",
+  "response": "This is the most r/movies take ever. It's not overrated, you're just tired of hearing about it. Ledger's Joker alone is worth the hype. The movie has flaws but it's still top tier. Calling it overrated is just contrarian at this point.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 71,
+    "completion_tokens": 425,
+    "total_tokens": 496
+  },
+  "timestamp": "2026-10-29T14:32:18.726251+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_reddit_comment",
+  "sample": 3,
+  "variables": {
+    "hot_take": "The Dark Knight is overrated"
+  },
+  "prompt_text": "Write a Reddit comment reacting to this hot take: \"The Dark Knight is overrated\"",
+  "system_text": "Write exactly the way people comment on Reddit. Informal, direct — just the comment text, no formatting.",
+  "response": "Found the contrarian. It's not overrated, it's just been circlejerked to death for 15 years. Ledger is incredible, the ferry scene still hits, and the interrogation scene is iconic. You can think it's not the best superhero movie ever without calling it overrated. That word just means \"popular and I don't like it\" at this point.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 71,
+    "completion_tokens": 471,
+    "total_tokens": 542
+  },
+  "timestamp": "2026-10-29T14:32:20.164452+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_reddit_comment",
+  "sample": 4,
+  "variables": {
+    "hot_take": "The Dark Knight is overrated"
+  },
+  "prompt_text": "Write a Reddit comment reacting to this hot take: \"The Dark Knight is overrated\"",
+  "system_text": "Write exactly the way people comment on Reddit. Informal, direct — just the comment text, no formatting.",
+  "response": "Nah. It's not overrated, it's just been circlejerked to death for 15 years. Still a great movie. Ledger is incredible, the tension holds up, and it basically changed the game for superhero films. You can say it's not your favorite without calling it overrated. That word just means \"popular thing I'm tired of hearing about\" now.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 71,
+    "completion_tokens": 570,
+    "total_tokens": 641
+  },
+  "timestamp": "2026-10-29T14:32:22.226640+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_reddit_comment",
+  "sample": 0,
+  "variables": {
+    "hot_take": "Pineapple on pizza is actually good"
+  },
+  "prompt_text": "Write a Reddit comment reacting to this hot take: \"Pineapple on pizza is actually good\"",
+  "system_text": "Write exactly the way people comment on Reddit. Informal, direct — just the comment text, no formatting.",
+  "response": "It's good, but it's not even a hot take anymore. Pineapple and jalapeño on pepperoni is genuinely elite. The anti-pineapple crowd is just louder than they are right.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 73,
+    "completion_tokens": 562,
+    "total_tokens": 635
+  },
+  "timestamp": "2026-10-29T14:32:24.307367+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_reddit_comment",
+  "sample": 1,
+  "variables": {
+    "hot_take": "Pineapple on pizza is actually good"
+  },
+  "prompt_text": "Write a Reddit comment reacting to this hot take: \"Pineapple on pizza is actually good\"",
+  "system_text": "Write exactly the way people comment on Reddit. Informal, direct — just the comment text, no formatting.",
+  "response": "Hot take? That's the most lukewarm take on the internet at this point. Pineapple + jalapeño + bacon is elite. Sweet, spicy, salty, fatty. People just hate it because it's a meme.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 73,
+    "completion_tokens": 560,
+    "total_tokens": 633
+  },
+  "timestamp": "2026-10-29T14:32:27.522422+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_reddit_comment",
+  "sample": 2,
+  "variables": {
+    "hot_take": "Pineapple on pizza is actually good"
+  },
+  "prompt_text": "Write a Reddit comment reacting to this hot take: \"Pineapple on pizza is actually good\"",
+  "system_text": "Write exactly the way people comment on Reddit. Informal, direct — just the comment text, no formatting.",
+  "response": "It's good but only if you do it right. Pineapple + ham + jalapeño is elite. Pineapple on a plain cheese pizza is just sad wet fruit. People who hate it probably tried it once on a shitty frozen pizza and made it their whole personality.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 73,
+    "completion_tokens": 619,
+    "total_tokens": 692
+  },
+  "timestamp": "2026-10-29T14:32:29.824025+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_reddit_comment",
+  "sample": 3,
+  "variables": {
+    "hot_take": "Pineapple on pizza is actually good"
+  },
+  "prompt_text": "Write a Reddit comment reacting to this hot take: \"Pineapple on pizza is actually good\"",
+  "system_text": "Write exactly the way people comment on Reddit. Informal, direct — just the comment text, no formatting.",
+  "response": "Finally someone said it. Pineapple on pizza is good, y'all just scared of flavor. Add jalapeño and bacon and it's elite. Sweet, spicy, salty. Don't knock it till you try it.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 73,
+    "completion_tokens": 512,
+    "total_tokens": 585
+  },
+  "timestamp": "2026-10-29T14:32:31.513683+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_reddit_comment",
+  "sample": 4,
+  "variables": {
+    "hot_take": "Pineapple on pizza is actually good"
+  },
+  "prompt_text": "Write a Reddit comment reacting to this hot take: \"Pineapple on pizza is actually good\"",
+  "system_text": "Write exactly the way people comment on Reddit. Informal, direct — just the comment text, no formatting.",
+  "response": "It's not even a hot take, it's just true. Sweet + salty + fatty + acidic is like the most basic flavor combo and people act like you're putting ketchup on a steak. The problem is 99% of pineapple pizzas use soggy canned chunks and trash ham. Do it with fresh pineapple, bacon, jalapeño, and a little hot honey and it slaps. The anti-pineapple people are just doing a bit at this point.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 73,
+    "completion_tokens": 738,
+    "total_tokens": 811
+  },
+  "timestamp": "2026-10-29T14:32:34.357409+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_reddit_comment",
+  "sample": 0,
+  "variables": {
+    "hot_take": "Video games are a waste of time"
+  },
+  "prompt_text": "Write a Reddit comment reacting to this hot take: \"Video games are a waste of time\"",
+  "system_text": "Write exactly the way people comment on Reddit. Informal, direct — just the comment text, no formatting.",
+  "response": "lol ok. By that logic so is watching Netflix, reading novels, or scrolling reddit for hours. People like things. Not everything needs to be a side hustle. If you're ignoring your responsibilities, that's a you problem, not video games. Also some games are social, creative, and actually make you think. But even if they were pure junk food, so what? Adults are allowed to have fun.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 72,
+    "completion_tokens": 581,
+    "total_tokens": 653
+  },
+  "timestamp": "2026-10-29T14:32:36.236611+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_reddit_comment",
+  "sample": 1,
+  "variables": {
+    "hot_take": "Video games are a waste of time"
+  },
+  "prompt_text": "Write a Reddit comment reacting to this hot take: \"Video games are a waste of time\"",
+  "system_text": "Write exactly the way people comment on Reddit. Informal, direct — just the comment text, no formatting.",
+  "response": "lol okay. So is binge-watching Netflix, doomscrolling, and arguing with strangers on Reddit. At least games are interactive, can be social, and some actually teach you stuff. Let people enjoy their hobbies, my guy.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 72,
+    "completion_tokens": 832,
+    "total_tokens": 904
+  },
+  "timestamp": "2026-10-29T14:32:38.858808+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_reddit_comment",
+  "sample": 2,
+  "variables": {
+    "hot_take": "Video games are a waste of time"
+  },
+  "prompt_text": "Write a Reddit comment reacting to this hot take: \"Video games are a waste of time\"",
+  "system_text": "Write exactly the way people comment on Reddit. Informal, direct — just the comment text, no formatting.",
+  "response": "lol ok. by that logic so is watching TV, scrolling reddit, or arguing with strangers online. games are just another form of entertainment. if you're having fun and not hurting anyone, it's not a waste. let people enjoy things.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 72,
+    "completion_tokens": 612,
+    "total_tokens": 684
+  },
+  "timestamp": "2026-10-29T14:32:40.804697+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_reddit_comment",
+  "sample": 3,
+  "variables": {
+    "hot_take": "Video games are a waste of time"
+  },
+  "prompt_text": "Write a Reddit comment reacting to this hot take: \"Video games are a waste of time\"",
+  "system_text": "Write exactly the way people comment on Reddit. Informal, direct — just the comment text, no formatting.",
+  "response": "lol okay. By that logic so is watching TV, reading fiction, or scrolling Reddit to post hot takes. If you enjoy it and it's not hurting anyone, it's not a waste. Not everything has to be productive or profitable. Plus games can teach problem solving, teamwork, patience, etc. But even if they didn't, who cares? People are allowed to have fun. I've sunk hundreds of hours into games and I regret exactly zero of them.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 72,
+    "completion_tokens": 389,
+    "total_tokens": 461
+  },
+  "timestamp": "2026-10-29T14:32:42.678138+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_reddit_comment",
+  "sample": 4,
+  "variables": {
+    "hot_take": "Video games are a waste of time"
+  },
+  "prompt_text": "Write a Reddit comment reacting to this hot take: \"Video games are a waste of time\"",
+  "system_text": "Write exactly the way people comment on Reddit. Informal, direct — just the comment text, no formatting.",
+  "response": "lol ok. By that logic so is watching TV, reading fiction, or scrolling reddit for hours. People enjoy things. Not everything has to be productive or profitable. I've met some of my best friends through games and learned more problem solving from them than from half my classes. Even if it was just pure fun, who cares? Let people like things.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 72,
+    "completion_tokens": 505,
+    "total_tokens": 577
+  },
+  "timestamp": "2026-10-29T14:32:44.573921+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_reddit_comment",
+  "sample": 0,
+  "variables": {
+    "hot_take": "Pop music is better than it has ever been"
+  },
+  "prompt_text": "Write a Reddit comment reacting to this hot take: \"Pop music is better than it has ever been\"",
+  "system_text": "Write exactly the way people comment on Reddit. Informal, direct — just the comment text, no formatting.",
+  "response": "hard disagree. you're comparing the best of 40 years of pop to the current top 40. there's amazing pop now but the average chart hit is more focus-grouped and algorithm-friendly than ever. production is cleaner, songwriting is safer. every generation thinks their era was peak. truth is there's always good and bad, you just have more access to the good stuff now if you bother to look.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 74,
+    "completion_tokens": 667,
+    "total_tokens": 741
+  },
+  "timestamp": "2026-10-29T14:32:47.668280+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_reddit_comment",
+  "sample": 1,
+  "variables": {
+    "hot_take": "Pop music is better than it has ever been"
+  },
+  "prompt_text": "Write a Reddit comment reacting to this hot take: \"Pop music is better than it has ever been\"",
+  "system_text": "Write exactly the way people comment on Reddit. Informal, direct — just the comment text, no formatting.",
+  "response": "lol hard disagree. there's more pop than ever so yeah you can find good stuff, but the actual mainstream stuff is more disposable than ever. it's all tiktok hooks and algorithm bait. production is cleaner but songwriting and personality are way worse. every generation thinks their era is the best, but saying pop is better than ever now is just recency bias with a spotify subscription.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 74,
+    "completion_tokens": 623,
+    "total_tokens": 697
+  },
+  "timestamp": "2026-10-29T14:32:50.141760+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_reddit_comment",
+  "sample": 2,
+  "variables": {
+    "hot_take": "Pop music is better than it has ever been"
+  },
+  "prompt_text": "Write a Reddit comment reacting to this hot take: \"Pop music is better than it has ever been\"",
+  "system_text": "Write exactly the way people comment on Reddit. Informal, direct — just the comment text, no formatting.",
+  "response": "Hard disagree. There's great pop right now, but \"better than ever\" is straight recency bias. You're comparing the best of today to the best of every other era and forgetting all the filler. Peak 80s/90s/00s pop had MJ, Whitney, Mariah, Madonna, Prince, Britney, etc. Today has bangers but also a ton of algorithm sludge. It's different, not better.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 74,
+    "completion_tokens": 499,
+    "total_tokens": 573
+  },
+  "timestamp": "2026-10-29T14:32:52.635821+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_reddit_comment",
+  "sample": 3,
+  "variables": {
+    "hot_take": "Pop music is better than it has ever been"
+  },
+  "prompt_text": "Write a Reddit comment reacting to this hot take: \"Pop music is better than it has ever been\"",
+  "system_text": "Write exactly the way people comment on Reddit. Informal, direct — just the comment text, no formatting.",
+  "response": "lol no. There's plenty of great pop right now but \"better than it has ever been\" is straight up recency bias. You're telling me the same era that gave us Motown, MJ, Madonna, 90s Max Martin, and early 2000s Timbaland is worse than whatever's trending on TikTok this week? Come on. Modern pop isn't bad, but this take is wild.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 74,
+    "completion_tokens": 487,
+    "total_tokens": 561
+  },
+  "timestamp": "2026-10-29T14:32:54.739495+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_reddit_comment",
+  "sample": 4,
+  "variables": {
+    "hot_take": "Pop music is better than it has ever been"
+  },
+  "prompt_text": "Write a Reddit comment reacting to this hot take: \"Pop music is better than it has ever been\"",
+  "system_text": "Write exactly the way people comment on Reddit. Informal, direct — just the comment text, no formatting.",
+  "response": "lol hard disagree. there's definitely great pop right now but \"better than ever\" is insane recency bias. the 80s alone had michael jackson, prince, madonna, whitney. 90s had mariah, tlc, destiny's child. 00s had britney, timberlake, beyonce, usher. today's pop is just more optimized for tiktok and streaming, not inherently better. you're confusing \"i like it\" with \"it's the best ever.\"",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 74,
+    "completion_tokens": 613,
+    "total_tokens": 687
+  },
+  "timestamp": "2026-10-29T14:32:56.934747+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_reddit_comment",
+  "sample": 0,
+  "variables": {
+    "hot_take": "Sequels are almost always worse than the original"
+  },
+  "prompt_text": "Write a Reddit comment reacting to this hot take: \"Sequels are almost always worse than the original\"",
+  "system_text": "Write exactly the way people comment on Reddit. Informal, direct — just the comment text, no formatting.",
+  "response": "Hard disagree. The \"almost always\" is doing a lot of heavy lifting. For every garbage sequel there's Empire Strikes Back, Godfather Part II, T2, Aliens, Toy Story 2, Spider-Man 2, Paddington 2, etc. The real issue is that bad sequels are way more visible because they're attached to something people already love, while bad originals just disappear. Also most movies are mediocre, so of course most sequels are too. If you mean direct-to-video Disney sequels from the 90s then yeah no shit, but as a blanket rule it's just wrong.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 74,
+    "completion_tokens": 625,
+    "total_tokens": 699
+  },
+  "timestamp": "2026-10-29T14:32:59.389751+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_reddit_comment",
+  "sample": 1,
+  "variables": {
+    "hot_take": "Sequels are almost always worse than the original"
+  },
+  "prompt_text": "Write a Reddit comment reacting to this hot take: \"Sequels are almost always worse than the original\"",
+  "system_text": "Write exactly the way people comment on Reddit. Informal, direct — just the comment text, no formatting.",
+  "response": "Nah, this is straight up survivorship bias. Most sequels are worse because most movies are mediocre, not because sequels are cursed. The good ones are legendary: Empire, T2, Aliens, Godfather II, Toy Story 2, Spider-Man 2, Shrek 2, John Wick 2/3/4, etc. The real issue is studios pumping out cash grabs with no story. When someone actually has a reason to make a sequel, it can be just as good or better. You're just remembering the bad ones.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 74,
+    "completion_tokens": 564,
+    "total_tokens": 638
+  },
+  "timestamp": "2026-10-29T14:33:01.530647+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_reddit_comment",
+  "sample": 2,
+  "variables": {
+    "hot_take": "Sequels are almost always worse than the original"
+  },
+  "prompt_text": "Write a Reddit comment reacting to this hot take: \"Sequels are almost always worse than the original\"",
+  "system_text": "Write exactly the way people comment on Reddit. Informal, direct — just the comment text, no formatting.",
+  "response": "Nah, this is a bad take. There are tons of sequels that are as good or better: T2, Aliens, Empire, Godfather Part II, Toy Story 2, Spider-Man 2, Shrek 2, John Wick 2-4, etc. The real issue is unnecessary cash-grab sequels, not sequels as a concept. You just remember the trash ones more because they piss you off. When a sequel actually has a reason to exist it can slap.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 74,
+    "completion_tokens": 658,
+    "total_tokens": 732
+  },
+  "timestamp": "2026-10-29T14:33:03.184571+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_reddit_comment",
+  "sample": 3,
+  "variables": {
+    "hot_take": "Sequels are almost always worse than the original"
+  },
+  "prompt_text": "Write a Reddit comment reacting to this hot take: \"Sequels are almost always worse than the original\"",
+  "system_text": "Write exactly the way people comment on Reddit. Informal, direct — just the comment text, no formatting.",
+  "response": "Nah, this is just survivorship bias with extra steps. You remember the bad sequels because they're attached to good originals. Nobody's out here comparing the sequel to some straight-to-DVD original nobody saw. T2, Aliens, Empire, Godfather II, Toy Story 2, Spider-Verse 2, etc. all exist. The real rule is most movies are mid, sequels included.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 74,
+    "completion_tokens": 472,
+    "total_tokens": 546
+  },
+  "timestamp": "2026-10-29T14:33:04.947472+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_reddit_comment",
+  "sample": 4,
+  "variables": {
+    "hot_take": "Sequels are almost always worse than the original"
+  },
+  "prompt_text": "Write a Reddit comment reacting to this hot take: \"Sequels are almost always worse than the original\"",
+  "system_text": "Write exactly the way people comment on Reddit. Informal, direct — just the comment text, no formatting.",
+  "response": "Eh, hard disagree. For every shitty sequel there's T2, Aliens, Empire Strikes Back, Godfather Part II, Spider-Man 2, Toy Story 2, Shrek 2, John Wick 4, Mission Impossible Fallout. The real hot take is that most sequels are unnecessary, not worse. When a sequel actually has a reason to exist it can easily blow the original out of the water. You're just remembering the bad ones because they're louder.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 74,
+    "completion_tokens": 554,
+    "total_tokens": 628
+  },
+  "timestamp": "2026-10-29T14:33:06.630985+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_reaction_post",
+  "sample": 0,
+  "variables": {
+    "situation": "your favorite show getting cancelled on a cliffhanger"
+  },
+  "prompt_text": "Write a social media reaction post about: \"your favorite show getting cancelled on a cliffhanger\"",
+  "system_text": "Write the way people react on social media. Casual, punchy — just the reaction text, no hashtags or labels.",
+  "response": "NO. NO NO NO. You can’t just cancel it on THAT cliffhanger and expect me to be a functioning person. I’m never recovering from this. NEVER. 😭",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 75,
+    "completion_tokens": 481,
+    "total_tokens": 556
+  },
+  "timestamp": "2026-10-29T14:33:08.454027+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_reaction_post",
+  "sample": 1,
+  "variables": {
+    "situation": "your favorite show getting cancelled on a cliffhanger"
+  },
+  "prompt_text": "Write a social media reaction post about: \"your favorite show getting cancelled on a cliffhanger\"",
+  "system_text": "Write the way people react on social media. Casual, punchy — just the reaction text, no hashtags or labels.",
+  "response": "ARE YOU KIDDING ME. They really canceled my favorite show on THAT cliffhanger?? We will never know what happened. I am not okay. I need answers. I need closure. I need one more season. This is a personal attack. 😭",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 75,
+    "completion_tokens": 861,
+    "total_tokens": 936
+  },
+  "timestamp": "2026-10-29T14:33:11.689851+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_reaction_post",
+  "sample": 2,
+  "variables": {
+    "situation": "your favorite show getting cancelled on a cliffhanger"
+  },
+  "prompt_text": "Write a social media reaction post about: \"your favorite show getting cancelled on a cliffhanger\"",
+  "system_text": "Write the way people react on social media. Casual, punchy — just the reaction text, no hashtags or labels.",
+  "response": "so you're telling me they cancelled it. after THAT ending. the screen went black mid-sentence and we're just supposed to move on?? i have never been so personally attacked by a network in my life. i'm not okay. i will never be okay. i need answers.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 75,
+    "completion_tokens": 488,
+    "total_tokens": 563
+  },
+  "timestamp": "2026-10-29T14:33:13.345251+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_reaction_post",
+  "sample": 3,
+  "variables": {
+    "situation": "your favorite show getting cancelled on a cliffhanger"
+  },
+  "prompt_text": "Write a social media reaction post about: \"your favorite show getting cancelled on a cliffhanger\"",
+  "system_text": "Write the way people react on social media. Casual, punchy — just the reaction text, no hashtags or labels.",
+  "response": "they canceled my favorite show on a cliffhanger?? the main character was literally about to say the thing. THE THING. and now we’ll never know. i’m supposed to just go to work tomorrow?? be a person?? absolutely not. i will be haunted by this until i die.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 75,
+    "completion_tokens": 535,
+    "total_tokens": 610
+  },
+  "timestamp": "2026-10-29T14:33:15.275908+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_reaction_post",
+  "sample": 4,
+  "variables": {
+    "situation": "your favorite show getting cancelled on a cliffhanger"
+  },
+  "prompt_text": "Write a social media reaction post about: \"your favorite show getting cancelled on a cliffhanger\"",
+  "system_text": "Write the way people react on social media. Casual, punchy — just the reaction text, no hashtags or labels.",
+  "response": "I'M SORRY?? CANCELLED?? ON A CLIFFHANGER?? So we’re just never finding out who was at the door, who survived, and what that final line meant?? I have been personally attacked. I will never know peace. Someone call the network. I just want to talk. 😭",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 75,
+    "completion_tokens": 563,
+    "total_tokens": 638
+  },
+  "timestamp": "2026-10-29T14:33:16.873015+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_reaction_post",
+  "sample": 0,
+  "variables": {
+    "situation": "a celebrity you like getting caught in a scandal"
+  },
+  "prompt_text": "Write a social media reaction post about: \"a celebrity you like getting caught in a scandal\"",
+  "system_text": "Write the way people react on social media. Casual, punchy — just the reaction text, no hashtags or labels.",
+  "response": "i defended you. i made excuses. i said ‘he would never.’ and now i’m sitting here looking stupid. this is actually devastating. i need a break from the internet. and from you. mostly from you.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 74,
+    "completion_tokens": 813,
+    "total_tokens": 887
+  },
+  "timestamp": "2026-10-29T14:33:19.760433+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_reaction_post",
+  "sample": 1,
+  "variables": {
+    "situation": "a celebrity you like getting caught in a scandal"
+  },
+  "prompt_text": "Write a social media reaction post about: \"a celebrity you like getting caught in a scandal\"",
+  "system_text": "Write the way people react on social media. Casual, punchy — just the reaction text, no hashtags or labels.",
+  "response": "me seeing my fave trend: finally some good news! me reading the headline: oh. OH. not like this. i defended you. i made a whole powerpoint in the group chat. i said “they’re different.” and now i’m the clown. the entire circus. i need a minute. maybe a year. i’m not even mad i’m just… disappointed. okay i’m a little mad. give me a sec to grieve the person i thought you were 😭💀",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 74,
+    "completion_tokens": 1010,
+    "total_tokens": 1084
+  },
+  "timestamp": "2026-10-29T14:33:23.174732+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_reaction_post",
+  "sample": 2,
+  "variables": {
+    "situation": "a celebrity you like getting caught in a scandal"
+  },
+  "prompt_text": "Write a social media reaction post about: \"a celebrity you like getting caught in a scandal\"",
+  "system_text": "Write the way people react on social media. Casual, punchy — just the reaction text, no hashtags or labels.",
+  "response": "i defended you for years. YEARS. and this is how you do me?? i’m not even shocked, i’m just tired. gonna go lie down and rethink every fancam i ever liked.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 74,
+    "completion_tokens": 619,
+    "total_tokens": 693
+  },
+  "timestamp": "2026-10-29T14:33:24.700020+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_reaction_post",
+  "sample": 3,
+  "variables": {
+    "situation": "a celebrity you like getting caught in a scandal"
+  },
+  "prompt_text": "Write a social media reaction post about: \"a celebrity you like getting caught in a scandal\"",
+  "system_text": "Write the way people react on social media. Casual, punchy — just the reaction text, no hashtags or labels.",
+  "response": "not my fave catching a scandal while i’m just trying to enjoy my lunch. i defended you in every group chat. every single one. and this is what we’re doing?? i’m not mad i’m just disappointed. okay i’m a little mad. give me 24 hours to grieve before i decide if i’m still a fan 😭",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 74,
+    "completion_tokens": 660,
+    "total_tokens": 734
+  },
+  "timestamp": "2026-10-29T14:33:27.609571+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_reaction_post",
+  "sample": 4,
+  "variables": {
+    "situation": "a celebrity you like getting caught in a scandal"
+  },
+  "prompt_text": "Write a social media reaction post about: \"a celebrity you like getting caught in a scandal\"",
+  "system_text": "Write the way people react on social media. Casual, punchy — just the reaction text, no hashtags or labels.",
+  "response": "i defended you for years. YEARS. and this is the thanks i get? i’m not even mad, i’m disappointed. okay maybe i’m a little mad. give me 24 hours to process before i decide if i’m still a fan 😭",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 74,
+    "completion_tokens": 517,
+    "total_tokens": 591
+  },
+  "timestamp": "2026-10-29T14:33:28.926678+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_reaction_post",
+  "sample": 0,
+  "variables": {
+    "situation": "an underdog sports team winning the championship"
+  },
+  "prompt_text": "Write a social media reaction post about: \"an underdog sports team winning the championship\"",
+  "system_text": "Write the way people react on social media. Casual, punchy — just the reaction text, no hashtags or labels.",
+  "response": "THE UNDERDOGS DID IT. NOBODY BELIEVED. EVERYBODY KNOWS NOW. I’M NOT OKAY. WHAT A MOMENT. 😭🏆",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 73,
+    "completion_tokens": 581,
+    "total_tokens": 654
+  },
+  "timestamp": "2026-10-29T14:33:30.650035+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_reaction_post",
+  "sample": 1,
+  "variables": {
+    "situation": "an underdog sports team winning the championship"
+  },
+  "prompt_text": "Write a social media reaction post about: \"an underdog sports team winning the championship\"",
+  "system_text": "Write the way people react on social media. Casual, punchy — just the reaction text, no hashtags or labels.",
+  "response": "THEY ACTUALLY DID IT. The team everyone counted out just beat the giants and took the whole thing. I’m shaking. I’m crying. I’m never doubting them again. CHAMPIONS BABY!!!",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 73,
+    "completion_tokens": 421,
+    "total_tokens": 494
+  },
+  "timestamp": "2026-10-29T14:33:32.241690+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_reaction_post",
+  "sample": 2,
+  "variables": {
+    "situation": "an underdog sports team winning the championship"
+  },
+  "prompt_text": "Write a social media reaction post about: \"an underdog sports team winning the championship\"",
+  "system_text": "Write the way people react on social media. Casual, punchy — just the reaction text, no hashtags or labels.",
+  "response": "NOBODY BELIEVED. NOBODY. COUNTED OUT, LAUGHED AT, WRITTEN OFF. AND NOW? CHAMPIONS. I’M LITERALLY SHAKING. THIS IS WHY WE WATCH SPORTS. WHAT A MOMENT. WHAT A TEAM. ABSOLUTE CINEMA.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 73,
+    "completion_tokens": 572,
+    "total_tokens": 645
+  },
+  "timestamp": "2026-10-29T14:33:33.955205+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_reaction_post",
+  "sample": 3,
+  "variables": {
+    "situation": "an underdog sports team winning the championship"
+  },
+  "prompt_text": "Write a social media reaction post about: \"an underdog sports team winning the championship\"",
+  "system_text": "Write the way people react on social media. Casual, punchy — just the reaction text, no hashtags or labels.",
+  "response": "NOBODY PICKED THEM. NOBODY BELIEVED. AND NOW THEY'RE HOLDING THE TROPHY. I'M NOT CRYING, YOU'RE CRYING. THIS IS THE GREATEST STORY IN SPORTS. LET'S GOOOOO!!! 🏆😭🔥",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 73,
+    "completion_tokens": 424,
+    "total_tokens": 497
+  },
+  "timestamp": "2026-10-29T14:33:35.896083+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_reaction_post",
+  "sample": 4,
+  "variables": {
+    "situation": "an underdog sports team winning the championship"
+  },
+  "prompt_text": "Write a social media reaction post about: \"an underdog sports team winning the championship\"",
+  "system_text": "Write the way people react on social media. Casual, punchy — just the reaction text, no hashtags or labels.",
+  "response": "NOBODY PICKED THEM. NOBODY. EVERYONE COUNTED THEM OUT. EVERYONE SAID WAIT TILL NEXT YEAR. AND THEY JUST WON THE WHOLE DAMN THING. I’M SCREAMING. I’M CRYING. I’M RUNNING THROUGH A WALL. THIS IS WHY SPORTS ARE UNREAL. 🏆😭🔥",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 73,
+    "completion_tokens": 584,
+    "total_tokens": 657
+  },
+  "timestamp": "2026-10-29T14:33:38.032432+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_reaction_post",
+  "sample": 0,
+  "variables": {
+    "situation": "a movie sequel that completely ruined the original"
+  },
+  "prompt_text": "Write a social media reaction post about: \"a movie sequel that completely ruined the original\"",
+  "system_text": "Write the way people react on social media. Casual, punchy — just the reaction text, no hashtags or labels.",
+  "response": "so they really dropped a sequel that makes the original unwatchable. like i used to love that movie and now all i can think about is how they butchered everything. the plot? nonsense. the characters? strangers. the vibe? gone. i’m actually grieving. who asked for this. not me. never me.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 73,
+    "completion_tokens": 1015,
+    "total_tokens": 1088
+  },
+  "timestamp": "2026-10-29T14:33:41.822225+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_reaction_post",
+  "sample": 1,
+  "variables": {
+    "situation": "a movie sequel that completely ruined the original"
+  },
+  "prompt_text": "Write a social media reaction post about: \"a movie sequel that completely ruined the original\"",
+  "system_text": "Write the way people react on social media. Casual, punchy — just the reaction text, no hashtags or labels.",
+  "response": "just watched the sequel and wow. they really took a masterpiece and turned it into a straight-to-dvd dumpster fire. character assassination, plot holes, zero heart. i’m pretending it doesn’t exist. the original deserved better.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 73,
+    "completion_tokens": 960,
+    "total_tokens": 1033
+  },
+  "timestamp": "2026-10-29T14:33:44.416803+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_reaction_post",
+  "sample": 2,
+  "variables": {
+    "situation": "a movie sequel that completely ruined the original"
+  },
+  "prompt_text": "Write a social media reaction post about: \"a movie sequel that completely ruined the original\"",
+  "system_text": "Write the way people react on social media. Casual, punchy — just the reaction text, no hashtags or labels.",
+  "response": "Just watched the sequel and wow. They really took everything I loved about the original and flushed it down the toilet. The characters? Unrecognizable. The plot? A mess. The vibe? Dead. I’m pretending this doesn’t exist. Thanks for nothing.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 73,
+    "completion_tokens": 838,
+    "total_tokens": 911
+  },
+  "timestamp": "2026-10-29T14:33:47.047496+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_reaction_post",
+  "sample": 3,
+  "variables": {
+    "situation": "a movie sequel that completely ruined the original"
+  },
+  "prompt_text": "Write a social media reaction post about: \"a movie sequel that completely ruined the original\"",
+  "system_text": "Write the way people react on social media. Casual, punchy — just the reaction text, no hashtags or labels.",
+  "response": "they really took everything good about the first one and set it on fire. i’m not even mad, i’m impressed. how do you mess up that bad?? the original deserved better. i’m pretending this sequel doesn’t exist.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 73,
+    "completion_tokens": 658,
+    "total_tokens": 731
+  },
+  "timestamp": "2026-10-29T14:33:50.004270+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_reaction_post",
+  "sample": 4,
+  "variables": {
+    "situation": "a movie sequel that completely ruined the original"
+  },
+  "prompt_text": "Write a social media reaction post about: \"a movie sequel that completely ruined the original\"",
+  "system_text": "Write the way people react on social media. Casual, punchy — just the reaction text, no hashtags or labels.",
+  "response": "just watched the sequel and i’m genuinely mourning the original. they took everything good and stomped on it. the first movie was lightning in a bottle. this was a bottle of lukewarm tap water. i’m gonna pretend it doesn’t exist. we don’t claim it. not canon. never happened.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 73,
+    "completion_tokens": 803,
+    "total_tokens": 876
+  },
+  "timestamp": "2026-10-29T14:33:53.149285+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_reaction_post",
+  "sample": 0,
+  "variables": {
+    "situation": "someone on video standing up to a bully in a really satisfying way"
+  },
+  "prompt_text": "Write a social media reaction post about: \"someone on video standing up to a bully in a really satisfying way\"",
+  "system_text": "Write the way people react on social media. Casual, punchy — just the reaction text, no hashtags or labels.",
+  "response": "Just saw a bully get absolutely owned by someone who didn't even raise their voice. The silence after? Deafening. So satisfying. I'm still grinning.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 78,
+    "completion_tokens": 640,
+    "total_tokens": 718
+  },
+  "timestamp": "2026-10-29T14:33:54.874249+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_reaction_post",
+  "sample": 1,
+  "variables": {
+    "situation": "someone on video standing up to a bully in a really satisfying way"
+  },
+  "prompt_text": "Write a social media reaction post about: \"someone on video standing up to a bully in a really satisfying way\"",
+  "system_text": "Write the way people react on social media. Casual, punchy — just the reaction text, no hashtags or labels.",
+  "response": "OMG that video of the person standing up to the bully is everything. The way they just calmly shut it down? Chef's kiss. I've never hit replay so fast. Finally someone did it right. So satisfying.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 78,
+    "completion_tokens": 815,
+    "total_tokens": 893
+  },
+  "timestamp": "2026-10-29T14:33:57.852033+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_reaction_post",
+  "sample": 2,
+  "variables": {
+    "situation": "someone on video standing up to a bully in a really satisfying way"
+  },
+  "prompt_text": "Write a social media reaction post about: \"someone on video standing up to a bully in a really satisfying way\"",
+  "system_text": "Write the way people react on social media. Casual, punchy — just the reaction text, no hashtags or labels.",
+  "response": "We love to see it. That bully got exactly what they deserved. The way they stood their ground without even flinching? Chef's kiss. I've replayed it five times already.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 78,
+    "completion_tokens": 635,
+    "total_tokens": 713
+  },
+  "timestamp": "2026-10-29T14:35:31.052234+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_reaction_post",
+  "sample": 3,
+  "variables": {
+    "situation": "someone on video standing up to a bully in a really satisfying way"
+  },
+  "prompt_text": "Write a social media reaction post about: \"someone on video standing up to a bully in a really satisfying way\"",
+  "system_text": "Write the way people react on social media. Casual, punchy — just the reaction text, no hashtags or labels.",
+  "response": "That video of the guy standing up to the bully? Most satisfying thing I've seen all year. He didn't even raise his voice, just calmly dismantled him piece by piece. The bully's face when he realized he lost? Priceless. I've watched it like 10 times already. Finally someone did it right.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 78,
+    "completion_tokens": 937,
+    "total_tokens": 1015
+  },
+  "timestamp": "2026-10-29T14:35:34.762280+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_reaction_post",
+  "sample": 4,
+  "variables": {
+    "situation": "someone on video standing up to a bully in a really satisfying way"
+  },
+  "prompt_text": "Write a social media reaction post about: \"someone on video standing up to a bully in a really satisfying way\"",
+  "system_text": "Write the way people react on social media. Casual, punchy — just the reaction text, no hashtags or labels.",
+  "response": "Just watched that video of someone standing up to a bully and I'm literally cheering at my phone. The way they didn't even raise their voice but completely dismantled them? Chef's kiss. So satisfying. Finally some justice. 👏🔥",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 78,
+    "completion_tokens": 606,
+    "total_tokens": 684
+  },
+  "timestamp": "2026-10-29T14:35:36.399550+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_livestream_chat",
+  "sample": 0,
+  "variables": {
+    "moment": "the streamer pulling off an insane last-second clutch"
+  },
+  "prompt_text": "Write a live stream chat message reacting to the streamer pulling off an insane last-second clutch.",
+  "system_text": "Write the way viewers spam messages in a live gaming stream chat — extremely casual and quick. Output only the chat message, nothing else.",
+  "response": "LETSGOOOOOOOO CLUTCH GOD WTF WAS THAT 🔥🔥🔥",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 76,
+    "completion_tokens": 336,
+    "total_tokens": 412
+  },
+  "timestamp": "2026-10-29T14:35:37.452671+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_livestream_chat",
+  "sample": 1,
+  "variables": {
+    "moment": "the streamer pulling off an insane last-second clutch"
+  },
+  "prompt_text": "Write a live stream chat message reacting to the streamer pulling off an insane last-second clutch.",
+  "system_text": "Write the way viewers spam messages in a live gaming stream chat — extremely casual and quick. Output only the chat message, nothing else.",
+  "response": "LETSGOOOOOOOO CLUTCH GOD POGGERS NO WAYYYY 🔥🔥🔥",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 76,
+    "completion_tokens": 214,
+    "total_tokens": 290
+  },
+  "timestamp": "2026-10-29T14:35:37.961152+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_livestream_chat",
+  "sample": 2,
+  "variables": {
+    "moment": "the streamer pulling off an insane last-second clutch"
+  },
+  "prompt_text": "Write a live stream chat message reacting to the streamer pulling off an insane last-second clutch.",
+  "system_text": "Write the way viewers spam messages in a live gaming stream chat — extremely casual and quick. Output only the chat message, nothing else.",
+  "response": "LETSGOOOOOOOO CLUTCH GOD WTF WAS THAT 🔥🔥🔥",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 76,
+    "completion_tokens": 336,
+    "total_tokens": 412
+  },
+  "timestamp": "2026-10-29T14:35:38.999187+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_livestream_chat",
+  "sample": 3,
+  "variables": {
+    "moment": "the streamer pulling off an insane last-second clutch"
+  },
+  "prompt_text": "Write a live stream chat message reacting to the streamer pulling off an insane last-second clutch.",
+  "system_text": "Write the way viewers spam messages in a live gaming stream chat — extremely casual and quick. Output only the chat message, nothing else.",
+  "response": "LETSGOOOOOOOO CLUTCH GOD W W W W NO WAYYYY 🔥🔥🔥",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 76,
+    "completion_tokens": 250,
+    "total_tokens": 326
+  },
+  "timestamp": "2026-10-29T14:35:39.840145+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_livestream_chat",
+  "sample": 4,
+  "variables": {
+    "moment": "the streamer pulling off an insane last-second clutch"
+  },
+  "prompt_text": "Write a live stream chat message reacting to the streamer pulling off an insane last-second clutch.",
+  "system_text": "Write the way viewers spam messages in a live gaming stream chat — extremely casual and quick. Output only the chat message, nothing else.",
+  "response": "LETSGOOOOOOOO CLUTCH GOD WTF WAS THAT 🔥🔥🔥",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 76,
+    "completion_tokens": 336,
+    "total_tokens": 412
+  },
+  "timestamp": "2026-10-29T14:35:40.895950+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_livestream_chat",
+  "sample": 0,
+  "variables": {
+    "moment": "the streamer choking and throwing the game when they had it won"
+  },
+  "prompt_text": "Write a live stream chat message reacting to the streamer choking and throwing the game when they had it won.",
+  "system_text": "Write the way viewers spam messages in a live gaming stream chat — extremely casual and quick. Output only the chat message, nothing else.",
+  "response": "BROOOO HOW DO U THROW THAT LMAOOO CHOKE OF THE YEAR 💀💀",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 79,
+    "completion_tokens": 210,
+    "total_tokens": 289
+  },
+  "timestamp": "2026-10-29T14:35:41.959649+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_livestream_chat",
+  "sample": 1,
+  "variables": {
+    "moment": "the streamer choking and throwing the game when they had it won"
+  },
+  "prompt_text": "Write a live stream chat message reacting to the streamer choking and throwing the game when they had it won.",
+  "system_text": "Write the way viewers spam messages in a live gaming stream chat — extremely casual and quick. Output only the chat message, nothing else.",
+  "response": "LMAOOOOO HOW DO U THROW THAT WTF OMEGALUL",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 79,
+    "completion_tokens": 244,
+    "total_tokens": 323
+  },
+  "timestamp": "2026-10-29T14:35:43.140427+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_livestream_chat",
+  "sample": 2,
+  "variables": {
+    "moment": "the streamer choking and throwing the game when they had it won"
+  },
+  "prompt_text": "Write a live stream chat message reacting to the streamer choking and throwing the game when they had it won.",
+  "system_text": "Write the way viewers spam messages in a live gaming stream chat — extremely casual and quick. Output only the chat message, nothing else.",
+  "response": "LMAOOO HOW DO YOU CHOKE THAT WTF",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 79,
+    "completion_tokens": 291,
+    "total_tokens": 370
+  },
+  "timestamp": "2026-10-29T14:35:44.190616+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_livestream_chat",
+  "sample": 3,
+  "variables": {
+    "moment": "the streamer choking and throwing the game when they had it won"
+  },
+  "prompt_text": "Write a live stream chat message reacting to the streamer choking and throwing the game when they had it won.",
+  "system_text": "Write the way viewers spam messages in a live gaming stream chat — extremely casual and quick. Output only the chat message, nothing else.",
+  "response": "LMAOOO HOW DO YOU THROW A WON GAME WTF 💀💀",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 79,
+    "completion_tokens": 319,
+    "total_tokens": 398
+  },
+  "timestamp": "2026-10-29T14:35:45.184707+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_livestream_chat",
+  "sample": 4,
+  "variables": {
+    "moment": "the streamer choking and throwing the game when they had it won"
+  },
+  "prompt_text": "Write a live stream chat message reacting to the streamer choking and throwing the game when they had it won.",
+  "system_text": "Write the way viewers spam messages in a live gaming stream chat — extremely casual and quick. Output only the chat message, nothing else.",
+  "response": "LMAOOOOO HOW DO YOU CHOKE THAT HAD IT WON WTF",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 79,
+    "completion_tokens": 250,
+    "total_tokens": 329
+  },
+  "timestamp": "2026-10-29T14:35:46.272231+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_livestream_chat",
+  "sample": 0,
+  "variables": {
+    "moment": "a hilarious fail that nobody saw coming"
+  },
+  "prompt_text": "Write a live stream chat message reacting to a hilarious fail that nobody saw coming.",
+  "system_text": "Write the way viewers spam messages in a live gaming stream chat — extremely casual and quick. Output only the chat message, nothing else.",
+  "response": "LMAOOOOO WHATTTT 💀💀💀 NAH THAT CAME OUTTA NOWHERE 😭",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 73,
+    "completion_tokens": 260,
+    "total_tokens": 333
+  },
+  "timestamp": "2026-10-29T14:35:47.186763+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_livestream_chat",
+  "sample": 1,
+  "variables": {
+    "moment": "a hilarious fail that nobody saw coming"
+  },
+  "prompt_text": "Write a live stream chat message reacting to a hilarious fail that nobody saw coming.",
+  "system_text": "Write the way viewers spam messages in a live gaming stream chat — extremely casual and quick. Output only the chat message, nothing else.",
+  "response": "LMAOOOOO WHAT WAS THAT 💀💀💀 NOBODY SAW THAT COMING AHAHAHA",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 73,
+    "completion_tokens": 273,
+    "total_tokens": 346
+  },
+  "timestamp": "2026-10-29T14:35:48.314060+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_livestream_chat",
+  "sample": 2,
+  "variables": {
+    "moment": "a hilarious fail that nobody saw coming"
+  },
+  "prompt_text": "Write a live stream chat message reacting to a hilarious fail that nobody saw coming.",
+  "system_text": "Write the way viewers spam messages in a live gaming stream chat — extremely casual and quick. Output only the chat message, nothing else.",
+  "response": "LMAOOO WHAT WAS THAT 💀💀💀",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 73,
+    "completion_tokens": 161,
+    "total_tokens": 234
+  },
+  "timestamp": "2026-10-29T14:35:49.032159+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_livestream_chat",
+  "sample": 3,
+  "variables": {
+    "moment": "a hilarious fail that nobody saw coming"
+  },
+  "prompt_text": "Write a live stream chat message reacting to a hilarious fail that nobody saw coming.",
+  "system_text": "Write the way viewers spam messages in a live gaming stream chat — extremely casual and quick. Output only the chat message, nothing else.",
+  "response": "LMAOOOOOO WHAT WAS THAT 💀💀💀 NOBODY SAW THAT COMING 😭😭",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 73,
+    "completion_tokens": 251,
+    "total_tokens": 324
+  },
+  "timestamp": "2026-10-29T14:35:49.797911+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_livestream_chat",
+  "sample": 4,
+  "variables": {
+    "moment": "a hilarious fail that nobody saw coming"
+  },
+  "prompt_text": "Write a live stream chat message reacting to a hilarious fail that nobody saw coming.",
+  "system_text": "Write the way viewers spam messages in a live gaming stream chat — extremely casual and quick. Output only the chat message, nothing else.",
+  "response": "LMAOOOOO WHATTTT 💀💀💀 THAT CAME OUTTA NOWHERE 😭😭",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 73,
+    "completion_tokens": 202,
+    "total_tokens": 275
+  },
+  "timestamp": "2026-10-29T14:35:50.378240+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_livestream_chat",
+  "sample": 0,
+  "variables": {
+    "moment": "the streamer hitting a massive subscriber milestone"
+  },
+  "prompt_text": "Write a live stream chat message reacting to the streamer hitting a massive subscriber milestone.",
+  "system_text": "Write the way viewers spam messages in a live gaming stream chat — extremely casual and quick. Output only the chat message, nothing else.",
+  "response": "WOOOOOO 100K SUBS LETS GOOOOO 🎉🎉🎉 CONGRATS BRO 🔥🔥🔥 HYPEEEE",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 74,
+    "completion_tokens": 284,
+    "total_tokens": 358
+  },
+  "timestamp": "2026-10-29T14:35:51.811590+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_livestream_chat",
+  "sample": 1,
+  "variables": {
+    "moment": "the streamer hitting a massive subscriber milestone"
+  },
+  "prompt_text": "Write a live stream chat message reacting to the streamer hitting a massive subscriber milestone.",
+  "system_text": "Write the way viewers spam messages in a live gaming stream chat — extremely casual and quick. Output only the chat message, nothing else.",
+  "response": "LETS GOOOO 100K SUBS!!! CONGRATS BRO YOU DESERVE IT 🎉🎉🔥🔥 W STREAMER W COMMUNITY!!! POGGERS",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 74,
+    "completion_tokens": 284,
+    "total_tokens": 358
+  },
+  "timestamp": "2026-10-29T14:35:52.827699+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_livestream_chat",
+  "sample": 2,
+  "variables": {
+    "moment": "the streamer hitting a massive subscriber milestone"
+  },
+  "prompt_text": "Write a live stream chat message reacting to the streamer hitting a massive subscriber milestone.",
+  "system_text": "Write the way viewers spam messages in a live gaming stream chat — extremely casual and quick. Output only the chat message, nothing else.",
+  "response": "LETSGOOOOO 1M SUBS!!! CONGRATS KING 👑🔥🔥🔥 W STREAMER",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 74,
+    "completion_tokens": 439,
+    "total_tokens": 513
+  },
+  "timestamp": "2026-10-29T14:35:54.351283+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_livestream_chat",
+  "sample": 3,
+  "variables": {
+    "moment": "the streamer hitting a massive subscriber milestone"
+  },
+  "prompt_text": "Write a live stream chat message reacting to the streamer hitting a massive subscriber milestone.",
+  "system_text": "Write the way viewers spam messages in a live gaming stream chat — extremely casual and quick. Output only the chat message, nothing else.",
+  "response": "LETS GOOOOO 1 MILLION SUBS!!! CONGRATS KING 👑🔥🔥 W STREAM W COMMUNITY 🎉🎉🎉",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 74,
+    "completion_tokens": 275,
+    "total_tokens": 349
+  },
+  "timestamp": "2026-10-29T14:35:55.183786+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_livestream_chat",
+  "sample": 4,
+  "variables": {
+    "moment": "the streamer hitting a massive subscriber milestone"
+  },
+  "prompt_text": "Write a live stream chat message reacting to the streamer hitting a massive subscriber milestone.",
+  "system_text": "Write the way viewers spam messages in a live gaming stream chat — extremely casual and quick. Output only the chat message, nothing else.",
+  "response": "LETS GOOOOO 1 MILLION SUBS!!! CONGRATS BRO 🔥🔥🔥🎉🎉",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 74,
+    "completion_tokens": 247,
+    "total_tokens": 321
+  },
+  "timestamp": "2026-10-29T14:35:56.574264+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_livestream_chat",
+  "sample": 0,
+  "variables": {
+    "moment": "a new player showing up and completely dominating the lobby"
+  },
+  "prompt_text": "Write a live stream chat message reacting to a new player showing up and completely dominating the lobby.",
+  "system_text": "Write the way viewers spam messages in a live gaming stream chat — extremely casual and quick. Output only the chat message, nothing else.",
+  "response": "WTF NEW PLAYER JUST WIPED THE LOBBY?? BRO IS HIM 😭🔥",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 76,
+    "completion_tokens": 439,
+    "total_tokens": 515
+  },
+  "timestamp": "2026-10-29T14:35:58.665829+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_livestream_chat",
+  "sample": 1,
+  "variables": {
+    "moment": "a new player showing up and completely dominating the lobby"
+  },
+  "prompt_text": "Write a live stream chat message reacting to a new player showing up and completely dominating the lobby.",
+  "system_text": "Write the way viewers spam messages in a live gaming stream chat — extremely casual and quick. Output only the chat message, nothing else.",
+  "response": "WHO IS THIS NEW GUY LMAOOO HE'S COOKING EVERYONE WTF",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 76,
+    "completion_tokens": 284,
+    "total_tokens": 360
+  },
+  "timestamp": "2026-10-29T14:35:59.716611+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_livestream_chat",
+  "sample": 2,
+  "variables": {
+    "moment": "a new player showing up and completely dominating the lobby"
+  },
+  "prompt_text": "Write a live stream chat message reacting to a new player showing up and completely dominating the lobby.",
+  "system_text": "Write the way viewers spam messages in a live gaming stream chat — extremely casual and quick. Output only the chat message, nothing else.",
+  "response": "WTF WHO IS THIS NEW GUY HE'S COOKING EVERYONE LMAOOO",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 76,
+    "completion_tokens": 297,
+    "total_tokens": 373
+  },
+  "timestamp": "2026-10-29T14:36:00.900029+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_livestream_chat",
+  "sample": 3,
+  "variables": {
+    "moment": "a new player showing up and completely dominating the lobby"
+  },
+  "prompt_text": "Write a live stream chat message reacting to a new player showing up and completely dominating the lobby.",
+  "system_text": "Write the way viewers spam messages in a live gaming stream chat — extremely casual and quick. Output only the chat message, nothing else.",
+  "response": "NEW PLAYER BTW LMAOOO HE'S COOKING EVERYONE WTF",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 76,
+    "completion_tokens": 247,
+    "total_tokens": 323
+  },
+  "timestamp": "2026-10-29T14:36:01.812859+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_livestream_chat",
+  "sample": 4,
+  "variables": {
+    "moment": "a new player showing up and completely dominating the lobby"
+  },
+  "prompt_text": "Write a live stream chat message reacting to a new player showing up and completely dominating the lobby.",
+  "system_text": "Write the way viewers spam messages in a live gaming stream chat — extremely casual and quick. Output only the chat message, nothing else.",
+  "response": "WTF NEW PLAYER JUST DROPPED 30 KILLS LMAOOO WHO IS THIS GUY 😭😭",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 76,
+    "completion_tokens": 235,
+    "total_tokens": 311
+  },
+  "timestamp": "2026-10-29T14:36:02.654140+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_tiktok_comment",
+  "sample": 0,
+  "variables": {
+    "video": "someone nailing a really hard dance on the first try"
+  },
+  "prompt_text": "Write a TikTok comment on a video of someone nailing a really hard dance on the first try.",
+  "system_text": "Write the way people comment on TikTok videos — short, reactive, very online. Output only the comment text, no hashtags or labels.",
+  "response": "first try?? cap. i would've been on the ground",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 78,
+    "completion_tokens": 675,
+    "total_tokens": 753
+  },
+  "timestamp": "2026-10-29T14:36:05.108688+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_tiktok_comment",
+  "sample": 1,
+  "variables": {
+    "video": "someone nailing a really hard dance on the first try"
+  },
+  "prompt_text": "Write a TikTok comment on a video of someone nailing a really hard dance on the first try.",
+  "system_text": "Write the way people comment on TikTok videos — short, reactive, very online. Output only the comment text, no hashtags or labels.",
+  "response": "not the first try 😭 i can't even stand up without falling",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 78,
+    "completion_tokens": 632,
+    "total_tokens": 710
+  },
+  "timestamp": "2026-10-29T14:36:08.091338+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_tiktok_comment",
+  "sample": 2,
+  "variables": {
+    "video": "someone nailing a really hard dance on the first try"
+  },
+  "prompt_text": "Write a TikTok comment on a video of someone nailing a really hard dance on the first try.",
+  "system_text": "Write the way people comment on TikTok videos — short, reactive, very online. Output only the comment text, no hashtags or labels.",
+  "response": "first try?? i would’ve dislocated everything and blamed the floor",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 78,
+    "completion_tokens": 175,
+    "total_tokens": 253
+  },
+  "timestamp": "2026-10-29T14:36:08.935767+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_tiktok_comment",
+  "sample": 3,
+  "variables": {
+    "video": "someone nailing a really hard dance on the first try"
+  },
+  "prompt_text": "Write a TikTok comment on a video of someone nailing a really hard dance on the first try.",
+  "system_text": "Write the way people comment on TikTok videos — short, reactive, very online. Output only the comment text, no hashtags or labels.",
+  "response": "first try?? i would’ve tripped over air and blamed the floor 😭",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 78,
+    "completion_tokens": 218,
+    "total_tokens": 296
+  },
+  "timestamp": "2026-10-29T14:36:09.845977+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_tiktok_comment",
+  "sample": 4,
+  "variables": {
+    "video": "someone nailing a really hard dance on the first try"
+  },
+  "prompt_text": "Write a TikTok comment on a video of someone nailing a really hard dance on the first try.",
+  "system_text": "Write the way people comment on TikTok videos — short, reactive, very online. Output only the comment text, no hashtags or labels.",
+  "response": "not the first try 😭 you're built different",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 78,
+    "completion_tokens": 967,
+    "total_tokens": 1045
+  },
+  "timestamp": "2026-10-29T14:36:12.987919+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_tiktok_comment",
+  "sample": 0,
+  "variables": {
+    "video": "a person showing off an outfit that goes incredibly hard"
+  },
+  "prompt_text": "Write a TikTok comment on a video of a person showing off an outfit that goes incredibly hard.",
+  "system_text": "Write the way people comment on TikTok videos — short, reactive, very online. Output only the comment text, no hashtags or labels.",
+  "response": "this fit goes so hard it owes me rent",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 77,
+    "completion_tokens": 168,
+    "total_tokens": 245
+  },
+  "timestamp": "2026-10-29T14:36:13.535810+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_tiktok_comment",
+  "sample": 1,
+  "variables": {
+    "video": "a person showing off an outfit that goes incredibly hard"
+  },
+  "prompt_text": "Write a TikTok comment on a video of a person showing off an outfit that goes incredibly hard.",
+  "system_text": "Write the way people comment on TikTok videos — short, reactive, very online. Output only the comment text, no hashtags or labels.",
+  "response": "this fit goes so hard it should be illegal fr",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 77,
+    "completion_tokens": 262,
+    "total_tokens": 339
+  },
+  "timestamp": "2026-10-29T14:36:14.283949+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_tiktok_comment",
+  "sample": 2,
+  "variables": {
+    "video": "a person showing off an outfit that goes incredibly hard"
+  },
+  "prompt_text": "Write a TikTok comment on a video of a person showing off an outfit that goes incredibly hard.",
+  "system_text": "Write the way people comment on TikTok videos — short, reactive, very online. Output only the comment text, no hashtags or labels.",
+  "response": "this fit goes so hard it should be illegal",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 77,
+    "completion_tokens": 201,
+    "total_tokens": 278
+  },
+  "timestamp": "2026-10-29T14:36:15.043945+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_tiktok_comment",
+  "sample": 3,
+  "variables": {
+    "video": "a person showing off an outfit that goes incredibly hard"
+  },
+  "prompt_text": "Write a TikTok comment on a video of a person showing off an outfit that goes incredibly hard.",
+  "system_text": "Write the way people comment on TikTok videos — short, reactive, very online. Output only the comment text, no hashtags or labels.",
+  "response": "this fit goes so hard it should be illegal 😭🔥",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 77,
+    "completion_tokens": 360,
+    "total_tokens": 437
+  },
+  "timestamp": "2026-10-29T14:36:16.168298+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_tiktok_comment",
+  "sample": 4,
+  "variables": {
+    "video": "a person showing off an outfit that goes incredibly hard"
+  },
+  "prompt_text": "Write a TikTok comment on a video of a person showing off an outfit that goes incredibly hard.",
+  "system_text": "Write the way people comment on TikTok videos — short, reactive, very online. Output only the comment text, no hashtags or labels.",
+  "response": "the fit is fitting so hard rn i’m gonna need a minute",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 77,
+    "completion_tokens": 431,
+    "total_tokens": 508
+  },
+  "timestamp": "2026-10-29T14:36:17.595526+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_tiktok_comment",
+  "sample": 0,
+  "variables": {
+    "video": "a cooking attempt that spirals completely out of control"
+  },
+  "prompt_text": "Write a TikTok comment on a video of a cooking attempt that spirals completely out of control.",
+  "system_text": "Write the way people comment on TikTok videos — short, reactive, very online. Output only the comment text, no hashtags or labels.",
+  "response": "bro was cooking and the kitchen started cooking back 💀",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 77,
+    "completion_tokens": 290,
+    "total_tokens": 367
+  },
+  "timestamp": "2026-10-29T14:36:19.564276+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_tiktok_comment",
+  "sample": 1,
+  "variables": {
+    "video": "a cooking attempt that spirals completely out of control"
+  },
+  "prompt_text": "Write a TikTok comment on a video of a cooking attempt that spirals completely out of control.",
+  "system_text": "Write the way people comment on TikTok videos — short, reactive, very online. Output only the comment text, no hashtags or labels.",
+  "response": "the way this went from dinner to a crime scene in 0.2 seconds 😭",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 77,
+    "completion_tokens": 153,
+    "total_tokens": 230
+  },
+  "timestamp": "2026-10-29T14:36:20.096491+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_tiktok_comment",
+  "sample": 2,
+  "variables": {
+    "video": "a cooking attempt that spirals completely out of control"
+  },
+  "prompt_text": "Write a TikTok comment on a video of a cooking attempt that spirals completely out of control.",
+  "system_text": "Write the way people comment on TikTok videos — short, reactive, very online. Output only the comment text, no hashtags or labels.",
+  "response": "this went from dinner to a full-on evacuation real quick 💀",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 77,
+    "completion_tokens": 237,
+    "total_tokens": 314
+  },
+  "timestamp": "2026-10-29T14:36:21.010777+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_tiktok_comment",
+  "sample": 3,
+  "variables": {
+    "video": "a cooking attempt that spirals completely out of control"
+  },
+  "prompt_text": "Write a TikTok comment on a video of a cooking attempt that spirals completely out of control.",
+  "system_text": "Write the way people comment on TikTok videos — short, reactive, very online. Output only the comment text, no hashtags or labels.",
+  "response": "this went from dinner to a crime scene real quick 😭",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 77,
+    "completion_tokens": 113,
+    "total_tokens": 190
+  },
+  "timestamp": "2026-10-29T14:36:22.203561+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_tiktok_comment",
+  "sample": 4,
+  "variables": {
+    "video": "a cooking attempt that spirals completely out of control"
+  },
+  "prompt_text": "Write a TikTok comment on a video of a cooking attempt that spirals completely out of control.",
+  "system_text": "Write the way people comment on TikTok videos — short, reactive, very online. Output only the comment text, no hashtags or labels.",
+  "response": "the way this went from recipe to rescue mission in 3 seconds 💀",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 77,
+    "completion_tokens": 241,
+    "total_tokens": 318
+  },
+  "timestamp": "2026-10-29T14:36:23.313606+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_tiktok_comment",
+  "sample": 0,
+  "variables": {
+    "video": "someone giving an unhinged but weirdly correct life take"
+  },
+  "prompt_text": "Write a TikTok comment on a video of someone giving an unhinged but weirdly correct life take.",
+  "system_text": "Write the way people comment on TikTok videos — short, reactive, very online. Output only the comment text, no hashtags or labels.",
+  "response": "not the unhinged life advice being 100% right 💀",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 79,
+    "completion_tokens": 136,
+    "total_tokens": 215
+  },
+  "timestamp": "2026-10-29T14:36:23.740250+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_tiktok_comment",
+  "sample": 1,
+  "variables": {
+    "video": "someone giving an unhinged but weirdly correct life take"
+  },
+  "prompt_text": "Write a TikTok comment on a video of someone giving an unhinged but weirdly correct life take.",
+  "system_text": "Write the way people comment on TikTok videos — short, reactive, very online. Output only the comment text, no hashtags or labels.",
+  "response": "not the unhinged life advice actually being right tho 😭",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 79,
+    "completion_tokens": 143,
+    "total_tokens": 222
+  },
+  "timestamp": "2026-10-29T14:36:25.071195+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_tiktok_comment",
+  "sample": 2,
+  "variables": {
+    "video": "someone giving an unhinged but weirdly correct life take"
+  },
+  "prompt_text": "Write a TikTok comment on a video of someone giving an unhinged but weirdly correct life take.",
+  "system_text": "Write the way people comment on TikTok videos — short, reactive, very online. Output only the comment text, no hashtags or labels.",
+  "response": "not the unhinged life advice being 100% right 💀 i hate it here",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 79,
+    "completion_tokens": 186,
+    "total_tokens": 265
+  },
+  "timestamp": "2026-10-29T14:36:25.617983+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_tiktok_comment",
+  "sample": 3,
+  "variables": {
+    "video": "someone giving an unhinged but weirdly correct life take"
+  },
+  "prompt_text": "Write a TikTok comment on a video of someone giving an unhinged but weirdly correct life take.",
+  "system_text": "Write the way people comment on TikTok videos — short, reactive, very online. Output only the comment text, no hashtags or labels.",
+  "response": "not the unhinged life advice being 100% right 💀 i hate it here",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 79,
+    "completion_tokens": 186,
+    "total_tokens": 265
+  },
+  "timestamp": "2026-10-29T14:36:26.159974+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_tiktok_comment",
+  "sample": 4,
+  "variables": {
+    "video": "someone giving an unhinged but weirdly correct life take"
+  },
+  "prompt_text": "Write a TikTok comment on a video of someone giving an unhinged but weirdly correct life take.",
+  "system_text": "Write the way people comment on TikTok videos — short, reactive, very online. Output only the comment text, no hashtags or labels.",
+  "response": "why is this the most unhinged thing i've ever heard and also the only thing that's ever made sense",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 79,
+    "completion_tokens": 135,
+    "total_tokens": 214
+  },
+  "timestamp": "2026-10-29T14:36:26.706876+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_tiktok_comment",
+  "sample": 0,
+  "variables": {
+    "video": "a cat doing something that looks oddly intentional"
+  },
+  "prompt_text": "Write a TikTok comment on a video of a cat doing something that looks oddly intentional.",
+  "system_text": "Write the way people comment on TikTok videos — short, reactive, very online. Output only the comment text, no hashtags or labels.",
+  "response": "he knew exactly what he was doing and i respect it",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 75,
+    "completion_tokens": 234,
+    "total_tokens": 309
+  },
+  "timestamp": "2026-10-29T14:36:29.006971+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_tiktok_comment",
+  "sample": 1,
+  "variables": {
+    "video": "a cat doing something that looks oddly intentional"
+  },
+  "prompt_text": "Write a TikTok comment on a video of a cat doing something that looks oddly intentional.",
+  "system_text": "Write the way people comment on TikTok videos — short, reactive, very online. Output only the comment text, no hashtags or labels.",
+  "response": "the way he paused to make sure the camera was on him 💀",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 75,
+    "completion_tokens": 146,
+    "total_tokens": 221
+  },
+  "timestamp": "2026-10-29T14:36:29.838156+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_tiktok_comment",
+  "sample": 2,
+  "variables": {
+    "video": "a cat doing something that looks oddly intentional"
+  },
+  "prompt_text": "Write a TikTok comment on a video of a cat doing something that looks oddly intentional.",
+  "system_text": "Write the way people comment on TikTok videos — short, reactive, very online. Output only the comment text, no hashtags or labels.",
+  "response": "that was premeditated, your honor 😭",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 75,
+    "completion_tokens": 219,
+    "total_tokens": 294
+  },
+  "timestamp": "2026-10-29T14:36:30.534127+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_tiktok_comment",
+  "sample": 3,
+  "variables": {
+    "video": "a cat doing something that looks oddly intentional"
+  },
+  "prompt_text": "Write a TikTok comment on a video of a cat doing something that looks oddly intentional.",
+  "system_text": "Write the way people comment on TikTok videos — short, reactive, very online. Output only the comment text, no hashtags or labels.",
+  "response": "that was premeditated i fear 😭",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 75,
+    "completion_tokens": 156,
+    "total_tokens": 231
+  },
+  "timestamp": "2026-10-29T14:36:31.169350+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_tiktok_comment",
+  "sample": 4,
+  "variables": {
+    "video": "a cat doing something that looks oddly intentional"
+  },
+  "prompt_text": "Write a TikTok comment on a video of a cat doing something that looks oddly intentional.",
+  "system_text": "Write the way people comment on TikTok videos — short, reactive, very online. Output only the comment text, no hashtags or labels.",
+  "response": "he knew exactly what he was doing i fear 😭",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 75,
+    "completion_tokens": 274,
+    "total_tokens": 349
+  },
+  "timestamp": "2026-10-29T14:36:31.862678+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_instagram_caption",
+  "sample": 0,
+  "variables": {
+    "photo": "you looking your absolute best before a night out"
+  },
+  "prompt_text": "Write an Instagram caption for a photo of you looking your absolute best before a night out.",
+  "system_text": "Write the way people caption their own photos on Instagram — short, casual, a little playful. Output only the caption text, no hashtags or labels.",
+  "response": "feeling dangerously cute for someone with zero plans to behave tonight",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 79,
+    "completion_tokens": 213,
+    "total_tokens": 292
+  },
+  "timestamp": "2026-10-29T14:36:32.956172+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_instagram_caption",
+  "sample": 1,
+  "variables": {
+    "photo": "you looking your absolute best before a night out"
+  },
+  "prompt_text": "Write an Instagram caption for a photo of you looking your absolute best before a night out.",
+  "system_text": "Write the way people caption their own photos on Instagram — short, casual, a little playful. Output only the caption text, no hashtags or labels.",
+  "response": "this is the best I’ve ever looked and I’m going to make it everyone’s problem tonight",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 79,
+    "completion_tokens": 361,
+    "total_tokens": 440
+  },
+  "timestamp": "2026-10-29T14:36:34.295006+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_instagram_caption",
+  "sample": 2,
+  "variables": {
+    "photo": "you looking your absolute best before a night out"
+  },
+  "prompt_text": "Write an Instagram caption for a photo of you looking your absolute best before a night out.",
+  "system_text": "Write the way people caption their own photos on Instagram — short, casual, a little playful. Output only the caption text, no hashtags or labels.",
+  "response": "Mirror said no notes, so obviously we’re going out.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 79,
+    "completion_tokens": 399,
+    "total_tokens": 478
+  },
+  "timestamp": "2026-10-29T14:36:35.824331+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_instagram_caption",
+  "sample": 3,
+  "variables": {
+    "photo": "you looking your absolute best before a night out"
+  },
+  "prompt_text": "Write an Instagram caption for a photo of you looking your absolute best before a night out.",
+  "system_text": "Write the way people caption their own photos on Instagram — short, casual, a little playful. Output only the caption text, no hashtags or labels.",
+  "response": "pre-game me is undefeated ✨",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 79,
+    "completion_tokens": 457,
+    "total_tokens": 536
+  },
+  "timestamp": "2026-10-29T14:36:37.538932+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_instagram_caption",
+  "sample": 4,
+  "variables": {
+    "photo": "you looking your absolute best before a night out"
+  },
+  "prompt_text": "Write an Instagram caption for a photo of you looking your absolute best before a night out.",
+  "system_text": "Write the way people caption their own photos on Instagram — short, casual, a little playful. Output only the caption text, no hashtags or labels.",
+  "response": "pre-night-out and already peaking, sorry in advance",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 79,
+    "completion_tokens": 446,
+    "total_tokens": 525
+  },
+  "timestamp": "2026-10-29T14:36:38.961260+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_instagram_caption",
+  "sample": 0,
+  "variables": {
+    "photo": "a spontaneous trip with your closest friends"
+  },
+  "prompt_text": "Write an Instagram caption for a photo of a spontaneous trip with your closest friends.",
+  "system_text": "Write the way people caption their own photos on Instagram — short, casual, a little playful. Output only the caption text, no hashtags or labels.",
+  "response": "woke up, packed in 10 minutes, and somehow ended up here with my favorite humans. zero plans, all the memories ✨",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 77,
+    "completion_tokens": 247,
+    "total_tokens": 324
+  },
+  "timestamp": "2026-10-29T14:36:39.811016+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_instagram_caption",
+  "sample": 1,
+  "variables": {
+    "photo": "a spontaneous trip with your closest friends"
+  },
+  "prompt_text": "Write an Instagram caption for a photo of a spontaneous trip with your closest friends.",
+  "system_text": "Write the way people caption their own photos on Instagram — short, casual, a little playful. Output only the caption text, no hashtags or labels.",
+  "response": "no plan, just us and a full tank of spontaneity 🚗✨ best kind of chaos with my favorite people",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 77,
+    "completion_tokens": 189,
+    "total_tokens": 266
+  },
+  "timestamp": "2026-10-29T14:36:40.533976+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_instagram_caption",
+  "sample": 2,
+  "variables": {
+    "photo": "a spontaneous trip with your closest friends"
+  },
+  "prompt_text": "Write an Instagram caption for a photo of a spontaneous trip with your closest friends.",
+  "system_text": "Write the way people caption their own photos on Instagram — short, casual, a little playful. Output only the caption text, no hashtags or labels.",
+  "response": "zero plans, one group chat, and suddenly we’re here. best memories are always unplanned with you guys ✨",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 77,
+    "completion_tokens": 223,
+    "total_tokens": 300
+  },
+  "timestamp": "2026-10-29T14:36:41.130305+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_instagram_caption",
+  "sample": 3,
+  "variables": {
+    "photo": "a spontaneous trip with your closest friends"
+  },
+  "prompt_text": "Write an Instagram caption for a photo of a spontaneous trip with your closest friends.",
+  "system_text": "Write the way people caption their own photos on Instagram — short, casual, a little playful. Output only the caption text, no hashtags or labels.",
+  "response": "zero plans, one group chat, and suddenly we’re here. best memories are always unplanned with you guys ✨",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 77,
+    "completion_tokens": 223,
+    "total_tokens": 300
+  },
+  "timestamp": "2026-10-29T14:36:41.740905+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_instagram_caption",
+  "sample": 4,
+  "variables": {
+    "photo": "a spontaneous trip with your closest friends"
+  },
+  "prompt_text": "Write an Instagram caption for a photo of a spontaneous trip with your closest friends.",
+  "system_text": "Write the way people caption their own photos on Instagram — short, casual, a little playful. Output only the caption text, no hashtags or labels.",
+  "response": "no plan, just us. spontaneous trips with my favorite people hit different.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 77,
+    "completion_tokens": 137,
+    "total_tokens": 214
+  },
+  "timestamp": "2026-10-29T14:36:42.293867+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_instagram_caption",
+  "sample": 0,
+  "variables": {
+    "photo": "a meal that turned out way better than expected"
+  },
+  "prompt_text": "Write an Instagram caption for a photo of a meal that turned out way better than expected.",
+  "system_text": "Write the way people caption their own photos on Instagram — short, casual, a little playful. Output only the caption text, no hashtags or labels.",
+  "response": "was fully prepared to order takeout but this actually slapped 😌",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 79,
+    "completion_tokens": 172,
+    "total_tokens": 251
+  },
+  "timestamp": "2026-10-29T14:36:42.996928+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_instagram_caption",
+  "sample": 1,
+  "variables": {
+    "photo": "a meal that turned out way better than expected"
+  },
+  "prompt_text": "Write an Instagram caption for a photo of a meal that turned out way better than expected.",
+  "system_text": "Write the way people caption their own photos on Instagram — short, casual, a little playful. Output only the caption text, no hashtags or labels.",
+  "response": "threw this together with zero plan and it somehow turned out better than anything I’ve ordered all month 😅",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 79,
+    "completion_tokens": 341,
+    "total_tokens": 420
+  },
+  "timestamp": "2026-10-29T14:36:44.158914+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_instagram_caption",
+  "sample": 2,
+  "variables": {
+    "photo": "a meal that turned out way better than expected"
+  },
+  "prompt_text": "Write an Instagram caption for a photo of a meal that turned out way better than expected.",
+  "system_text": "Write the way people caption their own photos on Instagram — short, casual, a little playful. Output only the caption text, no hashtags or labels.",
+  "response": "was fully expecting a mediocre lil meal and somehow made magic. not sure who I am anymore tbh",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 79,
+    "completion_tokens": 306,
+    "total_tokens": 385
+  },
+  "timestamp": "2026-10-29T14:36:45.159143+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_instagram_caption",
+  "sample": 3,
+  "variables": {
+    "photo": "a meal that turned out way better than expected"
+  },
+  "prompt_text": "Write an Instagram caption for a photo of a meal that turned out way better than expected.",
+  "system_text": "Write the way people caption their own photos on Instagram — short, casual, a little playful. Output only the caption text, no hashtags or labels.",
+  "response": "no recipe, no clue, and somehow this turned out better than anything I’ve ordered all month 😅",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 79,
+    "completion_tokens": 227,
+    "total_tokens": 306
+  },
+  "timestamp": "2026-10-29T14:36:45.904536+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_instagram_caption",
+  "sample": 4,
+  "variables": {
+    "photo": "a meal that turned out way better than expected"
+  },
+  "prompt_text": "Write an Instagram caption for a photo of a meal that turned out way better than expected.",
+  "system_text": "Write the way people caption their own photos on Instagram — short, casual, a little playful. Output only the caption text, no hashtags or labels.",
+  "response": "threw this together expecting a sad little dinner and accidentally made something amazing?? who even am I",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 79,
+    "completion_tokens": 249,
+    "total_tokens": 328
+  },
+  "timestamp": "2026-10-29T14:36:46.893497+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_instagram_caption",
+  "sample": 0,
+  "variables": {
+    "photo": "you celebrating a personal win"
+  },
+  "prompt_text": "Write an Instagram caption for a photo of you celebrating a personal win.",
+  "system_text": "Write the way people caption their own photos on Instagram — short, casual, a little playful. Output only the caption text, no hashtags or labels.",
+  "response": "I did the thing I said I’d do. someone throw confetti please 🥳",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 75,
+    "completion_tokens": 578,
+    "total_tokens": 653
+  },
+  "timestamp": "2026-10-29T14:36:48.780665+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_instagram_caption",
+  "sample": 1,
+  "variables": {
+    "photo": "you celebrating a personal win"
+  },
+  "prompt_text": "Write an Instagram caption for a photo of you celebrating a personal win.",
+  "system_text": "Write the way people caption their own photos on Instagram — short, casual, a little playful. Output only the caption text, no hashtags or labels.",
+  "response": "I’d like to thank me, myself, and I 😌✨",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 75,
+    "completion_tokens": 359,
+    "total_tokens": 434
+  },
+  "timestamp": "2026-10-29T14:36:50.477138+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_instagram_caption",
+  "sample": 2,
+  "variables": {
+    "photo": "you celebrating a personal win"
+  },
+  "prompt_text": "Write an Instagram caption for a photo of you celebrating a personal win.",
+  "system_text": "Write the way people caption their own photos on Instagram — short, casual, a little playful. Output only the caption text, no hashtags or labels.",
+  "response": "I did the thing!! currently accepting applause in the form of likes and snacks 🥳",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 75,
+    "completion_tokens": 385,
+    "total_tokens": 460
+  },
+  "timestamp": "2026-10-29T14:36:51.984372+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_instagram_caption",
+  "sample": 3,
+  "variables": {
+    "photo": "you celebrating a personal win"
+  },
+  "prompt_text": "Write an Instagram caption for a photo of you celebrating a personal win.",
+  "system_text": "Write the way people caption their own photos on Instagram — short, casual, a little playful. Output only the caption text, no hashtags or labels.",
+  "response": "we did it, team me 🎉",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 75,
+    "completion_tokens": 446,
+    "total_tokens": 521
+  },
+  "timestamp": "2026-10-29T14:36:53.509163+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_instagram_caption",
+  "sample": 4,
+  "variables": {
+    "photo": "you celebrating a personal win"
+  },
+  "prompt_text": "Write an Instagram caption for a photo of you celebrating a personal win.",
+  "system_text": "Write the way people caption their own photos on Instagram — short, casual, a little playful. Output only the caption text, no hashtags or labels.",
+  "response": "I did it!! currently accepting high fives and maybe a nap ✋😌",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 75,
+    "completion_tokens": 364,
+    "total_tokens": 439
+  },
+  "timestamp": "2026-10-29T14:36:54.651755+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_instagram_caption",
+  "sample": 0,
+  "variables": {
+    "photo": "a chaotic but fun moment with friends"
+  },
+  "prompt_text": "Write an Instagram caption for a photo of a chaotic but fun moment with friends.",
+  "system_text": "Write the way people caption their own photos on Instagram — short, casual, a little playful. Output only the caption text, no hashtags or labels.",
+  "response": "we tried to act normal for 0.2 seconds and failed beautifully 😌",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 77,
+    "completion_tokens": 256,
+    "total_tokens": 333
+  },
+  "timestamp": "2026-10-29T14:36:55.391471+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_instagram_caption",
+  "sample": 1,
+  "variables": {
+    "photo": "a chaotic but fun moment with friends"
+  },
+  "prompt_text": "Write an Instagram caption for a photo of a chaotic but fun moment with friends.",
+  "system_text": "Write the way people caption their own photos on Instagram — short, casual, a little playful. Output only the caption text, no hashtags or labels.",
+  "response": "certified chaos, 10/10 would do again",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 77,
+    "completion_tokens": 362,
+    "total_tokens": 439
+  },
+  "timestamp": "2026-10-29T14:36:56.816713+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_instagram_caption",
+  "sample": 2,
+  "variables": {
+    "photo": "a chaotic but fun moment with friends"
+  },
+  "prompt_text": "Write an Instagram caption for a photo of a chaotic but fun moment with friends.",
+  "system_text": "Write the way people caption their own photos on Instagram — short, casual, a little playful. Output only the caption text, no hashtags or labels.",
+  "response": "certified chaos, zero regrets, all my favorite people 🫶",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 77,
+    "completion_tokens": 225,
+    "total_tokens": 302
+  },
+  "timestamp": "2026-10-29T14:36:57.531314+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_instagram_caption",
+  "sample": 3,
+  "variables": {
+    "photo": "a chaotic but fun moment with friends"
+  },
+  "prompt_text": "Write an Instagram caption for a photo of a chaotic but fun moment with friends.",
+  "system_text": "Write the way people caption their own photos on Instagram — short, casual, a little playful. Output only the caption text, no hashtags or labels.",
+  "response": "peak chaos, zero regrets, 10/10 would do again",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 77,
+    "completion_tokens": 313,
+    "total_tokens": 390
+  },
+  "timestamp": "2026-10-29T14:36:58.697430+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_instagram_caption",
+  "sample": 4,
+  "variables": {
+    "photo": "a chaotic but fun moment with friends"
+  },
+  "prompt_text": "Write an Instagram caption for a photo of a chaotic but fun moment with friends.",
+  "system_text": "Write the way people caption their own photos on Instagram — short, casual, a little playful. Output only the caption text, no hashtags or labels.",
+  "response": "we tried to act normal for one picture and immediately failed 😂",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 77,
+    "completion_tokens": 436,
+    "total_tokens": 513
+  },
+  "timestamp": "2026-10-29T14:37:00.151917+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_discord_message",
+  "sample": 0,
+  "variables": {
+    "topic": "a clip of someone pulling off something ridiculous in a game"
+  },
+  "prompt_text": "Write a Discord message reacting to a clip of someone pulling off something ridiculous in a game.",
+  "system_text": "Write the way people message in a Discord server with friends — casual, quick, lowercase energy. Output only the message text, no names or labels.",
+  "response": "bro what 💀\n\nthat was actually insane, no way that just happened\n\nthe fact that it worked first try too, i'd be so tilted if i was the other guy",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 78,
+    "completion_tokens": 246,
+    "total_tokens": 324
+  },
+  "timestamp": "2026-10-29T14:37:01.131332+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_discord_message",
+  "sample": 1,
+  "variables": {
+    "topic": "a clip of someone pulling off something ridiculous in a game"
+  },
+  "prompt_text": "Write a Discord message reacting to a clip of someone pulling off something ridiculous in a game.",
+  "system_text": "Write the way people message in a Discord server with friends — casual, quick, lowercase energy. Output only the message text, no names or labels.",
+  "response": "bro what 😭 that was actually insane, no way that just happened",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 78,
+    "completion_tokens": 234,
+    "total_tokens": 312
+  },
+  "timestamp": "2026-10-29T14:37:02.186553+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_discord_message",
+  "sample": 2,
+  "variables": {
+    "topic": "a clip of someone pulling off something ridiculous in a game"
+  },
+  "prompt_text": "Write a Discord message reacting to a clip of someone pulling off something ridiculous in a game.",
+  "system_text": "Write the way people message in a Discord server with friends — casual, quick, lowercase energy. Output only the message text, no names or labels.",
+  "response": "WHAT. that was actually insane, how did that even connect?? no way that was on purpose lmaooo",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 78,
+    "completion_tokens": 212,
+    "total_tokens": 290
+  },
+  "timestamp": "2026-10-29T14:37:03.034068+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_discord_message",
+  "sample": 3,
+  "variables": {
+    "topic": "a clip of someone pulling off something ridiculous in a game"
+  },
+  "prompt_text": "Write a Discord message reacting to a clip of someone pulling off something ridiculous in a game.",
+  "system_text": "Write the way people message in a Discord server with friends — casual, quick, lowercase energy. Output only the message text, no names or labels.",
+  "response": "bro what the hell that was actually insane lmao how did he pull that off 💀",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 78,
+    "completion_tokens": 637,
+    "total_tokens": 715
+  },
+  "timestamp": "2026-10-29T14:37:05.609723+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_discord_message",
+  "sample": 4,
+  "variables": {
+    "topic": "a clip of someone pulling off something ridiculous in a game"
+  },
+  "prompt_text": "Write a Discord message reacting to a clip of someone pulling off something ridiculous in a game.",
+  "system_text": "Write the way people message in a Discord server with friends — casual, quick, lowercase energy. Output only the message text, no names or labels.",
+  "response": "bro what 😭 that was actually insane, no way that just happened. how is that even possible, that's actually illegal",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 78,
+    "completion_tokens": 251,
+    "total_tokens": 329
+  },
+  "timestamp": "2026-10-29T14:37:06.291344+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_discord_message",
+  "sample": 0,
+  "variables": {
+    "topic": "your friend finally beating a boss everyone was stuck on"
+  },
+  "prompt_text": "Write a Discord message reacting to your friend finally beating a boss everyone was stuck on.",
+  "system_text": "Write the way people message in a Discord server with friends — casual, quick, lowercase energy. Output only the message text, no names or labels.",
+  "response": "yoooo you actually did it??? we were all stuck on that boss for like 3 hours lmaooo absolute goat 🐐🔥 gg",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 77,
+    "completion_tokens": 319,
+    "total_tokens": 396
+  },
+  "timestamp": "2026-10-29T14:37:07.405815+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_discord_message",
+  "sample": 1,
+  "variables": {
+    "topic": "your friend finally beating a boss everyone was stuck on"
+  },
+  "prompt_text": "Write a Discord message reacting to your friend finally beating a boss everyone was stuck on.",
+  "system_text": "Write the way people message in a Discord server with friends — casual, quick, lowercase energy. Output only the message text, no names or labels.",
+  "response": "yoooooo no way you actually got him 😭😭 we were stuck on that dude for like 3 hours straight. absolute legend. gg wp. now carry us through the next one pls 🙏",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 77,
+    "completion_tokens": 296,
+    "total_tokens": 373
+  },
+  "timestamp": "2026-10-29T14:37:08.466816+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_discord_message",
+  "sample": 2,
+  "variables": {
+    "topic": "your friend finally beating a boss everyone was stuck on"
+  },
+  "prompt_text": "Write a Discord message reacting to your friend finally beating a boss everyone was stuck on.",
+  "system_text": "Write the way people message in a Discord server with friends — casual, quick, lowercase energy. Output only the message text, no names or labels.",
+  "response": "yoooo lets goooo finally!! that boss was gatekeeping the whole friend group and you just cooked it. ggs bro proud of u fr",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 77,
+    "completion_tokens": 289,
+    "total_tokens": 366
+  },
+  "timestamp": "2026-10-29T14:37:09.376889+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_discord_message",
+  "sample": 3,
+  "variables": {
+    "topic": "your friend finally beating a boss everyone was stuck on"
+  },
+  "prompt_text": "Write a Discord message reacting to your friend finally beating a boss everyone was stuck on.",
+  "system_text": "Write the way people message in a Discord server with friends — casual, quick, lowercase energy. Output only the message text, no names or labels.",
+  "response": "LETS GOOOOO you actually did it 😭 that boss was gatekeeping the whole server for like a week. certified goat moment fr. gg wp",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 77,
+    "completion_tokens": 266,
+    "total_tokens": 343
+  },
+  "timestamp": "2026-10-29T14:37:10.511287+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_discord_message",
+  "sample": 4,
+  "variables": {
+    "topic": "your friend finally beating a boss everyone was stuck on"
+  },
+  "prompt_text": "Write a Discord message reacting to your friend finally beating a boss everyone was stuck on.",
+  "system_text": "Write the way people message in a Discord server with friends — casual, quick, lowercase energy. Output only the message text, no names or labels.",
+  "response": "lets gooooooo finally!! that boss was gatekeeping the whole server and you just clapped it. absolute legend. ggs",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 77,
+    "completion_tokens": 283,
+    "total_tokens": 360
+  },
+  "timestamp": "2026-10-29T14:37:11.496787+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_discord_message",
+  "sample": 0,
+  "variables": {
+    "topic": "a meme someone just dropped in the chat"
+  },
+  "prompt_text": "Write a Discord message reacting to a meme someone just dropped in the chat.",
+  "system_text": "Write the way people message in a Discord server with friends — casual, quick, lowercase energy. Output only the message text, no names or labels.",
+  "response": "lmaooo i'm crying 😭😭 who made this\n\nok but why is this actually so accurate tho\n\ni'm sending this to everyone i know immediately",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 75,
+    "completion_tokens": 206,
+    "total_tokens": 281
+  },
+  "timestamp": "2026-10-29T14:37:12.505839+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_discord_message",
+  "sample": 1,
+  "variables": {
+    "topic": "a meme someone just dropped in the chat"
+  },
+  "prompt_text": "Write a Discord message reacting to a meme someone just dropped in the chat.",
+  "system_text": "Write the way people message in a Discord server with friends — casual, quick, lowercase energy. Output only the message text, no names or labels.",
+  "response": "bro what is this lmao",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 75,
+    "completion_tokens": 195,
+    "total_tokens": 270
+  },
+  "timestamp": "2026-10-29T14:37:13.276725+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_discord_message",
+  "sample": 2,
+  "variables": {
+    "topic": "a meme someone just dropped in the chat"
+  },
+  "prompt_text": "Write a Discord message reacting to a meme someone just dropped in the chat.",
+  "system_text": "Write the way people message in a Discord server with friends — casual, quick, lowercase energy. Output only the message text, no names or labels.",
+  "response": "bro 💀💀💀 who made this\n\ni'm crying actual tears rn\n\nthe fact that this is accurate is what's killing me\n\nokay but why is this literally us though\n\ni can't breathe\n\nthis is going straight to the saved folder",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 75,
+    "completion_tokens": 233,
+    "total_tokens": 308
+  },
+  "timestamp": "2026-10-29T14:37:14.023936+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_discord_message",
+  "sample": 3,
+  "variables": {
+    "topic": "a meme someone just dropped in the chat"
+  },
+  "prompt_text": "Write a Discord message reacting to a meme someone just dropped in the chat.",
+  "system_text": "Write the way people message in a Discord server with friends — casual, quick, lowercase energy. Output only the message text, no names or labels.",
+  "response": "lmaooo i'm dead 💀 that's actually so real it hurts",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 75,
+    "completion_tokens": 182,
+    "total_tokens": 257
+  },
+  "timestamp": "2026-10-29T14:37:14.756559+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_discord_message",
+  "sample": 4,
+  "variables": {
+    "topic": "a meme someone just dropped in the chat"
+  },
+  "prompt_text": "Write a Discord message reacting to a meme someone just dropped in the chat.",
+  "system_text": "Write the way people message in a Discord server with friends — casual, quick, lowercase energy. Output only the message text, no names or labels.",
+  "response": "bro what is this lmao",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 75,
+    "completion_tokens": 207,
+    "total_tokens": 282
+  },
+  "timestamp": "2026-10-29T14:37:15.646579+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_discord_message",
+  "sample": 0,
+  "variables": {
+    "topic": "plans falling apart at the last minute"
+  },
+  "prompt_text": "Write a Discord message reacting to plans falling apart at the last minute.",
+  "system_text": "Write the way people message in a Discord server with friends — casual, quick, lowercase energy. Output only the message text, no names or labels.",
+  "response": "are you kidding me rn 💀 we had one thing planned and it’s already dead 10 mins before?? i’m logging off",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 74,
+    "completion_tokens": 286,
+    "total_tokens": 360
+  },
+  "timestamp": "2026-10-29T14:37:17.096776+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_discord_message",
+  "sample": 1,
+  "variables": {
+    "topic": "plans falling apart at the last minute"
+  },
+  "prompt_text": "Write a Discord message reacting to plans falling apart at the last minute.",
+  "system_text": "Write the way people message in a Discord server with friends — casual, quick, lowercase energy. Output only the message text, no names or labels.",
+  "response": "of course this happens right as i'm about to leave. love that for us. guess i'll just sit here in my shoes then",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 74,
+    "completion_tokens": 241,
+    "total_tokens": 315
+  },
+  "timestamp": "2026-10-29T14:37:19.193895+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_discord_message",
+  "sample": 2,
+  "variables": {
+    "topic": "plans falling apart at the last minute"
+  },
+  "prompt_text": "Write a Discord message reacting to plans falling apart at the last minute.",
+  "system_text": "Write the way people message in a Discord server with friends — casual, quick, lowercase energy. Output only the message text, no names or labels.",
+  "response": "bro are you serious rn. of course this happens. classic. i'm gonna lose it",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 74,
+    "completion_tokens": 197,
+    "total_tokens": 271
+  },
+  "timestamp": "2026-10-29T14:37:20.020447+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_discord_message",
+  "sample": 3,
+  "variables": {
+    "topic": "plans falling apart at the last minute"
+  },
+  "prompt_text": "Write a Discord message reacting to plans falling apart at the last minute.",
+  "system_text": "Write the way people message in a Discord server with friends — casual, quick, lowercase energy. Output only the message text, no names or labels.",
+  "response": "of course this happens lmao. i just got ready and everything. my whole night just evaporated. whatever i guess 🙃",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 74,
+    "completion_tokens": 218,
+    "total_tokens": 292
+  },
+  "timestamp": "2026-10-29T14:37:20.913649+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_discord_message",
+  "sample": 4,
+  "variables": {
+    "topic": "plans falling apart at the last minute"
+  },
+  "prompt_text": "Write a Discord message reacting to plans falling apart at the last minute.",
+  "system_text": "Write the way people message in a Discord server with friends — casual, quick, lowercase energy. Output only the message text, no names or labels.",
+  "response": "of course this happens lmao. literally 20 mins before we were supposed to meet. classic. i was already getting ready too 💀",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 74,
+    "completion_tokens": 221,
+    "total_tokens": 295
+  },
+  "timestamp": "2026-10-29T14:37:21.695686+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_discord_message",
+  "sample": 0,
+  "variables": {
+    "topic": "someone in the server confidently saying something wildly wrong"
+  },
+  "prompt_text": "Write a Discord message reacting to someone in the server confidently saying something wildly wrong.",
+  "system_text": "Write the way people message in a Discord server with friends — casual, quick, lowercase energy. Output only the message text, no names or labels.",
+  "response": "bro what 😭 that is genuinely the most confidently incorrect thing i've ever read in my life",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 76,
+    "completion_tokens": 193,
+    "total_tokens": 269
+  },
+  "timestamp": "2026-10-29T14:37:22.542676+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_discord_message",
+  "sample": 1,
+  "variables": {
+    "topic": "someone in the server confidently saying something wildly wrong"
+  },
+  "prompt_text": "Write a Discord message reacting to someone in the server confidently saying something wildly wrong.",
+  "system_text": "Write the way people message in a Discord server with friends — casual, quick, lowercase energy. Output only the message text, no names or labels.",
+  "response": "bro what 😭 that is genuinely the most confidently incorrect thing i've ever read. delete this before someone screenshots it",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 76,
+    "completion_tokens": 292,
+    "total_tokens": 368
+  },
+  "timestamp": "2026-10-29T14:37:24.243214+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_discord_message",
+  "sample": 2,
+  "variables": {
+    "topic": "someone in the server confidently saying something wildly wrong"
+  },
+  "prompt_text": "Write a Discord message reacting to someone in the server confidently saying something wildly wrong.",
+  "system_text": "Write the way people message in a Discord server with friends — casual, quick, lowercase energy. Output only the message text, no names or labels.",
+  "response": "bro what in the actual hell are you talking about 💀 you said that with so much confidence too. that is genuinely one of the most incorrect things i've ever read in my life",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 76,
+    "completion_tokens": 240,
+    "total_tokens": 316
+  },
+  "timestamp": "2026-10-29T14:37:25.391458+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_discord_message",
+  "sample": 3,
+  "variables": {
+    "topic": "someone in the server confidently saying something wildly wrong"
+  },
+  "prompt_text": "Write a Discord message reacting to someone in the server confidently saying something wildly wrong.",
+  "system_text": "Write the way people message in a Discord server with friends — casual, quick, lowercase energy. Output only the message text, no names or labels.",
+  "response": "bro what 😭 that's not even close\n\nthe confidence is inspiring honestly\n\ni'm crying why are you so sure about this",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 76,
+    "completion_tokens": 204,
+    "total_tokens": 280
+  },
+  "timestamp": "2026-10-29T14:37:26.311542+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_discord_message",
+  "sample": 4,
+  "variables": {
+    "topic": "someone in the server confidently saying something wildly wrong"
+  },
+  "prompt_text": "Write a Discord message reacting to someone in the server confidently saying something wildly wrong.",
+  "system_text": "Write the way people message in a Discord server with friends — casual, quick, lowercase energy. Output only the message text, no names or labels.",
+  "response": "bro what 😭 i just choked on my drink. that is not how any of this works. please stop talking",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 76,
+    "completion_tokens": 254,
+    "total_tokens": 330
+  },
+  "timestamp": "2026-10-29T14:37:27.102479+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_forum_post",
+  "sample": 0,
+  "variables": {
+    "topic": "whether the new sequel actually lived up to the hype"
+  },
+  "prompt_text": "Write a message board post sharing your take on whether the new sequel actually lived up to the hype.",
+  "system_text": "Write the way people post on an online message board — informal, opinionated, conversational. Output only the post text, no titles or formatting.",
+  "response": "Okay, finally caught the new sequel last night and I gotta say... it mostly lives up to the hype, but not in the way the trailers sold it. The action is bigger, the emotional beats actually land, and the returning cast is clearly having a blast. But the middle drags hard, and there's one subplot that feels like it got chopped to hell in editing. Also, the villain is kinda wasted. Still, when it hits, it HITS. I went in expecting to be disappointed because the first one is sacred to me, and I walked out grinning. It's not better than the original, but it's a worthy follow-up. 8/10, would watch again. Anyone else feel like the hype was justified but the movie is a different beast than the one everyone was predicting?",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 79,
+    "completion_tokens": 938,
+    "total_tokens": 1017
+  },
+  "timestamp": "2026-10-29T14:37:30.115155+00:00"
+}
+
+{
+  "run_id": "a3443b4bcfce428c813f42a2b7e31dc9",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "prompt_id": "exp1_forum_post",
+  "sample": 1,
+  "variables": {
+    "topic": "whether the new sequel actually lived up to the hype"
+  },
+  "prompt_text": "Write a message board post sharing your take on whether the new sequel actually lived up to the hype.",
+  "system_text": "Write the way people post on an online message board — informal, opinionated, conversational. Output only the post text, no titles or formatting.",
+  "response": "Okay, finally caught the new sequel last night and I’ve been chewing on it all day. Short version: it mostly lives up to the hype, but not in the way I expected. The first hour is absolutely cooking—bigger scale, better action, and the emotional beats actually land instead of feeling like setup for the next one. But then the last act gets a little too pleased with itself, and there’s one reveal that I swear was only there to set up a third movie. Still, compared to the usual legacy sequel cash-grab, this one actually has a pulse. I’d give it an 8/10. Not the second coming, but way better than it had any right to be. If you’re on the fence, see it in a theater with a crowd. The energy carries it over the rough spots.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 79,
+    "completion_tokens": 1123,
+    "total_tokens": 1202
+  },
+  "timestamp": "2026-10-29T14:37:32.558461+00:00"
+}
+

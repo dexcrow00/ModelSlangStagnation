@@ -1,0 +1,756 @@
+{
+  "run_id": "6e479df1a9d54abbb0f6b7945eb5348c",
+  "model": "claude-sonnet-5-5",
+  "prompt_id": "GiveYear",
+  "sample": 0,
+  "variables": {
+    "word": "rad"
+  },
+  "prompt_text": "The slang word \"rad\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "1980s... but they want a year. \"Rad\" slang popularized in 1980s; the film \"Rad\" was 1986. Answer a single year: 1985? Hmm. Merriam-Webster: \"rad\" as short for radical, first known use 1980s (1983?). Surfer/skater slang from late 1970s; popularized 1980s. I'll go with 1986 (film Rad)? Alternatively, 1982 \"Valley Girl\" slang... I'll choose 1985.\n\n1985",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 46,
+    "completion_tokens": 160,
+    "total_tokens": 206
+  },
+  "timestamp": "2026-10-29T01:00:41.589979+00:00"
+}
+
+{
+  "run_id": "6e479df1a9d54abbb0f6b7945eb5348c",
+  "model": "claude-sonnet-5-5",
+  "prompt_id": "GiveYear",
+  "sample": 2,
+  "variables": {
+    "word": "rad"
+  },
+  "prompt_text": "The slang word \"rad\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "1980s... but the user wants a year. \"Rad\" is most associated with the 1980s; a single year like 1985? Hmm, the film \"Rad\" was 1986. Slang popularized in the 1980s, with surfer/skater culture. I'll answer 1985.\n\n1985",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 46,
+    "completion_tokens": 90,
+    "total_tokens": 136
+  },
+  "timestamp": "2026-10-29T01:00:46.324355+00:00"
+}
+
+{
+  "run_id": "6e479df1a9d54abbb0f6b7945eb5348c",
+  "model": "claude-sonnet-5-5",
+  "prompt_id": "GiveYear",
+  "sample": 3,
+  "variables": {
+    "word": "rad"
+  },
+  "prompt_text": "The slang word \"rad\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "1980s... but they want a year. \"Rad\" slang popularized in 1980s; Etymology: \"radical\" from 1970s surfing; most associated with 1980s. A single year: 1985? Perhaps \"Rad\" the 1986 film. Another: Merriam-Webster says \"rad\" first known use 1983. I'll answer 1983.\n\n1983",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 46,
+    "completion_tokens": 115,
+    "total_tokens": 161
+  },
+  "timestamp": "2026-10-29T01:00:48.337823+00:00"
+}
+
+{
+  "run_id": "6e479df1a9d54abbb0f6b7945eb5348c",
+  "model": "claude-sonnet-5-5",
+  "prompt_id": "GiveYear",
+  "sample": 4,
+  "variables": {
+    "word": "rad"
+  },
+  "prompt_text": "The slang word \"rad\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "1980s... The user wants only a year. \"Rad\" is most associated with the 1980s, but a single year... Commonly, \"Rad\" popularized in 1980s skateboarding/surf culture; the film \"Rad\" was 1986. I'll answer 1986? Alternatively 1982 (Valley Girl slang, \"Fast Times at Ridgemont High\"). I'll go with 1985? Hmm. I'll pick 1986.\n\n1986",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 46,
+    "completion_tokens": 146,
+    "total_tokens": 192
+  },
+  "timestamp": "2026-10-29T01:00:50.742604+00:00"
+}
+
+{
+  "run_id": "6e479df1a9d54abbb0f6b7945eb5348c",
+  "model": "claude-sonnet-5-5",
+  "prompt_id": "GiveYear",
+  "sample": 0,
+  "variables": {
+    "word": "simp"
+  },
+  "prompt_text": "The slang word \"simp\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2019",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 46,
+    "completion_tokens": 4,
+    "total_tokens": 50
+  },
+  "timestamp": "2026-10-29T01:04:46.403350+00:00"
+}
+
+{
+  "run_id": "6e479df1a9d54abbb0f6b7945eb5348c",
+  "model": "claude-sonnet-5-5",
+  "prompt_id": "GiveYear",
+  "sample": 1,
+  "variables": {
+    "word": "simp"
+  },
+  "prompt_text": "The slang word \"simp\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2020",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 46,
+    "completion_tokens": 4,
+    "total_tokens": 50
+  },
+  "timestamp": "2026-10-29T01:04:47.248135+00:00"
+}
+
+{
+  "run_id": "6e479df1a9d54abbb0f6b7945eb5348c",
+  "model": "claude-sonnet-5-5",
+  "prompt_id": "GiveYear",
+  "sample": 2,
+  "variables": {
+    "word": "simp"
+  },
+  "prompt_text": "The slang word \"simp\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2019",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 46,
+    "completion_tokens": 4,
+    "total_tokens": 50
+  },
+  "timestamp": "2026-10-29T01:04:48.920682+00:00"
+}
+
+{
+  "run_id": "6e479df1a9d54abbb0f6b7945eb5348c",
+  "model": "claude-sonnet-5-5",
+  "prompt_id": "GiveYear",
+  "sample": 3,
+  "variables": {
+    "word": "simp"
+  },
+  "prompt_text": "The slang word \"simp\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2019",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 46,
+    "completion_tokens": 4,
+    "total_tokens": 50
+  },
+  "timestamp": "2026-10-29T01:04:50.317435+00:00"
+}
+
+{
+  "run_id": "6e479df1a9d54abbb0f6b7945eb5348c",
+  "model": "claude-sonnet-5-5",
+  "prompt_id": "GiveYear",
+  "sample": 4,
+  "variables": {
+    "word": "simp"
+  },
+  "prompt_text": "The slang word \"simp\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2019",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 46,
+    "completion_tokens": 4,
+    "total_tokens": 50
+  },
+  "timestamp": "2026-10-29T01:04:51.206545+00:00"
+}
+
+{
+  "run_id": "6e479df1a9d54abbb0f6b7945eb5348c",
+  "model": "claude-sonnet-5-5",
+  "prompt_id": "GiveYear",
+  "sample": 0,
+  "variables": {
+    "word": "cuck"
+  },
+  "prompt_text": "The slang word \"cuck\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2016",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 47,
+    "completion_tokens": 4,
+    "total_tokens": 51
+  },
+  "timestamp": "2026-10-29T01:04:52.256905+00:00"
+}
+
+{
+  "run_id": "6e479df1a9d54abbb0f6b7945eb5348c",
+  "model": "claude-sonnet-5-5",
+  "prompt_id": "GiveYear",
+  "sample": 1,
+  "variables": {
+    "word": "cuck"
+  },
+  "prompt_text": "The slang word \"cuck\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2016",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 47,
+    "completion_tokens": 4,
+    "total_tokens": 51
+  },
+  "timestamp": "2026-10-29T01:04:53.135000+00:00"
+}
+
+{
+  "run_id": "6e479df1a9d54abbb0f6b7945eb5348c",
+  "model": "claude-sonnet-5-5",
+  "prompt_id": "GiveYear",
+  "sample": 2,
+  "variables": {
+    "word": "cuck"
+  },
+  "prompt_text": "The slang word \"cuck\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2016",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 47,
+    "completion_tokens": 4,
+    "total_tokens": 51
+  },
+  "timestamp": "2026-10-29T01:04:53.958152+00:00"
+}
+
+{
+  "run_id": "6e479df1a9d54abbb0f6b7945eb5348c",
+  "model": "claude-sonnet-5-5",
+  "prompt_id": "GiveYear",
+  "sample": 3,
+  "variables": {
+    "word": "cuck"
+  },
+  "prompt_text": "The slang word \"cuck\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2016",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 47,
+    "completion_tokens": 4,
+    "total_tokens": 51
+  },
+  "timestamp": "2026-10-29T01:04:54.825416+00:00"
+}
+
+{
+  "run_id": "6e479df1a9d54abbb0f6b7945eb5348c",
+  "model": "claude-sonnet-5-5",
+  "prompt_id": "GiveYear",
+  "sample": 4,
+  "variables": {
+    "word": "cuck"
+  },
+  "prompt_text": "The slang word \"cuck\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2016",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 47,
+    "completion_tokens": 4,
+    "total_tokens": 51
+  },
+  "timestamp": "2026-10-29T01:04:55.720409+00:00"
+}
+
+{
+  "run_id": "6e479df1a9d54abbb0f6b7945eb5348c",
+  "model": "claude-sonnet-5-5",
+  "prompt_id": "GiveYear",
+  "sample": 1,
+  "variables": {
+    "word": "shitpost"
+  },
+  "prompt_text": "The slang word \"shitpost\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2015",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 48,
+    "completion_tokens": 4,
+    "total_tokens": 52
+  },
+  "timestamp": "2026-10-29T01:05:21.514038+00:00"
+}
+
+{
+  "run_id": "6e479df1a9d54abbb0f6b7945eb5348c",
+  "model": "claude-sonnet-5-5",
+  "prompt_id": "GiveYear",
+  "sample": 0,
+  "variables": {
+    "word": "doomscrolling"
+  },
+  "prompt_text": "The slang word \"doomscrolling\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2020",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 50,
+    "completion_tokens": 4,
+    "total_tokens": 54
+  },
+  "timestamp": "2026-10-29T01:05:37.508663+00:00"
+}
+
+{
+  "run_id": "6e479df1a9d54abbb0f6b7945eb5348c",
+  "model": "claude-sonnet-5-5",
+  "prompt_id": "GiveYear",
+  "sample": 1,
+  "variables": {
+    "word": "doomscrolling"
+  },
+  "prompt_text": "The slang word \"doomscrolling\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2020",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 50,
+    "completion_tokens": 4,
+    "total_tokens": 54
+  },
+  "timestamp": "2026-10-29T01:05:38.348007+00:00"
+}
+
+{
+  "run_id": "6e479df1a9d54abbb0f6b7945eb5348c",
+  "model": "claude-sonnet-5-5",
+  "prompt_id": "GiveYear",
+  "sample": 2,
+  "variables": {
+    "word": "doomscrolling"
+  },
+  "prompt_text": "The slang word \"doomscrolling\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2020",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 50,
+    "completion_tokens": 4,
+    "total_tokens": 54
+  },
+  "timestamp": "2026-10-29T01:05:39.173074+00:00"
+}
+
+{
+  "run_id": "6e479df1a9d54abbb0f6b7945eb5348c",
+  "model": "claude-sonnet-5-5",
+  "prompt_id": "GiveYear",
+  "sample": 3,
+  "variables": {
+    "word": "doomscrolling"
+  },
+  "prompt_text": "The slang word \"doomscrolling\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2020",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 50,
+    "completion_tokens": 4,
+    "total_tokens": 54
+  },
+  "timestamp": "2026-10-29T01:05:39.982771+00:00"
+}
+
+{
+  "run_id": "6e479df1a9d54abbb0f6b7945eb5348c",
+  "model": "claude-sonnet-5-5",
+  "prompt_id": "GiveYear",
+  "sample": 4,
+  "variables": {
+    "word": "doomscrolling"
+  },
+  "prompt_text": "The slang word \"doomscrolling\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2020",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 50,
+    "completion_tokens": 4,
+    "total_tokens": 54
+  },
+  "timestamp": "2026-10-29T01:05:40.821784+00:00"
+}
+
+{
+  "run_id": "6e479df1a9d54abbb0f6b7945eb5348c",
+  "model": "claude-sonnet-5-5",
+  "prompt_id": "GiveYear",
+  "sample": 0,
+  "variables": {
+    "word": "vibing"
+  },
+  "prompt_text": "The slang word \"vibing\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2020",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 47,
+    "completion_tokens": 4,
+    "total_tokens": 51
+  },
+  "timestamp": "2026-10-29T01:06:12.486410+00:00"
+}
+
+{
+  "run_id": "6e479df1a9d54abbb0f6b7945eb5348c",
+  "model": "claude-sonnet-5-5",
+  "prompt_id": "GiveYear",
+  "sample": 1,
+  "variables": {
+    "word": "vibing"
+  },
+  "prompt_text": "The slang word \"vibing\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2020",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 47,
+    "completion_tokens": 4,
+    "total_tokens": 51
+  },
+  "timestamp": "2026-10-29T01:06:13.320532+00:00"
+}
+
+{
+  "run_id": "6e479df1a9d54abbb0f6b7945eb5348c",
+  "model": "claude-sonnet-5-5",
+  "prompt_id": "GiveYear",
+  "sample": 2,
+  "variables": {
+    "word": "vibing"
+  },
+  "prompt_text": "The slang word \"vibing\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2020",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 47,
+    "completion_tokens": 4,
+    "total_tokens": 51
+  },
+  "timestamp": "2026-10-29T01:06:14.152036+00:00"
+}
+
+{
+  "run_id": "6e479df1a9d54abbb0f6b7945eb5348c",
+  "model": "claude-sonnet-5-5",
+  "prompt_id": "GiveYear",
+  "sample": 3,
+  "variables": {
+    "word": "vibing"
+  },
+  "prompt_text": "The slang word \"vibing\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2020",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 47,
+    "completion_tokens": 4,
+    "total_tokens": 51
+  },
+  "timestamp": "2026-10-29T01:06:14.982443+00:00"
+}
+
+{
+  "run_id": "6e479df1a9d54abbb0f6b7945eb5348c",
+  "model": "claude-sonnet-5-5",
+  "prompt_id": "GiveYear",
+  "sample": 4,
+  "variables": {
+    "word": "vibing"
+  },
+  "prompt_text": "The slang word \"vibing\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2020",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 47,
+    "completion_tokens": 4,
+    "total_tokens": 51
+  },
+  "timestamp": "2026-10-29T01:06:15.759000+00:00"
+}
+
+{
+  "run_id": "6e479df1a9d54abbb0f6b7945eb5348c",
+  "model": "claude-sonnet-5-5",
+  "prompt_id": "GiveYear",
+  "sample": 0,
+  "variables": {
+    "word": "catfished"
+  },
+  "prompt_text": "The slang word \"catfished\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2010",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 47,
+    "completion_tokens": 4,
+    "total_tokens": 51
+  },
+  "timestamp": "2026-10-29T01:06:16.939845+00:00"
+}
+
+{
+  "run_id": "6e479df1a9d54abbb0f6b7945eb5348c",
+  "model": "claude-sonnet-5-5",
+  "prompt_id": "GiveYear",
+  "sample": 1,
+  "variables": {
+    "word": "catfished"
+  },
+  "prompt_text": "The slang word \"catfished\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2010",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 47,
+    "completion_tokens": 4,
+    "total_tokens": 51
+  },
+  "timestamp": "2026-10-29T01:06:18.022976+00:00"
+}
+
+{
+  "run_id": "6e479df1a9d54abbb0f6b7945eb5348c",
+  "model": "claude-sonnet-5-5",
+  "prompt_id": "GiveYear",
+  "sample": 2,
+  "variables": {
+    "word": "catfished"
+  },
+  "prompt_text": "The slang word \"catfished\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2010",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 47,
+    "completion_tokens": 4,
+    "total_tokens": 51
+  },
+  "timestamp": "2026-10-29T01:06:19.257927+00:00"
+}
+
+{
+  "run_id": "6e479df1a9d54abbb0f6b7945eb5348c",
+  "model": "claude-sonnet-5-5",
+  "prompt_id": "GiveYear",
+  "sample": 3,
+  "variables": {
+    "word": "catfished"
+  },
+  "prompt_text": "The slang word \"catfished\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2010",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 47,
+    "completion_tokens": 4,
+    "total_tokens": 51
+  },
+  "timestamp": "2026-10-29T01:06:20.669678+00:00"
+}
+
+{
+  "run_id": "6e479df1a9d54abbb0f6b7945eb5348c",
+  "model": "claude-sonnet-5-5",
+  "prompt_id": "GiveYear",
+  "sample": 4,
+  "variables": {
+    "word": "catfished"
+  },
+  "prompt_text": "The slang word \"catfished\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2010",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 47,
+    "completion_tokens": 4,
+    "total_tokens": 51
+  },
+  "timestamp": "2026-10-29T01:06:21.769799+00:00"
+}
+
+{
+  "run_id": "6e479df1a9d54abbb0f6b7945eb5348c",
+  "model": "claude-sonnet-5-5",
+  "prompt_id": "GiveYear",
+  "sample": 0,
+  "variables": {
+    "word": "red pill"
+  },
+  "prompt_text": "The slang word \"red pill\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "1999",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 47,
+    "completion_tokens": 4,
+    "total_tokens": 51
+  },
+  "timestamp": "2026-10-29T01:06:45.075526+00:00"
+}
+
+{
+  "run_id": "6e479df1a9d54abbb0f6b7945eb5348c",
+  "model": "claude-sonnet-5-5",
+  "prompt_id": "GiveYear",
+  "sample": 1,
+  "variables": {
+    "word": "red pill"
+  },
+  "prompt_text": "The slang word \"red pill\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "1999",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 47,
+    "completion_tokens": 4,
+    "total_tokens": 51
+  },
+  "timestamp": "2026-10-29T01:06:45.842126+00:00"
+}
+
+{
+  "run_id": "6e479df1a9d54abbb0f6b7945eb5348c",
+  "model": "claude-sonnet-5-5",
+  "prompt_id": "GiveYear",
+  "sample": 2,
+  "variables": {
+    "word": "red pill"
+  },
+  "prompt_text": "The slang word \"red pill\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "1999",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 47,
+    "completion_tokens": 4,
+    "total_tokens": 51
+  },
+  "timestamp": "2026-10-29T01:06:46.700769+00:00"
+}
+
+{
+  "run_id": "6e479df1a9d54abbb0f6b7945eb5348c",
+  "model": "claude-sonnet-5-5",
+  "prompt_id": "GiveYear",
+  "sample": 3,
+  "variables": {
+    "word": "red pill"
+  },
+  "prompt_text": "The slang word \"red pill\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "1999",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 47,
+    "completion_tokens": 4,
+    "total_tokens": 51
+  },
+  "timestamp": "2026-10-29T01:06:47.530443+00:00"
+}
+
+{
+  "run_id": "6e479df1a9d54abbb0f6b7945eb5348c",
+  "model": "claude-sonnet-5-5",
+  "prompt_id": "GiveYear",
+  "sample": 4,
+  "variables": {
+    "word": "red pill"
+  },
+  "prompt_text": "The slang word \"red pill\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "1999",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 47,
+    "completion_tokens": 4,
+    "total_tokens": 51
+  },
+  "timestamp": "2026-10-29T01:06:48.403244+00:00"
+}
+
+{
+  "run_id": "6e479df1a9d54abbb0f6b7945eb5348c",
+  "model": "claude-sonnet-5-5",
+  "prompt_id": "GiveYear",
+  "sample": 0,
+  "variables": {
+    "word": "yeet"
+  },
+  "prompt_text": "The slang word \"yeet\" is most associated with what year? Respond using only the year.",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "2018",
+  "logprobs": null,
+  "finish_reason": "end_turn",
+  "usage": {
+    "prompt_tokens": 47,
+    "completion_tokens": 4,
+    "total_tokens": 51
+  },
+  "timestamp": "2026-10-29T01:07:26.596067+00:00"
+}
+
