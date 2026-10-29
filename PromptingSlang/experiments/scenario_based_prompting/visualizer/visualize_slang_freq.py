@@ -6,7 +6,7 @@ scenario responses and draws two stacked bar charts of response frequency, each
 with its own x-axis. The **top panel colours each bar by the word's corpus peak
 year** (recency, ordered oldest -> newest) and the **bottom panel by its total
 corpus occurrence** (overall frequency, ordered most -> least), both from the
-FineWeb ``peak_years.json``. The top panel (year) reports Spearman correlation and the bottom panel (total
+FineWeb ``peak_years_pct.json``. The top panel (year) reports Spearman correlation and the bottom panel (total
 corpus frequency) reports Pearson correlation, each with a two-tailed p-value.
 
 Words whose corpus statistics rest on fewer than ``--min-peak-hits`` (default
@@ -43,10 +43,10 @@ from src.response_utils import model_short, read_responses  # noqa: E402
 DEFAULT_RESPONSES = Path(__file__).resolve().parents[1] / "responses"
 DEFAULT_COUNTS_JSON = Path(__file__).resolve().parents[1] / "slang_counts_by_model.json"
 DEFAULT_OUTPUT = Path(__file__).resolve().parents[1] / "figures" / "slang_freq.png"
-# Word lists and peak_years.json live in the sibling FineWebAnalysis project.
+# Word lists and peak_years_pct.json live in the sibling FineWebAnalysis project.
 FINEWEB = REPO_ROOT.parent / "FineWebAnalysis"
 DEFAULT_WORDS = [FINEWEB / "target_words.txt", FINEWEB / "scenario_words.txt"]
-DEFAULT_PEAKS = FINEWEB / "peak_years.json"
+DEFAULT_PEAKS = FINEWEB / "peak_years_pct.json"
 
 
 def filter_to_model(records: list[dict], requested: str | None) -> tuple[list[dict], str | None]:
@@ -304,7 +304,7 @@ def main() -> None:
                    help="One or more word-list files; their union is the slang vocabulary "
                         f"(default: {', '.join(p.name for p in DEFAULT_WORDS)}).")
     p.add_argument("--peaks", type=Path, default=DEFAULT_PEAKS,
-                   help=f"peak_years.json with corpus peaks (default: {DEFAULT_PEAKS}).")
+                   help=f"peak_years_pct.json with corpus peaks (default: {DEFAULT_PEAKS}).")
     p.add_argument("--rate", action="store_true",
                    help="Plot occurrences per response instead of raw counts.")
     p.add_argument("--min-peak-hits", type=int, default=100, dest="min_peak_hits", metavar="N",

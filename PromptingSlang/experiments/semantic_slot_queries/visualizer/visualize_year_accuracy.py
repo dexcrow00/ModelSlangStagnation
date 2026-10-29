@@ -10,7 +10,7 @@ For a **single** model it draws a heatmap with **target word on the y-axis
 (ordered by true corpus peak year) and prompt year on the x-axis**, coloured by
 the fraction of responses (pooled over the three phrasings, 30 per cell) that
 recovered the intended word. Each word's **true corpus peak year** (from the
-FineWeb ``peak_years.json``) is outlined in red, and the model's own
+FineWeb ``peak_years_pct.json``) is outlined in red, and the model's own
 best-accuracy year is marked with a circle --- a model aware of its data
 distribution would have the two coincide.
 
@@ -49,7 +49,7 @@ WORDS_CHRONO_ORDER = _slot.WORDS_CHRONO_ORDER
 EXP_DIR = Path(__file__).resolve().parents[1]
 DEFAULT_RESPONSES = EXP_DIR / "responses"
 DEFAULT_OUTPUT = EXP_DIR / "figures" / "target_word_accuracy_by_year.png"
-DEFAULT_PEAK_YEARS = REPO_ROOT.parent / "FineWebAnalysis" / "peak_years.json"
+DEFAULT_PEAK_YEARS = REPO_ROOT.parent / "FineWebAnalysis" / "peak_years_pct.json"
 
 
 def collect(records: list[dict]) -> dict[str, dict[str, dict[str, list[int]]]]:
@@ -139,7 +139,7 @@ def main() -> None:
     p.add_argument("-m", "--model", default=None,
                    help="Substring of the model id to chart (default: first available).")
     p.add_argument("--peak-years", type=Path, default=DEFAULT_PEAK_YEARS, dest="peak_years",
-                   help=f"peak_years.json with true corpus peaks (default: {DEFAULT_PEAK_YEARS}).")
+                   help=f"peak_years_pct.json with true corpus peaks (default: {DEFAULT_PEAK_YEARS}).")
     p.add_argument("-o", "--output", type=Path, default=DEFAULT_OUTPUT,
                    help=f"Output path (default: {DEFAULT_OUTPUT}). Pass '-' to display interactively.")
     args = p.parse_args()

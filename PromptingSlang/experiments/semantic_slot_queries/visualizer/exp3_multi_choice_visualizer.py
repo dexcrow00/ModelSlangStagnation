@@ -62,7 +62,7 @@ WORDS_CHRONO_ORDER = _slot.WORDS_CHRONO_ORDER
 target_prompt_id = _slot.target_prompt_id
 
 DEFAULT_RESPONSES = EXP_DIR / "results_from_list"
-DEFAULT_PEAK_YEARS = REPO_ROOT.parent / "FineWebAnalysis" / "peak_years.json"
+DEFAULT_PEAK_YEARS = REPO_ROOT.parent / "FineWebAnalysis" / "peak_years_pct.json"
 DEFAULT_OUTPUT = EXP_DIR / "figures" / "multi_choice_ridge_by_year.png"
 
 
@@ -136,7 +136,7 @@ def main() -> None:
     p.add_argument("responses", nargs="?", default=str(DEFAULT_RESPONSES),
                    help=f"Response JSONL file or directory (default: {DEFAULT_RESPONSES}).")
     p.add_argument("--peak-years", type=Path, default=DEFAULT_PEAK_YEARS, dest="peak_years",
-                   help=f"peak_years.json with true corpus peaks (default: {DEFAULT_PEAK_YEARS}).")
+                   help=f"peak_years_pct.json with true corpus peaks (default: {DEFAULT_PEAK_YEARS}).")
     p.add_argument("--min-n", type=int, default=1, dest="min_n",
                    help="Minimum valid responses for a model's cell to count toward the mean "
                         "(default: 1).")

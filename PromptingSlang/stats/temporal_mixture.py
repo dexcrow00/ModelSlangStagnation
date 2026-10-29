@@ -51,7 +51,7 @@ PROJECT_ROOT = REPO_ROOT.parent
 FINEWEB = PROJECT_ROOT / "FineWebAnalysis"
 
 DEFAULT_SCORED_DIRS = [FINEWEB / "prompt_scored", FINEWEB / "scenario_prompt_scored"]
-DEFAULT_PEAKS = FINEWEB / "peak_years.json"
+DEFAULT_PEAKS = FINEWEB / "peak_years_pct.json"
 DEFAULT_COUNTS = (REPO_ROOT / "experiments" / "scenario_based_prompting"
                   / "slang_counts_by_model.json")
 DEFAULT_OUTPUT = Path(__file__).resolve().parent / "results" / "temporal_mixture.txt"

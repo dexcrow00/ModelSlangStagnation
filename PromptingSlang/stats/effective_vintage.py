@@ -53,7 +53,7 @@ sys.path.insert(0, str(REPO_ROOT))
 from src.analysis_utils import load_peak_records, load_vocab, word_pattern  # noqa: E402
 from src.response_utils import read_responses  # noqa: E402
 
-DEFAULT_PEAKS = PROJECT_ROOT / "FineWebAnalysis" / "peak_years.json"
+DEFAULT_PEAKS = PROJECT_ROOT / "FineWebAnalysis" / "peak_years_pct.json"
 DEFAULT_COUNTS = (REPO_ROOT / "experiments" / "scenario_based_prompting"
                   / "slang_counts_by_model.json")
 DEFAULT_WORDS = [PROJECT_ROOT / "FineWebAnalysis" / "target_words.txt",
@@ -169,7 +169,7 @@ def main() -> None:
     ap = argparse.ArgumentParser(
         description="Effective-vintage statistic: frequency-weighted mean peak year.")
     ap.add_argument("--peaks", type=Path, default=DEFAULT_PEAKS,
-                    help=f"peak_years.json (default: {DEFAULT_PEAKS.name}).")
+                    help=f"peak_years_pct.json (default: {DEFAULT_PEAKS.name}).")
     ap.add_argument("--counts", type=Path, default=DEFAULT_COUNTS,
                     help=f"slang_counts_by_model.json for point estimates "
                          f"(default: {DEFAULT_COUNTS.name}).")

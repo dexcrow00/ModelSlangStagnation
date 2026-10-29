@@ -23,7 +23,7 @@ peak_year is mean-centred internally for numerical stability; the reported β
 is on the original (year) scale and is unchanged by centring.
 
 Data sources (resolved from project layout):
-  • FineWebAnalysis/peak_years.json            → peak_year, corpus_count
+  • FineWebAnalysis/peak_years_pct.json            → peak_year, corpus_count
   • experiments/…/slang_counts_by_model.json   → response_count per word
 
 Usage (from PromptingSlang root):
@@ -67,14 +67,14 @@ class _Tee:
 REPO_ROOT = Path(__file__).resolve().parents[1]
 PROJECT_ROOT = REPO_ROOT.parent
 
-DEFAULT_PEAKS = PROJECT_ROOT / "FineWebAnalysis" / "peak_years.json"
+DEFAULT_PEAKS = PROJECT_ROOT / "FineWebAnalysis" / "peak_years_pct.json"
 DEFAULT_COUNTS = (REPO_ROOT / "experiments" / "scenario_based_prompting"
                   / "slang_counts_by_model.json")
 DEFAULT_OUTPUT = Path(__file__).resolve().parent / "results" / "nb_regression.txt"
 
 
 def load_data(peaks_path: Path, counts_path: Path, min_hits: int) -> pd.DataFrame:
-    """Merge peak_years.json and slang_counts_by_model.json into a word-level DataFrame.
+    """Merge peak_years_pct.json and slang_counts_by_model.json into a word-level DataFrame.
 
     All words meeting the corpus-hit threshold are included; response_count
     defaults to 0 for words absent from the LLM responses.
@@ -134,7 +134,7 @@ def main() -> None:
     ap = argparse.ArgumentParser(
         description="NB/Poisson regression of LLM slang usage on corpus peak year.")
     ap.add_argument("--peaks", type=Path, default=DEFAULT_PEAKS,
-                    help=f"peak_years.json (default: {DEFAULT_PEAKS.name}).")
+                    help=f"peak_years_pct.json (default: {DEFAULT_PEAKS.name}).")
     ap.add_argument("--counts", type=Path, default=DEFAULT_COUNTS,
                     help=f"slang_counts_by_model.json (default: {DEFAULT_COUNTS.name}).")
     ap.add_argument("--min-corpus-hits", type=int, default=100, dest="min_hits",

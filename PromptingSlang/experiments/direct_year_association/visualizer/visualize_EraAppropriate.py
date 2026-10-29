@@ -10,7 +10,7 @@ model weighted equally): one ridge per target word (earliest true corpus peak
 at the top) tracing the yes-rate across prompt years, coloured blue where most
 answers say "appropriate" and red where most say "no". A dark vertical line
 through each ridge marks the word's true corpus peak year (from FineWeb
-``peak_years.json``) --- a model population tracking usage would keep each
+``peak_years_pct.json``) --- a model population tracking usage would keep each
 ridge high up to its line and let it drop off afterwards.
 
 ``--mode heatmap`` --- a single model's word x prompt-year heatmap, green (yes)
@@ -46,7 +46,7 @@ DEFAULT_OUTPUT = {
     "ridge": EXP_DIR / "figures" / "era_appropriate_ridge_by_year.png",
     "heatmap": EXP_DIR / "figures" / "era_appropriate_by_year.png",
 }
-DEFAULT_PEAK_YEARS = REPO_ROOT.parent / "FineWebAnalysis" / "peak_years.json"
+DEFAULT_PEAK_YEARS = REPO_ROOT.parent / "FineWebAnalysis" / "peak_years_pct.json"
 PROMPT_ID = "EraAppropriate"
 
 _YES = re.compile(r"^(yes|yeah|yep|yup|sure|absolutely|definitely|totally|true|appropriate|ok|okay)\b")
@@ -179,7 +179,7 @@ def main() -> None:
     p.add_argument("-m", "--model", default=None,
                    help="Substring of the model id to chart (heatmap mode; default: first available).")
     p.add_argument("--peak-years", type=Path, default=DEFAULT_PEAK_YEARS, dest="peak_years",
-                   help=f"peak_years.json with true corpus peaks (default: {DEFAULT_PEAK_YEARS}).")
+                   help=f"peak_years_pct.json with true corpus peaks (default: {DEFAULT_PEAK_YEARS}).")
     p.add_argument("-o", "--output", type=Path, default=None,
                    help="Output path (default: figures/era_appropriate_{ridge_,}by_year.png). "
                         "Pass '-' to display interactively.")

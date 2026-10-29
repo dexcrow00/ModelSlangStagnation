@@ -11,8 +11,8 @@ the project. Pulls target-word contexts out of the FineWeb 10BT sample
 (`fineweb_context.py`), scores each occurrence for slang vs. standard sense with a
 fine-tuned RoBERTa classifier (`finetune_roberta.py`, `roberta_filter.py`,
 `eval_scenario_model.py`), and turns the survivors into per-dump frequency curves
-and peak years (`word_rate_plotter.py`, `peak_year.py` → `peak_years.json`).
-`peak_years.json` is the corpus ground truth every downstream analysis reads.
+and peak years (`word_rate_plotter.py`, `peak_year.py` → `peak_years_pct.json`).
+`peak_years_pct.json` is the corpus ground truth every downstream analysis reads.
 
 **`PromptingSlang/`** — the model side (Experiments 2–4). `src/` holds the
 provider-routing client, runner, and shared response/analysis helpers;
