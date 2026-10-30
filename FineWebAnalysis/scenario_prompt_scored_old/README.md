@@ -1,0 +1,2 @@
+This is "old" in that these words were retrived from initial model experiments generations. After updatnig the models, we see new words in scenario_prompt_scored, however
+we would still like to keep these words as an expansion of the base set of slang found in the corpus.

@@ -8,9 +8,9 @@ where sums run over the slang vocabulary with reliable corpus statistics.
 
 The corpus vintage is the frequency-weighted average peak year across the
 vocabulary — the "expected year" of a randomly sampled token from FineWeb that
-belongs to our slang vocabulary.  corpus_freq_w is the raw (unfiltered) count
-of rows for w across 10BT_raw_merged and 10BT_scenario_merged; peak years still
-come from the sense-filtered peak_year.py output.  The model vintage is the same statistic but
+belongs to our slang vocabulary.  corpus_freq_w is the count of rows for w
+scoring >= CORPUS_THRESHOLD across prompt_scored and scenario_prompt_scored;
+peak years come from the sense-filtered peak_year.py output.  The model vintage is the same statistic but
 weighted by how often each word appears in the LLM responses.  A negative lag
 (model − corpus) means the model's slang skews older than the corpus.
 
@@ -65,8 +65,10 @@ DEFAULT_WORDS = [PROJECT_ROOT / "FineWebAnalysis" / "target_words.txt",
                  PROJECT_ROOT / "FineWebAnalysis" / "scenario_words.txt"]
 # Unfiltered per-crawl context CSVs (target, uri, target_context); every row is
 # one corpus occurrence of its target word.
-DEFAULT_MERGED_DIRS = [PROJECT_ROOT / "FineWebAnalysis" / "10BT_raw_merged",
-                       PROJECT_ROOT / "FineWebAnalysis" / "10BT_scenario_merged"]
+DEFAULT_MERGED_DIRS = [PROJECT_ROOT / "FineWebAnalysis" / "prompt_scored",
+                       PROJECT_ROOT / "FineWebAnalysis" / "scenario_prompt_scored",
+                       PROJECT_ROOT / "FineWebAnalysis" / "scenario_prompt_scored_old"]
+CORPUS_THRESHOLD = 0.99  # min roberta_score for a corpus row to count as the slang sense
 DEFAULT_OUTPUT = Path(__file__).resolve().parent / "results" / "effective_vintage.txt"
 
 
@@ -96,14 +98,17 @@ def _load_individual_responses(path: Path) -> list[tuple[str, str]]:
 
 
 def _load_corpus_counts(merged_dirs: list[Path]) -> Counter:
-    """Count every occurrence of each target word across the merged context CSVs."""
+    """Count occurrences of each target word scoring >= CORPUS_THRESHOLD across the
+    scored context CSVs. Rows with an empty roberta_score are skipped."""
     csv.field_size_limit(2**31 - 1)  # some target_context fields exceed the default
     counts: Counter = Counter()
     for d in merged_dirs:
         for path in sorted(d.glob("*.csv")):
             with path.open(newline="", encoding="utf-8-sig", errors="replace") as fh:
                 for row in csv.DictReader(fh):
-                    counts[row["target"].lower()] += 1
+                    score = row["roberta_score"].strip()
+                    if score and float(score) >= CORPUS_THRESHOLD:
+                        counts[row["target"].lower()] += 1
     return counts
 
 

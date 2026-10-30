@@ -50,7 +50,7 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 PROJECT_ROOT = REPO_ROOT.parent
 FINEWEB = PROJECT_ROOT / "FineWebAnalysis"
 
-DEFAULT_SCORED_DIRS = [FINEWEB / "prompt_scored", FINEWEB / "scenario_prompt_scored"]
+DEFAULT_SCORED_DIRS = [FINEWEB / "prompt_scored", FINEWEB / "scenario_prompt_scored", FINEWEB / "scenario_prompt_scored_old"]
 # target_words and scenario_words peaks come from separate peak_year.py runs.
 DEFAULT_PEAKS = [FINEWEB / "peak_years_pct.json", FINEWEB / "scenario_peak_years_pct.json"]
 DEFAULT_COUNTS = (REPO_ROOT / "experiments" / "scenario_based_prompting"
