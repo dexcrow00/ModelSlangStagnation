@@ -45,7 +45,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from slang_constants import ALWAYS_SLANG  # noqa: E402
 # Same grouping and minimum as the training-data prep, so the words left for
 # manual scoring are exactly the ones the model never saw training data for.
-from prepare_finetune_data import (  # noqa: E402
+from FineWebAnalysis.finetuning.prepare_finetune_data import (  # noqa: E402
     MAX_CHARS, MIN_CHARS, MIN_CONTEXTS, _clean, _group_key,
 )
 
