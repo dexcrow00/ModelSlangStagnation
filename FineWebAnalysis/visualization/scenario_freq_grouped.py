@@ -1,4 +1,4 @@
-"""Generate linear scenario-frequency charts in groups of 6 words, ordered by
+"""Generate linear scenario-frequency charts in groups of 20 words, ordered by
 total response usage from slang_counts_by_model.json (most-used words first)."""
 import json
 import sys
@@ -16,7 +16,7 @@ COUNTS_JSON = (ROOT.parent / "PromptingSlang" / "experiments" / "scenario_based_
                / "slang_counts_by_model.json")
 SCENARIO_WORDS = ROOT / "scenario_words.txt"
 OUT_DIR = ROOT / "scenario_charts"
-THRESHOLD, SMOOTH, CONFIDENCE, GROUP = 0.99, 5, 0.95, 6
+THRESHOLD, SMOOTH, CONFIDENCE, GROUP = 0.99, 5, 0.95, 20
 
 # Total response usage per word (summed over models).
 data = json.loads(COUNTS_JSON.read_text(encoding="utf-8"))

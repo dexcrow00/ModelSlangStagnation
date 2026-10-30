@@ -43,10 +43,11 @@ from src.response_utils import model_short, read_responses  # noqa: E402
 DEFAULT_RESPONSES = Path(__file__).resolve().parents[1] / "responses"
 DEFAULT_COUNTS_JSON = Path(__file__).resolve().parents[1] / "slang_counts_by_model.json"
 DEFAULT_OUTPUT = Path(__file__).resolve().parents[1] / "figures" / "slang_freq.png"
-# Word lists and peak_years_pct.json live in the sibling FineWebAnalysis project.
+# Word lists and peak-year files live in the sibling FineWebAnalysis project.
 FINEWEB = REPO_ROOT.parent / "FineWebAnalysis"
 DEFAULT_WORDS = [FINEWEB / "target_words.txt", FINEWEB / "scenario_words.txt"]
-DEFAULT_PEAKS = FINEWEB / "peak_years_pct.json"
+# target_words and scenario_words peaks come from separate peak_year.py runs.
+DEFAULT_PEAKS = [FINEWEB / "peak_years_pct.json", FINEWEB / "scenario_peak_years_pct.json"]
 
 
 def filter_to_model(records: list[dict], requested: str | None) -> tuple[list[dict], str | None]:
@@ -303,8 +304,9 @@ def main() -> None:
     p.add_argument("--words", type=Path, nargs="+", default=DEFAULT_WORDS,
                    help="One or more word-list files; their union is the slang vocabulary "
                         f"(default: {', '.join(p.name for p in DEFAULT_WORDS)}).")
-    p.add_argument("--peaks", type=Path, default=DEFAULT_PEAKS,
-                   help=f"peak_years_pct.json with corpus peaks (default: {DEFAULT_PEAKS}).")
+    p.add_argument("--peaks", type=Path, nargs="+", default=DEFAULT_PEAKS,
+                   help="One or more peak_year.py JSON files; their union gives the corpus peaks "
+                        f"(default: {', '.join(p.name for p in DEFAULT_PEAKS)}).")
     p.add_argument("--rate", action="store_true",
                    help="Plot occurrences per response instead of raw counts.")
     p.add_argument("--min-peak-hits", type=int, default=100, dest="min_peak_hits", metavar="N",
@@ -326,9 +328,14 @@ def main() -> None:
                    help=f"Output path (default: {DEFAULT_OUTPUT}). Pass '-' to display interactively.")
     args = p.parse_args()
 
-    peaks = load_peak_records(args.peaks)
+    peaks: dict[str, dict] = {}
+    for path in args.peaks:
+        recs = load_peak_records(path)
+        if not recs:
+            print(f"Warning: no peak years from {path}.", file=sys.stderr)
+        peaks.update(recs)
     if not peaks:
-        print(f"Warning: no peak years from {args.peaks}; bars will be uncoloured grey.", file=sys.stderr)
+        print("Warning: no peak years loaded; bars will be uncoloured grey.", file=sys.stderr)
     words = load_vocab(args.words)
 
     use_json = args.counts_json or (not Path(args.responses).exists())

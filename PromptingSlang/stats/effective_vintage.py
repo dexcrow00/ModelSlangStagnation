@@ -53,7 +53,9 @@ sys.path.insert(0, str(REPO_ROOT))
 from src.analysis_utils import load_peak_records, load_vocab, word_pattern  # noqa: E402
 from src.response_utils import read_responses  # noqa: E402
 
-DEFAULT_PEAKS = PROJECT_ROOT / "FineWebAnalysis" / "peak_years_pct.json"
+# target_words and scenario_words peaks come from separate peak_year.py runs.
+DEFAULT_PEAKS = [PROJECT_ROOT / "FineWebAnalysis" / "peak_years_pct.json",
+                 PROJECT_ROOT / "FineWebAnalysis" / "scenario_peak_years_pct.json"]
 DEFAULT_COUNTS = (REPO_ROOT / "experiments" / "scenario_based_prompting"
                   / "slang_counts_by_model.json")
 DEFAULT_WORDS = [PROJECT_ROOT / "FineWebAnalysis" / "target_words.txt",
@@ -168,8 +170,10 @@ class _Tee:
 def main() -> None:
     ap = argparse.ArgumentParser(
         description="Effective-vintage statistic: frequency-weighted mean peak year.")
-    ap.add_argument("--peaks", type=Path, default=DEFAULT_PEAKS,
-                    help=f"peak_years_pct.json (default: {DEFAULT_PEAKS.name}).")
+    ap.add_argument("--peaks", type=Path, nargs="+", default=DEFAULT_PEAKS,
+                    metavar="FILE",
+                    help="One or more peak_year.py JSON files; their union gives the corpus "
+                         f"peaks (default: {', '.join(p.name for p in DEFAULT_PEAKS)}).")
     ap.add_argument("--counts", type=Path, default=DEFAULT_COUNTS,
                     help=f"slang_counts_by_model.json for point estimates "
                          f"(default: {DEFAULT_COUNTS.name}).")
@@ -199,13 +203,17 @@ def main() -> None:
     tee = _Tee(args.output)
     sys.stdout = tee
 
-    peak_data = load_peak_records(args.peaks, args.min_hits)
+    peak_data: dict[str, dict] = {}
+    for path in args.peaks:
+        recs = load_peak_records(path, args.min_hits)
+        if not recs:
+            print(f"Warning: no peak years from {path}.", file=sys.stderr)
+        peak_data.update(recs)
     exclude = {w.lower() for w in args.exclude}
     for w in exclude:
         peak_data.pop(w, None)
     if exclude:
         print(f"  Excluded       : {', '.join(sorted(exclude))}")
-    response_counts, n_responses = _load_response_counts(args.counts)
     rng = np.random.default_rng(args.seed)
 
     # ── bootstrap / point-estimate source ────────────────────────────────────
@@ -227,6 +235,7 @@ def main() -> None:
             response_texts, vocab_pats, peak_data, args.bootstrap, rng)
         boot_method = f"response-level bootstrap  (N={n_responses} responses resampled)"
     else:
+        response_counts, n_responses = _load_response_counts(args.counts)
         boot_samples = _bootstrap_poisson(
             response_counts, peak_data, args.bootstrap, rng)
         boot_method = "parametric Poisson bootstrap  (use --responses for response-level)"
