@@ -1,5 +1,5 @@
 target,uri,target_context,roberta_score
-diffed,https://medium.com/javascript-scene/jsx-looks-like-an-abomination-1c1ec351a918,"a declarative syntax that’s used to express the virtual DOM. JSX gets interpreted and converted to virtual DOM, which gets diffed against the real DOM. Rather than rewrite the whole DOM tree, only the differences get applied. That makes React renders",
+diffed,https://medium.com/javascript-scene/jsx-looks-like-an-abomination-1c1ec351a918,"a declarative syntax that’s used to express the virtual DOM. JSX gets interpreted and converted to virtual DOM, which gets diffed against the real DOM. Rather than rewrite the whole DOM tree, only the differences get applied. That makes React renders",0.0
 wayyyy,http://www.jetlagplease.com/luxe-living/last-minute-christmas-shopping/,"time: have you finished your Christmas shopping yet? If you’re like me, you’ve put off your holiday shopping for way, wayyyy, too long! For years, I promised myself that I would get my gift buying done before Thanksgiving, knowing that the",1.0000
 btw,https://barnfullawalkers.com/tag/the-governor/,"that Gov.
 And I love how he just throws in there, at the end of his initial pitch: Oh, and btw, I just happened to capture two hostages…not that I’ve ever TAKEN hostages before, because, you know, that would be weird…I",1.0000
