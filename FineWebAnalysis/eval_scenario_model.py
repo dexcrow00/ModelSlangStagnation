@@ -7,7 +7,7 @@ Scores every labelled row in ``scenario_finetune_validation`` with the model in
 ``scenario_ft_model_roberta`` (slang predicted when roberta_score >= 0, i.e.
 P_slang >= 0.5), then reports accuracy / precision / recall / F1 overall, per
 word, and split by source (synthetic vs. real). Writes
-``scenario_ft_model_roberta/metrics.json``.
+``scenario_ft_model_roberta_metrics.json``.
 """
 
 from __future__ import annotations
@@ -97,7 +97,7 @@ def main() -> None:
         "by_source": by_source,
         "per_word": per_word,
     }
-    (MODEL_DIR / "metrics.json").write_text(json.dumps(out, indent=2), encoding="utf-8")
+    ( HERE / "metrics.json").write_text(json.dumps(out, indent=2), encoding="utf-8")
     print(json.dumps({"overall": overall, "by_source": by_source}, indent=2))
     print(f"\nWrote {MODEL_DIR / 'metrics.json'}")
 
