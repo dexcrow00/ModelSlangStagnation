@@ -61,8 +61,16 @@ def load_year_counts(scored_dir: Path, threshold: float) -> dict[int, dict[str, 
             continue
         n_files += 1
         with path.open(newline="", encoding="utf-8-sig") as fh:
-            for row in csv.DictReader(fh):
-                if float(row["roberta_score"]) >= threshold:
+            # Rows the manual-scoring pass missed have an empty roberta_score;
+            # warn and skip them rather than crash. line_num is the record's last line.
+            reader = csv.DictReader(fh)
+            for row in reader:
+                score = row["roberta_score"].strip()
+                if not score:
+                    print(f"  skipping unscored row in {path.name} (line {reader.line_num}, "
+                          f"target {row['target']!r})", file=sys.stderr)
+                    continue
+                if float(score) >= threshold:
                     counts[year][row["target"]] += 1
     print(f"  loaded {n_files} dump CSV(s) across {len(counts)} year(s) "
           f"(threshold {threshold:g})", file=sys.stderr)
