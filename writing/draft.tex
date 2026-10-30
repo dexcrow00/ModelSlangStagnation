@@ -322,21 +322,22 @@ Taken together, the two views give a consistent reading: models reliably produce
 
 Experiment 4 inverts the direction of investigation, starting with relatively free form "persona" generations by the models, and analysing the generated vocabularies temporal properties. Figure~\ref{fig:usersim-slang} counts how often each lexicon word appears across the 400 persona responses, ordered by corpus peak year (top panel) and by corpus frequency (bottom). A few long-lived, high-frequency terms dominate: \textit{u}, \textit{lol}, and \textit{omg} together make up roughly 79\% of all in-lexicon slang, and adding \textit{bro} brings the four terms that peaked in 2013--2014 to about 84\% of the total. Recent slang, such as \textit{vibe}, \textit{slay}, \textit{legit}, \textit{aura}, turn up in the low single digits or not at all, echoing the recovery gap from the semantic-slot queries.
 
-\textbf{The output carries an early-2010s vintage.} Putting a number on the skew, the slang these models emit has an occurrence-weighted effective vintage of \textbf{2014.0} (95\% CI $[2013.9, 2014.1]$; Poisson bootstrap), roughly \textbf{1.7 years older} than the \textbf{2015.8} vintage of the same lexicon in the corpus (Figure~\ref{fig:cc-aggregate}). Every model skews old, so this is not a single outlier dragging the average down. We do not observe any emergent bias in the models to generate more recent slang words to better fit with trends in language. Instead we unsurprisingly see a relatively close match to the distribution in the training data, with a tendency to overuse phrases that show recent decreases in popularity (lol, omg).
+\todo{Update this section with per model results}
+\textbf{The output carries a mid-2010s vintage.} Putting a number on the skew, the slang these models emit has an occurrence-weighted effective vintage of \textbf{2015.3} (95\% CI $[2015.1, 2015.4]$; Poisson bootstrap), roughly \textbf{0.3 years older} than the \textbf{2015.6} vintage of the same lexicon in the corpus (Figure~\ref{fig:cc-aggregate}). Every model skews slightly old, so this is not a single outlier dragging the average down. We do not observe any emergent bias in the models to generate more recent slang words to better fit with trends in language. Instead we unsurprisingly see a relatively close match to the distribution in the training data, with a tendency to overuse phrases that show recent decreases in popularity (lol, omg).
 
 \textbf{Reluctance versus recency.} The models differ mainly in how much slang they volunteer at all: \texttt{gpt-4o} produces the fewest in-lexicon hits of the four (205, against 881 for \texttt{claude-sonnet-4-6}), in keeping with its general reluctance to slip into a casual register unprompted \cite{}. What none of the four do is reach for current slang; the early-2010s skew holds across all of them.
 
 \begin{figure}
     \centering
     \includegraphics[width=1.0\linewidth]{slang_freq_log.png}
-    \caption{Slang word frequency in naturalistic persona-simulation responses (log scale), aggregated across four models (400 responses, 100 per model). Top panel: words ordered by corpus peak year (oldest~$\to$~newest), coloured by peak year (plasma scale). Bottom panel: same words ordered by descending corpus frequency. Dashed lines are log-linear trend fits. High-frequency, older terms (\textit{u}, \textit{lol}, \textit{omg}) dominate both panels; recent slang appears at the far right of the top panel with counts near 1, reproducing in free generation the recency gap observed in forced-choice recovery.}
+    \caption{Slang word frequency in naturalistic persona-simulation responses (log scale), aggregated across five models (1244 responses, ~250 per model). Top panel: words ordered by corpus peak year (oldest~$\to$~newest), coloured by peak year (plasma scale). Bottom panel: same words ordered by descending corpus frequency. Dashed lines are log-linear trend fits. High-frequency, older terms (\textit{bro}, \textit{lol}) dominate both panels; recent slang appears at the far right of the top panel with counts near 1, reproducing in free generation the recency gap observed in forced-choice recovery.}
     \label{fig:usersim-slang}
 \end{figure}
 
 \begin{figure}
     \centering
     \includegraphics[width=1.0\linewidth]{scenario_freq_count_aggregate.png}
-    \caption{Corpus baseline for the persona lexicon: aggregate slang-sense frequency across the full scenario vocabulary in FineWeb 10BT, normalized per million tokens per crawl dump and summed across all words. The aggregate curve rises through the mid-2010s and plateaus, reflecting the combined lifecycle of the informal lexicon the models draw on rather than any single word's arc. This is the corpus-side reference whose centre of mass (a \textit{corpus vintage} of 2015.8) the models' 2014.0 output vintage is measured against.}
+    \caption{Corpus baseline for the persona lexicon: aggregate slang-sense frequency across the full scenario vocabulary in FineWeb 10BT, normalized per million tokens per crawl dump and summed across all words. This is the corpus-side reference whose centre of mass (a \textit{corpus vintage} of 2015.6) the models' 2015.3 output vintage is measured against.}
     \label{fig:cc-aggregate}
 \end{figure}
 
@@ -354,7 +355,8 @@ Findings from the corpus analysis and the query experiments converge on a consis
 
   \item \textbf{Parametric knowledge vs usage are unaligned.} The year-association queries (Experiment~2, Figure~\ref{fig:yearassoc}) show that models order slang by era directionally correctly, but place the newer terms years too early relative to the corpus peak (mean absolute error 5.5--10.3 years per model), and their spontaneous usage does not track recency at all. The temporal failures contain both a usage bias and a backward-shifted sense of slang timing.
 
-  \item \textbf{Freeform usage patterns reflect bias against modern slang.} When the models are prompted to write casually in a persona (Experiment~4, Figure~\ref{fig:usersim-slang}), the slang they volunteer still skews old. Occurrence-weighted effective vintage (as outlined in Experiment 4's methodology section) is 2014.0, about 1.7 years behind the 2015.8 vintage of the same lexicon in the corpus, and a handful of long-lived terms (\textit{u}, \textit{lol}, \textit{omg}, \textit{bro}) account for the bulk of usage.
+  \todo{Update this section with new results}
+  \item \textbf{Freeform usage patterns reflect bias against modern slang.} When the models are prompted to write casually in a persona (Experiment~4, Figure~\ref{fig:usersim-slang}), the slang they volunteer still skews old. Occurrence-weighted effective vintage (as outlined in Experiment 4's methodology section) is 2015.3, about 0.3 years behind the 2015.6 vintage of the same lexicon in the corpus, and a handful of long-lived terms (\textit{u}, \textit{lol}, \textit{omg}, \textit{bro}) account for the bulk of usage.
 \end{enumerate}
 
 % ============================================================
@@ -733,6 +735,6 @@ Each model is asked to role-play informal peer conversation via two prompts (sys
 
 \subsection{Effective vintage}
 
-We summarise each model's produced slang by its \textit{effective vintage}: the count-weighted mean corpus-peak year of the slang it emits (\texttt{effective\_vintage.py}). Over the vocabulary of 88 words with $\geq 100$ corpus hits (31 of which appear across the 400 pooled responses, 1{,}848 in-lexicon hits), the model vintage is \textbf{2014.0} (95\% CI $[2013.9, 2014.1]$; parametric Poisson bootstrap, $B=5000$, seed~42) against a frequency-weighted corpus vintage of \textbf{2015.8} --- a lag of $-1.7$ years, i.e.\ models skew older than the corpus baseline over the same vocabulary. The high-frequency skull emoji (\texttt{U+1F480}) is excluded from the vintage estimators, as its corpus rate is unreliable under FineWeb's text-processing.
+We summarise each model's produced slang by its \textit{effective vintage}: the count-weighted mean corpus-peak year of the slang it emits (\texttt{effective\_vintage.py}). Over the vocabulary of 139 words with $\geq 100$ corpus hits (69 of which appear across the 1{,}244 pooled responses, 960 in-lexicon hits), the model vintage is \textbf{2015.3} (95\% CI $[2015.1, 2015.4]$; parametric Poisson bootstrap, $B=5000$, seed~42) against a frequency-weighted corpus vintage of \textbf{2015.6} --- a lag of $-0.3$ years, i.e.\ models skew slightly older than the corpus baseline over the same vocabulary.
 
 \end{document}

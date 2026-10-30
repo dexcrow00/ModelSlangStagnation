@@ -8,7 +8,9 @@ where sums run over the slang vocabulary with reliable corpus statistics.
 
 The corpus vintage is the frequency-weighted average peak year across the
 vocabulary — the "expected year" of a randomly sampled token from FineWeb that
-belongs to our slang vocabulary.  The model vintage is the same statistic but
+belongs to our slang vocabulary.  corpus_freq_w is the raw (unfiltered) count
+of rows for w across 10BT_raw_merged and 10BT_scenario_merged; peak years still
+come from the sense-filtered peak_year.py output.  The model vintage is the same statistic but
 weighted by how often each word appears in the LLM responses.  A negative lag
 (model − corpus) means the model's slang skews older than the corpus.
 
@@ -38,6 +40,7 @@ Usage (from PromptingSlang root):
 from __future__ import annotations
 
 import argparse
+import csv
 import json
 import re
 import sys
@@ -60,27 +63,48 @@ DEFAULT_COUNTS = (REPO_ROOT / "experiments" / "scenario_based_prompting"
                   / "slang_counts_by_model.json")
 DEFAULT_WORDS = [PROJECT_ROOT / "FineWebAnalysis" / "target_words.txt",
                  PROJECT_ROOT / "FineWebAnalysis" / "scenario_words.txt"]
+# Unfiltered per-crawl context CSVs (target, uri, target_context); every row is
+# one corpus occurrence of its target word.
+DEFAULT_MERGED_DIRS = [PROJECT_ROOT / "FineWebAnalysis" / "10BT_raw_merged",
+                       PROJECT_ROOT / "FineWebAnalysis" / "10BT_scenario_merged"]
 DEFAULT_OUTPUT = Path(__file__).resolve().parent / "results" / "effective_vintage.txt"
 
 
 # ── helpers ───────────────────────────────────────────────────────────────────
 
+def _load_model_counts(path: Path) -> dict[str, tuple[Counter, int]]:
+    """Per-model word counts and response counts from slang_counts_by_model.json."""
+    data = json.loads(path.read_text(encoding="utf-8"))
+    return {model: (Counter(info.get("words", {})), info.get("responses", 0))
+            for model, info in data["models"].items()}
+
+
 def _load_response_counts(path: Path) -> tuple[Counter, int]:
     """Aggregate word counts and response count from slang_counts_by_model.json."""
-    data = json.loads(path.read_text(encoding="utf-8"))
     totals: Counter = Counter()
     n_resp = 0
-    for info in data["models"].values():
-        n_resp += info.get("responses", 0)
-        for w, c in info.get("words", {}).items():
-            totals[w] += c
+    for counts, n in _load_model_counts(path).values():
+        n_resp += n
+        totals.update(counts)
     return totals, n_resp
 
 
-def _load_individual_responses(path: Path) -> list[str]:
-    """Load response texts from a JSONL file or directory of JSONL files."""
+def _load_individual_responses(path: Path) -> list[tuple[str, str]]:
+    """Load (model, response text) pairs from a JSONL file or directory of JSONL files."""
     records = read_responses(str(path))
-    return [r["response"] for r in records if r.get("response")]
+    return [(r.get("model", "unknown"), r["response"]) for r in records if r.get("response")]
+
+
+def _load_corpus_counts(merged_dirs: list[Path]) -> Counter:
+    """Count every occurrence of each target word across the merged context CSVs."""
+    csv.field_size_limit(2**31 - 1)  # some target_context fields exceed the default
+    counts: Counter = Counter()
+    for d in merged_dirs:
+        for path in sorted(d.glob("*.csv")):
+            with path.open(newline="", encoding="utf-8-sig", errors="replace") as fh:
+                for row in csv.DictReader(fh):
+                    counts[row["target"].lower()] += 1
+    return counts
 
 
 def _count_in_text(text: str, vocab_pats: dict[str, re.Pattern]) -> Counter:
@@ -170,20 +194,10 @@ class _Tee:
 def main() -> None:
     ap = argparse.ArgumentParser(
         description="Effective-vintage statistic: frequency-weighted mean peak year.")
-    ap.add_argument("--peaks", type=Path, nargs="+", default=DEFAULT_PEAKS,
-                    metavar="FILE",
-                    help="One or more peak_year.py JSON files; their union gives the corpus "
-                         f"peaks (default: {', '.join(p.name for p in DEFAULT_PEAKS)}).")
-    ap.add_argument("--counts", type=Path, default=DEFAULT_COUNTS,
-                    help=f"slang_counts_by_model.json for point estimates "
-                         f"(default: {DEFAULT_COUNTS.name}).")
     ap.add_argument("--responses", type=Path, default=None, metavar="PATH",
                     help="JSONL file or directory of individual response records. "
                          "If given, uses proper response-level bootstrap instead "
                          "of the parametric Poisson fallback.")
-    ap.add_argument("--words", type=Path, nargs="+", default=DEFAULT_WORDS,
-                    metavar="FILE",
-                    help="Word-list files whose union defines the slang vocabulary.")
     ap.add_argument("--min-corpus-hits", type=int, default=100, dest="min_hits",
                     help="Exclude words with fewer than N corpus hits (default: 100).")
     ap.add_argument("--exclude", nargs="*", default=[], metavar="WORD",
@@ -204,7 +218,7 @@ def main() -> None:
     sys.stdout = tee
 
     peak_data: dict[str, dict] = {}
-    for path in args.peaks:
+    for path in DEFAULT_PEAKS:
         recs = load_peak_records(path, args.min_hits)
         if not recs:
             print(f"Warning: no peak years from {path}.", file=sys.stderr)
@@ -223,9 +237,10 @@ def main() -> None:
     # (potentially different models / response set) while the CI reflects the
     # given file, causing the point estimate to fall outside the CI.
     if args.responses is not None and args.responses.exists():
-        vocab = load_vocab(args.words)
+        vocab = load_vocab(DEFAULT_WORDS)
         vocab_pats = {w: word_pattern(w) for w in vocab if w in peak_data}
-        response_texts = _load_individual_responses(args.responses)
+        model_texts = _load_individual_responses(args.responses)
+        response_texts = [text for _, text in model_texts]
         n_responses = len(response_texts)
         agg: Counter = Counter()
         for text in response_texts:
@@ -234,16 +249,31 @@ def main() -> None:
         boot_samples = _bootstrap_responses(
             response_texts, vocab_pats, peak_data, args.bootstrap, rng)
         boot_method = f"response-level bootstrap  (N={n_responses} responses resampled)"
+
+        by_model: dict[str, list[str]] = {}
+        for model, text in model_texts:
+            by_model.setdefault(model, []).append(text)
+        per_model = {}
+        for model, texts in sorted(by_model.items()):
+            counts: Counter = Counter()
+            for text in texts:
+                counts.update(_count_in_text(text, vocab_pats))
+            per_model[model] = (counts, len(texts), _bootstrap_responses(
+                texts, vocab_pats, peak_data, args.bootstrap, rng))
     else:
-        response_counts, n_responses = _load_response_counts(args.counts)
+        response_counts, n_responses = _load_response_counts(DEFAULT_COUNTS)
         boot_samples = _bootstrap_poisson(
             response_counts, peak_data, args.bootstrap, rng)
         boot_method = "parametric Poisson bootstrap  (use --responses for response-level)"
+        per_model = {
+            model: (counts, n, _bootstrap_poisson(counts, peak_data, args.bootstrap, rng))
+            for model, (counts, n) in sorted(_load_model_counts(DEFAULT_COUNTS).items())
+        }
 
     # ── point estimates ───────────────────────────────────────────────────────
     model_vintage = _vintage(dict(response_counts), peak_data)
-    corpus_vintage = _vintage({w: d["total_hits"] for w, d in peak_data.items()},
-                               peak_data)
+    corpus_counts = _load_corpus_counts(DEFAULT_MERGED_DIRS)
+    corpus_vintage = _vintage({w: corpus_counts.get(w, 0) for w in peak_data}, peak_data)
     lag = model_vintage - corpus_vintage
 
     n_vocab = len(peak_data)
@@ -269,6 +299,20 @@ def main() -> None:
     print(f"{'─' * 62}")
     print(f"  Bootstrap      : B={args.bootstrap}, seed={args.seed}")
     print(f"  Method         : {boot_method}")
+
+    # ── per-model breakdown ───────────────────────────────────────────────────
+    print(f"\n{'─' * 62}")
+    print(f"  Per-model effective vintage  (lag vs corpus vintage {corpus_vintage:.1f})")
+    print(f"{'─' * 62}")
+    print(f"  {'model':<32} {'vintage':>7}  {ci_pct + ' CI':<16} {'lag':>5} "
+          f"{'hits':>5} {'resp':>5}")
+    for model, (counts, n, samples) in per_model.items():
+        v = _vintage(dict(counts), peak_data)
+        lo, hi = np.nanpercentile(samples, [100 * alpha, 100 * (1 - alpha)])
+        hits = sum(counts.get(w, 0) for w in peak_data)
+        ci = f"[{lo:.1f}, {hi:.1f}]"
+        print(f"  {model:<32} {v:>7.1f}  {ci:<16} {v - corpus_vintage:>+5.1f} "
+              f"{hits:>5} {n:>5}")
 
     # ── per-word breakdown ────────────────────────────────────────────────────
     print(f"\n{'─' * 62}")
