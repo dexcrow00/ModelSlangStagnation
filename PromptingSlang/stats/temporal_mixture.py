@@ -51,7 +51,8 @@ PROJECT_ROOT = REPO_ROOT.parent
 FINEWEB = PROJECT_ROOT / "FineWebAnalysis"
 
 DEFAULT_SCORED_DIRS = [FINEWEB / "prompt_scored", FINEWEB / "scenario_prompt_scored"]
-DEFAULT_PEAKS = FINEWEB / "peak_years_pct.json"
+# target_words and scenario_words peaks come from separate peak_year.py runs.
+DEFAULT_PEAKS = [FINEWEB / "peak_years_pct.json", FINEWEB / "scenario_peak_years_pct.json"]
 DEFAULT_COUNTS = (REPO_ROOT / "experiments" / "scenario_based_prompting"
                   / "slang_counts_by_model.json")
 DEFAULT_OUTPUT = Path(__file__).resolve().parent / "results" / "temporal_mixture.txt"
@@ -274,12 +275,6 @@ def _bar(value: float, max_value: float, width: int = 32) -> str:
 def main() -> None:
     ap = argparse.ArgumentParser(
         description="Temporal fingerprint: mixture of corpus year-slices fitted to model output.")
-    ap.add_argument("--peaks", type=Path, default=DEFAULT_PEAKS)
-    ap.add_argument("--counts", type=Path, default=DEFAULT_COUNTS)
-    ap.add_argument("--scored-dirs", type=Path, nargs="+", default=DEFAULT_SCORED_DIRS,
-                    dest="scored_dirs",
-                    help="Scored-context CSV directories to merge (default: both "
-                         "prompt_scored and scenario_prompt_scored).")
     ap.add_argument("--min-corpus-hits", type=int, default=100, dest="min_hits",
                     help="Min sense-filtered corpus hits for a word to be included "
                          "(default: 100).")
@@ -305,14 +300,19 @@ def main() -> None:
     sys.stdout = tee
 
     # ── load data ─────────────────────────────────────────────────────────────
-    peak_data = load_peak_data(args.peaks, args.min_hits)
+    peak_data: dict[str, dict] = {}
+    for path in DEFAULT_PEAKS:
+        recs = load_peak_data(path, args.min_hits)
+        if not recs:
+            print(f"Warning: no peak years from {path}.", file=sys.stderr)
+        peak_data.update(recs)
     exclude = {w.lower() for w in args.exclude}
     for w in exclude:
         peak_data.pop(w, None)
     if exclude:
         print(f"\n  Excluded: {', '.join(sorted(exclude))}")
-    response_counts, n_responses = load_response_counts(args.counts)
-    year_counts = load_year_counts(args.scored_dirs)
+    response_counts, n_responses = load_response_counts(DEFAULT_COUNTS)
+    year_counts = load_year_counts(DEFAULT_SCORED_DIRS)
 
     # Vocabulary: words with reliable corpus stats that appear in per-year data
     covered = set(w for c in year_counts.values() for w in c)
