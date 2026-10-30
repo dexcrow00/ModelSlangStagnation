@@ -53,7 +53,10 @@ import sys
 import time
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
-from Keys import HF_TOKEN
+
+ROOT = Path(__file__).resolve().parents[1]  # FineWebAnalysis/
+sys.path.insert(0, str(ROOT))
+from Keys import HF_TOKEN  # noqa: E402
 
 # ---------------------------------------------------------------------------
 # Logging
@@ -297,7 +300,7 @@ def build_parser() -> argparse.ArgumentParser:
                    help="Directory for output Parquet files (one per dump).")
 
     # Target words
-    p.add_argument("--words", default="FineWebAnalysis/target_words.txt", metavar="FILE",
+    p.add_argument("--words", default=str(ROOT / "target_words.txt"), metavar="FILE",
                    help="Plain-text target words/phrases file, one per line "
                         "(default: target_words.txt).")
 

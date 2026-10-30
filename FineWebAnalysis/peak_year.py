@@ -3,7 +3,7 @@
 peak_year.py — Find each target word's peak-popularity year from the scored
 FineWeb context data.
 
-Reads the same per-crawl scored CSVs as ``word_rate_plotter.py`` (columns:
+Reads the same per-crawl scored CSVs as ``visualization/word_rate_plotter.py`` (columns:
 target, uri, target_context, roberta_score; filenames carry the crawl id, e.g.
 ``word_context_CC-MAIN-2019-35.csv``), keeps rows scoring at/above the slang-sense
 threshold, then aggregates above-threshold hits and FineWeb sample token totals
@@ -12,7 +12,7 @@ rate (occurrences per million sample tokens) --- aggregating by year rather than
 individual dump avoids letting a single small/large dump dominate the estimate.
 
 Token totals come from the ``fineweb_10BT_dump_sizes.json`` cache that
-``word_rate_plotter.py`` builds (run that once if the cache is missing, or pass
+``visualization/word_rate_plotter.py`` builds (run that once if the cache is missing, or pass
 ``--raw-counts`` to rank peaks by raw count instead). This script itself is
 stdlib-only.
 
@@ -81,7 +81,7 @@ def load_year_tokens(cache_path: Path) -> dict[int, int]:
     """{year: FineWeb sample token total}, summed from the dump-size cache."""
     if not cache_path.is_file():
         sys.exit(f"Token-size cache not found: {cache_path}\n"
-                 f"Run word_rate_plotter.py once to build it, or pass --raw-counts.")
+                 f"Run visualization/word_rate_plotter.py once to build it, or pass --raw-counts.")
     raw = json.loads(cache_path.read_text(encoding="utf-8"))
     tokens: dict[int, int] = defaultdict(int)
     for dump_id, tok in raw.items():

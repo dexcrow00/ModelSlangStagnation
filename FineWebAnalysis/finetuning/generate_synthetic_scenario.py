@@ -45,7 +45,7 @@ N_PER_TOP_UP = 20             # synthetic rows added to the lacking class per ru
 N_REFERENCE = 5               # real labelled rows per class shown to the model
 SYNTHETIC_URI = "synthetic"
 
-sys.path.insert(0, str(HERE))
+sys.path.insert(0, str(HERE.parent))
 from Keys import ANTHROPIC_API_KEY  # FineWebAnalysis/Keys.py  # noqa: E402
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s",

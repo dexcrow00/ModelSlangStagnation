@@ -1,0 +1,6 @@
+matplotlib
+numpy
+scipy
+# Only needed to (re)build fineweb_10BT_dump_sizes.json in word_rate_plotter.py
+pyarrow
+huggingface_hub

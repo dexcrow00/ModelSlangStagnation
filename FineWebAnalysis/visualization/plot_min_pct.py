@@ -14,7 +14,7 @@ hits can read 0% in several years), so ``MIN_HITS`` screens those out.
 The word filters (MIN_HITS, MAX_MIN_PCT, MAX_FILTERED_PCT) are constants below
 rather than flags, so any change to them is tracked in git.
 
-Usage (run from FineWebAnalysis/):
+Usage (run from FineWebAnalysis/visualization/):
     python plot_min_pct.py
     python plot_min_pct.py --top 40 -o figures/min_pct.png
     python plot_min_pct.py peak_years_pct.json -            # display interactively
@@ -30,10 +30,10 @@ from pathlib import Path
 
 import matplotlib.pyplot as plt
 
-HERE = Path(__file__).resolve().parent
-DEFAULT_INPUT = HERE / "peak_years_pct.json"
-DEFAULT_OUTPUT = HERE / "figures" / "min_pct_of_peak.png"
-DEFAULT_FILTER_RATES = HERE / "word_filter_rates_99.csv"
+ROOT = Path(__file__).resolve().parents[1]  # FineWebAnalysis/
+DEFAULT_INPUT = ROOT / "peak_years_pct.json"
+DEFAULT_OUTPUT = ROOT / "figures" / "min_pct_of_peak.png"
+DEFAULT_FILTER_RATES = ROOT / "word_filter_rates_99.csv"
 BAR, INK, GRID = "#2a78d6", "#52514e", "#e1e0d9"
 
 # Skip words with fewer than this many total slang-sense hits, whose percentages

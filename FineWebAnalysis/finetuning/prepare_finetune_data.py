@@ -45,7 +45,8 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(me
 log = logging.getLogger(__name__)
 
 HERE = Path(__file__).resolve().parent
-DEFAULT_CONTEXTS = HERE / "10BT_scenario_merged"
+ROOT = HERE.parent  # FineWebAnalysis/
+DEFAULT_CONTEXTS = ROOT / "10BT_scenario_merged"
 DEFAULT_OUT = HERE / "scenario_finetune_annotations"
 MIN_CHARS, MAX_CHARS = 40, 600  # drop fragments and over-long boilerplate
 # Skip words with fewer usable contexts than this in the corpus (all punctuation
@@ -53,8 +54,8 @@ MIN_CHARS, MAX_CHARS = 40, 600  # drop fragments and over-long boilerplate
 MIN_CONTEXTS = 50
 
 # Shared with roberta_filter.py: words with no standard sense are pre-labelled.
-sys.path.insert(0, str(HERE))
-from slang_constants import ALWAYS_SLANG  # noqa: E402
+sys.path.insert(0, str(ROOT))
+from roberta_filtering.slang_constants import ALWAYS_SLANG  # noqa: E402
 
 
 def _slug(word: str) -> str:

@@ -25,7 +25,7 @@ impression can be checked against a number:
 
 Defaults reproduce the word set in ``figures/min_pct_of_peak.png``.
 
-Usage (run from FineWebAnalysis/):
+Usage (run from FineWebAnalysis/visualization/):
     python trajectory_explorer.py
     python trajectory_explorer.py --min-hits 100 --max-min-pct 40
     python trajectory_explorer.py -o figures/explorer.html
@@ -40,10 +40,10 @@ import re
 import sys
 from pathlib import Path
 
-HERE = Path(__file__).resolve().parent
-DEFAULT_INPUT = HERE / "peak_years_pct.json"
-DEFAULT_SIZES = HERE / "fineweb_10BT_dump_sizes.json"
-DEFAULT_OUTPUT = HERE / "figures" / "trajectory_explorer.html"
+ROOT = Path(__file__).resolve().parents[1]  # FineWebAnalysis/
+DEFAULT_INPUT = ROOT / "peak_years_pct.json"
+DEFAULT_SIZES = ROOT / "fineweb_10BT_dump_sizes.json"
+DEFAULT_OUTPUT = ROOT / "figures" / "trajectory_explorer.html"
 CRAWL_ID_RE = re.compile(r"CC-MAIN-(\d{4})-\d{2}")
 
 

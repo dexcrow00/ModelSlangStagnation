@@ -22,8 +22,8 @@ from pathlib import Path
 from sklearn.metrics import accuracy_score, confusion_matrix, precision_recall_fscore_support
 
 HERE = Path(__file__).resolve().parent
-sys.path.insert(0, str(HERE))
-from FineWebAnalysis.roberta_filtering.roberta_filter import TransformerSlangClassifier  # noqa: E402
+sys.path.insert(0, str(HERE.parent))  # FineWebAnalysis/
+from roberta_filtering.roberta_filter import TransformerSlangClassifier  # noqa: E402
 
 MODEL_DIR = HERE / "scenario_ft_model_roberta"
 VAL_DIR = HERE / "scenario_finetune_validation"

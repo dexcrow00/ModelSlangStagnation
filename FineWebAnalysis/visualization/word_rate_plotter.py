@@ -62,10 +62,11 @@ logging.basicConfig(
 log = logging.getLogger(__name__)
 logging.getLogger("httpx").setLevel(logging.WARNING)
 
-DEFAULT_SCORED_DIR = Path(__file__).resolve().parent / "prompt_scored"
-SCENARIO_SCORED_DIR = Path(__file__).resolve().parent / "scenario_prompt_scored"
-DEFAULT_SIZES_CACHE = Path(__file__).resolve().parent / "fineweb_10BT_dump_sizes.json"
-WRITING_DIR = (Path(__file__).resolve().parent / ".." / "writing").resolve()
+ROOT = Path(__file__).resolve().parents[1]  # FineWebAnalysis/
+DEFAULT_SCORED_DIR = ROOT / "prompt_scored"
+SCENARIO_SCORED_DIR = ROOT / "scenario_prompt_scored"
+DEFAULT_SIZES_CACHE = ROOT / "fineweb_10BT_dump_sizes.json"
+WRITING_DIR = ROOT.parent / "writing"
 HF_SAMPLE_DIR = "datasets/HuggingFaceFW/fineweb/sample/10BT"
 CRAWL_ID_RE = re.compile(r"CC-MAIN-(\d{4})-(\d{2})")
 
@@ -178,6 +179,7 @@ def _fetch_to_cache(cache_path: Path) -> None:
 
     import pyarrow.parquet as pq
     from huggingface_hub import HfFileSystem
+    sys.path.insert(0, str(ROOT))  # FineWebAnalysis/Keys.py
     from Keys import HF_TOKEN
 
     files = sorted(f for f in HfFileSystem(token=HF_TOKEN)

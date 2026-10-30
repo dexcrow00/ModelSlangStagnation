@@ -39,13 +39,15 @@ from typing import Dict, Iterator, List, Optional, Tuple
 import torch
 from transformers import AutoModelForSequenceClassification, AutoTokenizer
 
-# Single source of truth for the always-slang allowlist (sibling module); works
-# whether this file is run as a script or imported from another directory.
-sys.path.insert(0, str(Path(__file__).resolve().parent))
-from slang_constants import ALWAYS_SLANG  # noqa: E402
+# FineWebAnalysis/ on the path so the subfolders import as packages, whether
+# this file is run as a script or imported from another directory.
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+# Single source of truth for the always-slang allowlist.
+from roberta_filtering.slang_constants import ALWAYS_SLANG  # noqa: E402
 # Same grouping and minimum as the training-data prep, so the words left for
 # manual scoring are exactly the ones the model never saw training data for.
-from FineWebAnalysis.finetuning.prepare_finetune_data import (  # noqa: E402
+from finetuning.prepare_finetune_data import (  # noqa: E402
     MAX_CHARS, MIN_CHARS, MIN_CONTEXTS, _clean, _group_key,
 )
 
@@ -284,7 +286,7 @@ def build_parser() -> argparse.ArgumentParser:
                    help="Inference batch size (default: 32).")
     p.add_argument("--device", default=None, metavar="DEV",
                    help="PyTorch device, e.g. cpu, cuda, mps (default: auto-detect).")
-    p.add_argument("--roberta-model-dir", default="FineWebAnalysis/ft_model_roberta",
+    p.add_argument("--roberta-model-dir", default=str(ROOT / "finetuning" / "ft_model_roberta"),
                    metavar="DIR", dest="roberta_model_dir",
                    help="Directory of the fine-tuned model to load "
                         "(produced by finetune_roberta.py).")

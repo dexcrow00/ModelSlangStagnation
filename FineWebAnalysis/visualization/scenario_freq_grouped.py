@@ -6,15 +6,16 @@ from collections import Counter
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
+ROOT = HERE.parent  # FineWebAnalysis/
 sys.path.insert(0, str(HERE))
 import word_rate_plotter as wrp  # noqa: E402
 
-SCORED = HERE / "scenario_prompt_scored"
-CACHE = HERE / "fineweb_10BT_dump_sizes.json"
-COUNTS_JSON = (HERE.parent / "PromptingSlang" / "experiments" / "scenario_based_prompting"
+SCORED = ROOT / "scenario_prompt_scored"
+CACHE = ROOT / "fineweb_10BT_dump_sizes.json"
+COUNTS_JSON = (ROOT.parent / "PromptingSlang" / "experiments" / "scenario_based_prompting"
                / "slang_counts_by_model.json")
-SCENARIO_WORDS = HERE / "scenario_words.txt"
-OUT_DIR = HERE / "scenario_charts"
+SCENARIO_WORDS = ROOT / "scenario_words.txt"
+OUT_DIR = ROOT / "scenario_charts"
 THRESHOLD, SMOOTH, CONFIDENCE, GROUP = 0.99, 5, 0.95, 6
 
 # Total response usage per word (summed over models).

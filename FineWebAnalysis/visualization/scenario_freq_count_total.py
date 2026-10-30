@@ -4,13 +4,14 @@ from collections import Counter, defaultdict
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
+ROOT = HERE.parent  # FineWebAnalysis/
 sys.path.insert(0, str(HERE))
 import word_rate_plotter as wrp  # noqa: E402
 
-SCORED = HERE / "scenario_prompt_scored"
-CACHE = HERE / "fineweb_10BT_dump_sizes.json"
-SCENARIO_WORDS = HERE / "scenario_words.txt"
-OUT = HERE / "scenario_charts" / "scenario_freq_count.png"
+SCORED = ROOT / "scenario_prompt_scored"
+CACHE = ROOT / "fineweb_10BT_dump_sizes.json"
+SCENARIO_WORDS = ROOT / "scenario_words.txt"
+OUT = ROOT / "scenario_charts" / "scenario_freq_count.png"
 THRESHOLD, SMOOTH, CONFIDENCE = 0.99, 5, 0.95
 
 LABEL = "all scenario words"
