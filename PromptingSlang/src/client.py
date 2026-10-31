@@ -3,15 +3,12 @@
 import importlib.util
 import os
 import re
-import sys
 from pathlib import Path
 from typing import Any
 
 
 def _load_keys():
-    if sys.platform != "win32":
-        return None
-    for base in (Path(__file__).resolve().parents[2], Path.cwd()):
+    for base in (Path(__file__).resolve().parents[1], Path.cwd()):
         candidate = base / "Keys.py"
         if candidate.is_file():
             spec = importlib.util.spec_from_file_location("Keys", candidate)
