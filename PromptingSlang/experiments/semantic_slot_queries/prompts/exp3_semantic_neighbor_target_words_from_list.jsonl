@@ -1,6 +1,6 @@
 {
   "id": "exp3_dude",
-  "samples": 10,
+  "samples": 4,
   "temperature": 1.0,
   "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
   "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) dude B) bro C) fam D) bruh",
@@ -16,7 +16,7 @@
 
 {
   "id": "exp3_griefing",
-  "samples": 10,
+  "samples": 4,
   "temperature": 1.0,
   "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
   "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) trolling B) griefing C) camping D) tilting",
@@ -32,7 +32,7 @@
 
 {
   "id": "exp3_hella",
-  "samples": 10,
+  "samples": 4,
   "temperature": 1.0,
   "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
   "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) mad B) super C) hella D) crazy",
@@ -48,7 +48,7 @@
 
 {
   "id": "exp3_ick",
-  "samples": 10,
+  "samples": 4,
   "temperature": 1.0,
   "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
   "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) cringe B) red flag C) turnoff D) ick",
@@ -64,7 +64,7 @@
 
 {
   "id": "exp3_lmfao",
-  "samples": 10,
+  "samples": 4,
   "temperature": 1.0,
   "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
   "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) lmfao B) lol C) rofl D) dying",
@@ -80,7 +80,7 @@
 
 {
   "id": "exp3_methinks",
-  "samples": 10,
+  "samples": 4,
   "temperature": 1.0,
   "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
   "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) imo B) methinks C) tbh D) ngl",
@@ -96,7 +96,7 @@
 
 {
   "id": "exp3_omg",
-  "samples": 10,
+  "samples": 4,
   "temperature": 1.0,
   "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
   "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) shook B) whoa C) omg D) sheesh",
@@ -112,7 +112,7 @@
 
 {
   "id": "exp3_pumped",
-  "samples": 10,
+  "samples": 4,
   "temperature": 1.0,
   "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
   "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) hyped B) stoked C) amped D) pumped",
@@ -128,7 +128,7 @@
 
 {
   "id": "exp3_rad",
-  "samples": 10,
+  "samples": 4,
   "temperature": 1.0,
   "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
   "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) rad B) fire C) dope D) lit",
@@ -144,7 +144,7 @@
 
 {
   "id": "exp3_stfu",
-  "samples": 10,
+  "samples": 4,
   "temperature": 1.0,
   "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
   "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) gtfo B) stfu C) smh D) bffr",
@@ -160,7 +160,7 @@
 
 {
   "id": "exp3_troll",
-  "samples": 10,
+  "samples": 4,
   "temperature": 1.0,
   "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
   "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) hater B) edgelord C) troll D) ragebaiter",
@@ -176,7 +176,7 @@
 
 {
   "id": "exp3_u",
-  "samples": 10,
+  "samples": 4,
   "temperature": 1.0,
   "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
   "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) ya B) yu C) yo D) u",
@@ -192,7 +192,7 @@
 
 {
   "id": "exp3_yapping",
-  "samples": 10,
+  "samples": 4,
   "temperature": 1.0,
   "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
   "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) yapping B) ranting C) rambling D) waffling",
@@ -208,7 +208,7 @@
 
 {
   "id": "exp3_bro",
-  "samples": 10,
+  "samples": 4,
   "temperature": 1.0,
   "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
   "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) dude B) bro C) homie D) fam",
@@ -224,7 +224,7 @@
 
 {
   "id": "exp3_finna",
-  "samples": 10,
+  "samples": 4,
   "temperature": 1.0,
   "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
   "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) gonna B) boutta C) finna D) tryna",
@@ -240,7 +240,7 @@
 
 {
   "id": "exp3_lol",
-  "samples": 10,
+  "samples": 4,
   "temperature": 1.0,
   "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
   "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) haha B) lmao C) xD D) lol",
@@ -256,7 +256,7 @@
 
 {
   "id": "exp3_meh",
-  "samples": 10,
+  "samples": 4,
   "temperature": 1.0,
   "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
   "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) meh B) mid C) whatever D) eh",
@@ -272,7 +272,7 @@
 
 {
   "id": "exp3_lmao",
-  "samples": 10,
+  "samples": 4,
   "temperature": 1.0,
   "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
   "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) haha B) lmao C) rofl D) 😂",
@@ -288,7 +288,7 @@
 
 {
   "id": "exp3_thot",
-  "samples": 10,
+  "samples": 4,
   "temperature": 1.0,
   "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
   "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) skank B) floozy C) thot D) hoe",
@@ -304,7 +304,7 @@
 
 {
   "id": "exp3_cucked",
-  "samples": 10,
+  "samples": 4,
   "temperature": 1.0,
   "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
   "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) owned B) pwned C) ratioed D) cucked",
@@ -320,7 +320,7 @@
 
 {
   "id": "exp3_shitposting",
-  "samples": 10,
+  "samples": 4,
   "temperature": 1.0,
   "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
   "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) shitposting B) spamming C) trolling D) memeing",
@@ -336,7 +336,7 @@
 
 {
   "id": "exp3_struggle_bus",
-  "samples": 10,
+  "samples": 4,
   "temperature": 1.0,
   "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
   "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) hot mess B) struggle bus C) in shambles D) crashing out",
@@ -352,7 +352,7 @@
 
 {
   "id": "exp3_bruh",
-  "samples": 10,
+  "samples": 4,
   "temperature": 1.0,
   "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
   "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) smh B) ugh C) bruh D) welp",
@@ -368,7 +368,7 @@
 
 {
   "id": "exp3_simp",
-  "samples": 10,
+  "samples": 4,
   "temperature": 1.0,
   "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
   "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) white knight B) beta C) pick-me D) simp",
@@ -384,7 +384,7 @@
 
 {
   "id": "exp3_cuck",
-  "samples": 10,
+  "samples": 4,
   "temperature": 1.0,
   "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
   "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) cuck B) beta C) soyboy D) snowflake",
@@ -400,7 +400,7 @@
 
 {
   "id": "exp3_doggo",
-  "samples": 10,
+  "samples": 4,
   "temperature": 1.0,
   "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
   "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) puppy B) doggo C) floof D) pooch",
@@ -416,7 +416,7 @@
 
 {
   "id": "exp3_lowkey",
-  "samples": 10,
+  "samples": 4,
   "temperature": 1.0,
   "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
   "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) on the down low B) ngl C) lowkey D) kinda",
@@ -432,7 +432,7 @@
 
 {
   "id": "exp3_shitpost",
-  "samples": 10,
+  "samples": 4,
   "temperature": 1.0,
   "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
   "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) meme B) copypasta C) bait D) shitpost",
@@ -448,7 +448,7 @@
 
 {
   "id": "exp3_skull",
-  "samples": 10,
+  "samples": 4,
   "temperature": 1.0,
   "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
   "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) 💀 B) 😂 C) 🤣 D) 😭",
@@ -464,7 +464,7 @@
 
 {
   "id": "exp3_doomscrolling",
-  "samples": 10,
+  "samples": 4,
   "temperature": 1.0,
   "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
   "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) lurking B) doomscrolling C) channel surfing D) rabbit-holing",
@@ -480,7 +480,7 @@
 
 {
   "id": "exp3_glow_up",
-  "samples": 10,
+  "samples": 4,
   "temperature": 1.0,
   "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
   "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) makeover B) level up C) glow-up D) blossomed",
@@ -496,7 +496,7 @@
 
 {
   "id": "exp3_hooman",
-  "samples": 10,
+  "samples": 4,
   "temperature": 1.0,
   "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
   "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) pet parent B) pawrent C) fur mom D) hooman",
@@ -512,7 +512,7 @@
 
 {
   "id": "exp3_vibing",
-  "samples": 10,
+  "samples": 4,
   "temperature": 1.0,
   "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
   "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) vibing B) chilling C) kicking back D) coasting",
@@ -528,7 +528,7 @@
 
 {
   "id": "exp3_catfished",
-  "samples": 10,
+  "samples": 4,
   "temperature": 1.0,
   "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
   "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) ghosted B) catfished C) scammed D) played",
@@ -544,7 +544,7 @@
 
 {
   "id": "exp3_idgaf",
-  "samples": 10,
+  "samples": 4,
   "temperature": 1.0,
   "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
   "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) idc B) whatevs C) idgaf D) nbd",
@@ -560,7 +560,7 @@
 
 {
   "id": "exp3_legit",
-  "samples": 10,
+  "samples": 4,
   "temperature": 1.0,
   "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
   "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) for real B) no cap C) on god D) legit",
@@ -576,7 +576,7 @@
 
 {
   "id": "exp3_red_pill",
-  "samples": 10,
+  "samples": 4,
   "temperature": 1.0,
   "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
   "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) red pill B) woke C) black pill D) based",
@@ -592,7 +592,7 @@
 
 {
   "id": "exp3_situationship",
-  "samples": 10,
+  "samples": 4,
   "temperature": 1.0,
   "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
   "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) friends with benefits B) situationship C) talking stage D) entanglement",
@@ -608,7 +608,7 @@
 
 {
   "id": "exp3_vibes",
-  "samples": 10,
+  "samples": 4,
   "temperature": 1.0,
   "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
   "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) aura B) energy C) vibes D) mojo",
@@ -624,7 +624,7 @@
 
 {
   "id": "exp3_yeet",
-  "samples": 10,
+  "samples": 4,
   "temperature": 1.0,
   "system": "Respond with only a one letter answer to the multiple choice question, A, B, C, or D.",
   "user": "The year is {year}. {phrasing} Select your response from the following multiple choice: A) chuck B) hurl C) launch D) yeet",
