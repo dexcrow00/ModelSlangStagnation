@@ -58,7 +58,12 @@ def _load(path: Path, name: str):
 # lockstep with this one.
 _slot = _load(Path(__file__).resolve().parent / "visualize.py", "_slot_viz")
 _cf = _load(EXP_DIR / "analysis" / "exp3_choice_freq.py", "_exp3_choice_freq")
-WORDS_CHRONO_ORDER = _slot.WORDS_CHRONO_ORDER
+WORDS_CHRONO_ORDER = ["stfu", "lmfao", "griefing", "methinks", "omg", "u", "yapping",
+                   "ick", "dude", "hella", "troll", "pumped", "rad", "lol", "meh",
+                   "bro", "finna", "lmao", "thot", "cucked", "shitposting", "struggle bus", 
+                   "simp", "bruh", "cuck", "doggo", "shitpost", "💀", "lowkey", "doomscrolling",
+                   "glow-up", "vibing", "hooman", "situationship", "yeet",
+                   "catfished", "red pill", "vibes", "idgaf", "legit"]
 target_prompt_id = _slot.target_prompt_id
 
 DEFAULT_RESPONSES = EXP_DIR / "results_from_list"
