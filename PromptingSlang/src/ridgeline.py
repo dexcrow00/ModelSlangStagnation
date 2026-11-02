@@ -17,6 +17,8 @@ from matplotlib import patheffects
 from matplotlib.colors import LinearSegmentedColormap, TwoSlopeNorm
 from matplotlib.path import Path as MplPath
 
+from src.plot_fonts import use_emoji_font
+
 # Diverging red <-> blue around a neutral gray: below the centre reads warm, above cool.
 RATE_CMAP = LinearSegmentedColormap.from_list(
     "below_above_center",
@@ -56,6 +58,7 @@ def render_ridgeline(rates: dict[str, dict[str, float]], peaks: dict[str, int], 
     x = np.array(years)
     xs = np.linspace(x[0], x[-1], 600)
     n = len(words)
+    use_emoji_font()  # emoji target words (e.g. 💀) label their ridge
     fig, ax = plt.subplots(figsize=(max(9, len(years) * 0.75) + 1.5, 1.5 + n * 0.5))
 
     im = None

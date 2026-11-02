@@ -13,13 +13,13 @@ through each ridge marks the word's true corpus peak year (from FineWeb
 ``peak_years_pct.json``) --- a model population tracking usage would keep each
 ridge high up to its line and let it drop off afterwards.
 
-``--mode heatmap`` --- a single model's word x prompt-year heatmap, green (yes)
-to red (no), with each word's true corpus peak year outlined.
+``--exclude`` drops the listed target words from the chart (matched
+case-insensitively against the prompt's ``word`` variable).
 
 Usage (run from the PromptingSlang root):
     python experiments/direct_year_association/visualizer/visualize_EraAppropriate.py
-    python experiments/direct_year_association/visualizer/visualize_EraAppropriate.py --mode heatmap --model claude
     python experiments/direct_year_association/visualizer/visualize_EraAppropriate.py results -o figures/era.png
+    python experiments/direct_year_association/visualizer/visualize_EraAppropriate.py --exclude u "red pill"
 """
 
 from __future__ import annotations
@@ -41,10 +41,9 @@ from src.response_utils import model_short, read_responses  # noqa: E402
 from src.ridgeline import mean_rates, render_ridgeline  # noqa: E402
 
 EXP_DIR = Path(__file__).resolve().parents[1]
-DEFAULT_RESPONSES = EXP_DIR / "results"
+DEFAULT_RESPONSES = EXP_DIR / "responses"
 DEFAULT_OUTPUT = {
     "ridge": EXP_DIR / "figures" / "era_appropriate_ridge_by_year.png",
-    "heatmap": EXP_DIR / "figures" / "era_appropriate_by_year.png",
 }
 DEFAULT_PEAK_YEARS = REPO_ROOT.parent / "FineWebAnalysis" / "peak_years_pct.json"
 PROMPT_ID = "EraAppropriate"
@@ -71,8 +70,12 @@ def classify(resp: str) -> int | None:
     return None
 
 
-def collect(records: list[dict]) -> dict[str, dict[str, dict[str, list[int]]]]:
-    """{model: {word: {year: [n_yes, n_total, n_unclear]}}} over EraAppropriate prompts."""
+def collect(records: list[dict], exclude: set[str] = frozenset()
+            ) -> dict[str, dict[str, dict[str, list[int]]]]:
+    """{model: {word: {year: [n_yes, n_total, n_unclear]}}} over EraAppropriate prompts.
+
+    Words in ``exclude`` (lowercased) are skipped.
+    """
     data: dict[str, dict[str, dict[str, list[int]]]] = defaultdict(
         lambda: defaultdict(lambda: defaultdict(lambda: [0, 0, 0])))
     for rec in records:
@@ -80,7 +83,7 @@ def collect(records: list[dict]) -> dict[str, dict[str, dict[str, list[int]]]]:
             continue
         v = rec.get("variables") or {}
         word, year = v.get("word"), v.get("year")
-        if not word or not year:
+        if not word or not year or word.lower() in exclude:
             continue
         cell = data[rec.get("model", "unknown")][word][str(year)]
         verdict = classify(rec.get("response", ""))
@@ -110,76 +113,18 @@ def render_ridge(data: dict, peaks: dict[str, int], output: Path | None) -> None
         xlabel="prompt year (“It's {year}…”)",
         cbar_label="fraction answering “yes” (appropriate)", output=output)
 
-
-def render(data: dict, model: str, peaks: dict[str, int], output: Path | None) -> None:
-    per_word = data[model]
-    words = sorted(per_word, key=lambda w: (peaks.get(w, 9999), w))  # earliest peak on top
-    years = sorted({y for w in words for y in per_word[w]}, key=int)
-    if not words or not years:
-        sys.exit(f"No data to chart for model '{model}'.")
-
-    def frac_yes(w, y):
-        return yes_rate(per_word[w].get(y, [0, 0, 0]))
-
-    mat = np.array([[frac_yes(w, y) for y in years] for w in words])
-
-    fig, ax = plt.subplots(figsize=(max(8, len(years) * 0.7), max(5, len(words) * 0.55)))
-    cmap = plt.get_cmap("RdYlGn").copy()  # red = "no", green = "yes"
-    cmap.set_bad("#eeeeee")
-    im = ax.imshow(np.ma.masked_invalid(mat), cmap=cmap, aspect="auto", vmin=0.0, vmax=1.0)
-
-    year_idx = {y: i for i, y in enumerate(years)}
-    peak_handle = None
-    for r, w in enumerate(words):
-        for c in range(len(years)):
-            v = mat[r, c]
-            if np.isfinite(v):
-                ax.text(c, r, f"{round(v * 100)}", ha="center", va="center", fontsize=6, color="black")
-        pk = peaks.get(w)
-        if pk is not None and str(pk) in year_idx:
-            rect = Rectangle((year_idx[str(pk)] - 0.5, r - 0.5), 1, 1, fill=False,
-                             edgecolor="#1f3a93", linewidth=2.4)
-            ax.add_patch(rect)
-            peak_handle = rect
-
-    ax.set_xticks(range(len(years)))
-    ax.set_xticklabels(years, rotation=45, ha="right", fontsize=8)
-    ax.set_yticks(range(len(words)))
-    ax.set_yticklabels([f"{w} ({peaks[w]})" if w in peaks else w for w in words], fontsize=8)
-    ax.set_xlabel("prompt year (“It's {year}…”)", fontsize=9)
-    ax.set_ylabel("target word (true corpus peak year)", fontsize=9)
-    ax.set_title(f"“Is it appropriate to use {{word}}?” — fraction answering yes — "
-                 f"{model_short(model)}\ndoes appropriateness fall off after the word's true peak?",
-                 fontsize=11)
-
-    if peak_handle is not None:
-        ax.legend(handles=[plt.Line2D([], [], marker="s", linestyle="", markerfacecolor="none",
-                                      markeredgecolor="#1f3a93", markersize=11, markeredgewidth=2.4,
-                                      label="true corpus peak year")],
-                  loc="upper left", bbox_to_anchor=(1.18, 1.0), fontsize=8)
-    fig.colorbar(im, ax=ax, shrink=0.7, label="fraction answering “yes” (appropriate)")
-    fig.tight_layout()
-    if output:
-        output.parent.mkdir(parents=True, exist_ok=True)
-        fig.savefig(output, dpi=120, bbox_inches="tight")
-        print(f"Saved: {output}")
-    else:
-        plt.show()
-    plt.close(fig)
-
-
 def main() -> None:
     p = argparse.ArgumentParser(
         description="EraAppropriate yes-fraction by prompt year vs true corpus peak.")
     p.add_argument("responses", nargs="?", default=str(DEFAULT_RESPONSES),
                    help=f"Response JSONL file or directory (default: {DEFAULT_RESPONSES}).")
-    p.add_argument("--mode", choices=("ridge", "heatmap"), default="ridge",
-                   help="'ridge': all models averaged, one ridge per word (default). "
-                        "'heatmap': one model, word x prompt year.")
     p.add_argument("-m", "--model", default=None,
                    help="Substring of the model id to chart (heatmap mode; default: first available).")
     p.add_argument("--peak-years", type=Path, default=DEFAULT_PEAK_YEARS, dest="peak_years",
                    help=f"peak_years_pct.json with true corpus peaks (default: {DEFAULT_PEAK_YEARS}).")
+    p.add_argument("--exclude", nargs="+", default=[], metavar="WORD",
+                   help="Target words to leave out of the chart (case-insensitive; "
+                        "quote multi-word terms, e.g. \"red pill\").")
     p.add_argument("-o", "--output", type=Path, default=None,
                    help="Output path (default: figures/era_appropriate_{ridge_,}by_year.png). "
                         "Pass '-' to display interactively.")
@@ -192,16 +137,19 @@ def main() -> None:
     if not peaks:
         print(f"Warning: no peak years from {args.peak_years}; ordering alphabetically, "
               "no true-peak outline.", file=sys.stderr)
-    data = collect(records)
-    output = args.output if args.output is not None else DEFAULT_OUTPUT[args.mode]
+    exclude = {w.lower() for w in args.exclude}
+    words = {str(r["variables"]["word"]).lower() for r in records
+             if r.get("prompt_id") == PROMPT_ID and (r.get("variables") or {}).get("word")}
+    unknown = sorted(exclude - words)
+    if unknown:
+        print(f"Warning: --exclude word(s) not in the {PROMPT_ID} responses: "
+              f"{', '.join(unknown)}", file=sys.stderr)
+    data = collect(records, exclude)
+    output = args.output if args.output is not None else DEFAULT_OUTPUT["ridge"]
     output = None if str(output) == "-" else Path(output)
-    if args.mode == "ridge":
-        if not data:
-            sys.exit(f"No {PROMPT_ID} records found.")
-        render_ridge(data, peaks, output)
-    else:
-        model = pick_model(data, args.model, f"No {PROMPT_ID} records found.")
-        render(data, model, peaks, output)
+    if not data:
+        sys.exit(f"No {PROMPT_ID} records found.")
+    render_ridge(data, peaks, output)
 
 
 if __name__ == "__main__":

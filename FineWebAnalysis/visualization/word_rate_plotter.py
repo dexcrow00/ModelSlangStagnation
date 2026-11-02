@@ -41,7 +41,6 @@ import argparse
 import csv
 import json
 import logging
-import platform
 import re
 import sys
 from collections import Counter, defaultdict
@@ -52,6 +51,7 @@ from typing import Dict, List, Optional
 import matplotlib.dates as mdates
 import matplotlib.pyplot as plt
 import numpy as np
+from matplotlib import font_manager
 from scipy.stats import chi2
 
 logging.basicConfig(
@@ -67,6 +67,8 @@ DEFAULT_SCORED_DIR = ROOT / "prompt_scored"
 SCENARIO_SCORED_DIR = ROOT / "scenario_prompt_scored"
 DEFAULT_SIZES_CACHE = ROOT / "fineweb_10BT_dump_sizes.json"
 WRITING_DIR = ROOT.parent / "writing"
+# Monochrome Noto Emoji (SIL OFL, see fonts/OFL.txt), shared with PromptingSlang.
+EMOJI_FONT = ROOT.parent / "fonts" / "NotoEmoji.ttf"
 HF_SAMPLE_DIR = "datasets/HuggingFaceFW/fineweb/sample/10BT"
 CRAWL_ID_RE = re.compile(r"CC-MAIN-(\d{4})-(\d{2})")
 
@@ -120,13 +122,16 @@ def _crawl_date(stem: str) -> Optional[date]:
 
 
 def _use_emoji_font() -> None:
-    """Pick a system font with emoji glyphs so emoji targets render."""
-    emoji_font = {
-        "Darwin": "Apple Color Emoji",
-        "Windows": "Segoe UI Emoji",
-    }.get(platform.system(), "Noto Color Emoji")
-    plt.rcParams["font.family"] = "sans-serif"
-    plt.rcParams["font.sans-serif"] = [emoji_font, "DejaVu Sans"]
+    """Fall back to Noto Emoji for any glyph DejaVu Sans lacks, so emoji targets render.
+
+    Colour emoji fonts (Apple Color Emoji, Segoe UI Emoji, Noto Color Emoji)
+    store bitmap glyphs that matplotlib's renderer cannot draw, so a bundled
+    outline font is used instead. Both families go straight into font.family,
+    not font.sans-serif: matplotlib only falls back glyph-by-glyph across fonts
+    listed there, and a generic family resolves to a single font.
+    """
+    font_manager.fontManager.addfont(EMOJI_FONT)
+    plt.rcParams["font.family"] = ["DejaVu Sans", "Noto Emoji"]
 
 
 def load_dump_counts(scored_dir: Path, threshold: float) -> Dict[date, Counter]:
