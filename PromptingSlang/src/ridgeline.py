@@ -9,6 +9,7 @@ A dark vertical line through each ridge marks the word's true corpus peak year.
 
 from __future__ import annotations
 
+import textwrap
 from pathlib import Path
 
 import matplotlib.pyplot as plt
@@ -43,8 +44,12 @@ def mean_rates(per_model: dict[str, dict[str, dict[str, float]]]) -> dict[str, d
 
 def render_ridgeline(rates: dict[str, dict[str, float]], peaks: dict[str, int], *,
                      center: float, center_label: str, title: str, xlabel: str,
-                     cbar_label: str, output: Path | None) -> None:
-    """Draw ``{word: {year: rate}}`` as a ridgeline and save it (or show it if ``output`` is None)."""
+                     cbar_label: str, output: Path | None,
+                     caption: str | None = None) -> None:
+    """Draw ``{word: {year: rate}}`` as a ridgeline and save it (or show it if ``output`` is None).
+
+    ``caption`` is wrapped and set under the x-axis label, left-aligned with the plot.
+    """
     words = sorted(rates, key=lambda w: (peaks.get(w, 9999), w))  # earliest peak first (top)
     years = sorted({int(y) for w in words for y in rates[w]})
     if not words or not years:
@@ -122,6 +127,13 @@ def render_ridgeline(rates: dict[str, dict[str, float]], peaks: dict[str, int], 
         cbar.ax.tick_params(labelsize=7)
         cbar.set_label(cbar_label, fontsize=8)
         cbar.outline.set_visible(False)
+    if caption:
+        # x in axes fraction (flush with the plot's left edge), y just under the
+        # x-axis label, wherever tick-label rotation leaves it.
+        ax.annotate(textwrap.fill(caption, width=int(fig.get_figwidth() * 13)),
+                    xy=(0, 0), xycoords=("axes fraction", ax.xaxis.label),
+                    xytext=(0, -10), textcoords="offset points",
+                    ha="left", va="top", fontsize=8, color="#52514e")
     fig.tight_layout()
 
     if output:

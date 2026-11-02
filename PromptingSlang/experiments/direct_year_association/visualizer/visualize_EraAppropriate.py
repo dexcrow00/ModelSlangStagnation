@@ -13,8 +13,9 @@ through each ridge marks the word's true corpus peak year (from FineWeb
 ``peak_years_pct.json``) --- a model population tracking usage would keep each
 ridge high up to its line and let it drop off afterwards.
 
-``--exclude`` drops the listed target words from the chart (matched
-case-insensitively against the prompt's ``word`` variable).
+EXCLUDED_WORDS are always left out, and EXCLUDED_CAPTION under the chart says
+why. ``--exclude`` drops further target words (matched case-insensitively
+against the prompt's ``word`` variable) without adding them to the caption.
 
 Usage (run from the PromptingSlang root):
     python experiments/direct_year_association/visualizer/visualize_EraAppropriate.py
@@ -47,6 +48,14 @@ DEFAULT_OUTPUT = {
 }
 DEFAULT_PEAK_YEARS = REPO_ROOT.parent / "FineWebAnalysis" / "peak_years_pct.json"
 PROMPT_ID = "EraAppropriate"
+
+# Words the models judged inappropriate in every prompt year, so their ridges are
+# flat at 0 and carry no era signal. Always excluded; the caption must name them.
+EXCLUDED_WORDS = ("cuck", "cucked", "thot", "stfu")
+EXCLUDED_CAPTION = (
+    "Excluded: cuck, cucked, thot and stfu. The models judged these words "
+    "inappropriate in every prompt year, likely because of their offensive "
+    "meanings, so they carry no signal about era.")
 
 _YES = re.compile(r"^(yes|yeah|yep|yup|sure|absolutely|definitely|totally|true|appropriate|ok|okay)\b")
 _NO = re.compile(r"^(no|nope|nah|never|not|inappropriate|false)\b")
@@ -102,7 +111,8 @@ def yes_rate(cell: list[int]) -> float:
     return yes / decided if decided else np.nan
 
 
-def render_ridge(data: dict, peaks: dict[str, int], output: Path | None) -> None:
+def render_ridge(data: dict, peaks: dict[str, int], output: Path | None,
+                 caption: str | None = None) -> None:
     """Ridgeline of the yes-rate by prompt year, averaged over all models."""
     per_model = {m: {w: {y: yes_rate(c) for y, c in years.items()} for w, years in words.items()}
                  for m, words in data.items()}
@@ -111,7 +121,8 @@ def render_ridge(data: dict, peaks: dict[str, int], output: Path | None) -> None
         title=f"“Is it appropriate to use {{word}}?” — fraction answering yes — mean of "
               f"{len(data)} models\ndoes appropriateness fall off after the word's true peak?",
         xlabel="prompt year (“It's {year}…”)",
-        cbar_label="fraction answering “yes” (appropriate)", output=output)
+        cbar_label="fraction answering “yes” (appropriate)", output=output,
+        caption=caption)
 
 def main() -> None:
     p = argparse.ArgumentParser(
@@ -123,8 +134,10 @@ def main() -> None:
     p.add_argument("--peak-years", type=Path, default=DEFAULT_PEAK_YEARS, dest="peak_years",
                    help=f"peak_years_pct.json with true corpus peaks (default: {DEFAULT_PEAK_YEARS}).")
     p.add_argument("--exclude", nargs="+", default=[], metavar="WORD",
-                   help="Target words to leave out of the chart (case-insensitive; "
-                        "quote multi-word terms, e.g. \"red pill\").")
+                   help="Target words to leave out of the chart in addition to "
+                        f"EXCLUDED_WORDS ({', '.join(EXCLUDED_WORDS)}), which are always "
+                        "excluded (case-insensitive; quote multi-word terms, e.g. "
+                        "\"red pill\").")
     p.add_argument("-o", "--output", type=Path, default=None,
                    help="Output path (default: figures/era_appropriate_{ridge_,}by_year.png). "
                         "Pass '-' to display interactively.")
@@ -137,7 +150,7 @@ def main() -> None:
     if not peaks:
         print(f"Warning: no peak years from {args.peak_years}; ordering alphabetically, "
               "no true-peak outline.", file=sys.stderr)
-    exclude = {w.lower() for w in args.exclude}
+    exclude = {w.lower() for w in (*EXCLUDED_WORDS, *args.exclude)}
     words = {str(r["variables"]["word"]).lower() for r in records
              if r.get("prompt_id") == PROMPT_ID and (r.get("variables") or {}).get("word")}
     unknown = sorted(exclude - words)
@@ -149,7 +162,7 @@ def main() -> None:
     output = None if str(output) == "-" else Path(output)
     if not data:
         sys.exit(f"No {PROMPT_ID} records found.")
-    render_ridge(data, peaks, output)
+    render_ridge(data, peaks, output, EXCLUDED_CAPTION)
 
 
 if __name__ == "__main__":
