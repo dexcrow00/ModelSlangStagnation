@@ -1,0 +1,1936 @@
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 2,
+  "variables": {
+    "word": "dude",
+    "year": "2013"
+  },
+  "prompt_text": "It's 2013, is it appropriate to use the term dude, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 62,
+    "completion_tokens": 403,
+    "total_tokens": 465
+  },
+  "timestamp": "2026-11-02T20:07:07.763423+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 3,
+  "variables": {
+    "word": "dude",
+    "year": "2013"
+  },
+  "prompt_text": "It's 2013, is it appropriate to use the term dude, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 62,
+    "completion_tokens": 398,
+    "total_tokens": 460
+  },
+  "timestamp": "2026-11-02T20:07:08.008915+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 0,
+  "variables": {
+    "word": "dude",
+    "year": "2013"
+  },
+  "prompt_text": "It's 2013, is it appropriate to use the term dude, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 62,
+    "completion_tokens": 404,
+    "total_tokens": 466
+  },
+  "timestamp": "2026-11-02T20:07:08.072126+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 1,
+  "variables": {
+    "word": "dude",
+    "year": "2013"
+  },
+  "prompt_text": "It's 2013, is it appropriate to use the term dude, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 62,
+    "completion_tokens": 488,
+    "total_tokens": 550
+  },
+  "timestamp": "2026-11-02T20:07:08.580982+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 4,
+  "variables": {
+    "word": "dude",
+    "year": "2013"
+  },
+  "prompt_text": "It's 2013, is it appropriate to use the term dude, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 62,
+    "completion_tokens": 387,
+    "total_tokens": 449
+  },
+  "timestamp": "2026-11-02T20:07:11.496233+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 0,
+  "variables": {
+    "word": "dude",
+    "year": "2014"
+  },
+  "prompt_text": "It's 2014, is it appropriate to use the term dude, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 62,
+    "completion_tokens": 374,
+    "total_tokens": 436
+  },
+  "timestamp": "2026-11-02T20:07:11.569718+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 1,
+  "variables": {
+    "word": "dude",
+    "year": "2014"
+  },
+  "prompt_text": "It's 2014, is it appropriate to use the term dude, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 62,
+    "completion_tokens": 405,
+    "total_tokens": 467
+  },
+  "timestamp": "2026-11-02T20:07:12.256335+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 2,
+  "variables": {
+    "word": "dude",
+    "year": "2014"
+  },
+  "prompt_text": "It's 2014, is it appropriate to use the term dude, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 62,
+    "completion_tokens": 493,
+    "total_tokens": 555
+  },
+  "timestamp": "2026-11-02T20:07:13.484825+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 3,
+  "variables": {
+    "word": "dude",
+    "year": "2014"
+  },
+  "prompt_text": "It's 2014, is it appropriate to use the term dude, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 62,
+    "completion_tokens": 399,
+    "total_tokens": 461
+  },
+  "timestamp": "2026-11-02T20:07:15.638243+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 4,
+  "variables": {
+    "word": "dude",
+    "year": "2014"
+  },
+  "prompt_text": "It's 2014, is it appropriate to use the term dude, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 62,
+    "completion_tokens": 407,
+    "total_tokens": 469
+  },
+  "timestamp": "2026-11-02T20:07:15.640171+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 0,
+  "variables": {
+    "word": "dude",
+    "year": "2015"
+  },
+  "prompt_text": "It's 2015, is it appropriate to use the term dude, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 62,
+    "completion_tokens": 428,
+    "total_tokens": 490
+  },
+  "timestamp": "2026-11-02T20:07:16.454238+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 1,
+  "variables": {
+    "word": "dude",
+    "year": "2015"
+  },
+  "prompt_text": "It's 2015, is it appropriate to use the term dude, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 62,
+    "completion_tokens": 549,
+    "total_tokens": 611
+  },
+  "timestamp": "2026-11-02T20:07:18.707439+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 2,
+  "variables": {
+    "word": "dude",
+    "year": "2015"
+  },
+  "prompt_text": "It's 2015, is it appropriate to use the term dude, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 62,
+    "completion_tokens": 407,
+    "total_tokens": 469
+  },
+  "timestamp": "2026-11-02T20:07:19.632699+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 3,
+  "variables": {
+    "word": "dude",
+    "year": "2015"
+  },
+  "prompt_text": "It's 2015, is it appropriate to use the term dude, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 62,
+    "completion_tokens": 428,
+    "total_tokens": 490
+  },
+  "timestamp": "2026-11-02T20:07:19.756376+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 4,
+  "variables": {
+    "word": "dude",
+    "year": "2015"
+  },
+  "prompt_text": "It's 2015, is it appropriate to use the term dude, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 62,
+    "completion_tokens": 385,
+    "total_tokens": 447
+  },
+  "timestamp": "2026-11-02T20:07:20.485183+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 0,
+  "variables": {
+    "word": "dude",
+    "year": "2016"
+  },
+  "prompt_text": "It's 2016, is it appropriate to use the term dude, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 62,
+    "completion_tokens": 400,
+    "total_tokens": 462
+  },
+  "timestamp": "2026-11-02T20:07:23.315581+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 1,
+  "variables": {
+    "word": "dude",
+    "year": "2016"
+  },
+  "prompt_text": "It's 2016, is it appropriate to use the term dude, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 62,
+    "completion_tokens": 507,
+    "total_tokens": 569
+  },
+  "timestamp": "2026-11-02T20:07:24.751170+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 3,
+  "variables": {
+    "word": "dude",
+    "year": "2016"
+  },
+  "prompt_text": "It's 2016, is it appropriate to use the term dude, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 62,
+    "completion_tokens": 468,
+    "total_tokens": 530
+  },
+  "timestamp": "2026-11-02T20:07:24.971081+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 2,
+  "variables": {
+    "word": "dude",
+    "year": "2016"
+  },
+  "prompt_text": "It's 2016, is it appropriate to use the term dude, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 62,
+    "completion_tokens": 484,
+    "total_tokens": 546
+  },
+  "timestamp": "2026-11-02T20:07:25.186957+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 4,
+  "variables": {
+    "word": "dude",
+    "year": "2016"
+  },
+  "prompt_text": "It's 2016, is it appropriate to use the term dude, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 62,
+    "completion_tokens": 443,
+    "total_tokens": 505
+  },
+  "timestamp": "2026-11-02T20:07:27.821327+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 0,
+  "variables": {
+    "word": "dude",
+    "year": "2017"
+  },
+  "prompt_text": "It's 2017, is it appropriate to use the term dude, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 62,
+    "completion_tokens": 383,
+    "total_tokens": 445
+  },
+  "timestamp": "2026-11-02T20:07:28.556095+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 1,
+  "variables": {
+    "word": "dude",
+    "year": "2017"
+  },
+  "prompt_text": "It's 2017, is it appropriate to use the term dude, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 62,
+    "completion_tokens": 424,
+    "total_tokens": 486
+  },
+  "timestamp": "2026-11-02T20:07:29.116788+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 2,
+  "variables": {
+    "word": "dude",
+    "year": "2017"
+  },
+  "prompt_text": "It's 2017, is it appropriate to use the term dude, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 62,
+    "completion_tokens": 584,
+    "total_tokens": 646
+  },
+  "timestamp": "2026-11-02T20:07:30.829939+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 3,
+  "variables": {
+    "word": "dude",
+    "year": "2017"
+  },
+  "prompt_text": "It's 2017, is it appropriate to use the term dude, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 62,
+    "completion_tokens": 318,
+    "total_tokens": 380
+  },
+  "timestamp": "2026-11-02T20:07:30.910886+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 4,
+  "variables": {
+    "word": "dude",
+    "year": "2017"
+  },
+  "prompt_text": "It's 2017, is it appropriate to use the term dude, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 62,
+    "completion_tokens": 352,
+    "total_tokens": 414
+  },
+  "timestamp": "2026-11-02T20:07:32.254234+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 0,
+  "variables": {
+    "word": "dude",
+    "year": "2018"
+  },
+  "prompt_text": "It's 2018, is it appropriate to use the term dude, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 62,
+    "completion_tokens": 428,
+    "total_tokens": 490
+  },
+  "timestamp": "2026-11-02T20:07:33.552929+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 1,
+  "variables": {
+    "word": "dude",
+    "year": "2018"
+  },
+  "prompt_text": "It's 2018, is it appropriate to use the term dude, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 62,
+    "completion_tokens": 332,
+    "total_tokens": 394
+  },
+  "timestamp": "2026-11-02T20:07:34.342121+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 2,
+  "variables": {
+    "word": "dude",
+    "year": "2018"
+  },
+  "prompt_text": "It's 2018, is it appropriate to use the term dude, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 62,
+    "completion_tokens": 377,
+    "total_tokens": 439
+  },
+  "timestamp": "2026-11-02T20:07:34.780006+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 3,
+  "variables": {
+    "word": "dude",
+    "year": "2018"
+  },
+  "prompt_text": "It's 2018, is it appropriate to use the term dude, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 62,
+    "completion_tokens": 340,
+    "total_tokens": 402
+  },
+  "timestamp": "2026-11-02T20:07:36.116034+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 0,
+  "variables": {
+    "word": "dude",
+    "year": "2019"
+  },
+  "prompt_text": "It's 2019, is it appropriate to use the term dude, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 62,
+    "completion_tokens": 365,
+    "total_tokens": 427
+  },
+  "timestamp": "2026-11-02T20:07:38.122573+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 4,
+  "variables": {
+    "word": "dude",
+    "year": "2018"
+  },
+  "prompt_text": "It's 2018, is it appropriate to use the term dude, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 62,
+    "completion_tokens": 432,
+    "total_tokens": 494
+  },
+  "timestamp": "2026-11-02T20:07:38.323520+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 1,
+  "variables": {
+    "word": "dude",
+    "year": "2019"
+  },
+  "prompt_text": "It's 2019, is it appropriate to use the term dude, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 62,
+    "completion_tokens": 380,
+    "total_tokens": 442
+  },
+  "timestamp": "2026-11-02T20:07:38.632905+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 2,
+  "variables": {
+    "word": "dude",
+    "year": "2019"
+  },
+  "prompt_text": "It's 2019, is it appropriate to use the term dude, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 62,
+    "completion_tokens": 408,
+    "total_tokens": 470
+  },
+  "timestamp": "2026-11-02T20:07:40.214564+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 3,
+  "variables": {
+    "word": "dude",
+    "year": "2019"
+  },
+  "prompt_text": "It's 2019, is it appropriate to use the term dude, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 62,
+    "completion_tokens": 360,
+    "total_tokens": 422
+  },
+  "timestamp": "2026-11-02T20:07:41.850556+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 0,
+  "variables": {
+    "word": "dude",
+    "year": "2020"
+  },
+  "prompt_text": "It's 2020, is it appropriate to use the term dude, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 62,
+    "completion_tokens": 303,
+    "total_tokens": 365
+  },
+  "timestamp": "2026-11-02T20:07:41.855027+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 4,
+  "variables": {
+    "word": "dude",
+    "year": "2019"
+  },
+  "prompt_text": "It's 2019, is it appropriate to use the term dude, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 62,
+    "completion_tokens": 360,
+    "total_tokens": 422
+  },
+  "timestamp": "2026-11-02T20:07:42.037413+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 1,
+  "variables": {
+    "word": "dude",
+    "year": "2020"
+  },
+  "prompt_text": "It's 2020, is it appropriate to use the term dude, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 62,
+    "completion_tokens": 337,
+    "total_tokens": 399
+  },
+  "timestamp": "2026-11-02T20:07:43.592220+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 2,
+  "variables": {
+    "word": "dude",
+    "year": "2020"
+  },
+  "prompt_text": "It's 2020, is it appropriate to use the term dude, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 62,
+    "completion_tokens": 315,
+    "total_tokens": 377
+  },
+  "timestamp": "2026-11-02T20:07:45.115842+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 4,
+  "variables": {
+    "word": "dude",
+    "year": "2020"
+  },
+  "prompt_text": "It's 2020, is it appropriate to use the term dude, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 62,
+    "completion_tokens": 322,
+    "total_tokens": 384
+  },
+  "timestamp": "2026-11-02T20:07:45.480000+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 3,
+  "variables": {
+    "word": "dude",
+    "year": "2020"
+  },
+  "prompt_text": "It's 2020, is it appropriate to use the term dude, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 62,
+    "completion_tokens": 359,
+    "total_tokens": 421
+  },
+  "timestamp": "2026-11-02T20:07:45.591290+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 0,
+  "variables": {
+    "word": "dude",
+    "year": "2021"
+  },
+  "prompt_text": "It's 2021, is it appropriate to use the term dude, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 62,
+    "completion_tokens": 369,
+    "total_tokens": 431
+  },
+  "timestamp": "2026-11-02T20:07:47.364789+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 3,
+  "variables": {
+    "word": "dude",
+    "year": "2021"
+  },
+  "prompt_text": "It's 2021, is it appropriate to use the term dude, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 62,
+    "completion_tokens": 319,
+    "total_tokens": 381
+  },
+  "timestamp": "2026-11-02T20:07:48.931905+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 1,
+  "variables": {
+    "word": "dude",
+    "year": "2021"
+  },
+  "prompt_text": "It's 2021, is it appropriate to use the term dude, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 62,
+    "completion_tokens": 377,
+    "total_tokens": 439
+  },
+  "timestamp": "2026-11-02T20:07:49.050039+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 2,
+  "variables": {
+    "word": "dude",
+    "year": "2021"
+  },
+  "prompt_text": "It's 2021, is it appropriate to use the term dude, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 62,
+    "completion_tokens": 476,
+    "total_tokens": 538
+  },
+  "timestamp": "2026-11-02T20:07:50.557918+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 4,
+  "variables": {
+    "word": "dude",
+    "year": "2021"
+  },
+  "prompt_text": "It's 2021, is it appropriate to use the term dude, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 62,
+    "completion_tokens": 461,
+    "total_tokens": 523
+  },
+  "timestamp": "2026-11-02T20:07:52.158934+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 0,
+  "variables": {
+    "word": "dude",
+    "year": "2022"
+  },
+  "prompt_text": "It's 2022, is it appropriate to use the term dude, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 62,
+    "completion_tokens": 388,
+    "total_tokens": 450
+  },
+  "timestamp": "2026-11-02T20:07:52.882931+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 2,
+  "variables": {
+    "word": "dude",
+    "year": "2022"
+  },
+  "prompt_text": "It's 2022, is it appropriate to use the term dude, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 62,
+    "completion_tokens": 341,
+    "total_tokens": 403
+  },
+  "timestamp": "2026-11-02T20:07:54.113978+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 1,
+  "variables": {
+    "word": "dude",
+    "year": "2022"
+  },
+  "prompt_text": "It's 2022, is it appropriate to use the term dude, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 62,
+    "completion_tokens": 482,
+    "total_tokens": 544
+  },
+  "timestamp": "2026-11-02T20:07:54.143048+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 3,
+  "variables": {
+    "word": "dude",
+    "year": "2022"
+  },
+  "prompt_text": "It's 2022, is it appropriate to use the term dude, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 62,
+    "completion_tokens": 314,
+    "total_tokens": 376
+  },
+  "timestamp": "2026-11-02T20:07:55.383553+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 4,
+  "variables": {
+    "word": "dude",
+    "year": "2022"
+  },
+  "prompt_text": "It's 2022, is it appropriate to use the term dude, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 62,
+    "completion_tokens": 459,
+    "total_tokens": 521
+  },
+  "timestamp": "2026-11-02T20:07:57.615598+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 0,
+  "variables": {
+    "word": "dude",
+    "year": "2023"
+  },
+  "prompt_text": "It's 2023, is it appropriate to use the term dude, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 62,
+    "completion_tokens": 340,
+    "total_tokens": 402
+  },
+  "timestamp": "2026-11-02T20:07:57.684104+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 1,
+  "variables": {
+    "word": "dude",
+    "year": "2023"
+  },
+  "prompt_text": "It's 2023, is it appropriate to use the term dude, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 62,
+    "completion_tokens": 421,
+    "total_tokens": 483
+  },
+  "timestamp": "2026-11-02T20:07:58.888416+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 2,
+  "variables": {
+    "word": "dude",
+    "year": "2023"
+  },
+  "prompt_text": "It's 2023, is it appropriate to use the term dude, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 62,
+    "completion_tokens": 337,
+    "total_tokens": 399
+  },
+  "timestamp": "2026-11-02T20:07:58.897687+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 0,
+  "variables": {
+    "word": "dude",
+    "year": "2024"
+  },
+  "prompt_text": "It's 2024, is it appropriate to use the term dude, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 62,
+    "completion_tokens": 281,
+    "total_tokens": 343
+  },
+  "timestamp": "2026-11-02T20:08:01.792770+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 4,
+  "variables": {
+    "word": "dude",
+    "year": "2023"
+  },
+  "prompt_text": "It's 2023, is it appropriate to use the term dude, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 62,
+    "completion_tokens": 409,
+    "total_tokens": 471
+  },
+  "timestamp": "2026-11-02T20:08:01.839601+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 3,
+  "variables": {
+    "word": "dude",
+    "year": "2023"
+  },
+  "prompt_text": "It's 2023, is it appropriate to use the term dude, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 62,
+    "completion_tokens": 513,
+    "total_tokens": 575
+  },
+  "timestamp": "2026-11-02T20:08:02.859624+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 1,
+  "variables": {
+    "word": "dude",
+    "year": "2024"
+  },
+  "prompt_text": "It's 2024, is it appropriate to use the term dude, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 62,
+    "completion_tokens": 453,
+    "total_tokens": 515
+  },
+  "timestamp": "2026-11-02T20:08:03.459500+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 3,
+  "variables": {
+    "word": "dude",
+    "year": "2024"
+  },
+  "prompt_text": "It's 2024, is it appropriate to use the term dude, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 62,
+    "completion_tokens": 377,
+    "total_tokens": 439
+  },
+  "timestamp": "2026-11-02T20:08:05.667811+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 2,
+  "variables": {
+    "word": "dude",
+    "year": "2024"
+  },
+  "prompt_text": "It's 2024, is it appropriate to use the term dude, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 62,
+    "completion_tokens": 429,
+    "total_tokens": 491
+  },
+  "timestamp": "2026-11-02T20:08:06.236202+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 4,
+  "variables": {
+    "word": "dude",
+    "year": "2024"
+  },
+  "prompt_text": "It's 2024, is it appropriate to use the term dude, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 62,
+    "completion_tokens": 414,
+    "total_tokens": 476
+  },
+  "timestamp": "2026-11-02T20:08:07.247409+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 0,
+  "variables": {
+    "word": "dude",
+    "year": "2025"
+  },
+  "prompt_text": "It's 2025, is it appropriate to use the term dude, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 62,
+    "completion_tokens": 422,
+    "total_tokens": 484
+  },
+  "timestamp": "2026-11-02T20:08:07.964663+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 2,
+  "variables": {
+    "word": "dude",
+    "year": "2025"
+  },
+  "prompt_text": "It's 2025, is it appropriate to use the term dude, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 62,
+    "completion_tokens": 334,
+    "total_tokens": 396
+  },
+  "timestamp": "2026-11-02T20:08:09.708319+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 0,
+  "variables": {
+    "word": "griefing",
+    "year": "2013"
+  },
+  "prompt_text": "It's 2013, is it appropriate to use the term griefing, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 63,
+    "completion_tokens": 263,
+    "total_tokens": 326
+  },
+  "timestamp": "2026-11-02T20:08:10.693286+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 1,
+  "variables": {
+    "word": "dude",
+    "year": "2025"
+  },
+  "prompt_text": "It's 2025, is it appropriate to use the term dude, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 62,
+    "completion_tokens": 557,
+    "total_tokens": 619
+  },
+  "timestamp": "2026-11-02T20:08:11.304033+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 4,
+  "variables": {
+    "word": "dude",
+    "year": "2025"
+  },
+  "prompt_text": "It's 2025, is it appropriate to use the term dude, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 62,
+    "completion_tokens": 400,
+    "total_tokens": 462
+  },
+  "timestamp": "2026-11-02T20:08:11.488969+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 4,
+  "variables": {
+    "word": "griefing",
+    "year": "2014"
+  },
+  "prompt_text": "It's 2014, is it appropriate to use the term griefing, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 63,
+    "completion_tokens": 278,
+    "total_tokens": 341
+  },
+  "timestamp": "2026-11-02T20:08:13.731387+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 3,
+  "variables": {
+    "word": "griefing",
+    "year": "2014"
+  },
+  "prompt_text": "It's 2014, is it appropriate to use the term griefing, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 63,
+    "completion_tokens": 325,
+    "total_tokens": 388
+  },
+  "timestamp": "2026-11-02T20:08:14.039389+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 4,
+  "variables": {
+    "word": "griefing",
+    "year": "2015"
+  },
+  "prompt_text": "It's 2015, is it appropriate to use the term griefing, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 63,
+    "completion_tokens": 278,
+    "total_tokens": 341
+  },
+  "timestamp": "2026-11-02T20:08:14.604507+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 1,
+  "variables": {
+    "word": "griefing",
+    "year": "2016"
+  },
+  "prompt_text": "It's 2016, is it appropriate to use the term griefing, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 63,
+    "completion_tokens": 339,
+    "total_tokens": 402
+  },
+  "timestamp": "2026-11-02T20:08:15.454753+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 2,
+  "variables": {
+    "word": "griefing",
+    "year": "2016"
+  },
+  "prompt_text": "It's 2016, is it appropriate to use the term griefing, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 63,
+    "completion_tokens": 298,
+    "total_tokens": 361
+  },
+  "timestamp": "2026-11-02T20:08:16.792908+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 3,
+  "variables": {
+    "word": "griefing",
+    "year": "2019"
+  },
+  "prompt_text": "It's 2019, is it appropriate to use the term griefing, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 63,
+    "completion_tokens": 288,
+    "total_tokens": 351
+  },
+  "timestamp": "2026-11-02T20:08:18.263558+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 1,
+  "variables": {
+    "word": "griefing",
+    "year": "2019"
+  },
+  "prompt_text": "It's 2019, is it appropriate to use the term griefing, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "yes",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 63,
+    "completion_tokens": 325,
+    "total_tokens": 388
+  },
+  "timestamp": "2026-11-02T20:08:18.495673+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 3,
+  "variables": {
+    "word": "griefing",
+    "year": "2020"
+  },
+  "prompt_text": "It's 2020, is it appropriate to use the term griefing, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 63,
+    "completion_tokens": 337,
+    "total_tokens": 400
+  },
+  "timestamp": "2026-11-02T20:08:19.553200+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 4,
+  "variables": {
+    "word": "griefing",
+    "year": "2021"
+  },
+  "prompt_text": "It's 2021, is it appropriate to use the term griefing, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 63,
+    "completion_tokens": 322,
+    "total_tokens": 385
+  },
+  "timestamp": "2026-11-02T20:08:20.770051+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 0,
+  "variables": {
+    "word": "griefing",
+    "year": "2022"
+  },
+  "prompt_text": "It's 2022, is it appropriate to use the term griefing, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 63,
+    "completion_tokens": 280,
+    "total_tokens": 343
+  },
+  "timestamp": "2026-11-02T20:08:21.056145+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 1,
+  "variables": {
+    "word": "griefing",
+    "year": "2022"
+  },
+  "prompt_text": "It's 2022, is it appropriate to use the term griefing, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 63,
+    "completion_tokens": 258,
+    "total_tokens": 321
+  },
+  "timestamp": "2026-11-02T20:08:21.101842+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 2,
+  "variables": {
+    "word": "griefing",
+    "year": "2022"
+  },
+  "prompt_text": "It's 2022, is it appropriate to use the term griefing, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 63,
+    "completion_tokens": 258,
+    "total_tokens": 321
+  },
+  "timestamp": "2026-11-02T20:08:22.166916+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 1,
+  "variables": {
+    "word": "griefing",
+    "year": "2025"
+  },
+  "prompt_text": "It's 2025, is it appropriate to use the term griefing, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 63,
+    "completion_tokens": 369,
+    "total_tokens": 432
+  },
+  "timestamp": "2026-11-02T20:08:25.375687+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 1,
+  "variables": {
+    "word": "hella",
+    "year": "2014"
+  },
+  "prompt_text": "It's 2014, is it appropriate to use the term hella, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 63,
+    "completion_tokens": 375,
+    "total_tokens": 438
+  },
+  "timestamp": "2026-11-02T20:08:26.497924+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 0,
+  "variables": {
+    "word": "hella",
+    "year": "2013"
+  },
+  "prompt_text": "It's 2013, is it appropriate to use the term hella, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 63,
+    "completion_tokens": 481,
+    "total_tokens": 544
+  },
+  "timestamp": "2026-11-02T20:08:26.842315+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 3,
+  "variables": {
+    "word": "hella",
+    "year": "2013"
+  },
+  "prompt_text": "It's 2013, is it appropriate to use the term hella, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 63,
+    "completion_tokens": 550,
+    "total_tokens": 613
+  },
+  "timestamp": "2026-11-02T20:08:27.765792+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 0,
+  "variables": {
+    "word": "hella",
+    "year": "2015"
+  },
+  "prompt_text": "It's 2015, is it appropriate to use the term hella, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 63,
+    "completion_tokens": 424,
+    "total_tokens": 487
+  },
+  "timestamp": "2026-11-02T20:08:30.184622+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 2,
+  "variables": {
+    "word": "hella",
+    "year": "2017"
+  },
+  "prompt_text": "It's 2017, is it appropriate to use the term hella, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 63,
+    "completion_tokens": 461,
+    "total_tokens": 524
+  },
+  "timestamp": "2026-11-02T20:08:32.847134+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 2,
+  "variables": {
+    "word": "hella",
+    "year": "2016"
+  },
+  "prompt_text": "It's 2016, is it appropriate to use the term hella, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 63,
+    "completion_tokens": 550,
+    "total_tokens": 613
+  },
+  "timestamp": "2026-11-02T20:08:33.060902+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 4,
+  "variables": {
+    "word": "hella",
+    "year": "2018"
+  },
+  "prompt_text": "It's 2018, is it appropriate to use the term hella, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 63,
+    "completion_tokens": 700,
+    "total_tokens": 763
+  },
+  "timestamp": "2026-11-02T20:08:36.052780+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 4,
+  "variables": {
+    "word": "hella",
+    "year": "2019"
+  },
+  "prompt_text": "It's 2019, is it appropriate to use the term hella, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 63,
+    "completion_tokens": 565,
+    "total_tokens": 628
+  },
+  "timestamp": "2026-11-02T20:08:36.535565+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 2,
+  "variables": {
+    "word": "hella",
+    "year": "2020"
+  },
+  "prompt_text": "It's 2020, is it appropriate to use the term hella, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 63,
+    "completion_tokens": 503,
+    "total_tokens": 566
+  },
+  "timestamp": "2026-11-02T20:08:38.394184+00:00"
+}
+
+{
+  "run_id": "1c3a9a412cf840bb8fc78158485309d0",
+  "model": "meta-models/Muse-Glimmer-30B",
+  "prompt_id": "EraAppropriate",
+  "sample": 0,
+  "variables": {
+    "word": "hella",
+    "year": "2020"
+  },
+  "prompt_text": "It's 2020, is it appropriate to use the term hella, or is is anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 63,
+    "completion_tokens": 599,
+    "total_tokens": 662
+  },
+  "timestamp": "2026-11-02T20:08:38.799840+00:00"
+}
+
