@@ -48,8 +48,11 @@ EXP_DIR = Path(__file__).resolve().parents[1]
 def _load(path: Path, name: str):
     """Import a sibling script by path (they are scripts, not an importable package)."""
     spec = importlib.util.spec_from_file_location(name, path)
-    module = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(module)
+    if spec:
+        module = importlib.util.module_from_spec(spec)
+        if spec.loader:
+            spec.loader.exec_module(module)            
+
     return module
 
 

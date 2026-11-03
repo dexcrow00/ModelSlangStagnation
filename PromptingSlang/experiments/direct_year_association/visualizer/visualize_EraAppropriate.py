@@ -79,7 +79,7 @@ def classify(resp: str) -> int | None:
     return None
 
 
-def collect(records: list[dict], exclude: set[str] = frozenset()
+def collect(records: list[dict], exclude: frozenset
             ) -> dict[str, dict[str, dict[str, list[int]]]]:
     """{model: {word: {year: [n_yes, n_total, n_unclear]}}} over EraAppropriate prompts.
 
@@ -157,7 +157,7 @@ def main() -> None:
     if unknown:
         print(f"Warning: --exclude word(s) not in the {PROMPT_ID} responses: "
               f"{', '.join(unknown)}", file=sys.stderr)
-    data = collect(records, exclude)
+    data = collect(records, frozenset(exclude))
     output = args.output if args.output is not None else DEFAULT_OUTPUT["ridge"]
     output = None if str(output) == "-" else Path(output)
     if not data:
