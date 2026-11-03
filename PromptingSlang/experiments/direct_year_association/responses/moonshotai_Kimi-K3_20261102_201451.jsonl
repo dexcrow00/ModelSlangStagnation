@@ -1,0 +1,88 @@
+{
+  "run_id": "da18f91c384e4e54984d370552544793",
+  "model": "moonshotai/Kimi-K3",
+  "prompt_id": "EraAppropriate",
+  "sample": 4,
+  "variables": {
+    "word": "dude",
+    "year": "2013"
+  },
+  "prompt_text": "It's 2013, is it appropriate to use the term dude, or is it anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Appropriate.",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 131,
+    "completion_tokens": 259,
+    "total_tokens": 390
+  },
+  "timestamp": "2026-11-02T20:15:00.466055+00:00"
+}
+
+{
+  "run_id": "da18f91c384e4e54984d370552544793",
+  "model": "moonshotai/Kimi-K3",
+  "prompt_id": "EraAppropriate",
+  "sample": 2,
+  "variables": {
+    "word": "dude",
+    "year": "2013"
+  },
+  "prompt_text": "It's 2013, is it appropriate to use the term dude, or is it anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 131,
+    "completion_tokens": 343,
+    "total_tokens": 474
+  },
+  "timestamp": "2026-11-02T20:15:00.695314+00:00"
+}
+
+{
+  "run_id": "da18f91c384e4e54984d370552544793",
+  "model": "moonshotai/Kimi-K3",
+  "prompt_id": "EraAppropriate",
+  "sample": 1,
+  "variables": {
+    "word": "dude",
+    "year": "2014"
+  },
+  "prompt_text": "It's 2014, is it appropriate to use the term dude, or is it anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Appropriate",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 131,
+    "completion_tokens": 274,
+    "total_tokens": 405
+  },
+  "timestamp": "2026-11-02T20:15:00.887554+00:00"
+}
+
+{
+  "run_id": "da18f91c384e4e54984d370552544793",
+  "model": "moonshotai/Kimi-K3",
+  "prompt_id": "EraAppropriate",
+  "sample": 4,
+  "variables": {
+    "word": "dude",
+    "year": "2014"
+  },
+  "prompt_text": "It's 2014, is it appropriate to use the term dude, or is it anachronistic or dated?",
+  "system_text": "Give the response as a single returned token or word.",
+  "response": "Yes",
+  "logprobs": null,
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 131,
+    "completion_tokens": 300,
+    "total_tokens": 431
+  },
+  "timestamp": "2026-11-02T20:15:02.390201+00:00"
+}
+
