@@ -13,14 +13,11 @@ through each ridge marks the word's true corpus peak year (from FineWeb
 ``peak_years_pct.json``) --- a model population tracking usage would keep each
 ridge high up to its line and let it drop off afterwards.
 
-EXCLUDED_WORDS are always left out, and EXCLUDED_CAPTION under the chart says
-why. ``--exclude`` drops further target words (matched case-insensitively
-against the prompt's ``word`` variable) without adding them to the caption.
+CAPTION under the chart says how answers are scored.
 
 Usage (run from the PromptingSlang root):
     python experiments/direct_year_association/visualizer/visualize_EraAppropriate.py
     python experiments/direct_year_association/visualizer/visualize_EraAppropriate.py results -o figures/era.png
-    python experiments/direct_year_association/visualizer/visualize_EraAppropriate.py --exclude u "red pill"
 """
 
 from __future__ import annotations
@@ -49,16 +46,21 @@ DEFAULT_OUTPUT = {
 DEFAULT_PEAK_YEARS = REPO_ROOT.parent / "FineWebAnalysis" / "peak_years_pct.json"
 PROMPT_ID = "EraAppropriate"
 
-# Words the models judged inappropriate in every prompt year, so their ridges are
-# flat at 0 and carry no era signal. Always excluded; the caption must name them.
-EXCLUDED_WORDS = ("cuck", "cucked", "thot", "stfu")
-EXCLUDED_CAPTION = (
-    "Excluded: cuck, cucked, thot and stfu. The models judged these words "
-    "inappropriate in every prompt year, likely because of their offensive "
-    "meanings, so they carry no signal about era.")
+# Printed under the chart. Keep it in step with _YES / _NO below.
+CAPTION = (
+    "Answers of \u201cdated\u201d, \u201canachronistic\u201d, \u201carchaic\u201d or "
+    "\u201cearly\u201d count as no, and \u201ccurrent\u201d or \u201ccontemporary\u201d as "
+    "yes; other answers (e.g. \u201ccontext-dependent\u201d) are left out. For the "
+    "offensive terms cuck, cucked, thot and stfu, a \u201cno\u201d may reflect the "
+    "word\u2019s meaning rather than its era.")
 
-_YES = re.compile(r"^(yes|yeah|yep|yup|sure|absolutely|definitely|totally|true|appropriate|ok|okay)\b")
-_NO = re.compile(r"^(no|nope|nah|never|not|inappropriate|false)\b")
+# The prompt offers "appropriate" vs "anachronistic or dated", so the models often
+# answer with an era word rather than yes/no: current/contemporary read as yes,
+# dated/anachronistic/archaic/early (too soon for the term) as no.
+_YES = re.compile(r"^(yes|yeah|yep|yup|sure|absolutely|definitely|totally|true|appropriate|ok|okay"
+                  r"|current|contemporary)\b")
+_NO = re.compile(r"^(no|nope|nah|never|not|inappropriate|false"
+                 r"|dated|anachronistic|archaic|early)\b")
 
 
 def classify(resp: str) -> int | None:
@@ -79,12 +81,8 @@ def classify(resp: str) -> int | None:
     return None
 
 
-def collect(records: list[dict], exclude: frozenset
-            ) -> dict[str, dict[str, dict[str, list[int]]]]:
-    """{model: {word: {year: [n_yes, n_total, n_unclear]}}} over EraAppropriate prompts.
-
-    Words in ``exclude`` (lowercased) are skipped.
-    """
+def collect(records: list[dict]) -> dict[str, dict[str, dict[str, list[int]]]]:
+    """{model: {word: {year: [n_yes, n_total, n_unclear]}}} over EraAppropriate prompts."""
     data: dict[str, dict[str, dict[str, list[int]]]] = defaultdict(
         lambda: defaultdict(lambda: defaultdict(lambda: [0, 0, 0])))
     for rec in records:
@@ -92,7 +90,7 @@ def collect(records: list[dict], exclude: frozenset
             continue
         v = rec.get("variables") or {}
         word, year = v.get("word"), v.get("year")
-        if not word or not year or word.lower() in exclude:
+        if not word or not year:
             continue
         cell = data[rec.get("model", "unknown")][word][str(year)]
         verdict = classify(rec.get("response", ""))
@@ -133,11 +131,6 @@ def main() -> None:
                    help="Substring of the model id to chart (heatmap mode; default: first available).")
     p.add_argument("--peak-years", type=Path, default=DEFAULT_PEAK_YEARS, dest="peak_years",
                    help=f"peak_years_pct.json with true corpus peaks (default: {DEFAULT_PEAK_YEARS}).")
-    p.add_argument("--exclude", nargs="+", default=[], metavar="WORD",
-                   help="Target words to leave out of the chart in addition to "
-                        f"EXCLUDED_WORDS ({', '.join(EXCLUDED_WORDS)}), which are always "
-                        "excluded (case-insensitive; quote multi-word terms, e.g. "
-                        "\"red pill\").")
     p.add_argument("-o", "--output", type=Path, default=None,
                    help="Output path (default: figures/era_appropriate_{ridge_,}by_year.png). "
                         "Pass '-' to display interactively.")
@@ -150,19 +143,14 @@ def main() -> None:
     if not peaks:
         print(f"Warning: no peak years from {args.peak_years}; ordering alphabetically, "
               "no true-peak outline.", file=sys.stderr)
-    exclude = {w.lower() for w in (*EXCLUDED_WORDS, *args.exclude)}
     words = {str(r["variables"]["word"]).lower() for r in records
              if r.get("prompt_id") == PROMPT_ID and (r.get("variables") or {}).get("word")}
-    unknown = sorted(exclude - words)
-    if unknown:
-        print(f"Warning: --exclude word(s) not in the {PROMPT_ID} responses: "
-              f"{', '.join(unknown)}", file=sys.stderr)
-    data = collect(records, frozenset(exclude))
+    data = collect(records)
     output = args.output if args.output is not None else DEFAULT_OUTPUT["ridge"]
     output = None if str(output) == "-" else Path(output)
     if not data:
         sys.exit(f"No {PROMPT_ID} records found.")
-    render_ridge(data, peaks, output, EXCLUDED_CAPTION)
+    render_ridge(data, peaks, output, CAPTION)
 
 
 if __name__ == "__main__":
