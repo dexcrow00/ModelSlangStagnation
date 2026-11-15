@@ -206,11 +206,11 @@ Slicing the FineWeb 10BT sample by crawl dump and applying the RoBERTa sense fil
     \includegraphics[width=1.0\linewidth]{highlight_pre2018_pct.png}
     \includegraphics[width=1.0\linewidth]{highlight_around2020_pct.png}
     \includegraphics[width=1.0\linewidth]{highlight_2022_24_pct.png}
-    \caption{Slang-sense frequency by FineWeb crawl dump with each word plotted as a percentage of its own peak dump. Rescaling lets terms two orders of magnitude apart in absolute rate (\textit{lol} peaks near 16 occurrences per million, \textit{swag} below 0.5) share one axis. Generated with \texttt{word\_rate\_plotter.py --threshold 0.99 --highlight-bands --percent-of-peak --no-ci --clean --settings-note --smooth 9}: rows scoring $\geq 0.99$ from the pooled target and scenario scored contexts, normalised to occurrences per million tokens of the corresponding FineWeb 10BT sample dump, smoothed with a 9-dump centred moving average; dumps with no occurrences are dropped rather than plotted at zero. Word selection: every word plotted passes the ephemerality criterion of Section~\ref{sec:targets} --- at least 100 slang-sense hits (or 50 with an unmistakable trend, $R^2 \geq 0.8$ and $|\beta| \geq 0.3$ bits/yr) together with a non-flat trajectory, and is assigned to the band matching its corpus peak year. Absolute peak rates and per-word peak years are given in Table~\ref{tab:words}.}
+    \caption{Slang-sense frequency by FineWeb crawl dump with each word plotted as a percentage of its own peak dump. Absolute peak rates and per-word peak years are given in Table~\ref{tab:words}.}
     \label{fig:fineweb-trends}
 \end{figure}
 
-Two properties matter for the following response vocabulary analysis. First, the words we treat as ``older'' (\textit{lol}, \textit{swag}) are demonstrably in decline by the end of the window, while the ``recent'' words (\textit{aura}, \textit{slay}, \textit{glow-up}) are still rising. A true-to-life model of slang usage would emphasize using more recent and relevant slang words, while deemphasizing older slang that has become dated and much less popular. Second, the sense filter is what makes these counts meaningful: without it, \textit{sick} and \textit{aura} would be dominated by their standard-English senses and show no slang lifecycle at all. Additional details regarding the sense filtering process, such as model recall and precision, are included in the appendix.
+Two properties matter for the following response vocabulary analysis. First, the words we treat as ``older'' (\textit{lol}, \textit{bro}) are demonstrably in decline by the end of the window, while the ``recent'' words (\textit{doomscrolling}, \textit{legit}, \textit{situationship}) are still rising. A true-to-life model of slang usage would emphasize using more recent and relevant slang words, while deemphasizing older slang that has become dated and much less popular. Second, we use a fine-tuned Roberta model as a ``sense-filter'', to count only instances of the polysemous words that are used in their slang sense. Additional details regarding the sense filtering process, such as model recall and precision, are included in the appendix.
 
 \subsection{Experiment 2: Direct Year Association}
 \label{sec:exp2}
@@ -235,8 +235,7 @@ Experiment~2 asks what the models \textit{know} about slang timing, by posing th
 
 \textbf{The figure overlays model belief against corpus ground truth.} Figure~\ref{fig:yearassoc} places the target words on the y-axis \emph{ordered by their true corpus peak year} (from Experiment~1), with calendar year on the x-axis. Because the words are sorted by true peak, the stars form a rising staircase, so the horizontal offset of each diamond from its star reads directly as how far the model is off.
 
-\todo{Update with new model results.}
-\textbf{Models order slang roughly by era but compress it toward the past.} The diamonds broadly follow relative age, models place \textit{dude}, \textit{rad}, and \textit{lol} early and \textit{doomscrolling}, \textit{glow-up} and \textit{situationship} later, but they systematically date the terms too early. Potentially providing answers based on content citing a terms break into popular usage, rather than reflecting the actual peak usage year. The mean absolute error of median model provided age against the corpus peak is sizeable for every model: from 8.6 years for Muse to 21.7 for Deepseek.
+\textbf{Models order slang roughly by era but compress it toward the past.} The diamonds broadly follow relative age, models place \textit{dude}, \textit{rad}, and \textit{lol} early and \textit{doomscrolling}, \textit{glow-up} and \textit{situationship} later, but they systematically date the terms too early. Potentially providing answers based on content citing a term's breakout into popular usage, rather than reflecting the actual peak usage year. The mean absolute error of median model provided age against the corpus peak is sizeable for every model: from 8.6 years for Muse to 21.7 for Deepseek.
 
 \begin{figure}
     \centering
@@ -269,9 +268,9 @@ Experiment~2 asks what the models \textit{know} about slang timing, by posing th
     \label{fig:yearassoc}
 \end{figure}
 
-\textbf{Asked to judge rather than name a year, models never call slang dated or anachronistic.} A complementary prompt set (\textit{EraAppropriate}, Appendix~\ref{app:exp2-era}) fixes the year in the prompt and asks whether a term is appropriate to use then. If the directional timing knowledge in Figure~\ref{fig:yearassoc} were carried through to a usage judgement, appropriateness would fall off after a word's corpus peak. It does not: across 2013--2025 the models answer ``appropriate'' for almost every (word, year) pair, evidently not factoring in the temporal information provided in the prompt.
+\textbf{Asked to judge rather than name a year, models never call slang dated or anachronistic.} A complementary prompt set (\textit{EraAppropriate}, Appendix~\ref{app:exp2-era}) fixes the year in the prompt and asks whether a term is appropriate to use then. If the directional timing knowledge in Figure~\ref{fig:yearassoc} were carried through to a usage judgement, appropriateness would fall off after a word's corpus peak. It does not: across 2013--2025 the models respond that the term is not dated or anachronistic for almost every (word, year) pair, evidently not factoring in the temporal information provided in the prompt.
 
-\textbf{Interpretation.} The models possess \emph{directional} temporal knowledge but that knowledge is both compressed toward the past and, critically, not carried through in their actual usage (Experiment~3). The failure to produce current slang is therefore not a total absence of temporal knowledge, but shows the divergence between model's declarative knowledge and behavior, a particularly important discrepancy for evaluting how models may interact with language trends.
+\textbf{Interpretation.} The models possess \emph{directional} temporal knowledge but that knowledge is both compressed toward the past and, critically, not carried through in their actual usage, as we demonstrate in (Experiment~3). The failure to produce current slang is therefore not a total absence of temporal knowledge, but shows the divergence between model's declarative knowledge and behavior, a particularly important discrepancy when evaluating model's impact on human language use. Even if models have knowledge of a diverse set of slang language, do they use it or prefer homogenized highly represented phrases?
 
 \subsection{Experiment 3: Semantic Slot Prompting}
 \label{sec:exp3}
@@ -279,9 +278,9 @@ Experiment~2 asks what the models \textit{know} about slang timing, by posing th
 \subsubsection{Methodology}
 \label{sec:exp3-method}
 
-\textbf{Goal:} Measure what slang a model actually \textit{produces} when asked for an informal word, with no temporal cue in the prompt. A model whose vocabulary tracked current usage should prefer recent slang; a temporally frozen model should fall back on older, well-attested terms. A central design constraint is that we avoid naming years or providing informal language queues in the prompt, which would test meta-knowledge or register-matching instead of general usage.
+\textbf{Goal:} Measure what slang a model actually \textit{produces} when asked for an informal word, with no temporal cue in the prompt. A model whose vocabulary tracked current usage should prefer recent slang while a temporally frozen model should fall back on older, well-attested terms. A central design constraint is that we avoid naming years or providing informal language queues in the prompt, which would test meta-knowledge or register-matching instead of general usage patterns.
 
-We give the model a temporally neutral semantic description of a meaning and ask for a single informal word selection from a multiple choice list. We attempt to make all answer as reasonable as possible (i.e. fit the definition prompted for), but varied by when the terms were most popularly used.
+We give the model a temporally neutral semantic description of a meaning and ask for a single informal word selection from a multiple choice list. We attempt to make all answer as reasonable as possible (i.e. fit the definition prompted for), but varied by when the terms were most popularly used (Prompt examples~\ref{app:exp3}).
 
 \subsubsection{Findings}
 
@@ -289,8 +288,8 @@ This experiment is our first framework for prompting models to explore their awa
 
 \subparagraph{Target-word recovery}
 
-\todo{Fill in and rewrite this whole section}
-It seems like for words where we had close synonyms as options in the multiple choice, we actually did see slight spikes in the correct choice based on year (omg, sick, aura). Others tended to max stay at around 100 percent, likely due to no other good options being provided in the multiple choice.
+\todo{Keep editing this section}
+Many of the words are stuck at 100\%, some show some fluctuation, but it does not show strong trends based on date. Rather we see models either choosing and sticking with a particular word (which may be due to a particularly good semantic fit) or showing some slight fluctuation in preference. These results indicate that even when temporal data is provided the models have trouble incorporating it into secondary task completion.
 
 \begin{figure}
     \centering
@@ -298,12 +297,6 @@ It seems like for words where we had close synonyms as options in the multiple c
     \caption{Multiple choice slang test results: Aggregate results for asking all four models to select the most appropriate word/phrase from 4 multiple choice options. The models remain highly confident of their choice in most cases even if the year in the prompt shows low usage of the word in the actual corpus. This indicates that the models do not reason about the temporal relevance of a slang word of phrase on generation.}
     \label{fig:slotyear}
 \end{figure}
-
-\subparagraph{Conditioning on a stated year}
-
-The year-conditioned variant prepends ``The year is \{year\}.'' to each recovery prompt and sweeps the year over 2013--2025. If a model tracked its own data distribution, recovery for a word should be highest at that word's true corpus peak year. Figure~\ref{fig:slotyear} shows the result as a word\,$\times$\,prompt-year accuracy heatmap for \texttt{claude-sonnet-4-6}, with rows ordered by true corpus peak and each word's true peak year outlined.
-
-\todo{Fill in some interpretation of these results here.}
 
 \subsection{Experiment 4: Persona Prompting}
 \label{sec:exp4}
@@ -321,15 +314,32 @@ The year-conditioned variant prepends ``The year is \{year\}.'' to each recovery
 
 Experiment 4 inverts the direction of investigation, starting with relatively free form generations by the models, and analysing the generated vocabularies temporal properties. Figure~\ref{fig:usersim-slang} counts how often each lexicon word appears across the 250 persona responses, ordered by corpus peak year (top panel) and by corpus frequency (bottom). A few long-lived, high-frequency terms dominate: \textit{u}, \textit{lol}, and \textit{omg} together make up roughly 79\% of all in-lexicon slang, and adding \textit{bro} brings the four terms that peaked in 2013--2014 to about 84\% of the total. Recent slang, such as \textit{vibe}, \textit{slay}, \textit{legit}, \textit{aura}, turn up in the low single digits or not at all, echoing the recovery gap from the semantic-slot queries.
 
-\todo{Update this section with per model results}
 \textbf{The output carries a mid-2010s vintage.} Putting a number on the skew, the slang these models emit has an occurrence-weighted effective vintage of \textbf{2015.3} (95\% CI $[2015.1, 2015.4]$; Poisson bootstrap), roughly \textbf{0.3 years older} than the \textbf{2015.6} vintage of the same lexicon in the corpus (Figure~\ref{fig:cc-aggregate}). Every model skews slightly old, so this is not a single outlier dragging the average down. We do not observe any emergent bias in the models to generate more recent slang words to better fit with trends in language. Instead we unsurprisingly see a relatively close match to the distribution in the training data, with a tendency to overuse phrases that show recent decreases in popularity (lol, omg).
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{lr@{\hskip 2em}lr}
+\toprule
+Model & Vintage & 95\% CI \\
+\midrule
+Claude Sonnet 5.5 & 2015.5 & [2015.1, 2015.9] \\
+DeepSeek V4.1 Flash & 2015.2 & [2014.8, 2015.6] \\
+GPT-6 Luna & 2014.7 & [2014.3, 2015.1] \\
+Muse Glimmer 30B & 2015.4 & [2015.0, 2015.8]  \\
+Kimi K3 & 2015.1 & [2014.8, 2015.5] \\
+\bottomrule
+\end{tabular}
+\caption{Per model calculated ``effective vintage''. For the set of words used in free response by each model, we find each identified slang word's count per FineWeb dump to calculate a peak usage age for each word (the word's vintage). We then perform a weighted sum across the words in each model's responses to check for skew. Here we see that models vocabulary mirrors the average age of data in the corpus. This shows that models \it{do not} prefer more recent slang, meaning there is over a ten year delay in average used slang age.}
+\label{tab:modelvintage}
+\end{table} 
 
 \textbf{Reluctance versus recency.} The models differ mainly in how much slang they volunteer at all: \texttt{gpt-4o} produces the fewest in-lexicon hits of the four (205, against 881 for \texttt{claude-sonnet-4-6}), in keeping with its general reluctance to slip into a casual register unprompted \cite{}. What none of the four do is reach for current slang; the early-2010s skew holds across all of them.
 
 \begin{figure}
     \centering
     \includegraphics[width=1.0\linewidth]{slang_freq_log.png}
-    \caption{Slang word frequency in naturalistic persona-simulation responses (log scale), aggregated across five models (1244 responses, ~250 per model). Top panel: words ordered by corpus peak year (oldest~$\to$~newest), coloured by peak year (plasma scale). Bottom panel: same words ordered by descending corpus frequency. Dashed lines are log-linear trend fits. High-frequency, older terms (\textit{bro}, \textit{lol}) dominate both panels; recent slang appears at the far right of the top panel with counts near 1, reproducing in free generation the recency gap observed in forced-choice recovery.}
+    \caption{Slang word frequency in naturalistic persona-simulation responses (log scale), aggregated across five models (1244 responses, \~250 per model). Top panel: words ordered by corpus peak year (oldest~$\to$~newest), coloured by peak year (plasma scale). Bottom panel: same words ordered by descending corpus frequency. Dashed lines are log-linear trend fits. High-frequency, older terms (\textit{bro}, \textit{lol}) dominate both panels; recent slang appears at the far right of the top panel with counts near 1, reproducing in free generation the recency gap observed in forced-choice recovery.}
     \label{fig:usersim-slang}
 \end{figure}
 
@@ -354,8 +364,7 @@ Findings from the corpus analysis and the prompt experiments converge on a consi
 
   \item \textbf{Parametric knowledge vs usage are unaligned.} The year-association queries (Experiment~2, Figure~\ref{fig:yearassoc}) show that models order slang by era directionally correctly, but place the newer terms years too early relative to the corpus peak (mean absolute error 5.5--10.3 years per model), and their spontaneous usage does not track recency at all. The temporal failures contain both a usage bias and a backward-shifted sense of slang timing.
 
-  \todo{Update this section with new results}
-  \item \textbf{Freeform usage patterns reflect bias against modern slang.} When the models are prompted to write casually in a persona (Experiment~4, Figure~\ref{fig:usersim-slang}), the slang they volunteer still skews old. Occurrence-weighted effective vintage (as outlined in Experiment 4's methodology section) is 2015.3, about 0.3 years behind the 2015.6 vintage of the same lexicon in the corpus, and a handful of long-lived terms (\textit{u}, \textit{lol}, \textit{omg}, \textit{bro}) account for the bulk of usage.
+  \item \textbf{Freeform usage patterns reflect bias against modern slang.} When the models are prompted to write casually in a persona (Experiment~4, Figure~\ref{fig:usersim-slang}), the slang they volunteer still skews old. Occurrence-weighted effective vintage (as outlined in Experiment 4's methodology section) is 2015.3, in line with the provided data, at only about 0.3 years behind the 2015.6 vintage of the corpus. The models lean heavily on a handful of relatively dated terms (such as ``bro'', ``lol'', ``😭'').
 \end{enumerate}
 
 % ============================================================
@@ -659,15 +668,29 @@ Kimi & 20.2 & 19.4 \\
 \label{tab:yearpromptmae}
 \end{table}
 
-\todo{Update unclear rate for new models}
 \subsection{EraAppropriate: year-conditioned appropriateness judgement}
 \label{app:exp2-era}
-The EraAppropriate prompt is swept over all forty target words and the thirteen prompt years 2013--2025, sampled five times per (word, year) pair on all five models ($40\times13\times5\times5 = 13{,}000$ responses). Each free-text answer is classified as \emph{yes} (appropriate), \emph{no} (inappropriate/dated), or \emph{unclear} by a lexical parser keyed on the leading yes/no token; the unclear rate is negligible. For each model we plot the fraction of decided responses answering ``yes'' as a heatmap of target word (y-axis, ordered by true corpus peak) against prompt year (x-axis), with each word's true corpus peak outlined (Figure~\ref{fig:eraappropriate}). A model that tracked usage would not ansewr ``yes'' prior to a term's popularity ramping up, and would only answer ``yes'' during the term's window of popularity, then would answer ``no'' if it hade some awareness of a term's datedness.
+The EraAppropriate prompt is swept over all forty target words and the thirteen prompt years 2013--2025, sampled five times per (word, year) pair on all five models ($40\times13\times5\times5 = 13{,}000$ responses). Each free-text answer is classified as \emph{yes} (appropriate), \emph{no} (inappropriate/dated), or \emph{unclear} by a lexical parser keyed on the leading yes/no token (See Unclear Rate Table~\ref{tab:unclearrate} below). For each model we plot the fraction of decided responses answering ``yes'' as a heatmap of target word (y-axis, ordered by true corpus peak) against prompt year (x-axis), with each word's true corpus peak outlined (Figure~\ref{fig:eraappropriate}). A model that tracked usage would not answer ``yes'' prior to a term's popularity ramping up, and would only answer ``yes'' during the term's window of popularity, then would answer ``no'' if it hade some awareness of a term's datedness.
 
-\todo{Update summary with new models.}
-Instead, the models judge slang to be perennially appropriate: the overall yes-rate is 100.0\% for \texttt{gpt-4o}, 96.7\% for \texttt{claude-sonnet-4-6}, 88.4\% for \texttt{DeepSeek-V4-Pro}, and 78.6\% for \texttt{Llama-3.3-70B}. Critically, appropriateness does not fall off after a word's true peak. Splitting each word's cells into pre/at-peak versus post-peak years, the yes-rate is essentially unchanged for Claude ($96.4\%\rightarrow97.2\%$) and GPT-4o ($100\%\rightarrow100\%$) --- not one of the nineteen words shows a post-peak decline --- and it actually \emph{rises} for DeepSeek ($85.9\%\rightarrow91.8\%$). Only \texttt{Llama-3.3-70B} shows a modest dating effect ($84.0\%\rightarrow71.6\%$, with 7 of 19 words declining after their peak), consistent with its generally lower and noisier yes-rate. This is a third line of evidence, alongside the backward-shifted year associations above and the year-cue-insensitive recovery of Experiment~3, that the models lack an actionable sense of when a slang term is era-appropriate: they will neither stop reaching for dated slang nor, when asked directly, flag it as out of date.
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{lr@{\hskip 2em}lr}
+\toprule
+Model & Unclear Rate \\
+\midrule
+Claude & 6.2 \\
+Deepseek & 2.4 \\
+Muse & 0.1 \\
+GPT-6 & 13.9 \\
+Kimi & 3.4 \\
+Average & 5.2 \\
+\bottomrule
+\end{tabular}
+\label{tab:unclearrate}
+\end{table}
 
-\todo{Update caption for new figure}
+\todo{Update caption for new figur. Also this figure should be in the main body probably?}
 \begin{figure}[t]
     \centering
     \includegraphics[width=1.0\linewidth]{era_appropriate_ridge_by_year.png}
@@ -678,7 +701,7 @@ Instead, the models judge slang to be perennially appropriate: the overall yes-r
 \section{Experiment 3: Semantic Slot Prompting}
 \label{app:exp3}
 
-\todo{Fill in with details about the multiple choice semantic slot prompting experiment.}
+\todo{Fill in with details about the multiple choice semantic slot prompting experiment. Examples of prompt etc.}
 \textbf{Multiple choice term matching.}
 
 \section{Models and Sampling}
