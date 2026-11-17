@@ -61,7 +61,7 @@ def _load(path: Path, name: str):
 # stay in lockstep.
 _cf = _load(EXP_DIR / "analysis" / "exp3_choice_freq.py", "_exp3_choice_freq")
 WORDS_CHRONO_ORDER = ["stfu", "lmfao", "griefing", "methinks", "omg", "u", "yapping",
-                   "ick", "dude", "hella", "troll", "pumped", "rad", "lol", "meh",
+                   "ick", "dude", "hella", "troll", "pumped", "lol", "meh",
                    "bro", "finna", "lmao", "thot", "cucked", "shitposting", "struggle bus", 
                    "simp", "bruh", "cuck", "doggo", "shitpost", "💀", "lowkey", "doomscrolling",
                    "glow-up", "vibing", "hooman", "situationship", "yeet",

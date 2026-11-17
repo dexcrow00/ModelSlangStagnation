@@ -45,6 +45,10 @@ DEFAULT_OUTPUT = {
 }
 DEFAULT_PEAK_YEARS = REPO_ROOT.parent / "FineWebAnalysis" / "peak_years_pct.json"
 PROMPT_ID = "EraAppropriate"
+# Words left out of the chart: responses exist for them, but they are no longer in
+# the target set (rad fails the ephemerality cutoff once 2013 is excluded from the
+# peak years). A constant rather than a flag so it can't be forgotten on a run.
+EXCLUDED_WORDS: tuple[str, ...] = ("rad",)
 
 # Printed under the chart. Keep it in step with _YES / _NO below.
 CAPTION = (
@@ -90,7 +94,7 @@ def collect(records: list[dict]) -> dict[str, dict[str, dict[str, list[int]]]]:
             continue
         v = rec.get("variables") or {}
         word, year = v.get("word"), v.get("year")
-        if not word or not year:
+        if not word or not year or word in EXCLUDED_WORDS:
             continue
         cell = data[rec.get("model", "unknown")][word][str(year)]
         verdict = classify(rec.get("response", ""))
@@ -143,8 +147,12 @@ def main() -> None:
     if not peaks:
         print(f"Warning: no peak years from {args.peak_years}; ordering alphabetically, "
               "no true-peak outline.", file=sys.stderr)
-    words = {str(r["variables"]["word"]).lower() for r in records
+    words = {str(r["variables"]["word"]) for r in records
              if r.get("prompt_id") == PROMPT_ID and (r.get("variables") or {}).get("word")}
+    unknown = sorted(w for w in EXCLUDED_WORDS if w not in words)
+    if unknown:
+        print(f"Warning: EXCLUDED_WORDS not found in the responses: {', '.join(unknown)}",
+              file=sys.stderr)
     data = collect(records)
     output = args.output if args.output is not None else DEFAULT_OUTPUT["ridge"]
     output = None if str(output) == "-" else Path(output)

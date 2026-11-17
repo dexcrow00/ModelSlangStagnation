@@ -45,6 +45,10 @@ DEFAULT_OUTPUT = Path(__file__).resolve().parents[1] / "figures" / "give_year_da
 # including every current target word.
 PEAK_YEARS = Path(__file__).resolve().parents[4] / "FineWebAnalysis" / "peak_years_pct.json"
 PROMPT_IDS = ("GiveYear", "DatePhrase")
+# Words left out of the chart: responses exist for them, but they are no longer in
+# the target set (rad fails the ephemerality cutoff once 2013 is excluded from the
+# peak years). A constant rather than a flag so it can't be forgotten on a run.
+EXCLUDED_WORDS: tuple[str, ...] = ("rad",)
 XMIN, XMAX = 2010, 2024  # x-axis (calendar year) window
 # Words the plot font can't draw, shown under a text label instead.
 LABELS = {"💀": "skull emoji"}
@@ -66,7 +70,7 @@ def collect(records: list[dict]) -> dict[str, dict[str, list[int]]]:
             continue
         word = (rec.get("variables") or {}).get("word")
         year = responded_year(rec)
-        if word and year is not None:
+        if word and year is not None and str(word) not in EXCLUDED_WORDS:
             data[rec.get("model", "unknown")][str(word)].append(year)
     return data
 
@@ -197,6 +201,12 @@ def main() -> None:
     if not peaks:
         print(f"Warning: no peak years loaded from {PEAK_YEARS}; "
               "words will be ordered alphabetically and true-peak markers omitted.", file=sys.stderr)
+    words = {str(r["variables"]["word"]) for r in records
+             if r.get("prompt_id") in PROMPT_IDS and (r.get("variables") or {}).get("word")}
+    unknown = sorted(w for w in EXCLUDED_WORDS if w not in words)
+    if unknown:
+        print(f"Warning: EXCLUDED_WORDS not found in the responses: {', '.join(unknown)}",
+              file=sys.stderr)
     data = collect(records)
     model = pick_model(
         data, args.model,
