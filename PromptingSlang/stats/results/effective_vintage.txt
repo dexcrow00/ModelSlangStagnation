@@ -1,96 +1,97 @@
 
 Effective-vintage analysis
-  Vocabulary : 139 words with ≥ 100 corpus hits
-               (69 appear in responses, 960 total hits across 1244 responses)
+  Vocabulary : 140 words with ≥ 100 corpus hits
+               (70 appear in responses, 1254 total hits across 1244 responses)
 
 ──────────────────────────────────────────────────────────────
-  Model vintage  : 2015.3  [2015.1, 2015.4]  95% CI
-  Corpus vintage : 2015.6
-  Lag            : -0.3 years  (model skews older than corpus)
+  Model vintage  : 2017.3  [2017.1, 2017.5]  95% CI
+  Corpus vintage : 2016.3
+  Lag            : +0.9 years  (model skews newer than corpus)
 ──────────────────────────────────────────────────────────────
   Bootstrap      : B=5000, seed=42
   Method         : parametric Poisson bootstrap  (use --responses for response-level)
 
 ──────────────────────────────────────────────────────────────
-  Per-model effective vintage  (lag vs corpus vintage 2015.6)
+  Per-model effective vintage  (lag vs corpus vintage 2016.3)
 ──────────────────────────────────────────────────────────────
   model                            vintage  95% CI             lag  hits  resp
-  claude-sonnet-5-5                 2015.5  [2015.1, 2015.9]  -0.1   263   250
-  deepseek-ai/DeepSeek-V4.1-Flash   2015.2  [2014.8, 2015.6]  -0.4   192   246
-  gpt-6-luna                        2014.7  [2014.3, 2015.1]  -0.9    82   250
-  meta-models/Muse-Glimmer-30B      2015.4  [2015.0, 2015.8]  -0.2   190   250
-  moonshotai/Kimi-K3                2015.1  [2014.8, 2015.5]  -0.5   233   248
+  claude-sonnet-5-5                 2018.0  [2017.6, 2018.4]  +1.7   385   250
+  deepseek-ai/DeepSeek-V4.1-Flash   2016.9  [2016.5, 2017.4]  +0.6   236   246
+  gpt-6-luna                        2018.8  [2018.2, 2019.3]  +2.4   174   250
+  meta-models/Muse-Glimmer-30B      2015.9  [2015.6, 2016.3]  -0.4   191   250
+  moonshotai/Kimi-K3                2016.5  [2016.1, 2016.8]  +0.1   268   248
 
 ──────────────────────────────────────────────────────────────
   Per-word contributions to model vintage  (sorted by response weight)
 ──────────────────────────────────────────────────────────────
   word                     yr   resp  weight%  contrib
-  bro                    2014    258   26.9%   541.26
-  lol                    2014     94    9.8%   197.20
-  rn                     2021     49    5.1%   103.16
-  lmao                   2016     45    4.7%    94.50
-  fr                     2013     42    4.4%    88.07
-  fire                   2013     36    3.8%    75.49
-  clutch                 2014     31    3.2%    65.04
-  bc                     2013     27    2.8%    56.62
-  wtf                    2013     27    2.8%    56.62
-  salty                  2018     22    2.3%    46.25
-  sick                   2014     21    2.2%    44.06
-  cooked                 2017     21    2.2%    44.12
-  mid                    2018     21    2.2%    44.14
-  threw                  2015     21    2.2%    44.08
-  gg                     2014     16    1.7%    33.57
-  peak                   2020     14    1.5%    29.46
-  goat                   2023     14    1.5%    29.50
-  deleted                2013     12    1.2%    25.16
-  elite                  2013     11    1.1%    23.07
-  flick                  2017     10    1.0%    21.01
-  wayyyy                 2013      9    0.9%    18.87
-  legend                 2014      9    0.9%    18.88
-  vibe                   2024      7    0.7%    14.76
-  ppl                    2013      7    0.7%    14.68
-  tbh                    2017      7    0.7%    14.71
-  pls                    2018      7    0.7%    14.71
-  slaps                  2013      6    0.6%    12.58
-  basic                  2018      6    0.6%    12.61
-  carry                  2013      6    0.6%    12.58
-  choked                 2013      6    0.6%    12.58
-  flamed                 2013      6    0.6%    12.58
-  cracked                2014      6    0.6%    12.59
-  tmrw                   2017      6    0.6%    12.61
-  absolute legend        2023      6    0.6%    12.64
-  idc                    2014      5    0.5%    10.49
-  wayyyyy                2017      5    0.5%    10.51
-  heyyy                  2018      5    0.5%    10.51
-  iconic                 2024      4    0.4%     8.43
-  npc                    2013      3    0.3%     6.29
-  epic                   2017      3    0.3%     6.30
-  lowkey                 2022      3    0.3%     6.32
-  btw                    2013      3    0.3%     6.29
-  def                    2013      3    0.3%     6.29
-  til                    2013      3    0.3%     6.29
-  trashed                2013      3    0.3%     6.29
-  bangers                2020      3    0.3%     6.31
-  gatekeeping            2024      3    0.3%     6.33
-  troll                  2013      2    0.2%     4.19
-  brat                   2015      2    0.2%     4.20
-  slop                   2016      2    0.2%     4.20
-  fyp                    2023      2    0.2%     4.21
-  speedrun               2023      2    0.2%     4.21
-  ngl                    2024      2    0.2%     4.22
-  karen                  2013      1    0.1%     2.10
-  meh                    2014      1    0.1%     2.10
-  6-7                    2015      1    0.1%     2.10
-  he ate                 2015      1    0.1%     2.10
-  bruh                   2021      1    0.1%     2.11
-  shook                  2022      1    0.1%     2.11
-  vibes                  2024      1    0.1%     2.11
-  imo                    2013      1    0.1%     2.10
-  lul                    2013      1    0.1%     2.10
-  nerf                   2013      1    0.1%     2.10
-  tryna                  2013      1    0.1%     2.10
-  snoozefest             2016      1    0.1%     2.10
-  memed                  2023      1    0.1%     2.11
-  tl;dr                  2023      1    0.1%     2.11
-  dupe                   2024      1    0.1%     2.11
-  speedrunning           2024      1    0.1%     2.11
+  😭                      2022    294   23.4%   474.06
+  bro                    2014    258   20.6%   414.36
+  lol                    2014     94    7.5%   150.97
+  rn                     2021     49    3.9%    78.97
+  lmao                   2016     45    3.6%    72.34
+  fr                     2017     42    3.3%    67.56
+  fire                   2017     36    2.9%    57.90
+  clutch                 2014     31    2.5%    49.79
+  bc                     2014     27    2.2%    43.36
+  wtf                    2014     27    2.2%    43.36
+  salty                  2018     22    1.8%    35.40
+  sick                   2014     21    1.7%    33.73
+  cooked                 2017     21    1.7%    33.78
+  mid                    2018     21    1.7%    33.79
+  threw                  2015     21    1.7%    33.74
+  gg                     2014     16    1.3%    25.70
+  peak                   2020     14    1.1%    22.55
+  goat                   2023     14    1.1%    22.59
+  deleted                2016     12    1.0%    19.29
+  elite                  2014     11    0.9%    17.67
+  flick                  2017     10    0.8%    16.08
+  legend                 2014      9    0.7%    14.45
+  wayyyy                 2014      9    0.7%    14.45
+  vibe                   2024      7    0.6%    11.30
+  ppl                    2014      7    0.6%    11.24
+  tbh                    2017      7    0.6%    11.26
+  pls                    2018      7    0.6%    11.26
+  slaps                  2017      6    0.5%     9.65
+  basic                  2018      6    0.5%     9.66
+  choked                 2014      6    0.5%     9.64
+  cracked                2014      6    0.5%     9.64
+  flamed                 2014      6    0.5%     9.64
+  carry                  2015      6    0.5%     9.64
+  tmrw                   2017      6    0.5%     9.65
+  absolute legend        2023      6    0.5%     9.68
+  idc                    2014      5    0.4%     8.03
+  wayyyyy                2017      5    0.4%     8.04
+  heyyy                  2018      5    0.4%     8.05
+  iconic                 2024      4    0.3%     6.46
+  epic                   2017      3    0.2%     4.83
+  npc                    2019      3    0.2%     4.83
+  lowkey                 2022      3    0.2%     4.84
+  btw                    2014      3    0.2%     4.82
+  def                    2014      3    0.2%     4.82
+  til                    2014      3    0.2%     4.82
+  trashed                2015      3    0.2%     4.82
+  bangers                2020      3    0.2%     4.83
+  gatekeeping            2024      3    0.2%     4.84
+  troll                  2014      2    0.2%     3.21
+  brat                   2015      2    0.2%     3.21
+  slop                   2016      2    0.2%     3.22
+  fyp                    2023      2    0.2%     3.23
+  speedrun               2023      2    0.2%     3.23
+  ngl                    2024      2    0.2%     3.23
+  karen                  2014      1    0.1%     1.61
+  meh                    2014      1    0.1%     1.61
+  6-7                    2015      1    0.1%     1.61
+  he ate                 2015      1    0.1%     1.61
+  bruh                   2021      1    0.1%     1.61
+  shook                  2022      1    0.1%     1.61
+  vibes                  2024      1    0.1%     1.61
+  imo                    2014      1    0.1%     1.61
+  nerf                   2014      1    0.1%     1.61
+  snoozefest             2016      1    0.1%     1.61
+  tryna                  2016      1    0.1%     1.61
+  memed                  2023      1    0.1%     1.61
+  tl;dr                  2023      1    0.1%     1.61
+  dupe                   2024      1    0.1%     1.61
+  lul                    2024      1    0.1%     1.61
+  speedrunning           2024      1    0.1%     1.61
