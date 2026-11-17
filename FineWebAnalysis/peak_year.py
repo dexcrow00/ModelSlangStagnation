@@ -20,12 +20,14 @@ Each record carries the per-year rate (``rate_by_year``) and that rate as a
 percentage of the word's own peak year (``pct_of_peak_by_year``), where the peak
 year reads exactly 100.0.
 
+Dumps from EXCLUDED_YEARS are skipped entirely, so those years drop out of every
+statistic: peak year, total_hits, rate_by_year and pct_of_peak_by_year.
+
 Usage:
     python peak_year.py
-    python peak_year.py --threshold 0.99 --words lol sick swag vibe vibes slay aura
-    python peak_year.py --threshold 0.5 -o peak_years.json
-    python peak_year.py --scored-dir prompt_scored scenario_prompt_scored \
-        --threshold 0.99 -o peak_years_pct.json
+    python peak_year.py --words lol troll rad hella
+    python peak_year.py --scored-dir prompt_scored scenario_prompt_scored_old \
+        --min-count 1 -o peak_years_pct.json
 """
 
 from __future__ import annotations
@@ -43,6 +45,13 @@ DEFAULT_SCORED_DIR = HERE / "prompt_scored"
 DEFAULT_SIZES_CACHE = HERE / "fineweb_10BT_dump_sizes.json"
 CRAWL_ID_RE = re.compile(r"CC-MAIN-(\d{4})-(\d{2})")
 
+# Calendar years whose dumps are left out of every statistic. A constant rather
+# than a flag so the choice is tracked in git.
+EXCLUDED_YEARS: tuple[int, ...] = (2013,)
+# Min roberta_score for a scored row to count as the slang sense (the value the
+# paper's peak years use). A constant rather than a flag, like EXCLUDED_YEARS.
+THRESHOLD = 0.99
+
 
 def _crawl_year(name: str) -> int | None:
     """Calendar year from a ``CC-MAIN-<year>-<week>`` crawl id, else None."""
@@ -53,11 +62,14 @@ def _crawl_year(name: str) -> int | None:
 def load_year_counts(scored_dir: Path, threshold: float) -> dict[int, dict[str, int]]:
     """{year: {target: above-threshold hits}} pooled over that year's dumps."""
     counts: dict[int, dict[str, int]] = defaultdict(lambda: defaultdict(int))
-    n_files = 0
+    n_files = n_excluded = 0
     for path in sorted(scored_dir.glob("*.csv")):
         year = _crawl_year(path.stem)
         if year is None:
             print(f"  skipping {path.name} — no CC-MAIN-<year>-<week> in name", file=sys.stderr)
+            continue
+        if year in EXCLUDED_YEARS:
+            n_excluded += 1
             continue
         n_files += 1
         with path.open(newline="", encoding="utf-8-sig") as fh:
@@ -73,7 +85,8 @@ def load_year_counts(scored_dir: Path, threshold: float) -> dict[int, dict[str, 
                 if float(score) >= threshold:
                     counts[year][row["target"]] += 1
     print(f"  loaded {n_files} dump CSV(s) across {len(counts)} year(s) "
-          f"(threshold {threshold:g})", file=sys.stderr)
+          f"(threshold {threshold:g}); skipped {n_excluded} from EXCLUDED_YEARS "
+          f"{list(EXCLUDED_YEARS)}", file=sys.stderr)
     return counts
 
 
@@ -111,7 +124,7 @@ def peak_years(
     else:
         targets = [w for w, c in totals.items() if c >= min_count]
     if not targets:
-        sys.exit("No target words to report (raise data, lower --threshold/--min-count).")
+        sys.exit("No target words to report (add data, or lower THRESHOLD/--min-count).")
 
     years = sorted(year_counts)
     records: list[dict] = []
@@ -150,9 +163,6 @@ def main() -> None:
                    metavar="DIR", dest="scored_dir",
                    help="One or more directories of scored crawl CSVs, pooled "
                         f"(default: {DEFAULT_SCORED_DIR.name}/).")
-    p.add_argument("--threshold", type=float, default=0.5, metavar="F",
-                   help="Min roberta_score for a row to count as the slang sense "
-                        "(default: 0.5; the paper highlight figures use 0.99).")
     p.add_argument("--words", nargs="+", metavar="WORD",
                    help="Only report these target words (default: all with >= --min-count hits).")
     p.add_argument("--min-count", type=int, default=30, metavar="N", dest="min_count",
@@ -175,7 +185,7 @@ def main() -> None:
 
     year_counts: dict[int, dict[str, int]] = defaultdict(lambda: defaultdict(int))
     for d in args.scored_dir:
-        for year, per_word in load_year_counts(d, args.threshold).items():
+        for year, per_word in load_year_counts(d, THRESHOLD).items():
             for w, c in per_word.items():
                 year_counts[year][w] += c
     if not year_counts:
