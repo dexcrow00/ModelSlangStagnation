@@ -78,9 +78,13 @@ def parse_answer(response: str | None) -> tuple[str | None, str]:
     return m.group(1), "clean" if re.fullmatch(r"[ABCD][).]?", s) else "lenient"
 
 
+# Slots whose target word can't be spelled in the prompt id (an emoji isn't a valid id).
+SLOT_WORD_OVERRIDES = {"exp3_skull": "💀"}
+
+
 def target_letter(slot: str, options: dict[str, str]) -> str | None:
     """Which option holds the slot's own word (``exp3_aura`` -> the ``aura`` option)."""
-    want = normalize(slot.removeprefix("exp3_"))
+    want = normalize(SLOT_WORD_OVERRIDES.get(slot) or slot.removeprefix("exp3_"))
     for letter, word in options.items():
         if normalize(word) == want:
             return letter

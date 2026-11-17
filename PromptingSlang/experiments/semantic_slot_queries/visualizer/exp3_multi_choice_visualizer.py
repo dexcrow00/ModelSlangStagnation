@@ -30,6 +30,7 @@ from __future__ import annotations
 
 import argparse
 import importlib.util
+import re
 import sys
 from collections import Counter, defaultdict
 from pathlib import Path
@@ -56,10 +57,8 @@ def _load(path: Path, name: str):
     return module
 
 
-# Word order and slot-id mapping come from the free-response visualizer, and the
-# A/B/C/D parsing from the forced-choice analysis script, so all three stay in
-# lockstep with this one.
-_slot = _load(Path(__file__).resolve().parent / "visualize.py", "_slot_viz")
+# The A/B/C/D parsing comes from the forced-choice analysis script, so the two
+# stay in lockstep.
 _cf = _load(EXP_DIR / "analysis" / "exp3_choice_freq.py", "_exp3_choice_freq")
 WORDS_CHRONO_ORDER = ["stfu", "lmfao", "griefing", "methinks", "omg", "u", "yapping",
                    "ick", "dude", "hella", "troll", "pumped", "rad", "lol", "meh",
@@ -67,7 +66,13 @@ WORDS_CHRONO_ORDER = ["stfu", "lmfao", "griefing", "methinks", "omg", "u", "yapp
                    "simp", "bruh", "cuck", "doggo", "shitpost", "💀", "lowkey", "doomscrolling",
                    "glow-up", "vibing", "hooman", "situationship", "yeet",
                    "catfished", "red pill", "vibes", "idgaf", "legit"]
-target_prompt_id = _slot.target_prompt_id
+# Prompt ids that can't be derived from the word itself (an emoji isn't a valid id).
+_PROMPT_ID_OVERRIDES = {"💀": "exp3_skull"}
+
+
+def target_prompt_id(word: str) -> str:
+    """'red pill' -> 'exp3_red_pill', 'glow-up' -> 'exp3_glow_up', '💀' -> 'exp3_skull'."""
+    return _PROMPT_ID_OVERRIDES.get(word) or "exp3_" + re.sub(r"[ \-]", "_", word)
 
 DEFAULT_RESPONSES = EXP_DIR / "results_from_list"
 DEFAULT_PEAK_YEARS = REPO_ROOT.parent / "FineWebAnalysis" / "peak_years_pct.json"
