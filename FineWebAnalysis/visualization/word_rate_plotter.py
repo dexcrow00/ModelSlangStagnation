@@ -64,7 +64,10 @@ logging.getLogger("httpx").setLevel(logging.WARNING)
 
 ROOT = Path(__file__).resolve().parents[1]  # FineWebAnalysis/
 DEFAULT_SCORED_DIR = ROOT / "prompt_scored"
-SCENARIO_SCORED_DIR = ROOT / "scenario_prompt_scored"
+# The highlight words from the original 26-word scenario list (dude, omg, u, 💀, ...)
+# only have contexts here; peak_year.py pools the same two directories, so the
+# charts and peak_years_pct.json are built from the same rows.
+SCENARIO_SCORED_DIR = ROOT / "scenario_prompt_scored_old"
 DEFAULT_SIZES_CACHE = ROOT / "fineweb_10BT_dump_sizes.json"
 WRITING_DIR = ROOT.parent / "writing"
 # Monochrome Noto Emoji (SIL OFL, see fonts/OFL.txt), shared with PromptingSlang.
@@ -81,13 +84,14 @@ SMOOTH = 9
 # Degree of the least-squares polynomial fitted per word under --polynomial-fit.
 POLY_DEGREE = 3
 
-# Fixed cohorts of ephemeral words (pooled from both prompt_scored and
-# scenario_prompt_scored), bucketed by peak year, each saved as
+# The target words chosen by plot_min_pct.py from peak_years_pct.json (2013
+# excluded), bucketed by peak year: pre2018 <= 2017 < around2020 <= 2021 < 2022_24.
+# Pooled from prompt_scored and scenario_prompt_scored_old, each saved as
 # highlight_<band>_count.png. The pre-2018 band gets a broken y-axis so lol
 # (peak ~16/M) does not flatten the rest (peak <4/M).
 HIGHLIGHT_BANDS = {
     "pre2018":    ["stfu", "lmfao", "griefing", "methinks", "omg", "u", "yapping",
-                   "ick", "dude", "hella", "troll", "pumped", "rad", "lol", "meh",
+                   "ick", "dude", "hella", "troll", "pumped", "lol", "meh",
                    "bro", "finna", "lmao", "thot"],
     "around2020": ["cucked", "shitposting", "struggle bus", "simp", "bruh"],
     "2022_24":    ["cuck", "doggo", "shitpost", "💀", "lowkey", "doomscrolling",
