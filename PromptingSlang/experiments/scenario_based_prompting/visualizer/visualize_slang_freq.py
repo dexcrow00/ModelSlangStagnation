@@ -2,12 +2,11 @@
 """Scenario-based prompting: slang-frequency chart.
 
 Counts every word from the curated ``target_words.txt`` list in the free-text
-scenario responses and draws two stacked bar charts of response frequency, each
-with its own x-axis. The **top panel colours each bar by the word's corpus peak
-year** (recency, ordered oldest -> newest) and the **bottom panel by its total
-corpus occurrence** (overall frequency, ordered most -> least), both from the
-FineWeb ``peak_years_pct.json``. The top panel (year) reports Spearman correlation and the bottom panel (total
-corpus frequency) reports Pearson correlation, each with a two-tailed p-value.
+scenario responses and plots each word's response frequency, ordered by its
+total corpus occurrence (most -> least, from the FineWeb ``peak_years_pct.json``),
+titled with the Pearson correlation between corpus count and response frequency
+and its two-tailed p-value. The Spearman correlation with corpus peak year is
+still computed and printed, but not drawn.
 
 Words whose corpus statistics rest on fewer than ``--min-peak-hits`` (default
 100) sense-filtered occurrences are considered unreliable and excluded from the
@@ -26,13 +25,13 @@ import argparse
 import json
 import math
 import sys
+import textwrap
 from collections import Counter
 from pathlib import Path
 
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib import cm
-from matplotlib.colors import Normalize
 from scipy.stats import t as t_dist
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
@@ -171,8 +170,7 @@ def _draw_panel(fig, ax, words, values, colors, cmap, norm, cbar_label,
             coeffs = np.polyfit(xs[valid], ys[valid], 1)
             trend = np.polyval(coeffs, xs)
         ax.plot(xs, trend, color="black", linewidth=1.2, linestyle="--", alpha=0.55, zorder=2)
-    ax.set_xticks(xs)
-    ax.set_xticklabels(words, rotation=45, ha="right", fontsize=8)
+    ax.set_xticks([])  # one point per word; only the ordering matters, not the labels
     ax.set_xlabel(xlabel, fontsize=9)
     ax.set_ylabel(ylabel, fontsize=9)
     if log_y:
@@ -203,7 +201,6 @@ def render(totals: Counter, n_responses: int, peaks: dict[str, dict],
 
     reliable_words = [w for w in appeared if reliable_of(w)]
     grey_words = [w for w in appeared if not reliable_of(w)]
-    n_greyed = len(grey_words)
 
     scale = (1.0 / max(n_responses, 1)) if as_rate else 1.0
     val = {w: totals[w] * scale for w in appeared}
@@ -228,63 +225,35 @@ def render(totals: Counter, n_responses: int, peaks: dict[str, dict],
     for w in sorted(reliable_words, key=lambda w: -totals[w]):
         print(f"  {w:<12}{peaks[w]['peak_year']:>8}{peaks[w]['total_hits']:>12}{totals[w]:>11}")
 
-    # Colour scale for top panel (peak year → plasma).
-    if reliable_words:
-        peak_norm = Normalize(vmin=min(rel_year),
-                              vmax=max(rel_year) if max(rel_year) > min(rel_year) else min(rel_year) + 1)
-    else:
-        peak_norm = Normalize(2013, 2024)
-    plasma = plt.get_cmap("plasma")
-
-    # Each panel has its own word order: panel 1 by corpus peak year (oldest ->
-    # newest), panel 2 by corpus total occurrence (most -> least).
-    # Unreliable words are dropped unless --show-unreliable is set, in which case they are shown in grey.
+    # Words ordered by corpus total occurrence (most -> least). Unreliable words are
+    # dropped unless --show-unreliable is set, in which case they are shown in grey.
     tail = [] if not show_unreliable else sorted(grey_words, key=lambda w: (-totals[w], w))
-    order1 = sorted(reliable_words, key=lambda w: (peaks[w]["peak_year"], -totals[w], w)) + tail
-    order2 = sorted(reliable_words, key=lambda w: (-peaks[w]["total_hits"], w)) + tail
-    colors1 = [plasma(peak_norm(peaks[w]["peak_year"])) if reliable_of(w) else "#bbbbbb"
-               for w in order1]
-    # Bottom panel: x-position already encodes corpus frequency order, no colour needed.
-    colors2 = ["#4878cf" if reliable_of(w) else "#bbbbbb" for w in order2]
+    order = sorted(reliable_words, key=lambda w: (-peaks[w]["total_hits"], w)) + tail
+    # The x-position already encodes corpus frequency order, so no colour scale is needed.
+    colors = ["#4878cf" if reliable_of(w) else "#bbbbbb" for w in order]
 
-    width = max(10, max(len(order1), len(order2)) * 0.42)
-    fig, (ax_top, ax_bot) = plt.subplots(2, 1, figsize=(width, 10))
+    fig, ax = plt.subplots(figsize=(10, 5))
     scale_note = " (log scale)" if log_y else ""
     ylabel = f"occurrences per response{scale_note}" if as_rate else f"occurrences in responses{scale_note}"
 
-    xlabel1 = "slang word (ordered by corpus peak year, oldest → newest)"
+    xlabel = "slang words, ordered by descending corpus frequency"
     if show_unreliable:
-        xlabel1 += f"; grey = <{min_hits} corpus hits"
-    _draw_panel(fig, ax_top, order1, [val[w] for w in order1], colors1,
-                plasma, peak_norm, "corpus peak year", ylabel, xlabel1,
-                int_ticks=True, log_y=log_y)
-    ax_top.set_title(f"coloured by corpus peak year (recency)  ---  "
-                     f"Spearman $\\rho$(peak year, response freq) $= {r_year:+.2f}$  "
-                     f"($n={n_corr}$, {_fmt_p(p_year)})",
-                     fontsize=10)
-    xlabel2 = "slang word (descending corpus frequency)"
-    if show_unreliable:
-        xlabel2 += f"; grey = <{min_hits} corpus hits"
-    _draw_panel(fig, ax_bot, order2, [val[w] for w in order2], colors2,
-                None, None, None, ylabel, xlabel2, log_y=log_y)
-    ax_bot.set_title(f"ordered by total corpus occurrence (most → least)  ---  "
-                     f"Pearson $r$(corpus count, response freq) $= {r_occ:+.2f}$  "
-                     f"($n={n_corr}$, {_fmt_p(p_occ)})",
-                     fontsize=10)
-
-    total_hits = sum(totals.values())
+        xlabel += f"; grey = <{min_hits} corpus hits"
+    _draw_panel(fig, ax, order, [val[w] for w in order], colors,
+                None, None, None, ylabel, xlabel, log_y=log_y)
     who = model_short(model_label) if model_label else "all models"
-    if not show_unreliable:
-        greyed_note = f"; {n_greyed} word(s) with <{min_hits} corpus hits excluded" if n_greyed else ""
-    else:
-        greyed_note = f"; {n_greyed} grey (<{min_hits} corpus hits)" if n_greyed else ""
-    fig.suptitle(f"Scenario-based prompting --- slang frequency in responses ({who})\n"
-                 f"{n_responses} responses, {total_hits} slang hits "
-                 f"({total_hits / max(n_responses, 1):.2f} per response){greyed_note}", fontsize=11)
-    fig.tight_layout(rect=(0, 0, 1, 0.95))
+    ax.set_title(f"Slang frequency in responses ({who})  ---  "
+                 f"Pearson $r$(corpus count, response freq) $= {r_occ:+.2f}$  "
+                 f"($n={n_corr}$, {_fmt_p(p_occ)})",
+                 fontsize=10)
+
     if caption:
-        fig.text(0.5, 0.01, caption, ha="center", va="bottom", fontsize=8,
-                 style="italic", wrap=True)
+        # Wrapped by hand: matplotlib's wrap=True ignores the reserved strip below the axes.
+        fig.tight_layout(rect=(0, 0.16, 1, 1))
+        fig.text(0.01, 0.01, textwrap.fill(caption, 150), ha="left", va="bottom",
+                 fontsize=8, style="italic")
+    else:
+        fig.tight_layout()
     if output:
         output.parent.mkdir(parents=True, exist_ok=True)
         fig.savefig(output, dpi=150, bbox_inches="tight")
@@ -345,6 +314,7 @@ def main() -> None:
             sys.exit(f"Counts JSON not found: {counts_path}")
         totals, n = load_from_counts_json(counts_path, args.model)
         model_label = args.model
+        n_models = 1 if args.model else len(json.loads(counts_path.read_text(encoding="utf-8"))["models"])
         print(f"Loaded from {counts_path.name}: {n} responses, {sum(totals.values())} hits")
     else:
         records = read_responses(args.responses)
@@ -352,18 +322,20 @@ def main() -> None:
             sys.exit(f"No response records found in {args.responses}.")
         records, model_label = filter_to_model(records, args.model)
         totals, n = collect(records, words)
+        n_models = len({r.get("model") for r in records})
 
     for w in {x.lower() for x in args.exclude}:
         totals.pop(w, None)
 
     # ── Figure caption ────────────────────────────────────────────────────────
     # Edit this string, then regenerate to embed the caption in the image.
+    # The response counts are filled in from the data.
     caption = (
-        "Experiment 4: We generated 100 responses per model for a user simulation prompt (see appendix C or something)" \
-        "in order to collect natural slang usage metrics. We then calculated peak usage year and total count for each word" \
-        "in the FineWeb corpus. The results show that, expectedly, models tend to more frequently use slang words that appear in the corpus" \
-        "more often. Our finding is that corpus slang volume also correlates with peak slang usage age (older slang is more " \
-        "represented in the corpus), leading to models overusing out-of-date slang."
+        f"Experiment 4: We generated about {round(n / max(n_models, 1))} responses per model "
+        f"({n} in total) for a user-simulation prompt (see the Experiment 4 appendix) in order "
+        "to collect natural slang usage. We then calculated the peak usage year and total "
+        "count of each word in the FineWeb corpus. As expected, models more frequently use "
+        "slang words that appear in the corpus more often."
     )
 
     render(totals, n, peaks, model_label, args.rate, args.min_peak_hits,
