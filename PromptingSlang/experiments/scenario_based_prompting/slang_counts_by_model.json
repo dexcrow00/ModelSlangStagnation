@@ -3,13 +3,12 @@
     "FineWebAnalysis/target_words.txt",
     "FineWebAnalysis/scenario_words.txt"
   ],
-  "vocabulary_size": 277,
+  "vocabulary_size": 276,
   "models": {
     "claude-sonnet-5-5": {
       "responses": 250,
-      "total_slang_hits": 702,
+      "total_slang_hits": 580,
       "words": {
-        "😭": 122,
         "bro": 74,
         "clip it": 50,
         "dude": 45,
@@ -104,10 +103,9 @@
     },
     "deepseek-ai/DeepSeek-V4.1-Flash": {
       "responses": 246,
-      "total_slang_hits": 442,
+      "total_slang_hits": 398,
       "words": {
         "dude": 53,
-        "😭": 44,
         "bro": 40,
         "shaking": 23,
         "u": 19,
@@ -196,9 +194,8 @@
     },
     "gpt-6-luna": {
       "responses": 250,
-      "total_slang_hits": 253,
+      "total_slang_hits": 161,
       "words": {
-        "😭": 92,
         "bro": 22,
         "lol": 16,
         "dude": 14,
@@ -248,7 +245,7 @@
     },
     "meta-models/Muse-Glimmer-30B": {
       "responses": 250,
-      "total_slang_hits": 344,
+      "total_slang_hits": 343,
       "words": {
         "bro": 44,
         "broooo": 26,
@@ -305,7 +302,6 @@
         "cappin": 1,
         "built different": 1,
         "left no crumbs": 1,
-        "😭": 1,
         "vibes": 1,
         "peaked": 1,
         "meh": 1,
@@ -327,12 +323,11 @@
     },
     "moonshotai/Kimi-K3": {
       "responses": 248,
-      "total_slang_hits": 528,
+      "total_slang_hits": 493,
       "words": {
         "bro": 78,
         "dude": 43,
         "clip it": 37,
-        "😭": 35,
         "lol": 16,
         "bc": 16,
         "lmaooo": 15,
