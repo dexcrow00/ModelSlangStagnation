@@ -21,7 +21,8 @@ percentage of the word's own peak year (``pct_of_peak_by_year``), where the peak
 year reads exactly 100.0.
 
 Dumps from EXCLUDED_YEARS are skipped entirely, so those years drop out of every
-statistic: peak year, total_hits, rate_by_year and pct_of_peak_by_year.
+statistic: peak year, total_hits, rate_by_year and pct_of_peak_by_year. Rows whose
+target is in EXCLUDED_TERMS are skipped too, so those words get no record at all.
 
 Usage:
     python peak_year.py
@@ -64,7 +65,7 @@ def _crawl_year(name: str) -> int | None:
 def load_year_counts(scored_dir: Path, threshold: float) -> dict[int, dict[str, int]]:
     """{year: {target: above-threshold hits}} pooled over that year's dumps."""
     counts: dict[int, dict[str, int]] = defaultdict(lambda: defaultdict(int))
-    n_files = n_excluded = 0
+    n_files = n_excluded = n_term_rows = 0
     for path in sorted(scored_dir.glob("*.csv")):
         year = _crawl_year(path.stem)
         if year is None:
@@ -79,6 +80,9 @@ def load_year_counts(scored_dir: Path, threshold: float) -> dict[int, dict[str, 
             # warn and skip them rather than crash. line_num is the record's last line.
             reader = csv.DictReader(fh)
             for row in reader:
+                if row["target"].strip() in EXCLUDED_TERMS:
+                    n_term_rows += 1
+                    continue
                 score = row["roberta_score"].strip()
                 if not score:
                     print(f"  skipping unscored row in {path.name} (line {reader.line_num}, "
@@ -88,7 +92,8 @@ def load_year_counts(scored_dir: Path, threshold: float) -> dict[int, dict[str, 
                     counts[year][row["target"]] += 1
     print(f"  loaded {n_files} dump CSV(s) across {len(counts)} year(s) "
           f"(threshold {threshold:g}); skipped {n_excluded} from EXCLUDED_YEARS "
-          f"{list(EXCLUDED_YEARS)}", file=sys.stderr)
+          f"{list(EXCLUDED_YEARS)} and {n_term_rows} row(s) for EXCLUDED_TERMS "
+          f"{list(EXCLUDED_TERMS)}", file=sys.stderr)
     return counts
 
 

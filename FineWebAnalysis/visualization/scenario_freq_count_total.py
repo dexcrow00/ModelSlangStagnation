@@ -25,7 +25,6 @@ scenario_words = {
 
 raw_counts = wrp.load_dump_counts(SCORED, THRESHOLD)
 dump_tokens = wrp.fetch_dump_token_counts(CACHE)
-wrp._use_emoji_font()
 
 # Aggregate counts across all scenario words per dump into a single series.
 agg_counts: dict = defaultdict(Counter)

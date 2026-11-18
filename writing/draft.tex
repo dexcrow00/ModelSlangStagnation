@@ -441,7 +441,7 @@ its three statistics. The thresholds are set as constants in
 \toprule
 Word & Hits & Min\% & Filt\% & Word & Hits & Min\% & Filt\% & Word & Hits & Min\% & Filt\% \\
 \midrule
-\textit{6-7} & 238 & 27.5 & \underline{98.4} & \textit{grindset} & \underline{7} & 0.0 & 0.0 & \textit{she ate} & 194 & 39.2 & \underline{93.1} \\ % chktex 8
+\textit{6-7} & 238 & 27.5 & \underline{98.4} & \textit{grindset} & \underline{7} & 0.0 & 0.0 & \textit{she ate} & 194 & 39.2 & \underline{93.1} \\
 \textit{67} & 896 & \underline{72.3} & \underline{98.8} & \textit{hard mode} & \underline{29} & 0.0 & \underline{96.8} & \textbf{\textit{shitpost}} & 113 & 0.0 & 2.6 \\
 \textit{alpha} & 5{,}680 & \underline{56.1} & \underline{94.5} & \textit{he ate} & 306 & 42.0 & \underline{94.2} & \textbf{\textit{shitposting}} & 198 & 0.0 & 1.5 \\
 \textit{aura} & 1{,}211 & 48.5 & \underline{96.5} & \textbf{\textit{hella}} & 2{,}552 & 35.4 & 33.5 & \textit{shook} & 5{,}362 & \underline{66.0} & \underline{92.3} \\
@@ -488,19 +488,19 @@ Word & Hits & Min\% & Filt\% & Word & Hits & Min\% & Filt\% & Word & Hits & Min\
 \textit{goon} & 471 & 13.0 & \underline{86.7} & \textit{rizz} & \underline{9} & 0.0 & \underline{83.6} & \textit{yeeted} & \underline{17} & 0.0 & 0.0 \\
 \textit{gooner} & \underline{16} & 0.0 & \underline{95.0} & \textit{salty} & 1{,}870 & \underline{50.7} & \underline{94.7} & \textit{yeeting} & \underline{10} & 0.0 & 23.1 \\
 \textit{gooning} & \underline{11} & 0.0 & 62.1 & \textit{savage} & 2{,}490 & \underline{69.3} & \underline{94.4} & \textit{yolo} & 1{,}219 & \underline{51.1} & 66.9 \\
-\textbf{\textit{griefing}} & 157 & 21.0 & 60.7 & \textit{shaking} & \underline{16} & 0.0 & \underline{100.0} & \textbf{\textit{\texttt{U+1F480}}} & 149 & 0.0 & 0.0 \\
+\textbf{\textit{griefing}} & 157 & 21.0 & 60.7 & \textit{shaking} & \underline{16} & 0.0 & \underline{100.0} &  & & &  \\
 \bottomrule
 \end{tabular}
-\caption{Selection statistics for all 144 candidate words, in alphabetical order.
+\caption{Selection statistics for all 143 candidate words, in alphabetical order.
 ``Hits'' is the total count of slang-sense occurrences (classifier score
 $\geq 0.99$) over 2014--2024; ``Min\%'' is the word's lowest year as a percentage
 of its own peak year; ``Filt\%'' is the percentage of raw occurrences rejected by
 the sense classifier at the 0.99 threshold. Underlined values fail their criterion
-(Hits $<80$, Min\% $>50$, Filt\% $>80$); the 39 words in \textbf{bold} pass all
-three and form the target set.
-The skull-emoji target is written \texttt{U+1F480}.}%
-\label{tab:words}
+(Hits $<80$, Min\% $>50$, Filt\% $>80$); the 38 words in \textbf{bold} pass all
+three and form the target set.}%
+\label{tab:selection}
 \end{table*}
+
 
 \section{Experiment 1: FineWeb Corpus Frequency}%
 \label{app:exp1}
