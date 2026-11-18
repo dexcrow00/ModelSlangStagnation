@@ -48,7 +48,7 @@ PROMPT_ID = "EraAppropriate"
 # Words left out of the chart: responses exist for them, but they are no longer in
 # the target set (rad fails the ephemerality cutoff once 2013 is excluded from the
 # peak years). A constant rather than a flag so it can't be forgotten on a run.
-EXCLUDED_WORDS: tuple[str, ...] = ("rad",)
+EXCLUDED_WORDS: tuple[str, ...] = ("rad","💀","😭")
 
 # Printed under the chart. Keep it in step with _YES / _NO below.
 CAPTION = (

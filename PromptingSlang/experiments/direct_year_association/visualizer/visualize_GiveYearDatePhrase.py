@@ -48,7 +48,7 @@ PROMPT_IDS = ("GiveYear", "DatePhrase")
 # Words left out of the chart: responses exist for them, but they are no longer in
 # the target set (rad fails the ephemerality cutoff once 2013 is excluded from the
 # peak years). A constant rather than a flag so it can't be forgotten on a run.
-EXCLUDED_WORDS: tuple[str, ...] = ("rad",)
+EXCLUDED_WORDS: tuple[str, ...] = ("rad","💀","😭")
 XMIN, XMAX = 2010, 2024  # x-axis (calendar year) window
 # Words the plot font can't draw, shown under a text label instead.
 LABELS = {"💀": "skull emoji"}

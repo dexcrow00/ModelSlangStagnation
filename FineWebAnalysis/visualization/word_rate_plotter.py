@@ -70,8 +70,6 @@ DEFAULT_SCORED_DIR = ROOT / "prompt_scored"
 SCENARIO_SCORED_DIR = ROOT / "scenario_prompt_scored_old"
 DEFAULT_SIZES_CACHE = ROOT / "fineweb_10BT_dump_sizes.json"
 WRITING_DIR = ROOT.parent / "writing"
-# Monochrome Noto Emoji (SIL OFL, see fonts/OFL.txt), shared with PromptingSlang.
-EMOJI_FONT = ROOT.parent / "fonts" / "NotoEmoji.ttf"
 HF_SAMPLE_DIR = "datasets/HuggingFaceFW/fineweb/sample/10BT"
 CRAWL_ID_RE = re.compile(r"CC-MAIN-(\d{4})-(\d{2})")
 
@@ -94,7 +92,7 @@ HIGHLIGHT_BANDS = {
                    "ick", "dude", "hella", "troll", "pumped", "lol", "meh",
                    "bro", "finna", "lmao", "thot"],
     "around2020": ["cucked", "shitposting", "struggle bus", "simp", "bruh"],
-    "2022_24":    ["cuck", "doggo", "shitpost", "💀", "lowkey", "doomscrolling",
+    "2022_24":    ["cuck", "doggo", "shitpost", "lowkey", "doomscrolling",
                    "glow-up", "vibing", "hooman", "situationship", "yeet",
                    "catfished", "red pill", "vibes", "idgaf", "legit"],
 }
@@ -123,20 +121,6 @@ def _crawl_date(stem: str) -> Optional[date]:
     """Map a CC-MAIN-<year>-<week> crawl id to the Monday of that ISO week."""
     m = CRAWL_ID_RE.search(stem)
     return date.fromisocalendar(int(m.group(1)), int(m.group(2)), 1) if m else None
-
-
-def _use_emoji_font() -> None:
-    """Fall back to Noto Emoji for any glyph DejaVu Sans lacks, so emoji targets render.
-
-    Colour emoji fonts (Apple Color Emoji, Segoe UI Emoji, Noto Color Emoji)
-    store bitmap glyphs that matplotlib's renderer cannot draw, so a bundled
-    outline font is used instead. Both families go straight into font.family,
-    not font.sans-serif: matplotlib only falls back glyph-by-glyph across fonts
-    listed there, and a generic family resolves to a single font.
-    """
-    font_manager.fontManager.addfont(EMOJI_FONT)
-    plt.rcParams["font.family"] = ["DejaVu Sans", "Noto Emoji"]
-
 
 def load_dump_counts(scored_dir: Path, threshold: float) -> Dict[date, Counter]:
     """Count above-threshold rows per (dump, target) across scored crawl CSVs."""
@@ -707,7 +691,6 @@ def main() -> None:
                            args.percent_of_peak, confidence, args.polynomial_fit)
             if args.settings_note else None)
 
-    _use_emoji_font()
     out_dir = args.output if args.output is not None else WRITING_DIR
     plot_highlight_bands(counts, dump_tokens, SMOOTH, out_dir, confidence,
                          args.percent_of_peak, args.clean, note, args.polynomial_fit)

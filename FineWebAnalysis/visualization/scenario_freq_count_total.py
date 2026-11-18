@@ -13,8 +13,9 @@ CACHE = ROOT / "fineweb_10BT_dump_sizes.json"
 SCENARIO_WORDS = ROOT / "scenario_words.txt"
 OUT = ROOT / "scenario_charts" / "scenario_freq_count.png"
 THRESHOLD, SMOOTH, CONFIDENCE = 0.99, 5, 0.95
+CAPTION = "Corpus baseline for the persona lexicon: aggregate slang-sense frequency across the full scenario vocabulary in FineWeb 10BT, normalized per million tokens per crawl dump and summed across all words."
 
-LABEL = "all scenario words"
+LABEL = "Scenario words count per dump"
 
 scenario_words = {
     l.strip().lower()
@@ -31,4 +32,4 @@ agg_counts: dict = defaultdict(Counter)
 for d, counter in raw_counts.items():
     agg_counts[d][LABEL] = sum(v for w, v in counter.items() if w in scenario_words)
 
-wrp.plot_rates(agg_counts, dump_tokens, THRESHOLD, [LABEL], None, SMOOTH, False, OUT, CONFIDENCE)
+wrp.plot_rates(agg_counts, dump_tokens, THRESHOLD, [LABEL], None, SMOOTH, False, OUT, CONFIDENCE, note=CAPTION)

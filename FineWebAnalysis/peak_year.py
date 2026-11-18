@@ -47,7 +47,9 @@ CRAWL_ID_RE = re.compile(r"CC-MAIN-(\d{4})-(\d{2})")
 
 # Calendar years whose dumps are left out of every statistic. A constant rather
 # than a flag so the choice is tracked in git.
-EXCLUDED_YEARS: tuple[int, ...] = ()
+EXCLUDED_YEARS: tuple[int, ...] = (2013,)
+# Exclude emojis, they're interesting but aren't really slang and disproportionally affect analysis.
+EXCLUDED_TERMS = ("💀", "😭")
 # Min roberta_score for a scored row to count as the slang sense (the value the
 # paper's peak years use). A constant rather than a flag, like EXCLUDED_YEARS.
 THRESHOLD = 0.99

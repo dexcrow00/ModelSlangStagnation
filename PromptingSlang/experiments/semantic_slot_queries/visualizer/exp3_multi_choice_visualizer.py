@@ -63,7 +63,7 @@ _cf = _load(EXP_DIR / "analysis" / "exp3_choice_freq.py", "_exp3_choice_freq")
 WORDS_CHRONO_ORDER = ["stfu", "lmfao", "griefing", "methinks", "omg", "u", "yapping",
                    "ick", "dude", "hella", "troll", "pumped", "lol", "meh",
                    "bro", "finna", "lmao", "thot", "cucked", "shitposting", "struggle bus", 
-                   "simp", "bruh", "cuck", "doggo", "shitpost", "💀", "lowkey", "doomscrolling",
+                   "simp", "bruh", "cuck", "doggo", "shitpost", "lowkey", "doomscrolling",
                    "glow-up", "vibing", "hooman", "situationship", "yeet",
                    "catfished", "red pill", "vibes", "idgaf", "legit"]
 # Prompt ids that can't be derived from the word itself (an emoji isn't a valid id).
